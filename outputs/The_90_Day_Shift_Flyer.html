@@ -1,0 +1,387 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 90 Day Shift â€” Jaime Jenkins</title>
+<link rel="icon" type="image/png" href="../logos/MB-favicon-large.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #faf8f5;
+    color: #34657a;
+    width: 8.5in;
+    min-height: 11in;
+    margin: 0 auto;
+    padding: 0.45in 0.65in 0.35in;
+    font-size: 9.5pt;
+    line-height: 1.55;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* â”€â”€ LOGO â”€â”€ */
+  .logo-block {
+    text-align: center;
+    margin-bottom: 0.18in;
+  }
+  .logo-block img {
+    height: 0.85in;
+    width: auto;
+  }
+
+  /* â”€â”€ DIVIDER â”€â”€ */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #c19a6b 20%, #c19a6b 80%, transparent);
+    margin: 0.13in 0;
+  }
+
+  /* â”€â”€ HOOK HEADLINE â”€â”€ */
+  .hook-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22pt;
+    font-weight: 700;
+    color: #34657a;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 0.1in;
+  }
+
+  .subheadline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11.5pt;
+    font-style: italic;
+    color: #c19a6b;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 0.13in;
+  }
+
+  /* â”€â”€ BODY COPY â”€â”€ */
+  .body-copy {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9pt;
+    color: #34657a;
+    line-height: 1.65;
+    text-align: left;
+    margin-bottom: 0.1in;
+  }
+  .body-copy p { margin-bottom: 0.07in; }
+  .body-copy p:last-child { margin-bottom: 0; }
+
+  /* â”€â”€ CREDIBILITY BLOCK â”€â”€ */
+  .cred-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c19a6b;
+    text-align: center;
+    margin-bottom: 0.06in;
+  }
+  .cred-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17pt;
+    font-weight: 700;
+    color: #34657a;
+    text-align: center;
+    line-height: 1.15;
+    margin-bottom: 0.04in;
+  }
+  .cred-body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8.5pt;
+    color: #34657a;
+    text-align: center;
+    line-height: 1.55;
+  }
+
+  /* â”€â”€ COST OF INACTION â”€â”€ */
+  .cost-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c19a6b;
+    text-align: center;
+    margin-bottom: 0.09in;
+  }
+  .cost-columns {
+    display: flex;
+    gap: 0.2in;
+    background: #faf8f5;
+    border: 1px solid rgba(193,154,107,0.45);
+    border-radius: 4px;
+    padding: 0.13in 0.15in;
+  }
+  .cost-col {
+    flex: 1;
+  }
+  .cost-col-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #34657a;
+    margin-bottom: 0.06in;
+    line-height: 1.2;
+  }
+  .cost-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.06in;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8pt;
+    color: #34657a;
+    line-height: 1.5;
+    margin-bottom: 0.045in;
+  }
+  .cost-diamond {
+    color: #c19a6b;
+    font-size: 7pt;
+    margin-top: 0.02in;
+    flex-shrink: 0;
+  }
+  .cost-divider {
+    width: 1px;
+    background: rgba(193,154,107,0.35);
+    flex-shrink: 0;
+  }
+
+  /* â”€â”€ PROGRAM SECTION â”€â”€ */
+  .program-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20pt;
+    font-weight: 700;
+    color: #34657a;
+    text-align: center;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.03in;
+  }
+  .program-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11pt;
+    font-style: italic;
+    color: #c19a6b;
+    text-align: center;
+    margin-bottom: 0.03in;
+  }
+  .program-private {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #34657a;
+    text-align: center;
+    margin-bottom: 0.08in;
+  }
+  .program-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9pt;
+    color: #34657a;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 0.09in;
+    max-width: 6.5in;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .inclusion-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.08in;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8.5pt;
+    color: #34657a;
+    line-height: 1.5;
+    margin-bottom: 0.038in;
+  }
+  .inclusion-diamond {
+    color: #c19a6b;
+    font-size: 7pt;
+    margin-top: 0.025in;
+    flex-shrink: 0;
+  }
+
+  /* â”€â”€ SCARCITY BLOCK â”€â”€ */
+  .scarcity-block {
+    background: #faf8f5;
+    border: 1px solid rgba(193,154,107,0.5);
+    border-radius: 4px;
+    padding: 0.14in 0.22in;
+    text-align: center;
+  }
+  .scarcity-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11pt;
+    font-style: italic;
+    color: #34657a;
+    line-height: 1.65;
+  }
+
+  /* â”€â”€ CTA â”€â”€ */
+  .cta-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16pt;
+    font-weight: 700;
+    color: #c19a6b;
+    text-align: center;
+    margin-bottom: 0.07in;
+  }
+  .cta-body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9pt;
+    color: #34657a;
+    text-align: center;
+    line-height: 1.65;
+  }
+
+  /* â”€â”€ FOOTER â”€â”€ */
+  .footer {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7pt;
+    color: rgba(52,101,122,0.5);
+    text-align: center;
+    margin-top: 0.1in;
+  }
+</style>
+</head>
+<body>
+
+  <!-- LOGO -->
+  <div class="logo-block">
+    <img src="../logos/Logo-teal-transparent.png" alt="Mindbody Functional Health">
+  </div>
+
+  <!-- HOOK HEADLINE -->
+  <div class="hook-headline">
+    "What If Everything You've Tried Has Failed...<br>
+    Because It Was Never Treating the Real Problem?"
+  </div>
+
+  <!-- SUBHEADLINE -->
+  <div class="subheadline">
+    Your body isn't broken. It's been trying to tell you something.<br>
+    And you've been too exhausted to hear it â€” until now.
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BODY COPY -->
+  <div class="body-copy">
+    <p>If you've spent years going from doctor to doctor, diet to diet, supplement to supplement â€” and you still wake up exhausted, inflamed, disconnected from your body, and wondering if this is just your life now â€” I want you to know something important:</p>
+    <p>This is not who you are. This is what happens when the root cause goes unaddressed.</p>
+    <p>Most approaches treat your symptoms. Lab values. Hormones. Weight. Gut. In isolation.</p>
+    <p>What they miss is that your body, your mind, and your emotional world are one system. What your mind believes â€” at the deepest level â€” manifests directly in your cellular and physical function. And until all three layers are addressed together, real healing cannot happen.</p>
+    <p>Real healing begins at the root. And that is exactly where we go.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CREDIBILITY BLOCK -->
+  <div class="cred-label">Your Guide</div>
+  <div class="cred-name">Jaime Jenkins</div>
+  <div class="cred-body">
+    Functional Nutritionist &amp; Mind-Body Practitioner<br>
+    Personally mentored by Dr. Daniel Pompa â€” one of the world's leading voices in cellular detox and metabolic healing.<br>
+    Trained in the functional health methodology of Dr. Josh Axe.<br>
+    Years of personal healing, deep clinical study, and an unwavering commitment to treating the whole person â€” mind, body, and spirit.
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- COST OF INACTION -->
+  <div class="cost-label">What Staying Stuck Is Actually Costing You</div>
+  <div class="cost-columns">
+    <div class="cost-col">
+      <div class="cost-col-title">The Financial Cost of Doing Nothing</div>
+      <div class="cost-item"><span class="cost-diamond">âœ¦</span><span>The average person with chronic health issues spends $5,000â€“$15,000 per year on doctors, specialists, and treatments that address symptoms without solving the root cause</span></div>
+      <div class="cost-item"><span class="cost-diamond">âœ¦</span><span>Prescription medications for hormonal, metabolic, and autoimmune conditions average $3,000â€“$8,000 annually</span></div>
+      <div class="cost-item"><span class="cost-diamond">âœ¦</span><span>Ongoing supplement purchases without a targeted protocol â€” hundreds of dollars monthly with little lasting direction</span></div>
+      <div class="cost-item"><span class="cost-diamond">âœ¦</span><span>Lost productivity, missed opportunities, and diminished capacity from chronic fatigue and brain fog</span></div>
+      <div class="cost-item"><span class="cost-diamond">âœ¦</span><span>The compounding financial cost of a problem that grows harder to reverse the longer it goes unaddressed</span></div>
+    </div>
+    <div class="cost-divider"></div>
+    <div class="cost-col">
+      <div class="cost-col-title">The Cost No One Talks About</div>
+      <div class="cost-item"><span class="cost-diamond">âœ¦</span><span>Every year that root causes go unaddressed the body adapts around dysfunction â€” making healing longer and harder</span></div>
+      <div class="cost-item"><span class="cost-diamond">âœ¦</span><span>Unresolved beliefs, stored emotional weight, and internal energy blocks compound over time into physical symptoms</span></div>
+      <div class="cost-item"><span class="cost-diamond">âœ¦</span><span>The cost of showing up depleted to your relationships, your children, your work, and your life</span></div>
+      <div class="cost-item"><span class="cost-diamond">âœ¦</span><span>Lost years of living fully â€” of energy, confidence, clarity, joy, and purpose</span></div>
+      <div class="cost-item"><span class="cost-diamond">âœ¦</span><span>The version of yourself that has been waiting â€” on the other side of the healing you keep postponing</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PROGRAM SECTION -->
+  <div class="program-name">THE 90 DAY SHIFT</div>
+  <div class="program-sub">A Deep, Personalized Mind Â· Body Â· Spirit Coaching Program</div>
+  <div class="program-private">Private. Intensive. Transformational.</div>
+  <div class="program-desc">
+    The 90 Day Shift is not a course. It is not a group program. It is a private, deeply personalized coaching experience designed to get to the root of what is keeping you stuck â€” at every level. We work with your beliefs, your internal energy, your cellular health, and your body's chemistry simultaneously â€” because real transformation requires all of it.
+  </div>
+
+  <div class="inclusion-item"><span class="inclusion-diamond">âœ¦</span><span>Two private 90â€“120 minute in-depth coaching sessions per week combining functional nutrition, cellular health, and deep mind-body work</span></div>
+  <div class="inclusion-item"><span class="inclusion-diamond">âœ¦</span><span>Daily personal text support Monday through Friday â€” you are never navigating this alone between sessions</span></div>
+  <div class="inclusion-item"><span class="inclusion-diamond">âœ¦</span><span>A fully customized meal plan built specifically around your unique metabolic needs, health history, and cellular healing goals</span></div>
+  <div class="inclusion-item"><span class="inclusion-diamond">âœ¦</span><span>Targeted supplement protocol with professional guidance tailored to your body (supplements separate)</span></div>
+  <div class="inclusion-item"><span class="inclusion-diamond">âœ¦</span><span>Custom meditation recordings written specifically for your healing journey â€” set to music, yours to keep forever</span></div>
+  <div class="inclusion-item"><span class="inclusion-diamond">âœ¦</span><span>Personalized mental shift and emotional rewiring audio recordings designed around your specific belief patterns â€” yours to keep forever</span></div>
+  <div class="inclusion-item"><span class="inclusion-diamond">âœ¦</span><span>Structured rewiring practices to identify and shift the core beliefs that are manifesting as physical symptoms</span></div>
+  <div class="inclusion-item"><span class="inclusion-diamond">âœ¦</span><span>Emotional release and integration work â€” clearing what the body has been holding so healing can move forward</span></div>
+  <div class="inclusion-item"><span class="inclusion-diamond">âœ¦</span><span>Purpose and identity work â€” deep practices to help you reconnect with who you truly are beneath the exhaustion</span></div>
+  <div class="inclusion-item"><span class="inclusion-diamond">âœ¦</span><span>Take-home activities to root you in your why and build the internal foundation that sustains healing long term</span></div>
+  <div class="inclusion-item"><span class="inclusion-diamond">âœ¦</span><span>A 90 day container â€” enough time to create shifts that are real, lasting, and life changing</span></div>
+
+  <div class="divider"></div>
+
+  <!-- SCARCITY BLOCK -->
+  <div class="scarcity-block">
+    <div class="scarcity-text">
+      The 90 Day Shift is intentionally limited to a very small number of clients at a time.<br>
+      This is not about volume. It is about depth.<br>
+      Jaime works closely and personally with each person she serves â€”<br>
+      bringing her full expertise, attention, and care to your specific healing journey.<br><br>
+      If you are reading this, you have already spoken with Jaime.<br>
+      Something in that conversation resonated with you.<br><br>
+      <strong style="font-style:normal;font-family:'Cormorant Garamond',serif;">The only question is whether you are ready to say yes to yourself.</strong>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <div class="cta-heading">Ready to Take the First Step?</div>
+  <div class="cta-body">
+    Call or reach out to Jaime directly to take the next step.<br>
+    Spots for The 90 Day Shift are extremely limited.<br>
+    A waitlist is available for future openings.<br><br>
+    This is your invitation to stop managing your symptoms<br>
+    and start healing the root.
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Â© 2026 Jaime Jenkins Â· Mindbody Functional Health Â· All Rights Reserved
+  </div>
+
+</body>
+</html>
+
+
+

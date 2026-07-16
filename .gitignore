@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.suo
+*.user
+
+# Node
+node_modules/
+
+# Claude Code local settings — personal permission cache, can capture
+# command text verbatim (including any secrets typed inline in a command).
+# .claude/settings.json (no "local") is the shared/project file and stays tracked.
+.claude/settings.local.json
+
+# Secrets — ANTHROPIC_API_KEY / UPSTASH_REDIS_REST_URL / etc. belong in
+# Netlify's environment variable settings, never in a committed file.
+.env
+.env.*
+!.env.example

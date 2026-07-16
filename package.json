@@ -1,0 +1,12 @@
+{
+  "name": "how-your-body-burns",
+  "private": true,
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "@upstash/ratelimit": "^2.0.3",
+    "@upstash/redis": "^1.34.0"
+  },
+  "devDependencies": {
+    "cheerio": "^1.2.0"
+  }
+}

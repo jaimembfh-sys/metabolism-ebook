@@ -1,0 +1,11 @@
+# Force these as binary, no line-ending conversion, regardless of git's
+# own (usually-correct-but-not-guaranteed) content-based auto-detection.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary

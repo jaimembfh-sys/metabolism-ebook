@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Mind-Body Functional Health</title>
+    <link rel="icon" type="image/png" href="logos/MB-favicon-large.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #f7fafb;
+            --card: #ffffff;
+            --text: #2c3e50;
+            --muted: #4a5568;
+            --brand: #34657a;
+            --accent: #c19a6b;
+            --border: #dbe8ef;
+            --soft: #eef3f5;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Montserrat", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 90% -10%, rgba(193, 154, 107, 0.2), transparent 40%),
+                radial-gradient(circle at -10% 110%, rgba(52, 101, 122, 0.16), transparent 42%),
+                linear-gradient(180deg, #fbfdfe 0%, var(--bg) 100%);
+            min-height: 100vh;
+            padding: 2.25rem 1rem;
+        }
+
+        .page-wrap {
+            width: min(940px, 100%);
+            margin: 0 auto;
+        }
+
+        .card {
+            width: min(780px, 100%);
+            margin: 0 auto;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: clamp(1rem, 2.8vw, 1.9rem) clamp(1.5rem, 3.8vw, 2.8rem);
+            box-shadow: 0 22px 48px rgba(52, 101, 122, 0.16);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(135deg, rgba(238, 243, 245, 0.85) 0%, rgba(255, 255, 255, 0) 45%);
+        }
+
+        .card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand-mark {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0.45rem;
+        }
+
+        .brand-mark img {
+            width: min(270px, 68vw);
+            height: auto;
+            display: block;
+        }
+
+        .kicker {
+            margin: 0 0 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            color: var(--brand);
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(2.2rem, 6vw, 3.2rem);
+            line-height: 1.03;
+            text-align: center;
+            letter-spacing: 0.02em;
+        }
+
+        .lead {
+            margin: 0.8rem auto 1.8rem;
+            color: var(--muted);
+            font-size: 1.02rem;
+            line-height: 1.75;
+            max-width: 680px;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 0.85rem;
+            margin-bottom: 1.9rem;
+        }
+
+        .info-item {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1rem 1.15rem;
+            background: linear-gradient(180deg, #ffffff 0%, #fbfeff 100%);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .info-item:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 28px rgba(52, 101, 122, 0.1);
+            border-color: #c6dae4;
+        }
+
+        .label {
+            margin: 0 0 0.25rem;
+            font-size: 0.71rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .value {
+            margin: 0;
+            font-size: 1.02rem;
+            line-height: 1.45;
+            color: var(--text);
+        }
+
+        .email-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.6rem;
+        }
+
+        .copy-email-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            border: 1px solid #d4e2ea;
+            background: #f5fafc;
+            color: #2c3e50;
+            width: 2rem;
+            height: 2rem;
+            padding: 0;
+            cursor: pointer;
+            transition: 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .copy-email-btn:hover {
+            border-color: #bdd2dd;
+            background: #edf5f9;
+            transform: translateY(-1px);
+        }
+
+        .copy-icon {
+            width: 1rem;
+            height: 1rem;
+            display: block;
+        }
+
+        .copy-feedback {
+            margin: 0.45rem 0 0;
+            font-size: 0.78rem;
+            color: #6b7b88;
+            min-height: 1rem;
+        }
+
+        .value a {
+            color: var(--brand);
+            text-decoration: none;
+            text-underline-offset: 2px;
+            font-weight: 600;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            padding: 0.85rem 1.35rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+            border: 1px solid transparent;
+            transition: 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #1f2933;
+            box-shadow: 0 10px 24px rgba(193, 154, 107, 0.28);
+        }
+
+        .btn-primary:hover {
+            background: #b58659;
+            border-color: #b58659;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #f5fafc;
+            border-color: #d4e2ea;
+            color: #2c3e50;
+        }
+
+        .btn-secondary:hover {
+            border-color: #bdd2dd;
+            background: #edf5f9;
+            transform: translateY(-1px);
+        }
+
+        .site-note {
+            margin: 1.1rem 0 0;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #6b7b88;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.75rem;
+            }
+
+            .card {
+                border-radius: 18px;
+                padding: 1.3rem 1rem 1.5rem;
+            }
+
+            .actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrap">
+        <main class="card">
+            <div class="brand-mark">
+                <img src="logos/Logo-teal-transparent.webp" alt="Mind-Body Functional Health" />
+            </div>
+            <p class="kicker">Mind-Body Functional Health</p>
+            <h1>Contact Us</h1>
+            <p class="lead">Need help with your order, account access, or product questions? Reach out to customer service and we will get back to you as soon as possible.</p>
+
+            <section class="info-grid" aria-label="Contact details">
+                <article class="info-item">
+                    <p class="label">Customer Service Email</p>
+                    <div class="email-row">
+                        <p class="value"><a href="mailto:customerservice.MBFH@gmail.com">customerservice.MBFH@gmail.com</a></p>
+                        <button type="button" id="copy-email-btn" class="copy-email-btn" aria-label="Copy email address" title="Copy email address">
+                            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+                                <path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <p id="copy-feedback" class="copy-feedback" aria-live="polite"></p>
+                </article>
+                <article class="info-item">
+                    <p class="label">Website</p>
+                    <p class="value"><a href="https://www.mindbodyfunctionalhealth.com" target="_blank" rel="noopener">www.mindbodyfunctionalhealth.com</a></p>
+                </article>
+            </section>
+
+            <div class="actions">
+                <a class="btn btn-secondary" href="index.html">Back to Home</a>
+            </div>
+            <p class="site-note">You can also visit our main website for updates and resources.</p>
+        </main>
+    </div>
+    <script>
+        (function () {
+            const email = 'customerservice.MBFH@gmail.com';
+            const copyBtn = document.getElementById('copy-email-btn');
+            const feedback = document.getElementById('copy-feedback');
+
+            if (!copyBtn || !feedback) {
+                return;
+            }
+
+            const setFeedback = (message) => {
+                feedback.textContent = message;
+            };
+
+            copyBtn.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(email);
+                    setFeedback('Email copied.');
+                } catch (error) {
+                    setFeedback('Copy not supported here. Please copy manually: ' + email);
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
+
+
+

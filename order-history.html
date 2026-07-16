@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order History | Mind-Body Functional Health</title>
+    <link rel="icon" type="image/png" href="logos/MB-favicon-large.png" />
+    <style>
+        :root {
+            --brand-dark: #34657a;
+            --brand-accent: #c19a6b;
+            --ink: #2c3e50;
+            --muted: #61717e;
+            --line: #d9e4ea;
+            --bg: #f7fafb;
+            --card: #ffffff;
+            --ok-bg: #edf8f1;
+            --ok-text: #2a6f4f;
+            --warn-bg: #fff5ea;
+            --warn-text: #8a5a23;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Montserrat", "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: radial-gradient(circle at top right, #eef4f7 0%, var(--bg) 55%);
+            padding: 1.25rem;
+        }
+
+        .wrap {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: 0 12px 36px rgba(52, 101, 122, 0.12);
+            padding: 1.25rem;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 2rem;
+            color: var(--brand-dark);
+        }
+
+        .subtitle {
+            margin: 0.35rem 0 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: 1px solid var(--line);
+            background: #fff;
+            color: var(--ink);
+            border-radius: 999px;
+            padding: 0.55rem 0.95rem;
+            font-size: 0.73rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .section {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1rem;
+            background: #fbfdff;
+        }
+
+        .section h2 {
+            margin: 0 0 0.75rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--brand-dark);
+        }
+
+        .section-note {
+            margin: 0 0 0.85rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+            background: #fff;
+        }
+
+        thead th {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            background: #f1f7fa;
+            text-align: left;
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        tbody td {
+            font-size: 0.92rem;
+            padding: 0.75rem;
+            border-bottom: 1px solid #ecf2f6;
+            vertical-align: top;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .charge {
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+            font-weight: 700;
+            color: #2f5162;
+        }
+
+        .subscription-grid {
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .subscription-item {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #fff;
+            padding: 0.8rem;
+        }
+
+        .sub-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .sub-name {
+            font-weight: 700;
+            color: var(--ink);
+            margin: 0;
+        }
+
+        .sub-meta {
+            margin: 0.2rem 0 0;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .status-pill {
+            border-radius: 999px;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .status-active {
+            background: var(--ok-bg);
+            color: var(--ok-text);
+            border: 1px solid #cde8d8;
+        }
+
+        .status-canceling {
+            background: var(--warn-bg);
+            color: var(--warn-text);
+            border: 1px solid #f0d7b7;
+        }
+
+        .sub-actions {
+            margin-top: 0.65rem;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: 1px solid transparent;
+            border-radius: 8px;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background: #fff;
+            color: #8a5a23;
+            border-color: #e7c9a3;
+        }
+
+        .btn-cancel[disabled] {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+
+        .cancel-note {
+            margin: 0;
+            font-size: 0.82rem;
+            color: var(--warn-text);
+        }
+
+        .empty {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 760px) {
+            .top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tbody tr {
+                border-bottom: 1px solid var(--line);
+                padding: 0.65rem 0;
+            }
+
+            tbody tr:last-child {
+                border-bottom: 0;
+            }
+
+            tbody td {
+                border: 0;
+                padding: 0.35rem 0;
+            }
+
+            tbody td::before {
+                content: attr(data-label);
+                display: block;
+                font-size: 0.68rem;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: var(--muted);
+                margin-bottom: 0.15rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="card">
+            <div class="top">
+                <div>
+                    <h1>Order History</h1>
+                    <p class="subtitle">Review past purchases and manage active subscriptions.</p>
+                </div>
+                <a class="btn-link" href="index.html">Back to Dashboard</a>
+            </div>
+
+            <div class="section">
+                <h2>Past Purchases</h2>
+                <p class="section-note">Each order lists the purchase date, product, and charge.</p>
+                <table aria-label="Past purchases table">
+                    <thead>
+                        <tr>
+                            <th>Date of Purchase</th>
+                            <th>Product</th>
+                            <th>Charge</th>
+                        </tr>
+                    </thead>
+                    <tbody id="purchasesBody"></tbody>
+                </table>
+                <p id="purchasesEmpty" class="empty" hidden>No past purchases found.</p>
+            </div>
+
+            <div class="section">
+                <h2>Active Subscriptions</h2>
+                <p class="section-note">If canceled, your subscription remains active until the upcoming billing cycle ends.</p>
+                <div id="subscriptionsList" class="subscription-grid"></div>
+                <p id="subscriptionsEmpty" class="empty" hidden>No active subscriptions found.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const PURCHASES_KEY = 'mbfhPastPurchases';
+        const SUBSCRIPTIONS_KEY = 'mbfhSubscriptions';
+
+        const defaultPurchases = [
+            { date: '2026-02-09', product: 'Understanding Metabolism', charge: 47.00 },
+            { date: '2026-03-21', product: 'Beauty Basics', charge: 37.00 },
+            { date: '2026-04-14', product: 'The 90 Day Shift', charge: 97.00 }
+        ];
+
+        const defaultSubscriptions = [
+            {
+                id: 'metaburn-ai-coach',
+                product: 'MetaBurn AI Coach',
+                charge: 29.00,
+                billingCycle: 'Monthly',
+                nextBillingDate: '2026-07-28',
+                billingHistory: ['2026-04-28', '2026-05-28', '2026-06-28'],
+                canceled: false,
+                endDate: ''
+            }
+        ];
+
+        function currency(value) {
+            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+        }
+
+        function prettyDate(isoDate) {
+            const value = new Date(isoDate + 'T00:00:00');
+            if (Number.isNaN(value.getTime())) return isoDate;
+            return value.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function loadData(key, fallback) {
+            try {
+                const raw = localStorage.getItem(key);
+                if (!raw) {
+                    localStorage.setItem(key, JSON.stringify(fallback));
+                    return [...fallback];
+                }
+                const parsed = JSON.parse(raw);
+                return Array.isArray(parsed) ? parsed : [...fallback];
+            } catch (e) {
+                return [...fallback];
+            }
+        }
+
+        function saveSubscriptions(subscriptions) {
+            try {
+                localStorage.setItem(SUBSCRIPTIONS_KEY, JSON.stringify(subscriptions));
+            } catch (e) {
+                // Ignore storage failures in local prototype mode.
+            }
+        }
+
+        function toIsoDate(dateValue) {
+            const value = new Date(dateValue);
+            if (Number.isNaN(value.getTime())) return '';
+            return value.toISOString().slice(0, 10);
+        }
+
+        function deriveSingleBillingDate(subscription) {
+            if (!subscription.nextBillingDate) return '';
+            const next = new Date(subscription.nextBillingDate + 'T00:00:00');
+            if (Number.isNaN(next.getTime())) return '';
+
+            if ((subscription.billingCycle || '').toLowerCase().includes('month')) {
+                next.setMonth(next.getMonth() - 1);
+                return toIsoDate(next);
+            }
+
+            next.setDate(next.getDate() - 30);
+            return toIsoDate(next);
+        }
+
+        function getSubscriptionBillingPurchases(subscriptions) {
+            const todayIso = toIsoDate(new Date());
+            const results = [];
+
+            subscriptions.forEach((subscription) => {
+                const history = Array.isArray(subscription.billingHistory) && subscription.billingHistory.length
+                    ? subscription.billingHistory
+                    : [deriveSingleBillingDate(subscription)];
+
+                history
+                    .filter((date) => date && date <= todayIso)
+                    .forEach((date) => {
+                        results.push({
+                            date,
+                            product: `${subscription.product} (Subscription Billing)`,
+                            charge: Number(subscription.charge || 0)
+                        });
+                    });
+            });
+
+            return results;
+        }
+
+        function renderPurchases(purchases) {
+            const body = document.getElementById('purchasesBody');
+            const empty = document.getElementById('purchasesEmpty');
+            body.innerHTML = '';
+
+            if (!purchases.length) {
+                empty.hidden = false;
+                return;
+            }
+
+            empty.hidden = true;
+            purchases
+                .slice()
+                .sort((a, b) => (a.date < b.date ? 1 : -1))
+                .forEach((purchase) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = [
+                        `<td data-label="Date of Purchase">${prettyDate(purchase.date)}</td>`,
+                        `<td data-label="Product">${purchase.product}</td>`,
+                        `<td data-label="Charge" class="charge">${currency(Number(purchase.charge || 0))}</td>`
+                    ].join('');
+                    body.appendChild(tr);
+                });
+        }
+
+        function buildCancelNote(subscription) {
+            if (!subscription.canceled || !subscription.endDate) return '';
+            return `Canceled. Your subscription will end at the upcoming billing cycle on ${prettyDate(subscription.endDate)}.`;
+        }
+
+        function renderSubscriptions(subscriptions) {
+            const list = document.getElementById('subscriptionsList');
+            const empty = document.getElementById('subscriptionsEmpty');
+            list.innerHTML = '';
+
+            if (!subscriptions.length) {
+                empty.hidden = false;
+                return;
+            }
+
+            empty.hidden = true;
+
+            subscriptions.forEach((subscription) => {
+                const item = document.createElement('article');
+                item.className = 'subscription-item';
+
+                const isCanceled = Boolean(subscription.canceled);
+                const statusClass = isCanceled ? 'status-canceling' : 'status-active';
+                const statusText = isCanceled ? 'Canceling' : 'Active';
+                const cancelNote = buildCancelNote(subscription);
+
+                item.innerHTML = `
+                    <div class="sub-top">
+                        <div>
+                            <p class="sub-name">${subscription.product}</p>
+                            <p class="sub-meta">${currency(Number(subscription.charge || 0))} ${subscription.billingCycle} • Next billing: ${prettyDate(subscription.nextBillingDate)}</p>
+                        </div>
+                        <span class="status-pill ${statusClass}">${statusText}</span>
+                    </div>
+                    <div class="sub-actions">
+                        <button class="btn btn-cancel" type="button" data-sub-id="${subscription.id}" ${isCanceled ? 'disabled' : ''}>Cancel Subscription</button>
+                        <p class="cancel-note">${cancelNote}</p>
+                    </div>
+                `;
+
+                list.appendChild(item);
+            });
+
+            list.querySelectorAll('[data-sub-id]').forEach((button) => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-sub-id');
+                    const updated = subscriptions.map((subscription) => {
+                        if (subscription.id !== id) return subscription;
+                        return {
+                            ...subscription,
+                            canceled: true,
+                            endDate: subscription.nextBillingDate
+                        };
+                    });
+
+                    saveSubscriptions(updated);
+                    renderSubscriptions(updated);
+                });
+            });
+        }
+
+        const purchases = loadData(PURCHASES_KEY, defaultPurchases);
+        const subscriptions = loadData(SUBSCRIPTIONS_KEY, defaultSubscriptions);
+        const subscriptionBillings = getSubscriptionBillingPurchases(subscriptions);
+        const allPurchases = purchases.concat(subscriptionBillings);
+
+        renderPurchases(allPurchases);
+        renderSubscriptions(subscriptions);
+    </script>
+</body>
+</html>

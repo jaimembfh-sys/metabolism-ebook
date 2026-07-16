@@ -1,0 +1,429 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Your Body Burns | Mind-Body Functional Health</title>
+    <link rel="icon" type="image/png" href="logos/MB-favicon-large.png">
+    <style>
+        :root {
+            --ink: #1f2e35;
+            --teal: #34657a;
+            --gold: #c19a6b;
+            --cream: #f9f6f1;
+            --paper: #fffefb;
+            --muted: #59656b;
+            --bluegreen: #dff3f4;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Montserrat", "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--paper);
+        }
+
+        .hero-wrapper {
+            background: linear-gradient(140deg, #edf4f7 0%, #f9f4ea 100%);
+            padding: 3rem 2rem;
+        }
+
+        .eyebrow {
+            margin: 0;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin: 1rem 0 0.6rem;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            color: var(--teal);
+            font-size: clamp(2.4rem, 7vw, 4.2rem);
+            line-height: 1.02;
+            font-weight: 700;
+        }
+
+        .hero-subhead {
+            margin: 0;
+            font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+            color: var(--muted);
+            line-height: 1.45;
+        }
+
+        .hero-byline {
+            margin: 0.7rem 0 0;
+            font-weight: 700;
+            color: #2d4c5b;
+        }
+
+        .hero-cta-wrap {
+            margin-top: 1.5rem;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.1rem 2rem;
+            border-radius: 999px;
+            background: var(--gold);
+            color: var(--ink);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.84rem;
+            font-weight: 700;
+            border: 2px solid var(--gold);
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 24px rgba(193,154,107,0.3);
+        }
+
+        .hero-cta:hover {
+            background: #b8885f;
+            border-color: #b8885f;
+            transform: translateY(-2px);
+        }
+
+        .shell {
+            width: min(980px, 94vw);
+            margin: 2rem auto 3rem;
+            display: grid;
+            gap: 1.4rem;
+        }
+
+        .section {
+            padding: 2rem;
+            border-radius: 18px;
+            border: 1px solid rgba(52,101,122,0.12);
+            background: #fff;
+        }
+
+        .section h2 {
+            margin: 0 0 0.9rem;
+            color: var(--teal);
+            font-size: 1.3rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .section p {
+            margin: 0.7rem 0;
+            line-height: 1.68;
+            color: #2f3d43;
+        }
+
+        .section-dark {
+            background: var(--teal);
+            border-color: var(--teal);
+        }
+
+        .section-dark h2 { color: var(--gold); }
+        .section-dark p { color: rgba(255,255,255,0.95); }
+
+        .section-cream { background: var(--cream); }
+        .section-bluegreen { background: var(--bluegreen); }
+
+        .inside-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .inside-item {
+            background: #fff;
+            border: 1px solid rgba(193,154,107,0.28);
+            border-radius: 12px;
+            padding: 1rem 1rem 1rem 1.2rem;
+            position: relative;
+        }
+
+        .inside-item::before {
+            content: "\2726";
+            color: var(--gold);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-right: 0.55rem;
+        }
+
+        .inside-item-title {
+            color: var(--teal);
+            font-weight: 700;
+            display: inline;
+        }
+
+        .inside-item p {
+            margin: 0.55rem 0 0;
+        }
+
+        .bullet-list {
+            margin: 0.2rem 0 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 0.65rem;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 1.3rem;
+            line-height: 1.55;
+            color: #2f3d43;
+        }
+
+        .bullet-list li::before {
+            content: "\25CF";
+            color: var(--teal);
+            font-size: 0.55rem;
+            position: absolute;
+            left: 0;
+            top: 0.65rem;
+        }
+
+        .author-wrap {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .author-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+            background: var(--cream);
+        }
+
+        .author-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+        }
+
+        .author-name {
+            margin: 0;
+            font-size: 1.35rem;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .author-creds {
+            margin: 0.35rem 0 1rem;
+            color: var(--muted);
+            line-height: 1.45;
+            font-size: 0.95rem;
+        }
+
+        .value-table {
+            margin: 0.8rem 0 0;
+            padding: 0;
+            list-style: none;
+            border-top: 2px solid rgba(31,46,53,0.2);
+            border-bottom: 2px solid rgba(31,46,53,0.2);
+        }
+
+        .value-table li {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(31,46,53,0.16);
+            color: #2f3d43;
+        }
+
+        .value-table li:last-child { border-bottom: none; }
+
+        .value-table .total {
+            font-weight: 800;
+            color: var(--teal);
+        }
+
+        .investment {
+            margin: 1rem 0 0.35rem;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            color: var(--teal);
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .cta-band {
+            padding: 2rem;
+            border-radius: 18px;
+            background: var(--teal);
+            text-align: center;
+        }
+
+        .cta-band .hero-cta {
+            margin: 0 auto;
+        }
+
+        .reassurance {
+            margin: 0.9rem 0 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.92);
+            font-weight: 500;
+        }
+
+        footer {
+            width: min(980px, 94vw);
+            margin: 0 auto 2.5rem;
+            text-align: center;
+            padding: 1.4rem 0;
+            border-top: 1px solid rgba(52,101,122,0.15);
+        }
+
+        .footer-brand {
+            margin: 0;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .footer-site {
+            margin: 0.45rem 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .disclaimer {
+            margin: 0.7rem 0 0;
+            font-size: 0.82rem;
+            color: #6c767b;
+        }
+
+        @media (max-width: 768px) {
+            .hero-wrapper { padding: 2.5rem 1.25rem; }
+            .shell { width: min(980px, 96vw); }
+            .section { padding: 1.5rem 1.15rem; }
+            .cta-band { padding: 1.6rem 1.15rem; }
+            .author-wrap {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .author-photo { margin: 0 auto; }
+        }
+
+        @media (max-width: 640px) {
+            .hero-cta {
+                width: 100%;
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-wrapper">
+        <p class="eyebrow">Mind-Body Functional Health</p>
+        <h1>HOW YOUR BODY BURNS</h1>
+        <p class="hero-subhead">A Guide to Understanding Metabolism based on science.</p>
+        <p class="hero-byline">By Jaime Jenkins</p>
+        <div class="hero-cta-wrap">
+            <a class="hero-cta" href="mailto:hello@mindbodyfunctionalhealth.com?subject=Understanding%20Metabolism%20Order%20-%20$27">Get The Guide - $27</a>
+        </div>
+    </section>
+
+    <main class="shell">
+        <section class="section section-dark">
+            <h2>YOU'VE DONE EVERYTHING RIGHT. SO WHY ISN'T IT WORKING?</h2>
+            <p>You've counted the calories. Cut the carbs. Tried the programs. Followed the influencers. And you've watched the results stall, reverse, or never arrive at all.</p>
+            <p>You're not lazy. You're not broken. You've just been working with an incomplete map.</p>
+            <p>The weight loss industry has been built on a 200-year-old steam engine experiment - and almost no one has stopped to question whether it actually applies to the human body.</p>
+            <p>It doesn't.</p>
+        </section>
+
+        <section class="section section-cream">
+            <h2>WHAT THE SCIENCE ACTUALLY SAYS</h2>
+            <p>Your body is not a furnace. It doesn't burn calories the way a boiler burns coal. It runs on a staggeringly complex network of hormones, signals, cellular responses, and biological systems - and every one of them has more influence over your weight than the number on a nutrition label.</p>
+            <p>The reason diets stop working isn't willpower. It's biology.</p>
+            <p>And once you understand the biology, weight loss stops being a guessing game.</p>
+        </section>
+
+        <section class="section">
+            <h2>WHAT'S INSIDE</h2>
+            <ul class="inside-list">
+                <li class="inside-item"><span class="inside-item-title">The Calorie Myth - Why "Energy In, Energy Out" Is the Wrong Framework</span><p>Where the calorie model came from, why it misrepresents what your body actually does with food, and what a more accurate picture looks like.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Insulin - The One Hormone That Controls Fat Storage</span><p>How insulin works, why it's the master key to fat storage and fat burning, what causes insulin resistance, and exactly how to keep it working in your favor. Without understanding insulin, nothing else makes sense.</p></li>
+                <li class="inside-item"><span class="inside-item-title">GLP-1, Ghrelin and Leptin - The Hormones Running the Show</span><p>The hunger and satiety signals most people have never heard of - what disrupts them, what restores them, and why so many people are eating the right things and still feeling hungry all the time. Includes an honest breakdown of GLP-1 medications - what the research actually shows about side effects and muscle loss.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Ketones - Why Your Body Has a Second Fuel System</span><p>What ketones are, what they do beyond weight loss, how to get into ketosis, and why a ketogenic approach protects muscle while other diets destroy it.</p></li>
+                <li class="inside-item"><span class="inside-item-title">The Hidden Factors Sabotaging Your Results</span><p>The things no program talks about - a sluggish liver, poor bile flow, chronic stress, sleep deprivation, gut dysbiosis, hormone imbalance, processed foods, seed oils, and artificial additives. Any one of these can stall weight loss entirely. This section covers all of them.</p></li>
+                <li class="inside-item"><span class="inside-item-title">How to Eat - Practical Nutrition for a Working Metabolism</span><p>Protein, fat, fiber, food quality, meal timing, eating order, cutting snacks, and why what you eat after a workout changes everything. Clear, science-based, and free of dogma.</p></li>
+                <li class="inside-item"><span class="inside-item-title">The Supplement Protocol</span><p>The specific supplements that support insulin sensitivity, blood sugar balance, and fat metabolism - berberine, ALA, chromium, magnesium, and more - with clear explanations of what each one does and why.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Light Exposure, ACV and Meal Timing</span><p>The overlooked tools - morning sunlight, red light therapy, apple cider vinegar before meals, post-meal movement, and circadian eating patterns - that make a measurable difference and cost almost nothing.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Intermittent Fasting - Done Right</span><p>How fasting lowers insulin, triggers fat burning, supports cellular repair, and why one large meal a day burns up to 38% more energy than the same food spread across smaller meals.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Exercise That Actually Works</span><p>HIIT and weight lifting - why these two approaches outperform everything else for fat loss, how they work at the hormonal level, and how to use them without destroying your metabolism in the process.</p></li>
+                <li class="inside-item"><span class="inside-item-title">BONUS: Recipe Guide</span><p>Practical recipes built around the nutritional principles in the guide - designed to support blood sugar stability, hormone balance, and sustained fat burning.</p></li>
+                <li class="inside-item"><span class="inside-item-title">BONUS: Diet Reference Guide</span><p>A clear breakdown of every major diet - keto, paleo, carnivore, Mediterranean, intermittent fasting, and more - what each one does, how it works biologically, and who it's actually right for. So you can stop guessing and make an informed decision for your body.</p></li>
+            </ul>
+        </section>
+
+        <section class="section section-bluegreen">
+            <h2>AFTER READING THIS YOU WILL KNOW</h2>
+            <ul class="bullet-list">
+                <li>Exactly why every diet you've tried did or didn't work</li>
+                <li>How to evaluate any new program, influencer, or supplement claim on your own</li>
+                <li>What your body actually needs to shift into fat-burning mode - and how to keep it there</li>
+                <li>Which hidden factors may have been stalling your results for years</li>
+                <li>How to eat, move, fast, and supplement in a way that works with your biology - not against it</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>WHO THIS IS FOR</h2>
+            <ul class="bullet-list">
+                <li>You've tried multiple approaches and can't get lasting results</li>
+                <li>You're tired of conflicting advice and want the actual science</li>
+                <li>You're in your 30s, 40s, or 50s and your body isn't responding the way it used to</li>
+                <li>You want to understand the why - not just follow a plan someone else made</li>
+                <li>You're done being sold programs that don't explain how anything works</li>
+            </ul>
+        </section>
+
+        <section class="section section-cream">
+            <h2>ABOUT JAIME JENKINS</h2>
+            <div class="author-wrap">
+                <div class="author-photo"><img src="images/ChatGPT Image May 8, 2026, 02_31_22 PM.webp" alt="Jaime Jenkins"></div>
+                <div>
+                    <p class="author-creds">Certified Functional Nutritionist | Brain MD Coach | Mind-Body Health Practitioner</p>
+                    <p>I spent years searching for real answers in a sea of conflicting advice and expensive products that never delivered. What drove that search wasn't just professional curiosity â€” I dealt with chronic fatigue for decades. When you are exhausted at that level, your body is not burning. It is conserving. Keeping weight off under those conditions forces you to go deeper than calories and macros â€” into the hormones, the cellular environment, the hidden factors nobody talks about. That search led me to train under Dr. Mark Hyman, Dr. Frank Lipman, Dr. Daniel Amen, and many others. I studied cellular health, personally worked with Dr. Daniel Pompa, and worked alongside Dr. Josh Axe's team. I don't just teach this. I needed it.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-bluegreen">
+            <h2>WHAT YOU GET</h2>
+            <ul class="value-table">
+                <li><span>The Complete Metabolism Science Guide</span><span>$24</span></li>
+                <li><span>Supplement Protocol</span><span>$9</span></li>
+                <li><span>Recipe Guide + Diet Reference Bonuses</span><span>$12</span></li>
+                <li class="total"><span>Total Value</span><span>$45</span></li>
+            </ul>
+            <p class="investment">Your Investment: $27</p>
+            <p>The cost of one supplement you may not even need - or a science-based guide that tells you exactly what does.</p>
+        </section>
+
+        <section class="cta-band">
+            <a class="hero-cta" href="mailto:hello@mindbodyfunctionalhealth.com?subject=Understanding%20Metabolism%20Order%20-%20$27">Get Understanding Metabolism - $27</a>
+            <p class="reassurance">Instant digital download. Yours to keep forever.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer-brand">Jaime Jenkins, MBFH | Mind-Body Functional Health</p>
+        <p class="footer-site">www.mindbodyfunctionalhealth.com</p>
+        <p class="disclaimer">Individual results vary. This guide is for educational purposes and does not constitute medical advice.</p>
+    </footer>
+</body>
+</html>
+
+
+

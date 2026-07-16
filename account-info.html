@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account Info | Mind-Body Functional Health</title>
+    <link rel="icon" type="image/png" href="logos/MB-favicon-large.png" />
+    <style>
+        :root {
+            --brand-dark: #34657a;
+            --brand-accent: #c19a6b;
+            --ink: #2c3e50;
+            --muted: #61717e;
+            --line: #d9e4ea;
+            --bg: #f7fafb;
+            --card: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Montserrat", "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: radial-gradient(circle at top right, #eef4f7 0%, var(--bg) 55%);
+            padding: 1.25rem;
+        }
+
+        .wrap {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: 0 12px 36px rgba(52, 101, 122, 0.12);
+            padding: 1.25rem;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 2rem;
+            color: var(--brand-dark);
+        }
+
+        .subtitle {
+            margin: 0.35rem 0 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: 1px solid var(--line);
+            background: #fff;
+            color: var(--ink);
+            border-radius: 999px;
+            padding: 0.55rem 0.95rem;
+            font-size: 0.73rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .section {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1rem;
+            background: #fbfdff;
+        }
+
+        .section h2 {
+            margin: 0 0 0.75rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--brand-dark);
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            gap: 0.6rem;
+            align-items: center;
+            margin-bottom: 0.6rem;
+        }
+
+        .row:last-child { margin-bottom: 0; }
+
+        .label {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .field-value {
+            font-size: 0.92rem;
+            color: var(--ink);
+            min-height: 1.2rem;
+        }
+
+        .field-input {
+            display: none;
+        }
+
+        .section.is-editing .field-value {
+            display: none;
+        }
+
+        .section.is-editing .field-input {
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 0.55rem 0.65rem;
+            font-size: 0.92rem;
+            color: var(--ink);
+            background: #fff;
+        }
+
+        input[readonly] {
+            background: #f4f8fa;
+            color: #49606f;
+        }
+
+        .btn {
+            border: 1px solid transparent;
+            border-radius: 8px;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+        }
+
+        .btn-edit {
+            background: #edf4f7;
+            color: #2f5162;
+            border-color: #d2e0e8;
+        }
+
+        .btn-save {
+            background: var(--brand-dark);
+            color: #fff;
+            border-color: var(--brand-dark);
+            display: none;
+        }
+
+        .btn-reset {
+            background: var(--brand-accent);
+            color: #fff;
+            border-color: var(--brand-accent);
+            white-space: nowrap;
+        }
+
+        .msg {
+            margin-top: 0.8rem;
+            font-size: 0.86rem;
+            color: #2b6f50;
+            min-height: 1rem;
+        }
+
+        .security-note {
+            margin: 0 0 0.75rem;
+            font-size: 0.8rem;
+            color: var(--muted);
+            background: #f4f8fa;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 0.55rem 0.7rem;
+        }
+
+        .row-hidden {
+            display: none !important;
+        }
+
+        .subheading {
+            margin: 1rem 0 0.6rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brand-dark);
+            font-weight: 700;
+        }
+
+        .subheading-billing {
+            margin-top: 2.4rem;
+        }
+
+        .subheading-home {
+            margin-top: 2.4rem;
+        }
+
+        .section-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.55rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .edit-only {
+            display: none;
+        }
+
+        .section.is-editing .edit-only {
+            display: grid;
+        }
+
+        .edit-only-inline {
+            display: none;
+        }
+
+        .section.is-editing .edit-only-inline {
+            display: inline-flex;
+        }
+
+        .password-inline {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .password-inline input {
+            flex: 1;
+        }
+
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            color: var(--brand-dark);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .icon-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media (max-width: 760px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+
+            .top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="card">
+            <div class="top">
+                <div>
+                    <h1>Account Info</h1>
+                    <p class="subtitle">Manage your profile details below. Password is protected and can only be reset securely by email.</p>
+                </div>
+                <a class="btn-link" href="index.html">Back to Dashboard</a>
+            </div>
+
+            <div id="profileSection" class="section">
+                <h2>Profile</h2>
+
+                <div class="section-actions">
+                    <button id="profileEditBtn" class="btn btn-edit" type="button">Edit</button>
+                    <button id="profileSaveBtn" class="btn btn-save" type="button">Save</button>
+                </div>
+
+                <div class="row">
+                    <div class="label">First Name</div>
+                    <div id="firstNameView" class="field-value"></div>
+                    <input id="firstName" class="field-input" type="text" />
+                </div>
+
+                <div class="row">
+                    <div class="label">Last Name</div>
+                    <div id="lastNameView" class="field-value"></div>
+                    <input id="lastName" class="field-input" type="text" />
+                </div>
+
+                <div class="row">
+                    <div class="label">Email</div>
+                    <div id="emailView" class="field-value"></div>
+                    <input id="email" class="field-input" type="email" />
+                </div>
+
+                <p class="subheading subheading-home">Home Address</p>
+
+                <div class="row">
+                    <div class="label">Street</div>
+                    <div id="homeStreetView" class="field-value"></div>
+                    <input id="homeStreet" class="field-input" type="text" />
+                </div>
+
+                <div class="row">
+                    <div class="label">City</div>
+                    <div id="homeCityView" class="field-value"></div>
+                    <input id="homeCity" class="field-input" type="text" />
+                </div>
+
+                <div class="row">
+                    <div class="label">State</div>
+                    <div id="homeStateView" class="field-value"></div>
+                    <input id="homeState" class="field-input" type="text" />
+                </div>
+
+                <div class="row">
+                    <div class="label">ZIP</div>
+                    <div id="homeZipView" class="field-value"></div>
+                    <input id="homeZip" class="field-input" type="text" />
+                </div>
+
+                <p id="statusMsg" class="msg"></p>
+            </div>
+
+            <div id="accessSection" class="section">
+                <h2>Login &amp; Password</h2>
+
+                <div class="section-actions">
+                    <button id="accessEditBtn" class="btn btn-edit" type="button">Edit</button>
+                    <button id="accessSaveBtn" class="btn btn-save" type="button">Save</button>
+                </div>
+
+                <div class="row">
+                    <div class="label">Login</div>
+                    <div id="loginView" class="field-value"></div>
+                    <input id="login" class="field-input" type="text" />
+                </div>
+
+                <div class="row">
+                    <div class="label">Password</div>
+                    <div id="passwordView" class="field-value">************</div>
+                    <div class="edit-only">
+                        <div class="password-inline">
+                            <input id="passwordInput" class="field-input" type="password" autocomplete="current-password" />
+                            <button id="revealPasswordBtn" class="icon-btn" type="button" aria-label="Temporarily reveal password">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M2 12C3.8 8.6 7.3 6.5 12 6.5C16.7 6.5 20.2 8.6 22 12C20.2 15.4 16.7 17.5 12 17.5C7.3 17.5 3.8 15.4 2 12Z" stroke="currentColor" stroke-width="1.6"/>
+                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="passwordChangeBtn" class="btn btn-reset edit-only-inline" type="button">Change Password</button>
+                </div>
+
+                <div id="newPasswordRow" class="row edit-only row-hidden">
+                    <div class="label">New Password</div>
+                    <input id="newPasswordInput" class="field-input" type="password" autocomplete="new-password" />
+                </div>
+
+                <div id="confirmPasswordRow" class="row edit-only row-hidden">
+                    <div class="label">Retype Password</div>
+                    <input id="confirmPasswordInput" class="field-input" type="password" autocomplete="new-password" />
+                </div>
+
+                <p id="accessStatusMsg" class="msg"></p>
+            </div>
+
+            <div id="billingSection" class="section">
+                <h2>Billing &amp; Payment</h2>
+                <p class="security-note">For security, full card number and CVV are never stored. Only masked card details are kept on this page.</p>
+
+                <div class="section-actions">
+                    <button id="editBillingBtn" class="btn btn-edit" type="button">Edit</button>
+                    <button id="saveBillingBtn" class="btn btn-save" type="button">Save</button>
+                </div>
+
+                <div class="row">
+                    <div class="label">Card on File</div>
+                    <div id="cardMaskedView" class="field-value"></div>
+                </div>
+
+                <div class="row edit-only">
+                    <div class="label">Expiration Date</div>
+                    <input id="cardExp" class="field-input" type="text" placeholder="MM/YY" />
+                </div>
+
+                <div id="billingEditRow" class="row edit-only">
+                    <div class="label">Card Number</div>
+                    <input id="cardNumberInput" type="password" inputmode="numeric" autocomplete="cc-number" placeholder="Enter card number" />
+                </div>
+
+                <div id="billingCvvRow" class="row edit-only">
+                    <div class="label">CVV</div>
+                    <input id="cvvInput" type="password" inputmode="numeric" autocomplete="cc-csc" placeholder="CVV" />
+                </div>
+
+                <div class="row">
+                    <div class="label">Name on Card</div>
+                    <div id="nameOnCardView" class="field-value"></div>
+                    <input id="nameOnCard" class="field-input" type="text" />
+                </div>
+
+                <p class="subheading subheading-billing">Billing Address</p>
+
+                <div class="row">
+                    <div class="label">Street</div>
+                    <div id="billingStreetView" class="field-value"></div>
+                    <input id="billingStreet" class="field-input" type="text" />
+                </div>
+
+                <div class="row">
+                    <div class="label">City</div>
+                    <div id="billingCityView" class="field-value"></div>
+                    <input id="billingCity" class="field-input" type="text" />
+                </div>
+
+                <div class="row">
+                    <div class="label">State</div>
+                    <div id="billingStateView" class="field-value"></div>
+                    <input id="billingState" class="field-input" type="text" />
+                </div>
+
+                <div class="row">
+                    <div class="label">ZIP</div>
+                    <div id="billingZipView" class="field-value"></div>
+                    <input id="billingZip" class="field-input" type="text" />
+                </div>
+
+                <p id="billingStatusMsg" class="msg"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'mbfhAccountProfile';
+        const BILLING_KEY = 'mbfhBillingProfile';
+
+        const defaults = {
+            firstName: 'Jaime',
+            lastName: 'Jenkins',
+            homeStreet: '123 Wellness Way',
+            homeCity: 'Austin',
+            homeState: 'TX',
+            homeZip: '78701',
+            email: 'jaime@example.com',
+            login: 'jaime.jenkins'
+        };
+
+        const PROFILE_FIELDS = ['firstName', 'lastName', 'homeStreet', 'homeCity', 'homeState', 'homeZip', 'email'];
+        const ACCESS_FIELDS = ['login'];
+        const ACCESS_PASSWORD_DEFAULT = 'MbfhSecure2026!';
+
+        const billingDefaults = {
+            cardBrand: 'Visa',
+            cardLast4: '4242',
+            cardExp: '07/27',
+            nameOnCard: 'Jaime Jenkins',
+            billingStreet: '456 Payment Lane',
+            billingCity: 'Austin',
+            billingState: 'TX',
+            billingZip: '78701'
+        };
+
+        function splitAddress(value) {
+            const text = (value || '').trim();
+            if (!text) {
+                return { street: '', city: '', state: '', zip: '' };
+            }
+
+            const parts = text.split(',').map((part) => part.trim());
+            const street = parts[0] || '';
+            const city = parts[1] || '';
+            const stateZip = parts[2] || '';
+            const stateZipParts = stateZip.split(/\s+/).filter(Boolean);
+            const state = stateZipParts[0] || '';
+            const zip = stateZipParts.slice(1).join(' ');
+            return { street, city, state, zip };
+        }
+
+        function loadProfile() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return { ...defaults };
+                const parsed = JSON.parse(raw);
+                const merged = { ...defaults, ...parsed };
+
+                if (!merged.password) {
+                    merged.password = ACCESS_PASSWORD_DEFAULT;
+                }
+
+                if (!merged.homeStreet && parsed.address) {
+                    const fromLegacy = splitAddress(parsed.address);
+                    merged.homeStreet = fromLegacy.street || merged.homeStreet;
+                    merged.homeCity = fromLegacy.city || merged.homeCity;
+                    merged.homeState = fromLegacy.state || merged.homeState;
+                    merged.homeZip = fromLegacy.zip || merged.homeZip;
+                }
+
+                return merged;
+            } catch (e) {
+                return { ...defaults };
+            }
+        }
+
+        function saveProfile(profile) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+        }
+
+        function loadBilling() {
+            try {
+                const raw = localStorage.getItem(BILLING_KEY);
+                if (!raw) return { ...billingDefaults };
+                const parsed = JSON.parse(raw);
+                const merged = { ...billingDefaults, ...parsed };
+
+                if (!merged.billingStreet && parsed.billingAddress) {
+                    const fromLegacy = splitAddress(parsed.billingAddress);
+                    merged.billingStreet = fromLegacy.street || merged.billingStreet;
+                    merged.billingCity = fromLegacy.city || merged.billingCity;
+                    merged.billingState = fromLegacy.state || merged.billingState;
+                    merged.billingZip = fromLegacy.zip || merged.billingZip;
+                }
+
+                return merged;
+            } catch (e) {
+                return { ...billingDefaults };
+            }
+        }
+
+        function saveBilling(billing) {
+            localStorage.setItem(BILLING_KEY, JSON.stringify(billing));
+        }
+
+        function detectCardBrand(number) {
+            if (/^4/.test(number)) return 'Visa';
+            if (/^5[1-5]/.test(number)) return 'Mastercard';
+            if (/^3[47]/.test(number)) return 'Amex';
+            if (/^6(?:011|5)/.test(number)) return 'Discover';
+            return 'Card';
+        }
+
+        function cleanCardNumber(value) {
+            return (value || '').replace(/\D/g, '');
+        }
+
+        function isValidExp(value) {
+            return /^(0[1-9]|1[0-2])\/[0-9]{2}$/.test(value || '');
+        }
+
+        const profile = loadProfile();
+
+        function renderProfile() {
+            PROFILE_FIELDS.forEach((key) => {
+                const input = document.getElementById(key);
+                const view = document.getElementById(`${key}View`);
+                if (input) input.value = profile[key] || '';
+                if (view) view.textContent = profile[key] || '';
+            });
+        }
+
+        function renderAccess() {
+            ACCESS_FIELDS.forEach((key) => {
+                const input = document.getElementById(key);
+                const view = document.getElementById(`${key}View`);
+                if (input) input.value = profile[key] || '';
+                if (view) view.textContent = profile[key] || '';
+            });
+
+            const passwordInput = document.getElementById('passwordInput');
+            const passwordView = document.getElementById('passwordView');
+            const passwordValue = profile.password || ACCESS_PASSWORD_DEFAULT;
+            if (passwordInput) {
+                passwordInput.type = 'password';
+                passwordInput.value = passwordValue;
+            }
+            if (passwordView) {
+                passwordView.textContent = '*'.repeat(Math.max(8, passwordValue.length));
+            }
+        }
+
+        const profileSection = document.getElementById('profileSection');
+        const profileEditBtn = document.getElementById('profileEditBtn');
+        const profileSaveBtn = document.getElementById('profileSaveBtn');
+        const statusMsg = document.getElementById('statusMsg');
+        const accessSection = document.getElementById('accessSection');
+        const accessEditBtn = document.getElementById('accessEditBtn');
+        const accessSaveBtn = document.getElementById('accessSaveBtn');
+        const accessStatusMsg = document.getElementById('accessStatusMsg');
+        const passwordInput = document.getElementById('passwordInput');
+        const revealPasswordBtn = document.getElementById('revealPasswordBtn');
+        const passwordChangeBtn = document.getElementById('passwordChangeBtn');
+        const newPasswordRow = document.getElementById('newPasswordRow');
+        const confirmPasswordRow = document.getElementById('confirmPasswordRow');
+        const newPasswordInput = document.getElementById('newPasswordInput');
+        const confirmPasswordInput = document.getElementById('confirmPasswordInput');
+        let revealTimer = null;
+
+        function setProfileEditing(isEditing) {
+            profileSection.classList.toggle('is-editing', isEditing);
+            profileEditBtn.style.display = isEditing ? 'none' : 'inline-block';
+            profileSaveBtn.style.display = isEditing ? 'inline-block' : 'none';
+            if (isEditing) {
+                const firstInput = document.getElementById('firstName');
+                if (firstInput) firstInput.focus();
+            }
+        }
+
+        profileEditBtn.addEventListener('click', () => {
+            setProfileEditing(true);
+            statusMsg.textContent = '';
+        });
+
+        profileSaveBtn.addEventListener('click', () => {
+            PROFILE_FIELDS.forEach((key) => {
+                const input = document.getElementById(key);
+                if (input) {
+                    profile[key] = input.value.trim();
+                }
+            });
+            saveProfile(profile);
+            renderProfile();
+            setProfileEditing(false);
+            statusMsg.textContent = 'Profile information saved.';
+        });
+
+        function setAccessEditing(isEditing) {
+            accessSection.classList.toggle('is-editing', isEditing);
+            accessEditBtn.style.display = isEditing ? 'none' : 'inline-block';
+            accessSaveBtn.style.display = isEditing ? 'inline-block' : 'none';
+            if (!isEditing) {
+                newPasswordRow.classList.add('row-hidden');
+                confirmPasswordRow.classList.add('row-hidden');
+                newPasswordInput.value = '';
+                confirmPasswordInput.value = '';
+                passwordInput.type = 'password';
+            }
+            if (isEditing) {
+                const loginInput = document.getElementById('login');
+                if (loginInput) loginInput.focus();
+            }
+        }
+
+        function hidePasswordLater() {
+            if (revealTimer) {
+                clearTimeout(revealTimer);
+            }
+            revealTimer = setTimeout(() => {
+                passwordInput.type = 'password';
+            }, 2500);
+        }
+
+        revealPasswordBtn.addEventListener('click', () => {
+            passwordInput.type = 'text';
+            hidePasswordLater();
+        });
+
+        passwordChangeBtn.addEventListener('click', () => {
+            newPasswordRow.classList.remove('row-hidden');
+            confirmPasswordRow.classList.remove('row-hidden');
+            accessStatusMsg.textContent = 'Enter and confirm your new password, then click Save.';
+            newPasswordInput.focus();
+        });
+
+        accessEditBtn.addEventListener('click', () => {
+            setAccessEditing(true);
+            accessStatusMsg.textContent = '';
+        });
+
+        accessSaveBtn.addEventListener('click', () => {
+            ACCESS_FIELDS.forEach((key) => {
+                const input = document.getElementById(key);
+                if (input) {
+                    profile[key] = input.value.trim();
+                }
+            });
+
+            const changingPassword = !newPasswordRow.classList.contains('row-hidden');
+            if (changingPassword) {
+                const newPassword = newPasswordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+                if (!newPassword || newPassword.length < 8) {
+                    accessStatusMsg.textContent = 'New password must be at least 8 characters.';
+                    return;
+                }
+                if (newPassword !== confirmPassword) {
+                    accessStatusMsg.textContent = 'Passwords do not match. Please retype them.';
+                    return;
+                }
+                profile.password = newPassword;
+            }
+
+            saveProfile(profile);
+            renderAccess();
+            setAccessEditing(false);
+            accessStatusMsg.textContent = changingPassword ? 'Login and password saved.' : 'Login details saved.';
+        });
+
+        const billing = loadBilling();
+        const billingSection = document.getElementById('billingSection');
+        const cardMaskedView = document.getElementById('cardMaskedView');
+        const cardExp = document.getElementById('cardExp');
+        const nameOnCard = document.getElementById('nameOnCard');
+        const billingStreet = document.getElementById('billingStreet');
+        const billingCity = document.getElementById('billingCity');
+        const billingState = document.getElementById('billingState');
+        const billingZip = document.getElementById('billingZip');
+        const editBillingBtn = document.getElementById('editBillingBtn');
+        const saveBillingBtn = document.getElementById('saveBillingBtn');
+        const billingEditRow = document.getElementById('billingEditRow');
+        const billingCvvRow = document.getElementById('billingCvvRow');
+        const cardNumberInput = document.getElementById('cardNumberInput');
+        const cvvInput = document.getElementById('cvvInput');
+        const billingStatusMsg = document.getElementById('billingStatusMsg');
+
+        const nameOnCardView = document.getElementById('nameOnCardView');
+        const billingStreetView = document.getElementById('billingStreetView');
+        const billingCityView = document.getElementById('billingCityView');
+        const billingStateView = document.getElementById('billingStateView');
+        const billingZipView = document.getElementById('billingZipView');
+
+        function renderBilling() {
+            cardMaskedView.textContent = `${billing.cardBrand} ending in ${billing.cardLast4}`;
+            cardExp.value = billing.cardExp;
+            nameOnCardView.textContent = billing.nameOnCard;
+            billingStreetView.textContent = billing.billingStreet;
+            billingCityView.textContent = billing.billingCity;
+            billingStateView.textContent = billing.billingState;
+            billingZipView.textContent = billing.billingZip;
+            nameOnCard.value = billing.nameOnCard;
+            billingStreet.value = billing.billingStreet;
+            billingCity.value = billing.billingCity;
+            billingState.value = billing.billingState;
+            billingZip.value = billing.billingZip;
+        }
+
+        function setBillingEditing(isEditing) {
+            billingSection.classList.toggle('is-editing', isEditing);
+            editBillingBtn.style.display = isEditing ? 'none' : 'inline-block';
+            saveBillingBtn.style.display = isEditing ? 'inline-block' : 'none';
+            if (isEditing) {
+                cardNumberInput.focus();
+            }
+        }
+
+        renderProfile();
+        renderAccess();
+        renderBilling();
+        setProfileEditing(false);
+        setAccessEditing(false);
+        setBillingEditing(false);
+
+        editBillingBtn.addEventListener('click', () => {
+            cardNumberInput.value = '';
+            cvvInput.value = '';
+            billingStatusMsg.textContent = 'Update card info and save. CVV is used only for validation and is not stored.';
+            setBillingEditing(true);
+        });
+
+        saveBillingBtn.addEventListener('click', () => {
+            const cleanedNumber = cleanCardNumber(cardNumberInput.value);
+            const cvv = (cvvInput.value || '').replace(/\D/g, '');
+            const expValue = cardExp.value.trim();
+            const billingStreetValue = billingStreet.value.trim();
+            const billingCityValue = billingCity.value.trim();
+            const billingStateValue = billingState.value.trim();
+            const zipValue = billingZip.value.trim();
+            const nameValue = nameOnCard.value.trim();
+
+            const hasCardUpdate = Boolean(cleanedNumber || cvv);
+
+            if (hasCardUpdate) {
+                if (!cleanedNumber || cleanedNumber.length < 12) {
+                    billingStatusMsg.textContent = 'Please enter a valid card number to update billing.';
+                    return;
+                }
+
+                if (!cvv || cvv.length < 3) {
+                    billingStatusMsg.textContent = 'Please enter a valid CVV.';
+                    return;
+                }
+            }
+
+            if (!isValidExp(expValue)) {
+                billingStatusMsg.textContent = 'Expiration must be in MM/YY format.';
+                return;
+            }
+
+            if (!billingStreetValue || !billingCityValue || !billingStateValue || !zipValue || !nameValue) {
+                billingStatusMsg.textContent = 'Name on card, billing street/city/state, and billing ZIP are required.';
+                return;
+            }
+
+            if (hasCardUpdate) {
+                billing.cardBrand = detectCardBrand(cleanedNumber);
+                billing.cardLast4 = cleanedNumber.slice(-4);
+            }
+            billing.cardExp = expValue;
+            billing.nameOnCard = nameValue;
+            billing.billingStreet = billingStreetValue;
+            billing.billingCity = billingCityValue;
+            billing.billingState = billingStateValue;
+            billing.billingZip = zipValue;
+
+            saveBilling(billing);
+            renderBilling();
+
+            cardNumberInput.value = '';
+            cvvInput.value = '';
+            setBillingEditing(false);
+            billingStatusMsg.textContent = hasCardUpdate
+                ? 'Billing details updated securely. Full card number and CVV were not stored.'
+                : 'Billing details saved.';
+        });
+    </script>
+</body>
+</html>

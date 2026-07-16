@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Start-Process \"http://localhost:3000/\")",
+      "PowerShell(cd \"c:\\\\Users\\\\jaime\\\\metabolism ebook\"; powershell -ExecutionPolicy Bypass -File \".\\\\build-claude-api.ps1\")",
+      "PowerShell(cd \"c:\\\\Users\\\\jaime\\\\metabolism ebook\"; powershell -ExecutionPolicy Bypass -File \"build-ai-tools-tab.ps1\")"
+    ]
+  }
+}

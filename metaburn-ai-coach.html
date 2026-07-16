@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaBurn AI Coach | Mind-Body Functional Health</title>
+    <link rel="icon" type="image/png" href="logos/MB-favicon-large.png">
+    <style>
+        :root {
+            --ink: #1f2e35;
+            --teal: #34657a;
+            --gold: #c19a6b;
+            --cream: #f9f6f1;
+            --paper: #fffefb;
+            --muted: #59656b;
+            --bluegreen: #dff3f4;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Montserrat", "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--paper);
+        }
+
+        .hero-wrapper {
+            background: linear-gradient(140deg, #edf4f7 0%, #f9f4ea 100%);
+            padding: 3rem 2rem;
+        }
+
+        .eyebrow {
+            margin: 0;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin: 1rem 0 0.6rem;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            color: var(--teal);
+            font-size: clamp(2.2rem, 7vw, 4rem);
+            line-height: 1.03;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .hero-subhead {
+            margin: 0;
+            font-size: clamp(1.02rem, 2.5vw, 1.35rem);
+            color: var(--muted);
+            line-height: 1.45;
+        }
+
+        .hero-price {
+            margin: 0.75rem 0 0;
+            font-weight: 700;
+            color: var(--teal);
+            letter-spacing: 0.02em;
+        }
+
+        .hero-cta-wrap {
+            margin-top: 1.4rem;
+        }
+
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.1rem 2rem;
+            border-radius: 999px;
+            background: var(--gold);
+            color: var(--ink);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.84rem;
+            font-weight: 700;
+            border: 2px solid var(--gold);
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 24px rgba(193, 154, 107, 0.3);
+        }
+
+        .cta:hover {
+            background: #b8885f;
+            border-color: #b8885f;
+            transform: translateY(-2px);
+        }
+
+        .shell {
+            width: min(980px, 94vw);
+            margin: 2rem auto 3rem;
+            display: grid;
+            gap: 1.4rem;
+        }
+
+        .section {
+            padding: 2rem;
+            border-radius: 18px;
+            border: 1px solid rgba(52, 101, 122, 0.12);
+            background: #fff;
+        }
+
+        .section h2 {
+            margin: 0 0 0.9rem;
+            color: var(--teal);
+            font-size: 1.28rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .section p {
+            margin: 0.7rem 0;
+            line-height: 1.68;
+            color: #2f3d43;
+        }
+
+        .section-dark {
+            background: var(--teal);
+            border-color: var(--teal);
+        }
+
+        .section-dark h2 { color: var(--gold); }
+        .section-dark p { color: rgba(255, 255, 255, 0.95); }
+
+        .section-cream { background: var(--cream); }
+        .section-bluegreen { background: var(--bluegreen); }
+
+        .bullet-list {
+            margin: 0.2rem 0 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 1.45rem;
+            line-height: 1.58;
+            color: #2f3d43;
+        }
+
+        .bullet-list li::before {
+            content: "\2022";
+            color: var(--teal);
+            font-size: 0.95rem;
+            position: absolute;
+            left: 0;
+            top: 0.05rem;
+        }
+
+        .check-list {
+            margin: 0.2rem 0 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 1.6rem;
+            line-height: 1.58;
+            color: #2f3d43;
+        }
+
+        .check-list li::before {
+            content: "\2713";
+            color: var(--gold);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .author-wrap {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .author-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+            background: var(--cream);
+        }
+
+        .author-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+        }
+
+        .author-name {
+            margin: 0;
+            font-size: 1.34rem;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .author-creds {
+            margin: 0.35rem 0 1rem;
+            color: var(--muted);
+            line-height: 1.45;
+            font-size: 0.95rem;
+        }
+
+        .investment {
+            margin: 0.7rem 0 0.35rem;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            color: var(--teal);
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .cta-band {
+            padding: 2rem;
+            border-radius: 18px;
+            background: var(--teal);
+            text-align: center;
+        }
+
+        .cta-band .cta { margin: 0 auto; }
+
+        .reassurance {
+            margin: 0.9rem 0 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 500;
+        }
+
+        footer {
+            width: min(980px, 94vw);
+            margin: 0 auto 2.5rem;
+            text-align: center;
+            padding: 1.4rem 0;
+            border-top: 1px solid rgba(52, 101, 122, 0.15);
+        }
+
+        .footer-brand {
+            margin: 0;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .footer-site {
+            margin: 0.45rem 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .disclaimer {
+            margin: 0.7rem 0 0;
+            font-size: 0.82rem;
+            color: #6c767b;
+        }
+
+        @media (max-width: 768px) {
+            .hero-wrapper { padding: 2.5rem 1.25rem; }
+            .shell { width: min(980px, 96vw); }
+            .section, .cta-band { padding: 1.5rem 1.15rem; }
+            .author-wrap {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .author-photo { margin: 0 auto; }
+        }
+
+        @media (max-width: 640px) {
+            .cta {
+                width: 100%;
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-wrapper">
+        <p class="eyebrow">Mind-Body Functional Health</p>
+        <h1>METABURN AI COACH</h1>
+        <p class="hero-subhead">Your MetaBurn AI Coach - Built on Real Science, Trained by a Real Nutritionist</p>
+        <p class="hero-price">$27 / month - Cancel anytime</p>
+        <div class="hero-cta-wrap">
+            <a class="cta" href="mailto:hello@mindbodyfunctionalhealth.com?subject=MetaBurn%20AI%20Coach%20-%20$27%2Fmonth">Get Started - $27/Month</a>
+        </div>
+    </section>
+
+    <main class="shell">
+        <section class="section section-dark">
+            <h2>MOST WEIGHT LOSS APPS GUESS. THIS ONE KNOWS.</h2>
+            <p>There are hundreds of calorie trackers, meal planners, and diet apps out there. Almost none of them understand how your metabolism actually works. They count numbers. They give generic advice. And when you stop losing weight - which you will, if the root issue is never addressed - they have nothing useful to tell you.</p>
+            <p>MetaBurn AI Coach is different.</p>
+            <p>It was built on the actual science of how metabolism works - the hormones, the signals, the hidden factors that determine whether your body burns fat or holds onto it. It was trained by a certified Functional Nutritionist who has spent decades studying metabolic science not just academically, but personally. Someone who knows what it is to fight for energy, fight for results, and figure out what actually works when the conventional answers keep failing.</p>
+            <p>And unlike every other tool out there, MetaBurn AI Coach keeps learning - continuously updated with the latest research from the leading scientists and researchers specializing in metabolic health.</p>
+        </section>
+
+        <section class="section section-cream">
+            <h2>THIS IS FOR YOU IF</h2>
+            <ul class="bullet-list">
+                <li>You have tried diets, programs, and trackers and still cannot get lasting results</li>
+                <li>You are exhausted, low energy, and feel like your metabolism is working against you</li>
+                <li>You are tired of generic plans that were not built for your specific body and situation</li>
+                <li>You want real science behind your plan - not trend-based advice</li>
+                <li>You want something that adjusts as you go - not a rigid protocol that ignores how you are actually doing</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>WHY THIS IS DIFFERENT</h2>
+            <p>Most AI tools are trained on general information. MetaBurn AI Coach is trained specifically on the science of metabolism - insulin, hormones, cellular health, gut function, sleep, stress, and every factor that influences whether your body burns or stores fat. It is also trained on the clinical experience and nutritional philosophy of Jaime Jenkins MBFH, a certified Functional Nutritionist who has personally navigated the challenges of chronic fatigue and sluggish metabolism for decades.</p>
+            <p>When you are exhausted and low on energy, your body is not burning. It is conserving. It is in survival mode. That is not a willpower problem. That is a metabolic problem - and it requires a metabolic solution, not another calorie deficit.</p>
+            <p>MetaBurn AI Coach was built specifically for that situation.</p>
+        </section>
+
+        <section class="section section-bluegreen">
+            <h2>WHAT METABURN AI COACH DOES</h2>
+            <ul class="check-list">
+                <li>Asks you the right questions to understand your specific situation, symptoms, history, and goals - then builds a personalized weight loss plan around your actual biology, not a template.</li>
+                <li>Tracks your progress over time and adjusts your plan automatically if you hit a plateau, your circumstances change, or something is not working. It does not just record data - it responds to it.</li>
+                <li>Includes a nutrition tracker that makes logging easy. Take a photo of your plate and MetaBurn identifies your food, calculates your macronutrients, and logs it for you. No measuring. No manual entry.</li>
+                <li>Includes a meal and recipe generator that works with what you already have. Tell it what is in your fridge and it builds meals that fit your plan - no meal prep overwhelm, no wasted groceries.</li>
+                <li>Stays current. MetaBurn AI Coach is continuously updated with the latest published research from leading metabolic scientists and researchers - so your plan is always built on the most current science, not what was popular five years ago.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>WHAT YOU GET</h2>
+            <ul class="check-list">
+                <li>MetaBurn AI Coach built on real science</li>
+                <li>A plan that adapts to your progress, your struggles, and your life</li>
+                <li>Nutrition tracker with photo logging</li>
+                <li>Meal and recipe generator based on what you have on hand</li>
+                <li>Continuous learning from the latest metabolic research</li>
+                <li>Access to the nutritional philosophy and clinical experience of Jaime Jenkins MBFH</li>
+                <li>Cancel anytime - no contracts, no commitments</li>
+            </ul>
+        </section>
+
+        <section class="section section-cream">
+            <h2>ABOUT JAIME JENKINS</h2>
+            <div class="author-wrap">
+                <div class="author-photo"><img src="images/ChatGPT Image May 8, 2026, 02_31_22 PM.webp" alt="Jaime Jenkins"></div>
+                <div>
+                    <p class="author-name">Jaime Jenkins, MBFH</p>
+                    <p class="author-creds">Certified Functional Nutritionist - Brain MD Coach - Mind-Body Health Practitioner</p>
+                    <p>I spent years searching for real answers in a sea of conflicting advice and expensive products that never delivered. As a certified Functional Nutritionist I have trained under many well known Functional Medicine Practitioners, such as Dr Mark Hyman, Dr Frank Lipman, Dr. Daniel Amen, and many more. I studied cellular health and also personally worked with Dr. Daniel Pompa, and worked alongside Dr. Josh Axe's team.</p>
+                    <p>I also know what it is to live with chronic fatigue for decades - to feel your body refusing to burn, refusing to respond, no matter what you try. That experience is built into MetaBurn AI Coach. Not as a selling point. As a foundation.</p>
+                    <p><strong>I don't just teach this. I lived it. And I built this because I wish it had existed when I needed it most.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-bluegreen">
+            <h2>YOUR INVESTMENT</h2>
+            <p class="investment">MetaBurn AI Coach - $27/month</p>
+            <p><strong>Cancel anytime. No contracts.</strong></p>
+            <p>For less than a dollar a day you get a coach that knows the science, knows your history, and adjusts your plan in real time - something that would cost hundreds per month to get from a human practitioner.</p>
+        </section>
+
+        <section class="cta-band">
+            <a class="cta" href="mailto:hello@mindbodyfunctionalhealth.com?subject=MetaBurn%20AI%20Coach%20-%20$27%2Fmonth">Get Started - $27/Month</a>
+            <p class="reassurance">Instant access. Cancel anytime.</p>
+        </section>
+
+        <section class="section">
+            <h2>IS THIS RIGHT FOR ME?</h2>
+            <p>MetaBurn AI Coach is for anyone who is genuinely struggling with their weight and wants a science-based approach that is built around their specific body and situation. It is not a quick fix. It is a tool built for people who are ready to understand what is actually happening in their body - and work with it instead of against it.</p>
+            <p>If you have significant health conditions, autoimmune issues, or chronic illness that goes beyond weight and metabolism, our 90-day one-on-one intensive with Jaime may be a better fit. Ask us about The Full Return.</p>
+        </section>
+
+        <section class="cta-band">
+            <a class="cta" href="mailto:hello@mindbodyfunctionalhealth.com?subject=MetaBurn%20AI%20Coach%20-%20$27%2Fmonth">Get Started With MetaBurn AI Coach - $27/Month</a>
+            <p class="reassurance">Instant access. Cancel anytime. Built on real science.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer-brand">Jaime Jenkins, MBFH - Mind-Body Functional Health</p>
+        <p class="footer-site">www.mindbodyfunctionalhealth.com</p>
+        <p class="disclaimer">Individual results vary. MetaBurn AI Coach is not a substitute for medical advice or treatment.</p>
+    </footer>
+</body>
+</html>
+
+
+
