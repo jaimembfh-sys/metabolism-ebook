@@ -1,0 +1,98 @@
+{
+  "_readme": "Source list for the live-research-search feature. Tier 1 is searched first (explainer sources with a known site to scope the search to); Tier 2 is fallback only, searched by name on Google Scholar/PubMed. Add new entries directly to the relevant tier array — no other code should need to change.",
+  "tier1": [
+    {
+      "name": "Ben Bikman",
+      "site": "benbikman.com",
+      "notes": "Insulin resistance, glucagon, the Randle cycle."
+    },
+    {
+      "name": "David Ludwig",
+      "site": "davidludwigmd.medium.com",
+      "notes": ""
+    },
+    {
+      "name": "Jeff Volek",
+      "site": "virtahealth.com",
+      "notes": ""
+    },
+    {
+      "name": "Stephen Phinney",
+      "site": "virtahealth.com",
+      "notes": ""
+    }
+  ],
+  "tier2": [
+    {
+      "name": "Barbara Kahn",
+      "site": null,
+      "notes": ""
+    },
+    {
+      "name": "Gerald Shulman",
+      "site": null,
+      "notes": ""
+    },
+    {
+      "name": "Roy Taylor",
+      "site": null,
+      "notes": ""
+    },
+    {
+      "name": "Kelsey Fisher-Wellman",
+      "site": null,
+      "notes": ""
+    },
+    {
+      "name": "Barbara Corkey",
+      "site": null,
+      "notes": ""
+    },
+    {
+      "name": "Eric Westman",
+      "site": null,
+      "notes": ""
+    },
+    {
+      "name": "Sarah Hallberg",
+      "site": null,
+      "legacy": true,
+      "notes": "Passed away in 2022. Results should never be framed as recent or current for her, only as established prior research."
+    },
+    {
+      "name": "Martin Brand",
+      "site": null,
+      "notes": "Mitochondrial uncoupling and energy expenditure."
+    },
+    {
+      "name": "Douglas Wallace",
+      "site": null,
+      "notes": "Mitochondrial genetics and disease."
+    },
+    {
+      "name": "Michael Mueckler",
+      "site": null,
+      "notes": "GLUT transporters."
+    }
+  ],
+  "lab_interpretation": {
+    "_readme": "Source list for the conversational lab-interpretation feature specifically — kept separate from tier1/tier2 above, which are for the metabolism-research search used by the Protocol Builder and general coaching chat. These sources represent functional medicine clinical consensus and practitioner experience, not the same evidentiary standard as peer-reviewed randomized controlled trials. When citing them, the AI should be transparent about that distinction where relevant (e.g. \"functional medicine practitioners commonly use this range, based on clinical experience\" rather than presenting it as equivalent-strength evidence to a clinical trial).",
+    "sources": [
+      {
+        "name": "Institute for Functional Medicine (IFM)",
+        "site": null,
+        "notes": "Institutional/foundational source — the training and credentialing body for functional medicine. Useful for citing how functional medicine as a field approaches something, rather than one practitioner's individual opinion."
+      },
+      {
+        "name": "Jeffrey Bland",
+        "site": null,
+        "notes": "Foundational source for the \"optimal vs. normal\" framework and biochemical individuality concept. Useful for framing/philosophy rather than specific numeric ranges."
+      },
+      {
+        "name": "Mark Hyman",
+        "site": null,
+        "notes": "Primary source for practical optimal lab ranges (e.g. thyroid, TSH). His published ranges recur consistently across other practitioner sources, functioning as a de facto field consensus, not just a personal opinion."
+      }
+    ]
+  }
+}

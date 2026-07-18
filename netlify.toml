@@ -10,3 +10,8 @@
   from = "/api/profile"
   to = "/.netlify/functions/profile"
   status = 200
+
+[[redirects]]
+  from = "/api/user-recipes"
+  to = "/.netlify/functions/user-recipes"
+  status = 200

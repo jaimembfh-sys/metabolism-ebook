@@ -2645,14 +2645,14 @@
         <div id="tab-content-ai-tools" class="hidden transition-opacity duration-300 pt-8">
 
             <!-- Intro Header -->
-            <div class="text-center mb-12">
+            <div class="text-center mb-10">
                 <img src="https://cdn.shopify.com/s/files/1/0043/9595/8361/files/Logo-teal-transparent.png?v=1778892253" alt="Mindbody Functional Health" style="max-height:60px;width:auto;" class="mx-auto mb-6" onerror="this.onerror=null;">
                 <h2 class="font-serif text-4xl font-bold text-brand-dark mb-4">Your Personal AI Coaching Suite</h2>
-                <p class="font-serif italic text-lg text-gray-600 max-w-2xl mx-auto mb-8">Three powerful tools trained in metabolic science and Jaime Jenkins&#x2019; methods &#x2014; ready to personalize your journey.</p>
+                <p class="font-serif italic text-lg text-gray-600 max-w-2xl mx-auto mb-8">Four powerful tools trained in metabolic science and Jaime Jenkins&#x2019; methods &#x2014; ready to personalize your journey.</p>
                 <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(193,154,107,0.65),transparent);"></div>
             </div>
 
-            <!-- Persistent Goal & Why banner -->
+            <!-- Persistent Goal & Why banner — stays prominent above the nav layout, unchanged, regardless of which tool/account view is active below -->
             <div id="goal-why-banner" class="hidden mb-10 rounded-xl p-6 shadow-sm" style="background:linear-gradient(135deg, rgba(193,154,107,0.12), rgba(52,101,122,0.08));border:1px solid rgba(193,154,107,0.35);">
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                     <div>
@@ -2696,87 +2696,301 @@
                 </div>
             </div>
 
-            <div id="protocol-banner" class="hidden mb-10 rounded-xl p-6 shadow-sm" style="background:linear-gradient(135deg, rgba(52,101,122,0.10), rgba(193,154,107,0.08));border:1px solid rgba(52,101,122,0.3);">
-                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                    <div>
-                        <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-dark mb-1">Your Starting Protocol</p>
-                        <p id="protocol-banner-summary-text" class="font-serif text-lg text-brand-dark"></p>
+            <!-- Left-nav layout: one tool/account view visible at a time -->
+            <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+                <!-- Left nav panel -->
+                <div class="w-full lg:w-72 flex-shrink-0 lg:sticky lg:top-6">
+                    <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
+                        <nav class="space-y-1">
+                            <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="coach">Interactive Metabolic Coach</button>
+                            <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="meal-planner">Metabolic Meal Planner</button>
+                            <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="fridge-chef">Fridge to Meal Chef</button>
+                            <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="lab-tool">Metabolic Lab Tool</button>
+                        </nav>
+
+                        <div class="mt-5 pt-4 border-t border-gray-200">
+                            <div class="px-3 mb-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">My Stuff</span>
+                                    <button type="button" id="account-name-edit-toggle" class="text-[10px] font-semibold text-brand-accent underline">Edit</button>
+                                </div>
+                                <p id="account-name-display" class="font-serif text-base font-bold text-brand-dark mt-0.5">Add your name</p>
+                                <div id="account-name-edit-form" class="hidden mt-2 flex gap-2">
+                                    <input type="text" id="account-name-input" placeholder="Your name" class="flex-1 min-w-0 px-2 py-1 rounded border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                    <button type="button" id="account-name-save-btn" class="text-xs font-semibold bg-brand-dark text-white px-2.5 py-1 rounded whitespace-nowrap">Save</button>
+                                </div>
+                            </div>
+                            <nav class="space-y-1">
+                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-long-term">Long Term Goals</button>
+                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-weekly">Weekly Goals</button>
+                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-purpose">My Purpose</button>
+                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-protocol">My Protocol</button>
+                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-recipes">My Recipes</button>
+                            </nav>
+                        </div>
                     </div>
-                    <button id="protocol-banner-toggle-btn" type="button" class="text-xs font-semibold underline text-brand-dark whitespace-nowrap">View details</button>
                 </div>
 
-                <div id="protocol-banner-detail" class="hidden mt-5 pt-5 space-y-4" style="border-top:1px solid rgba(52,101,122,0.25);">
-                    <div>
-                        <p class="text-xs font-bold text-brand-dark mb-1">Starter Habits</p>
-                        <ul id="protocol-banner-habits-list" class="text-sm text-gray-700 list-disc pl-5 space-y-1"></ul>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-brand-dark mb-1">Why This Fits You</p>
-                        <p id="protocol-banner-rationale-text" class="text-sm text-gray-700"></p>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-brand-dark mb-1">Sources</p>
-                        <p id="protocol-banner-sources-text" class="text-xs italic text-gray-500"></p>
-                    </div>
-                </div>
-            </div>
+                <!-- Main content: one view visible at a time -->
+                <div id="ai-tools-main-col" class="flex-1 min-w-0 w-full">
 
-            <!-- Tool 1: Interactive Metabolic Coach -->
-            <div class="mb-10">
-                <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; Interactive Metabolic Coach</h3>
-                <p class="font-sans text-sm text-gray-500 mb-6">Answer 3 quick questions and receive a fully personalized, science-backed metabolic action plan built around your unique biology and goals.</p>
-                <div class="bg-gradient-to-br from-brand-dark to-[#234553] text-white rounded-xl p-8 shadow-lg flex flex-col h-[650px]">
-                    <div id="chat-window" class="flex-1 overflow-y-auto bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-4 space-y-4 border border-white/20 shadow-inner flex flex-col">
-                        <!-- Messages will be injected here -->
+                    <!-- View: Interactive Metabolic Coach -->
+                    <div id="ai-view-coach" class="ai-tool-view" data-view-id="coach" data-usage-category="protocol">
+                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; Interactive Metabolic Coach</h3>
+                        <p class="ai-view-desc font-sans text-sm text-gray-500 mb-6">Answer 3 quick questions and receive a fully personalized, science-backed metabolic action plan built around your unique biology and goals.</p>
+                        <div class="bg-gradient-to-br from-brand-dark to-[#234553] text-white rounded-xl p-8 shadow-lg flex flex-col h-[650px]">
+                            <div id="chat-window" class="flex-1 overflow-y-auto bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-4 space-y-4 border border-white/20 shadow-inner flex flex-col">
+                                <!-- Messages will be injected here -->
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <input type="text" id="chat-input" placeholder="Type your answer here..." class="flex-1 px-4 py-3 rounded-lg border-none text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-accent shadow-inner">
+                                <button id="chat-send-btn" class="bg-brand-accent hover:bg-[#a68256] text-white px-8 py-3 rounded-lg font-bold transition-colors text-lg shadow-md flex items-center justify-center whitespace-nowrap">
+                                    Send Reply
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <input type="text" id="chat-input" placeholder="Type your answer here..." class="flex-1 px-4 py-3 rounded-lg border-none text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-accent shadow-inner">
-                        <button id="chat-send-btn" class="bg-brand-accent hover:bg-[#a68256] text-white px-8 py-3 rounded-lg font-bold transition-colors text-lg shadow-md flex items-center justify-center whitespace-nowrap">
-                            Send Reply
-                        </button>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Divider -->
-            <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(193,154,107,0.65),transparent);margin:2.5rem 0;"></div>
-
-            <!-- Tool 2: Metabolic Meal Coach -->
-            <div class="mb-10">
-                <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; Metabolic Meal Coach</h3>
-                <p class="font-sans text-sm text-gray-500 mb-6">Tell our AI what you want to eat and get instant, practical suggestions to make your meal more metabolically balanced &#x2014; without giving up the foods you love.</p>
-                <div class="bg-brand-light/50 border border-brand-accent/30 rounded-xl p-6 shadow-sm">
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <input type="text" id="meal-input" placeholder="e.g., A bagel and a sweet coffee" class="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-brand-dark focus:ring-1 focus:ring-brand-dark">
-                        <button id="balance-meal-btn" class="bg-brand-dark hover:bg-[#234553] text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center justify-center whitespace-nowrap">
-                            &#x2728; Balance My Meal
-                        </button>
+                    <!-- View: Metabolic Meal Planner (renamed from Meal Coach; functionality unchanged) -->
+                    <div id="ai-view-meal-planner" class="ai-tool-view hidden" data-view-id="meal-planner" data-usage-category="chat">
+                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; Metabolic Meal Planner</h3>
+                        <p class="ai-view-desc font-sans text-sm text-gray-500 mb-6">Tell our AI what you want to eat and get instant, practical suggestions to make your meal more metabolically balanced &#x2014; without giving up the foods you love.</p>
+                        <div class="bg-brand-light/50 border border-brand-accent/30 rounded-xl p-6 shadow-sm">
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <input type="text" id="meal-input" placeholder="e.g., A bagel and a sweet coffee" class="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-brand-dark focus:ring-1 focus:ring-brand-dark">
+                                <button id="balance-meal-btn" class="bg-brand-dark hover:bg-[#234553] text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center justify-center whitespace-nowrap">
+                                    &#x2728; Balance My Meal
+                                </button>
+                            </div>
+                            <div id="meal-loading" class="hidden mt-4 text-brand-accent text-sm font-medium animate-pulse">Analyzing your meal...</div>
+                            <div id="meal-output" class="hidden mt-4 p-4 bg-white rounded-lg border border-gray-200 text-sm text-gray-700 leading-relaxed"></div>
+                        </div>
                     </div>
-                    <div id="meal-loading" class="hidden mt-4 text-brand-accent text-sm font-medium animate-pulse">Analyzing your meal...</div>
-                    <div id="meal-output" class="hidden mt-4 p-4 bg-white rounded-lg border border-gray-200 text-sm text-gray-700 leading-relaxed"></div>
-                </div>
-            </div>
 
-            <!-- Divider -->
-            <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(193,154,107,0.65),transparent);margin:2.5rem 0;"></div>
+                    <!-- View: Fridge to Meal Chef (renamed from Fridge-to-Meal Chef; functionality unchanged) -->
+                    <div id="ai-view-fridge-chef" class="ai-tool-view hidden" data-view-id="fridge-chef" data-usage-category="chat">
+                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; Fridge to Meal Chef</h3>
+                        <p class="ai-view-desc font-sans text-sm text-gray-500 mb-6">List what&#x2019;s in your fridge or pantry and our AI Chef instantly generates a simple, metabolically balanced recipe designed around your ingredients.</p>
+                        <div class="bg-gradient-to-br from-[#234553] to-brand-dark text-white rounded-xl p-8 shadow-xl border-l-4 border-brand-accent">
+                            <div id="profile-connected-badge" class="hidden mb-4 px-4 py-3 rounded-lg text-sm font-semibold" style="background-color: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.4); color: #86efac;">
+                                &#x2705; Your Metabolic Coach profile is connected &#x2014; recipes are now personalized to your protocol!
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-brand-light text-sm font-semibold mb-2">What ingredients do you have?</label>
+                                <textarea id="fridge-input" rows="3" placeholder="e.g., I have ground beef, half an onion, some spinach, and eggs..." class="w-full px-4 py-3 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-accent"></textarea>
+                            </div>
+                            <button id="generate-fridge-btn" class="w-full bg-brand-accent hover:bg-[#a68256] text-white px-6 py-3 rounded-lg font-bold transition-colors text-lg flex justify-center items-center shadow-md">
+                                &#x2728; Create My Recipe
+                            </button>
+                            <div id="fridge-loading" class="hidden mt-6 text-brand-light text-center font-medium animate-pulse">Chopping vegetables and writing your recipe...</div>
+                            <div id="fridge-output" class="hidden mt-6 p-6 bg-white text-gray-800 rounded-lg shadow-inner prose prose-brand max-w-none"></div>
+                        </div>
+                    </div>
 
-            <!-- Tool 3: Fridge-to-Meal Chef -->
-            <div class="mb-10">
-                <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; AI &#x201C;Fridge-to-Meal&#x201D; Chef</h3>
-                <p class="font-sans text-sm text-gray-500 mb-6">List what&#x2019;s in your fridge or pantry and our AI Chef instantly generates a simple, metabolically balanced recipe designed around your ingredients.</p>
-                <div class="bg-gradient-to-br from-[#234553] to-brand-dark text-white rounded-xl p-8 shadow-xl border-l-4 border-brand-accent">
-                    <div id="profile-connected-badge" class="hidden mb-4 px-4 py-3 rounded-lg text-sm font-semibold" style="background-color: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.4); color: #86efac;">
-                        &#x2705; Your Metabolic Coach profile is connected &#x2014; recipes are now personalized to your protocol!
+                    <!-- View: Metabolic Lab Tool (renamed from Weight & Metabolism Lab Markers; functionality unchanged) -->
+                    <div id="ai-view-lab-tool" class="ai-tool-view hidden" data-view-id="lab-tool" data-usage-category="chat">
+                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; Metabolic Lab Tool</h3>
+                        <p class="ai-view-desc font-sans text-sm text-gray-500 mb-2">Paste in any lab values you have and get a plain-language read on how they relate to metabolism and weight &#x2014; conventional vs. functional-optimal ranges, and how markers connect to each other. Not a diagnosis &#x2014; a starting point for a conversation with your doctor or practitioner.</p>
+                        <p class="text-xs text-gray-400 mb-6">Covers: fasting insulin, HbA1c/fasting glucose, triglyceride/HDL ratio, TSH (+ free T3/T4), cortisol, estrogen/testosterone/progesterone, hs-CRP, ALT/AST/GGT, ferritin &amp; iron panel (UIBC, transferrin saturation, TIBC, serum iron), uric acid, and histamine. Anything outside this list is outside what this tool covers.</p>
+                        <div class="bg-brand-light/50 border border-brand-accent/30 rounded-xl p-6 shadow-sm">
+                            <textarea id="lab-markers-input" rows="4" placeholder="e.g., Fasting insulin 14, HbA1c 5.6%, TSH 3.8, hs-CRP 2.1, ferritin 18 (I'm a woman)..." class="w-full px-4 py-3 rounded-lg text-gray-800 placeholder-gray-400 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-accent"></textarea>
+                            <button id="lab-markers-btn" class="mt-4 w-full bg-brand-dark hover:bg-[#234553] text-white px-6 py-3 rounded-lg font-bold transition-colors text-lg flex justify-center items-center shadow-md">&#x2728; Explain My Markers</button>
+                            <div id="lab-markers-loading" class="hidden mt-4 text-brand-accent text-center text-sm font-medium animate-pulse">Reading your labs against the functional-optimal ranges...</div>
+                            <div id="lab-markers-output" class="hidden mt-6 p-6 bg-white text-gray-800 rounded-lg shadow-inner prose prose-brand max-w-none"></div>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <label class="block text-brand-light text-sm font-semibold mb-2">What ingredients do you have?</label>
-                        <textarea id="fridge-input" rows="3" placeholder="e.g., I have ground beef, half an onion, some spinach, and eggs..." class="w-full px-4 py-3 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-accent"></textarea>
+
+                    <!-- View: My Stuff > Long Term Goals (read-only fuller detail; editing stays on the banner above, unchanged) -->
+                    <div id="ai-view-account-long-term" class="ai-tool-view hidden" data-view-id="account-long-term">
+                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">Long Term Goals</h3>
+                        <p class="font-sans text-sm text-gray-500 mb-6">Your big-picture goal. To make changes, use &#x201C;Edit goal&#x201D; on the banner above.</p>
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                            <p id="account-long-term-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t set a long-term goal yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get started.</p>
+                            <div id="account-long-term-content" class="hidden">
+                                <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">Your Long-Term Goal</p>
+                                <p id="account-long-term-goal-text" class="font-serif text-lg text-brand-dark"></p>
+                            </div>
+                        </div>
                     </div>
-                    <button id="generate-fridge-btn" class="w-full bg-brand-accent hover:bg-[#a68256] text-white px-6 py-3 rounded-lg font-bold transition-colors text-lg flex justify-center items-center shadow-md">
-                        &#x2728; Create My Recipe
-                    </button>
-                    <div id="fridge-loading" class="hidden mt-6 text-brand-light text-center font-medium animate-pulse">Chopping vegetables and writing your recipe...</div>
-                    <div id="fridge-output" class="hidden mt-6 p-6 bg-white text-gray-800 rounded-lg shadow-inner prose prose-brand max-w-none"></div>
+
+                    <!-- View: My Stuff > Weekly Goals (monthly + weekly checkpoints together, with their own simple no-reason-required edit form — new, doesn't exist elsewhere) -->
+                    <div id="ai-view-account-weekly" class="ai-tool-view hidden" data-view-id="account-weekly">
+                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">Weekly Goals</h3>
+                        <p class="font-sans text-sm text-gray-500 mb-6">This month&#x2019;s and this week&#x2019;s concrete checkpoints. These are tactical and meant to be adjusted routinely &#x2014; edit them directly below, no reason needed.</p>
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                            <p id="account-weekly-empty" class="text-sm text-gray-500 italic mb-4">You haven&#x2019;t set these yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get started.</p>
+                            <div id="account-weekly-content" class="hidden mb-5">
+                                <div class="mb-4">
+                                    <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">This Month</p>
+                                    <p id="account-weekly-monthly-text" class="text-sm text-gray-700"></p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">This Week</p>
+                                    <p id="account-weekly-text" class="text-sm text-gray-700 mb-2"></p>
+                                    <p class="text-xs text-gray-500 italic">Weekly progress isn&#x2019;t linear &#x2014; hormone fluctuations, water retention, and normal body changes mean some weeks show little or no visible movement even when you&#x2019;re doing everything right. Zoom out to the monthly trend, not the weekly number.</p>
+                                </div>
+                            </div>
+                            <div id="account-weekly-edit-section" class="pt-4" style="border-top:1px solid #e5e7eb;">
+                                <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Edit Checkpoints</p>
+                                <div class="mb-3">
+                                    <label class="block text-xs font-semibold text-brand-dark mb-1">This month&#x2019;s checkpoint</label>
+                                    <textarea id="account-weekly-edit-monthly" rows="2" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="block text-xs font-semibold text-brand-dark mb-1">This week&#x2019;s checkpoint</label>
+                                    <textarea id="account-weekly-edit-weekly" rows="2" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark"></textarea>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <button id="account-weekly-save-btn" type="button" class="bg-brand-dark hover:bg-[#234553] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Save</button>
+                                    <span id="account-weekly-save-status" class="hidden text-sm text-brand-dark"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View: My Stuff > My Purpose -->
+                    <div id="ai-view-account-purpose" class="ai-tool-view hidden" data-view-id="account-purpose">
+                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">My Purpose</h3>
+                        <p class="font-sans text-sm text-gray-500 mb-6">The deeper &#x201C;why&#x201D; behind your goal, from your intake conversation.</p>
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                            <p id="account-purpose-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t shared your why yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get started.</p>
+                            <div id="account-purpose-content" class="hidden">
+                                <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">Your Why</p>
+                                <p id="account-purpose-text" class="font-serif text-lg italic text-brand-dark"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View: My Stuff > My Protocol (moved here from the Interactive Metabolic Coach view, so it's reachable any time, not just right after intake) -->
+                    <div id="ai-view-account-protocol" class="ai-tool-view hidden" data-view-id="account-protocol">
+                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">My Protocol</h3>
+                        <p class="font-sans text-sm text-gray-500 mb-6">Your personalized starting protocol from the Interactive Metabolic Coach.</p>
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                            <p id="account-protocol-empty" class="text-sm text-gray-500 italic">You don&#x2019;t have a starting protocol yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get one built for you.</p>
+                            <div id="protocol-banner" class="hidden rounded-xl p-6 shadow-sm" style="background:linear-gradient(135deg, rgba(52,101,122,0.10), rgba(193,154,107,0.08));border:1px solid rgba(52,101,122,0.3);">
+                                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                                    <div>
+                                        <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-dark mb-1">Your Starting Protocol</p>
+                                        <p id="protocol-banner-summary-text" class="font-serif text-lg text-brand-dark"></p>
+                                    </div>
+                                    <button id="protocol-banner-toggle-btn" type="button" class="text-xs font-semibold underline text-brand-dark whitespace-nowrap">View details</button>
+                                </div>
+
+                                <div id="protocol-banner-detail" class="hidden mt-5 pt-5 space-y-4" style="border-top:1px solid rgba(52,101,122,0.25);">
+                                    <div>
+                                        <p class="text-xs font-bold text-brand-dark mb-1">Starter Habits</p>
+                                        <ul id="protocol-banner-habits-list" class="text-sm text-gray-700 list-disc pl-5 space-y-1"></ul>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-brand-dark mb-1">Why This Fits You</p>
+                                        <p id="protocol-banner-rationale-text" class="text-sm text-gray-700"></p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-brand-dark mb-1">Sources</p>
+                                        <p id="protocol-banner-sources-text" class="text-xs italic text-gray-500"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View: My Stuff > My Recipes (moved here from the top-level tool list; functionality unchanged) -->
+                    <div id="ai-view-account-recipes" class="ai-tool-view hidden" data-view-id="account-recipes" data-usage-category="chat">
+                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; My Recipes</h3>
+                        <p class="ai-view-desc font-sans text-sm text-gray-500 mb-6">Paste in your own recipe and let AI estimate the macros, so it counts correctly toward your daily totals. Private to you &#x2014; never shared or added to our recipe library.</p>
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                            <p class="text-xs text-gray-500 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 mb-5">Your personal recipes are saved to this device/browser only. Clearing your browser data (or switching devices) will remove them. We'll move these to your account automatically once real account sign-in is available.</p>
+
+                            <div class="mb-4">
+                                <label class="block text-xs font-semibold uppercase tracking-widest text-brand-dark mb-1.5">Recipe Title</label>
+                                <input type="text" id="my-recipe-title" placeholder="e.g., Mom's Chicken Soup" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-brand-dark focus:ring-1 focus:ring-brand-dark">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-xs font-semibold uppercase tracking-widest text-brand-dark mb-1.5">Ingredients &amp; Instructions</label>
+                                <textarea id="my-recipe-text" rows="6" placeholder="Paste or type your full recipe here, ingredients and instructions together..." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-brand-dark focus:ring-1 focus:ring-brand-dark"></textarea>
+                            </div>
+                            <div class="mb-4 max-w-xs">
+                                <label class="block text-xs font-semibold uppercase tracking-widest text-brand-dark mb-1.5">Servings (optional &#x2014; we'll detect it if you leave this blank)</label>
+                                <input type="number" min="1" step="1" id="my-recipe-servings" placeholder="e.g., 4" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-brand-dark focus:ring-1 focus:ring-brand-dark">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-xs font-semibold uppercase tracking-widest text-brand-dark mb-1.5">Note Any Substitutions (optional)</label>
+                                <input type="text" id="my-recipe-substitution-note" placeholder="e.g., I replaced the honey with allulose" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-brand-dark focus:ring-1 focus:ring-brand-dark">
+                                <p class="text-xs text-gray-400 mt-1">If you made a swap, macros will be calculated for the substituted ingredient, not the original.</p>
+                            </div>
+
+                            <button id="my-recipe-estimate-btn" class="bg-brand-dark hover:bg-[#234553] text-white px-6 py-2 rounded-lg font-medium transition-colors">&#x2728; Estimate Macros</button>
+                            <div id="my-recipe-loading" class="hidden mt-4 text-brand-accent text-sm font-medium animate-pulse">Reading your recipe and estimating macros...</div>
+                            <div id="my-recipe-error" class="hidden mt-4 text-sm font-semibold" style="color:#b45309;"></div>
+
+                            <!-- Combined clarification panel: servings (if undetected) and/or ambiguous-ingredient questions (if any), shown together in one round-trip -->
+                            <div id="my-recipe-clarify-panel" class="hidden mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                                <div id="my-recipe-clarify-servings-block" class="hidden mb-4">
+                                    <p class="text-sm text-gray-700 mb-2">This recipe doesn't say how many servings it makes. How many servings should we calculate macros for?</p>
+                                    <input type="number" min="1" step="1" id="my-recipe-servings-clarify-input" placeholder="e.g., 4" class="max-w-xs px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-brand-dark">
+                                </div>
+                                <div id="my-recipe-clarify-questions" class="space-y-4"></div>
+                                <p id="my-recipe-clarify-validation" class="hidden text-xs font-semibold text-red-600 mt-2">Please answer all questions above before recalculating.</p>
+                                <button id="my-recipe-clarify-btn" class="mt-3 bg-brand-accent hover:bg-[#a68256] text-white px-4 py-2 rounded-lg font-medium text-sm whitespace-nowrap">Recalculate</button>
+                            </div>
+
+                            <!-- Macro review card, shown after a successful estimate -->
+                            <div id="my-recipe-review" class="hidden mt-6 p-5 bg-brand-light/40 border border-brand-accent/30 rounded-lg">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <h4 class="font-serif text-xl font-bold text-brand-dark">Review Your Macros</h4>
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-white bg-brand-accent px-2 py-0.5 rounded-full">AI Estimate</span>
+                                </div>
+                                <p class="text-xs text-gray-600 mb-4">These are AI-calculated estimates, not verified nutrition facts. Please check them against your own knowledge of the recipe before saving &#x2014; correct anything that looks off.</p>
+                                <p id="my-recipe-staged-warning" class="hidden text-xs font-semibold text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-4">Because your plan is staged for a health condition you shared, please double-check these numbers &#x2014; especially the carb counts &#x2014; carefully before saving. Small errors matter more for your situation.</p>
+
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
+                                    <div>
+                                        <label class="block text-[10px] font-semibold uppercase tracking-widest text-gray-500 mb-1">Servings</label>
+                                        <input type="number" min="1" step="1" id="my-recipe-review-servings" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-semibold uppercase tracking-widest text-gray-500 mb-1">Calories</label>
+                                        <input type="number" step="1" id="my-recipe-review-calories" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-semibold uppercase tracking-widest text-gray-500 mb-1">Total Fat (g)</label>
+                                        <input type="number" step="0.1" id="my-recipe-review-fat" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-semibold uppercase tracking-widest text-gray-500 mb-1">Total Carbs (g)</label>
+                                        <input type="number" step="0.1" id="my-recipe-review-carbs" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-semibold uppercase tracking-widest text-gray-500 mb-1">Fiber (g)</label>
+                                        <input type="number" step="0.1" id="my-recipe-review-fiber" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-semibold uppercase tracking-widest text-gray-500 mb-1">Net Carbs (g)</label>
+                                        <input type="number" step="0.1" id="my-recipe-review-net-carbs" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-semibold uppercase tracking-widest text-gray-500 mb-1">Protein (g)</label>
+                                        <input type="number" step="0.1" id="my-recipe-review-protein" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm">
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-3 mt-2">
+                                    <button id="my-recipe-save-btn" class="bg-brand-dark hover:bg-[#234553] text-white px-5 py-2 rounded-lg font-medium text-sm">Save Recipe</button>
+                                    <button id="my-recipe-discard-btn" class="bg-white border border-gray-300 text-gray-600 px-5 py-2 rounded-lg font-medium text-sm hover:bg-gray-50">Discard</button>
+                                </div>
+                                <p id="my-recipe-save-status" class="hidden mt-3 text-sm font-semibold"></p>
+                            </div>
+                        </div>
+
+                        <!-- Saved personal recipes list -->
+                        <div class="mt-8">
+                            <h4 class="font-serif text-2xl font-bold text-brand-dark mb-4">Your Saved Recipes</h4>
+                            <div id="my-recipes-list" class="grid sm:grid-cols-2 gap-4"></div>
+                            <p id="my-recipes-empty" class="text-sm text-gray-500 italic">You haven't saved any personal recipes yet.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -3465,7 +3679,7 @@
             var aiDeviceId = getAiDeviceId();
             var lastRateLimit = null;
             var toolCounterEls = [];
-            var AI_BTN_CATEGORY = { 'balance-meal-btn': 'chat', 'chat-send-btn': 'protocol', 'generate-fridge-btn': 'chat' };
+            var AI_BTN_CATEGORY = { 'balance-meal-btn': 'chat', 'chat-send-btn': 'protocol', 'generate-fridge-btn': 'chat', 'lab-markers-btn': 'chat', 'my-recipe-estimate-btn': 'chat' };
 
             function isAiLimitReached(category) {
                 if (!lastRateLimit) return false;
@@ -3757,9 +3971,13 @@ Keep the tone encouraging, friendly, and highly practical. Do NOT use markdown s
                - Q5: Do they have any major health concerns or diagnoses at this time?
                - Q6: Do they have any other health-related concerns they think might be affecting their ability to lose weight or get healthy?
             9. For each of the 6 questions above: if their answer is vague or begs a clarifying question (e.g., "I've tried everything" — ask what "everything" included; "I don't know" for the barrier question — gently probe once with a concrete prompt), ask ONE natural follow-up before moving to the next question. Do not ask more than one follow-up per question — after that follow-up (or if the initial answer was already clear), move on.
-            10. AFTER all 6 history questions (and any single follow-ups) are answered, respond with a brief, warm 1-2 sentence closing acknowledgment thanking them for sharing. Then, on its own new line at the very end of that same message, output exactly this marker and nothing else on that line: [[HISTORY_COMPLETE]]
+            10. STAGED-APPROACH DISCLOSURES — watch for these two situations across the ENTIRE conversation, not just Q5/Q6, since they can come up anywhere:
+                - Chronic fatigue combined with a chronic infection, or a similarly severe fatigue-presenting chronic condition.
+                - Diabetes, especially Type 1.
+                The moment either comes up, before moving to your next scheduled question, respond in your own warm words (not a script, not clinical-sounding) covering: (a) a brief acknowledgment of what they shared, (b) that given this, their plan will start gentle and staged rather than aggressive — nervous-system regulation first (breathing, gentle movement, sleep hygiene, slow gradual dietary change) for chronic fatigue/infection; getting to 3 steady meals with gradually smaller carb portions at each meal, never a specific gram target, for diabetes — and (c) an explicit note that this is exactly the kind of situation where real medical/practitioner support matters — for diabetes specifically, that any carbohydrate change must be coordinated with their prescribing doctor since insulin dosing depends on food intake. Keep this to 2-3 sentences woven into your reply, not a lecture. Only do this once per disclosure — don't repeat it every subsequent message.
+            11. AFTER all 6 history questions (and any single follow-ups) are answered, respond with a brief, warm 1-2 sentence closing acknowledgment thanking them for sharing. Then, on its own new line at the very end of that same message, output exactly this marker and nothing else on that line: [[HISTORY_COMPLETE]]
                 This marker is an internal signal for the app, not something the user should be told about — never explain it or reference it in your visible message.
-            11. Keep every conversational response short, empathetic, and encouraging — never more than a few sentences, and never ask more than one question per message.`;
+            12. Keep every conversational response short, empathetic, and encouraging — never more than a few sentences, and never ask more than one question per message.`;
 
             // Extracts structured goal data from a completed why-dive transcript.
             // Kept as a separate, non-conversational call (using GOAL_PROFILE_TOOL
@@ -3833,7 +4051,26 @@ Apply the same goal-setting principles as before: Jaime Jenkins' framework first
                         macro_approach: { type: 'string', enum: ['strict_low_carb', 'safe_starches', 'flexible'] },
                         starter_habits: { type: 'array', items: { type: 'string' }, minItems: 2, maxItems: 3, description: "2-3 short, concrete, actionable starter habits pulled from the indexed content, prioritized by relevance to this user's self-identified barrier and past-plans history — not a generic list." },
                         rationale: { type: 'string', description: "3-5 sentences, plain language, second person (\"You...\"), explaining why this specific plan fits this specific user. Must name the specific lesson(s) and/or document(s) it draws from (e.g. \"as covered in Lesson 9\" or \"per The Five Pillars of Chronic Illness\")." },
-                        sources: { type: 'array', items: { type: 'string' }, description: 'The lesson/document titles actually cited in the rationale (e.g. "Lesson 9: Balancing Your Plate", "The Five Pillars of Chronic Illness"), for display as a distinct source list.' }
+                        sources: { type: 'array', items: { type: 'string' }, description: 'The lesson/document titles actually cited in the rationale (e.g. "Lesson 9: Balancing Your Plate", "The Five Pillars of Chronic Illness"), for display as a distinct source list.' },
+                        staged_plan: {
+                            type: ['array', 'null'],
+                            items: {
+                                type: 'object',
+                                properties: {
+                                    stage_label: { type: 'string', description: 'e.g. "Stage 1"' },
+                                    focus: { type: 'string', description: 'One or two sentences on what this stage prioritizes and why, second person.' },
+                                    habits: { type: 'array', items: { type: 'string' }, minItems: 1, maxItems: 3, description: 'Concrete habits for this stage only.' }
+                                },
+                                required: ['stage_label', 'focus', 'habits']
+                            },
+                            minItems: 1,
+                            maxItems: 2,
+                            description: 'ONLY for the staged-plan cases in the decision rules (chronic fatigue + chronic infection; diabetes/Type 1). null for every other user — do not invent staging otherwise.'
+                        },
+                        professional_guidance_note: {
+                            type: ['string', 'null'],
+                            description: 'ONLY for the staged-plan cases in the decision rules: a prominent, explicit statement that this situation warrants real medical/practitioner involvement, phrased second person. null for every other user.'
+                        }
                     },
                     required: ['eating_pattern', 'macro_approach', 'starter_habits', 'rationale', 'sources']
                 }
@@ -3848,6 +4085,10 @@ ${corpusText}
 --- REFERENCE MATERIAL END ---
 
 DECISION RULES:
+- STAGED-PLAN CASES — evaluate these two FIRST, before any other rule below:
+  - Chronic fatigue combined with a chronic infection, or a similarly severe fatigue-presenting chronic condition, disclosed in disclosed_health_conditions or implied by the intake transcript: macro_approach MUST be "safe_starches" and eating_pattern MUST be "rule_of_3s" — never strict_low_carb or aggressive carbohydrate restriction, regardless of what other factors might otherwise suggest. Populate staged_plan with a Stage 1 entry whose focus is nervous-system regulation (breathing, gentle movement, sleep hygiene) as the primary emphasis, with only gentle, gradual dietary changes as secondary. rationale MUST explicitly note that exercise should increase slowly and only as energy allows, never on a fixed schedule. professional_guidance_note MUST clearly state this situation warrants real medical/practitioner support — the plan is a starting point, not a substitute for that care.
+  - Diabetes, especially Type 1, disclosed in disclosed_health_conditions or implied by the intake transcript: macro_approach MUST be "safe_starches" and eating_pattern MUST be "rule_of_3s" — never strict_low_carb or any jump directly into aggressive carbohydrate reduction, since rapid carb reduction can be dangerous for someone managing insulin dosing. Populate staged_plan with a Stage 1 entry focused on reaching exactly 3 meals/day with no snacking (unless managing a hypoglycemic emergency) while reducing carbohydrates gradually at each meal rather than all at once. Never state a specific carbohydrate gram target, in this stage or any later one — that crosses into medical advice. professional_guidance_note MUST be an explicit, prominent reminder that any carbohydrate/insulin adjustment, at any stage, must be coordinated with their prescribing doctor, since insulin dosing depends on food intake and this plan cannot safely manage that relationship.
+  - For every other user, staged_plan and professional_guidance_note MUST be null — do not invent staging or a guidance note when neither condition applies.
 - If stress_baseline is "high" OR disclosed_health_conditions is non-empty: macro_approach MUST be "safe_starches" (never "strict_low_carb"), and eating_pattern must avoid aggressive fasting (prefer "rule_of_3s" over "time_restricted_eating") — ground this specifically in the [SAFETY-CRITICAL] material.
 - If sleep_baseline is "poor" AND stress_baseline is at least "moderate": lean further conservative (safe_starches, rule_of_3s), not more aggressive.
 - Only choose "strict_low_carb" or "time_restricted_eating" when stress_baseline is "low" or "moderate" AND there are no disclosed_health_conditions.
@@ -3885,6 +4126,8 @@ DECISION RULES:
                         starter_habits: parsed.starter_habits || [],
                         rationale: parsed.rationale || '',
                         sources: parsed.sources || [],
+                        staged_plan: parsed.staged_plan || null,
+                        professional_guidance_note: parsed.professional_guidance_note || null,
                         generated_at: Date.now()
                     };
                 } catch (e) {
@@ -3924,6 +4167,10 @@ DECISION RULES:
                     lines.push('Eating pattern: ' + (EATING_PATTERN_LABELS[p.eating_pattern] || p.eating_pattern));
                     lines.push('Macro approach: ' + (MACRO_APPROACH_LABELS[p.macro_approach] || p.macro_approach));
                     if (p.starter_habits && p.starter_habits.length) lines.push('Starter habits: ' + p.starter_habits.join('; '));
+                    if (p.staged_plan && p.staged_plan.length) {
+                        lines.push('IMPORTANT — this user is on a staged plan, currently ' + p.staged_plan[0].stage_label + ': ' + p.staged_plan[0].focus + ' Do NOT suggest anything more aggressive than this stage (no strict keto, no aggressive carb cutting) regardless of what the recipe request implies.');
+                    }
+                    if (p.professional_guidance_note) lines.push('Medical note (context only, do not repeat verbatim unless relevant): ' + p.professional_guidance_note);
                 }
                 return lines.join('\n');
             }
@@ -3966,8 +4213,18 @@ DECISION RULES:
 
             function renderGoalBanner(profile) {
                 currentGoalProfile = profile;
+                renderAccountNameDisplay(profile);
+                renderAccountGoalPanels(profile);
+
                 var banner = document.getElementById('goal-why-banner');
                 if (!banner || !profile) return;
+                // A profile can now exist with only a name saved (My Account name
+                // field) before any intake happens — only show the goal/why
+                // banner once there's actual goal content, not just because a
+                // profile row exists.
+                var hasGoal = !!(profile.core_why_summary || (profile.long_term_goal && profile.long_term_goal.text));
+                if (!hasGoal) return;
+
                 var goalText = document.getElementById('goal-banner-goal-text');
                 var whyText = document.getElementById('goal-banner-why-text');
                 var monthlyText = document.getElementById('goal-banner-monthly-text');
@@ -3979,6 +4236,172 @@ DECISION RULES:
                 if (weeklyText) weeklyText.textContent = profile.weekly_goal || '';
                 if (goalInput) goalInput.value = (profile.long_term_goal && profile.long_term_goal.text) || '';
                 banner.classList.remove('hidden');
+            }
+
+            // My Account name display — kept independent of goal-banner
+            // visibility, since a name can be saved before intake happens.
+            function renderAccountNameDisplay(profile) {
+                var name = profile && profile.name;
+                var displayEl = document.getElementById('account-name-display');
+                if (displayEl) displayEl.textContent = name || 'Add your name';
+            }
+
+            // My Stuff > Long Term Goals / Weekly Goals / My Purpose —
+            // "fuller detail" views of the same profile data shown in the
+            // persistent goal/why banner. Long Term Goals and My Purpose are
+            // read-only (editing stays on the banner, unchanged); Weekly
+            // Goals has its own simple edit form further down.
+            function renderAccountGoalPanels(profile) {
+                var hasGoal = !!(profile && (profile.core_why_summary || (profile.long_term_goal && profile.long_term_goal.text)));
+
+                var longTermContent = document.getElementById('account-long-term-content');
+                var longTermEmpty = document.getElementById('account-long-term-empty');
+                if (longTermContent) longTermContent.classList.toggle('hidden', !hasGoal);
+                if (longTermEmpty) longTermEmpty.classList.toggle('hidden', hasGoal);
+                if (hasGoal) {
+                    var longTermGoalText = document.getElementById('account-long-term-goal-text');
+                    if (longTermGoalText) longTermGoalText.textContent = (profile.long_term_goal && profile.long_term_goal.text) || '';
+                }
+
+                var weeklyContent = document.getElementById('account-weekly-content');
+                var weeklyEmpty = document.getElementById('account-weekly-empty');
+                if (weeklyContent) weeklyContent.classList.toggle('hidden', !hasGoal);
+                if (weeklyEmpty) weeklyEmpty.classList.toggle('hidden', hasGoal);
+                if (hasGoal) {
+                    var weeklyMonthlyText = document.getElementById('account-weekly-monthly-text');
+                    var weeklyText = document.getElementById('account-weekly-text');
+                    if (weeklyMonthlyText) weeklyMonthlyText.textContent = profile.monthly_goal || '';
+                    if (weeklyText) weeklyText.textContent = profile.weekly_goal || '';
+                }
+                // Prefill the Weekly Goals edit form regardless of hasGoal, so
+                // someone can fill these in for the first time too, not just
+                // edit existing values.
+                var weeklyEditMonthly = document.getElementById('account-weekly-edit-monthly');
+                var weeklyEditWeekly = document.getElementById('account-weekly-edit-weekly');
+                if (weeklyEditMonthly) weeklyEditMonthly.value = (profile && profile.monthly_goal) || '';
+                if (weeklyEditWeekly) weeklyEditWeekly.value = (profile && profile.weekly_goal) || '';
+
+                var purposeContent = document.getElementById('account-purpose-content');
+                var purposeEmpty = document.getElementById('account-purpose-empty');
+                if (purposeContent) purposeContent.classList.toggle('hidden', !hasGoal);
+                if (purposeEmpty) purposeEmpty.classList.toggle('hidden', hasGoal);
+                if (hasGoal) {
+                    var purposeText = document.getElementById('account-purpose-text');
+                    if (purposeText) purposeText.textContent = profile.core_why_summary || '';
+                }
+            }
+
+            // Left-nav layout for the AI Tools tab: exactly one tool/account
+            // view visible at a time, matching the nav item clicked.
+            const AI_TOOL_VIEW_IDS = ['coach', 'meal-planner', 'fridge-chef', 'lab-tool', 'account-long-term', 'account-weekly', 'account-purpose', 'account-protocol', 'account-recipes'];
+
+            function switchAiToolsView(viewName) {
+                if (AI_TOOL_VIEW_IDS.indexOf(viewName) === -1) viewName = 'coach';
+                document.querySelectorAll('.ai-tool-view').forEach(function(view) {
+                    view.classList.toggle('hidden', view.getAttribute('data-view-id') !== viewName);
+                });
+                document.querySelectorAll('.ai-nav-item[data-ai-view]').forEach(function(btn) {
+                    var isActive = btn.getAttribute('data-ai-view') === viewName;
+                    btn.classList.toggle('bg-brand-dark', isActive);
+                    btn.classList.toggle('text-white', isActive);
+                    btn.classList.toggle('text-gray-700', !isActive);
+                    btn.classList.toggle('hover:bg-gray-100', !isActive);
+                });
+            }
+            window.switchAiToolsView = switchAiToolsView;
+
+            document.querySelectorAll('.ai-nav-item[data-ai-view]').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    switchAiToolsView(btn.getAttribute('data-ai-view'));
+                });
+            });
+
+            switchAiToolsView('coach');
+
+            // My Account name field — a simple editable field saved via the
+            // existing profile endpoint (default merge-save action, no
+            // "reason" required, unlike goal edits). Independent of the
+            // goal/why banner and intake flow entirely.
+            const accountNameEditToggle = document.getElementById('account-name-edit-toggle');
+            const accountNameEditForm = document.getElementById('account-name-edit-form');
+            const accountNameInput = document.getElementById('account-name-input');
+            const accountNameSaveBtn = document.getElementById('account-name-save-btn');
+
+            if (accountNameEditToggle) {
+                accountNameEditToggle.addEventListener('click', () => {
+                    if (accountNameInput) accountNameInput.value = (currentGoalProfile && currentGoalProfile.name) || '';
+                    if (accountNameEditForm) accountNameEditForm.classList.toggle('hidden');
+                });
+            }
+
+            if (accountNameSaveBtn) {
+                accountNameSaveBtn.addEventListener('click', async () => {
+                    const name = accountNameInput ? accountNameInput.value.trim() : '';
+                    if (!name) return;
+                    accountNameSaveBtn.disabled = true;
+                    try {
+                        const response = await fetch('/api/profile', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ deviceId: aiDeviceId, profile: { name: name } })
+                        });
+                        const data = await response.json();
+                        if (data.profile) {
+                            currentGoalProfile = data.profile;
+                            renderAccountNameDisplay(data.profile);
+                        }
+                        if (accountNameEditForm) accountNameEditForm.classList.add('hidden');
+                    } catch (e) {
+                        console.error('save account name failed', e);
+                    } finally {
+                        accountNameSaveBtn.disabled = false;
+                    }
+                });
+            }
+
+            // Weekly Goals edit form — monthly_goal + weekly_goal together,
+            // intentionally simpler than the Long Term Goals edit behavior:
+            // no reason field, no change-history logging. These are tactical
+            // checkpoints meant to be adjusted routinely, not identity-level
+            // commitments that warrant a reflection pause. Uses the same
+            // default merge-save action as the name field (not "update",
+            // which requires a reason and logs to the change history).
+            const accountWeeklyEditMonthly = document.getElementById('account-weekly-edit-monthly');
+            const accountWeeklyEditWeekly = document.getElementById('account-weekly-edit-weekly');
+            const accountWeeklySaveBtn = document.getElementById('account-weekly-save-btn');
+            const accountWeeklySaveStatus = document.getElementById('account-weekly-save-status');
+
+            if (accountWeeklySaveBtn) {
+                accountWeeklySaveBtn.addEventListener('click', async () => {
+                    const monthlyGoal = accountWeeklyEditMonthly ? accountWeeklyEditMonthly.value.trim() : '';
+                    const weeklyGoal = accountWeeklyEditWeekly ? accountWeeklyEditWeekly.value.trim() : '';
+                    accountWeeklySaveBtn.disabled = true;
+                    if (accountWeeklySaveStatus) { accountWeeklySaveStatus.textContent = ''; accountWeeklySaveStatus.classList.add('hidden'); }
+                    try {
+                        const response = await fetch('/api/profile', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ deviceId: aiDeviceId, profile: { monthly_goal: monthlyGoal, weekly_goal: weeklyGoal } })
+                        });
+                        const data = await response.json();
+                        if (data.profile) {
+                            currentGoalProfile = data.profile;
+                            renderAccountGoalPanels(data.profile);
+                        }
+                        if (accountWeeklySaveStatus) {
+                            accountWeeklySaveStatus.textContent = 'Saved!';
+                            accountWeeklySaveStatus.classList.remove('hidden');
+                        }
+                    } catch (e) {
+                        console.error('save weekly goals failed', e);
+                        if (accountWeeklySaveStatus) {
+                            accountWeeklySaveStatus.textContent = 'Something went wrong — please try again.';
+                            accountWeeklySaveStatus.classList.remove('hidden');
+                        }
+                    } finally {
+                        accountWeeklySaveBtn.disabled = false;
+                    }
+                });
             }
 
             function appendGoalSummaryCard(profile) {
@@ -4027,6 +4450,8 @@ DECISION RULES:
                 if (rationaleText) rationaleText.textContent = protocol.rationale || '';
                 if (sourcesText) sourcesText.textContent = (protocol.sources || []).length ? ('Sources: ' + protocol.sources.join(' • ')) : '';
                 banner.classList.remove('hidden');
+                var protocolEmpty = document.getElementById('account-protocol-empty');
+                if (protocolEmpty) protocolEmpty.classList.add('hidden');
             }
 
             function appendProtocolSummaryCard(protocol) {
@@ -4248,6 +4673,553 @@ Do NOT use asterisks for bolding. Format with clean HTML (<h3> for title, <ul> f
                 });
             }
 
+            // Feature 4: Weight & Metabolism Lab Markers — a focused,
+            // stateless single-input/output tool (no dedicated storage,
+            // same pattern as Meal Coach/Fridge Chef above). Grounds its
+            // course-content citations in the same protocol-corpus.json
+            // fetch the Protocol Builder uses (identical cached block, so
+            // this doesn't add a second large prompt to cache), and pulls
+            // named source attribution from researcher-sources.json's
+            // lab_interpretation category (IFM, Bland, Hyman) — separate
+            // from that file's tier1/tier2 metabolism-research lists used
+            // elsewhere. Numeric ranges below are hard-coded reference data
+            // Jaime supplied directly, not model recall, since these get
+            // attributed to real named practitioners.
+            let labInterpretationSourcesPromise = null;
+            function fetchLabInterpretationSources() {
+                if (!labInterpretationSourcesPromise) {
+                    labInterpretationSourcesPromise = fetch('/knowledge-base/researcher-sources.json')
+                        .then(function(r) { if (!r.ok) throw new Error('Failed to load source list (' + r.status + ')'); return r.json(); })
+                        .then(function(data) { return (data && data.lab_interpretation) || null; })
+                        .catch(function(e) { console.error('fetchLabInterpretationSources failed', e); labInterpretationSourcesPromise = null; return null; });
+                }
+                return labInterpretationSourcesPromise;
+            }
+
+            function buildLabInterpretationSourcesText(labSources) {
+                if (!labSources || !labSources.sources || !labSources.sources.length) return 'No source list available — cite functional-medicine consensus generically.';
+                return labSources.sources.map(function(s) {
+                    return '- ' + s.name + (s.notes ? ': ' + s.notes : '');
+                }).join('\n');
+            }
+
+            const LAB_MARKERS_REFERENCE = `MARKERS WITH SOURCED NUMERIC RANGES (use these exact numbers — never substitute your own general knowledge):
+- Fasting insulin — Conventional: often only flagged above ~25 uIU/mL. Functional optimal: 2-5 uIU/mL.
+- HbA1c — Conventional: prediabetes flagged at 5.7%+. Functional optimal: ~4.8-5.5% (note that multiple functional sources cluster in this band with slight variation when explaining this one).
+- Fasting glucose — Conventional: prediabetes flagged at 100+ mg/dL. Functional optimal: under 90 mg/dL.
+- Triglyceride/HDL ratio — Functional optimal: under 2, ideally under 1.
+- TSH — Conventional: 0.5-4.5 mIU/L. Functional optimal: 1.0-2.5 mIU/L.
+- ALT — Conventional: ~0-32 U/L. Functional optimal: 0-20 U/L.
+- AST — Conventional: ~0-40 U/L. Functional optimal: 0-23 U/L.
+- GGT — Conventional: often 0-60 U/L. Functional optimal: under 20-21 U/L.
+- hs-CRP — Conventional: often only flagged above 3.0 mg/L. Functional optimal: under 1.0 mg/L.
+- Ferritin (SEX-SPECIFIC): Men — conventional 12-300 ng/mL, functional optimal 30-190 ng/mL. Women — conventional 10-150 ng/mL, functional optimal 20-130 ng/mL. If sex isn't stated, show both ranges and note that knowing their sex would sharpen the read — do not just guess one.
+- UIBC — Conventional: 131-425 ug/dL. Functional optimal: 150-300 ug/dL.
+- Uric acid (SEX-SPECIFIC) — Conventional: typically flagged above ~6.0-7.0 mg/dL (varies by lab/sex). Functional optimal: Women 3.0-5.5 mg/dL, Men 3.5-6.0 mg/dL. Same sex-unknown handling as ferritin.
+
+MARKERS WITHOUT A SOURCED OPTIMAL NUMBER — explain the mechanism/relationship only; NEVER assert a specific "optimal number" for these:
+- Serum iron, TIBC, transferrin saturation — no well-sourced functional-optimal band exists distinct from standard clinical ranges. Explain the RELATIONSHIP between these markers instead (e.g. low transferrin saturation combined with high UIBC suggests the body doesn't have enough iron available for use, even if one number alone looks normal).
+- Cortisol — varies too much by time of day for one flat "optimal number" to be meaningful. Explain the stress/HPA-axis relationship to weight and blood sugar (Lesson 5, Lesson 13) instead.
+- Estrogen, progesterone, testosterone — no single flat optimal number exists; these shift enormously by sex, age, and (for women) menstrual cycle phase/menopause status. Explain general patterns (e.g. estrogen dominance or low progesterone affecting weight, particularly relevant in perimenopause, per Lesson 13) without asserting a specific optimal number. If sex/life stage isn't stated and is relevant to interpreting the pattern, ask — but still offer general framing rather than refusing to answer.
+- Free T3 / Free T4 — no sourced optimal number; explain qualitatively (e.g. a conversion issue, per Lesson 5's T4-to-T3 content) rather than asserting a number.
+- Histamine — no established optimal blood range exists in the literature. Frame as part of the inflammation/immune picture generally, alongside hs-CRP, without asserting a number.
+
+CROSS-MARKER PATTERNS — proactively surface the connection (not just each marker separately) whenever ALL the relevant markers for that pattern are actually present in the user's input. Never speculate about a pattern from a single marker alone:
+1. High ferritin + high hs-CRP: ferritin is an acute-phase reactant that rises with inflammation, so elevated ferritin here may reflect inflammation rather than true iron overload. Distinguish this from pattern 8.
+2. Low testosterone (in men) + high fasting insulin: bidirectional relationship — high insulin suppresses SHBG (which regulates free testosterone), and visceral fat converts testosterone into estrogen, so each factor can worsen the other.
+3. Elevated ALT/AST/GGT + high fasting insulin or fasting glucose: a fatty-liver pattern — cite Lesson 11's "a fatty liver is an insulin-resistant liver" framing.
+4. High uric acid + high triglycerides and/or high fasting insulin: high insulin signals the kidneys to reabsorb uric acid rather than excrete it — ground this in the Systemic Map functional-medicine document.
+5. High-normal or high fasting insulin despite normal glucose/HbA1c: THE SINGLE MOST IMPORTANT PATTERN — glucose/A1c are "lagging indicators" that can look normal for years while insulin quietly climbs, directly per Lesson 3's framing. Never miss this pattern when both markers are present.
+6. High triglycerides + low HDL + high fasting insulin together: a classic metabolic syndrome cluster, more meaningful as a combination than any single marker alone.
+7. Normal TSH but free T3/T4 suggest poor conversion (only if the user provides free T3/T4 alongside TSH): a thyroid conversion issue rather than a production issue, extending Lesson 5's T4-to-T3 conversion content.
+8. Low ferritin + low transferrin saturation + high UIBC together: true iron deficiency, distinct from pattern 1 (ferritin elevated from inflammation, not overload). Determine which iron story is being told based on which markers are present.`;
+
+            function buildLabMarkersInstruction(corpusText, sourcesText) {
+                return `You are Jaime Jenkins' "Weight & Metabolism Lab Markers" tool — a focused lab tool, NOT a general lab-interpretation feature. You ONLY cover the markers in the reference data below. If the user asks about anything outside this list (e.g. LDL/total cholesterol on its own, kidney panels, or any other marker), say plainly that it's outside what this tool covers and do not attempt to answer it.
+
+FUNCTIONAL-MEDICINE SOURCE ATTRIBUTION — the "functional optimal" ranges below draw on this lineage. Name-drop naturally where relevant, and always be transparent that these reflect clinical consensus/practitioner experience, not the same evidentiary standard as peer-reviewed randomized controlled trials:
+${sourcesText}
+
+REFERENCE DATA — the ONLY markers this tool covers, with sourced ranges where they exist:
+${LAB_MARKERS_REFERENCE}
+
+COURSE CONTENT (the app's own lessons and functional-medicine documents — cite specific lessons/documents by name when connecting a marker or pattern to metabolism; never invent a source or lesson not present here):
+--- REFERENCE MATERIAL START ---
+${corpusText}
+--- REFERENCE MATERIAL END ---
+
+BEHAVIORAL RULES:
+1. When the user provides an actual value, state where it falls relative to both ranges (where a sourced range exists) and explain the general pattern research associates with that range.
+2. Only surface a cross-marker pattern when the relevant markers are actually present in the user's input — do not speculate about a pattern based on a single marker if the others needed to identify it weren't provided. When a pattern IS identified, prioritize explaining the pattern/relationship over restating each marker individually, since the pattern is the more valuable insight.
+3. Never diagnose or state what the user "has."
+4. Apply this test to every sentence that references the user's specific number: would this sentence still be accurate and appropriate said to any person with the same number, not just this individual? If a sentence is only true because of who this specific person is, rephrase it as general range/pattern information instead.
+5. For markers outside the covered list entirely, say plainly that's outside what this tool covers rather than attempting to answer.
+6. Be transparent that functional "optimal" ranges reflect clinical consensus/experience, not the same evidentiary standard as peer-reviewed RCTs.
+7. Connect patterns back to existing course content by name where relevant (Lesson 2/3 insulin, Lesson 5 thyroid/cortisol, Lesson 11 liver, Lesson 13 hormones/inflammation), grounded only in the course content provided above — never invent a source.
+8. ALWAYS end by explicitly recommending the user discuss their results with their doctor or a functional/naturopathic practitioner if their numbers are outside the optimal range, or if a pattern across multiple markers could be concerning — frame this as "worth exploring with a practitioner," warm and non-alarming, never urgent or scary. This matters even more when multiple concerning markers cluster together.
+9. Warm tone. Light personalization from the user's existing goal/protocol context (if provided below) is fine for continuity, but never create a new diagnosis or personalized directive from the lab values themselves.
+
+Format your response with clean HTML, matching the same convention used elsewhere in this app (<h3> for each marker or pattern heading, <ul>/<li> for lists, <p> for explanatory paragraphs). Do NOT use asterisks for bolding.`;
+            }
+
+            const labMarkersInput = document.getElementById('lab-markers-input');
+            const labMarkersBtn = document.getElementById('lab-markers-btn');
+            const labMarkersLoading = document.getElementById('lab-markers-loading');
+            const labMarkersOutput = document.getElementById('lab-markers-output');
+
+            if (labMarkersBtn) {
+                labMarkersBtn.addEventListener('click', async () => {
+                    const values = labMarkersInput.value.trim();
+                    if (!values) return;
+                    if (isAiLimitReached('chat')) return;
+
+                    labMarkersLoading.classList.remove('hidden');
+                    labMarkersOutput.classList.add('hidden');
+                    labMarkersBtn.disabled = true;
+
+                    try {
+                        const [corpus, labSources] = await Promise.all([fetchProtocolCorpus(), fetchLabInterpretationSources()]);
+                        const corpusText = buildProtocolCorpusText(corpus);
+                        const sourcesText = buildLabInterpretationSourcesText(labSources);
+                        let sysInstruction = buildLabMarkersInstruction(corpusText, sourcesText);
+                        if (userMetabolicProfile) {
+                            sysInstruction += '\n\nCRITICAL PERSONALIZATION: This user has completed their Metabolic Coach intake. Their specific protocol is below — reference it naturally for warm continuity, but do not create a new diagnosis or personalized directive from the lab values themselves:\n\n--- USER METABOLIC PROTOCOL START ---\n' + userMetabolicProfile + '\n--- USER METABOLIC PROTOCOL END ---';
+                        }
+
+                        const response = await callClaude('Here are my lab values: ' + values, sysInstruction, 'chat');
+                        labMarkersOutput.innerHTML = response;
+                        labMarkersOutput.classList.remove('hidden');
+                    } catch (error) {
+                        labMarkersOutput.innerHTML = '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : 'Our AI coach is taking a short break. Please try again in a moment.') + '</span>';
+                        labMarkersOutput.classList.remove('hidden');
+                    } finally {
+                        labMarkersLoading.classList.add('hidden');
+                        labMarkersBtn.disabled = false;
+                    }
+                });
+            }
+
+            // Feature 5: My Recipes — private, device-scoped personal recipe
+            // upload with AI-estimated macros. Keyed by aiDeviceId only since
+            // there's no real account system yet; never merged into the
+            // shared knowledge-base/recipes corpus. When real account auth
+            // exists, migrate user_recipes:${deviceId} in Redis to an
+            // account-keyed store rather than rebuilding this feature.
+            const USER_RECIPE_TOOL = {
+                name: 'record_user_recipe',
+                description: "Parse a user's personal recipe into clean ingredients/instructions and estimate its per-serving macros, asking for clarification when an ingredient is genuinely ambiguous.",
+                input_schema: {
+                    type: 'object',
+                    properties: {
+                        title: { type: 'string', description: "Clean recipe title. Use the user's given title if provided, otherwise write a short one from the recipe itself." },
+                        ingredients_list: { type: 'array', items: { type: 'string' }, description: 'Each ingredient as its own line, in the order given, lightly cleaned up but not changed in substance (e.g. "1/4 cup extra-virgin olive oil"). Reflect any user-noted substitution here, not the original ingredient.' },
+                        instructions: { type: 'string', description: "The cooking instructions, cleaned up into clear steps as plain text (steps separated by newlines). Do not invent steps that weren't in the user's text." },
+                        servings_used: { type: 'number', description: 'The serving count used for the per-serving macro math below.' },
+                        servings_stated: { type: 'boolean', description: 'true if the user or the recipe text explicitly stated a serving count/yield; false if you had to estimate/guess it because neither was given.' },
+                        needs_clarification: { type: 'boolean', description: 'true only if one or more ingredients (including a noted substitution) are genuinely ambiguous in a way that would meaningfully change the macro calculation, and have not already been clarified by the user. false otherwise, or whenever finalizing is required.' },
+                        clarifying_questions: {
+                            type: 'array',
+                            items: {
+                                type: 'object',
+                                properties: {
+                                    ingredient: { type: 'string', description: 'The ambiguous ingredient or line from the recipe this question is about.' },
+                                    question: { type: 'string', description: 'A short, natural question to ask the user about it.' },
+                                    options: { type: 'array', items: { type: 'string' }, minItems: 2, maxItems: 4, description: '2-4 short, realistic answer choices covering the likely possibilities. Do not include a generic "other/none" choice — the app adds a free-text fallback automatically.' }
+                                },
+                                required: ['ingredient', 'question', 'options']
+                            },
+                            description: 'Populate only when needs_clarification is true — one entry per genuinely ambiguous, macro-relevant ingredient. Empty array otherwise. Keep this to real ambiguity, not an exhaustive interrogation of every ingredient.'
+                        },
+                        calories: { type: 'number', description: 'Estimated calories per serving (best current guess even if needs_clarification is true).' },
+                        total_fat_g: { type: 'number', description: 'Estimated total fat in grams per serving.' },
+                        total_carbs_g: { type: 'number', description: 'Estimated total carbohydrates in grams per serving.' },
+                        fiber_g: { type: 'number', description: 'Estimated dietary fiber in grams per serving.' },
+                        net_carbs_g: { type: 'number', description: 'Estimated net carbs (total carbs minus fiber) in grams per serving.' },
+                        protein_g: { type: 'number', description: 'Estimated protein in grams per serving.' }
+                    },
+                    required: ['title', 'ingredients_list', 'instructions', 'servings_used', 'servings_stated', 'needs_clarification', 'clarifying_questions', 'calories', 'total_fat_g', 'total_carbs_g', 'fiber_g', 'net_carbs_g', 'protein_g']
+                }
+            };
+
+            const myRecipeTitleInput = document.getElementById('my-recipe-title');
+            const myRecipeTextInput = document.getElementById('my-recipe-text');
+            const myRecipeServingsInput = document.getElementById('my-recipe-servings');
+            const myRecipeSubstitutionNote = document.getElementById('my-recipe-substitution-note');
+            const myRecipeEstimateBtn = document.getElementById('my-recipe-estimate-btn');
+            const myRecipeLoading = document.getElementById('my-recipe-loading');
+            const myRecipeError = document.getElementById('my-recipe-error');
+            const myRecipeClarifyPanel = document.getElementById('my-recipe-clarify-panel');
+            const myRecipeClarifyServingsBlock = document.getElementById('my-recipe-clarify-servings-block');
+            const myRecipeServingsClarifyInput = document.getElementById('my-recipe-servings-clarify-input');
+            const myRecipeClarifyQuestions = document.getElementById('my-recipe-clarify-questions');
+            const myRecipeClarifyValidation = document.getElementById('my-recipe-clarify-validation');
+            const myRecipeClarifyBtn = document.getElementById('my-recipe-clarify-btn');
+            const myRecipeReview = document.getElementById('my-recipe-review');
+            const myRecipeStagedWarning = document.getElementById('my-recipe-staged-warning');
+            const myRecipeReviewServings = document.getElementById('my-recipe-review-servings');
+            const myRecipeReviewCalories = document.getElementById('my-recipe-review-calories');
+            const myRecipeReviewFat = document.getElementById('my-recipe-review-fat');
+            const myRecipeReviewCarbs = document.getElementById('my-recipe-review-carbs');
+            const myRecipeReviewFiber = document.getElementById('my-recipe-review-fiber');
+            const myRecipeReviewNetCarbs = document.getElementById('my-recipe-review-net-carbs');
+            const myRecipeReviewProtein = document.getElementById('my-recipe-review-protein');
+            const myRecipeSaveBtn = document.getElementById('my-recipe-save-btn');
+            const myRecipeDiscardBtn = document.getElementById('my-recipe-discard-btn');
+            const myRecipeSaveStatus = document.getElementById('my-recipe-save-status');
+            const myRecipesList = document.getElementById('my-recipes-list');
+            const myRecipesEmpty = document.getElementById('my-recipes-empty');
+
+            let myRecipePendingParsed = null; // { title, ingredients_list, instructions, original_recipe_text, substitution_note } from the last successful estimate
+            let myRecipeAiOriginalMacros = null; // snapshot for diffing on save, to set user_corrected
+            let myRecipePendingQuestions = []; // clarifying questions from the last ambiguous response
+            let myRecipeQuestionAnswers = {}; // idx -> answer string, collected from the clarify panel
+
+            function buildUserRecipeMessage(recipeText, titleText, substitutionNote, servingsOverride, ingredientAnswers, finalizeNow) {
+                var msg = 'Recipe text:\n' + recipeText;
+                if (titleText) msg += '\n\nThe user titled this recipe: "' + titleText + '"';
+                if (substitutionNote) msg += '\n\nThe user made this substitution: "' + substitutionNote + '". Calculate macros based on the substituted ingredient, not the original, and reflect the substitution in ingredients_list.';
+                if (servingsOverride) {
+                    msg += '\n\nThe user says this recipe makes exactly ' + servingsOverride + ' servings. Use exactly that number for servings_used and set servings_stated to true.';
+                } else {
+                    msg += '\n\nNo serving count was given by the user. Look for a stated yield/serving count in the recipe text itself. If one is stated, use it and set servings_stated to true. If none is stated anywhere, make your best reasonable estimate and set servings_stated to false.';
+                }
+                if (ingredientAnswers && ingredientAnswers.length) {
+                    msg += '\n\nThe user has already clarified the following:\n' + ingredientAnswers.map(function(a) {
+                        return '- ' + a.ingredient + ' (' + a.question + '): ' + a.answer;
+                    }).join('\n');
+                }
+                if (finalizeNow) {
+                    msg += '\n\nFinalize your best estimate now using the information above — set needs_clarification to false and do not ask further questions this round, even if something is still unclear; make a reasonable assumption instead.';
+                }
+                return msg;
+            }
+
+            function resetMyRecipeReview() {
+                if (myRecipeReview) myRecipeReview.classList.add('hidden');
+                if (myRecipeClarifyPanel) myRecipeClarifyPanel.classList.add('hidden');
+                if (myRecipeSaveStatus) { myRecipeSaveStatus.classList.add('hidden'); myRecipeSaveStatus.textContent = ''; }
+                myRecipePendingParsed = null;
+                myRecipeAiOriginalMacros = null;
+                myRecipePendingQuestions = [];
+                myRecipeQuestionAnswers = {};
+            }
+
+            function showMyRecipeReview(parsed, servingsToUse, originalRecipeText, substitutionNote) {
+                myRecipePendingParsed = {
+                    title: parsed.title,
+                    ingredients_list: parsed.ingredients_list,
+                    instructions: parsed.instructions,
+                    original_recipe_text: originalRecipeText || '',
+                    substitution_note: substitutionNote || null
+                };
+                myRecipeAiOriginalMacros = {
+                    servings: servingsToUse,
+                    calories: parsed.calories,
+                    total_fat_g: parsed.total_fat_g,
+                    total_carbs_g: parsed.total_carbs_g,
+                    fiber_g: parsed.fiber_g,
+                    net_carbs_g: parsed.net_carbs_g,
+                    protein_g: parsed.protein_g
+                };
+                if (myRecipeTitleInput && !myRecipeTitleInput.value.trim()) myRecipeTitleInput.value = parsed.title || '';
+                myRecipeReviewServings.value = servingsToUse;
+                myRecipeReviewCalories.value = parsed.calories;
+                myRecipeReviewFat.value = parsed.total_fat_g;
+                myRecipeReviewCarbs.value = parsed.total_carbs_g;
+                myRecipeReviewFiber.value = parsed.fiber_g;
+                myRecipeReviewNetCarbs.value = parsed.net_carbs_g;
+                myRecipeReviewProtein.value = parsed.protein_g;
+
+                var hasStagedPlan = !!(currentGoalProfile && currentGoalProfile.protocol && currentGoalProfile.protocol.staged_plan && currentGoalProfile.protocol.staged_plan.length);
+                myRecipeStagedWarning.classList.toggle('hidden', !hasStagedPlan);
+
+                myRecipeClarifyPanel.classList.add('hidden');
+                myRecipeError.classList.add('hidden');
+                myRecipeReview.classList.remove('hidden');
+            }
+
+            // Renders the combined clarification panel: the servings question
+            // (if the yield is still unresolved) and/or one block per ambiguous
+            // ingredient — shown together in a single follow-up round, not a
+            // multi-step wizard.
+            function renderClarifyPanel(servingsUnresolved, suggestedServings, questions) {
+                myRecipePendingQuestions = questions || [];
+                myRecipeQuestionAnswers = {};
+
+                myRecipeClarifyServingsBlock.classList.toggle('hidden', !servingsUnresolved);
+                if (servingsUnresolved) myRecipeServingsClarifyInput.value = suggestedServings || '';
+
+                myRecipeClarifyQuestions.innerHTML = '';
+                myRecipePendingQuestions.forEach(function(q, idx) {
+                    const block = document.createElement('div');
+                    block.className = 'clarify-question';
+                    block.setAttribute('data-idx', String(idx));
+                    const optsHtml = (q.options || []).map(function(opt) {
+                        return '<button type="button" class="clarify-option-btn border border-gray-300 rounded-full px-3 py-1 text-xs font-medium text-gray-700 hover:border-brand-dark transition-colors" data-value="' + escapeHtml(opt) + '">' + escapeHtml(opt) + '</button>';
+                    }).join('');
+                    block.innerHTML =
+                        '<p class="text-sm font-semibold text-gray-700 mb-2">' + escapeHtml(q.ingredient) + ': ' + escapeHtml(q.question) + '</p>' +
+                        '<div class="flex flex-wrap gap-2 mb-2">' + optsHtml +
+                            '<button type="button" class="clarify-option-btn clarify-other-btn border border-gray-300 rounded-full px-3 py-1 text-xs font-medium text-gray-700 hover:border-brand-dark transition-colors" data-value="__other__">Something else&hellip;</button>' +
+                        '</div>' +
+                        '<input type="text" class="clarify-other-input hidden w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm" placeholder="Type your answer">';
+                    myRecipeClarifyQuestions.appendChild(block);
+                });
+
+                myRecipeClarifyQuestions.querySelectorAll('.clarify-question').forEach(function(block) {
+                    const idx = block.getAttribute('data-idx');
+                    const otherInput = block.querySelector('.clarify-other-input');
+                    block.querySelectorAll('.clarify-option-btn').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            block.querySelectorAll('.clarify-option-btn').forEach(function(b) { b.classList.remove('bg-brand-dark', 'text-white', 'border-brand-dark'); });
+                            btn.classList.add('bg-brand-dark', 'text-white', 'border-brand-dark');
+                            if (btn.getAttribute('data-value') === '__other__') {
+                                otherInput.classList.remove('hidden');
+                                otherInput.focus();
+                                myRecipeQuestionAnswers[idx] = otherInput.value.trim();
+                            } else {
+                                otherInput.classList.add('hidden');
+                                myRecipeQuestionAnswers[idx] = btn.getAttribute('data-value');
+                            }
+                        });
+                    });
+                    otherInput.addEventListener('input', function() {
+                        myRecipeQuestionAnswers[idx] = otherInput.value.trim();
+                    });
+                });
+
+                myRecipeClarifyValidation.classList.add('hidden');
+                myRecipeReview.classList.add('hidden');
+                myRecipeError.classList.add('hidden');
+                myRecipeClarifyPanel.classList.remove('hidden');
+            }
+
+            async function runMyRecipeEstimate(opts) {
+                opts = opts || {};
+                const servingsOverride = opts.servingsOverride || null;
+                const ingredientAnswers = opts.ingredientAnswers || null;
+                const finalizeNow = !!opts.finalizeNow;
+
+                const recipeText = myRecipeTextInput.value.trim();
+                if (!recipeText) {
+                    myRecipeError.textContent = 'Please paste in your recipe first.';
+                    myRecipeError.classList.remove('hidden');
+                    return;
+                }
+                if (isAiLimitReached('chat')) return;
+
+                myRecipeError.classList.add('hidden');
+                myRecipeLoading.classList.remove('hidden');
+                myRecipeClarifyPanel.classList.add('hidden');
+                myRecipeReview.classList.add('hidden');
+                myRecipeEstimateBtn.disabled = true;
+                if (myRecipeClarifyBtn) myRecipeClarifyBtn.disabled = true;
+
+                const titleText = myRecipeTitleInput ? myRecipeTitleInput.value.trim() : '';
+                const substitutionNote = myRecipeSubstitutionNote ? myRecipeSubstitutionNote.value.trim() : '';
+                const message = buildUserRecipeMessage(recipeText, titleText, substitutionNote, servingsOverride, ingredientAnswers, finalizeNow);
+                const systemInstruction = "You are a nutrition-estimation assistant for Jaime Jenkins' metabolic health app. The user has pasted in their own personal recipe. Read the ingredients and instructions carefully and estimate realistic per-serving macros using standard nutrition knowledge (net carbs = total carbs minus fiber). These are estimates the user will review and can correct before saving, not guaranteed lab-verified values, so give your best realistic estimate rather than refusing. " +
+                    "If an ingredient is genuinely ambiguous in a way that would meaningfully change the macro calculation (e.g. \"peanut butter\" could be sweetened or natural/no-sugar-added; \"milk\" could be whole, 2%, skim, or a non-dairy alternative), do not silently guess — set needs_clarification to true and populate clarifying_questions with one short, natural question per ambiguous ingredient, each with 2-4 realistic answer options. Only do this for genuinely ambiguous, macro-relevant cases — never for an ingredient that's already specific (e.g. \"1 cup no sugar added peanut butter\" needs no question), and don't interrogate every ingredient. If the user notes a substitution, apply this same clarifying-question logic to the substituted ingredient if it is itself ambiguous. If the user has already answered clarifying questions, or you are told to finalize now, set needs_clarification to false and use their answers (or your own best reasonable assumption) instead of asking again. " +
+                    "Call the record_user_recipe tool with your results.";
+
+                try {
+                    const result = await callClaudeTool(message, systemInstruction, 'chat', USER_RECIPE_TOOL);
+                    const parsed = result.input;
+                    if (!parsed) throw new Error('Could not parse a macro estimate from that recipe.');
+
+                    const servingsUnresolved = !finalizeNow && !servingsOverride && !parsed.servings_stated;
+                    const ingredientsAmbiguous = !finalizeNow && parsed.needs_clarification && parsed.clarifying_questions && parsed.clarifying_questions.length > 0;
+
+                    if (servingsUnresolved || ingredientsAmbiguous) {
+                        renderClarifyPanel(servingsUnresolved, parsed.servings_used, parsed.clarifying_questions || []);
+                        return;
+                    }
+
+                    const servingsToUse = servingsOverride || parsed.servings_used;
+                    showMyRecipeReview(parsed, servingsToUse, recipeText, substitutionNote);
+                } catch (error) {
+                    myRecipeError.textContent = error.limitReached ? error.message : "Couldn't estimate macros for that recipe. Please try again in a moment.";
+                    myRecipeError.classList.remove('hidden');
+                } finally {
+                    myRecipeLoading.classList.add('hidden');
+                    myRecipeEstimateBtn.disabled = false;
+                    if (myRecipeClarifyBtn) myRecipeClarifyBtn.disabled = false;
+                }
+            }
+
+            if (myRecipeEstimateBtn) {
+                myRecipeEstimateBtn.addEventListener('click', () => {
+                    resetMyRecipeReview();
+                    const userServings = myRecipeServingsInput.value ? parseInt(myRecipeServingsInput.value, 10) : null;
+                    runMyRecipeEstimate({ servingsOverride: userServings });
+                });
+            }
+
+            if (myRecipeClarifyBtn) {
+                myRecipeClarifyBtn.addEventListener('click', () => {
+                    const servingsBlockVisible = !myRecipeClarifyServingsBlock.classList.contains('hidden');
+                    let servingsValue = null;
+                    if (servingsBlockVisible) {
+                        servingsValue = parseInt(myRecipeServingsClarifyInput.value, 10);
+                        if (!servingsValue || servingsValue < 1) {
+                            myRecipeClarifyValidation.textContent = 'Please enter a valid number of servings.';
+                            myRecipeClarifyValidation.classList.remove('hidden');
+                            return;
+                        }
+                        myRecipeServingsInput.value = servingsValue;
+                    } else {
+                        servingsValue = myRecipeServingsInput.value ? parseInt(myRecipeServingsInput.value, 10) : null;
+                    }
+
+                    const answers = [];
+                    for (let i = 0; i < myRecipePendingQuestions.length; i++) {
+                        const ans = (myRecipeQuestionAnswers[i] || '').trim();
+                        if (!ans) {
+                            myRecipeClarifyValidation.textContent = 'Please answer all questions above before recalculating.';
+                            myRecipeClarifyValidation.classList.remove('hidden');
+                            return;
+                        }
+                        answers.push({ ingredient: myRecipePendingQuestions[i].ingredient, question: myRecipePendingQuestions[i].question, answer: ans });
+                    }
+
+                    myRecipeClarifyValidation.classList.add('hidden');
+                    runMyRecipeEstimate({ servingsOverride: servingsValue, ingredientAnswers: answers, finalizeNow: true });
+                });
+            }
+
+            if (myRecipeDiscardBtn) {
+                myRecipeDiscardBtn.addEventListener('click', () => {
+                    resetMyRecipeReview();
+                });
+            }
+
+            function renderMyRecipesList(recipes) {
+                if (!myRecipesList) return;
+                myRecipesList.innerHTML = '';
+                if (!recipes || !recipes.length) {
+                    myRecipesEmpty.classList.remove('hidden');
+                    return;
+                }
+                myRecipesEmpty.classList.add('hidden');
+                recipes.slice().reverse().forEach(function(r) {
+                    const card = document.createElement('div');
+                    card.className = 'border border-gray-200 rounded-lg p-4 bg-white shadow-sm';
+                    const macros = r.estimated_macros || {};
+                    const badgeLabel = r.user_corrected ? 'AI Estimate &middot; edited by you' : 'AI Estimate';
+                    card.innerHTML =
+                        '<div class="flex items-start justify-between gap-2 mb-2">' +
+                            '<h5 class="font-serif text-lg font-bold text-brand-dark">' + escapeHtml(r.title) + '</h5>' +
+                            '<button type="button" data-recipe-id="' + escapeHtml(r.id) + '" class="my-recipe-delete-btn text-xs text-gray-400 hover:text-red-500" aria-label="Delete recipe">&#x2715;</button>' +
+                        '</div>' +
+                        '<span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white bg-brand-accent px-2 py-0.5 rounded-full mb-2">' + badgeLabel + '</span>' +
+                        '<p class="text-xs text-gray-500 mb-2">Servings: ' + escapeHtml(r.servings != null ? r.servings : '?') + '</p>' +
+                        (r.substitution_note ? '<p class="text-xs text-gray-500 italic mb-2">Substitution: ' + escapeHtml(r.substitution_note) + '</p>' : '') +
+                        '<p class="text-xs text-gray-700 leading-relaxed">' +
+                            'Calories: ' + escapeHtml(macros.calories) + ' &middot; Fat: ' + escapeHtml(macros.total_fat_g) + 'g &middot; Carbs: ' + escapeHtml(macros.total_carbs_g) + 'g<br>' +
+                            'Fiber: ' + escapeHtml(macros.fiber_g) + 'g &middot; Net Carbs: ' + escapeHtml(macros.net_carbs_g) + 'g &middot; Protein: ' + escapeHtml(macros.protein_g) + 'g' +
+                        '</p>';
+                    myRecipesList.appendChild(card);
+                });
+                myRecipesList.querySelectorAll('.my-recipe-delete-btn').forEach(function(btn) {
+                    btn.addEventListener('click', async function() {
+                        const id = btn.getAttribute('data-recipe-id');
+                        btn.disabled = true;
+                        try {
+                            const response = await fetch('/api/user-recipes', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ deviceId: aiDeviceId, action: 'delete', id: id })
+                            });
+                            const data = await response.json();
+                            renderMyRecipesList(data.recipes || []);
+                        } catch (e) {
+                            btn.disabled = false;
+                        }
+                    });
+                });
+            }
+
+            if (myRecipeSaveBtn) {
+                myRecipeSaveBtn.addEventListener('click', async () => {
+                    if (!myRecipePendingParsed) return;
+                    const finalMacros = {
+                        calories: parseFloat(myRecipeReviewCalories.value) || 0,
+                        total_fat_g: parseFloat(myRecipeReviewFat.value) || 0,
+                        total_carbs_g: parseFloat(myRecipeReviewCarbs.value) || 0,
+                        fiber_g: parseFloat(myRecipeReviewFiber.value) || 0,
+                        net_carbs_g: parseFloat(myRecipeReviewNetCarbs.value) || 0,
+                        protein_g: parseFloat(myRecipeReviewProtein.value) || 0,
+                        is_estimated: true
+                    };
+                    const finalServings = parseInt(myRecipeReviewServings.value, 10) || null;
+
+                    const corrected = !myRecipeAiOriginalMacros ||
+                        finalServings !== myRecipeAiOriginalMacros.servings ||
+                        finalMacros.calories !== myRecipeAiOriginalMacros.calories ||
+                        finalMacros.total_fat_g !== myRecipeAiOriginalMacros.total_fat_g ||
+                        finalMacros.total_carbs_g !== myRecipeAiOriginalMacros.total_carbs_g ||
+                        finalMacros.fiber_g !== myRecipeAiOriginalMacros.fiber_g ||
+                        finalMacros.net_carbs_g !== myRecipeAiOriginalMacros.net_carbs_g ||
+                        finalMacros.protein_g !== myRecipeAiOriginalMacros.protein_g;
+
+                    const title = (myRecipeTitleInput && myRecipeTitleInput.value.trim()) || myRecipePendingParsed.title || 'Untitled Recipe';
+                    const ingredients = (myRecipePendingParsed.ingredients_list || []).join('\n');
+                    const instructions = myRecipePendingParsed.instructions || '';
+
+                    myRecipeSaveBtn.disabled = true;
+                    myRecipeSaveStatus.classList.add('hidden');
+
+                    try {
+                        const response = await fetch('/api/user-recipes', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                deviceId: aiDeviceId,
+                                recipe: {
+                                    title: title,
+                                    ingredients: ingredients,
+                                    instructions: instructions,
+                                    original_recipe_text: myRecipePendingParsed.original_recipe_text || null,
+                                    substitution_note: myRecipePendingParsed.substitution_note || null,
+                                    servings: finalServings,
+                                    estimated_macros: finalMacros,
+                                    user_corrected: corrected
+                                }
+                            })
+                        });
+                        const data = await response.json();
+                        if (!response.ok) throw new Error(data.error || 'Could not save your recipe.');
+
+                        renderMyRecipesList(data.recipes || []);
+                        myRecipeSaveStatus.style.color = '#2b6f50';
+                        myRecipeSaveStatus.textContent = 'Recipe saved!';
+                        myRecipeSaveStatus.classList.remove('hidden');
+                        myRecipeTextInput.value = '';
+                        myRecipeTitleInput.value = '';
+                        myRecipeServingsInput.value = '';
+                        if (myRecipeSubstitutionNote) myRecipeSubstitutionNote.value = '';
+                        setTimeout(resetMyRecipeReview, 1200);
+                    } catch (error) {
+                        myRecipeSaveStatus.style.color = '#b45309';
+                        myRecipeSaveStatus.textContent = error.message;
+                        myRecipeSaveStatus.classList.remove('hidden');
+                    } finally {
+                        myRecipeSaveBtn.disabled = false;
+                    }
+                });
+            }
+
+            // Load any previously saved personal recipes for this device.
+            (async function loadMyRecipes() {
+                if (!myRecipesList) return;
+                try {
+                    const response = await fetch('/api/user-recipes?deviceId=' + encodeURIComponent(aiDeviceId));
+                    if (!response.ok) return;
+                    const data = await response.json();
+                    renderMyRecipesList(data.recipes || []);
+                } catch (e) {}
+            })();
+
             // --- Goal & Why banner: view/edit interactions ---
             const goalBannerToggleBtn = document.getElementById('goal-banner-toggle-btn');
             const goalBannerEditBtn = document.getElementById('goal-banner-edit-btn');
@@ -4380,15 +5352,15 @@ Do NOT use asterisks for bolding. Format with clean HTML (<h3> for title, <ul> f
                 } catch (e) {}
             })();
 
-            // Inject usage counters and limit messages into AI tools tab sections.
-            // Div order matches source order: 1) Interactive Metabolic Coach (protocol,
-            // effectively unlimited on its own — still subject to the hard cap),
-            // 2) Meal Coach (chat), 3) Fridge Chef (chat).
-            var AI_TOOL_DIV_CATEGORY = ['protocol', 'chat', 'chat'];
-            document.querySelectorAll('#tab-content-ai-tools .mb-10').forEach(function(toolDiv, idx) {
-                var desc = toolDiv.querySelector('p');
+            // Inject usage counters and limit messages into each AI tools view
+            // that actually calls the AI (data-usage-category on the view
+            // container) — read directly off the attribute rather than a
+            // positional array, so this doesn't silently break if views get
+            // reordered or new ones added.
+            document.querySelectorAll('#tab-content-ai-tools .ai-tool-view[data-usage-category]').forEach(function(toolDiv) {
+                var desc = toolDiv.querySelector('.ai-view-desc');
                 if (!desc) return;
-                var category = AI_TOOL_DIV_CATEGORY[idx] || 'chat';
+                var category = toolDiv.getAttribute('data-usage-category') || 'chat';
                 var counter = document.createElement('p');
                 counter.className = 'ai-usage-counter';
                 counter.style.cssText = 'font-size:0.7rem;color:#c19a6b;margin-top:-0.5rem;margin-bottom:0.75rem;';

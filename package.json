@@ -7,6 +7,7 @@
     "@upstash/redis": "^1.34.0"
   },
   "devDependencies": {
-    "cheerio": "^1.2.0"
+    "cheerio": "^1.2.0",
+    "netlify-cli": "^26.2.0"
   }
 }
