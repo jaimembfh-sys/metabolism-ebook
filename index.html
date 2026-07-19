@@ -2644,56 +2644,25 @@
         <!-- ========================================== -->
         <div id="tab-content-ai-tools" class="hidden transition-opacity duration-300 pt-8">
 
-            <!-- Intro Header -->
+            <!-- Page Header: MetaBurn AI Coach — logo + title inline, centered as one block -->
             <div class="text-center mb-10">
-                <img src="https://cdn.shopify.com/s/files/1/0043/9595/8361/files/Logo-teal-transparent.png?v=1778892253" alt="Mindbody Functional Health" style="max-height:60px;width:auto;" class="mx-auto mb-6" onerror="this.onerror=null;">
-                <h2 class="font-serif text-4xl font-bold text-brand-dark mb-4">Your Personal AI Coaching Suite</h2>
-                <p class="font-serif italic text-lg text-gray-600 max-w-2xl mx-auto mb-8">Four powerful tools trained in metabolic science and Jaime Jenkins&#x2019; methods &#x2014; ready to personalize your journey.</p>
+                <div class="inline-flex items-center justify-center gap-4 mb-4">
+                    <img src="https://cdn.shopify.com/s/files/1/0043/9595/8361/files/Logo-teal-transparent.png?v=1778892253" alt="Mindbody Functional Health" style="max-height:90px;width:auto;" onerror="this.onerror=null;">
+                    <h1 class="font-serif text-4xl font-bold text-brand-dark">MetaBurn AI Coach</h1>
+                </div>
+                <p class="font-serif italic text-lg text-gray-600 max-w-2xl mx-auto mb-8">Your personalized AI coaching tool highly trained in metabolic science to get you the best results!</p>
                 <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(193,154,107,0.65),transparent);"></div>
             </div>
 
-            <!-- Persistent Goal & Why banner — stays prominent above the nav layout, unchanged, regardless of which tool/account view is active below -->
+            <!-- Persistent Goal & Why banner — read-only, always-visible reminder.
+                 Editing lives in My Stuff > Long Term Goals; monthly/weekly
+                 checkpoints live in My Stuff > Weekly Goals; the protocol
+                 lives in My Stuff > My Protocol. This banner shows nothing else. -->
             <div id="goal-why-banner" class="hidden mb-10 rounded-xl p-6 shadow-sm" style="background:linear-gradient(135deg, rgba(193,154,107,0.12), rgba(52,101,122,0.08));border:1px solid rgba(193,154,107,0.35);">
-                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                    <div>
-                        <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">Your Goal</p>
-                        <p id="goal-banner-goal-text" class="font-serif text-lg text-brand-dark mb-3"></p>
-                        <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">Your Why</p>
-                        <p id="goal-banner-why-text" class="text-sm italic text-gray-600"></p>
-                    </div>
-                    <div class="flex flex-row sm:flex-col gap-4 sm:gap-2 sm:items-end whitespace-nowrap">
-                        <button id="goal-banner-toggle-btn" type="button" class="text-xs font-semibold underline text-brand-dark">View my plan</button>
-                        <button id="goal-banner-edit-btn" type="button" class="text-xs font-semibold underline text-brand-accent">Edit goal</button>
-                    </div>
-                </div>
-
-                <div id="goal-banner-detail" class="hidden mt-5 pt-5 space-y-4" style="border-top:1px solid rgba(193,154,107,0.3);">
-                    <div>
-                        <p class="text-xs font-bold text-brand-dark mb-1">This Month</p>
-                        <p id="goal-banner-monthly-text" class="text-sm text-gray-700"></p>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-brand-dark mb-1">This Week</p>
-                        <p id="goal-banner-weekly-text" class="text-sm text-gray-700 mb-2"></p>
-                        <p class="text-xs text-gray-500 italic">Weekly progress isn&#x2019;t linear &#x2014; hormone fluctuations, water retention, and normal body changes mean some weeks show little or no visible movement even when you&#x2019;re doing everything right. Zoom out to the monthly trend, not the weekly number.</p>
-                    </div>
-                </div>
-
-                <div id="goal-banner-edit-form" class="hidden mt-5 pt-5 space-y-3" style="border-top:1px solid rgba(193,154,107,0.3);">
-                    <div>
-                        <label class="block text-xs font-semibold text-brand-dark mb-1">Updated goal</label>
-                        <textarea id="goal-edit-goal-input" rows="2" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark"></textarea>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-brand-dark mb-1">What&#x2019;s changed, or why are you updating this?</label>
-                        <textarea id="goal-edit-reason-input" rows="2" placeholder="e.g., My priorities shifted after..." class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark"></textarea>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <button id="goal-edit-save-btn" type="button" class="bg-brand-dark hover:bg-[#234553] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Save update</button>
-                        <button id="goal-edit-cancel-btn" type="button" class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500">Cancel</button>
-                        <span id="goal-edit-status" class="hidden text-sm text-brand-dark"></span>
-                    </div>
-                </div>
+                <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">Your Goal</p>
+                <p id="goal-banner-goal-text" class="font-serif text-lg text-brand-dark mb-3"></p>
+                <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">Your Why</p>
+                <p id="goal-banner-why-text" class="text-sm italic text-gray-600"></p>
             </div>
 
             <!-- Left-nav layout: one tool/account view visible at a time -->
@@ -2702,6 +2671,7 @@
                 <!-- Left nav panel -->
                 <div class="w-full lg:w-72 flex-shrink-0 lg:sticky lg:top-6">
                     <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
+                        <h2 class="font-serif text-xl font-bold text-brand-dark mb-4 px-2">Your Personal AI Coaching Suite</h2>
                         <nav class="space-y-1">
                             <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="coach">Interactive Metabolic Coach</button>
                             <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="meal-planner">Metabolic Meal Planner</button>
@@ -2726,6 +2696,7 @@
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-weekly">Weekly Goals</button>
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-purpose">My Purpose</button>
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-protocol">My Protocol</button>
+                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-health-history">Health History</button>
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-recipes">My Recipes</button>
                             </nav>
                         </div>
@@ -2738,12 +2709,199 @@
                     <!-- View: Interactive Metabolic Coach -->
                     <div id="ai-view-coach" class="ai-tool-view" data-view-id="coach" data-usage-category="protocol">
                         <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; Interactive Metabolic Coach</h3>
-                        <p class="ai-view-desc font-sans text-sm text-gray-500 mb-6">Answer 3 quick questions and receive a fully personalized, science-backed metabolic action plan built around your unique biology and goals.</p>
+                        <p class="ai-view-desc font-sans text-sm text-gray-500 mb-6">Answer a few quick questions and receive a fully personalized, science-backed metabolic action plan built around your unique biology and goals.</p>
                         <div class="bg-gradient-to-br from-brand-dark to-[#234553] text-white rounded-xl p-8 shadow-lg flex flex-col h-[650px]">
                             <div id="chat-window" class="flex-1 overflow-y-auto bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-4 space-y-4 border border-white/20 shadow-inner flex flex-col">
                                 <!-- Messages will be injected here -->
                             </div>
-                            <div class="flex flex-col sm:flex-row gap-3">
+
+                            <!-- Health History form panel: quick-form half of the hybrid intake.
+                                 Shown after the 3 opening questions, in place of the chat input,
+                                 then hidden again once submitted so the conversation resumes. -->
+                            <div id="health-history-form-panel" class="hidden flex-1 overflow-y-auto bg-white text-gray-800 rounded-lg p-6 space-y-5">
+                                <div>
+                                    <h4 class="font-serif text-xl font-bold text-brand-dark mb-1">Quick Health History</h4>
+                                    <p class="text-xs text-gray-500 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2">This information is used solely to personalize your plan. It doesn&#x2019;t replace medical advice — if you have a serious or urgent health concern, please discuss it with your primary care physician first.</p>
+                                </div>
+
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-brand-dark mb-1">Full Name</label>
+                                        <input type="text" id="hh-full-name" required class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-brand-dark mb-1">Age</label>
+                                        <input type="number" min="13" max="120" id="hh-age" required class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-brand-dark mb-1">Date of Birth</label>
+                                        <input type="date" id="hh-dob" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-brand-dark mb-1">Biological Sex</label>
+                                        <select id="hh-sex" required class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                            <option value="">Select&hellip;</option>
+                                            <option value="female">Female</option>
+                                            <option value="male">Male</option>
+                                            <option value="intersex">Intersex</option>
+                                        </select>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label class="block text-xs font-semibold text-brand-dark mb-1">Gender Identity (optional)</label>
+                                        <input type="text" id="hh-gender-identity" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-brand-dark mb-1">Current Weight (lbs)</label>
+                                        <input type="number" min="0" id="hh-weight" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-brand-dark mb-1">Height</label>
+                                        <input type="text" id="hh-height" placeholder="e.g., 5'6&quot;" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-400 -mt-2">Age and sex genuinely matter here — certain lab ranges, hormone patterns, and metabolic factors differ by age and sex, so this helps build a plan that fits your actual biology.</p>
+
+                                <div class="pt-2 border-t border-gray-100">
+                                    <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-2">Physical Health</p>
+                                    <div class="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                                        <label class="flex items-center gap-2"><input type="checkbox" id="hh-thyroid"> Thyroid issues</label>
+                                        <label class="flex items-center gap-2"><input type="checkbox" id="hh-pcos"> PCOS / insulin resistance</label>
+                                        <label class="flex items-center gap-2"><input type="checkbox" id="hh-hormonal-shifts"> Significant hormonal shifts (postpartum/peri/menopause)</label>
+                                        <label class="flex items-center gap-2"><input type="checkbox" id="hh-heart-circulatory"> Heart/circulatory conditions</label>
+                                        <label class="flex items-center gap-2"><input type="checkbox" id="hh-heart-bp-meds"> Currently on heart/BP/blood-sugar medication</label>
+                                        <label class="flex items-center gap-2"><input type="checkbox" id="hh-glp1"> Currently on a GLP-1 medication</label>
+                                        <label class="flex items-center gap-2"><input type="checkbox" id="hh-recent-injury"> Recent injury or surgery</label>
+                                    </div>
+                                    <div class="mt-2">
+                                        <label class="block text-xs font-medium text-gray-600 mb-1">Diabetes</label>
+                                        <select id="hh-diabetes" class="w-full sm:w-auto px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                            <option value="none">None</option>
+                                            <option value="type1">Type 1</option>
+                                            <option value="type2">Type 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="mt-2">
+                                        <label class="block text-xs font-medium text-gray-600 mb-1">Where do you tend to hold most of your weight?</label>
+                                        <select id="hh-fat-distribution" class="w-full sm:w-auto px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                            <option value="midsection">Midsection/abdomen</option>
+                                            <option value="hips_thighs">Hips/thighs</option>
+                                            <option value="evenly_distributed">Evenly distributed</option>
+                                            <option value="not_sure" selected>Not sure</option>
+                                        </select>
+                                    </div>
+                                    <div class="mt-3">
+                                        <label class="block text-xs font-medium text-gray-600 mb-1">Chronic pain location (check any that apply)</label>
+                                        <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                                            <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-pain-loc" value="knees"> Knees</label>
+                                            <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-pain-loc" value="hips"> Hips</label>
+                                            <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-pain-loc" value="back"> Back</label>
+                                            <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-pain-loc" value="shoulders"> Shoulders</label>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <label class="block text-xs font-medium text-gray-600 mb-1">Diagnosed food allergies (check any that apply)</label>
+                                        <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                                            <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-allergy" value="gluten"> Gluten</label>
+                                            <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-allergy" value="dairy"> Dairy</label>
+                                            <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-allergy" value="soy"> Soy</label>
+                                            <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-allergy" value="nuts"> Nuts</label>
+                                            <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-allergy" value="shellfish"> Shellfish</label>
+                                            <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-allergy" value="other"> Other</label>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <label class="block text-xs font-medium text-gray-600 mb-1">Known sensitivities (check any that apply)</label>
+                                        <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                                            <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-sensitivity" value="ibs"> IBS</label>
+                                            <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-sensitivity" value="acid_reflux"> Acid reflux</label>
+                                            <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-sensitivity" value="bloating"> Bloating</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 border-t border-gray-100">
+                                    <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-2">Lifestyle</p>
+                                    <div class="grid sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">Average sleep</label>
+                                            <select id="hh-sleep" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                                <option value="under_5">Under 5 hrs</option>
+                                                <option value="6_7" selected>6-7 hrs</option>
+                                                <option value="8_plus">8+ hrs</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">Wake up refreshed?</label>
+                                            <select id="hh-wake-refreshed" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                                <option value="yes">Yes</option>
+                                                <option value="no">No</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">Daily routine</label>
+                                            <select id="hh-routine" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                                <option value="sedentary">Sedentary</option>
+                                                <option value="moderate" selected>Moderately active</option>
+                                                <option value="high">Highly active</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">Home meal prep frequency</label>
+                                            <select id="hh-meal-prep" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                                <option value="rarely">Rarely</option>
+                                                <option value="1_3x" selected>1-3x per week</option>
+                                                <option value="daily">Daily</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 border-t border-gray-100">
+                                    <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-2">Emotional Eating Triggers (check any that apply)</p>
+                                    <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                                        <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-trigger" value="stress_work"> Stress/work</label>
+                                        <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-trigger" value="boredom"> Boredom</label>
+                                        <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-trigger" value="sadness"> Sadness</label>
+                                        <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-trigger" value="social_pressure"> Social pressure</label>
+                                        <label class="flex items-center gap-1.5"><input type="checkbox" class="hh-trigger" value="fatigue"> Fatigue</label>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 border-t border-gray-100 grid sm:grid-cols-3 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-medium text-gray-600 mb-1">Stress level (1-10)</label>
+                                        <input type="number" min="1" max="10" id="hh-stress-level" value="5" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-medium text-gray-600 mb-1">Body image (1-10)</label>
+                                        <input type="number" min="1" max="10" id="hh-body-image" value="5" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-medium text-gray-600 mb-1">Confidence in lasting change (1-10)</label>
+                                        <input type="number" min="1" max="10" id="hh-confidence" value="5" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 border-t border-gray-100">
+                                    <label class="flex items-center gap-2 text-sm">
+                                        <input type="checkbox" id="hh-plate-pressure"> I feel pressure to finish everything on my plate
+                                    </label>
+                                </div>
+
+                                <p id="health-history-form-error" class="hidden text-xs font-semibold text-red-600">Please fill in your full name, age, and biological sex before continuing.</p>
+                                <button id="health-history-form-submit" type="button" class="w-full bg-brand-dark hover:bg-[#234553] text-white px-6 py-3 rounded-lg font-bold transition-colors">Continue</button>
+                            </div>
+
+                            <!-- Plan confirmation panel: shown once the Protocol Builder has a
+                                 draft plan, in place of the chat input. Feedback/adjustment
+                                 requests are typed in the chat above like any other reply;
+                                 this button is the one explicit, unambiguous save trigger. -->
+                            <div id="plan-confirmation-panel" class="hidden flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-white/10 rounded-lg p-4 border border-white/20">
+                                <p class="text-sm text-white flex-1">Have a look at your plan above. Have any concerns, questions, or want to add anything? Type it in the chat and I&#x2019;ll adjust it. Once it feels achievable, confirm it below.</p>
+                                <button id="confirm-plan-btn" type="button" class="bg-brand-accent hover:bg-[#a68256] text-white px-6 py-3 rounded-lg font-bold transition-colors whitespace-nowrap">&#x2713; Confirm My Plan</button>
+                            </div>
+
+                            <div id="chat-input-row" class="flex flex-col sm:flex-row gap-3">
                                 <input type="text" id="chat-input" placeholder="Type your answer here..." class="flex-1 px-4 py-3 rounded-lg border-none text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-accent shadow-inner">
                                 <button id="chat-send-btn" class="bg-brand-accent hover:bg-[#a68256] text-white px-8 py-3 rounded-lg font-bold transition-colors text-lg shadow-md flex items-center justify-center whitespace-nowrap">
                                     Send Reply
@@ -2801,15 +2959,35 @@
                         </div>
                     </div>
 
-                    <!-- View: My Stuff > Long Term Goals (read-only fuller detail; editing stays on the banner above, unchanged) -->
+                    <!-- View: My Stuff > Long Term Goals — now owns the edit-with-reason
+                         mechanism, relocated here from the banner (which is read-only). -->
                     <div id="ai-view-account-long-term" class="ai-tool-view hidden" data-view-id="account-long-term">
                         <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">Long Term Goals</h3>
-                        <p class="font-sans text-sm text-gray-500 mb-6">Your big-picture goal. To make changes, use &#x201C;Edit goal&#x201D; on the banner above.</p>
+                        <p class="font-sans text-sm text-gray-500 mb-6">Your big-picture goal.</p>
                         <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
                             <p id="account-long-term-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t set a long-term goal yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get started.</p>
                             <div id="account-long-term-content" class="hidden">
-                                <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">Your Long-Term Goal</p>
+                                <div class="flex items-start justify-between gap-2">
+                                    <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">Your Long-Term Goal</p>
+                                    <button id="account-long-term-edit-btn" type="button" class="text-xs font-semibold underline text-brand-accent whitespace-nowrap">Edit</button>
+                                </div>
                                 <p id="account-long-term-goal-text" class="font-serif text-lg text-brand-dark"></p>
+
+                                <div id="account-long-term-edit-form" class="hidden mt-5 pt-5 space-y-3" style="border-top:1px solid #e5e7eb;">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-brand-dark mb-1">Updated goal</label>
+                                        <textarea id="account-long-term-edit-goal-input" rows="2" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark"></textarea>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-brand-dark mb-1">What&#x2019;s changed, or why are you updating this?</label>
+                                        <textarea id="account-long-term-edit-reason-input" rows="2" placeholder="e.g., My priorities shifted after..." class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark"></textarea>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <button id="account-long-term-edit-save-btn" type="button" class="bg-brand-dark hover:bg-[#234553] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Save update</button>
+                                        <button id="account-long-term-edit-cancel-btn" type="button" class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500">Cancel</button>
+                                        <span id="account-long-term-edit-status" class="hidden text-sm text-brand-dark"></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2890,6 +3068,45 @@
                                         <p class="text-xs font-bold text-brand-dark mb-1">Sources</p>
                                         <p id="protocol-banner-sources-text" class="text-xs italic text-gray-500"></p>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View: My Stuff > Health History (read-only display of the structured record saved at intake) -->
+                    <div id="ai-view-account-health-history" class="ai-tool-view hidden" data-view-id="account-health-history">
+                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">Health History</h3>
+                        <p class="font-sans text-sm text-gray-500 mb-6">What you shared during your Interactive Metabolic Coach intake. This is used solely to personalize your plan and never replaces medical advice.</p>
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm space-y-4">
+                            <p id="account-hh-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t completed your Health History yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get started.</p>
+                            <div id="account-hh-content" class="hidden space-y-4">
+                                <p id="account-hh-safety-note" class="hidden text-xs font-semibold text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">This profile has a disordered-eating safety signal on file. Numeric weight/calorie targets are intentionally not used anywhere in this app for you, and we encourage having a therapist or doctor involved alongside this program.</p>
+                                <div class="grid sm:grid-cols-2 gap-4 text-sm">
+                                    <div><span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 block">Name</span><span id="account-hh-name"></span></div>
+                                    <div><span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 block">Age / Sex</span><span id="account-hh-age-sex"></span></div>
+                                    <div><span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 block">Weight / Height</span><span id="account-hh-weight-height"></span></div>
+                                    <div><span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 block">Sleep &amp; Routine</span><span id="account-hh-lifestyle"></span></div>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 block mb-1">Physical Health</span>
+                                    <p id="account-hh-physical" class="text-sm text-gray-700"></p>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 block mb-1">Emotional Eating Triggers</span>
+                                    <p id="account-hh-triggers" class="text-sm text-gray-700"></p>
+                                </div>
+                                <div class="grid sm:grid-cols-3 gap-4 text-sm">
+                                    <div><span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 block">Stress</span><span id="account-hh-stress"></span></div>
+                                    <div><span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 block">Body Image</span><span id="account-hh-body-image"></span></div>
+                                    <div><span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 block">Confidence</span><span id="account-hh-confidence"></span></div>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 block mb-1">Biggest Barrier</span>
+                                    <p id="account-hh-barrier" class="text-sm text-gray-700"></p>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 block mb-1">Family History</span>
+                                    <p id="account-hh-family" class="text-sm text-gray-700"></p>
                                 </div>
                             </div>
                         </div>
@@ -3804,9 +4021,9 @@
                 input_schema: {
                     type: 'object',
                     properties: {
-                        long_term_goal_text: { type: 'string', description: "A clean one-sentence restatement of the user's stated long-term goal." },
+                        long_term_goal_text: { type: 'string', description: "SHORT and FACTUAL ONLY — the concrete target plus timeframe, nothing else (e.g. \"Lose 10 lbs over 8 weeks\"). NEVER include emotional, comfort, identity, or motivational language here (e.g. \"feel more comfortable,\" \"feel secure and supported\") — that belongs solely in core_why_summary. Use their FINAL confirmed goal from the goal-confirmation exchange, not their first, un-confirmed answer." },
                         target_weight: { type: ['string', 'null'], description: 'Specific target weight/measurement if mentioned, otherwise null.' },
-                        timeframe: { type: ['string', 'null'], description: 'Specific timeframe if mentioned, otherwise null.' },
+                        timeframe: { type: ['string', 'null'], description: "The user's own stated timeframe for their long-term goal, restated cleanly (this is now asked directly, not just mentioned in passing) — null only if truly never given." },
                         core_why_summary: { type: 'string', description: 'ONE sentence, second person ("You want to..."), synthesizing the deepest motivation revealed across the why-chain — never the first surface-level answer.' },
                         monthly_goal: { type: 'string', description: 'One concrete, achievable checkpoint for the next 30 days.' },
                         weekly_goal: { type: 'string', description: 'One concrete, achievable checkpoint for the next 7 days.' },
@@ -3818,6 +4035,28 @@
                         sleep_baseline: { type: 'string', enum: ['good', 'inconsistent', 'poor'], description: "Their self-described sleep quality from the stress/sleep question. Default to 'inconsistent' only if truly not discernible." }
                     },
                     required: ['long_term_goal_text', 'core_why_summary', 'monthly_goal', 'weekly_goal', 'behavioral_style', 'stress_baseline', 'sleep_baseline']
+                }
+            };
+
+            // Structured-output tool for the Health History conversational
+            // items specifically (the form items are already structured —
+            // no extraction needed for those). Run once, right after the
+            // Health History conversation phase completes, so the
+            // disordered-eating safety signal is known BEFORE the
+            // long-term-goal question and why-dive begin.
+            const HEALTH_HISTORY_TOOL = {
+                name: 'record_health_history_conversation',
+                description: "Record the user's Health History conversational disclosures: eating-disorder history, out-of-control eating frequency, therapist involvement, biggest barrier, and family history.",
+                input_schema: {
+                    type: 'object',
+                    properties: {
+                        ed_history: { type: 'boolean', description: 'true if the user disclosed ever being diagnosed with or treated for an eating disorder, false otherwise.' },
+                        out_of_control_eating: { type: 'string', enum: ['never', 'rarely', 'often'], description: "How often, in the last 3 months, they've felt 'out of control' while eating." },
+                        works_with_therapist: { type: 'boolean', description: 'true if they currently work with a therapist or other mental health professional.' },
+                        biggest_barrier: { type: 'string', description: "Their biggest perceived barrier to success, in their own words." },
+                        family_history: { type: 'array', items: { type: 'string' }, description: 'Major diseases they mentioned running in their family (e.g. "type 2 diabetes", "heart disease"). Empty array if none mentioned.' }
+                    },
+                    required: ['ed_history', 'out_of_control_eating', 'works_with_therapist', 'biggest_barrier', 'family_history']
                 }
             };
 
@@ -3938,14 +4177,51 @@ Keep the tone encouraging, friendly, and highly practical. Do NOT use markdown s
 
             let userMetabolicProfile = null;
             let chatHistory = [];
+            let healthConvPhaseStartIndex = null;
             let goalPhaseStartIndex = null;
             let historyPhaseStartIndex = null;
             let currentGoalProfile = null;
+            // Health History hybrid intake state — the form half is collected
+            // directly (no AI needed), the conversational half is extracted
+            // once via HEALTH_HISTORY_TOOL right after that phase ends.
+            let healthHistoryFormData = null;
+            let healthHistoryConversationData = null;
+            let sessionDisorderedEatingSignal = false;
+            // Draft protocol held here after intake completes, awaiting the
+            // user's EXPLICIT confirmation (button click) before anything is
+            // saved — see the plan-confirmation loop below.
+            let pendingConfirmationProfile = null;
             const HISTORY_COMPLETE_MARKER = '[[HISTORY_COMPLETE]]';
-            // Safety cap in case the model ever forgets to emit the marker —
-            // 6 questions with room for a follow-up on every one, plus buffer.
-            const HISTORY_MAX_EXTRA_TURNS = 14;
-            const coachSystemInstruction = `You are Jaime Jenkins' Interactive Metabolic Intake Coach.
+            const HEALTH_HISTORY_COMPLETE_MARKER = '[[HEALTH_HISTORY_COMPLETE]]';
+            // Safety cap in case the model ever forgets to emit a marker —
+            // sized for the number of scripted questions in that phase, each
+            // with room for one follow-up, plus buffer.
+            const HISTORY_MAX_EXTRA_TURNS = 6;
+            const HEALTH_HISTORY_MAX_EXTRA_TURNS = 12;
+
+            // Built fresh per API call (not a static constant) so the script
+            // can react to the disordered-eating safety signal the moment
+            // it's known (computed right after the Health History
+            // conversation, before the long-term-goal question is ever
+            // asked) — see triggerHealthHistorySynthesis().
+            // "Teaching mode" — makes the coaching chat a genuine teaching
+            // tool (motivate + educate), not just a plan-generator. Written
+            // as a cross-cutting rule (like STAGED-APPROACH DISCLOSURES
+            // above it) since it can trigger during ANY of the 17 scripted
+            // steps, not just one — this is the only chat surface in the
+            // app today, so this content lives here rather than in a
+            // separate "ongoing chat" feature that doesn't exist yet.
+            function buildTeachingModeRules(disorderedEatingSignal) {
+                return `18. TEACHING MODE — this app is meant to be a teaching tool that motivates and educates, not just a plan-generator. Across the ENTIRE conversation (any step above), watch for the following and weave in brief teaching before returning to your next scheduled question:
+                a) CONDITION/SYMPTOM TEACHING: Whenever the user mentions a specific health condition, symptom, or diagnosis — their own or a family member's — explain, where genuinely relevant, in general informational terms how excess body fat, chronically high insulin, and elevated blood sugar could plausibly relate to or contribute to that condition. Ground this in the app's indexed functional-medicine documents: "The Systemic Map of Metabolic Dysfunction" connects insulin resistance to a wide range of conditions across body systems (cardiovascular, brain/cognitive, hormonal, gut, skin, joint/bone, etc.) — draw the specific mechanism from there when a matching condition comes up. "The Biology of 'Spilling Over'" (adipocyte hypertrophy and inflammation) explains how overfilled fat cells become inflammatory (rupture, immune cell infiltration, cytokine release) — useful for inflammation-related conditions. "The Five Pillars of Chronic Illness" exposome content (the oft-cited estimate that the average American consumes several pounds of synthetic food additives a year) is useful context for why whole-food eating matters beyond just calories/carbs. ALWAYS end this kind of explanation encouragingly, never alarmingly — e.g. "many people see meaningful improvement in [condition/symptom category] when they regulate blood sugar, work toward a healthy weight, and eat whole foods — this isn't a guarantee, and other factors matter too, but it's a genuinely powerful lever many people don't realize they have." Keep each explanation to 2-4 sentences woven naturally into your reply, not a lecture — do this at most once per distinct condition/topic per conversation; don't repeat the same explanation if it comes up again.
+                b) PESTICIDE/TOXIN EXPOSURE: If environmental toxin or pesticide exposure comes up (from your own explanation in (a) or the user asking directly), you may mention pre-harvest desiccation (some grains, notably wheat, are sprayed with herbicides shortly before harvest as a drying agent) as a real, documented practice, stated plainly. If citing a cumulative lifetime exposure estimate (e.g. "up to a gallon a year" of pesticide residue), ALWAYS frame it explicitly as an estimate ("some estimates suggest," "one commonly cited figure is") — never state it as a settled fact. You may reference real research context: peer-reviewed studies have found associations between dietary pesticide exposure and cardiovascular disease, diabetes, and all-cause mortality (for example, a Swedish cohort study of roughly 69,000 people followed over 15 years; a separate study found high-pesticide-residue produce showed no mortality benefit compared to about 36% lower mortality risk associated with low-pesticide-residue produce). Be transparent that researchers describe this evidence as "low to moderate" quality and call for more research — frame this as "growing research interest and some concerning associations," never as "proven to cause harm."
+                c) CELLULAR TOXIN BURDEN + DEEP HEALING REFERRAL: Specifically when the user describes having genuinely eaten clean/strict in the PAST (or real compliance with a past diet/plan) and NOT seeing the results they expected — a real plateau despite real effort, not just a passing complaint — explain, grounded in "The Five Pillars of Chronic Illness": past cumulative exposure to environmental chemicals (heavy metals, food additives, household cleaners, herbicides, pesticides, medications) can accumulate in the body over a lifetime and cause cellular damage; many synthetic chemicals are fat-loving (lipophilic) and get stored in fat tissue, nervous system tissue, and cell membranes when the body's detox pathways are overwhelmed; genetic variation (e.g. MTHFR, GST gene variations) affects how well someone's body clears stored toxins, which is why responses vary so much person to person; and because every organ, tissue, and cell in the body is made of cells, accumulated damage can affect function broadly and unpredictably depending on someone's individual exposure history and genetics. Offer this as a PLAUSIBLE explanation for a plateau, never a diagnosis of what's specifically wrong with them. When this pattern comes up, mention that a deeper, personalized cellular-healing approach may be worth exploring, specifically referencing the app's own "90-Day Mind-Body Deep Dive" program — frame this as a genuine, relevant next step for THIS specific situation, not something to push on everyone; only bring it up when this plateau-despite-real-effort pattern is actually present in the conversation.
+                TEACHING MODE TONE (applies to a/b/c): hopeful and explanatory throughout, never alarming. Never claim certainty about this specific user's body, toxin burden, genetic status, or what's specifically causing their situation — always "this could be part of what's going on," "many people see improvement," never a definitive diagnosis. Never claim the Deep Healing Intensive guarantees results.
+                TEACHING MODE GUARDRAILS: ${disorderedEatingSignal ? 'This user has a disordered-eating safety signal on file — keep any teaching-mode content focused on blood sugar regulation and whole-food eating, never weight-loss language, and be especially careful not to add any body-focused pressure through this content.' : 'If this user is later flagged with a disordered-eating safety signal, teaching-mode content for them must shift to focus on blood sugar regulation and whole foods, never weight-loss language, and must avoid adding body-focused pressure.'} Whenever teaching-mode content touches on something complex or potentially concerning (a real diagnosis, toxin burden, family disease history), pair it with the existing recommendation to discuss with a doctor or functional/naturopathic practitioner where appropriate.`;
+            }
+
+            function buildCoachSystemInstruction(disorderedEatingSignal) {
+                return `You are Jaime Jenkins' Interactive Metabolic Intake Coach.
             Your ultimate goal is to gather context from the user, understand their deeper motivation, and set up their goal tracking.
 
             RULES FOR INTERACTION:
@@ -3955,36 +4231,50 @@ Keep the tone encouraging, friendly, and highly practical. Do NOT use markdown s
                - Question 1: "What is your primary health goal right now, and what has been your biggest struggle in getting there?"
                - Question 2: "How would you describe your daily stress levels, and what does your sleep look like?"
                - Question 3: "What does a typical day of eating look like for you? Have you spent a lot of time dieting or restricting food in the past?"
-            4. AFTER those 3 answers, ask about their long-term goal, e.g. "Now for the big picture — what's the big goal you're working toward?" Wait for their answer.
-            5. AFTER their long-term goal answer, begin "the why deep dive" — exactly 3 rounds, one at a time:
-               - Round 1: ask why that goal is important to them.
-               - Round 2: take their answer and go one level deeper — ask why THAT matters to them.
-               - Round 3: go one level deeper again — ask why THAT matters to them.
-               Vary your phrasing naturally across the 3 rounds so it doesn't feel like a script, but keep the warm, curious tone of someone who genuinely wants to understand them.
-            6. CRITICAL for the why deep dive: surface answers like "I want to look good for a wedding" or "I want to get into a relationship" are STARTING POINTS, not endpoints. Never accept the first reason at face value — gently keep asking why until the answer reaches something that sounds like a deeper personal truth (self-worth, identity, being present for family/kids, longevity, fear of health decline, etc.), even if that takes all 3 rounds.
-            7. AFTER the 3rd why-round answer, respond with a brief, warm, 1-2 sentence acknowledgment of what you've learned about their deeper motivation, then move straight into the history & behavioral-pattern questions below (step 8). Do NOT generate a plan or protocol here — a separate process handles that after step 8 is fully done.
-            8. History & behavioral-pattern questions — ask these ONE AT A TIME, in order, adapting the wording naturally:
-               - Q1: Have they done any health or weight loss plans in the past? What were they?
-               - Q2: What do they think has kept them from reaching these goals previously?
-               - Q3: What is the biggest roadblock or hurdle that throws them off their plan, or keeps them from sticking to it?
-               - Q4: Are they more of an "all or nothing" person, or more of a "baby steps" person? If helpful, use this example to clarify what you're asking: "For example, some people have to go all in, because any amount of treats or carbs triggers hunger and makes them want to eat more — versus someone who does better easing in gradually."
-               - Q5: Do they have any major health concerns or diagnoses at this time?
-               - Q6: Do they have any other health-related concerns they think might be affecting their ability to lose weight or get healthy?
-            9. For each of the 6 questions above: if their answer is vague or begs a clarifying question (e.g., "I've tried everything" — ask what "everything" included; "I don't know" for the barrier question — gently probe once with a concrete prompt), ask ONE natural follow-up before moving to the next question. Do not ask more than one follow-up per question — after that follow-up (or if the initial answer was already clear), move on.
-            10. STAGED-APPROACH DISCLOSURES — watch for these two situations across the ENTIRE conversation, not just Q5/Q6, since they can come up anywhere:
+            4. AFTER those 3 answers, the app will show the user a quick Health History form (name, age, sex, physical health, lifestyle, etc.) itself — you do not ask for any of that. You'll see a system-style note in the transcript when the form is complete (and a summary of what was disclosed in it); once you see it, move to step 5.
+            5. Health History conversation — ask these ONE AT A TIME, in order, adapting the wording naturally:
+               - HQ1: "Have you ever been diagnosed with or treated for an eating disorder?" If yes, gently and warmly note in 1-2 sentences (not a lecture) that this program is self-directed and it's worth having a doctor or therapist involved alongside it, then move on.
+               - HQ2: "In the last 3 months, have there been times eating felt 'out of control'?" — listen for a never / rarely / often answer.
+               - HQ3: Whether they currently work with a therapist or other mental health professional.
+               - HQ4: Their biggest perceived barrier to success, in their own words — if helpful, you can offer examples like time, cravings, lack of knowledge, or social support, but don't limit them to a multiple-choice answer.
+               - HQ5: Whether major diseases (heart disease, diabetes, cancer, etc.) run in their family. If they name something, explain — in general, non-alarming, informational terms — that for most people, improving glucose/insulin regulation meaningfully supports these areas. NEVER frame this as a guarantee or as an assessment of their personal risk, just general information.
+               - Additionally, if at any point so far the user has described inflammation-type symptoms (joint pain, fatigue, brain fog, swelling) without mentioning that their inflammatory bloodwork came back normal, ask in passing whether their kidney and liver function have been checked, and mention the app's own Lab Markers tool as a way to explore that.
+            6. For each Health History question above: if their answer is vague or begs a clarifying question, ask ONE natural follow-up before moving to the next question. Do not ask more than one follow-up per question.
+            7. AFTER the Health History questions (and any single follow-ups) are done, respond with a brief warm 1-2 sentence acknowledgment, then on its own new line output exactly this marker and nothing else: [[HEALTH_HISTORY_COMPLETE]]
+               This marker is an internal signal for the app — never explain or reference it to the user.
+            8. AFTER Health History completes, ask about their long-term goal, e.g. "Now for the big picture — what's the big goal you're working toward?" Wait for their answer.${disorderedEatingSignal ? ' IMPORTANT SAFETY CONTEXT: this user has a disordered-eating safety signal on file. Do NOT ask for, reference, or use a specific weight number anywhere in this conversation, including here — frame the goal around how they want to feel and function (energy, sleep, strength, mood), never a number on a scale.' : ''}
+            9. AFTER their long-term goal answer, ask what timeframe they're hoping to achieve it in, e.g. "And what timeframe are you hoping for?" Once they answer, weave brief, honest, informational feedback on whether that timeframe is realistic into the SAME reply that then transitions into the next step (10) — do NOT turn this into a separate back-and-forth or wait for another reply before moving on.${disorderedEatingSignal ? ' IMPORTANT SAFETY CONTEXT: this user has a disordered-eating safety signal on file — keep this entirely about the timeframe for non-scale goals/habits (energy, sleep, strength, consistency), not weight-specific pacing, and do NOT do lbs/week math for this user.' : ` Use these general guidelines: roughly 1-2 lbs/week is a commonly cited sustainable rate for most people; people with significantly more weight to lose can often sustainably lose somewhat more per week, especially early on. The first 1-2 weeks on keto, an anti-inflammatory diet, or a whole-foods reset often show a larger initial drop than later weeks, due to water weight and reduced inflammation-related fluid retention — not fat loss at that same rate; briefly explain this so they understand why early weeks may look different from the sustainable long-term pace and don't get discouraged when the rate naturally slows after that (this ties into the "weekly progress isn't linear" idea they'll see again later). If their stated timeframe implies a pace notably faster than what's realistic (e.g. wanting to lose 30 lbs in a month), gently flag this as likely too aggressive to sustain safely and suggest a more realistic timeframe range instead — framed supportively, never as a rejection of their goal. If their timeframe is already realistic or conservative, affirm that rather than manufacturing a concern that isn't there. Do the actual pace math when their answers give you enough to work with (an amount and a timeframe); otherwise keep this qualitative and general.`}
+            10. GOAL CONFIRMATION — immediately after the timeframe discussion, state back a clean, short version of their goal, e.g. "So to confirm — your main goal is to [lose 10 lbs over the next 8 weeks / whatever they've said]. Does that sound right, or would you like to adjust it?" Wait for their reply.
+                - If they confirm as-is, briefly acknowledge and move straight to step 11 in that same reply.
+                - If they want to adjust it (e.g. "actually make it 15 lbs"), incorporate the change, restate the updated goal once more for a final confirmation, and then move to step 11 regardless of their reply to that restatement. Do NOT allow more than ONE adjustment round — this is a quick sanity check, not an open-ended negotiation.
+            11. AFTER goal confirmation, ask why now feels like the right time for them to focus on this — one warm, open question. Wait for their answer; it feeds directly into the why deep dive next.
+            12. AFTER the why-now answer, begin "the why deep dive" — exactly 3 rounds, one at a time:
+                - Round 1: ask why that goal is important to them.
+                - Round 2: take their answer and go one level deeper — ask why THAT matters to them.
+                - Round 3: go one level deeper again — ask why THAT matters to them.
+                Vary your phrasing naturally across the 3 rounds so it doesn't feel like a script, but keep the warm, curious tone of someone who genuinely wants to understand them. Where it genuinely fits (not forced, not necessarily every round), gently explore whether self-worth or how they see their own value plays into their motivation — this is often a real, unspoken driver of why people don't prioritize their health, and surfacing it when it naturally fits their answers can be part of the deepest layer of "why."
+            13. CRITICAL for the why deep dive: surface answers like "I want to look good for a wedding" or "I want to get into a relationship" are STARTING POINTS, not endpoints. Never accept the first reason at face value — gently keep asking why until the answer reaches something that sounds like a deeper personal truth (self-worth, identity, being present for family/kids, longevity, fear of health decline, etc.), even if that takes all 3 rounds.
+            14. AFTER the 3rd why-round answer, respond with a brief, warm, 1-2 sentence acknowledgment of what you've learned about their deeper motivation, then move straight into the final history questions below (step 15). Do NOT generate a plan or protocol here — a separate process handles that after step 15 is fully done.
+            15. Final history & behavioral-pattern questions — ask these ONE AT A TIME, in order, adapting the wording naturally:
+                - Q1: Have they done any health or weight loss plans in the past? What were they?
+                - Q2: Are they more of an "all or nothing" person, or more of a "baby steps" person? If helpful, use this example to clarify what you're asking: "For example, some people have to go all in, because any amount of treats or carbs triggers hunger and makes them want to eat more — versus someone who does better easing in gradually."
+            16. For each of the 2 questions above: if their answer is vague or begs a clarifying question (e.g., "I've tried everything" — ask what "everything" included), ask ONE natural follow-up before moving to the next question. Do not ask more than one follow-up per question.
+            17. STAGED-APPROACH DISCLOSURES — watch for these two situations across the ENTIRE conversation (they can come up anywhere, including the Health History form/conversation the app already told you about):
                 - Chronic fatigue combined with a chronic infection, or a similarly severe fatigue-presenting chronic condition.
                 - Diabetes, especially Type 1.
                 The moment either comes up, before moving to your next scheduled question, respond in your own warm words (not a script, not clinical-sounding) covering: (a) a brief acknowledgment of what they shared, (b) that given this, their plan will start gentle and staged rather than aggressive — nervous-system regulation first (breathing, gentle movement, sleep hygiene, slow gradual dietary change) for chronic fatigue/infection; getting to 3 steady meals with gradually smaller carb portions at each meal, never a specific gram target, for diabetes — and (c) an explicit note that this is exactly the kind of situation where real medical/practitioner support matters — for diabetes specifically, that any carbohydrate change must be coordinated with their prescribing doctor since insulin dosing depends on food intake. Keep this to 2-3 sentences woven into your reply, not a lecture. Only do this once per disclosure — don't repeat it every subsequent message.
-            11. AFTER all 6 history questions (and any single follow-ups) are answered, respond with a brief, warm 1-2 sentence closing acknowledgment thanking them for sharing. Then, on its own new line at the very end of that same message, output exactly this marker and nothing else on that line: [[HISTORY_COMPLETE]]
+            ${buildTeachingModeRules(disorderedEatingSignal)}
+            19. AFTER both final history questions (and any single follow-ups) are answered, respond with a brief, warm 1-2 sentence closing acknowledgment thanking them for sharing. Then, on its own new line at the very end of that same message, output exactly this marker and nothing else on that line: [[HISTORY_COMPLETE]]
                 This marker is an internal signal for the app, not something the user should be told about — never explain it or reference it in your visible message.
-            12. Keep every conversational response short, empathetic, and encouraging — never more than a few sentences, and never ask more than one question per message.`;
+            20. Keep every conversational response short, empathetic, and encouraging — never more than a few sentences, and never ask more than one question per message.${disorderedEatingSignal ? '\n            21. SAFETY: this user has a disordered-eating safety signal on file. Never invent or assert a psychological reason for their eating patterns — only reflect back what they\'ve explicitly told you.' : ''}`;
+            }
 
             // Extracts structured goal data from a completed why-dive transcript.
             // Kept as a separate, non-conversational call (using GOAL_PROFILE_TOOL
             // via callClaudeTool) so the interview above can stay warm and
             // free-form while this stays reliably structured — the shape is
             // enforced by the tool schema, not by prose instructions here.
-            function buildGoalExtractionInstruction() {
+            function buildGoalExtractionInstruction(disorderedEatingSignal) {
                 return `You are a data-extraction assistant for Jaime Jenkins' metabolic health coaching app. You will be given a full intake transcript: the user's primary goal/struggle, stress/sleep, eating pattern, their long-term goal, a 3-round "why" chain exploring their deeper motivation, and a history/behavioral-pattern section (past plans tried, self-identified barriers, all-or-nothing vs. gradual tendency, and any disclosed health conditions — possibly with follow-up exchanges on any of these). Call the record_goal_profile tool with the extracted fields.
 
 GOAL-SETTING PRINCIPLES (apply these when writing monthly_goal and weekly_goal):
@@ -3996,16 +4286,23 @@ GOAL-SETTING PRINCIPLES (apply these when writing monthly_goal and weekly_goal):
 - If the transcript indicates a history of chronic dieting/restriction, prioritize rebuilding (adequate protein and fat) over further restriction.
 - If behavioral_style comes out as all_or_nothing, do NOT let monthly_goal or weekly_goal suggest moderation-style framing (e.g. "allow yourself a treat sometimes") — keep them clear-cut and structured instead.
 - If self_identified_barrier or past_plans_tried reveals a specific pattern that already failed (e.g. "always quits after 2 weeks," "couldn't sustain giving up carbs completely"), do not point monthly_goal/weekly_goal back toward that same approach.
+- TIMEFRAME REALISM: if, during the timeframe discussion, the coach flagged the user's originally stated timeframe as too aggressive and suggested a more realistic pace instead, ground monthly_goal and weekly_goal in that REALISTIC pace the coach actually recommended — never in the user's original overly-aggressive timeframe, even though timeframe itself should still capture what the user originally said.
 
-core_why_summary must reflect the DEEPEST motivation revealed across the why-chain — never the first surface-level answer. disclosed_health_conditions should capture anything disclosed anywhere in the transcript, not only from the dedicated health questions. stress_baseline and sleep_baseline should be extracted primarily from their answer to "How would you describe your daily stress levels, and what does your sleep look like?", but also weighed against anything else in the transcript that speaks to stress or sleep (e.g. a disclosed health condition, a mention of insomnia or a demanding job).`;
+GOAL vs. WHY — keep these two fields strictly separate, never duplicating content between them:
+- long_term_goal_text is SHORT and FACTUAL ONLY: the concrete target plus timeframe, restated cleanly from their FINAL confirmed goal in the goal-confirmation exchange (e.g. "Lose 10 lbs over 8 weeks"). Never include emotional, comfort, identity, or motivational language here.
+- core_why_summary carries ALL of that emotional/motivational content instead — comfort, security, self-worth, family, identity, etc. — synthesized into one sentence reflecting the DEEPEST motivation revealed across the why-chain, never the first surface-level answer, and never just repeating the goal statement in different words.
+
+disclosed_health_conditions should capture anything disclosed anywhere in the transcript, not only from the dedicated health questions. stress_baseline and sleep_baseline should be extracted primarily from their answer to "How would you describe your daily stress levels, and what does your sleep look like?", but also weighed against anything else in the transcript that speaks to stress or sleep (e.g. a disclosed health condition, a mention of insomnia or a demanding job).${disorderedEatingSignal ? '\n\nSAFETY: this user has a disordered-eating safety signal on file. target_weight MUST be null regardless of anything mentioned in the transcript — never record a goal-weight number for this user.' : ''}`;
             }
 
-            function buildGoalUpdateInstruction() {
+            function buildGoalUpdateInstruction(disorderedEatingSignal) {
                 return `You are a data-extraction assistant for Jaime Jenkins' metabolic health coaching app. The user is UPDATING a goal they already set. You'll be given their previous goal/why/monthly/weekly goals and behavioral/history tags, their updated goal text, and their stated reason for changing it. Call the record_goal_profile tool with the re-synthesized fields in light of the update and stated reason.
 
 Carry forward past_plans_tried, self_identified_barrier, behavioral_style, disclosed_health_conditions, stress_baseline, and sleep_baseline UNCHANGED from the previous values unless the stated reason for the update directly speaks to one of them.
 
-Apply the same goal-setting principles as before: Jaime Jenkins' framework first, max 3 meals/day, no calorie-counting language, safety-first if stress/illness is indicated, rebuilding-first if chronic dieting history is indicated, clear-cut (not moderation-style) framing if behavioral_style is all_or_nothing.`;
+GOAL vs. WHY — keep strictly separate, never duplicating content: long_term_goal_text is SHORT and FACTUAL ONLY (the concrete target plus timeframe, e.g. "Lose 10 lbs over 8 weeks") — never emotional/comfort/identity language. core_why_summary carries all of that emotional/motivational content instead; if the reason for this update doesn't speak to their deeper why, carry the previous core_why_summary forward rather than inventing a new one.
+
+Apply the same goal-setting principles as before: Jaime Jenkins' framework first, max 3 meals/day, no calorie-counting language, safety-first if stress/illness is indicated, rebuilding-first if chronic dieting history is indicated, clear-cut (not moderation-style) framing if behavioral_style is all_or_nothing.${disorderedEatingSignal ? ' SAFETY: this user has a disordered-eating safety signal on file — target_weight MUST be null regardless of anything mentioned.' : ''}`;
             }
 
             // ============================================================
@@ -4076,7 +4373,7 @@ Apply the same goal-setting principles as before: Jaime Jenkins' framework first
                 }
             };
 
-            function buildProtocolBuilderInstruction(corpusText) {
+            function buildProtocolBuilderInstruction(corpusText, disorderedEatingSignal) {
                 return `You are Jaime Jenkins' Protocol Builder for the metabolic health coaching app. Using ONLY the indexed reference material below plus the user's intake profile, generate their personalized starting protocol by calling the record_protocol tool.
 
 REFERENCE MATERIAL (the app's own course lessons and functional-medicine content — cite specific lessons/documents by name in your rationale; content marked [SAFETY-CRITICAL] is the grounding for conservative recommendations):
@@ -4084,16 +4381,19 @@ REFERENCE MATERIAL (the app's own course lessons and functional-medicine content
 ${corpusText}
 --- REFERENCE MATERIAL END ---
 
-DECISION RULES:
-- STAGED-PLAN CASES — evaluate these two FIRST, before any other rule below:
+DECISION RULES:${disorderedEatingSignal ? `
+- DISORDERED-EATING SAFETY CASE — evaluate this FIRST, before any other rule below: this user has a disordered-eating safety signal on file. rationale and starter_habits MUST stay qualitative and food-quality-focused — NEVER a specific calorie target, macro gram target, or numeric weight-loss timeline. Frame progress around non-scale outcomes (energy, sleep, strength, mood), never a number on a scale. macro_approach MUST be "safe_starches" or "flexible" (never "strict_low_carb"), and eating_pattern MUST be "rule_of_3s" (never a fasting-window pattern). professional_guidance_note MUST recommend professional support (a therapist and/or doctor) alongside this app, framed as a genuine care team, not a replacement for the app. Never assert or imply a psychological reason for their eating patterns in rationale — only reflect back what was explicitly said in the transcript.` : ''}
+- STAGED-PLAN CASES — evaluate these FIRST (after the disordered-eating case above, if applicable), before any other rule below:
   - Chronic fatigue combined with a chronic infection, or a similarly severe fatigue-presenting chronic condition, disclosed in disclosed_health_conditions or implied by the intake transcript: macro_approach MUST be "safe_starches" and eating_pattern MUST be "rule_of_3s" — never strict_low_carb or aggressive carbohydrate restriction, regardless of what other factors might otherwise suggest. Populate staged_plan with a Stage 1 entry whose focus is nervous-system regulation (breathing, gentle movement, sleep hygiene) as the primary emphasis, with only gentle, gradual dietary changes as secondary. rationale MUST explicitly note that exercise should increase slowly and only as energy allows, never on a fixed schedule. professional_guidance_note MUST clearly state this situation warrants real medical/practitioner support — the plan is a starting point, not a substitute for that care.
-  - Diabetes, especially Type 1, disclosed in disclosed_health_conditions or implied by the intake transcript: macro_approach MUST be "safe_starches" and eating_pattern MUST be "rule_of_3s" — never strict_low_carb or any jump directly into aggressive carbohydrate reduction, since rapid carb reduction can be dangerous for someone managing insulin dosing. Populate staged_plan with a Stage 1 entry focused on reaching exactly 3 meals/day with no snacking (unless managing a hypoglycemic emergency) while reducing carbohydrates gradually at each meal rather than all at once. Never state a specific carbohydrate gram target, in this stage or any later one — that crosses into medical advice. professional_guidance_note MUST be an explicit, prominent reminder that any carbohydrate/insulin adjustment, at any stage, must be coordinated with their prescribing doctor, since insulin dosing depends on food intake and this plan cannot safely manage that relationship.
+  - Diabetes, especially Type 1 — disclosed in disclosed_health_conditions, implied by the intake transcript, OR flagged directly via the Health History form's diabetes field: macro_approach MUST be "safe_starches" and eating_pattern MUST be "rule_of_3s" — never strict_low_carb or any jump directly into aggressive carbohydrate reduction, since rapid carb reduction can be dangerous for someone managing insulin dosing. Populate staged_plan with a Stage 1 entry focused on reaching exactly 3 meals/day with no snacking (unless managing a hypoglycemic emergency) while reducing carbohydrates gradually at each meal rather than all at once. Never state a specific carbohydrate gram target, in this stage or any later one — that crosses into medical advice. professional_guidance_note MUST be an explicit, prominent reminder that any carbohydrate/insulin adjustment, at any stage, must be coordinated with their prescribing doctor, since insulin dosing depends on food intake and this plan cannot safely manage that relationship.
   - For every other user, staged_plan and professional_guidance_note MUST be null — do not invent staging or a guidance note when neither condition applies.
 - If stress_baseline is "high" OR disclosed_health_conditions is non-empty: macro_approach MUST be "safe_starches" (never "strict_low_carb"), and eating_pattern must avoid aggressive fasting (prefer "rule_of_3s" over "time_restricted_eating") — ground this specifically in the [SAFETY-CRITICAL] material.
 - If sleep_baseline is "poor" AND stress_baseline is at least "moderate": lean further conservative (safe_starches, rule_of_3s), not more aggressive.
-- Only choose "strict_low_carb" or "time_restricted_eating" when stress_baseline is "low" or "moderate" AND there are no disclosed_health_conditions.
+- Only choose "strict_low_carb" or "time_restricted_eating" when stress_baseline is "low" or "moderate" AND there are no disclosed_health_conditions${disorderedEatingSignal ? ' AND there is no disordered-eating safety signal' : ''}.
 - If behavioral_style is "all_or_nothing": keep starter_habits and rationale clear-cut and structured, not moderation-framed ("allow yourself a treat sometimes").
 - starter_habits must be grounded in the reference material above and prioritized by relevance to self_identified_barrier and past_plans_tried — not a generic "eat more veggies" list, and never repeating an approach past_plans_tried already shows failed.
+- If food allergies or diagnosed sensitivities are noted in the health history, never suggest starter habits that conflict with them.
+- Fat distribution (midsection/abdomen vs. hips/thighs vs. evenly distributed) reflects the visceral-vs-subcutaneous fat distinction covered in the indexed material — midsection-predominant distribution is associated with more metabolically active visceral fat, which can support (never solely justify) a more conservative macro_approach when combined with the other signals above. Never treat this alone as reason to escalate to strict_low_carb.
 - rationale must be plain-language, second person, and cite real lesson/document names from the reference material — never invent a source.
 - Never suggest more than 3 meals/day or calorie-counting language.`;
             }
@@ -4109,6 +4409,8 @@ DECISION RULES:
                 try {
                     var corpus = await fetchProtocolCorpus();
                     var corpusText = buildProtocolCorpusText(corpus);
+                    var hh = profile.health_history || {};
+                    var hhPhysical = hh.physical || {};
                     var userTurn = 'GOAL: ' + ((profile.long_term_goal && profile.long_term_goal.text) || 'none') +
                         '\nCORE WHY: ' + (profile.core_why_summary || 'none') +
                         '\nBEHAVIORAL STYLE: ' + (profile.behavioral_style || 'mixed_unsure') +
@@ -4116,9 +4418,18 @@ DECISION RULES:
                         '\nPAST PLANS TRIED: ' + ((profile.past_plans_tried && profile.past_plans_tried.join(', ')) || 'none') +
                         '\nDISCLOSED HEALTH CONDITIONS: ' + ((profile.disclosed_health_conditions && profile.disclosed_health_conditions.join(', ')) || 'none') +
                         '\nSTRESS BASELINE: ' + (profile.stress_baseline || 'moderate') +
-                        '\nSLEEP BASELINE: ' + (profile.sleep_baseline || 'inconsistent');
+                        '\nSLEEP BASELINE: ' + (profile.sleep_baseline || 'inconsistent') +
+                        '\nHEALTH HISTORY — DIABETES: ' + (hhPhysical.diabetes || 'none') +
+                        '\nHEALTH HISTORY — FAT DISTRIBUTION: ' + (hhPhysical.fat_distribution || 'not_sure') +
+                        '\nHEALTH HISTORY — FOOD ALLERGIES: ' + ((hhPhysical.food_allergies && hhPhysical.food_allergies.join(', ')) || 'none') +
+                        '\nHEALTH HISTORY — SENSITIVITIES: ' + ((hhPhysical.sensitivities && hhPhysical.sensitivities.join(', ')) || 'none') +
+                        '\nHEALTH HISTORY — FAMILY DISEASE HISTORY: ' + ((hh.family_history && hh.family_history.join(', ')) || 'none') +
+                        '\nDISORDERED-EATING SAFETY SIGNAL: ' + (profile.disordered_eating_signal ? 'YES' : 'no');
+                    if (profile._feedback) {
+                        userTurn += '\n\nUSER FEEDBACK ON DRAFT PLAN (adjust the plan to address this): ' + profile._feedback;
+                    }
 
-                    const parsed = await extractToolFields(userTurn, buildProtocolBuilderInstruction(corpusText), 'protocol', PROTOCOL_TOOL, 'protocol-builder');
+                    const parsed = await extractToolFields(userTurn, buildProtocolBuilderInstruction(corpusText, !!profile.disordered_eating_signal), 'protocol', PROTOCOL_TOOL, 'protocol-builder');
                     if (!parsed) return null;
                     return {
                         eating_pattern: parsed.eating_pattern || 'rule_of_3s',
@@ -4162,6 +4473,11 @@ DECISION RULES:
                 if (profile.self_identified_barrier) lines.push('Self-identified barrier: ' + profile.self_identified_barrier);
                 if (profile.past_plans_tried && profile.past_plans_tried.length) lines.push('Past plans already tried (avoid repeating what failed): ' + profile.past_plans_tried.join(', '));
                 if (profile.disclosed_health_conditions && profile.disclosed_health_conditions.length) lines.push('Disclosed health conditions (not a diagnosis, just context): ' + profile.disclosed_health_conditions.join(', '));
+                if (profile.health_history) {
+                    var hhp = profile.health_history.physical || {};
+                    if (hhp.food_allergies && hhp.food_allergies.length) lines.push('Food allergies (NEVER suggest these ingredients): ' + hhp.food_allergies.join(', '));
+                    if (hhp.sensitivities && hhp.sensitivities.length) lines.push('Known sensitivities: ' + hhp.sensitivities.join(', '));
+                }
                 if (profile.protocol) {
                     var p = profile.protocol;
                     lines.push('Eating pattern: ' + (EATING_PATTERN_LABELS[p.eating_pattern] || p.eating_pattern));
@@ -4171,6 +4487,13 @@ DECISION RULES:
                         lines.push('IMPORTANT — this user is on a staged plan, currently ' + p.staged_plan[0].stage_label + ': ' + p.staged_plan[0].focus + ' Do NOT suggest anything more aggressive than this stage (no strict keto, no aggressive carb cutting) regardless of what the recipe request implies.');
                     }
                     if (p.professional_guidance_note) lines.push('Medical note (context only, do not repeat verbatim unless relevant): ' + p.professional_guidance_note);
+                }
+                // Single choke point for the disordered-eating safety flag —
+                // every feature that builds its system prompt from this text
+                // (Meal Coach, Fridge Chef) automatically inherits these
+                // rules, so no individual feature can forget to check it.
+                if (profile.disordered_eating_signal) {
+                    lines.push('SAFETY FLAG — DISORDERED EATING SIGNAL: this user has disclosed a history/signal consistent with disordered eating. NEVER reference or ask for a specific goal weight number. NEVER give specific calorie targets, macro gram targets, or numeric weight-loss timelines — keep guidance qualitative and food-quality-focused. NEVER assert or invent a psychological reason for their eating patterns — only reflect back what they have explicitly said. Treat this with the same seriousness as a disclosed medical condition: gently support the idea of professional support (therapist/doctor) alongside this app, without being alarming.');
                 }
                 return lines.join('\n');
             }
@@ -4204,8 +4527,20 @@ DECISION RULES:
                 if(!chatWindow) return;
                 chatWindow.innerHTML = '';
                 chatHistory = [];
+                healthConvPhaseStartIndex = null;
                 goalPhaseStartIndex = null;
                 historyPhaseStartIndex = null;
+                healthHistoryFormData = null;
+                healthHistoryConversationData = null;
+                sessionDisorderedEatingSignal = false;
+                pendingConfirmationProfile = null;
+                awaitingPlanConfirmation = false;
+                const healthHistoryFormPanel = document.getElementById('health-history-form-panel');
+                const planConfirmationPanel = document.getElementById('plan-confirmation-panel');
+                const chatInputRow = document.getElementById('chat-input-row');
+                if (healthHistoryFormPanel) healthHistoryFormPanel.classList.add('hidden');
+                if (planConfirmationPanel) planConfirmationPanel.classList.add('hidden');
+                if (chatInputRow) chatInputRow.classList.remove('hidden');
                 const initialGreeting = "Hi there! I'm your AI Metabolic Coach. I'm going to ask you a few quick questions so I can build a custom, science-backed protocol tailored exactly to your biology.<br><br><strong>First: What is your primary health goal right now, and what has been your biggest struggle in getting there?</strong>";
                 appendChatMessage('ai', initialGreeting);
                 chatHistory.push({ role: "assistant", content: initialGreeting });
@@ -4215,6 +4550,7 @@ DECISION RULES:
                 currentGoalProfile = profile;
                 renderAccountNameDisplay(profile);
                 renderAccountGoalPanels(profile);
+                renderAccountHealthHistory(profile);
 
                 var banner = document.getElementById('goal-why-banner');
                 if (!banner || !profile) return;
@@ -4227,13 +4563,9 @@ DECISION RULES:
 
                 var goalText = document.getElementById('goal-banner-goal-text');
                 var whyText = document.getElementById('goal-banner-why-text');
-                var monthlyText = document.getElementById('goal-banner-monthly-text');
-                var weeklyText = document.getElementById('goal-banner-weekly-text');
-                var goalInput = document.getElementById('goal-edit-goal-input');
+                var goalInput = document.getElementById('account-long-term-edit-goal-input');
                 if (goalText) goalText.textContent = (profile.long_term_goal && profile.long_term_goal.text) || '';
                 if (whyText) whyText.textContent = profile.core_why_summary || '';
-                if (monthlyText) monthlyText.textContent = profile.monthly_goal || '';
-                if (weeklyText) weeklyText.textContent = profile.weekly_goal || '';
                 if (goalInput) goalInput.value = (profile.long_term_goal && profile.long_term_goal.text) || '';
                 banner.classList.remove('hidden');
             }
@@ -4291,9 +4623,79 @@ DECISION RULES:
                 }
             }
 
+            // My Stuff > Health History — read-only display of the structured
+            // record saved at intake (form fields + conversational fields).
+            function renderAccountHealthHistory(profile) {
+                var hh = profile && profile.health_history;
+                var hasHealthHistory = !!(hh && hh.full_name);
+
+                var content = document.getElementById('account-hh-content');
+                var empty = document.getElementById('account-hh-empty');
+                if (content) content.classList.toggle('hidden', !hasHealthHistory);
+                if (empty) empty.classList.toggle('hidden', hasHealthHistory);
+                if (!hasHealthHistory) return;
+
+                var physical = hh.physical || {};
+                var lifestyle = hh.lifestyle || {};
+
+                var safetyNote = document.getElementById('account-hh-safety-note');
+                if (safetyNote) safetyNote.classList.toggle('hidden', !profile.disordered_eating_signal);
+
+                var nameEl = document.getElementById('account-hh-name');
+                if (nameEl) nameEl.textContent = hh.full_name || '';
+
+                var ageSexEl = document.getElementById('account-hh-age-sex');
+                if (ageSexEl) ageSexEl.textContent = (hh.age || '?') + ' / ' + (hh.biological_sex || 'not specified') + (hh.gender_identity ? ' (' + hh.gender_identity + ')' : '');
+
+                var weightHeightEl = document.getElementById('account-hh-weight-height');
+                if (weightHeightEl) weightHeightEl.textContent = (hh.current_weight ? hh.current_weight + ' lbs' : 'not provided') + ' / ' + (hh.height || 'not provided');
+
+                var lifestyleEl = document.getElementById('account-hh-lifestyle');
+                if (lifestyleEl) {
+                    lifestyleEl.textContent = (lifestyle.avg_sleep || '').replace('_', '-') + ' hrs, ' +
+                        (lifestyle.wake_refreshed ? 'wakes refreshed' : 'does not wake refreshed') + ', ' +
+                        (lifestyle.routine_type || '') + ' routine, meal prep ' + (lifestyle.meal_prep_frequency || '');
+                }
+
+                var physicalItems = [];
+                if (physical.thyroid) physicalItems.push('thyroid issues');
+                if (physical.pcos_insulin_resistance) physicalItems.push('PCOS/insulin resistance');
+                if (physical.diabetes && physical.diabetes !== 'none') physicalItems.push('diabetes (' + physical.diabetes + ')');
+                if (physical.hormonal_shifts) physicalItems.push('significant hormonal shifts');
+                if (physical.heart_circulatory) physicalItems.push('heart/circulatory conditions');
+                if (physical.heart_bp_bloodsugar_meds) physicalItems.push('on heart/BP/blood-sugar medication');
+                if (physical.glp1_meds) physicalItems.push('on a GLP-1 medication');
+                if (physical.recent_injury_surgery) physicalItems.push('recent injury or surgery');
+                if (physical.chronic_pain_locations && physical.chronic_pain_locations.length) physicalItems.push('chronic pain: ' + physical.chronic_pain_locations.join(', '));
+                if (physical.food_allergies && physical.food_allergies.length) physicalItems.push('food allergies: ' + physical.food_allergies.join(', '));
+                if (physical.sensitivities && physical.sensitivities.length) physicalItems.push('sensitivities: ' + physical.sensitivities.join(', '));
+                var FAT_DISTRIBUTION_DISPLAY_LABELS = { midsection: 'mostly midsection/abdomen', hips_thighs: 'mostly hips/thighs', evenly_distributed: 'evenly distributed' };
+                if (physical.fat_distribution && FAT_DISTRIBUTION_DISPLAY_LABELS[physical.fat_distribution]) physicalItems.push('holds weight ' + FAT_DISTRIBUTION_DISPLAY_LABELS[physical.fat_distribution]);
+                var physicalEl = document.getElementById('account-hh-physical');
+                if (physicalEl) physicalEl.textContent = physicalItems.length ? physicalItems.join('; ') : 'None disclosed.';
+
+                var triggersEl = document.getElementById('account-hh-triggers');
+                if (triggersEl) triggersEl.textContent = (hh.emotional_triggers && hh.emotional_triggers.length) ? hh.emotional_triggers.join(', ') : 'None disclosed.';
+
+                var stressEl = document.getElementById('account-hh-stress');
+                if (stressEl) stressEl.textContent = (hh.stress_level != null ? hh.stress_level : '?') + '/10';
+
+                var bodyImageEl = document.getElementById('account-hh-body-image');
+                if (bodyImageEl) bodyImageEl.textContent = (hh.body_image != null ? hh.body_image : '?') + '/10';
+
+                var confidenceEl = document.getElementById('account-hh-confidence');
+                if (confidenceEl) confidenceEl.textContent = (hh.confidence != null ? hh.confidence : '?') + '/10';
+
+                var barrierEl = document.getElementById('account-hh-barrier');
+                if (barrierEl) barrierEl.textContent = hh.biggest_barrier || 'Not shared.';
+
+                var familyEl = document.getElementById('account-hh-family');
+                if (familyEl) familyEl.textContent = (hh.family_history && hh.family_history.length) ? hh.family_history.join(', ') : 'None disclosed.';
+            }
+
             // Left-nav layout for the AI Tools tab: exactly one tool/account
             // view visible at a time, matching the nav item clicked.
-            const AI_TOOL_VIEW_IDS = ['coach', 'meal-planner', 'fridge-chef', 'lab-tool', 'account-long-term', 'account-weekly', 'account-purpose', 'account-protocol', 'account-recipes'];
+            const AI_TOOL_VIEW_IDS = ['coach', 'meal-planner', 'fridge-chef', 'lab-tool', 'account-long-term', 'account-weekly', 'account-purpose', 'account-protocol', 'account-health-history', 'account-recipes'];
 
             function switchAiToolsView(viewName) {
                 if (AI_TOOL_VIEW_IDS.indexOf(viewName) === -1) viewName = 'coach';
@@ -4504,6 +4906,41 @@ DECISION RULES:
                 return extractToolFields(userMessage, systemInstruction, requestType, GOAL_PROFILE_TOOL, logLabel);
             }
 
+            // Extracts the Health History conversational fields (ED history,
+            // out-of-control eating frequency, therapist, barrier, family
+            // history) right after that phase ends — BEFORE the long-term
+            // goal question, so the disordered-eating safety signal (if any)
+            // is known before goal-setting and the why-dive even begin.
+            function buildHealthHistoryExtractionInstruction() {
+                return `You are a data-extraction assistant for Jaime Jenkins' metabolic health coaching app. You will be given the Health History conversation transcript (eating-disorder history question, out-of-control eating frequency, therapist involvement, biggest barrier, family history — possibly with follow-up exchanges on any of these). Call the record_health_history_conversation tool with the extracted fields. Be conservative and literal — only mark ed_history true if they clearly said yes to having been diagnosed with or treated for an eating disorder.`;
+            }
+
+            async function triggerHealthHistorySynthesis(healthConvTranscript) {
+                var transcriptText = healthConvTranscript.map(function(m) {
+                    return (m.role === 'user' ? 'User' : 'Coach') + ': ' + String(m.content).replace(/<[^>]+>/g, ' ');
+                }).join('\n\n');
+                try {
+                    const parsed = await extractToolFields(transcriptText, buildHealthHistoryExtractionInstruction(), 'protocol', HEALTH_HISTORY_TOOL, 'health-history-synthesis');
+                    if (!parsed) return;
+                    healthHistoryConversationData = {
+                        ed_history: !!parsed.ed_history,
+                        out_of_control_eating: parsed.out_of_control_eating || 'never',
+                        works_with_therapist: !!parsed.works_with_therapist,
+                        biggest_barrier: parsed.biggest_barrier || '',
+                        family_history: parsed.family_history || []
+                    };
+                    // Permanent safety flag — ANY of these three triggers it
+                    // (the body-image half was already checked at form
+                    // submission time). Once true, stays true for the rest of
+                    // this intake session.
+                    if (healthHistoryConversationData.ed_history || healthHistoryConversationData.out_of_control_eating === 'often') {
+                        sessionDisorderedEatingSignal = true;
+                    }
+                } catch (e) {
+                    console.error('triggerHealthHistorySynthesis failed', e);
+                }
+            }
+
             async function triggerGoalSynthesis(whyDiveTranscript, historyTranscript) {
                 var loadingId = 'goal-loading-' + Date.now();
                 var loadingDiv = document.createElement('div');
@@ -4518,10 +4955,17 @@ DECISION RULES:
                 }).join('\n\n');
 
                 try {
-                    const parsed = await extractGoalProfileFields(transcriptText, buildGoalExtractionInstruction(), 'protocol', 'goal-synthesis');
+                    const parsed = await extractGoalProfileFields(transcriptText, buildGoalExtractionInstruction(sessionDisorderedEatingSignal), 'protocol', 'goal-synthesis');
                     if (!parsed) throw new Error('Could not extract goal synthesis');
                     const profile = {
-                        long_term_goal: { text: parsed.long_term_goal_text || '', target_weight: parsed.target_weight || null, timeframe: parsed.timeframe || null },
+                        long_term_goal: {
+                            text: parsed.long_term_goal_text || '',
+                            // Belt-and-suspenders on top of the prompt instruction —
+                            // never store a goal-weight number for a flagged user,
+                            // regardless of what the model returned.
+                            target_weight: sessionDisorderedEatingSignal ? null : (parsed.target_weight || null),
+                            timeframe: parsed.timeframe || null
+                        },
                         why_deep_dive_transcript: whyDiveTranscript,
                         history_intake_transcript: historyTranscript || [],
                         core_why_summary: parsed.core_why_summary || '',
@@ -4532,22 +4976,22 @@ DECISION RULES:
                         behavioral_style: parsed.behavioral_style || 'mixed_unsure',
                         disclosed_health_conditions: parsed.disclosed_health_conditions || [],
                         stress_baseline: parsed.stress_baseline || 'moderate',
-                        sleep_baseline: parsed.sleep_baseline || 'inconsistent'
+                        sleep_baseline: parsed.sleep_baseline || 'inconsistent',
+                        health_history: Object.assign({}, healthHistoryFormData || {}, healthHistoryConversationData || {}),
+                        disordered_eating_signal: sessionDisorderedEatingSignal
                     };
                     profile.protocol = await buildProtocol(profile, loadingId);
-                    const saved = await saveGoalProfile(profile, 'save');
-                    const finalProfile = saved || profile;
                     var el = document.getElementById(loadingId);
                     if (el) el.remove();
-                    renderGoalBanner(finalProfile);
-                    appendGoalSummaryCard(finalProfile);
-                    if (finalProfile.protocol) {
-                        renderProtocolCard(finalProfile.protocol);
-                        appendProtocolSummaryCard(finalProfile.protocol);
-                    }
-                    userMetabolicProfile = buildMetabolicProfileText(finalProfile);
-                    const badge = document.getElementById('profile-connected-badge');
-                    if (badge) badge.classList.remove('hidden');
+
+                    // Hold for explicit confirmation — nothing is saved yet.
+                    // See confirmPlanBtn below for the actual save trigger.
+                    pendingConfirmationProfile = profile;
+                    awaitingPlanConfirmation = true;
+                    appendGoalSummaryCard(profile);
+                    if (profile.protocol) appendProtocolSummaryCard(profile.protocol);
+                    const planConfirmationPanel = document.getElementById('plan-confirmation-panel');
+                    if (planConfirmationPanel) planConfirmationPanel.classList.remove('hidden');
                 } catch (e) {
                     var el2 = document.getElementById(loadingId);
                     if (el2) el2.remove();
@@ -4558,19 +5002,224 @@ DECISION RULES:
                 }
             }
 
+            // Plan-confirmation loop: once a draft plan exists, the user can
+            // type feedback/questions in the SAME chat like any other reply
+            // (handled here, not by the scripted intake instruction — that
+            // script is done by this point) to adjust the draft, and only an
+            // explicit button click actually saves anything.
+            let awaitingPlanConfirmation = false;
+
+            async function handlePlanFeedback(feedbackText) {
+                const loadingId = 'feedback-loading-' + Date.now();
+                const loadingDiv = document.createElement('div');
+                loadingDiv.id = loadingId;
+                loadingDiv.className = 'flex justify-start';
+                loadingDiv.innerHTML = '<div class="max-w-[85%] rounded-xl p-4 text-sm bg-white text-gray-500 rounded-bl-none animate-pulse">Updating your plan...</div>';
+                chatWindow.appendChild(loadingDiv);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+
+                try {
+                    const ackSys = "You are Jaime Jenkins' Interactive Metabolic Coach. The user just gave feedback, a question, or an adjustment request about their draft starting plan. Respond warmly in 1-2 sentences acknowledging what they said and letting them know the plan below has been updated to reflect it. Do NOT use markdown asterisks.";
+                    const ack = await callClaude(feedbackText, ackSys, 'protocol');
+                    var loadingEl = document.getElementById(loadingId);
+                    if (loadingEl) loadingEl.remove();
+                    appendChatMessage('ai', ack.replace(/\n/g, '<br>'));
+
+                    if (pendingConfirmationProfile) {
+                        pendingConfirmationProfile.protocol = await buildProtocol(
+                            Object.assign({}, pendingConfirmationProfile, { _feedback: feedbackText }),
+                            null
+                        );
+                        if (pendingConfirmationProfile.protocol) appendProtocolSummaryCard(pendingConfirmationProfile.protocol);
+                    }
+                } catch (e) {
+                    var loadingEl2 = document.getElementById(loadingId);
+                    if (loadingEl2) loadingEl2.remove();
+                    console.error('handlePlanFeedback failed', e);
+                    appendChatMessage('ai', '<span style="color:#c19a6b;font-weight:600;">Something went wrong updating your plan. Please try again.</span>');
+                }
+            }
+
+            const confirmPlanBtn = document.getElementById('confirm-plan-btn');
+            if (confirmPlanBtn) {
+                confirmPlanBtn.addEventListener('click', async () => {
+                    if (!pendingConfirmationProfile) return;
+                    confirmPlanBtn.disabled = true;
+                    confirmPlanBtn.textContent = 'Saving...';
+                    try {
+                        const saved = await saveGoalProfile(pendingConfirmationProfile, 'save');
+                        const finalProfile = saved || pendingConfirmationProfile;
+                        renderGoalBanner(finalProfile);
+                        if (finalProfile.protocol) renderProtocolCard(finalProfile.protocol);
+                        userMetabolicProfile = buildMetabolicProfileText(finalProfile);
+                        const badge = document.getElementById('profile-connected-badge');
+                        if (badge) badge.classList.remove('hidden');
+                        appendChatMessage('ai', "Wonderful &mdash; I've saved your plan! You can find it any time under My Stuff.");
+                        awaitingPlanConfirmation = false;
+                        pendingConfirmationProfile = null;
+                        const planConfirmationPanel = document.getElementById('plan-confirmation-panel');
+                        if (planConfirmationPanel) planConfirmationPanel.classList.add('hidden');
+                    } catch (e) {
+                        console.error('confirm plan failed', e);
+                        appendChatMessage('ai', '<span style="color:#c19a6b;font-weight:600;">Something went wrong saving your plan. Please try again.</span>');
+                    } finally {
+                        confirmPlanBtn.disabled = false;
+                        confirmPlanBtn.textContent = '✓ Confirm My Plan';
+                    }
+                });
+            }
+
+            // Builds a natural-reading first-person summary of the Health
+            // History form so the AI has the structured facts it needs
+            // (e.g. diabetes, for staged-plan detection) without a separate
+            // hidden channel — it just reads it in the transcript like
+            // anything else the user "said."
+            function buildHealthHistoryFormSummaryMessage(data) {
+                var parts = [];
+                parts.push("I've completed my Health History form.");
+                parts.push('Age ' + data.age + ', biological sex ' + (data.biological_sex || 'not specified') + '.');
+                var conditions = [];
+                if (data.physical.thyroid) conditions.push('thyroid issues');
+                if (data.physical.pcos_insulin_resistance) conditions.push('PCOS/insulin resistance');
+                if (data.physical.diabetes && data.physical.diabetes !== 'none') conditions.push('diabetes (' + data.physical.diabetes + ')');
+                if (data.physical.hormonal_shifts) conditions.push('significant hormonal shifts');
+                if (data.physical.heart_circulatory) conditions.push('heart/circulatory conditions');
+                if (data.physical.recent_injury_surgery) conditions.push('a recent injury or surgery');
+                parts.push(conditions.length ? ('Physical health: ' + conditions.join(', ') + '.') : 'No major physical health conditions disclosed.');
+                if (data.physical.heart_bp_bloodsugar_meds) parts.push("I'm currently on heart/BP/blood-sugar medication.");
+                if (data.physical.glp1_meds) parts.push("I'm currently on a GLP-1 medication.");
+                if (data.physical.chronic_pain_locations.length) parts.push('Chronic pain: ' + data.physical.chronic_pain_locations.join(', ') + '.');
+                if (data.physical.food_allergies.length) parts.push('Food allergies: ' + data.physical.food_allergies.join(', ') + '.');
+                if (data.physical.sensitivities.length) parts.push('Sensitivities: ' + data.physical.sensitivities.join(', ') + '.');
+                var FAT_DISTRIBUTION_LABELS = { midsection: 'mostly in my midsection/abdomen', hips_thighs: 'mostly in my hips/thighs', evenly_distributed: 'evenly distributed' };
+                if (data.physical.fat_distribution && FAT_DISTRIBUTION_LABELS[data.physical.fat_distribution]) parts.push('I tend to hold my weight ' + FAT_DISTRIBUTION_LABELS[data.physical.fat_distribution] + '.');
+                parts.push('Sleep: ' + data.lifestyle.avg_sleep.replace('_', '-') + ' hrs, ' + (data.lifestyle.wake_refreshed ? 'wakes refreshed' : 'does not wake refreshed') + '. Daily routine: ' + data.lifestyle.routine_type + '. Meal prep: ' + data.lifestyle.meal_prep_frequency + '.');
+                if (data.emotional_triggers.length) parts.push('Emotional eating triggers: ' + data.emotional_triggers.join(', ') + '.');
+                parts.push('Stress level ' + data.stress_level + '/10, confidence in lasting change ' + data.confidence + '/10.');
+                if (data.plate_pressure) parts.push('I feel pressure to finish everything on my plate.');
+                return parts.join(' ');
+            }
+
             if (chatSendBtn && chatInput) {
                 initChat();
+
+                const healthHistoryFormPanel = document.getElementById('health-history-form-panel');
+                const chatInputRow = document.getElementById('chat-input-row');
+                const healthHistoryFormError = document.getElementById('health-history-form-error');
+                const healthHistoryFormSubmitBtn = document.getElementById('health-history-form-submit');
+
+                function checkedValues(selector) {
+                    return Array.prototype.map.call(document.querySelectorAll(selector + ':checked'), function(el) { return el.value; });
+                }
+
+                function collectHealthHistoryFormData() {
+                    return {
+                        full_name: (document.getElementById('hh-full-name').value || '').trim(),
+                        age: parseInt(document.getElementById('hh-age').value, 10) || null,
+                        date_of_birth: document.getElementById('hh-dob').value || null,
+                        biological_sex: document.getElementById('hh-sex').value || null,
+                        gender_identity: (document.getElementById('hh-gender-identity').value || '').trim() || null,
+                        current_weight: document.getElementById('hh-weight').value ? parseFloat(document.getElementById('hh-weight').value) : null,
+                        height: (document.getElementById('hh-height').value || '').trim() || null,
+                        physical: {
+                            thyroid: document.getElementById('hh-thyroid').checked,
+                            pcos_insulin_resistance: document.getElementById('hh-pcos').checked,
+                            diabetes: document.getElementById('hh-diabetes').value,
+                            fat_distribution: document.getElementById('hh-fat-distribution').value,
+                            hormonal_shifts: document.getElementById('hh-hormonal-shifts').checked,
+                            heart_circulatory: document.getElementById('hh-heart-circulatory').checked,
+                            heart_bp_bloodsugar_meds: document.getElementById('hh-heart-bp-meds').checked,
+                            glp1_meds: document.getElementById('hh-glp1').checked,
+                            chronic_pain_locations: checkedValues('.hh-pain-loc'),
+                            recent_injury_surgery: document.getElementById('hh-recent-injury').checked,
+                            food_allergies: checkedValues('.hh-allergy'),
+                            sensitivities: checkedValues('.hh-sensitivity')
+                        },
+                        lifestyle: {
+                            avg_sleep: document.getElementById('hh-sleep').value,
+                            wake_refreshed: document.getElementById('hh-wake-refreshed').value === 'yes',
+                            routine_type: document.getElementById('hh-routine').value,
+                            meal_prep_frequency: document.getElementById('hh-meal-prep').value
+                        },
+                        emotional_triggers: checkedValues('.hh-trigger'),
+                        stress_level: parseInt(document.getElementById('hh-stress-level').value, 10) || null,
+                        body_image: parseInt(document.getElementById('hh-body-image').value, 10) || null,
+                        confidence: parseInt(document.getElementById('hh-confidence').value, 10) || null,
+                        plate_pressure: document.getElementById('hh-plate-pressure').checked
+                    };
+                }
+
+                if (healthHistoryFormSubmitBtn) {
+                    healthHistoryFormSubmitBtn.addEventListener('click', async () => {
+                        const data = collectHealthHistoryFormData();
+                        if (!data.full_name || !data.age || !data.biological_sex) {
+                            if (healthHistoryFormError) healthHistoryFormError.classList.remove('hidden');
+                            return;
+                        }
+                        if (healthHistoryFormError) healthHistoryFormError.classList.add('hidden');
+                        healthHistoryFormData = data;
+
+                        // Early half of the disordered-eating safety signal —
+                        // body image is known immediately; ED history / out-of-
+                        // control frequency come from the conversation next.
+                        if (data.body_image != null && data.body_image <= 3) sessionDisorderedEatingSignal = true;
+
+                        if (healthHistoryFormPanel) healthHistoryFormPanel.classList.add('hidden');
+                        if (chatInputRow) chatInputRow.classList.remove('hidden');
+                        healthHistoryFormSubmitBtn.disabled = true;
+
+                        const summaryMessage = buildHealthHistoryFormSummaryMessage(data);
+                        appendChatMessage('user', "I've completed my Health History form.");
+                        chatHistory.push({ role: 'user', content: summaryMessage });
+
+                        const loadingId = 'loading-' + Date.now();
+                        const loadingDiv = document.createElement('div');
+                        loadingDiv.id = loadingId;
+                        loadingDiv.className = 'flex justify-start';
+                        loadingDiv.innerHTML = '<div class="max-w-[85%] rounded-xl p-4 text-sm bg-white text-gray-500 rounded-bl-none animate-pulse">Analyzing your response...</div>';
+                        chatWindow.appendChild(loadingDiv);
+                        chatWindow.scrollTop = chatWindow.scrollHeight;
+
+                        try {
+                            const rawResponseText = await callClaudeChat(chatHistory, buildCoachSystemInstruction(sessionDisorderedEatingSignal), 'protocol');
+                            document.getElementById(loadingId).remove();
+                            const responseText = rawResponseText.split(HEALTH_HISTORY_COMPLETE_MARKER).join('').split(HISTORY_COMPLETE_MARKER).join('').trim();
+                            appendChatMessage('ai', responseText);
+                            chatHistory.push({ role: 'assistant', content: responseText });
+                            healthConvPhaseStartIndex = chatHistory.length;
+                        } catch (error) {
+                            document.getElementById(loadingId).remove();
+                            appendChatMessage('ai', '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : 'Our AI coach is taking a short break. Please try again in a moment.') + '</span>');
+                        } finally {
+                            healthHistoryFormSubmitBtn.disabled = false;
+                        }
+                    });
+                }
 
                 const handleChatSend = async () => {
                     const text = chatInput.value.trim();
                     if (!text) return;
                     if (isAiLimitReached('protocol')) return;
 
-                    // Add user message to UI and history
                     appendChatMessage('user', text);
                     chatInput.value = '';
                     chatInput.disabled = true;
                     chatSendBtn.disabled = true;
+
+                    // Once a draft plan exists, further messages are feedback/
+                    // adjustment requests, not more of the scripted intake —
+                    // handled entirely separately from the phase logic below.
+                    if (awaitingPlanConfirmation) {
+                        try {
+                            await handlePlanFeedback(text);
+                        } finally {
+                            chatInput.disabled = false;
+                            chatSendBtn.disabled = false;
+                            chatInput.focus();
+                        }
+                        return;
+                    }
+
                     chatHistory.push({ role: "user", content: text });
 
                     // Add loading indicator
@@ -4583,14 +5232,15 @@ DECISION RULES:
                     chatWindow.scrollTop = chatWindow.scrollHeight;
 
                     try {
-                        const rawResponseText = await callClaudeChat(chatHistory, coachSystemInstruction, 'protocol');
+                        const rawResponseText = await callClaudeChat(chatHistory, buildCoachSystemInstruction(sessionDisorderedEatingSignal), 'protocol');
 
                         // Remove loading indicator
                         document.getElementById(loadingId).remove();
 
-                        // Strip the internal completion marker before showing/storing.
+                        // Strip both internal completion markers before showing/storing.
+                        const healthHistorySignaledComplete = rawResponseText.indexOf(HEALTH_HISTORY_COMPLETE_MARKER) !== -1;
                         const historySignaledComplete = rawResponseText.indexOf(HISTORY_COMPLETE_MARKER) !== -1;
-                        const responseText = rawResponseText.split(HISTORY_COMPLETE_MARKER).join('').trim();
+                        const responseText = rawResponseText.split(HEALTH_HISTORY_COMPLETE_MARKER).join('').split(HISTORY_COMPLETE_MARKER).join('').trim();
 
                         // Add AI response to UI and history
                         appendChatMessage('ai', responseText);
@@ -4598,13 +5248,38 @@ DECISION RULES:
 
                         const userMessageCount = chatHistory.filter(m => m.role === "user").length;
                         if (userMessageCount === 3) {
-                            goalPhaseStartIndex = chatHistory.length;
-                        } else if (userMessageCount === 7) {
-                            historyPhaseStartIndex = chatHistory.length;
-                        } else if (userMessageCount > 7 && historyPhaseStartIndex != null) {
-                            const turnsIntoHistoryPhase = userMessageCount - 7;
+                            // Opening 3 questions done — show the Health History
+                            // form in place of the chat input. The form's own
+                            // submit handler drives everything from here
+                            // (pushes a synthetic message, resumes the chat).
+                            if (healthHistoryFormPanel) healthHistoryFormPanel.classList.remove('hidden');
+                            if (chatInputRow) chatInputRow.classList.add('hidden');
+                        } else if (healthConvPhaseStartIndex != null && goalPhaseStartIndex == null) {
+                            const turnsIntoHealthConv = chatHistory.slice(healthConvPhaseStartIndex).filter(m => m.role === 'user').length;
+                            if (healthHistorySignaledComplete || turnsIntoHealthConv >= HEALTH_HISTORY_MAX_EXTRA_TURNS) {
+                                goalPhaseStartIndex = chatHistory.length;
+                                const healthConvTranscript = chatHistory.slice(healthConvPhaseStartIndex);
+                                await triggerHealthHistorySynthesis(healthConvTranscript);
+                            }
+                        } else if (goalPhaseStartIndex != null && historyPhaseStartIndex == null) {
+                            // Nominally fixed-length phase: long-term goal (1) + timeframe (1) +
+                            // goal-confirmation (1) + why-now (1) + why-dive (3) = 7 messages.
+                            // Goal-confirmation is capped at one adjustment round, so it can
+                            // legitimately take 2 user turns instead of 1 if the user requests a
+                            // change — this count assumes the common (no-adjustment) case. If an
+                            // adjustment happens, this boundary fires one message early, which
+                            // only affects how the why_deep_dive_transcript/history_intake_transcript
+                            // audit-trail fields get split (both stored for display only) — not the
+                            // live conversation or the actual goal-profile extraction, which always
+                            // uses the full chatHistory regardless of this boundary.
+                            const turnsIntoGoalPhase = chatHistory.slice(goalPhaseStartIndex).filter(m => m.role === 'user').length;
+                            if (turnsIntoGoalPhase >= 7) {
+                                historyPhaseStartIndex = chatHistory.length;
+                            }
+                        } else if (historyPhaseStartIndex != null) {
+                            const turnsIntoHistoryPhase = chatHistory.slice(historyPhaseStartIndex).filter(m => m.role === 'user').length;
                             if (historySignaledComplete || turnsIntoHistoryPhase >= HISTORY_MAX_EXTRA_TURNS) {
-                                const whyDiveTranscript = chatHistory.slice(goalPhaseStartIndex == null ? historyPhaseStartIndex : goalPhaseStartIndex, historyPhaseStartIndex);
+                                const whyDiveTranscript = chatHistory.slice(goalPhaseStartIndex, historyPhaseStartIndex);
                                 const historyTranscript = chatHistory.slice(historyPhaseStartIndex);
                                 await triggerGoalSynthesis(whyDiveTranscript, historyTranscript);
                             }
@@ -5221,22 +5896,16 @@ Format your response with clean HTML, matching the same convention used elsewher
             })();
 
             // --- Goal & Why banner: view/edit interactions ---
-            const goalBannerToggleBtn = document.getElementById('goal-banner-toggle-btn');
-            const goalBannerEditBtn = document.getElementById('goal-banner-edit-btn');
-            const goalBannerDetail = document.getElementById('goal-banner-detail');
-            const goalBannerEditForm = document.getElementById('goal-banner-edit-form');
-            const goalEditGoalInput = document.getElementById('goal-edit-goal-input');
-            const goalEditReasonInput = document.getElementById('goal-edit-reason-input');
-            const goalEditSaveBtn = document.getElementById('goal-edit-save-btn');
-            const goalEditCancelBtn = document.getElementById('goal-edit-cancel-btn');
-            const goalEditStatus = document.getElementById('goal-edit-status');
-
-            if (goalBannerToggleBtn) {
-                goalBannerToggleBtn.addEventListener('click', () => {
-                    if (goalBannerEditForm) goalBannerEditForm.classList.add('hidden');
-                    if (goalBannerDetail) goalBannerDetail.classList.toggle('hidden');
-                });
-            }
+            // Goal editing lives here now (My Stuff > Long Term Goals),
+            // relocated from the banner, which is read-only. Same
+            // edit-with-reason mechanism and IDs, just moved.
+            const accountLongTermEditBtn = document.getElementById('account-long-term-edit-btn');
+            const accountLongTermEditForm = document.getElementById('account-long-term-edit-form');
+            const accountLongTermEditGoalInput = document.getElementById('account-long-term-edit-goal-input');
+            const accountLongTermEditReasonInput = document.getElementById('account-long-term-edit-reason-input');
+            const accountLongTermEditSaveBtn = document.getElementById('account-long-term-edit-save-btn');
+            const accountLongTermEditCancelBtn = document.getElementById('account-long-term-edit-cancel-btn');
+            const accountLongTermEditStatus = document.getElementById('account-long-term-edit-status');
 
             const protocolBannerToggleBtn = document.getElementById('protocol-banner-toggle-btn');
             const protocolBannerDetail = document.getElementById('protocol-banner-detail');
@@ -5246,40 +5915,39 @@ Format your response with clean HTML, matching the same convention used elsewher
                 });
             }
 
-            if (goalBannerEditBtn) {
-                goalBannerEditBtn.addEventListener('click', () => {
-                    if (goalBannerDetail) goalBannerDetail.classList.add('hidden');
-                    if (goalEditGoalInput && currentGoalProfile) {
-                        goalEditGoalInput.value = (currentGoalProfile.long_term_goal && currentGoalProfile.long_term_goal.text) || '';
+            if (accountLongTermEditBtn) {
+                accountLongTermEditBtn.addEventListener('click', () => {
+                    if (accountLongTermEditGoalInput && currentGoalProfile) {
+                        accountLongTermEditGoalInput.value = (currentGoalProfile.long_term_goal && currentGoalProfile.long_term_goal.text) || '';
                     }
-                    if (goalEditReasonInput) goalEditReasonInput.value = '';
-                    if (goalEditStatus) { goalEditStatus.textContent = ''; goalEditStatus.classList.add('hidden'); }
-                    if (goalBannerEditForm) goalBannerEditForm.classList.remove('hidden');
+                    if (accountLongTermEditReasonInput) accountLongTermEditReasonInput.value = '';
+                    if (accountLongTermEditStatus) { accountLongTermEditStatus.textContent = ''; accountLongTermEditStatus.classList.add('hidden'); }
+                    if (accountLongTermEditForm) accountLongTermEditForm.classList.remove('hidden');
                 });
             }
 
-            if (goalEditCancelBtn) {
-                goalEditCancelBtn.addEventListener('click', () => {
-                    if (goalBannerEditForm) goalBannerEditForm.classList.add('hidden');
+            if (accountLongTermEditCancelBtn) {
+                accountLongTermEditCancelBtn.addEventListener('click', () => {
+                    if (accountLongTermEditForm) accountLongTermEditForm.classList.add('hidden');
                 });
             }
 
-            if (goalEditSaveBtn) {
-                goalEditSaveBtn.addEventListener('click', async () => {
-                    const updatedGoalText = (goalEditGoalInput && goalEditGoalInput.value.trim()) || '';
-                    const reason = (goalEditReasonInput && goalEditReasonInput.value.trim()) || '';
+            if (accountLongTermEditSaveBtn) {
+                accountLongTermEditSaveBtn.addEventListener('click', async () => {
+                    const updatedGoalText = (accountLongTermEditGoalInput && accountLongTermEditGoalInput.value.trim()) || '';
+                    const reason = (accountLongTermEditReasonInput && accountLongTermEditReasonInput.value.trim()) || '';
                     if (!updatedGoalText || !reason) {
-                        if (goalEditStatus) {
-                            goalEditStatus.textContent = 'Please fill in both your updated goal and the reason for the change.';
-                            goalEditStatus.classList.remove('hidden');
+                        if (accountLongTermEditStatus) {
+                            accountLongTermEditStatus.textContent = 'Please fill in both your updated goal and the reason for the change.';
+                            accountLongTermEditStatus.classList.remove('hidden');
                         }
                         return;
                     }
 
-                    goalEditSaveBtn.disabled = true;
-                    if (goalEditStatus) {
-                        goalEditStatus.textContent = 'Updating your plan...';
-                        goalEditStatus.classList.remove('hidden');
+                    accountLongTermEditSaveBtn.disabled = true;
+                    if (accountLongTermEditStatus) {
+                        accountLongTermEditStatus.textContent = 'Updating your plan...';
+                        accountLongTermEditStatus.classList.remove('hidden');
                     }
 
                     const previous = currentGoalProfile || {};
@@ -5297,10 +5965,10 @@ Format your response with clean HTML, matching the same convention used elsewher
                         '\nREASON FOR CHANGE: ' + reason;
 
                     try {
-                        const parsed = await extractGoalProfileFields(context, buildGoalUpdateInstruction(), 'protocol', 'goal-update');
+                        const parsed = await extractGoalProfileFields(context, buildGoalUpdateInstruction(!!previous.disordered_eating_signal), 'protocol', 'goal-update');
                         if (!parsed) throw new Error('Could not extract goal update');
                         const updatedProfile = {
-                            long_term_goal: { text: parsed.long_term_goal_text || updatedGoalText, target_weight: parsed.target_weight || null, timeframe: parsed.timeframe || null },
+                            long_term_goal: { text: parsed.long_term_goal_text || updatedGoalText, target_weight: previous.disordered_eating_signal ? null : (parsed.target_weight || null), timeframe: parsed.timeframe || null },
                             why_deep_dive_transcript: previous.why_deep_dive_transcript || [],
                             history_intake_transcript: previous.history_intake_transcript || [],
                             core_why_summary: parsed.core_why_summary || '',
@@ -5312,6 +5980,11 @@ Format your response with clean HTML, matching the same convention used elsewher
                             disclosed_health_conditions: parsed.disclosed_health_conditions || previous.disclosed_health_conditions || [],
                             stress_baseline: parsed.stress_baseline || previous.stress_baseline || 'moderate',
                             sleep_baseline: parsed.sleep_baseline || previous.sleep_baseline || 'inconsistent',
+                            // Health history and the disordered-eating safety flag are
+                            // permanent once set at intake — always carried forward, never
+                            // re-derived or cleared by a later goal edit.
+                            health_history: previous.health_history || null,
+                            disordered_eating_signal: !!previous.disordered_eating_signal,
                             // Protocol is generated once at initial intake completion, not
                             // regenerated on goal edits — carried forward unchanged.
                             protocol: previous.protocol || null
@@ -5320,16 +5993,16 @@ Format your response with clean HTML, matching the same convention used elsewher
                         const finalProfile = saved || updatedProfile;
                         renderGoalBanner(finalProfile);
                         userMetabolicProfile = buildMetabolicProfileText(finalProfile);
-                        if (goalBannerEditForm) goalBannerEditForm.classList.add('hidden');
-                        if (goalEditStatus) { goalEditStatus.textContent = ''; goalEditStatus.classList.add('hidden'); }
+                        if (accountLongTermEditForm) accountLongTermEditForm.classList.add('hidden');
+                        if (accountLongTermEditStatus) { accountLongTermEditStatus.textContent = ''; accountLongTermEditStatus.classList.add('hidden'); }
                     } catch (error) {
                         console.error('goal update failed', error);
-                        if (goalEditStatus) {
-                            goalEditStatus.textContent = error.limitReached ? error.message : "Still saving your update — something went wrong. Your form hasn't been cleared, so you can just press Save update to try again.";
-                            goalEditStatus.classList.remove('hidden');
+                        if (accountLongTermEditStatus) {
+                            accountLongTermEditStatus.textContent = error.limitReached ? error.message : "Still saving your update — something went wrong. Your form hasn't been cleared, so you can just press Save update to try again.";
+                            accountLongTermEditStatus.classList.remove('hidden');
                         }
                     } finally {
-                        goalEditSaveBtn.disabled = false;
+                        accountLongTermEditSaveBtn.disabled = false;
                     }
                 });
             }
