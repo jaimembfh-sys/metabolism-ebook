@@ -2690,6 +2690,7 @@
                             <nav class="space-y-1">
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-goals">My Goals</button>
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-protocol">My Protocol</button>
+                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-weekly-plan">My Weekly Plan</button>
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-health-history">Health History</button>
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-recipes">My Recipes</button>
                             </nav>
@@ -2917,19 +2918,24 @@
                         </div>
                     </div>
 
-                    <!-- View: Metabolic Meal Planner (renamed from Meal Coach; functionality unchanged) -->
-                    <div id="ai-view-meal-planner" class="ai-tool-view hidden" data-view-id="meal-planner" data-usage-category="chat">
+                    <!-- View: Metabolic Meal Planner — generates a full 7-day meal plan
+                         in one pass (not the old single-meal "Balance My Meal" tweak
+                         tool). Pulls from the shared recipe corpus + the user's own My
+                         Recipes, filters against disclosed food allergies (hard) and
+                         sensitivities (soft), and fills gaps with original AI-generated
+                         meals. Saved to the profile as My Weekly Plan (see the My Stuff
+                         view of the same name) so it persists and a future daily
+                         tracker can check items off against it. -->
+                    <div id="ai-view-meal-planner" class="ai-tool-view hidden" data-view-id="meal-planner" data-usage-category="meal_plan">
                         <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; Metabolic Meal Planner</h3>
-                        <p class="ai-view-desc font-sans text-sm text-gray-500 mb-6">Tell our AI what you want to eat and get instant, practical suggestions to make your meal more metabolically balanced &#x2014; without giving up the foods you love.</p>
+                        <p class="ai-view-desc font-sans text-sm text-gray-500 mb-6">Generate a full 7-day meal plan built around your protocol, your allergies and sensitivities, and your own recipe collection.</p>
                         <div class="bg-brand-light/50 border border-brand-accent/30 rounded-xl p-6 shadow-sm">
-                            <div class="flex flex-col sm:flex-row gap-3">
-                                <input type="text" id="meal-input" placeholder="e.g., A bagel and a sweet coffee" class="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-brand-dark focus:ring-1 focus:ring-brand-dark">
-                                <button id="balance-meal-btn" class="bg-brand-dark hover:bg-[#234553] text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center justify-center whitespace-nowrap">
-                                    &#x2728; Balance My Meal
-                                </button>
-                            </div>
-                            <div id="meal-loading" class="hidden mt-4 text-brand-accent text-sm font-medium animate-pulse">Analyzing your meal...</div>
-                            <div id="meal-output" class="hidden mt-4 p-4 bg-white rounded-lg border border-gray-200 text-sm text-gray-700 leading-relaxed"></div>
+                            <button id="generate-meal-plan-btn" type="button" class="w-full bg-brand-dark hover:bg-[#234553] text-white px-6 py-3 rounded-lg font-bold transition-colors text-lg flex justify-center items-center shadow-md">
+                                &#x2728; Generate My 7-Day Plan
+                            </button>
+                            <p class="text-xs text-gray-500 mt-2 text-center">Generating a new plan replaces your current week.</p>
+                            <div id="meal-plan-loading" class="hidden mt-4 text-brand-accent text-center text-sm font-medium animate-pulse">Building your 7-day plan from your protocol and recipes...</div>
+                            <div id="meal-plan-output" class="hidden mt-6"></div>
                         </div>
                     </div>
 
@@ -3115,6 +3121,19 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- View: My Stuff > My Weekly Plan — read-only display of the
+                         current 7-day plan generated by the Metabolic Meal Planner.
+                         Same pattern as My Protocol: generated elsewhere (the tool
+                         itself), displayed here so it's reachable any time. -->
+                    <div id="ai-view-account-weekly-plan" class="ai-tool-view hidden" data-view-id="account-weekly-plan">
+                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">My Weekly Plan</h3>
+                        <p class="font-sans text-sm text-gray-500 mb-6">Your current 7-day meal plan from the Metabolic Meal Planner.</p>
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                            <p id="account-weekly-plan-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t generated a weekly plan yet. <button type="button" onclick="window.switchAiToolsView('meal-planner')" class="text-brand-accent underline font-semibold">Generate one in the Metabolic Meal Planner</button>.</p>
+                            <div id="account-weekly-plan-content" class="hidden"></div>
                         </div>
                     </div>
 
@@ -3941,7 +3960,7 @@
             var aiDeviceId = getAiDeviceId();
             var lastRateLimit = null;
             var toolCounterEls = [];
-            var AI_BTN_CATEGORY = { 'balance-meal-btn': 'chat', 'chat-send-btn': 'protocol', 'generate-fridge-btn': 'chat', 'lab-markers-btn': 'chat', 'my-recipe-estimate-btn': 'chat' };
+            var AI_BTN_CATEGORY = { 'chat-send-btn': 'protocol', 'generate-fridge-btn': 'chat', 'lab-markers-btn': 'chat', 'my-recipe-estimate-btn': 'chat', 'generate-meal-plan-btn': 'meal_plan' };
 
             function isAiLimitReached(category) {
                 if (!lastRateLimit) return false;
@@ -4167,50 +4186,243 @@
                 return msgDiv;
             }
 
-            // Feature 1: The Metabolic Meal Coach
-            const mealBtn = document.getElementById('balance-meal-btn');
-            const mealInput = document.getElementById('meal-input');
-            const mealLoading = document.getElementById('meal-loading');
-            const mealOutput = document.getElementById('meal-output');
+            // Feature 1: Metabolic Meal Planner — generates a full 7-day meal
+            // plan in one pass (replaces the old single-meal "Balance My
+            // Meal" tweak tool). Pulls from the shared recipe corpus
+            // (knowledge-base/recipes.json, compiled by
+            // knowledge-base/build-recipes-corpus.js) plus the user's own
+            // My Recipes as a PREFERRED pool, filling gaps with original
+            // AI-generated meals — there are only 9 shared recipes, nowhere
+            // near enough to fill 21 meal slots/week without heavy
+            // repetition. Filters hard against disclosed food allergies and
+            // softly against sensitivities, using the same
+            // buildMetabolicProfileText() text every other feature already
+            // reads for this (no new allergy/sensitivity question added).
+            // Saved to the profile (My Stuff > My Weekly Plan) so it
+            // persists, since a future daily tracker will check items off
+            // against it.
+            let recipeCorpusPromise = null;
+            function fetchRecipeCorpus() {
+                if (!recipeCorpusPromise) {
+                    recipeCorpusPromise = fetch('/knowledge-base/recipes.json')
+                        .then(function(r) { if (!r.ok) throw new Error('Failed to load recipe corpus (' + r.status + ')'); return r.json(); })
+                        .catch(function(e) { console.error('fetchRecipeCorpus failed', e); recipeCorpusPromise = null; return null; });
+                }
+                return recipeCorpusPromise;
+            }
 
-            if (mealBtn) {
-                mealBtn.addEventListener('click', async () => {
-                    const meal = mealInput.value.trim();
-                    if (!meal) return;
-                    if (isAiLimitReached('chat')) return;
+            function buildRecipeCorpusText(recipeCorpus, myRecipes) {
+                var parts = [];
+                var shared = (recipeCorpus && recipeCorpus.recipes) || [];
+                shared.forEach(function(r) {
+                    parts.push('### [Shared Recipe: ' + r.title + ' — category: ' + r.category + ', servings: ' + (r.servings != null ? r.servings : '?') + ']\n' + r.full_text);
+                });
+                (myRecipes || []).forEach(function(r) {
+                    var macros = r.estimated_macros || {};
+                    var macroLine = 'Calories: ' + (macros.calories != null ? macros.calories : '?') +
+                        ', Fat: ' + (macros.total_fat_g != null ? macros.total_fat_g : '?') + 'g' +
+                        ', Carbs: ' + (macros.total_carbs_g != null ? macros.total_carbs_g : '?') + 'g' +
+                        ', Net Carbs: ' + (macros.net_carbs_g != null ? macros.net_carbs_g : '?') + 'g' +
+                        ', Protein: ' + (macros.protein_g != null ? macros.protein_g : '?') + 'g';
+                    parts.push('### [Your Personal Recipe: ' + r.title + ' — servings: ' + (r.servings != null ? r.servings : '?') + ']\n' +
+                        'Ingredients:\n' + r.ingredients + '\n\nInstructions:\n' + r.instructions +
+                        '\n\nNutrition (per serving): ' + macroLine +
+                        (r.substitution_note ? '\nSubstitution note: ' + r.substitution_note : ''));
+                });
+                return parts.join('\n\n');
+            }
 
-                    mealLoading.classList.remove('hidden');
-                    mealOutput.classList.add('hidden');
-                    mealBtn.disabled = true;
+            const MEAL_PLAN_TOOL = {
+                name: 'record_weekly_meal_plan',
+                description: "Record a full 7-day meal plan generated from the user's protocol, recipe pool, and health-history allergen/sensitivity filters.",
+                input_schema: {
+                    type: 'object',
+                    properties: {
+                        days: {
+                            type: 'array',
+                            minItems: 7,
+                            maxItems: 7,
+                            items: {
+                                type: 'object',
+                                properties: {
+                                    day_label: { type: 'string', description: 'e.g. "Day 1" — keep consistent and sequential across all 7 entries.' },
+                                    meals: {
+                                        type: 'array',
+                                        minItems: 1,
+                                        maxItems: 3,
+                                        items: {
+                                            type: 'object',
+                                            properties: {
+                                                slot: { type: 'string', description: 'e.g. "Breakfast", "Lunch", "Dinner" for rule_of_3s/carb_backloading, or "First Meal"/"Last Meal" for time_restricted_eating.' },
+                                                title: { type: 'string' },
+                                                source: { type: 'string', enum: ['shared_recipe', 'personal_recipe', 'ai_generated'], description: 'shared_recipe/personal_recipe if pulled from the provided recipe pool (title must match a pool recipe exactly); ai_generated if newly created to round out the week.' },
+                                                description: { type: 'string', description: 'For shared_recipe/personal_recipe: a 1-2 sentence summary (the full recipe already exists elsewhere). For ai_generated: a complete enough description to actually make it — key ingredients plus brief method, 2-4 sentences.' },
+                                                macros_note: { type: ['string', 'null'], description: 'Brief macro framing, e.g. "~450 cal, 35g protein". Must be null for every meal if the user has a disordered-eating safety signal.' }
+                                            },
+                                            required: ['slot', 'title', 'source', 'description']
+                                        }
+                                    }
+                                },
+                                required: ['day_label', 'meals']
+                            }
+                        },
+                        rationale: { type: 'string', description: "3-5 sentences, second person, explaining how this week's plan reflects the user's eating pattern, macro approach, staged plan (if any), and allergy/sensitivity filtering." },
+                        allergy_note: { type: ['string', 'null'], description: 'ONLY if the user disclosed an unspecified "other" food allergy (no detail given): a brief caution that this could not be filtered against since no detail was provided, so they should double-check ingredients themselves. null otherwise.' }
+                    },
+                    required: ['days', 'rationale']
+                }
+            };
 
-                    let sysInstruction;
-                    if (userMetabolicProfile) {
-                        sysInstruction = `You are a metabolic health expert assistant for Jaime Jenkins. The user will provide a meal they want to eat. Your job is to suggest 2-3 specific, practical tweaks to make that meal more "metabolically stable" (e.g., lowering the insulin spike, adding protein, or applying the "fiber first" rule).
+            function buildMealPlanInstruction(protocolCorpusText, recipeCorpusText, disorderedEatingSignal) {
+                return `You are Jaime Jenkins' "Metabolic Meal Planner" — you generate a full 7-day meal plan in ONE pass for a user who has already completed their Metabolic Coach intake and has a personalized protocol on file.
 
-CRITICAL PERSONALIZATION: This user has completed their Metabolic Coach intake. Their specific protocol is below — you MUST tailor your suggestions to their exact needs:
+CRITICAL PERSONALIZATION: This user's full metabolic profile (goal, why, protocol, health history, allergies/sensitivities, safety flags) is below. You MUST tailor every day of the plan to it — never generate a generic plan:
 
---- USER METABOLIC PROTOCOL START ---
-${userMetabolicProfile}
---- USER METABOLIC PROTOCOL END ---
+--- USER METABOLIC PROFILE START ---
+${userMetabolicProfile || 'No protocol on file yet.'}
+--- USER METABOLIC PROFILE END ---
 
-Apply the protocol as follows:
-${buildProtocolApplicationRules()}
+MEALS PER DAY — determined by this user's eating_pattern above:
+- rule_of_3s: exactly 3 meals/day (slots: "Breakfast", "Lunch", "Dinner"), no snacks.
+- time_restricted_eating: exactly 2 meals/day (slots: "First Meal", "Last Meal"), framed generically as the first and last meal of their daily eating window. Do NOT invent specific clock times — none are on file for this user.
+- carb_backloading: exactly 3 meals/day (slots: "Breakfast", "Lunch", "Dinner"). Per the course's Carb Back-Loading guidance (see reference material below): breakfast and lunch should be higher-protein, lower-carb; dinner should include a moderate portion of "safe starches" (e.g. sweet potato, plantain, winter squash, whole fruit) to support evening cortisol and sleep.
 
-Keep the tone encouraging, friendly, and highly practical. Do NOT use markdown symbols like asterisks; format using standard spacing.`;
+RECIPE POOL — treat this as your PREFERRED source. Reuse a shared or personal recipe (source: "shared_recipe" or "personal_recipe", title matching EXACTLY) whenever it genuinely fits the day/slot/macro approach — do not force a bad fit just to reuse one. There are only a handful of recipes available, so most weeks will need real additional variety — invent original meals (source: "ai_generated") to fill the rest. Every ai_generated meal must still strictly follow this user's macro_approach, eating_pattern, and the allergy/sensitivity rules below.
+
+--- RECIPE POOL START ---
+${recipeCorpusText || 'No recipes currently available — generate all meals from scratch.'}
+--- RECIPE POOL END ---
+
+--- COURSE / FUNCTIONAL-MEDICINE REFERENCE (for eating-pattern and macro guidance) ---
+${protocolCorpusText}
+--- END REFERENCE ---
+
+ALLERGY / SENSITIVITY FILTERING:
+- Food allergies (see profile above) are a HARD filter — NEVER include a recipe or invent a meal containing a disclosed allergen, no exceptions.
+- Known sensitivities (IBS, acid reflux, bloating) are a SOFT filter — accommodate reasonably (e.g. avoid heavy common trigger foods) where it doesn't conflict with the protocol, but this is guidance, not an absolute rule.
+- If the user disclosed an "other" food allergy with no further detail, you cannot filter against something unspecified — set allergy_note to a brief, honest caution telling them to double-check ingredients themselves since no detail was given. Otherwise set allergy_note to null.
+
+${disorderedEatingSignal ? 'DISORDERED-EATING SAFETY: this user has a disordered-eating safety signal on file. Set macros_note to null for EVERY meal — no numeric calorie or macro figures anywhere in this plan. Keep every description qualitative and food-quality-focused, never framed around restriction, portion control, or a specific number.' : 'Include a brief macros_note for each meal (e.g. "~450 cal, 35g protein") so the user can plan at a glance.'}
+
+Write day_label consistently and sequentially ("Day 1" through "Day 7"). Write the rationale in second person, 3-5 sentences, naming the specific eating pattern, macro approach, and any staged plan or allergy filtering that shaped this week.`;
+            }
+
+            function buildWeeklyPlanHtml(plan) {
+                if (!plan || !plan.days || !plan.days.length) return '';
+                var html = '';
+                if (plan.rationale) {
+                    html += '<div class="mb-5 p-4 rounded-lg" style="background:rgba(52,101,122,0.06);border:1px solid rgba(52,101,122,0.2);">' +
+                        '<p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-dark mb-1">Why This Plan Fits You</p>' +
+                        '<p class="text-sm text-gray-700">' + escapeHtml(plan.rationale) + '</p></div>';
+                }
+                if (plan.allergy_note) {
+                    html += '<div class="mb-5 p-4 rounded-lg" style="background:rgba(193,154,107,0.10);border:1px solid rgba(193,154,107,0.35);">' +
+                        '<p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">Please Double-Check</p>' +
+                        '<p class="text-sm text-gray-700">' + escapeHtml(plan.allergy_note) + '</p></div>';
+                }
+                html += '<div class="space-y-4">';
+                plan.days.forEach(function(day) {
+                    html += '<div class="border border-gray-200 rounded-lg p-4">' +
+                        '<p class="font-serif text-lg font-bold text-brand-dark mb-3">' + escapeHtml(day.day_label) + '</p>' +
+                        '<div class="space-y-3">';
+                    (day.meals || []).forEach(function(meal) {
+                        html += '<div class="pl-3" style="border-left:3px solid rgba(193,154,107,0.5);">' +
+                            '<p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">' + escapeHtml(meal.slot) + '</p>' +
+                            '<p class="text-sm font-semibold text-brand-dark">' + escapeHtml(meal.title) + '</p>' +
+                            '<p class="text-sm text-gray-600">' + escapeHtml(meal.description) + '</p>' +
+                            (meal.macros_note ? '<p class="text-xs text-gray-400 mt-0.5">' + escapeHtml(meal.macros_note) + '</p>' : '') +
+                            '</div>';
+                    });
+                    html += '</div></div>';
+                });
+                html += '</div>';
+                return html;
+            }
+
+            // Renders into BOTH the Meal Planner tool's own output area (so
+            // a freshly generated plan shows immediately) and the read-only
+            // My Stuff > My Weekly Plan view (so it's still there on return
+            // visits) — same profile-driven pattern as renderProtocolCard.
+            function renderWeeklyMealPlan(profile) {
+                var plan = profile && profile.weekly_meal_plan;
+                var hasPlan = !!(plan && plan.days && plan.days.length);
+
+                var accountEmpty = document.getElementById('account-weekly-plan-empty');
+                var accountContent = document.getElementById('account-weekly-plan-content');
+                if (accountEmpty) accountEmpty.classList.toggle('hidden', hasPlan);
+                if (accountContent) {
+                    accountContent.classList.toggle('hidden', !hasPlan);
+                    if (hasPlan) accountContent.innerHTML = buildWeeklyPlanHtml(plan);
+                }
+
+                var toolOutput = document.getElementById('meal-plan-output');
+                if (toolOutput) {
+                    if (hasPlan) {
+                        toolOutput.innerHTML = buildWeeklyPlanHtml(plan);
+                        toolOutput.classList.remove('hidden');
                     } else {
-                        sysInstruction = "You are a metabolic health expert assistant for Jaime Jenkins. The user will provide a meal they want to eat. Your job is to suggest 2-3 specific, practical tweaks to make that meal more 'metabolically stable' (e.g., lowering the insulin spike, adding protein, or applying the 'fiber first' rule). Keep the tone encouraging, friendly, and highly practical. Do NOT use markdown symbols like asterisks; format using standard spacing.";
+                        toolOutput.classList.add('hidden');
+                        toolOutput.innerHTML = '';
+                    }
+                }
+            }
+
+            const generateMealPlanBtn = document.getElementById('generate-meal-plan-btn');
+            const mealPlanLoading = document.getElementById('meal-plan-loading');
+            const mealPlanOutput = document.getElementById('meal-plan-output');
+
+            if (generateMealPlanBtn) {
+                generateMealPlanBtn.addEventListener('click', async () => {
+                    if (isAiLimitReached('meal_plan')) return;
+                    if (!currentGoalProfile || !currentGoalProfile.protocol) {
+                        mealPlanOutput.innerHTML = '<p class="text-sm text-gray-500 italic">Build your protocol with the Interactive Metabolic Coach first, so your plan can be personalized to it.</p>';
+                        mealPlanOutput.classList.remove('hidden');
+                        return;
                     }
 
+                    mealPlanLoading.classList.remove('hidden');
+                    mealPlanOutput.classList.add('hidden');
+                    generateMealPlanBtn.disabled = true;
+
                     try {
-                        const response = await callClaude(`How can I metabolically balance this meal: ${meal}`, sysInstruction, 'chat');
-                        mealOutput.innerHTML = response.replace(/\n/g, '<br>');
-                        mealOutput.classList.remove('hidden');
+                        const myRecipesFetch = fetch('/api/user-recipes?deviceId=' + encodeURIComponent(aiDeviceId))
+                            .then(function(r) { return r.ok ? r.json() : { recipes: [] }; })
+                            .catch(function() { return { recipes: [] }; });
+                        const [protocolCorpus, recipeCorpus, myRecipesData] = await Promise.all([
+                            fetchProtocolCorpus(),
+                            fetchRecipeCorpus(),
+                            myRecipesFetch
+                        ]);
+                        const protocolCorpusText = buildProtocolCorpusText(protocolCorpus);
+                        const recipeCorpusText = buildRecipeCorpusText(recipeCorpus, myRecipesData.recipes || []);
+                        const sysInstruction = buildMealPlanInstruction(protocolCorpusText, recipeCorpusText, !!currentGoalProfile.disordered_eating_signal);
+
+                        const parsed = await extractToolFields('Generate my 7-day meal plan.', sysInstruction, 'meal_plan', MEAL_PLAN_TOOL, 'meal-plan');
+                        if (!parsed || !parsed.days || !parsed.days.length) throw new Error('No plan returned');
+
+                        const weeklyPlan = {
+                            days: parsed.days,
+                            rationale: parsed.rationale || '',
+                            allergy_note: parsed.allergy_note || null,
+                            generated_at: Date.now()
+                        };
+
+                        const response = await fetch('/api/profile', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ deviceId: aiDeviceId, profile: { weekly_meal_plan: weeklyPlan } })
+                        });
+                        const data = await response.json();
+                        if (data.profile) {
+                            currentGoalProfile = data.profile;
+                            renderWeeklyMealPlan(data.profile);
+                        }
                     } catch (error) {
-                        mealOutput.innerHTML = '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : 'Our AI coach is taking a short break. Please try again in a moment.') + '</span>';
-                        mealOutput.classList.remove('hidden');
+                        mealPlanOutput.innerHTML = '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : 'Our AI coach is taking a short break. Please try again in a moment.') + '</span>';
+                        mealPlanOutput.classList.remove('hidden');
                     } finally {
-                        mealLoading.classList.add('hidden');
-                        mealBtn.disabled = false;
+                        mealPlanLoading.classList.add('hidden');
+                        generateMealPlanBtn.disabled = false;
                     }
                 });
             }
@@ -4869,7 +5081,7 @@ DECISION RULES:${disorderedEatingSignal ? `
 
             // Left-nav layout for the AI Tools tab: exactly one tool/account
             // view visible at a time, matching the nav item clicked.
-            const AI_TOOL_VIEW_IDS = ['coach', 'meal-planner', 'fridge-chef', 'lab-tool', 'account-goals', 'account-protocol', 'account-health-history', 'account-recipes'];
+            const AI_TOOL_VIEW_IDS = ['coach', 'meal-planner', 'fridge-chef', 'lab-tool', 'account-goals', 'account-protocol', 'account-weekly-plan', 'account-health-history', 'account-recipes'];
 
             function switchAiToolsView(viewName) {
                 if (AI_TOOL_VIEW_IDS.indexOf(viewName) === -1) viewName = 'coach';
@@ -6254,6 +6466,7 @@ Format your response with clean HTML, matching the same convention used elsewher
                     if (data.profile) {
                         renderGoalBanner(data.profile);
                         if (data.profile.protocol) renderProtocolCard(data.profile.protocol);
+                        renderWeeklyMealPlan(data.profile);
                         userMetabolicProfile = buildMetabolicProfileText(data.profile);
                         const badge = document.getElementById('profile-connected-badge');
                         if (badge) badge.classList.remove('hidden');

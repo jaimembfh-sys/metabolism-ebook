@@ -7,13 +7,28 @@ const { Ratelimit } = require("@upstash/ratelimit");
 // ============================================================
 // Haiku 4.5 is the default for all routine, high-volume calls (chat + photo
 // scans). Do not point these at an Opus-tier model. "protocol" is reserved
-// for the one-time intake/protocol-building step; it can be pointed at a
-// stronger model later via ANTHROPIC_PROTOCOL_MODEL, but defaults to Haiku
-// until a premium model is actually needed.
+// for the one-time intake/protocol-building step; "meal_plan" is reserved
+// for the full 7-day Metabolic Meal Planner generation, which needs a much
+// larger output budget than the other structured-tool calls (up to ~21
+// meal entries in one response) but the same Haiku-by-default policy. Both
+// can be pointed at a stronger model later via their own env vars.
 const MODELS = {
   chat: "claude-haiku-4-5-20251001",
   photo_scan: "claude-haiku-4-5-20251001",
   protocol: process.env.ANTHROPIC_PROTOCOL_MODEL || "claude-haiku-4-5-20251001",
+  meal_plan: process.env.ANTHROPIC_MEAL_PLAN_MODEL || "claude-haiku-4-5-20251001",
+};
+
+// Per-request-type output budget. Most structured-tool calls (protocol,
+// chat replies) comfortably fit in 1024 tokens; the weekly meal plan is
+// meaningfully bigger (up to 7 days x 3 meals, each with a title/slot/
+// description/macros note) so it gets its own larger ceiling rather than
+// bumping every other call's cost.
+const MAX_TOKENS = {
+  chat: 1024,
+  photo_scan: 1024,
+  protocol: 1024,
+  meal_plan: 4096,
 };
 
 // Approximate list pricing, USD per million tokens. VERIFY against
@@ -138,6 +153,7 @@ async function buildUsageSummary(userId) {
       chat,
       photo_scan,
       protocol: { used: 0, limit: null, reset: null },
+      meal_plan: { used: 0, limit: null, reset: null },
     },
     hardCap: {
       used: Math.max(0, hardCapLimit - hardCapRemaining.remaining),
@@ -176,7 +192,7 @@ exports.handler = async function (event) {
 
   try {
     const { system, messages, deviceId: userId, requestType: rawRequestType, tools, tool_choice } = JSON.parse(event.body);
-    const requestType = ["chat", "photo_scan", "protocol"].includes(rawRequestType) ? rawRequestType : "chat";
+    const requestType = ["chat", "photo_scan", "protocol", "meal_plan"].includes(rawRequestType) ? rawRequestType : "chat";
 
     if (!userId) {
       return { statusCode: 400, body: JSON.stringify({ error: "Missing deviceId" }) };
@@ -230,7 +246,7 @@ exports.handler = async function (event) {
 
     const createParams = {
       model,
-      max_tokens: 1024,
+      max_tokens: MAX_TOKENS[requestType] || 1024,
       system: systemBlocks,
       messages,
     };
