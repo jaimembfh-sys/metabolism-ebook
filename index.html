@@ -2688,9 +2688,7 @@
                                 </div>
                             </div>
                             <nav class="space-y-1">
-                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-long-term">Long Term Goals</button>
-                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-weekly">Weekly Goals</button>
-                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-purpose">My Purpose</button>
+                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-goals">My Goals</button>
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-protocol">My Protocol</button>
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-health-history">Health History</button>
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-recipes">My Recipes</button>
@@ -2706,10 +2704,10 @@
                          reminder, shown regardless of which view below is active.
                          Lives inside this column (not the two-column row) so its
                          left/right edges always match the tool content, and its
-                         top edge lines up with the left nav panel's top. Editing
-                         lives in My Stuff > Long Term Goals; monthly/weekly
-                         checkpoints live in My Stuff > Weekly Goals; the protocol
-                         lives in My Stuff > My Protocol. This banner shows nothing else. -->
+                         top edge lines up with the left nav panel's top. Editing and
+                         monthly/weekly checkpoints live in My Stuff > My Goals; the
+                         protocol lives in My Stuff > My Protocol. This banner shows
+                         nothing else. -->
                     <div id="goal-why-banner" class="hidden mb-10 rounded-xl p-6 shadow-sm" style="background:linear-gradient(135deg, rgba(193,154,107,0.12), rgba(52,101,122,0.08));border:1px solid rgba(193,154,107,0.35);">
                         <p class="text-sm text-brand-dark mb-2"><span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">Your Goal:</span> <span id="goal-banner-goal-text" class="font-serif text-lg text-brand-dark"></span></p>
                         <p class="text-sm text-gray-600"><span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">Your Why:</span> <span id="goal-banner-why-text" class="italic"></span></p>
@@ -2968,12 +2966,20 @@
                         </div>
                     </div>
 
-                    <!-- View: My Stuff > Long Term Goals — now owns the edit-with-reason
-                         mechanism, relocated here from the banner (which is read-only). -->
-                    <div id="ai-view-account-long-term" class="ai-tool-view hidden" data-view-id="account-long-term">
-                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">Long Term Goals</h3>
-                        <p class="font-sans text-sm text-gray-500 mb-6">Your big-picture goal.</p>
-                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                    <!-- View: My Stuff > My Goals — merges the former separate Long Term
+                         Goals, Weekly Goals, and My Purpose nav items/pages into one page.
+                         Each subsection keeps its exact prior behavior and element IDs
+                         (Long Term Goals: edit-with-reason form; Weekly Goals: simple
+                         no-reason edit form; My Purpose: read-only) — only the page-level
+                         grouping changed. A weight progress chart is appended at the
+                         bottom as a supporting tool, below the identity/motivation content. -->
+                    <div id="ai-view-account-goals" class="ai-tool-view hidden" data-view-id="account-goals">
+                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">My Goals</h3>
+                        <p class="font-sans text-sm text-gray-500 mb-6">Your big-picture goal, this month&#x2019;s and this week&#x2019;s checkpoints, your why, and your weight trend &#x2014; all in one place.</p>
+
+                        <!-- Long Term Goals subsection -->
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
+                            <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">Long Term Goals</p>
                             <p id="account-long-term-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t set a long-term goal yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get started.</p>
                             <div id="account-long-term-content" class="hidden">
                                 <div class="flex items-start justify-between gap-2">
@@ -2999,13 +3005,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- View: My Stuff > Weekly Goals (monthly + weekly checkpoints together, with their own simple no-reason-required edit form — new, doesn't exist elsewhere) -->
-                    <div id="ai-view-account-weekly" class="ai-tool-view hidden" data-view-id="account-weekly">
-                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">Weekly Goals</h3>
-                        <p class="font-sans text-sm text-gray-500 mb-6">This month&#x2019;s and this week&#x2019;s concrete checkpoints. These are tactical and meant to be adjusted routinely &#x2014; edit them directly below, no reason needed.</p>
-                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                        <!-- Weekly Goals subsection (monthly + weekly checkpoints together, with their own simple no-reason-required edit form) -->
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
+                            <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">Weekly Goals</p>
                             <p id="account-weekly-empty" class="text-sm text-gray-500 italic mb-4">You haven&#x2019;t set these yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get started.</p>
                             <div id="account-weekly-content" class="hidden mb-5">
                                 <div class="mb-4">
@@ -3034,18 +3037,51 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- View: My Stuff > My Purpose -->
-                    <div id="ai-view-account-purpose" class="ai-tool-view hidden" data-view-id="account-purpose">
-                        <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">My Purpose</h3>
-                        <p class="font-sans text-sm text-gray-500 mb-6">The deeper &#x201C;why&#x201D; behind your goal, from your intake conversation.</p>
-                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                        <!-- My Purpose subsection (read-only) -->
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
+                            <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">My Purpose</p>
                             <p id="account-purpose-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t shared your why yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get started.</p>
                             <div id="account-purpose-content" class="hidden">
                                 <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">Your Why</p>
                                 <p id="account-purpose-text" class="font-serif text-lg italic text-brand-dark"></p>
                             </div>
+                        </div>
+
+                        <!-- Weight Progress subsection — supporting tool, kept below the
+                             identity/motivation content above. Hand-rolled SVG line chart,
+                             no chart library dependency. De-emphasized (fully hidden, with
+                             a brief explanatory note instead) when disordered_eating_signal
+                             is set, since repeated weight-focused check-ins could reinforce
+                             harmful patterns for these users. -->
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                            <div class="flex items-center justify-between gap-2 mb-1">
+                                <p class="text-xs font-semibold uppercase tracking-widest text-gray-500">Weight Progress</p>
+                                <button id="weight-log-toggle-btn" type="button" class="text-xs font-semibold underline text-brand-accent whitespace-nowrap">Log current weight</button>
+                            </div>
+                            <p class="text-sm text-gray-500 mb-4">Track your weight over time to see your real trend, not day-to-day fluctuation.</p>
+
+                            <div id="weight-log-form" class="hidden mb-5 pb-5 flex flex-wrap items-end gap-3" style="border-bottom:1px solid #e5e7eb;">
+                                <div>
+                                    <label class="block text-xs font-semibold text-brand-dark mb-1">Weight (lbs)</label>
+                                    <input type="number" id="weight-log-value" step="0.1" min="0" class="w-28 px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-brand-dark mb-1">Date</label>
+                                    <input type="date" id="weight-log-date" class="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                </div>
+                                <button id="weight-log-save-btn" type="button" class="bg-brand-dark hover:bg-[#234553] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Save entry</button>
+                                <span id="weight-log-status" class="hidden text-sm text-brand-dark"></span>
+                            </div>
+
+                            <div id="weight-chart-empty" class="hidden text-sm text-gray-500 italic">No weight data yet. Log your current weight above to start tracking.</div>
+                            <div id="weight-chart-single" class="hidden">
+                                <p id="weight-chart-single-value" class="text-3xl font-serif font-bold text-brand-dark"></p>
+                                <p id="weight-chart-single-date" class="text-xs text-gray-500 mt-1"></p>
+                                <p class="text-xs text-gray-500 italic mt-3">Log one more entry to start seeing your trend.</p>
+                            </div>
+                            <div id="weight-chart-svg-wrap"></div>
+                            <div id="weight-chart-safety-note" class="hidden text-sm text-gray-600 italic bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">Weight tracking is de-emphasized here based on your health history. Your progress is better measured by your energy, sleep, strength, and the non-scale wins in your protocol &#x2014; not a number on a scale. If you&#x2019;d like to track weight anyway, please loop in your care team first.</div>
                         </div>
                     </div>
 
@@ -4587,11 +4623,11 @@ DECISION RULES:${disorderedEatingSignal ? `
                 if (displayEl) displayEl.textContent = name || 'Add your name';
             }
 
-            // My Stuff > Long Term Goals / Weekly Goals / My Purpose —
-            // "fuller detail" views of the same profile data shown in the
-            // persistent goal/why banner. Long Term Goals and My Purpose are
-            // read-only (editing stays on the banner, unchanged); Weekly
-            // Goals has its own simple edit form further down.
+            // My Stuff > My Goals — renders the three merged subsections (Long
+            // Term Goals, Weekly Goals, My Purpose) plus the weight chart at
+            // the bottom of the same page. Long Term Goals owns its own
+            // edit-with-reason form; Weekly Goals has its own simple edit
+            // form further down; My Purpose stays read-only.
             function renderAccountGoalPanels(profile) {
                 var hasGoal = !!(profile && (profile.core_why_summary || (profile.long_term_goal && profile.long_term_goal.text)));
 
@@ -4630,6 +4666,135 @@ DECISION RULES:${disorderedEatingSignal ? `
                     var purposeText = document.getElementById('account-purpose-text');
                     if (purposeText) purposeText.textContent = profile.core_why_summary || '';
                 }
+
+                renderWeightChart(profile);
+            }
+
+            // My Goals > Weight Progress — builds the effective list of dated
+            // weight points to display: the one-time intake weight (seeded as
+            // the first point, dated from the profile's created_at, since it
+            // isn't itself timestamped) followed by any explicitly logged
+            // entries in profile.weight_log. Only profile.weight_log is ever
+            // persisted; the intake point is re-derived at render time so
+            // there's nothing to keep in sync.
+            function getEffectiveWeightLog(profile) {
+                var log = (profile && Array.isArray(profile.weight_log)) ? profile.weight_log.slice() : [];
+                var intakeWeight = profile && profile.health_history && profile.health_history.current_weight;
+                if (intakeWeight != null) {
+                    var intakeDate = new Date(profile.created_at || Date.now()).toISOString().slice(0, 10);
+                    var alreadyPresent = log.some(function(e) { return e.date === intakeDate && e.weight === intakeWeight; });
+                    if (!alreadyPresent) log.push({ date: intakeDate, weight: intakeWeight });
+                }
+                log.sort(function(a, b) { return a.date < b.date ? -1 : (a.date > b.date ? 1 : 0); });
+                return log;
+            }
+
+            // Renders the Weight Progress subsection: fully de-emphasized
+            // (hidden, safety note shown instead) when disordered_eating_signal
+            // is set; otherwise an empty state, a single-value state, or the
+            // hand-rolled SVG trend line once there are 2+ points.
+            function renderWeightChart(profile) {
+                var toggleBtn = document.getElementById('weight-log-toggle-btn');
+                var logForm = document.getElementById('weight-log-form');
+                var emptyEl = document.getElementById('weight-chart-empty');
+                var singleEl = document.getElementById('weight-chart-single');
+                var svgWrap = document.getElementById('weight-chart-svg-wrap');
+                var safetyNote = document.getElementById('weight-chart-safety-note');
+                if (!emptyEl || !singleEl || !svgWrap || !safetyNote) return;
+
+                if (profile && profile.disordered_eating_signal) {
+                    if (toggleBtn) toggleBtn.classList.add('hidden');
+                    if (logForm) logForm.classList.add('hidden');
+                    emptyEl.classList.add('hidden');
+                    singleEl.classList.add('hidden');
+                    svgWrap.classList.add('hidden');
+                    safetyNote.classList.remove('hidden');
+                    return;
+                }
+
+                if (toggleBtn) toggleBtn.classList.remove('hidden');
+                safetyNote.classList.add('hidden');
+
+                var log = getEffectiveWeightLog(profile);
+
+                if (log.length === 0) {
+                    emptyEl.classList.remove('hidden');
+                    singleEl.classList.add('hidden');
+                    svgWrap.classList.add('hidden');
+                    svgWrap.innerHTML = '';
+                } else if (log.length === 1) {
+                    emptyEl.classList.add('hidden');
+                    singleEl.classList.remove('hidden');
+                    svgWrap.classList.add('hidden');
+                    svgWrap.innerHTML = '';
+                    var singleValueEl = document.getElementById('weight-chart-single-value');
+                    var singleDateEl = document.getElementById('weight-chart-single-date');
+                    if (singleValueEl) singleValueEl.textContent = log[0].weight + ' lbs';
+                    if (singleDateEl) singleDateEl.textContent = formatShortDate(log[0].date);
+                } else {
+                    emptyEl.classList.add('hidden');
+                    singleEl.classList.add('hidden');
+                    svgWrap.classList.remove('hidden');
+                    svgWrap.innerHTML = buildWeightChartSvg(log);
+                }
+            }
+
+            function formatShortDate(dateStr) {
+                var d = new Date(dateStr + 'T00:00:00');
+                if (isNaN(d.getTime())) return dateStr;
+                return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            }
+
+            // Hand-rolled SVG line chart — no chart library dependency, kept
+            // deliberately simple since this is a supporting trend view, not
+            // the page's headline content.
+            function buildWeightChartSvg(points) {
+                var width = 600, height = 220;
+                var padding = { top: 20, right: 16, bottom: 24, left: 4 };
+                var innerW = width - padding.left - padding.right;
+                var innerH = height - padding.top - padding.bottom;
+
+                var weights = points.map(function(p) { return p.weight; });
+                var minW = Math.min.apply(null, weights);
+                var maxW = Math.max.apply(null, weights);
+                if (minW === maxW) { minW -= 1; maxW += 1; }
+                var wPad = (maxW - minW) * 0.15;
+                minW -= wPad; maxW += wPad;
+
+                var times = points.map(function(p) { return new Date(p.date + 'T00:00:00').getTime(); });
+                var minT = Math.min.apply(null, times);
+                var maxT = Math.max.apply(null, times);
+                var sameTime = (minT === maxT);
+
+                function xFor(i) {
+                    if (sameTime) return padding.left + (points.length === 1 ? innerW / 2 : (innerW * i / (points.length - 1)));
+                    return padding.left + innerW * (times[i] - minT) / (maxT - minT);
+                }
+                function yFor(w) {
+                    return padding.top + innerH - (innerH * (w - minW) / (maxW - minW));
+                }
+
+                var pathD = points.map(function(p, i) {
+                    return (i === 0 ? 'M' : 'L') + xFor(i).toFixed(1) + ',' + yFor(p.weight).toFixed(1);
+                }).join(' ');
+
+                var dots = points.map(function(p, i) {
+                    return '<circle cx="' + xFor(i).toFixed(1) + '" cy="' + yFor(p.weight).toFixed(1) + '" r="4" fill="#34657a" stroke="white" stroke-width="1.5"><title>' +
+                        escapeHtml(p.weight + ' lbs on ' + formatShortDate(p.date)) + '</title></circle>';
+                }).join('');
+
+                var firstLabel = escapeHtml(formatShortDate(points[0].date));
+                var lastLabel = escapeHtml(formatShortDate(points[points.length - 1].date));
+
+                return '<svg viewBox="0 0 ' + width + ' ' + height + '" style="width:100%;height:auto;display:block;" preserveAspectRatio="xMidYMid meet">' +
+                    '<line x1="' + padding.left + '" y1="' + (padding.top + innerH) + '" x2="' + (padding.left + innerW) + '" y2="' + (padding.top + innerH) + '" stroke="#e5e7eb" stroke-width="1"></line>' +
+                    '<text x="' + padding.left + '" y="14" font-size="11" fill="#9ca3af">' + maxW.toFixed(1) + ' lbs</text>' +
+                    '<text x="' + padding.left + '" y="' + (padding.top + innerH - 6) + '" font-size="11" fill="#9ca3af">' + minW.toFixed(1) + ' lbs</text>' +
+                    '<path d="' + pathD + '" fill="none" stroke="#34657a" stroke-width="2.5"></path>' +
+                    dots +
+                    '<text x="' + padding.left + '" y="' + (height - 4) + '" font-size="11" fill="#9ca3af" text-anchor="start">' + firstLabel + '</text>' +
+                    '<text x="' + (padding.left + innerW) + '" y="' + (height - 4) + '" font-size="11" fill="#9ca3af" text-anchor="end">' + lastLabel + '</text>' +
+                '</svg>';
             }
 
             // My Stuff > Health History — read-only display of the structured
@@ -4704,7 +4869,7 @@ DECISION RULES:${disorderedEatingSignal ? `
 
             // Left-nav layout for the AI Tools tab: exactly one tool/account
             // view visible at a time, matching the nav item clicked.
-            const AI_TOOL_VIEW_IDS = ['coach', 'meal-planner', 'fridge-chef', 'lab-tool', 'account-long-term', 'account-weekly', 'account-purpose', 'account-protocol', 'account-health-history', 'account-recipes'];
+            const AI_TOOL_VIEW_IDS = ['coach', 'meal-planner', 'fridge-chef', 'lab-tool', 'account-goals', 'account-protocol', 'account-health-history', 'account-recipes'];
 
             function switchAiToolsView(viewName) {
                 if (AI_TOOL_VIEW_IDS.indexOf(viewName) === -1) viewName = 'coach';
@@ -4811,6 +4976,68 @@ DECISION RULES:${disorderedEatingSignal ? `
                         }
                     } finally {
                         accountWeeklySaveBtn.disabled = false;
+                    }
+                });
+            }
+
+            // My Goals > Weight Progress — logging a new dated entry. Uses the
+            // same default merge-save action as Weekly Goals (no reason, no
+            // change-history logging) since this is additive tracking data,
+            // not an edit to an existing value. Only profile.weight_log is
+            // ever sent — the intake-derived first point is never persisted
+            // (see getEffectiveWeightLog).
+            const weightLogToggleBtn = document.getElementById('weight-log-toggle-btn');
+            const weightLogForm = document.getElementById('weight-log-form');
+            const weightLogValueInput = document.getElementById('weight-log-value');
+            const weightLogDateInput = document.getElementById('weight-log-date');
+            const weightLogSaveBtn = document.getElementById('weight-log-save-btn');
+            const weightLogStatus = document.getElementById('weight-log-status');
+
+            if (weightLogToggleBtn) {
+                weightLogToggleBtn.addEventListener('click', () => {
+                    if (weightLogDateInput && !weightLogDateInput.value) {
+                        weightLogDateInput.value = new Date().toISOString().slice(0, 10);
+                    }
+                    if (weightLogForm) weightLogForm.classList.toggle('hidden');
+                });
+            }
+
+            if (weightLogSaveBtn) {
+                weightLogSaveBtn.addEventListener('click', async () => {
+                    const weightVal = weightLogValueInput ? parseFloat(weightLogValueInput.value) : NaN;
+                    const dateVal = weightLogDateInput ? weightLogDateInput.value : '';
+                    if (weightLogStatus) { weightLogStatus.textContent = ''; weightLogStatus.classList.add('hidden'); }
+                    if (!weightVal || weightVal <= 0 || !dateVal) {
+                        if (weightLogStatus) {
+                            weightLogStatus.textContent = 'Enter a weight and date first.';
+                            weightLogStatus.classList.remove('hidden');
+                        }
+                        return;
+                    }
+                    weightLogSaveBtn.disabled = true;
+                    try {
+                        const existingLog = (currentGoalProfile && Array.isArray(currentGoalProfile.weight_log)) ? currentGoalProfile.weight_log : [];
+                        const newLog = existingLog.concat([{ date: dateVal, weight: weightVal }]);
+                        const response = await fetch('/api/profile', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ deviceId: aiDeviceId, profile: { weight_log: newLog } })
+                        });
+                        const data = await response.json();
+                        if (data.profile) {
+                            currentGoalProfile = data.profile;
+                            renderWeightChart(data.profile);
+                        }
+                        if (weightLogValueInput) weightLogValueInput.value = '';
+                        if (weightLogForm) weightLogForm.classList.add('hidden');
+                    } catch (e) {
+                        console.error('save weight entry failed', e);
+                        if (weightLogStatus) {
+                            weightLogStatus.textContent = 'Something went wrong — please try again.';
+                            weightLogStatus.classList.remove('hidden');
+                        }
+                    } finally {
+                        weightLogSaveBtn.disabled = false;
                     }
                 });
             }
