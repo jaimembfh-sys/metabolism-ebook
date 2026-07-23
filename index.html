@@ -3225,6 +3225,12 @@
                                 </div>
 
                                 <div id="daily-tracker-macro-totals" class="border-t border-gray-200 pt-4"></div>
+
+                                <div class="border-t border-gray-200 pt-4">
+                                    <button type="button" id="daily-tracker-troubleshoot-btn" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-brand-accent/40 bg-brand-light/30 px-4 py-2.5 text-sm font-semibold text-brand-dark hover:bg-brand-light/60 transition-colors">Feeling stuck? Get help troubleshooting</button>
+                                    <div id="daily-tracker-troubleshoot-loading" class="hidden mt-3 text-sm text-gray-500 italic">Reviewing your recent data&hellip;</div>
+                                    <div id="daily-tracker-troubleshoot-output" class="hidden mt-3 p-4 bg-white border border-brand-accent/20 rounded-lg text-sm text-gray-700 leading-relaxed"></div>
+                                </div>
                             </div>
                         </div>
 
@@ -4234,7 +4240,7 @@
             var aiDeviceId = getAiDeviceId();
             var lastRateLimit = null;
             var toolCounterEls = [];
-            var AI_BTN_CATEGORY = { 'chat-send-btn': 'protocol', 'generate-fridge-btn': 'chat', 'lab-markers-btn': 'chat', 'my-recipe-estimate-btn': 'chat', 'generate-meal-plan-btn': 'meal_plan' };
+            var AI_BTN_CATEGORY = { 'chat-send-btn': 'protocol', 'generate-fridge-btn': 'chat', 'lab-markers-btn': 'chat', 'my-recipe-estimate-btn': 'chat', 'generate-meal-plan-btn': 'meal_plan', 'daily-tracker-troubleshoot-btn': 'chat' };
 
             function isAiLimitReached(category) {
                 if (!lastRateLimit) return false;
@@ -5253,6 +5259,133 @@ YOUR JOB:
                         dailyTrackerExtraForm.classList.add('hidden');
                         resetExtraForm();
                     });
+                });
+            }
+
+            // ---- Plateau troubleshooting (My Protocol > Daily Tracker) ----
+            // Single-shot AI call, NOT a persistent chat — same one-and-done
+            // pattern as Fridge Chef/Lab Markers. Pulls everything it can
+            // from existing data (Health History, recent Daily Tracker logs,
+            // weight_log, disordered_eating_signal, staged_plan) so the user
+            // never has to re-answer anything already on file. Because
+            // there's no way for the user to reply within this feature, the
+            // instruction tells the model to note any data gap briefly and
+            // give its best-effort read anyway, rather than pausing on a
+            // clarifying question it can never get an answer to.
+            function buildTroubleshootContextText(profile) {
+                var parts = [];
+                var hh = profile.health_history || {};
+                var lifestyle = hh.lifestyle || {};
+                var physical = hh.physical || {};
+
+                if (lifestyle.avg_sleep) {
+                    parts.push('Sleep: ' + String(lifestyle.avg_sleep).replace('_', '-') + ' hrs/night, usually wakes around ' +
+                        (lifestyle.wake_time ? formatTimeLabel(lifestyle.wake_time) : 'an unspecified time') + ', ' +
+                        (lifestyle.wake_refreshed ? 'wakes feeling refreshed' : 'does not wake feeling refreshed') + '.');
+                } else {
+                    parts.push('Sleep: not captured in Health History.');
+                }
+
+                parts.push(hh.stress_level != null ? ('Stress level (self-reported, 1-10): ' + hh.stress_level + '.') : 'Stress level: not captured in Health History.');
+
+                var meds = [];
+                if (physical.heart_bp_bloodsugar_meds) meds.push('a heart/blood pressure/blood sugar medication');
+                if (physical.glp1_meds) meds.push('a GLP-1 medication');
+                parts.push(meds.length ? ('Medications on file: ' + meds.join(' and ') + '.') : 'No heart/BP/blood-sugar or GLP-1 medications on file.');
+
+                var log = profile.daily_log || {};
+                var dates = Object.keys(log).sort().slice(-14);
+                if (dates.length) {
+                    var habitDays = 0, mealDays = 0, exerciseDays = 0, exerciseTypes = {}, fastingValues = [];
+                    dates.forEach(function(d) {
+                        var e = log[d];
+                        if (e.habits_checked && e.habits_checked.length) habitDays++;
+                        if (e.meals_checked && e.meals_checked.length) mealDays++;
+                        if (e.exercise) {
+                            exerciseDays++;
+                            var cat = e.exercise.category || 'unspecified';
+                            exerciseTypes[cat] = (exerciseTypes[cat] || 0) + 1;
+                        }
+                        if (typeof e.fasting_hours === 'number') fastingValues.push(e.fasting_hours);
+                    });
+                    var exerciseBreakdown = Object.keys(exerciseTypes).map(function(k) { return k + ' x' + exerciseTypes[k]; }).join(', ');
+                    parts.push('Daily Tracker activity over the last ' + dates.length + ' logged day(s) (' + dates[0] + ' to ' + dates[dates.length - 1] + '): habits checked off on ' + habitDays + '/' + dates.length + ' days, planned meals marked done on ' + mealDays + '/' + dates.length + ' days, exercise logged on ' + exerciseDays + '/' + dates.length + ' days' + (exerciseBreakdown ? (' (' + exerciseBreakdown + ')') : '') + '.');
+                    if (fastingValues.length) {
+                        var avgFast = fastingValues.reduce(function(a, b) { return a + b; }, 0) / fastingValues.length;
+                        parts.push('Fasting hours logged on ' + fastingValues.length + ' of those days, averaging ' + avgFast.toFixed(1) + ' hrs.');
+                    }
+                } else {
+                    parts.push('No Daily Tracker logging history yet.');
+                }
+
+                var weightLog = getEffectiveWeightLog(profile);
+                if (weightLog.length >= 2) {
+                    var first = weightLog[0], last = weightLog[weightLog.length - 1];
+                    var delta = last.weight - first.weight;
+                    parts.push('Weight trend: ' + first.weight + ' on ' + first.date + ' to ' + last.weight + ' on ' + last.date + ' (' + (delta > 0 ? '+' : '') + delta.toFixed(1) + ').');
+                } else if (weightLog.length === 1) {
+                    parts.push('Weight: only one data point on file (' + weightLog[0].weight + ' on ' + weightLog[0].date + ') — no trend yet.');
+                } else {
+                    parts.push('Weight: no data on file.');
+                }
+
+                if (profile.protocol && profile.protocol.staged_plan && profile.protocol.staged_plan.length) {
+                    var stage = profile.protocol.staged_plan[0];
+                    parts.push('This user is on a staged, conservative protocol (' + stage.stage_label + ': ' + stage.focus + ').');
+                }
+
+                return parts.join(' ');
+            }
+
+            function buildTroubleshootSystemInstruction(disorderedEatingSignal, hasStagedPlan, liveSearchRulesText) {
+                return `You are Jaime Jenkins' AI Metabolic Coach, responding to a one-time "I'm feeling stuck" check-in from a user who already completed intake and has an active protocol. This is a SINGLE response with no way for the user to reply within this feature — you will not get a follow-up turn.
+
+Walk through the plateau-troubleshooting factors covered in Lesson 13 (sleep quality, stress load, consistency with the plan, inflammation triggers, nutrient-deficiency risk, and medications that can affect metabolism/weight) using ONLY the data already provided below for each factor. If a factor genuinely isn't captured in what's given, briefly note that gap in one sentence and move on with your best-effort read of the rest — never leave the response waiting on a question, since there is no way for the user to answer one here.
+
+End with exactly 1-2 specific, prioritized suggestions — not a full rundown of every factor. Pick the ONE or TWO things most likely to matter for this specific person based on their actual data, not a generic checklist.
+
+${liveSearchRulesText}
+
+GUARDRAILS:${disorderedEatingSignal ? `
+- This user has a disordered-eating safety signal on file. Your ENTIRE response — the factor walkthrough AND the suggestions — MUST stay qualitative and food-quality/behavior-focused — NEVER state a specific weight number, calorie count, or macro gram amount, even in passing (e.g. when referencing the weight trend data, describe direction only — "trending down" / "holding steady" — never restate the actual numbers), and never use restriction-flavored language ("cut back," "too much"). Frame everything around energy, sleep, stress, and how food makes them feel.` : ''}${hasStagedPlan ? `
+- This user is on a staged, conservative protocol (see the data above). Your suggestions MUST stay consistent with that conservative approach — never suggest something more aggressive (e.g. stricter carb reduction, a longer fasting window) than their current stage calls for.` : ''}
+- If anything in the data (medications, disclosed conditions, a concerning pattern) sounds like it needs real medical attention, clearly and specifically recommend they bring it up with their doctor or practitioner — don't just add a generic disclaimer at the end.
+- Do NOT use asterisks for bolding. Format with clean HTML (<h4>, <p>, <ul>) so it displays beautifully, matching the rest of the app's AI responses.`;
+            }
+
+            const dailyTrackerTroubleshootBtn = document.getElementById('daily-tracker-troubleshoot-btn');
+            const dailyTrackerTroubleshootLoading = document.getElementById('daily-tracker-troubleshoot-loading');
+            const dailyTrackerTroubleshootOutput = document.getElementById('daily-tracker-troubleshoot-output');
+            const TROUBLESHOOT_LIVE_SEARCH_BUDGET = 1;
+
+            if (dailyTrackerTroubleshootBtn) {
+                dailyTrackerTroubleshootBtn.addEventListener('click', async () => {
+                    if (!currentGoalProfile) return;
+                    if (isAiLimitReached('chat')) return;
+
+                    dailyTrackerTroubleshootBtn.disabled = true;
+                    dailyTrackerTroubleshootLoading.classList.remove('hidden');
+                    dailyTrackerTroubleshootOutput.classList.add('hidden');
+                    dailyTrackerTroubleshootOutput.innerHTML = '';
+
+                    try {
+                        const contextText = 'Here is my current data for a plateau/stuck check-in:\n\n' + buildTroubleshootContextText(currentGoalProfile);
+                        const researcherConfig = await fetchResearcherSources();
+                        const researcherSourcesText = buildResearcherSourcesText(researcherConfig);
+                        const liveSearchRulesText = buildLiveSearchRules(researcherSourcesText, TROUBLESHOOT_LIVE_SEARCH_BUDGET);
+                        const hasStagedPlan = !!(currentGoalProfile.protocol && currentGoalProfile.protocol.staged_plan && currentGoalProfile.protocol.staged_plan.length);
+                        const systemInstruction = buildTroubleshootSystemInstruction(!!currentGoalProfile.disordered_eating_signal, hasStagedPlan, liveSearchRulesText);
+
+                        const result = await callClaudeChat([{ role: 'user', content: contextText }], systemInstruction, 'chat', TROUBLESHOOT_LIVE_SEARCH_BUDGET);
+                        dailyTrackerTroubleshootOutput.innerHTML = result.text;
+                        dailyTrackerTroubleshootOutput.classList.remove('hidden');
+                    } catch (error) {
+                        dailyTrackerTroubleshootOutput.innerHTML = '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : 'Our AI coach is taking a short break. Please try again in a moment.') + '</span>';
+                        dailyTrackerTroubleshootOutput.classList.remove('hidden');
+                    } finally {
+                        dailyTrackerTroubleshootBtn.disabled = false;
+                        dailyTrackerTroubleshootLoading.classList.add('hidden');
+                    }
                 });
             }
 
@@ -6901,6 +7034,14 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                         pendingConfirmationProfile = null;
                         const planConfirmationPanel = document.getElementById('plan-confirmation-panel');
                         if (planConfirmationPanel) planConfirmationPanel.classList.add('hidden');
+                        // Intake is fully done at this point and there's no ongoing-chat
+                        // mode yet (see project notes on plateau troubleshooting) — closing
+                        // the input here instead of leaving it reachable-but-undefined,
+                        // since anything typed past this point would hit the scripted
+                        // intake system prompt with no instructions for handling it.
+                        if (chatInputRow) chatInputRow.classList.add('hidden');
+                        chatInput.disabled = true;
+                        chatSendBtn.disabled = true;
                     } catch (e) {
                         console.error('confirm plan failed', e);
                         appendChatMessage('ai', '<span style="color:#c19a6b;font-weight:600;">Something went wrong saving your plan. Please try again.</span>');
