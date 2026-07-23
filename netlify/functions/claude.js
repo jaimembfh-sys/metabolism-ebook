@@ -3,6 +3,59 @@ const { Redis } = require("@upstash/redis");
 const { Ratelimit } = require("@upstash/ratelimit");
 
 // ============================================================
+// LIVE RESEARCH SEARCH — config-driven, see knowledge-base/researcher-sources.json.
+// Never hardcode researcher names here; add new ones to that file only.
+// This is the SERVER's copy of the domain allowlist (authoritative — the
+// client also renders the same file into prompt text so the model knows
+// who it's allowed to search for, but the actual `allowed_domains` sent to
+// Anthropic is always computed here, not trusted from client input, since
+// that's the one hard boundary ("never search the open internet broadly")
+// that must not depend on client-side JS being unmodified).
+// ============================================================
+const RESEARCHER_SOURCES = require("../../knowledge-base/researcher-sources.json");
+const LIVE_SEARCH_ACADEMIC_DOMAINS = ["scholar.google.com", "pubmed.ncbi.nlm.nih.gov"];
+const LIVE_SEARCH_ALLOWED_DOMAINS = Array.from(
+  new Set(
+    [
+      ...(RESEARCHER_SOURCES.tier1 || []).map((r) => r.site).filter(Boolean),
+      ...LIVE_SEARCH_ACADEMIC_DOMAINS,
+    ]
+  )
+);
+// Flat lookup used only to attribute a completed search to a
+// tier/researcher for the log line — best-effort, not used for any
+// enforcement decision (allowed_domains above is what actually restricts
+// the search itself).
+const LIVE_SEARCH_RESEARCHER_INDEX = [
+  ...(RESEARCHER_SOURCES.tier1 || []).map((r) => ({ ...r, tier: 1 })),
+  ...(RESEARCHER_SOURCES.tier2 || []).map((r) => ({ ...r, tier: 2 })),
+];
+// Anthropic bills web_search per-use in addition to normal token cost for
+// the injected result content. VERIFY against https://www.anthropic.com/pricing.
+const LIVE_SEARCH_COST_PER_USE_USD = 0.01;
+
+function attributeLiveSearch(query, resultUrls) {
+  var q = (query || "").toLowerCase();
+  var urls = resultUrls || [];
+  // Prefer a site match (tier 1's own domain showed up in the results).
+  for (var i = 0; i < LIVE_SEARCH_RESEARCHER_INDEX.length; i++) {
+    var r = LIVE_SEARCH_RESEARCHER_INDEX[i];
+    if (r.site && urls.some((u) => u.includes(r.site))) {
+      return { tier: r.tier, researcher: r.name };
+    }
+  }
+  // Fall back to a name match in the query text (how tier 2 — and tier 1
+  // via its "Scholar/PubMed by name" supplement — actually gets searched).
+  for (var j = 0; j < LIVE_SEARCH_RESEARCHER_INDEX.length; j++) {
+    var r2 = LIVE_SEARCH_RESEARCHER_INDEX[j];
+    if (r2.name && q.includes(r2.name.toLowerCase())) {
+      return { tier: r2.tier, researcher: r2.name };
+    }
+  }
+  return { tier: null, researcher: null };
+}
+
+// ============================================================
 // MODEL CONFIG
 // ============================================================
 // Haiku 4.5 is the default for all routine, high-volume calls (chat + photo
@@ -191,7 +244,15 @@ exports.handler = async function (event) {
   }
 
   try {
-    const { system, messages, deviceId: userId, requestType: rawRequestType, tools, tool_choice } = JSON.parse(event.body);
+    const {
+      system,
+      messages,
+      deviceId: userId,
+      requestType: rawRequestType,
+      tools,
+      tool_choice,
+      liveSearchBudgetRemaining,
+    } = JSON.parse(event.body);
     const requestType = ["chat", "photo_scan", "protocol", "meal_plan"].includes(rawRequestType) ? rawRequestType : "chat";
 
     if (!userId) {
@@ -257,9 +318,74 @@ exports.handler = async function (event) {
     if (tools) createParams.tools = tools;
     if (tool_choice) createParams.tool_choice = tool_choice;
 
+    // Live research search (see knowledge-base/researcher-sources.json) —
+    // only attached when the caller has budget left AND isn't forcing a
+    // specific other tool_choice (forcing tool_choice to e.g. record_protocol
+    // means Claude's very next action IS that tool call, so it can never
+    // search first in that same turn — callers that need both do a separate
+    // untargeted research call first, then their normal forced-tool call).
+    // allowed_domains is always computed server-side from the config file,
+    // never trusted from the request body, since "never search the open
+    // internet broadly" is a hard boundary, not a client-side suggestion.
+    const wantsLiveSearch = Number(liveSearchBudgetRemaining) > 0 && !(tool_choice && tool_choice.type === "tool");
+    if (wantsLiveSearch) {
+      createParams.tools = (createParams.tools || []).concat([
+        {
+          type: "web_search_20250305",
+          name: "web_search",
+          max_uses: Math.min(Number(liveSearchBudgetRemaining), 2),
+          allowed_domains: LIVE_SEARCH_ALLOWED_DOMAINS,
+        },
+      ]);
+    }
+
     const response = await client.messages.create(createParams);
 
-    const cost = estimateCostUsd(model, response.usage);
+    // How many searches Claude actually performed this call — exposed
+    // directly on usage, no need to count content blocks by hand.
+    const liveSearchesUsed = (response.usage.server_tool_use && response.usage.server_tool_use.web_search_requests) || 0;
+
+    if (liveSearchesUsed > 0) {
+      // Log one line per search performed, with a best-effort tier/researcher
+      // attribution — for periodic manual review, not a dashboard. Also
+      // charge each search against the same hard safety cap as a normal
+      // request, on top of the one already consumed for this call itself.
+      const searchCalls = response.content.filter((b) => b.type === "server_tool_use" && b.name === "web_search");
+      const resultsByToolUseId = {};
+      response.content
+        .filter((b) => b.type === "web_search_tool_result")
+        .forEach((b) => {
+          resultsByToolUseId[b.tool_use_id] = Array.isArray(b.content) ? b.content : [];
+        });
+
+      for (const call of searchCalls) {
+        const results = resultsByToolUseId[call.id] || [];
+        const resultUrls = results.map((r) => r.url).filter(Boolean);
+        const attribution = attributeLiveSearch(call.input && call.input.query, resultUrls);
+        console.log(
+          JSON.stringify({
+            event: "live_search",
+            user_id: userId,
+            timestamp: new Date().toISOString(),
+            request_type: requestType,
+            query: call.input && call.input.query,
+            tier_searched: attribution.tier,
+            researcher_matched: attribution.researcher,
+            result_count: results.length,
+            had_results: results.length > 0,
+          })
+        );
+        // Best-effort — a rare failure here should never break the actual
+        // response the user is waiting on.
+        try {
+          await hardCapLimiterFor(tier).limit(userId);
+        } catch (e) {
+          console.error("live_search hard-cap consumption failed", e.message);
+        }
+      }
+    }
+
+    const cost = estimateCostUsd(model, response.usage) + liveSearchesUsed * LIVE_SEARCH_COST_PER_USE_USD;
     console.log(
       JSON.stringify({
         event: "ai_usage",
@@ -273,6 +399,7 @@ exports.handler = async function (event) {
         output_tokens: response.usage.output_tokens,
         cache_creation_input_tokens: response.usage.cache_creation_input_tokens || 0,
         cache_read_input_tokens: response.usage.cache_read_input_tokens || 0,
+        live_searches_used: liveSearchesUsed,
         estimated_cost_usd: cost,
       })
     );
@@ -280,7 +407,7 @@ exports.handler = async function (event) {
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...response, rateLimit: await buildUsageSummary(userId) }),
+      body: JSON.stringify({ ...response, liveSearchesUsed, rateLimit: await buildUsageSummary(userId) }),
     };
   } catch (error) {
     return {

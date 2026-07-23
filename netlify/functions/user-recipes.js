@@ -64,6 +64,45 @@ exports.handler = async function (event) {
       };
     }
 
+    // "Overwrite Original" from the Meal Planner's proactive-coaching flow
+    // (see startRecipeAdjustment in index.html) — replaces the matching
+    // recipe's content in place (same id, so it doesn't count against the
+    // 50-recipe cap as a new entry) rather than appending a new one.
+    if (action === "update") {
+      if (!id) {
+        return { statusCode: 400, body: JSON.stringify({ error: "Missing id" }) };
+      }
+      if (!recipe || typeof recipe !== "object" || !recipe.title || !recipe.ingredients || !recipe.instructions) {
+        return { statusCode: 400, body: JSON.stringify({ error: "Recipe is missing required fields" }) };
+      }
+      const existing = await getRecipes(userId);
+      const index = existing.findIndex((r) => r.id === id);
+      if (index === -1) {
+        return { statusCode: 404, body: JSON.stringify({ error: "Recipe not found" }) };
+      }
+      const now = Date.now();
+      const updated = {
+        ...existing[index],
+        title: String(recipe.title).trim(),
+        ingredients: String(recipe.ingredients).trim(),
+        instructions: String(recipe.instructions).trim(),
+        original_recipe_text: recipe.original_recipe_text ? String(recipe.original_recipe_text).trim() : existing[index].original_recipe_text,
+        substitution_note: recipe.substitution_note ? String(recipe.substitution_note).trim() : null,
+        servings: recipe.servings || null,
+        estimated_macros: recipe.estimated_macros || null,
+        user_corrected: !!recipe.user_corrected,
+        updated_at: now,
+      };
+      const updatedList = existing.slice();
+      updatedList[index] = updated;
+      await redis.set(recipesKey(userId), JSON.stringify(updatedList));
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ recipe: updated, recipes: updatedList }),
+      };
+    }
+
     // Default action: save (create). This is a private, per-device recipe
     // collection — never merged into the shared knowledge-base/recipes corpus.
     if (!recipe || typeof recipe !== "object") {
