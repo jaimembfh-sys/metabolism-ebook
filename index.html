@@ -450,8 +450,8 @@
 
             <div class="flex flex-col lg:flex-row gap-6 lg:items-start">
                 <aside class="w-full lg:w-64 lg:flex-shrink-0">
-                    <div class="sticky top-24 rounded-[1.25rem] border border-[#dfe9ee] bg-white pt-5 pr-4 pb-4 pl-4 shadow-sm">
-                        <div class="mb-4 text-center">
+                    <div class="sticky top-24 rounded-[1.25rem] border border-[#dfe9ee] bg-white pt-6 pr-4 pb-4 pl-4 shadow-sm">
+                        <div class="mb-[1.15rem] text-center">
                             <img src="logos/mind-body-cropped.png" alt="Mindbody Functional Health" class="mx-auto h-auto" style="max-height:57.5px;width:auto;">
                         </div>
                         <p class="mb-3 text-xl font-serif font-bold tracking-wide text-brand-dark uppercase">Course Navigator</p>
@@ -565,8 +565,11 @@
                 <div style="max-width:480px;margin:0 auto;border-radius:1rem;overflow:hidden;box-shadow:0 10px 48px rgba(52,101,122,0.07),0 2px 18px rgba(193,154,107,0.10);">
                     <img src="images/1778224470356.png" alt="How Your Body Burns: The Real Science of Metabolism, by Jaime Jenkins" style="width:100%;height:auto;display:block;">
                     <!-- Extended footer, same near-black tone as the cover art itself, so the button area reads as a continuation of the image rather than a hard cut. -->
-                    <div style="background:#060c0f;padding:0.7rem 2rem 2.75rem;text-align:center;">
-                        <button onclick="showLesson(1)" style="background:#c19a6b;color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.95rem;padding:1rem 2.75rem;border-radius:0.75rem;border:none;cursor:pointer;letter-spacing:0.06em;box-shadow:0 4px 18px rgba(193,154,107,0.35);transition:background 0.2s;" onmouseover="this.style.background='#a68256'" onmouseout="this.style.background='#c19a6b'">Begin Lesson 1 &#x2192;</button>
+                    <div style="background:#060c0f;padding:0.7rem 2rem 2.75rem;">
+                        <!-- Nudged right of true-center: left/right auto-centering margins
+                             (~89.5px each at the reference 480px card width) shifted 10%
+                             more to the left, 10% less to the right. -->
+                        <button onclick="showLesson(1)" style="display:block;margin-left:98.5px;margin-right:80.6px;background:#c19a6b;color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.95rem;padding:1rem 2.75rem;border-radius:0.75rem;border:none;cursor:pointer;letter-spacing:0.06em;box-shadow:0 4px 18px rgba(193,154,107,0.35);transition:background 0.2s;" onmouseover="this.style.background='#a68256'" onmouseout="this.style.background='#c19a6b'">Begin Lesson 1 &#x2192;</button>
                     </div>
                 </div>
             </div>
