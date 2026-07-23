@@ -2737,13 +2737,10 @@
                             <div class="px-3 mb-2">
                                 <div class="flex items-center justify-between">
                                     <span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">My Stuff</span>
-                                    <button type="button" id="account-name-edit-toggle" class="text-[10px] font-semibold text-brand-accent underline">Edit</button>
                                 </div>
-                                <p id="account-name-display" class="font-serif text-base font-bold text-brand-dark mt-0.5">Add your name</p>
-                                <div id="account-name-edit-form" class="hidden mt-2 flex gap-2">
-                                    <input type="text" id="account-name-input" placeholder="Your name" class="flex-1 min-w-0 px-2 py-1 rounded border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
-                                    <button type="button" id="account-name-save-btn" class="text-xs font-semibold bg-brand-dark text-white px-2.5 py-1 rounded whitespace-nowrap">Save</button>
-                                </div>
+                                <!-- TEMP SCAFFOLDING: no manual edit UI on purpose — see the
+                                     "Jaime Jenkins" filler fallback in renderAccountNameDisplay(). -->
+                                <p id="account-name-display" class="font-serif text-base font-bold text-brand-dark mt-0.5"></p>
                             </div>
                             <nav class="space-y-1">
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-goals">My Goals</button>
@@ -6105,10 +6102,22 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
 
             // My Account name display — kept independent of goal-banner
             // visibility, since a name can be saved before intake happens.
+            //
+            // TEMP SCAFFOLDING: "Jaime Jenkins" is a hardcoded placeholder
+            // shown until profile.name is populated. There is currently no
+            // manual-entry UI, so this fallback is the only thing standing
+            // in for a real name. It is display-only — it never gets
+            // written to the profile/name_source, so it can never be
+            // mistaken for a name_source: 'manual' entry and can never
+            // block the real Shopify name from taking over later (see
+            // handleShopifyConfirmationSignal's `alreadyManual` check).
+            // Remove this fallback (and go back to showing nothing, or
+            // reintroduce manual entry) once real Shopify purchase data is
+            // flowing and profile.name is reliably populated for everyone.
             function renderAccountNameDisplay(profile) {
                 var name = profile && profile.name;
                 var displayEl = document.getElementById('account-name-display');
-                if (displayEl) displayEl.textContent = name || 'Add your name';
+                if (displayEl) displayEl.textContent = name || 'Jaime Jenkins';
             }
 
             // ---- Interim Shopify Post-Purchase Signal (STOPGAP — NOT SECURE) ----
@@ -6576,49 +6585,15 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
 
             switchAiToolsView('coach');
 
-            // My Account name field — a simple editable field saved via the
-            // existing profile endpoint (default merge-save action, no
-            // "reason" required, unlike goal edits). Independent of the
-            // goal/why banner and intake flow entirely.
-            const accountNameEditToggle = document.getElementById('account-name-edit-toggle');
-            const accountNameEditForm = document.getElementById('account-name-edit-form');
-            const accountNameInput = document.getElementById('account-name-input');
-            const accountNameSaveBtn = document.getElementById('account-name-save-btn');
-
-            if (accountNameEditToggle) {
-                accountNameEditToggle.addEventListener('click', () => {
-                    if (accountNameInput) accountNameInput.value = (currentGoalProfile && currentGoalProfile.name) || '';
-                    if (accountNameEditForm) accountNameEditForm.classList.toggle('hidden');
-                });
-            }
-
-            if (accountNameSaveBtn) {
-                accountNameSaveBtn.addEventListener('click', async () => {
-                    const name = accountNameInput ? accountNameInput.value.trim() : '';
-                    if (!name) return;
-                    accountNameSaveBtn.disabled = true;
-                    try {
-                        // Any manual save marks the name as user-owned from
-                        // here on — a Shopify-provided name (now or later)
-                        // must never silently overwrite it again after this.
-                        const response = await fetch('/api/profile', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ deviceId: aiDeviceId, profile: { name: name, name_source: 'manual' } })
-                        });
-                        const data = await response.json();
-                        if (data.profile) {
-                            currentGoalProfile = data.profile;
-                            renderAccountNameDisplay(data.profile);
-                        }
-                        if (accountNameEditForm) accountNameEditForm.classList.add('hidden');
-                    } catch (e) {
-                        console.error('save account name failed', e);
-                    } finally {
-                        accountNameSaveBtn.disabled = false;
-                    }
-                });
-            }
+            // TEMP SCAFFOLDING: manual name-edit UI (edit button, input,
+            // save button) removed for now — see the "Jaime Jenkins" filler
+            // fallback in renderAccountNameDisplay(). The name_source:
+            // 'manual' save path this used to POST to is still fully
+            // supported server-side (netlify/functions/profile.js) and by
+            // handleShopifyConfirmationSignal's override-guard; only the
+            // UI to trigger it from here is gone. Reintroduce it (or a
+            // real account-settings page) once there's an actual reason
+            // for a user to override a real Shopify-sourced name.
 
             // Weekly Goals edit form — monthly_goal + weekly_goal together,
             // intentionally simpler than the Long Term Goals edit behavior:
@@ -8150,6 +8125,12 @@ Format your response with clean HTML, matching the same convention used elsewher
             // their banner and get personalized Fridge Chef output without
             // redoing the whole intake.
             (async function loadGoalProfile() {
+                // Render the (possibly filler) name immediately so brand-new
+                // devices with no profile row yet still see something —
+                // previously this relied on static "Add your name" text in
+                // the HTML itself, which no longer exists. Overwritten below
+                // once/if a real profile loads.
+                renderAccountNameDisplay(null);
                 try {
                     const response = await fetch('/api/profile?deviceId=' + encodeURIComponent(aiDeviceId));
                     if (!response.ok) return;
