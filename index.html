@@ -3228,7 +3228,7 @@
 
                                 <div class="border-t border-gray-200 pt-4">
                                     <button type="button" id="daily-tracker-troubleshoot-btn" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-brand-accent/40 bg-brand-light/30 px-4 py-2.5 text-sm font-semibold text-brand-dark hover:bg-brand-light/60 transition-colors">Feeling stuck? Get help troubleshooting</button>
-                                    <div id="daily-tracker-troubleshoot-loading" class="hidden mt-3 text-sm text-gray-500 italic">Reviewing your recent data&hellip;</div>
+                                    <div id="daily-tracker-troubleshoot-loading" class="hidden mt-3 text-brand-accent text-sm font-medium animate-pulse">Reviewing your recent data&hellip;</div>
                                     <div id="daily-tracker-troubleshoot-output" class="hidden mt-3 p-4 bg-white border border-brand-accent/20 rounded-lg text-sm text-gray-700 leading-relaxed"></div>
                                 </div>
                             </div>
@@ -8195,6 +8195,7 @@ Format your response with clean HTML, matching the same convention used elsewher
                         if (accountLongTermEditStatus) {
                             accountLongTermEditStatus.textContent = 'Please fill in both your updated goal and the reason for the change.';
                             accountLongTermEditStatus.classList.remove('hidden');
+                            accountLongTermEditStatus.classList.remove('animate-pulse');
                         }
                         return;
                     }
@@ -8203,6 +8204,7 @@ Format your response with clean HTML, matching the same convention used elsewher
                     if (accountLongTermEditStatus) {
                         accountLongTermEditStatus.textContent = 'Updating your plan...';
                         accountLongTermEditStatus.classList.remove('hidden');
+                        accountLongTermEditStatus.classList.add('animate-pulse');
                     }
 
                     const previous = currentGoalProfile || {};
@@ -8249,12 +8251,13 @@ Format your response with clean HTML, matching the same convention used elsewher
                         renderGoalBanner(finalProfile);
                         userMetabolicProfile = buildMetabolicProfileText(finalProfile);
                         if (accountLongTermEditForm) accountLongTermEditForm.classList.add('hidden');
-                        if (accountLongTermEditStatus) { accountLongTermEditStatus.textContent = ''; accountLongTermEditStatus.classList.add('hidden'); }
+                        if (accountLongTermEditStatus) { accountLongTermEditStatus.textContent = ''; accountLongTermEditStatus.classList.add('hidden'); accountLongTermEditStatus.classList.remove('animate-pulse'); }
                     } catch (error) {
                         console.error('goal update failed', error);
                         if (accountLongTermEditStatus) {
                             accountLongTermEditStatus.textContent = error.limitReached ? error.message : "Still saving your update — something went wrong. Your form hasn't been cleared, so you can just press Save update to try again.";
                             accountLongTermEditStatus.classList.remove('hidden');
+                            accountLongTermEditStatus.classList.remove('animate-pulse');
                         }
                     } finally {
                         accountLongTermEditSaveBtn.disabled = false;
