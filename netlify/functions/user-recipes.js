@@ -90,6 +90,7 @@ exports.handler = async function (event) {
         substitution_note: recipe.substitution_note ? String(recipe.substitution_note).trim() : null,
         servings: recipe.servings || null,
         estimated_macros: recipe.estimated_macros || null,
+        qualitative_macro_note: recipe.qualitative_macro_note || null,
         user_corrected: !!recipe.user_corrected,
         updated_at: now,
       };
@@ -132,6 +133,7 @@ exports.handler = async function (event) {
       substitution_note: recipe.substitution_note ? String(recipe.substitution_note).trim() : null,
       servings: recipe.servings || null,
       estimated_macros: recipe.estimated_macros || null,
+      qualitative_macro_note: recipe.qualitative_macro_note || null,
       user_corrected: !!recipe.user_corrected,
       created_at: now,
     };

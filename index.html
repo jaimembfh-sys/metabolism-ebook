@@ -3347,8 +3347,9 @@
                                 </div>
                                 <p class="text-xs text-gray-600 mb-4">These are AI-calculated estimates, not verified nutrition facts. Please check them against your own knowledge of the recipe before saving &#x2014; correct anything that looks off.</p>
                                 <p id="my-recipe-staged-warning" class="hidden text-xs font-semibold text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-4">Because your plan is staged for a health condition you shared, please double-check these numbers &#x2014; especially the carb counts &#x2014; carefully before saving. Small errors matter more for your situation.</p>
+                                <p id="my-recipe-review-qualitative-note" class="hidden text-sm text-gray-700 bg-white/70 border border-gray-200 rounded-lg px-3 py-2 mb-3"></p>
 
-                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
+                                <div id="my-recipe-review-macros-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
                                     <div>
                                         <label class="block text-[10px] font-semibold uppercase tracking-widest text-gray-500 mb-1">Servings</label>
                                         <input type="number" min="1" step="1" id="my-recipe-review-servings" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm">
@@ -5393,6 +5394,23 @@ GUARDRAILS:${disorderedEatingSignal ? `
             const mealPlanLoading = document.getElementById('meal-plan-loading');
             const mealPlanOutput = document.getElementById('meal-plan-output');
 
+            // SAFETY: hard, code-level backstop — mirrors the target_weight override
+            // in triggerGoalSynthesis. buildMealPlanInstruction already tells the
+            // model to null macros_note/macros for every meal when
+            // disordered_eating_signal is true, but that's a prompt instruction
+            // only; this forces it regardless of what the model actually returned,
+            // so a numeric figure can never reach a flagged user's saved plan.
+            function stripMealMacrosIfFlagged(days, disorderedEatingSignal) {
+                if (!disorderedEatingSignal) return days;
+                return (days || []).map(function(day) {
+                    return Object.assign({}, day, {
+                        meals: (day.meals || []).map(function(meal) {
+                            return Object.assign({}, meal, { macros_note: null, macros: null });
+                        })
+                    });
+                });
+            }
+
             if (generateMealPlanBtn) {
                 generateMealPlanBtn.addEventListener('click', async () => {
                     if (isAiLimitReached('meal_plan')) return;
@@ -5421,13 +5439,14 @@ GUARDRAILS:${disorderedEatingSignal ? `
                         // than left for the model to invent, since eating_pattern
                         // already exists on the saved protocol by this point.
                         const eatingWindow = getProfileEatingWindow(currentGoalProfile);
-                        const sysInstruction = buildMealPlanInstruction(protocolCorpusText, recipeCorpusText, !!currentGoalProfile.disordered_eating_signal, eatingWindow);
+                        const disorderedEatingSignal = !!currentGoalProfile.disordered_eating_signal;
+                        const sysInstruction = buildMealPlanInstruction(protocolCorpusText, recipeCorpusText, disorderedEatingSignal, eatingWindow);
 
                         const parsed = await extractToolFields('Generate my 7-day meal plan.', sysInstruction, 'meal_plan', MEAL_PLAN_TOOL, 'meal-plan');
                         if (!parsed || !parsed.days || !parsed.days.length) throw new Error('No plan returned');
 
                         const weeklyPlan = {
-                            days: parsed.days,
+                            days: stripMealMacrosIfFlagged(parsed.days, disorderedEatingSignal),
                             rationale: parsed.rationale || '',
                             allergy_note: parsed.allergy_note || null,
                             generated_at: Date.now()
@@ -7500,7 +7519,11 @@ Format your response with clean HTML, matching the same convention used elsewher
                         total_carbs_g: { type: 'number', description: 'Estimated total carbohydrates in grams per serving.' },
                         fiber_g: { type: 'number', description: 'Estimated dietary fiber in grams per serving.' },
                         net_carbs_g: { type: 'number', description: 'Estimated net carbs (total carbs minus fiber) in grams per serving.' },
-                        protein_g: { type: 'number', description: 'Estimated protein in grams per serving.' }
+                        protein_g: { type: 'number', description: 'Estimated protein in grams per serving.' },
+                        qualitative_macro_note: {
+                            type: ['string', 'null'],
+                            description: 'ONLY populate when the system instruction tells you this user has a disordered-eating safety signal on file: a brief (1-2 sentence), qualitative, food-quality-focused description of this recipe\'s nutritional character (e.g. "A protein-forward dish with healthy fats and moderate low-glycemic carbohydrates, well-suited to a balanced plate."). NEVER include a specific number of any kind in this field. null for every other user.'
+                        }
                     },
                     required: ['title', 'ingredients_list', 'instructions', 'servings_used', 'servings_stated', 'needs_clarification', 'clarifying_questions', 'calories', 'total_fat_g', 'total_carbs_g', 'fiber_g', 'net_carbs_g', 'protein_g']
                 }
@@ -7523,6 +7546,8 @@ Format your response with clean HTML, matching the same convention used elsewher
             const myRecipeClarifyBtn = document.getElementById('my-recipe-clarify-btn');
             const myRecipeReview = document.getElementById('my-recipe-review');
             const myRecipeStagedWarning = document.getElementById('my-recipe-staged-warning');
+            const myRecipeReviewQualitativeNote = document.getElementById('my-recipe-review-qualitative-note');
+            const myRecipeReviewMacrosGrid = document.getElementById('my-recipe-review-macros-grid');
             const myRecipeReviewServings = document.getElementById('my-recipe-review-servings');
             const myRecipeReviewCalories = document.getElementById('my-recipe-review-calories');
             const myRecipeReviewFat = document.getElementById('my-recipe-review-fat');
@@ -7576,30 +7601,62 @@ Format your response with clean HTML, matching the same convention used elsewher
             }
 
             function showMyRecipeReview(parsed, servingsToUse, originalRecipeText, substitutionNote) {
+                var disorderedEatingSignal = !!(currentGoalProfile && currentGoalProfile.disordered_eating_signal);
+
                 myRecipePendingParsed = {
                     title: parsed.title,
                     ingredients_list: parsed.ingredients_list,
                     instructions: parsed.instructions,
                     original_recipe_text: originalRecipeText || '',
-                    substitution_note: substitutionNote || null
-                };
-                myRecipeAiOriginalMacros = {
-                    servings: servingsToUse,
-                    calories: parsed.calories,
-                    total_fat_g: parsed.total_fat_g,
-                    total_carbs_g: parsed.total_carbs_g,
-                    fiber_g: parsed.fiber_g,
-                    net_carbs_g: parsed.net_carbs_g,
-                    protein_g: parsed.protein_g
+                    substitution_note: substitutionNote || null,
+                    // Carried through so buildRecipeSavePayload can persist it — never
+                    // itself a source of numbers, see the schema description above.
+                    qualitative_macro_note: parsed.qualitative_macro_note || null
                 };
                 if (myRecipeTitleInput && !myRecipeTitleInput.value.trim()) myRecipeTitleInput.value = parsed.title || '';
                 myRecipeReviewServings.value = servingsToUse;
-                myRecipeReviewCalories.value = parsed.calories;
-                myRecipeReviewFat.value = parsed.total_fat_g;
-                myRecipeReviewCarbs.value = parsed.total_carbs_g;
-                myRecipeReviewFiber.value = parsed.fiber_g;
-                myRecipeReviewNetCarbs.value = parsed.net_carbs_g;
-                myRecipeReviewProtein.value = parsed.protein_g;
+
+                // SAFETY: hard, code-level override — a disordered-eating-flagged
+                // user's numeric macro fields are never populated or shown here,
+                // regardless of what the model returned for calories/fat/carbs/etc.
+                // (it's asked not to surface them, but this doesn't rely on that
+                // instruction alone). Matching hard override lives in
+                // buildRecipeSavePayload for the actual save. See also the
+                // meal-plan generator's stripMealMacrosIfFlagged for the same
+                // pattern applied to weekly meal plans.
+                if (disorderedEatingSignal) {
+                    myRecipeAiOriginalMacros = null;
+                    myRecipeReviewCalories.value = '';
+                    myRecipeReviewFat.value = '';
+                    myRecipeReviewCarbs.value = '';
+                    myRecipeReviewFiber.value = '';
+                    myRecipeReviewNetCarbs.value = '';
+                    myRecipeReviewProtein.value = '';
+                    if (myRecipeReviewMacrosGrid) myRecipeReviewMacrosGrid.classList.add('hidden');
+                    if (myRecipeReviewQualitativeNote) {
+                        myRecipeReviewQualitativeNote.textContent = parsed.qualitative_macro_note ||
+                            'Nutrition details are kept qualitative rather than numeric for your protocol.';
+                        myRecipeReviewQualitativeNote.classList.remove('hidden');
+                    }
+                } else {
+                    myRecipeAiOriginalMacros = {
+                        servings: servingsToUse,
+                        calories: parsed.calories,
+                        total_fat_g: parsed.total_fat_g,
+                        total_carbs_g: parsed.total_carbs_g,
+                        fiber_g: parsed.fiber_g,
+                        net_carbs_g: parsed.net_carbs_g,
+                        protein_g: parsed.protein_g
+                    };
+                    myRecipeReviewCalories.value = parsed.calories;
+                    myRecipeReviewFat.value = parsed.total_fat_g;
+                    myRecipeReviewCarbs.value = parsed.total_carbs_g;
+                    myRecipeReviewFiber.value = parsed.fiber_g;
+                    myRecipeReviewNetCarbs.value = parsed.net_carbs_g;
+                    myRecipeReviewProtein.value = parsed.protein_g;
+                    if (myRecipeReviewMacrosGrid) myRecipeReviewMacrosGrid.classList.remove('hidden');
+                    if (myRecipeReviewQualitativeNote) myRecipeReviewQualitativeNote.classList.add('hidden');
+                }
 
                 var hasStagedPlan = !!(currentGoalProfile && currentGoalProfile.protocol && currentGoalProfile.protocol.staged_plan && currentGoalProfile.protocol.staged_plan.length);
                 myRecipeStagedWarning.classList.toggle('hidden', !hasStagedPlan);
@@ -7735,8 +7792,10 @@ Format your response with clean HTML, matching the same convention used elsewher
 
                 const titleText = myRecipeTitleInput ? myRecipeTitleInput.value.trim() : '';
                 const substitutionNote = myRecipeSubstitutionNote ? myRecipeSubstitutionNote.value.trim() : '';
+                const disorderedEatingSignal = !!(currentGoalProfile && currentGoalProfile.disordered_eating_signal);
                 const systemInstruction = "You are a nutrition-estimation assistant for Jaime Jenkins' metabolic health app. The user has provided their own personal recipe, either as pasted text or as an attached photo/PDF of the recipe (a printed page, a handwritten card, a screenshot, etc.) — read whichever form is provided just as carefully. Read the ingredients and instructions carefully and estimate realistic per-serving macros using standard nutrition knowledge (net carbs = total carbs minus fiber). These are estimates the user will review and can correct before saving, not guaranteed lab-verified values, so give your best realistic estimate rather than refusing. " +
                     "If an ingredient is genuinely ambiguous in a way that would meaningfully change the macro calculation (e.g. \"peanut butter\" could be sweetened or natural/no-sugar-added; \"milk\" could be whole, 2%, skim, or a non-dairy alternative), do not silently guess — set needs_clarification to true and populate clarifying_questions with one short, natural question per ambiguous ingredient, each with 2-4 realistic answer options. Only do this for genuinely ambiguous, macro-relevant cases — never for an ingredient that's already specific (e.g. \"1 cup no sugar added peanut butter\" needs no question), and don't interrogate every ingredient. If the user notes a substitution, apply this same clarifying-question logic to the substituted ingredient if it is itself ambiguous. If the user has already answered clarifying questions, or you are told to finalize now, set needs_clarification to false and use their answers (or your own best reasonable assumption) instead of asking again. " +
+                    (disorderedEatingSignal ? "SAFETY: this user has a disordered-eating safety signal on file. Still estimate the numeric macro fields as accurately as you can (they are used only for internal calculation and will NOT be shown to this user — the app enforces that in code, not just via this instruction). ALSO populate qualitative_macro_note with a brief, qualitative, food-quality-focused description of this recipe's nutritional character, e.g. \"A protein-forward dish with healthy fats and moderate low-glycemic carbohydrates.\" NEVER include a number of any kind in qualitative_macro_note. " : "") +
                     "Call the record_user_recipe tool with your results.";
 
                 try {
@@ -7844,8 +7903,16 @@ Format your response with clean HTML, matching the same convention used elsewher
                 recipes.slice().reverse().forEach(function(r) {
                     const card = document.createElement('div');
                     card.className = 'border border-gray-200 rounded-lg p-4 bg-white shadow-sm';
-                    const macros = r.estimated_macros || {};
+                    const macros = r.estimated_macros || null;
                     const badgeLabel = r.user_corrected ? 'AI Estimate &middot; edited by you' : 'AI Estimate';
+                    // SAFETY: macros is null here for any disordered-eating-flagged
+                    // user's recipe (buildRecipeSavePayload never saves numbers for
+                    // them) — show the qualitative note instead of numeric fields,
+                    // never fall back to rendering "undefined"/"?" macro figures.
+                    const macroLine = macros
+                        ? ('Calories: ' + escapeHtml(macros.calories) + ' &middot; Fat: ' + escapeHtml(macros.total_fat_g) + 'g &middot; Carbs: ' + escapeHtml(macros.total_carbs_g) + 'g<br>' +
+                           'Fiber: ' + escapeHtml(macros.fiber_g) + 'g &middot; Net Carbs: ' + escapeHtml(macros.net_carbs_g) + 'g &middot; Protein: ' + escapeHtml(macros.protein_g) + 'g')
+                        : escapeHtml(r.qualitative_macro_note || 'Nutrition details are kept qualitative rather than numeric for your protocol.');
                     card.innerHTML =
                         '<div class="flex items-start justify-between gap-2 mb-2">' +
                             '<h5 class="font-serif text-lg font-bold text-brand-dark">' + escapeHtml(r.title) + '</h5>' +
@@ -7854,10 +7921,7 @@ Format your response with clean HTML, matching the same convention used elsewher
                         '<span class="inline-block text-[10px] font-bold uppercase tracking-widest text-white bg-brand-accent px-2 py-0.5 rounded-full mb-2">' + badgeLabel + '</span>' +
                         '<p class="text-xs text-gray-500 mb-2">Servings: ' + escapeHtml(r.servings != null ? r.servings : '?') + '</p>' +
                         (r.substitution_note ? '<p class="text-xs text-gray-500 italic mb-2">Substitution: ' + escapeHtml(r.substitution_note) + '</p>' : '') +
-                        '<p class="text-xs text-gray-700 leading-relaxed">' +
-                            'Calories: ' + escapeHtml(macros.calories) + ' &middot; Fat: ' + escapeHtml(macros.total_fat_g) + 'g &middot; Carbs: ' + escapeHtml(macros.total_carbs_g) + 'g<br>' +
-                            'Fiber: ' + escapeHtml(macros.fiber_g) + 'g &middot; Net Carbs: ' + escapeHtml(macros.net_carbs_g) + 'g &middot; Protein: ' + escapeHtml(macros.protein_g) + 'g' +
-                        '</p>';
+                        '<p class="text-xs text-gray-700 leading-relaxed">' + macroLine + '</p>';
                     myRecipesList.appendChild(card);
                 });
                 myRecipesList.querySelectorAll('.my-recipe-delete-btn').forEach(function(btn) {
@@ -7882,6 +7946,32 @@ Format your response with clean HTML, matching the same convention used elsewher
             // Shared by the normal Save (create) and the Meal Planner coaching
             // flow's Overwrite (update) button — same review-panel fields feed both.
             function buildRecipeSavePayload() {
+                const title = (myRecipeTitleInput && myRecipeTitleInput.value.trim()) || myRecipePendingParsed.title || 'Untitled Recipe';
+                const ingredients = (myRecipePendingParsed.ingredients_list || []).join('\n');
+                const instructions = myRecipePendingParsed.instructions || '';
+                const finalServings = parseInt(myRecipeReviewServings.value, 10) || null;
+
+                // SAFETY: hard, code-level override — a disordered-eating-flagged
+                // user's recipe is NEVER saved with numeric macros, regardless of
+                // what's currently sitting in those input fields (they should be
+                // blank per showMyRecipeReview, but this doesn't rely on that
+                // upstream behavior alone — belt-and-suspenders, same pattern as
+                // the target_weight override in triggerGoalSynthesis).
+                const disorderedEatingSignal = !!(currentGoalProfile && currentGoalProfile.disordered_eating_signal);
+                if (disorderedEatingSignal) {
+                    return {
+                        title: title,
+                        ingredients: ingredients,
+                        instructions: instructions,
+                        original_recipe_text: myRecipePendingParsed.original_recipe_text || null,
+                        substitution_note: myRecipePendingParsed.substitution_note || null,
+                        servings: finalServings,
+                        estimated_macros: null,
+                        qualitative_macro_note: myRecipePendingParsed.qualitative_macro_note || null,
+                        user_corrected: false
+                    };
+                }
+
                 const finalMacros = {
                     calories: parseFloat(myRecipeReviewCalories.value) || 0,
                     total_fat_g: parseFloat(myRecipeReviewFat.value) || 0,
@@ -7891,7 +7981,6 @@ Format your response with clean HTML, matching the same convention used elsewher
                     protein_g: parseFloat(myRecipeReviewProtein.value) || 0,
                     is_estimated: true
                 };
-                const finalServings = parseInt(myRecipeReviewServings.value, 10) || null;
 
                 const corrected = !myRecipeAiOriginalMacros ||
                     finalServings !== myRecipeAiOriginalMacros.servings ||
@@ -7902,10 +7991,6 @@ Format your response with clean HTML, matching the same convention used elsewher
                     finalMacros.net_carbs_g !== myRecipeAiOriginalMacros.net_carbs_g ||
                     finalMacros.protein_g !== myRecipeAiOriginalMacros.protein_g;
 
-                const title = (myRecipeTitleInput && myRecipeTitleInput.value.trim()) || myRecipePendingParsed.title || 'Untitled Recipe';
-                const ingredients = (myRecipePendingParsed.ingredients_list || []).join('\n');
-                const instructions = myRecipePendingParsed.instructions || '';
-
                 return {
                     title: title,
                     ingredients: ingredients,
@@ -7914,6 +7999,7 @@ Format your response with clean HTML, matching the same convention used elsewher
                     substitution_note: myRecipePendingParsed.substitution_note || null,
                     servings: finalServings,
                     estimated_macros: finalMacros,
+                    qualitative_macro_note: null,
                     user_corrected: corrected
                 };
             }
