@@ -4889,9 +4889,17 @@ YOUR JOB:
             // suppressed for disordered_eating_signal users, matching the
             // macros_note null-out rule already used at plan-generation time.
 
+            // Local-time YYYY-MM-DD, not UTC (toISOString() would roll over
+            // to the next calendar day several hours before local midnight
+            // for anyone west of UTC) — every date-key in the app must use
+            // this, never toISOString().slice(0,10), so a day's data always
+            // files under the date the user actually experienced it as.
+            function localDateKey(date) {
+                return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(date.getDate()).padStart(2, '0');
+            }
+
             function todayKey() {
-                var d = new Date();
-                return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+                return localDateKey(new Date());
             }
 
             // The 7-day plan has no calendar dates of its own (day_label is
@@ -6331,7 +6339,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                 var log = (profile && Array.isArray(profile.weight_log)) ? profile.weight_log.slice() : [];
                 var intakeWeight = profile && profile.health_history && profile.health_history.current_weight;
                 if (intakeWeight != null) {
-                    var intakeDate = new Date(profile.created_at || Date.now()).toISOString().slice(0, 10);
+                    var intakeDate = localDateKey(new Date(profile.created_at || Date.now()));
                     var alreadyPresent = log.some(function(e) { return e.date === intakeDate && e.weight === intakeWeight; });
                     if (!alreadyPresent) log.push({ date: intakeDate, weight: intakeWeight });
                 }
@@ -6722,7 +6730,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
             if (weightLogToggleBtn) {
                 weightLogToggleBtn.addEventListener('click', () => {
                     if (weightLogDateInput && !weightLogDateInput.value) {
-                        weightLogDateInput.value = new Date().toISOString().slice(0, 10);
+                        weightLogDateInput.value = todayKey();
                     }
                     if (weightLogForm) weightLogForm.classList.toggle('hidden');
                 });
