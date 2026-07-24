@@ -4456,6 +4456,14 @@
                 return { input: toolBlock ? toolBlock.input : null, rawText: rawText };
             }
 
+            // Shared by every AI-call catch block that shows a styled inline
+            // error (fallbackMessage is feature-specific; error.limitReached's
+            // own message always takes priority when present) — this exact
+            // HTML pattern was independently duplicated at 7 call sites.
+            function buildAiErrorHtml(error, fallbackMessage) {
+                return '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : fallbackMessage) + '</span>';
+            }
+
             // Appends a chat bubble with a Retry button whose click re-runs onRetry.
             function appendRetryMessage(text, onRetry) {
                 if (!chatWindow) return null;
@@ -5381,7 +5389,7 @@ GUARDRAILS:${disorderedEatingSignal ? `
                         dailyTrackerTroubleshootOutput.innerHTML = result.text;
                         dailyTrackerTroubleshootOutput.classList.remove('hidden');
                     } catch (error) {
-                        dailyTrackerTroubleshootOutput.innerHTML = '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : 'Our AI coach is taking a short break. Please try again in a moment.') + '</span>';
+                        dailyTrackerTroubleshootOutput.innerHTML = buildAiErrorHtml(error, 'Our AI coach is taking a short break. Please try again in a moment.');
                         dailyTrackerTroubleshootOutput.classList.remove('hidden');
                     } finally {
                         dailyTrackerTroubleshootBtn.disabled = false;
@@ -5465,7 +5473,7 @@ GUARDRAILS:${disorderedEatingSignal ? `
                             renderAccountGoalPanels(data.profile);
                         }
                     } catch (error) {
-                        mealPlanOutput.innerHTML = '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : 'Our AI coach is taking a short break. Please try again in a moment.') + '</span>';
+                        mealPlanOutput.innerHTML = buildAiErrorHtml(error, 'Our AI coach is taking a short break. Please try again in a moment.');
                         mealPlanOutput.classList.remove('hidden');
                     } finally {
                         mealPlanLoading.classList.add('hidden');
@@ -5508,7 +5516,7 @@ GUARDRAILS:${disorderedEatingSignal ? `
                         shoppingListOutput.innerHTML = buildShoppingListHtml(parsed.categories, gathered.missingMeals);
                         shoppingListOutput.classList.remove('hidden');
                     } catch (error) {
-                        shoppingListOutput.innerHTML = '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : 'Could not generate a shopping list right now. Please try again in a moment.') + '</span>';
+                        shoppingListOutput.innerHTML = buildAiErrorHtml(error, 'Could not generate a shopping list right now. Please try again in a moment.');
                         shoppingListOutput.classList.remove('hidden');
                     } finally {
                         shoppingListLoading.classList.add('hidden');
@@ -7195,7 +7203,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                             healthConvPhaseStartIndex = chatHistory.length;
                         } catch (error) {
                             document.getElementById(loadingId).remove();
-                            appendChatMessage('ai', '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : 'Our AI coach is taking a short break. Please try again in a moment.') + '</span>');
+                            appendChatMessage('ai', buildAiErrorHtml(error, 'Our AI coach is taking a short break. Please try again in a moment.'));
                         } finally {
                             healthHistoryFormSubmitBtn.disabled = false;
                         }
@@ -7295,7 +7303,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                         }
                     } catch (error) {
                         document.getElementById(loadingId).remove();
-                        appendChatMessage('ai', '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : 'Our AI coach is taking a short break. Please try again in a moment.') + '</span>');
+                        appendChatMessage('ai', buildAiErrorHtml(error, 'Our AI coach is taking a short break. Please try again in a moment.'));
                     } finally {
                         chatInput.disabled = false;
                         chatSendBtn.disabled = false;
@@ -7348,7 +7356,7 @@ Do NOT use asterisks for bolding. Format with clean HTML (<h3> for title, <ul> f
                         fridgeOutput.innerHTML = response;
                         fridgeOutput.classList.remove('hidden');
                     } catch (error) {
-                        fridgeOutput.innerHTML = '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : 'Our AI coach is taking a short break. Please try again in a moment.') + '</span>';
+                        fridgeOutput.innerHTML = buildAiErrorHtml(error, 'Our AI coach is taking a short break. Please try again in a moment.');
                         fridgeOutput.classList.remove('hidden');
                     } finally {
                         fridgeLoading.classList.add('hidden');
@@ -7474,7 +7482,7 @@ Format your response with clean HTML, matching the same convention used elsewher
                         labMarkersOutput.innerHTML = response;
                         labMarkersOutput.classList.remove('hidden');
                     } catch (error) {
-                        labMarkersOutput.innerHTML = '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : 'Our AI coach is taking a short break. Please try again in a moment.') + '</span>';
+                        labMarkersOutput.innerHTML = buildAiErrorHtml(error, 'Our AI coach is taking a short break. Please try again in a moment.');
                         labMarkersOutput.classList.remove('hidden');
                     } finally {
                         labMarkersLoading.classList.add('hidden');
