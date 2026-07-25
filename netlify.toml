@@ -15,3 +15,8 @@
   from = "/api/user-recipes"
   to = "/.netlify/functions/user-recipes"
   status = 200
+
+[[redirects]]
+  from = "/api/progress-photos"
+  to = "/.netlify/functions/progress-photos"
+  status = 200

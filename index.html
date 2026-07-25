@@ -3097,6 +3097,67 @@
 
                             <div id="weight-chart-safety-note" class="hidden text-sm text-gray-600 italic bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">Weight tracking is de-emphasized here based on your health history. Your progress is better measured by your energy, sleep, strength, and the non-scale wins in your protocol &#x2014; not a number on a scale. If you&#x2019;d like to track weight anyway, please loop in your care team first.</div>
                         </div>
+
+                        <!-- Progress Photos subsection — private visual timeline, stored in
+                             Netlify Blobs (never the JSON profile store, which stays small
+                             text-only data). UNLIKE Weight Progress above, this gets NO
+                             de-emphasized fallback state for disordered_eating_signal users
+                             — the whole section (including this wrapper) starts hidden in
+                             markup and stays hidden, with nothing rendered in its place, for
+                             those users. See renderProgressPhotos(). -->
+                        <div id="progress-photos-section" class="hidden bg-white border border-gray-200 rounded-xl p-6 shadow-sm mt-6">
+                            <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1">Progress Photos</p>
+                            <p class="text-sm text-gray-500 mb-4">A private visual timeline, alongside the numbers above.</p>
+                            <p class="text-xs text-gray-500 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 mb-5">Your progress photos are saved privately to this device/browser only &#x2014; never shared, never public. Clearing your browser data (or switching devices) will remove them. We'll move these to your account automatically once real account sign-in is available.</p>
+
+                            <div class="mb-5 pb-5 flex flex-wrap items-end gap-3" style="border-bottom:1px solid #e5e7eb;">
+                                <div>
+                                    <label class="block text-xs font-semibold text-brand-dark mb-1">Photo</label>
+                                    <input type="file" id="progress-photo-file-input" accept="image/*" class="text-sm text-gray-600 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-brand-light/60 file:text-brand-dark file:text-xs file:font-semibold file:uppercase file:tracking-wide hover:file:bg-brand-light">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-brand-dark mb-1">Date</label>
+                                    <input type="date" id="progress-photo-date" class="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                </div>
+                                <div class="flex-1 min-w-[160px]">
+                                    <label class="block text-xs font-semibold text-brand-dark mb-1">Caption (optional)</label>
+                                    <input type="text" id="progress-photo-caption" placeholder="e.g., Week 6" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                </div>
+                                <button id="progress-photo-upload-btn" type="button" class="bg-brand-dark hover:bg-[#234553] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Upload</button>
+                            </div>
+                            <div id="progress-photo-loading" class="hidden text-brand-accent text-sm font-medium animate-pulse mb-3">Uploading photo&hellip;</div>
+                            <div id="progress-photo-error" class="hidden text-sm font-semibold mb-3" style="color:#b45309;"></div>
+
+                            <p id="progress-photos-empty" class="text-sm text-gray-500 italic">No progress photos yet. Upload your first one above.</p>
+
+                            <div id="progress-photos-compare-bar" class="hidden mb-4 p-3 rounded-lg bg-brand-light/40 border border-brand-accent/30 flex items-center justify-between gap-3 flex-wrap">
+                                <p class="text-sm text-brand-dark">Select 2 photos to compare them side by side (<span id="progress-photos-compare-count">0</span>/2 selected).</p>
+                                <div class="flex gap-2">
+                                    <button id="progress-photos-compare-btn" type="button" disabled class="bg-brand-dark hover:bg-[#234553] disabled:opacity-40 disabled:cursor-not-allowed text-white px-4 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Compare</button>
+                                    <button id="progress-photos-compare-clear-btn" type="button" class="bg-white border border-gray-300 text-gray-600 px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-gray-50 whitespace-nowrap">Clear</button>
+                                </div>
+                            </div>
+
+                            <div id="progress-photos-gallery" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
+
+                            <div id="progress-photos-comparison" class="hidden mt-6 pt-6" style="border-top:1px solid #e5e7eb;">
+                                <div class="flex items-center justify-between mb-3">
+                                    <p class="text-xs font-semibold uppercase tracking-widest text-gray-500">Side by Side</p>
+                                    <button id="progress-photos-comparison-close-btn" type="button" class="text-xs font-semibold underline text-brand-accent">Close</button>
+                                </div>
+                                <div id="progress-photos-comparison-loading" class="hidden text-brand-accent text-sm font-medium animate-pulse mb-3">Loading full-size photos&hellip;</div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <img id="progress-photos-comparison-img-1" class="w-full rounded-lg border border-gray-200" alt="First selected progress photo">
+                                        <p id="progress-photos-comparison-label-1" class="text-xs text-gray-500 mt-1"></p>
+                                    </div>
+                                    <div>
+                                        <img id="progress-photos-comparison-img-2" class="w-full rounded-lg border border-gray-200" alt="Second selected progress photo">
+                                        <p id="progress-photos-comparison-label-2" class="text-xs text-gray-500 mt-1"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- View: My Stuff > My Protocol (moved here from the Interactive Metabolic Coach view, so it's reachable any time, not just right after intake).
@@ -6400,6 +6461,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                 }
 
                 renderWeightChart(profile);
+                renderProgressPhotos(profile);
             }
 
             // My Goals > Weight Progress — builds the effective list of dated
@@ -6846,6 +6908,303 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                         }
                     } finally {
                         weightLogSaveBtn.disabled = false;
+                    }
+                });
+            }
+
+            // ---- My Goals: Progress Photos ----
+            // Private visual timeline, stored in Netlify Blobs (netlify/functions/
+            // progress-photos.js) rather than the JSON profile store, since photo
+            // bytes don't belong bloating that document. The gallery renders from
+            // a per-device index that carries a pre-resized thumbnail inline (see
+            // resizeImageForUpload) so listing photos never needs N full-size
+            // fetches; a full-size photo is only ever fetched on demand, when the
+            // user picks it for the side-by-side comparison view.
+            //
+            // SAFETY: unlike Weight Progress, which stays visible with a
+            // de-emphasized safety note for disordered_eating_signal users, this
+            // section renders NOTHING for them — see renderProgressPhotos below,
+            // which returns before populating anything if the flag is set. The
+            // section starts `hidden` in markup for the same reason: no flash of
+            // content before the profile loads.
+            const PROGRESS_PHOTO_MAX_PHOTOS = 200;
+            const progressPhotosSection = document.getElementById('progress-photos-section');
+            const progressPhotoFileInput = document.getElementById('progress-photo-file-input');
+            const progressPhotoDateInput = document.getElementById('progress-photo-date');
+            const progressPhotoCaptionInput = document.getElementById('progress-photo-caption');
+            const progressPhotoUploadBtn = document.getElementById('progress-photo-upload-btn');
+            const progressPhotoLoading = document.getElementById('progress-photo-loading');
+            const progressPhotoError = document.getElementById('progress-photo-error');
+            const progressPhotosEmpty = document.getElementById('progress-photos-empty');
+            const progressPhotosGallery = document.getElementById('progress-photos-gallery');
+            const progressPhotosCompareBar = document.getElementById('progress-photos-compare-bar');
+            const progressPhotosCompareCount = document.getElementById('progress-photos-compare-count');
+            const progressPhotosCompareBtn = document.getElementById('progress-photos-compare-btn');
+            const progressPhotosCompareClearBtn = document.getElementById('progress-photos-compare-clear-btn');
+            const progressPhotosComparison = document.getElementById('progress-photos-comparison');
+            const progressPhotosComparisonLoading = document.getElementById('progress-photos-comparison-loading');
+            const progressPhotosComparisonCloseBtn = document.getElementById('progress-photos-comparison-close-btn');
+
+            let progressPhotosCache = [];
+            let progressPhotosSelected = []; // up to 2 photo ids, in selection order
+
+            if (progressPhotoDateInput) progressPhotoDateInput.value = new Date().toISOString().slice(0, 10);
+
+            // Downscales an image file via canvas before it ever leaves the
+            // browser — avoids multi-megabyte phone-camera originals hitting
+            // Netlify Functions' request-body ceiling, and avoids storing years
+            // of full-resolution photos when a modest size is plenty for a
+            // progress-comparison view. Returns a data URL (JPEG, since photos
+            // rarely need transparency and JPEG compresses far better than PNG
+            // for this content).
+            function resizeImageForUpload(file, maxDimension, quality) {
+                return new Promise(function(resolve, reject) {
+                    var img = new Image();
+                    var objectUrl = URL.createObjectURL(file);
+                    img.onload = function() {
+                        URL.revokeObjectURL(objectUrl);
+                        var scale = Math.min(1, maxDimension / Math.max(img.width, img.height));
+                        var outW = Math.max(1, Math.round(img.width * scale));
+                        var outH = Math.max(1, Math.round(img.height * scale));
+                        var canvas = document.createElement('canvas');
+                        canvas.width = outW;
+                        canvas.height = outH;
+                        var ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, outW, outH);
+                        resolve(canvas.toDataURL('image/jpeg', quality));
+                    };
+                    img.onerror = function() { URL.revokeObjectURL(objectUrl); reject(new Error('Could not read that image.')); };
+                    img.src = objectUrl;
+                });
+            }
+
+            function dataUrlToBase64(dataUrl) {
+                var idx = dataUrl.indexOf(',');
+                return idx === -1 ? dataUrl : dataUrl.slice(idx + 1);
+            }
+
+            function renderProgressPhotos(profile) {
+                if (!progressPhotosSection) return;
+
+                if (profile && profile.disordered_eating_signal) {
+                    progressPhotosSection.classList.add('hidden');
+                    return;
+                }
+                progressPhotosSection.classList.remove('hidden');
+
+                (async function() {
+                    try {
+                        const response = await fetch('/api/progress-photos?deviceId=' + encodeURIComponent(aiDeviceId));
+                        if (!response.ok) return;
+                        const data = await response.json();
+                        renderProgressPhotosList(data.photos || []);
+                    } catch (e) {}
+                })();
+            }
+
+            function renderProgressPhotosList(photos) {
+                progressPhotosCache = (photos || []).slice().sort(function(a, b) { return a.date < b.date ? 1 : -1; });
+                progressPhotosSelected = progressPhotosSelected.filter(function(id) {
+                    return progressPhotosCache.some(function(p) { return p.id === id; });
+                });
+
+                if (!progressPhotosGallery) return;
+                progressPhotosGallery.innerHTML = '';
+                progressPhotosEmpty.classList.toggle('hidden', progressPhotosCache.length > 0);
+
+                progressPhotosCache.forEach(function(p) {
+                    const card = document.createElement('div');
+                    const isSelected = progressPhotosSelected.indexOf(p.id) !== -1;
+                    card.className = 'progress-photo-card relative border-2 rounded-lg overflow-hidden cursor-pointer transition-colors ' + (isSelected ? 'border-brand-accent' : 'border-gray-200');
+                    card.setAttribute('data-photo-id', p.id);
+                    card.innerHTML =
+                        '<img src="' + p.thumbnail_data_url + '" class="w-full h-32 object-cover" alt="Progress photo from ' + escapeHtml(formatShortDate(p.date)) + '">' +
+                        '<button type="button" class="progress-photo-delete-btn absolute top-1 right-1 bg-white/90 rounded-full w-5 h-5 text-xs text-gray-500 hover:text-red-500 flex items-center justify-center leading-none" data-photo-id="' + escapeHtml(p.id) + '" aria-label="Delete photo">&#x2715;</button>' +
+                        '<div class="p-2 bg-white">' +
+                            '<p class="text-xs font-semibold text-brand-dark">' + escapeHtml(formatShortDate(p.date)) + '</p>' +
+                            (p.caption ? '<p class="text-xs text-gray-500 truncate">' + escapeHtml(p.caption) + '</p>' : '') +
+                        '</div>';
+                    card.addEventListener('click', function(e) {
+                        if (e.target.closest('.progress-photo-delete-btn')) return;
+                        toggleProgressPhotoSelection(p.id);
+                    });
+                    progressPhotosGallery.appendChild(card);
+                });
+
+                progressPhotosGallery.querySelectorAll('.progress-photo-delete-btn').forEach(function(btn) {
+                    btn.addEventListener('click', async function(e) {
+                        e.stopPropagation();
+                        const id = btn.getAttribute('data-photo-id');
+                        btn.disabled = true;
+                        try {
+                            const response = await fetch('/api/progress-photos', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ deviceId: aiDeviceId, action: 'delete', id: id })
+                            });
+                            const data = await response.json();
+                            renderProgressPhotosList(data.photos || []);
+                        } catch (e) {
+                            btn.disabled = false;
+                        }
+                    });
+                });
+
+                updateProgressPhotosCompareBar();
+            }
+
+            // Toggles just the affected card(s)' selected styling in place,
+            // rather than re-rendering the whole gallery -- with up to 200
+            // photos, rebuilding every thumbnail's innerHTML on each click
+            // would be a visible flicker for no reason.
+            function setProgressPhotoCardSelected(id, selected) {
+                var card = progressPhotosGallery && progressPhotosGallery.querySelector('[data-photo-id="' + id + '"]');
+                if (!card) return;
+                card.classList.toggle('border-brand-accent', selected);
+                card.classList.toggle('border-gray-200', !selected);
+            }
+
+            function toggleProgressPhotoSelection(id) {
+                var idx = progressPhotosSelected.indexOf(id);
+                if (idx !== -1) {
+                    progressPhotosSelected.splice(idx, 1);
+                    setProgressPhotoCardSelected(id, false);
+                } else {
+                    if (progressPhotosSelected.length >= 2) {
+                        var bumpedId = progressPhotosSelected.shift();
+                        setProgressPhotoCardSelected(bumpedId, false);
+                    }
+                    progressPhotosSelected.push(id);
+                    setProgressPhotoCardSelected(id, true);
+                }
+                updateProgressPhotosCompareBar();
+            }
+
+            function updateProgressPhotosCompareBar() {
+                if (!progressPhotosCompareBar) return;
+                progressPhotosCompareBar.classList.toggle('hidden', progressPhotosCache.length < 2);
+                if (progressPhotosCompareCount) progressPhotosCompareCount.textContent = String(progressPhotosSelected.length);
+                if (progressPhotosCompareBtn) progressPhotosCompareBtn.disabled = progressPhotosSelected.length !== 2;
+            }
+
+            if (progressPhotosCompareClearBtn) {
+                progressPhotosCompareClearBtn.addEventListener('click', function() {
+                    progressPhotosSelected = [];
+                    if (progressPhotosComparison) progressPhotosComparison.classList.add('hidden');
+                    renderProgressPhotosList(progressPhotosCache);
+                });
+            }
+
+            if (progressPhotosComparisonCloseBtn) {
+                progressPhotosComparisonCloseBtn.addEventListener('click', function() {
+                    if (progressPhotosComparison) progressPhotosComparison.classList.add('hidden');
+                });
+            }
+
+            async function fetchProgressPhotoDataUrl(id) {
+                const response = await fetch('/api/progress-photos?deviceId=' + encodeURIComponent(aiDeviceId) + '&photoId=' + encodeURIComponent(id));
+                if (!response.ok) throw new Error('Could not load that photo.');
+                const data = await response.json();
+                return data.dataUrl;
+            }
+
+            if (progressPhotosCompareBtn) {
+                progressPhotosCompareBtn.addEventListener('click', async function() {
+                    if (progressPhotosSelected.length !== 2) return;
+                    const img1 = document.getElementById('progress-photos-comparison-img-1');
+                    const img2 = document.getElementById('progress-photos-comparison-img-2');
+                    const label1 = document.getElementById('progress-photos-comparison-label-1');
+                    const label2 = document.getElementById('progress-photos-comparison-label-2');
+                    const photo1 = progressPhotosCache.find(function(p) { return p.id === progressPhotosSelected[0]; });
+                    const photo2 = progressPhotosCache.find(function(p) { return p.id === progressPhotosSelected[1]; });
+                    if (!photo1 || !photo2) return;
+
+                    progressPhotosCompareBtn.disabled = true;
+                    if (progressPhotosComparisonLoading) progressPhotosComparisonLoading.classList.remove('hidden');
+                    if (progressPhotosComparison) progressPhotosComparison.classList.remove('hidden');
+                    try {
+                        const [dataUrl1, dataUrl2] = await Promise.all([
+                            fetchProgressPhotoDataUrl(photo1.id),
+                            fetchProgressPhotoDataUrl(photo2.id)
+                        ]);
+                        if (img1) img1.src = dataUrl1;
+                        if (img2) img2.src = dataUrl2;
+                        if (label1) label1.textContent = formatShortDate(photo1.date) + (photo1.caption ? ' — ' + photo1.caption : '');
+                        if (label2) label2.textContent = formatShortDate(photo2.date) + (photo2.caption ? ' — ' + photo2.caption : '');
+                        if (progressPhotosComparison) progressPhotosComparison.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } catch (e) {
+                        if (progressPhotosComparison) progressPhotosComparison.classList.add('hidden');
+                    } finally {
+                        progressPhotosCompareBtn.disabled = false;
+                        if (progressPhotosComparisonLoading) progressPhotosComparisonLoading.classList.add('hidden');
+                    }
+                });
+            }
+
+            if (progressPhotoUploadBtn) {
+                progressPhotoUploadBtn.addEventListener('click', async function() {
+                    const file = progressPhotoFileInput && progressPhotoFileInput.files && progressPhotoFileInput.files[0];
+                    const date = progressPhotoDateInput ? progressPhotoDateInput.value : '';
+                    const caption = progressPhotoCaptionInput ? progressPhotoCaptionInput.value.trim() : '';
+
+                    if (progressPhotoError) progressPhotoError.classList.add('hidden');
+
+                    if (!file || file.type.indexOf('image/') !== 0) {
+                        if (progressPhotoError) {
+                            progressPhotoError.textContent = 'Please choose a photo to upload.';
+                            progressPhotoError.classList.remove('hidden');
+                        }
+                        return;
+                    }
+                    if (!date) {
+                        if (progressPhotoError) {
+                            progressPhotoError.textContent = 'Please choose a date.';
+                            progressPhotoError.classList.remove('hidden');
+                        }
+                        return;
+                    }
+                    if (progressPhotosCache.length >= PROGRESS_PHOTO_MAX_PHOTOS) {
+                        if (progressPhotoError) {
+                            progressPhotoError.textContent = "You've reached the limit of " + PROGRESS_PHOTO_MAX_PHOTOS + ' progress photos. Delete one before adding another.';
+                            progressPhotoError.classList.remove('hidden');
+                        }
+                        return;
+                    }
+
+                    progressPhotoUploadBtn.disabled = true;
+                    if (progressPhotoLoading) progressPhotoLoading.classList.remove('hidden');
+                    try {
+                        const [displayDataUrl, thumbnailDataUrl] = await Promise.all([
+                            resizeImageForUpload(file, 1600, 0.82),
+                            resizeImageForUpload(file, 320, 0.6)
+                        ]);
+                        const response = await fetch('/api/progress-photos', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                deviceId: aiDeviceId,
+                                date: date,
+                                caption: caption || null,
+                                content_type: 'image/jpeg',
+                                display_base64: dataUrlToBase64(displayDataUrl),
+                                thumbnail_data_url: thumbnailDataUrl
+                            })
+                        });
+                        const data = await response.json();
+                        if (!response.ok) throw new Error(data.error || 'Could not upload that photo.');
+
+                        renderProgressPhotosList(data.photos || []);
+                        if (progressPhotoFileInput) progressPhotoFileInput.value = '';
+                        if (progressPhotoCaptionInput) progressPhotoCaptionInput.value = '';
+                        progressPhotoDateInput.value = new Date().toISOString().slice(0, 10);
+                    } catch (error) {
+                        if (progressPhotoError) {
+                            progressPhotoError.textContent = error.message || "Couldn't upload that photo. Please try again.";
+                            progressPhotoError.classList.remove('hidden');
+                        }
+                    } finally {
+                        progressPhotoUploadBtn.disabled = false;
+                        if (progressPhotoLoading) progressPhotoLoading.classList.add('hidden');
                     }
                 });
             }
