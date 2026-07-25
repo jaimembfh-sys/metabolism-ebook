@@ -2825,6 +2825,24 @@
                                                 <option value="daily">Daily</option>
                                             </select>
                                         </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">How would you describe your energy most days?</label>
+                                            <select id="hh-energy-pattern" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                                <option value="consistent" selected>Consistent throughout the day</option>
+                                                <option value="afternoon_crash">Crashes in the afternoon</option>
+                                                <option value="low_all_day">Low all day</option>
+                                                <option value="high_then_crash">High then crashes</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">How would you describe your digestion?</label>
+                                            <select id="hh-digestion" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
+                                                <option value="regular" selected>Regular</option>
+                                                <option value="irregular">Irregular or unpredictable</option>
+                                                <option value="bloating">Frequent bloating or discomfort</option>
+                                                <option value="prefer_not_to_say">Prefer not to say</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -5440,6 +5458,12 @@ YOUR JOB:
 
                 parts.push(hh.stress_level != null ? ('Stress level (self-reported, 1-10): ' + hh.stress_level + '.') : 'Stress level: not captured in Health History.');
 
+                var ENERGY_PATTERN_LABELS = { consistent: 'consistent throughout the day', afternoon_crash: 'crashes in the afternoon', low_all_day: 'low all day', high_then_crash: 'high then crashes' };
+                parts.push((lifestyle.energy_pattern && ENERGY_PATTERN_LABELS[lifestyle.energy_pattern]) ? ('Typical daily energy pattern: ' + ENERGY_PATTERN_LABELS[lifestyle.energy_pattern] + '.') : 'Energy pattern: not captured in Health History.');
+
+                var DIGESTION_LABELS = { regular: 'regular', irregular: 'irregular or unpredictable', bloating: 'frequent bloating or discomfort', prefer_not_to_say: 'prefers not to say' };
+                parts.push((lifestyle.digestion && DIGESTION_LABELS[lifestyle.digestion]) ? ('Digestion: ' + DIGESTION_LABELS[lifestyle.digestion] + '.') : 'Digestion: not captured in Health History.');
+
                 var meds = [];
                 if (physical.heart_bp_bloodsugar_meds) meds.push('a heart/blood pressure/blood sugar medication');
                 if (physical.glp1_meds) meds.push('a GLP-1 medication');
@@ -5740,7 +5764,7 @@ GUARDRAILS:${disorderedEatingSignal ? `
                - HQ3: Whether they currently work with a therapist or other mental health professional.
                - HQ4: Their biggest perceived barrier to success, in their own words — if helpful, you can offer examples like time, cravings, lack of knowledge, or social support, but don't limit them to a multiple-choice answer.
                - HQ5: Whether major diseases (heart disease, diabetes, cancer, etc.) run in their family. If they name something, explain — in general, non-alarming, informational terms — that for most people, improving glucose/insulin regulation meaningfully supports these areas. NEVER frame this as a guarantee or as an assessment of their personal risk, just general information.
-               - Additionally, if at any point so far the user has described inflammation-type symptoms (joint pain, fatigue, brain fog, swelling) without mentioning that their inflammatory bloodwork came back normal, ask in passing whether their kidney and liver function have been checked, and mention the app's own Lab Markers tool as a way to explore that.
+               - Additionally, if at any point so far the user has described inflammation-type symptoms (joint pain, fatigue, brain fog, swelling, or frequent bloating/digestive discomfort — including from their Health History form's digestion answer) without mentioning that their inflammatory bloodwork came back normal, ask in passing whether their kidney and liver function have been checked, and mention the app's own Lab Markers tool as a way to explore that. A single mild symptom on its own isn't enough to prompt this — look for it alongside at least one other flag already in the conversation (another symptom, a disclosed condition, or a family history disclosure).
             6. For each Health History question above: if their answer is vague or begs a clarifying question, ask ONE natural follow-up before moving to the next question. Do not ask more than one follow-up per question.
             7. AFTER the Health History questions (and any single follow-ups) are done, respond with a brief warm 1-2 sentence acknowledgment, then on its own new line output exactly this marker and nothing else: [[HEALTH_HISTORY_COMPLETE]]
                This marker is an internal signal for the app — never explain or reference it to the user.
@@ -6724,12 +6748,16 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                 var weightHeightEl = document.getElementById('account-hh-weight-height');
                 if (weightHeightEl) weightHeightEl.textContent = (hh.current_weight ? hh.current_weight + ' lbs' : 'not provided') + ' / ' + (hh.height || 'not provided');
 
+                var ENERGY_PATTERN_DISPLAY_LABELS = { consistent: 'consistent throughout the day', afternoon_crash: 'crashes in the afternoon', low_all_day: 'low all day', high_then_crash: 'high then crashes' };
+                var DIGESTION_DISPLAY_LABELS = { regular: 'regular', irregular: 'irregular or unpredictable', bloating: 'frequent bloating or discomfort', prefer_not_to_say: 'prefers not to say' };
                 var lifestyleEl = document.getElementById('account-hh-lifestyle');
                 if (lifestyleEl) {
                     lifestyleEl.textContent = (lifestyle.avg_sleep || '').replace('_', '-') + ' hrs' +
                         (lifestyle.wake_time ? ', wakes around ' + formatTimeLabel(lifestyle.wake_time) : '') + ', ' +
                         (lifestyle.wake_refreshed ? 'wakes refreshed' : 'does not wake refreshed') + ', ' +
-                        (lifestyle.routine_type || '') + ' routine, meal prep ' + (lifestyle.meal_prep_frequency || '');
+                        (lifestyle.routine_type || '') + ' routine, meal prep ' + (lifestyle.meal_prep_frequency || '') +
+                        (lifestyle.energy_pattern && ENERGY_PATTERN_DISPLAY_LABELS[lifestyle.energy_pattern] ? ', energy ' + ENERGY_PATTERN_DISPLAY_LABELS[lifestyle.energy_pattern] : '') +
+                        (lifestyle.digestion && DIGESTION_DISPLAY_LABELS[lifestyle.digestion] ? ', digestion ' + DIGESTION_DISPLAY_LABELS[lifestyle.digestion] : '');
                 }
 
                 var physicalItems = [];
@@ -7545,6 +7573,10 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                 var FAT_DISTRIBUTION_LABELS = { midsection: 'mostly in my midsection/abdomen', hips_thighs: 'mostly in my hips/thighs', evenly_distributed: 'evenly distributed' };
                 if (data.physical.fat_distribution && FAT_DISTRIBUTION_LABELS[data.physical.fat_distribution]) parts.push('I tend to hold my weight ' + FAT_DISTRIBUTION_LABELS[data.physical.fat_distribution] + '.');
                 parts.push('Sleep: ' + data.lifestyle.avg_sleep.replace('_', '-') + ' hrs, usually wakes around ' + formatTimeLabel(data.lifestyle.wake_time) + ', ' + (data.lifestyle.wake_refreshed ? 'wakes refreshed' : 'does not wake refreshed') + '. Daily routine: ' + data.lifestyle.routine_type + '. Meal prep: ' + data.lifestyle.meal_prep_frequency + '.');
+                var ENERGY_PATTERN_LABELS = { consistent: 'consistent throughout the day', afternoon_crash: 'crashes in the afternoon', low_all_day: 'low all day', high_then_crash: 'high then crashes' };
+                if (data.lifestyle.energy_pattern && ENERGY_PATTERN_LABELS[data.lifestyle.energy_pattern]) parts.push('Energy most days: ' + ENERGY_PATTERN_LABELS[data.lifestyle.energy_pattern] + '.');
+                var DIGESTION_LABELS = { regular: 'regular', irregular: 'irregular or unpredictable', bloating: 'frequent bloating or discomfort', prefer_not_to_say: 'prefers not to say' };
+                if (data.lifestyle.digestion && DIGESTION_LABELS[data.lifestyle.digestion]) parts.push('Digestion: ' + DIGESTION_LABELS[data.lifestyle.digestion] + '.');
                 if (data.emotional_triggers.length) parts.push('Emotional eating triggers: ' + data.emotional_triggers.join(', ') + '.');
                 parts.push('Stress level ' + data.stress_level + '/10, confidence in lasting change ' + data.confidence + '/10.');
                 if (data.plate_pressure) parts.push('I feel pressure to finish everything on my plate.');
@@ -7591,7 +7623,9 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                             wake_time: document.getElementById('hh-wake-time').value || '07:00',
                             wake_refreshed: document.getElementById('hh-wake-refreshed').value === 'yes',
                             routine_type: document.getElementById('hh-routine').value,
-                            meal_prep_frequency: document.getElementById('hh-meal-prep').value
+                            meal_prep_frequency: document.getElementById('hh-meal-prep').value,
+                            energy_pattern: document.getElementById('hh-energy-pattern').value,
+                            digestion: document.getElementById('hh-digestion').value
                         },
                         emotional_triggers: checkedValues('.hh-trigger'),
                         stress_level: parseInt(document.getElementById('hh-stress-level').value, 10) || null,
