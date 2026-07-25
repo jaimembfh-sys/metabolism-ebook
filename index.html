@@ -3290,6 +3290,61 @@
                     <div id="ai-view-account-recipes" class="ai-tool-view hidden" data-view-id="account-recipes" data-usage-category="chat">
                         <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; My Recipes</h3>
                         <p class="ai-view-desc font-sans text-sm text-gray-500 mb-6">Paste in your own recipe and let AI estimate the macros, so it counts correctly toward your daily totals. Private to you &#x2014; never shared or added to our recipe library.</p>
+                        <!-- Scale a Recipe: pick any recipe (personal or shared corpus) and
+                             save a re-scaled copy as a brand-new personal recipe. Lives in its
+                             own box, separate from the manual-entry box below, but on a
+                             successful scale it hides that box's manual-entry fields (see
+                             my-recipe-manual-entry-fields) and reuses its Review Your Macros
+                             panel to land the result — same save/discard mechanics either way. -->
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
+                            <div class="flex items-center justify-between gap-3 flex-wrap">
+                                <div>
+                                    <h4 class="font-serif text-xl font-bold text-brand-dark mb-1">Scale a Recipe</h4>
+                                    <p class="text-xs text-gray-500">Pick any recipe &#x2014; yours or from the shared recipe library &#x2014; and scale it up or down. Saves as a brand-new recipe; the original is never changed.</p>
+                                </div>
+                                <button id="scale-recipe-open-btn" type="button" class="bg-brand-accent hover:bg-[#a68256] text-white px-5 py-2 rounded-lg font-medium text-sm whitespace-nowrap">Scale a Recipe</button>
+                            </div>
+
+                            <!-- Step 1: pick a source recipe -->
+                            <div id="scale-recipe-picker" class="hidden mt-4">
+                                <input type="text" id="scale-recipe-search" placeholder="Search by recipe name..." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-brand-dark focus:ring-1 focus:ring-brand-dark mb-3">
+                                <div class="max-h-72 overflow-y-auto border border-gray-200 rounded-lg divide-y divide-gray-100">
+                                    <div>
+                                        <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-3 pt-2">Your Recipes</p>
+                                        <div id="scale-recipe-list-personal"></div>
+                                        <p id="scale-recipe-list-personal-empty" class="hidden text-xs text-gray-400 italic px-3 pb-2">No matches in your saved recipes.</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 px-3 pt-2">Shared Recipes</p>
+                                        <div id="scale-recipe-list-shared"></div>
+                                        <p id="scale-recipe-list-shared-empty" class="hidden text-xs text-gray-400 italic px-3 pb-2">No matches in the shared recipe library.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3 mt-3">
+                                    <button id="scale-recipe-continue-btn" type="button" disabled class="bg-brand-dark hover:bg-[#234553] disabled:opacity-40 disabled:cursor-not-allowed text-white px-5 py-2 rounded-lg font-medium text-sm">Continue</button>
+                                    <button id="scale-recipe-cancel-btn" type="button" class="bg-white border border-gray-300 text-gray-600 px-5 py-2 rounded-lg font-medium text-sm hover:bg-gray-50">Cancel</button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: choose a multiplier -->
+                            <div id="scale-recipe-multiplier" class="hidden mt-4">
+                                <p class="text-sm text-gray-700 mb-1">Scaling <strong id="scale-recipe-selected-title"></strong></p>
+                                <p id="scale-recipe-selected-servings" class="text-xs text-gray-500 mb-3"></p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <button type="button" class="scale-multiplier-btn border border-gray-300 rounded-full px-4 py-1.5 text-sm font-medium text-gray-700 hover:border-brand-dark transition-colors" data-multiplier="0.5">0.5x (Half)</button>
+                                    <button type="button" class="scale-multiplier-btn border border-gray-300 rounded-full px-4 py-1.5 text-sm font-medium text-gray-700 hover:border-brand-dark transition-colors" data-multiplier="1.5">1.5x</button>
+                                    <button type="button" class="scale-multiplier-btn border border-gray-300 rounded-full px-4 py-1.5 text-sm font-medium text-gray-700 hover:border-brand-dark transition-colors" data-multiplier="2">2x (Double)</button>
+                                    <button type="button" class="scale-multiplier-btn border border-gray-300 rounded-full px-4 py-1.5 text-sm font-medium text-gray-700 hover:border-brand-dark transition-colors" data-multiplier="3">3x (Triple)</button>
+                                </div>
+                                <div class="flex gap-3">
+                                    <button id="scale-recipe-go-btn" type="button" disabled class="bg-brand-dark hover:bg-[#234553] disabled:opacity-40 disabled:cursor-not-allowed text-white px-5 py-2 rounded-lg font-medium text-sm">Scale Recipe</button>
+                                    <button id="scale-recipe-back-btn" type="button" class="bg-white border border-gray-300 text-gray-600 px-5 py-2 rounded-lg font-medium text-sm hover:bg-gray-50">Back</button>
+                                </div>
+                                <div id="scale-recipe-loading" class="hidden mt-4 text-brand-accent text-sm font-medium animate-pulse">Scaling your recipe...</div>
+                                <div id="scale-recipe-error" class="hidden mt-4 text-sm font-semibold" style="color:#b45309;"></div>
+                            </div>
+                        </div>
+
                         <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
                             <p class="text-xs text-gray-500 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 mb-5">Your personal recipes are saved to this device/browser only. Clearing your browser data (or switching devices) will remove them. We'll move these to your account automatically once real account sign-in is available.</p>
 
@@ -3300,6 +3355,12 @@
                                 Adjusting <strong id="my-recipe-adjustment-title"></strong> based on the Meal Planner's suggestion &#x2014; the suggestion has been added to the substitution note below. Re-estimate, then choose how to save it.
                             </div>
 
+                            <!-- Hidden while a scaled result is showing in the review panel
+                                 below (see setManualEntryFieldsVisible) — there's nothing to
+                                 "estimate" for a scaled recipe, so the manual-entry form would
+                                 just be stale clutter above the result. Restored on Discard,
+                                 successful Save/Overwrite, or an Adjust-This-Recipe jump. -->
+                            <div id="my-recipe-manual-entry-fields">
                             <div class="mb-4">
                                 <label class="block text-xs font-semibold uppercase tracking-widest text-brand-dark mb-1.5">Recipe Title</label>
                                 <input type="text" id="my-recipe-title" placeholder="e.g., Mom's Chicken Soup" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-brand-dark focus:ring-1 focus:ring-brand-dark">
@@ -3327,6 +3388,7 @@
                             <button id="my-recipe-estimate-btn" class="bg-brand-dark hover:bg-[#234553] text-white px-6 py-2 rounded-lg font-medium transition-colors">&#x2728; Estimate Macros</button>
                             <div id="my-recipe-loading" class="hidden mt-4 text-brand-accent text-sm font-medium animate-pulse">Reading your recipe and estimating macros...</div>
                             <div id="my-recipe-error" class="hidden mt-4 text-sm font-semibold" style="color:#b45309;"></div>
+                            </div>
 
                             <!-- Combined clarification panel: servings (if undetected) and/or ambiguous-ingredient questions (if any), shown together in one round-trip -->
                             <div id="my-recipe-clarify-panel" class="hidden mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
@@ -4241,7 +4303,7 @@
             var aiDeviceId = getAiDeviceId();
             var lastRateLimit = null;
             var toolCounterEls = [];
-            var AI_BTN_CATEGORY = { 'chat-send-btn': 'protocol', 'generate-fridge-btn': 'chat', 'lab-markers-btn': 'chat', 'my-recipe-estimate-btn': 'chat', 'generate-meal-plan-btn': 'meal_plan', 'daily-tracker-troubleshoot-btn': 'chat' };
+            var AI_BTN_CATEGORY = { 'chat-send-btn': 'protocol', 'generate-fridge-btn': 'chat', 'lab-markers-btn': 'chat', 'my-recipe-estimate-btn': 'chat', 'generate-meal-plan-btn': 'meal_plan', 'daily-tracker-troubleshoot-btn': 'chat', 'scale-recipe-go-btn': 'recipe_scale' };
 
             function isAiLimitReached(category) {
                 if (!lastRateLimit) return false;
@@ -4719,6 +4781,18 @@ Write day_label consistently and sequentially ("Day 1" through "Day 7"). Write t
                     .map(function(l) { return l.trim(); })
                     .filter(function(l) { return l.indexOf('- ') === 0; })
                     .map(function(l) { return l.slice(2).trim(); });
+            }
+
+            // Same "## <Header>\n...(\n## |$)" section-extraction pattern as
+            // parseSharedRecipeIngredientLines, but returns the section's raw
+            // text rather than parsed bullet lines — used for Instructions and
+            // Nutrition by the Scale a Recipe feature, where the AI reads the
+            // section directly (numbered steps, repeatable nutrition blocks,
+            // etc. vary too much across the 43 recipes for a clean line parse).
+            function parseSharedRecipeSectionText(fullText, headerName) {
+                if (!fullText) return '';
+                var match = fullText.match(new RegExp('## ' + headerName + '\\n([\\s\\S]*?)(\\n## |$)'));
+                return match ? match[1].trim() : '';
             }
 
             // Resolves one meal's raw ingredient lines from wherever they
@@ -7899,6 +7973,7 @@ Format your response with clean HTML, matching the same convention used elsewher
                 myRecipeDiscardBtn.addEventListener('click', () => {
                     resetMyRecipeReview();
                     clearRecipeAdjustmentState();
+                    setManualEntryFieldsVisible(true);
                 });
             }
 
@@ -8036,6 +8111,7 @@ Format your response with clean HTML, matching the same convention used elsewher
                 if (!recipe) return;
                 if (window.switchAiToolsView) window.switchAiToolsView('account-recipes');
                 resetMyRecipeReview();
+                setManualEntryFieldsVisible(true);
                 if (myRecipeTitleInput) myRecipeTitleInput.value = recipe.title || '';
                 if (myRecipeTextInput) myRecipeTextInput.value = recipe.original_recipe_text || [recipe.ingredients, recipe.instructions].filter(Boolean).join('\n\n');
                 if (myRecipeServingsInput) myRecipeServingsInput.value = recipe.servings || '';
@@ -8094,6 +8170,7 @@ Format your response with clean HTML, matching the same convention used elsewher
                         myRecipeServingsInput.value = '';
                         if (myRecipeSubstitutionNote) myRecipeSubstitutionNote.value = '';
                         clearRecipeAdjustmentState();
+                        setManualEntryFieldsVisible(true);
                         setTimeout(resetMyRecipeReview, 1200);
                     } catch (error) {
                         myRecipeSaveStatus.style.color = '#b45309';
@@ -8136,6 +8213,7 @@ Format your response with clean HTML, matching the same convention used elsewher
                         myRecipeServingsInput.value = '';
                         if (myRecipeSubstitutionNote) myRecipeSubstitutionNote.value = '';
                         clearRecipeAdjustmentState();
+                        setManualEntryFieldsVisible(true);
                         setTimeout(resetMyRecipeReview, 1200);
                     } catch (error) {
                         myRecipeSaveStatus.style.color = '#b45309';
@@ -8157,6 +8235,329 @@ Format your response with clean HTML, matching the same convention used elsewher
                     renderMyRecipesList(data.recipes || []);
                 } catch (e) {}
             })();
+
+            // ---- My Recipes: Scale a Recipe ----
+            // Lets the user pick ANY recipe (their own My Recipes, or one of
+            // the shared 43-recipe corpus) and save a re-scaled copy as a
+            // brand-new personal recipe — never overwrites the original, and
+            // never touches the shared corpus. Ingredient/instruction scaling
+            // needs real culinary judgment (whole eggs, pan sizes, cook times
+            // don't scale linearly), so it's an AI call, same pattern as the
+            // shopping list's combining call (SHOPPING_LIST_TOOL above) —
+            // given its own requestType (recipe_scale, see claude.js) rather
+            // than reusing 'chat', since a full scaled ingredient list +
+            // rewritten instructions can run close to chat's 1024-token
+            // budget for a longer recipe.
+            //
+            // Per-serving macros never change when a recipe is scaled (the
+            // recipe and its serving count scale together), so the AI is
+            // never asked to recompute them: for a personal-recipe source we
+            // already have structured estimated_macros and just copy them
+            // forward untouched; for a shared-corpus recipe (no structured
+            // macros at all — only markdown text in full_text) the SAME AI
+            // call is asked to transcribe the already-stated Nutrition
+            // numbers into structured fields, never to (re)derive them.
+            const SCALE_RECIPE_TOOL = {
+                name: 'record_scaled_recipe',
+                description: "Scale a recipe's ingredients, instructions, and yield by a chosen multiplier using real culinary judgment (not naive multiplication) — whole eggs, pan/dish sizes, leavening, and cook times don't always scale linearly.",
+                input_schema: {
+                    type: 'object',
+                    properties: {
+                        ingredients_list: { type: 'array', items: { type: 'string' }, description: 'The FULL scaled ingredient list, one ingredient per line, in the same order and level of detail as the original — adjust quantities using real culinary judgment for the chosen multiplier, not simple arithmetic.' },
+                        instructions: { type: 'string', description: "The scaled cooking instructions as plain text (steps separated by newlines), updated for the new batch size — adjust cook time, pan/dish size, or equipment called out in the original if the scale genuinely requires it, but don't invent a different recipe." },
+                        new_servings: { type: ['number', 'null'], description: 'The realistic new total serving count/yield after scaling, using culinary judgment (not simply the multiplier times the original) — e.g. a doubled recipe baked in a larger pan might not yield exactly double. Set to null ONLY if the original recipe had no discrete serving count (a batch/bulk-yield item like a sauce or dressing) — it stays a batch-style item.' },
+                        stated_calories: { type: ['number', 'null'], description: 'ONLY when the original recipe below includes its own already-stated per-serving Nutrition text: copy the exact stated calories value, unchanged — per-serving nutrition does not change when a recipe is scaled, so never compute or estimate this yourself. null if no such stated nutrition text is present, or if the original recipe already has structured macros supplied separately (noted below).' },
+                        stated_total_fat_g: { type: ['number', 'null'], description: 'Same rule as stated_calories, for total fat in grams.' },
+                        stated_total_carbs_g: { type: ['number', 'null'], description: 'Same rule as stated_calories, for total carbohydrates in grams.' },
+                        stated_fiber_g: { type: ['number', 'null'], description: 'Same rule as stated_calories, for dietary fiber in grams.' },
+                        stated_net_carbs_g: { type: ['number', 'null'], description: 'Same rule as stated_calories, for net carbs (total carbs minus fiber) in grams.' },
+                        stated_protein_g: { type: ['number', 'null'], description: 'Same rule as stated_calories, for protein in grams.' }
+                    },
+                    required: ['ingredients_list', 'instructions', 'new_servings', 'stated_calories', 'stated_total_fat_g', 'stated_total_carbs_g', 'stated_fiber_g', 'stated_net_carbs_g', 'stated_protein_g']
+                }
+            };
+
+            function buildScaleRecipeInstruction(hasStructuredMacros) {
+                return "You are scaling a recipe by a chosen multiplier for Jaime Jenkins' metabolic health app. Read the ORIGINAL RECIPE below and produce a scaled version by calling the record_scaled_recipe tool.\n\n" +
+                    "SCALE INGREDIENTS WITH REAL CULINARY JUDGMENT, not naive multiplication — whole eggs, pan/dish sizes, spice and leavening quantities, and cook times don't always scale linearly. For example, doubling \"2 eggs\" might reasonably become \"4 eggs,\" but a recipe using \"1/4 tsp baking soda\" may not need to exactly double, and a dish baked in one 9x13 pan might need two pans (or one larger pan, with an adjusted cook time) when tripled. Use your real knowledge of cooking and baking to make sensible, practical calls, and rewrite the instructions to match (adjusted pan size/cook time/equipment where genuinely needed) without changing the underlying recipe.\n\n" +
+                    "DETERMINE THE NEW SERVING COUNT the same way — the real yield after scaling is not always the multiplier times the original serving count; use practical judgment about what the scaled batch would actually serve. If the original had no discrete serving count (a sauce, dressing, marinade, or other batch/bulk-yield item), set new_servings to null.\n\n" +
+                    (hasStructuredMacros
+                        ? "This recipe's per-serving macros are already known and handled separately — do not attempt to restate or recalculate them; return null for every stated_* field."
+                        : "This recipe's nutrition is given below as its own stated text, if present. Per-serving nutrition never changes when a recipe is scaled, so copy those exact stated numbers into the stated_* fields UNCHANGED — do not compute, estimate, or scale them yourself, only transcribe what is already stated. If no nutrition text is present at all, return null for every stated_* field.");
+            }
+
+            function buildScaleRecipeMessage(ingredientsText, instructionsText, nutritionText, originalServings, multiplierLabel) {
+                var msg = 'ORIGINAL RECIPE:\n\nIngredients:\n' + (ingredientsText || '(none given)') +
+                    '\n\nInstructions:\n' + (instructionsText || '(none given)');
+                if (nutritionText) msg += '\n\nStated Nutrition:\n' + nutritionText;
+                msg += '\n\nOriginal serving count/yield: ' + (originalServings != null ? (originalServings + ' servings') : 'no discrete serving count given (this is a batch/bulk-yield item)');
+                msg += '\n\nScale this recipe by ' + multiplierLabel + '.';
+                return msg;
+            }
+
+            function scaleMultiplierPromptLabel(multiplier) {
+                if (multiplier === 0.5) return '0.5x (half the recipe)';
+                if (multiplier === 1.5) return '1.5x (one and a half times the recipe)';
+                if (multiplier === 2) return '2x (double the recipe)';
+                if (multiplier === 3) return '3x (triple the recipe)';
+                return multiplier + 'x';
+            }
+
+            function scaleMultiplierBatchLabel(multiplier) {
+                if (multiplier === 0.5) return 'Half Batch';
+                if (multiplier === 1.5) return '1.5x Batch';
+                if (multiplier === 2) return '2x Batch';
+                if (multiplier === 3) return '3x Batch';
+                return multiplier + 'x Batch';
+            }
+
+            // Shows or hides the manual paste/upload form (Recipe Title through
+            // the Estimate Macros button) — hidden while a scaled result is
+            // occupying the shared Review Your Macros panel below it, since
+            // there's nothing to estimate in that state.
+            const myRecipeManualEntryFields = document.getElementById('my-recipe-manual-entry-fields');
+            function setManualEntryFieldsVisible(visible) {
+                if (myRecipeManualEntryFields) myRecipeManualEntryFields.classList.toggle('hidden', !visible);
+            }
+
+            // Builds the AI-scaled result into the exact shape showMyRecipeReview
+            // expects (matching USER_RECIPE_TOOL's output fields) so the whole
+            // existing review/safety-override/save flow is reused unchanged —
+            // this function's only job is producing that "parsed" object plus
+            // the new title and serving count.
+            async function runScaleRecipe(source, multiplier) {
+                var recipe = source.recipe;
+                var originalServings = recipe.servings != null ? recipe.servings : null;
+                var ingredientsText, instructionsText, nutritionText, hasStructuredMacros;
+
+                if (source.type === 'personal') {
+                    ingredientsText = recipe.ingredients || '';
+                    instructionsText = recipe.instructions || '';
+                    nutritionText = '';
+                    hasStructuredMacros = true;
+                } else {
+                    ingredientsText = parseSharedRecipeIngredientLines(recipe.full_text).join('\n');
+                    instructionsText = parseSharedRecipeSectionText(recipe.full_text, 'Instructions');
+                    nutritionText = parseSharedRecipeSectionText(recipe.full_text, 'Nutrition');
+                    hasStructuredMacros = false;
+                }
+
+                const systemInstruction = buildScaleRecipeInstruction(hasStructuredMacros);
+                const userMessage = buildScaleRecipeMessage(ingredientsText, instructionsText, nutritionText, originalServings, scaleMultiplierPromptLabel(multiplier));
+
+                const parsedScale = await extractToolFields(userMessage, systemInstruction, 'recipe_scale', SCALE_RECIPE_TOOL, 'scale-recipe');
+                if (!parsedScale) throw new Error('Could not scale that recipe.');
+
+                var titleSuffix = originalServings != null
+                    ? ('(Serves ' + (parsedScale.new_servings != null ? parsedScale.new_servings : '?') + ')')
+                    : ('(' + scaleMultiplierBatchLabel(multiplier) + ')');
+                var newTitle = recipe.title + ' ' + titleSuffix;
+
+                // See file-level comment above: personal-source macros are
+                // copied from the recipe's own structured estimated_macros,
+                // never re-derived by the AI; shared-source macros come from
+                // the AI transcribing the recipe's own stated Nutrition text.
+                var macros = source.type === 'personal'
+                    ? (recipe.estimated_macros || null)
+                    : {
+                        calories: parsedScale.stated_calories,
+                        total_fat_g: parsedScale.stated_total_fat_g,
+                        total_carbs_g: parsedScale.stated_total_carbs_g,
+                        fiber_g: parsedScale.stated_fiber_g,
+                        net_carbs_g: parsedScale.stated_net_carbs_g,
+                        protein_g: parsedScale.stated_protein_g
+                    };
+
+                var parsedForReview = {
+                    title: newTitle,
+                    ingredients_list: parsedScale.ingredients_list || [],
+                    instructions: parsedScale.instructions || '',
+                    calories: macros ? macros.calories : null,
+                    total_fat_g: macros ? macros.total_fat_g : null,
+                    total_carbs_g: macros ? macros.total_carbs_g : null,
+                    fiber_g: macros ? macros.fiber_g : null,
+                    net_carbs_g: macros ? macros.net_carbs_g : null,
+                    protein_g: macros ? macros.protein_g : null,
+                    // Only a personal recipe can carry one of these forward (shared-
+                    // corpus recipes have no such field); showMyRecipeReview's own
+                    // disordered-eating override applies fresh regardless, based on
+                    // the user's CURRENT profile flag, not whatever this recipe had
+                    // when it was first saved/authored.
+                    qualitative_macro_note: source.type === 'personal' ? (recipe.qualitative_macro_note || null) : null
+                };
+
+                var servingsToUse = parsedScale.new_servings != null ? parsedScale.new_servings : null;
+
+                // original_recipe_text is left null rather than pointing at the
+                // PRE-scale ingredients/instructions — its only consumer,
+                // startRecipeAdjustment, already falls back to reconstructing
+                // from this saved record's own (scaled, correct) ingredients/
+                // instructions fields when it's absent.
+                if (myRecipeTitleInput) myRecipeTitleInput.value = newTitle;
+                showMyRecipeReview(parsedForReview, servingsToUse, null, null);
+            }
+
+            let scaleRecipeSource = null; // { type: 'personal'|'shared', recipe }
+            let scaleRecipeMultiplier = null;
+            let scaleRecipeCorpusData = null; // knowledge-base/recipes.json, fetched on first picker open
+
+            const scaleRecipeOpenBtn = document.getElementById('scale-recipe-open-btn');
+            const scaleRecipePicker = document.getElementById('scale-recipe-picker');
+            const scaleRecipeSearchInput = document.getElementById('scale-recipe-search');
+            const scaleRecipeListPersonal = document.getElementById('scale-recipe-list-personal');
+            const scaleRecipeListPersonalEmpty = document.getElementById('scale-recipe-list-personal-empty');
+            const scaleRecipeListShared = document.getElementById('scale-recipe-list-shared');
+            const scaleRecipeListSharedEmpty = document.getElementById('scale-recipe-list-shared-empty');
+            const scaleRecipeContinueBtn = document.getElementById('scale-recipe-continue-btn');
+            const scaleRecipeCancelBtn = document.getElementById('scale-recipe-cancel-btn');
+            const scaleRecipeMultiplierPanel = document.getElementById('scale-recipe-multiplier');
+            const scaleRecipeSelectedTitle = document.getElementById('scale-recipe-selected-title');
+            const scaleRecipeSelectedServings = document.getElementById('scale-recipe-selected-servings');
+            const scaleRecipeGoBtn = document.getElementById('scale-recipe-go-btn');
+            const scaleRecipeBackBtn = document.getElementById('scale-recipe-back-btn');
+            const scaleRecipeLoading = document.getElementById('scale-recipe-loading');
+            const scaleRecipeError = document.getElementById('scale-recipe-error');
+
+            function renderScaleRecipePersonalList(query) {
+                if (!scaleRecipeListPersonal) return;
+                var q = (query || '').trim().toLowerCase();
+                var matches = myRecipesCache.filter(function(r) { return r.title.toLowerCase().indexOf(q) !== -1; });
+                scaleRecipeListPersonal.innerHTML = '';
+                matches.forEach(function(r) {
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'scale-recipe-option w-full text-left px-3 py-2 hover:bg-brand-light/40 text-sm text-gray-700';
+                    btn.textContent = r.title + (r.servings != null ? ' — ' + r.servings + ' servings' : '');
+                    btn.addEventListener('click', function() { selectScaleRecipeSource('personal', r, btn); });
+                    scaleRecipeListPersonal.appendChild(btn);
+                });
+                if (scaleRecipeListPersonalEmpty) scaleRecipeListPersonalEmpty.classList.toggle('hidden', matches.length > 0);
+            }
+
+            function renderScaleRecipeSharedList(query) {
+                if (!scaleRecipeListShared || !scaleRecipeCorpusData) return;
+                var q = (query || '').trim().toLowerCase();
+                var matches = (scaleRecipeCorpusData.recipes || []).filter(function(r) { return r.title.toLowerCase().indexOf(q) !== -1; });
+                scaleRecipeListShared.innerHTML = '';
+                matches.forEach(function(r) {
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'scale-recipe-option w-full text-left px-3 py-2 hover:bg-brand-light/40 text-sm text-gray-700';
+                    btn.textContent = r.title + (r.servings != null ? ' — ' + r.servings + ' servings' : ' — batch/yield');
+                    btn.addEventListener('click', function() { selectScaleRecipeSource('shared', r, btn); });
+                    scaleRecipeListShared.appendChild(btn);
+                });
+                if (scaleRecipeListSharedEmpty) scaleRecipeListSharedEmpty.classList.toggle('hidden', matches.length > 0);
+            }
+
+            function selectScaleRecipeSource(type, recipe, btnEl) {
+                scaleRecipeSource = { type: type, recipe: recipe };
+                document.querySelectorAll('.scale-recipe-option').forEach(function(b) { b.classList.remove('bg-brand-light/60', 'font-semibold'); });
+                btnEl.classList.add('bg-brand-light/60', 'font-semibold');
+                if (scaleRecipeContinueBtn) scaleRecipeContinueBtn.disabled = false;
+            }
+
+            function closeScaleRecipeFlow() {
+                if (scaleRecipePicker) scaleRecipePicker.classList.add('hidden');
+                if (scaleRecipeMultiplierPanel) scaleRecipeMultiplierPanel.classList.add('hidden');
+                if (scaleRecipeOpenBtn) scaleRecipeOpenBtn.classList.remove('hidden');
+                setManualEntryFieldsVisible(true);
+            }
+
+            if (scaleRecipeOpenBtn) {
+                scaleRecipeOpenBtn.addEventListener('click', function() {
+                    resetMyRecipeReview();
+                    clearRecipeAdjustmentState();
+                    setManualEntryFieldsVisible(false);
+                    scaleRecipeOpenBtn.classList.add('hidden');
+                    scaleRecipeSource = null;
+                    if (scaleRecipeContinueBtn) scaleRecipeContinueBtn.disabled = true;
+                    if (scaleRecipeSearchInput) scaleRecipeSearchInput.value = '';
+                    if (scaleRecipePicker) scaleRecipePicker.classList.remove('hidden');
+                    renderScaleRecipePersonalList('');
+                    if (scaleRecipeListShared) scaleRecipeListShared.innerHTML = '<p class="text-xs text-gray-400 italic px-3 py-2">Loading shared recipes&hellip;</p>';
+                    if (scaleRecipeListSharedEmpty) scaleRecipeListSharedEmpty.classList.add('hidden');
+                    fetchRecipeCorpus().then(function(corpus) {
+                        scaleRecipeCorpusData = corpus || { recipes: [] };
+                        renderScaleRecipeSharedList(scaleRecipeSearchInput ? scaleRecipeSearchInput.value : '');
+                    });
+                });
+            }
+
+            if (scaleRecipeSearchInput) {
+                scaleRecipeSearchInput.addEventListener('input', function() {
+                    renderScaleRecipePersonalList(scaleRecipeSearchInput.value);
+                    renderScaleRecipeSharedList(scaleRecipeSearchInput.value);
+                });
+            }
+
+            if (scaleRecipeCancelBtn) {
+                scaleRecipeCancelBtn.addEventListener('click', function() {
+                    closeScaleRecipeFlow();
+                });
+            }
+
+            if (scaleRecipeContinueBtn) {
+                scaleRecipeContinueBtn.addEventListener('click', function() {
+                    if (!scaleRecipeSource) return;
+                    if (scaleRecipePicker) scaleRecipePicker.classList.add('hidden');
+                    if (scaleRecipeMultiplierPanel) scaleRecipeMultiplierPanel.classList.remove('hidden');
+                    if (scaleRecipeSelectedTitle) scaleRecipeSelectedTitle.textContent = scaleRecipeSource.recipe.title;
+                    var servings = scaleRecipeSource.recipe.servings;
+                    if (scaleRecipeSelectedServings) {
+                        scaleRecipeSelectedServings.textContent = servings != null
+                            ? ('This recipe makes ' + servings + ' servings.')
+                            : 'This recipe makes one batch (no discrete serving count).';
+                    }
+                    scaleRecipeMultiplier = null;
+                    document.querySelectorAll('.scale-multiplier-btn').forEach(function(b) { b.classList.remove('bg-brand-dark', 'text-white', 'border-brand-dark'); });
+                    if (scaleRecipeGoBtn) scaleRecipeGoBtn.disabled = true;
+                    if (scaleRecipeError) scaleRecipeError.classList.add('hidden');
+                });
+            }
+
+            if (scaleRecipeBackBtn) {
+                scaleRecipeBackBtn.addEventListener('click', function() {
+                    if (scaleRecipeMultiplierPanel) scaleRecipeMultiplierPanel.classList.add('hidden');
+                    if (scaleRecipePicker) scaleRecipePicker.classList.remove('hidden');
+                });
+            }
+
+            document.querySelectorAll('.scale-multiplier-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.scale-multiplier-btn').forEach(function(b) { b.classList.remove('bg-brand-dark', 'text-white', 'border-brand-dark'); });
+                    btn.classList.add('bg-brand-dark', 'text-white', 'border-brand-dark');
+                    scaleRecipeMultiplier = parseFloat(btn.getAttribute('data-multiplier'));
+                    if (scaleRecipeGoBtn) scaleRecipeGoBtn.disabled = false;
+                });
+            });
+
+            if (scaleRecipeGoBtn) {
+                scaleRecipeGoBtn.addEventListener('click', async function() {
+                    if (!scaleRecipeSource || !scaleRecipeMultiplier) return;
+                    if (isAiLimitReached('recipe_scale')) return;
+                    if (scaleRecipeError) scaleRecipeError.classList.add('hidden');
+                    if (scaleRecipeLoading) scaleRecipeLoading.classList.remove('hidden');
+                    scaleRecipeGoBtn.disabled = true;
+                    if (scaleRecipeBackBtn) scaleRecipeBackBtn.disabled = true;
+                    try {
+                        await runScaleRecipe(scaleRecipeSource, scaleRecipeMultiplier);
+                        if (scaleRecipeMultiplierPanel) scaleRecipeMultiplierPanel.classList.add('hidden');
+                        if (scaleRecipePicker) scaleRecipePicker.classList.add('hidden');
+                        if (scaleRecipeOpenBtn) scaleRecipeOpenBtn.classList.remove('hidden');
+                        if (myRecipeReview) myRecipeReview.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } catch (error) {
+                        if (scaleRecipeError) {
+                            scaleRecipeError.textContent = error.limitReached ? error.message : "Couldn't scale that recipe. Please try again in a moment.";
+                            scaleRecipeError.classList.remove('hidden');
+                        }
+                    } finally {
+                        if (scaleRecipeLoading) scaleRecipeLoading.classList.add('hidden');
+                        scaleRecipeGoBtn.disabled = false;
+                        if (scaleRecipeBackBtn) scaleRecipeBackBtn.disabled = false;
+                    }
+                });
+            }
 
             // --- Goal & Why banner: view/edit interactions ---
             // Goal editing lives here now (My Stuff > Long Term Goals),

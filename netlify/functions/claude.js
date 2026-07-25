@@ -70,18 +70,23 @@ const MODELS = {
   photo_scan: "claude-haiku-4-5-20251001",
   protocol: process.env.ANTHROPIC_PROTOCOL_MODEL || "claude-haiku-4-5-20251001",
   meal_plan: process.env.ANTHROPIC_MEAL_PLAN_MODEL || "claude-haiku-4-5-20251001",
+  recipe_scale: "claude-haiku-4-5-20251001",
 };
 
 // Per-request-type output budget. Most structured-tool calls (protocol,
 // chat replies) comfortably fit in 1024 tokens; the weekly meal plan is
 // meaningfully bigger (up to 7 days x 3 meals, each with a title/slot/
 // description/macros note) so it gets its own larger ceiling rather than
-// bumping every other call's cost.
+// bumping every other call's cost. recipe_scale (My Recipes > Scale a
+// Recipe) returns a full scaled ingredient list plus rewritten
+// instructions for one recipe — bigger than a normal chat reply, but
+// nowhere near meal_plan's 21-meal-slot output.
 const MAX_TOKENS = {
   chat: 1024,
   photo_scan: 1024,
   protocol: 1024,
   meal_plan: 4096,
+  recipe_scale: 2048,
 };
 
 // Approximate list pricing, USD per million tokens. VERIFY against
@@ -253,7 +258,7 @@ exports.handler = async function (event) {
       tool_choice,
       liveSearchBudgetRemaining,
     } = JSON.parse(event.body);
-    const requestType = ["chat", "photo_scan", "protocol", "meal_plan"].includes(rawRequestType) ? rawRequestType : "chat";
+    const requestType = ["chat", "photo_scan", "protocol", "meal_plan", "recipe_scale"].includes(rawRequestType) ? rawRequestType : "chat";
 
     if (!userId) {
       return { statusCode: 400, body: JSON.stringify({ error: "Missing deviceId" }) };
