@@ -2650,7 +2650,7 @@
                             </div>
                             <nav class="space-y-1">
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-goals">My Goals</button>
-                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-protocol">My Protocol</button>
+                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-protocol">My Protocol - Daily Tracker</button>
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-health-history">Health History</button>
                                 <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-recipes">My Recipes</button>
                             </nav>
@@ -3305,10 +3305,36 @@
 
                                 <div id="daily-tracker-macro-totals" class="border-t border-gray-200 pt-4"></div>
 
+                                <!-- Need a Reset? — groups the two single-shot AI check-in tools
+                                     together (same button/loading/output shape for both): the
+                                     real-time stress/craving check-in first, since it's meant for
+                                     an in-the-moment tap, then the more reflective Plateau
+                                     Troubleshooting tool below it. -->
                                 <div class="border-t border-gray-200 pt-4">
-                                    <button type="button" id="daily-tracker-troubleshoot-btn" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-brand-accent/40 bg-brand-light/30 px-4 py-2.5 text-sm font-semibold text-brand-dark hover:bg-brand-light/60 transition-colors">Feeling stuck? Get help troubleshooting</button>
-                                    <div id="daily-tracker-troubleshoot-loading" class="hidden mt-3 text-brand-accent text-sm font-medium animate-pulse">Reviewing your recent data&hellip;</div>
-                                    <div id="daily-tracker-troubleshoot-output" class="hidden mt-3 p-4 bg-white border border-brand-accent/20 rounded-lg text-sm text-gray-700 leading-relaxed"></div>
+                                    <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Need a Reset?</p>
+
+                                    <div class="mb-5 pb-5 border-b border-gray-100">
+                                        <p class="text-sm font-semibold text-brand-dark mb-1">Feeling stressed or craving something?</p>
+                                        <p class="text-xs text-gray-500 mb-3">Tap what&#x2019;s going on right now for a quick, grounding suggestion.</p>
+                                        <div class="flex flex-wrap gap-2 mb-3">
+                                            <button type="button" class="stress-checkin-trigger-btn border border-gray-300 rounded-full px-3 py-1.5 text-xs font-medium text-gray-700 hover:border-brand-dark transition-colors" data-value="stress_work">Stress/work</button>
+                                            <button type="button" class="stress-checkin-trigger-btn border border-gray-300 rounded-full px-3 py-1.5 text-xs font-medium text-gray-700 hover:border-brand-dark transition-colors" data-value="boredom">Boredom</button>
+                                            <button type="button" class="stress-checkin-trigger-btn border border-gray-300 rounded-full px-3 py-1.5 text-xs font-medium text-gray-700 hover:border-brand-dark transition-colors" data-value="sadness">Sadness</button>
+                                            <button type="button" class="stress-checkin-trigger-btn border border-gray-300 rounded-full px-3 py-1.5 text-xs font-medium text-gray-700 hover:border-brand-dark transition-colors" data-value="social_pressure">Social pressure</button>
+                                            <button type="button" class="stress-checkin-trigger-btn border border-gray-300 rounded-full px-3 py-1.5 text-xs font-medium text-gray-700 hover:border-brand-dark transition-colors" data-value="fatigue">Fatigue</button>
+                                        </div>
+                                        <input type="text" id="stress-checkin-detail" placeholder="Anything more specific? (optional)" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark mb-3">
+                                        <p id="stress-checkin-validation" class="hidden text-xs font-semibold text-red-600 mb-2">Tap what&#x2019;s going on, or describe it above, first.</p>
+                                        <button type="button" id="stress-checkin-submit-btn" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-brand-accent/40 bg-brand-light/30 px-4 py-2.5 text-sm font-semibold text-brand-dark hover:bg-brand-light/60 transition-colors">Get a quick reset</button>
+                                        <div id="stress-checkin-loading" class="hidden mt-3 text-brand-accent text-sm font-medium animate-pulse">Finding something that could help&hellip;</div>
+                                        <div id="stress-checkin-output" class="hidden mt-3 p-4 bg-white border border-brand-accent/20 rounded-lg text-sm text-gray-700 leading-relaxed"></div>
+                                    </div>
+
+                                    <div>
+                                        <button type="button" id="daily-tracker-troubleshoot-btn" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-brand-accent/40 bg-brand-light/30 px-4 py-2.5 text-sm font-semibold text-brand-dark hover:bg-brand-light/60 transition-colors">Feeling stuck? Get help troubleshooting</button>
+                                        <div id="daily-tracker-troubleshoot-loading" class="hidden mt-3 text-brand-accent text-sm font-medium animate-pulse">Reviewing your recent data&hellip;</div>
+                                        <div id="daily-tracker-troubleshoot-output" class="hidden mt-3 p-4 bg-white border border-brand-accent/20 rounded-lg text-sm text-gray-700 leading-relaxed"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -4382,7 +4408,7 @@
             var aiDeviceId = getAiDeviceId();
             var lastRateLimit = null;
             var toolCounterEls = [];
-            var AI_BTN_CATEGORY = { 'chat-send-btn': 'protocol', 'generate-fridge-btn': 'chat', 'lab-markers-btn': 'chat', 'my-recipe-estimate-btn': 'chat', 'generate-meal-plan-btn': 'meal_plan', 'daily-tracker-troubleshoot-btn': 'chat', 'scale-recipe-go-btn': 'recipe_scale' };
+            var AI_BTN_CATEGORY = { 'chat-send-btn': 'protocol', 'generate-fridge-btn': 'chat', 'lab-markers-btn': 'chat', 'my-recipe-estimate-btn': 'chat', 'generate-meal-plan-btn': 'meal_plan', 'daily-tracker-troubleshoot-btn': 'chat', 'scale-recipe-go-btn': 'recipe_scale', 'stress-checkin-submit-btn': 'chat' };
 
             function isAiLimitReached(category) {
                 if (!lastRateLimit) return false;
@@ -5429,6 +5455,114 @@ YOUR JOB:
                         dailyTrackerExtraForm.classList.add('hidden');
                         resetExtraForm();
                     });
+                });
+            }
+
+            // ---- Real-time stress/craving check-in (My Protocol > Daily Tracker) ----
+            // Single-shot AI call, NOT a persistent chat — same one-and-done
+            // pattern as Plateau Troubleshooting just below, reusing its exact
+            // infrastructure: the 'chat' rate-limit category (no dedicated
+            // category of its own), the same live-research-search wiring
+            // (fetchResearcherSources/buildResearcherSourcesText/
+            // buildLiveSearchRules), and the same callClaudeChat + HTML-output
+            // pattern. Grounded in this app's own Lesson 5 (sympathetic/
+            // parasympathetic nervous system) and Lesson 13 ("Chronic Stress
+            // and Cortisol" — breathing, walking, boundary setting, nervous
+            // system regulation) content, described directly in the system
+            // instruction below rather than fetched from the corpus, matching
+            // how buildTroubleshootSystemInstruction inlines its Lesson 13
+            // factor list rather than pulling the corpus text dynamically.
+            const STRESS_CHECKIN_TRIGGER_LABELS = { stress_work: 'Stress/work', boredom: 'Boredom', sadness: 'Sadness', social_pressure: 'Social pressure', fatigue: 'Fatigue' };
+
+            function buildStressCheckinContextText(triggers, detail) {
+                var parts = [];
+                if (triggers && triggers.length) {
+                    parts.push('What\'s going on right now: ' + triggers.map(function(t) { return STRESS_CHECKIN_TRIGGER_LABELS[t] || t; }).join(', ') + '.');
+                }
+                if (detail) parts.push('More detail from the user: "' + detail + '"');
+                if (!parts.length) parts.push('The user tapped in for a check-in without specifying what\'s going on beyond wanting a quick reset.');
+                return parts.join(' ');
+            }
+
+            function buildStressCheckinSystemInstruction(disorderedEatingSignal, liveSearchRulesText) {
+                return `You are Jaime Jenkins' AI Metabolic Coach, responding to a real-time "I'm stressed / craving something" check-in from a user who already completed intake and has an active protocol. This is a SINGLE response with no way for the user to reply within this feature — you will not get a follow-up turn.
+
+Ground your response in this app's own course content on stress and cortisol: Lesson 5 ("Thyroid, Nervous System, and Energy Output") explains that chronic sympathetic ("fight-or-flight") activation elevates cortisol, slows digestion, and signals the body to conserve rather than burn energy, while a parasympathetic ("rest-and-digest") state does the opposite. Lesson 13 ("Factors That Hinder Weight Loss") explicitly names breathing techniques, walking, boundary setting, and nervous system regulation as ways to communicate safety to the body during a stressful moment, and explains that chronic stress drives cravings and abdominal fat storage via cortisol and gluconeogenesis.
+
+Give ONE brief, stabilizing suggestion tailored to what they described — a grounding/breathing technique, a short movement idea, or a food-quality note (e.g. reaching for something protein- or fat-forward instead of the craving) — whichever genuinely fits best. This is a quick in-the-moment reset, NOT a lecture: 2-4 sentences, warm and practical, never a bulleted list of options to pick from.
+
+${liveSearchRulesText}
+
+GUARDRAILS:${disorderedEatingSignal ? `
+- This user has a disordered-eating safety signal on file. If a food-quality idea is the best fit, you may still offer one — keep it qualitative (e.g. "something with protein or healthy fat can help steady you") and NEVER include a specific number (no calories, grams, or portion sizes) or restriction-flavored language ("don't eat," "avoid," "cut back"). Do not drop food-related suggestions entirely for this user, just keep them non-restrictive.` : ''}
+- Do NOT use asterisks for bolding. Format as a single short <p> (or a very brief <p> plus one more short line) so it displays beautifully and reads in just a few seconds — this is a real-time reset, not something to scroll through.`;
+            }
+
+            const stressCheckinTriggerBtns = document.querySelectorAll('.stress-checkin-trigger-btn');
+            const stressCheckinDetailInput = document.getElementById('stress-checkin-detail');
+            const stressCheckinValidation = document.getElementById('stress-checkin-validation');
+            const stressCheckinSubmitBtn = document.getElementById('stress-checkin-submit-btn');
+            const stressCheckinLoading = document.getElementById('stress-checkin-loading');
+            const stressCheckinOutput = document.getElementById('stress-checkin-output');
+            const STRESS_CHECKIN_LIVE_SEARCH_BUDGET = 1;
+            let stressCheckinSelectedTriggers = [];
+
+            stressCheckinTriggerBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var value = btn.getAttribute('data-value');
+                    var idx = stressCheckinSelectedTriggers.indexOf(value);
+                    if (idx !== -1) {
+                        stressCheckinSelectedTriggers.splice(idx, 1);
+                        btn.classList.remove('bg-brand-dark', 'text-white', 'border-brand-dark');
+                    } else {
+                        stressCheckinSelectedTriggers.push(value);
+                        btn.classList.add('bg-brand-dark', 'text-white', 'border-brand-dark');
+                    }
+                    if (stressCheckinValidation) stressCheckinValidation.classList.add('hidden');
+                });
+            });
+
+            if (stressCheckinSubmitBtn) {
+                stressCheckinSubmitBtn.addEventListener('click', async () => {
+                    if (!currentGoalProfile) return;
+                    if (isAiLimitReached('chat')) return;
+
+                    const detail = stressCheckinDetailInput ? stressCheckinDetailInput.value.trim() : '';
+                    if (!stressCheckinSelectedTriggers.length && !detail) {
+                        if (stressCheckinValidation) stressCheckinValidation.classList.remove('hidden');
+                        return;
+                    }
+                    if (stressCheckinValidation) stressCheckinValidation.classList.add('hidden');
+
+                    stressCheckinSubmitBtn.disabled = true;
+                    stressCheckinLoading.classList.remove('hidden');
+                    stressCheckinOutput.classList.add('hidden');
+                    stressCheckinOutput.innerHTML = '';
+
+                    try {
+                        const contextText = buildStressCheckinContextText(stressCheckinSelectedTriggers, detail);
+                        const researcherConfig = await fetchResearcherSources();
+                        const researcherSourcesText = buildResearcherSourcesText(researcherConfig);
+                        const liveSearchRulesText = buildLiveSearchRules(researcherSourcesText, STRESS_CHECKIN_LIVE_SEARCH_BUDGET);
+                        const systemInstruction = buildStressCheckinSystemInstruction(!!currentGoalProfile.disordered_eating_signal, liveSearchRulesText);
+
+                        const result = await callClaudeChat([{ role: 'user', content: contextText }], systemInstruction, 'chat', STRESS_CHECKIN_LIVE_SEARCH_BUDGET);
+                        stressCheckinOutput.innerHTML = result.text;
+                        stressCheckinOutput.classList.remove('hidden');
+
+                        // Reset for the next tap only after a successful round trip —
+                        // a failed attempt (see catch below) keeps the user's
+                        // selections/text intact so Retry doesn't lose their input.
+                        stressCheckinSelectedTriggers = [];
+                        stressCheckinTriggerBtns.forEach(function(btn) { btn.classList.remove('bg-brand-dark', 'text-white', 'border-brand-dark'); });
+                        if (stressCheckinDetailInput) stressCheckinDetailInput.value = '';
+                    } catch (error) {
+                        stressCheckinOutput.innerHTML = buildAiErrorHtml(error, 'Our AI coach is taking a short break. Please try again in a moment.');
+                        stressCheckinOutput.classList.remove('hidden');
+                    } finally {
+                        stressCheckinSubmitBtn.disabled = false;
+                        stressCheckinLoading.classList.add('hidden');
+                    }
                 });
             }
 
