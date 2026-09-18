@@ -48,7 +48,7 @@ The body also has a unique ability to increase energy expenditure through heat p
 
 Brown fat is packed with mitochondria—the cellular engines we discussed earlier. These mitochondria contain a unique protein called UCP1 (Uncoupling Protein 1), which literally "uncouples" the calorie-burning process from creating usable energy (ATP) and instead forces the cell to just generate pure heat. When your brown fat is activated, your metabolic rate increases significantly without you having to move a muscle.
 
-The most potent natural stimulator of brown fat is cold exposure. When the skin senses a drop in temperature, the brain sends a signal via the sympathetic nervous system to activate brown fat to keep your core temperature stable. Over time, regular cold exposure can actually increase the amount of brown fat your body has, permanently raising your resting metabolic rate.
+The most potent natural stimulator of brown fat is cold exposure. When the skin senses a drop in temperature, the brain sends a signal via the sympathetic nervous system to activate brown fat to keep your core temperature stable. Over time, regular cold exposure can actually increase the amount of brown fat your body has, progressively raising your resting metabolic rate.
 
 <!-- chunk -->
 ## Practical Methods
@@ -76,7 +76,7 @@ The key is "minimum effective dose." You often only need a brief, mild cold stim
 ## Key Insight
 <!-- page: Lesson 5 -->
 
-Cold exposure activates brown fat, which contains UCP1 — a protein that forces cells to generate pure heat instead of ATP, permanently raising resting metabolic rate without traditional exercise.
+Cold exposure activates brown fat, which contains UCP1 — a protein that forces cells to generate pure heat instead of ATP, progressively raising resting metabolic rate without traditional exercise.
 
 # What You Just Learned
 

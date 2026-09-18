@@ -68,7 +68,21 @@ Why the difference? Diets that lower insulin and increase ketones naturally sign
 
 Rather than relying on synthetic, high-dose injections that carry a 9x higher risk of pancreatitis and destroy your metabolic engine, you can naturally optimize your body's own GLP-1 production through the way you eat.
 
-Protein and healthy fats are the most potent natural stimulators of GLP-1. Highly processed, rapidly digesting carbohydrates bypass this system almost entirely. By prioritizing high-quality protein and natural fats at every meal, you trigger a robust, natural GLP-1 response. You utilize your body's own appetite-regulating pharmacy, feeling comfortably full for hours while preserving the lean muscle mass your metabolism desperately needs.
+Protein and healthy fats are the most potent natural stimulators of GLP-1. By prioritizing high-quality protein and natural fats at every meal, you trigger a robust, natural GLP-1 response. You utilize your body's own appetite-regulating pharmacy, feeling comfortably full for hours while preserving the lean muscle mass your metabolism desperately needs.
+
+<!-- chunk -->
+## Why Whole Food Does This Better
+<!-- page: Lesson 6 -->
+
+Here's a subtlety worth getting right, because you'll see it stated backwards.
+
+Carbohydrate does trigger GLP-1. The issue isn't that refined carbohydrate bypasses the system. It's where, and for how long.
+
+The cells that produce most of your GLP-1 are concentrated far down your digestive tract — the lower small intestine and colon. Refined carbohydrate is absorbed almost immediately, high up. So relatively little of it ever reaches those cells. You get a brief signal and it's over.
+
+Protein, fat, and fermentable fiber travel further and linger longer, producing a sustained response. Fermentable fiber does it twice — once passing through, and again hours later when your gut bacteria ferment it into compounds that trigger another round.
+
+This is why eggs and vegetables hold you for five hours and a bowl of cereal holds you for ninety minutes — even matched for calories. It isn't that one triggered the hormone and the other didn't. One produced a brief pulse; the other produced hours of signalling.
 
 <!-- chunk -->
 ## Lifestyle Habits That Boost Your Natural GLP-1

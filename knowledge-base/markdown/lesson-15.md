@@ -56,10 +56,32 @@ Metabolism slows. Keep meals lighter. Finish eating at least 2–3 hours before 
 Shifting the majority of your food intake earlier in the day — even within the same eating window — helps your body work with its natural rhythm rather than against it, making fat loss easier and sleep deeper.
 
 <!-- chunk -->
-## One Meal a Day: The Thermogenic Advantage
+## The Hidden Clocks Inside Your Cells
 <!-- page: Lesson 15 -->
 
-Recent research has revealed a compelling finding for those interested in maximizing metabolic efficiency: eating one larger meal a day, due to its greater thermogenic effect, causes the body to burn up to 38% more energy processing that meal compared to spreading the same total food across multiple smaller meals throughout the day. While this level of compression is not right for everyone — particularly those with adrenal stress or blood sugar instability — it illustrates a powerful principle: fewer, more substantial meals tend to create a greater metabolic stimulus than constant grazing.
+Why exactly are mornings different? The answer is more literal than most people realize. Your body doesn't have just one internal clock in your brain — it has a master clock, plus separate mini-clocks built directly into your liver, muscle, fat, and pancreas cells.1 These aren't a figure of speech. They're actual genetic switches that turn on and off in a daily rhythm, and part of what they control is how sensitive each of those tissues is to insulin at any given moment.2
+
+Your pancreas's insulin release, your liver's sugar output, and your muscle's ability to pull glucose out of your bloodstream are all under the direct influence of these local clocks, not just your sleep schedule in general.3 One recent study found that in people with type 2 diabetes, this muscle-level clock rhythm is measurably disrupted, and that disruption is tied to reduced mitochondrial function.4
+
+This is also why irregular eating patterns, shift work, and inconsistent sleep independently worsen insulin resistance, separate from what you're actually eating.6 It isn't just about calories or carbs. It's about whether your daily rhythm of eating lines up with the rhythm your cells are already running on.
+
+<!-- chunk -->
+## Fewer Meals Win — Just Not for the Reason You've Heard
+<!-- page: Lesson 15 -->
+
+You may have seen claims that eating one large meal burns dramatically more energy than spreading the same food out. That one doesn't hold up. When researchers measure across a full day in a sealed chamber, the difference disappears. The energy cost of digestion tracks the food, not the schedule.
+
+But fewer meals genuinely do win — on something that matters more.
+
+In controlled comparisons, people eating six small meals a day reported noticeably more hunger and more desire to eat than people eating the same food in fewer meals.
+
+That's the real case against grazing. Every meal you add is another scheduled hunger signal you're teaching your body to produce — which is exactly what Lesson 7 explained about ghrelin.
+
+And there's a timing effect that is well supported: the identical meal produces a larger thermic response in the morning than in the evening. So when you eat genuinely does change how much energy processing it costs you.
+
+Fewer meals, earlier in the day. That's the version that holds up.
+
+While this pattern is not right for everyone — particularly those with adrenal stress or blood sugar instability — fewer, more substantial meals still tend to serve most people better than constant grazing.
 
 <!-- chunk -->
 ## The Surprising Truth About Salt (And Fat Cell Growth)
@@ -73,7 +95,31 @@ This is where many people make a critical mistake. We have been taught for decad
 
 Even worse, if your body senses that its sodium levels are dropping too low, it triggers a powerful hormonal survival mechanism called the renin-angiotensin-aldosterone system (RAAS). It activates two specific hormones—Angiotensin II and Aldosterone—to aggressively hold onto whatever salt remains. To help retain that salt, your body will actually raise your insulin levels to stop the kidneys from excreting sodium.
 
-But the metabolic damage doesn't stop there. Clinical biochemical data reveals that elevated Angiotensin II and Aldosterone possess the direct, independent ability to stimulate fat cell growth. By deliberately restricting your salt on a healthy diet, you are biologically instructing your fat cells to grow larger. You can completely stall your metabolic progress simply by not eating enough salt. Do not fear salt. Liberally salt your food to taste, especially if you are eating a clean, low-carbohydrate diet.
+But the metabolic cost doesn't stop at fatigue.
+
+Remember the difference between healthy and sick fat storage from Lesson 9 — new small fat cells versus existing cells inflating like balloons?
+
+The hormones your body deploys to hold onto salt appear to push you toward the second kind.
+
+Angiotensin II — one of the two hormones in that salt-retention system — has been shown to block the formation of new fat cells. When your body can't make new small cells, the energy has to go into the ones you already have. They inflate, become inflamed, and turn insulin resistant. Its partner, aldosterone, acts directly on fat tissue to drive expansion and inflammation.
+
+Studies restricting sodium have found exactly what you'd predict: worse insulin sensitivity, higher triglycerides, more inflammation, and more visceral fat.
+
+A note on how confident to be here. The direct sodium-to-body-fat findings come largely from animal studies, and the hormone-to-fat-cell mechanism has been worked out mostly in cells and animals. What's solid is that restricting sodium on a low-insulin diet activates this system and worsens insulin sensitivity. The fat cell consequence is a well-supported inference rather than a proven human outcome.
+
+Do not fear salt. Salt your food to taste, particularly on a clean low-carbohydrate diet.
+
+<!-- chunk -->
+## One Exception Worth Naming
+<!-- page: Lesson 15 -->
+
+Everything above applies to a woman with healthy blood pressure and healthy kidneys eating a clean, low-carbohydrate diet. For her, salting to taste is correct and the fear of salt has done real harm.
+
+If you have high blood pressure, kidney disease, or heart failure — or if you take blood pressure medication — talk to your doctor before significantly increasing your salt. Not because the physiology above is wrong, but because your situation has an additional variable in it, and that's a conversation worth five minutes.
+
+And here's the part that catches people: eating this way lowers blood pressure on its own, which is good — and it means your medication dose may become too strong. If you start feeling lightheaded when you stand up, that's usually not a reason to abandon the diet. It's a reason to get your dose reviewed.
+
+Tell your doctor you've changed how you eat. She can't adjust for what she doesn't know about.
 
 <!-- chunk -->
 ## Cut the Snacks: Why Your Mitochondria Need Breaks
@@ -116,10 +162,16 @@ Natural Sugars: Keep even natural sugars to a minimum. Fruit is healthy but shou
 # Key Insight
 
 <!-- chunk -->
-## Key Insight
+## Key Insight 1
 <!-- page: Lesson 15 -->
 
-Eating one larger meal a day causes the body to burn up to 38% more energy processing that meal compared to spreading the same food across multiple smaller ones throughout the day.
+Your liver's internal clock is especially sensitive to feeding — meaning when you eat is actively training that clock, for better or worse, every single day.5
+
+<!-- chunk -->
+## Key Insight 2
+<!-- page: Lesson 15 -->
+
+The identical meal produces a greater thermic response eaten in the morning than eaten in the evening — when you eat changes what the food costs you to process.
 
 # What You Just Learned
 

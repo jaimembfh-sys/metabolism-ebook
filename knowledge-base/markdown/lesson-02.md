@@ -21,12 +21,18 @@ Humans provide the most convincing evidence of all that you cannot store fat unl
 When insulin is elevated, your body is physically incapable of burning fat. Fat burning is not a matter of willpower — it is a matter of hormonal chemistry.
 
 <!-- chunk -->
-## The Cephalic Phase: Why Tasting Sweetness Matters
+## The Cephalic Phase: When Anticipation Counts
 <!-- page: Lesson 2 -->
 
-Because the body relies on signals rather than just simple mechanics, insulin release can begin before food even hits your stomach. Metabolic science frequently highlights a fascinating biological phenomenon known as the "cephalic phase insulin response."
+Because your body runs on signals, some of the response to food starts before food arrives. Your brain sees, smells, and tastes — and begins preparing. This is called the cephalic phase, and it's real: sham-feeding studies, where people chew and spit without swallowing, produce measurable insulin release.
 
-When you taste something sweet—even if it is a zero-calorie artificial sweetener—your brain immediately registers that sweetness. Anticipating an influx of sugar, the brain sends a rapid signal to the pancreas to start pumping out insulin. This means you can drink a diet soda with absolutely zero real energy in it, yet still trigger an insulin spike simply because of the taste on your tongue. If your goal is to keep insulin low so your body can access stored fat, constantly teasing your brain with artificial sweetness can keep those fat-burning gates tightly shut.
+Where this gets overstated: you'll often hear that tasting a zero-calorie sweetener triggers an insulin spike, so diet soda is as bad as regular.
+
+The research doesn't really support that. When researchers have given people aspartame, saccharin, or sucralose and measured insulin directly, most studies find no meaningful response. One study did find a response in a subset of people with overweight — more with solid forms than drinks — so it may not be zero for everyone. But the simple version of the claim doesn't hold up.
+
+Here's what I'd actually say about sweeteners. The insulin worry is probably overblown. The more relevant question is whether keeping a strong sweet preference alive makes the rest of this harder. Your reward system responds to calories arriving in your gut, not just to flavor — so a sweet taste with nothing behind it isn't the same as water, even if your insulin doesn't move.
+
+Better than sugar. Not the same as water. If you're using them constantly, try two weeks without and see whether your cravings change. That will tell you more about your own body than any general rule.
 
 <!-- chunk -->
 ## The Source of the Signal

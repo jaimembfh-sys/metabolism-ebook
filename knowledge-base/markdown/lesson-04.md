@@ -27,6 +27,22 @@ When mitochondrial function is impaired, the exact opposite occurs. Chronic stre
 You may begin to feel exhausted even after resting. You find yourself relying heavily on caffeine. Cravings increase because your brain is desperately signaling for quick fuel. Workouts feel draining instead of energizing. And fat loss completely stalls—not because you lack effort, but because your body is prioritizing survival. Again, your metabolism isn’t broken; it is protecting you. Your body will absolutely not prioritize fat burning if it is struggling to meet its basic daily energy needs. Energy production always comes first; fat loss follows.
 
 <!-- chunk -->
+## Metabolic Gridlock
+<!-- page: Lesson 4 -->
+
+There is a specific way mitochondria get overwhelmed, and understanding it explains a great deal about the modern diet.
+
+A healthy cell switches cleanly between fuels. Fasting, it burns fat. Fed, it burns sugar. It commits to one, runs it efficiently, and switches when things change. That ability to switch on demand is called metabolic flexibility.
+
+The problem is losing the ability to commit. In metabolism that has become insulin resistant, the cell stops switching cleanly and instead tries to process a mixture of everything, continuously. Fuel keeps arriving whether or not the mitochondria have demand for it. Half-finished byproducts accumulate, and the excess produces reactive molecules — cellular exhaust — because supply has outrun demand. Those molecules then interfere with insulin's signal directly, so the congestion feeds the very insulin resistance that produced it.
+
+A researcher at Duke described this as metabolic gridlock: persistently burning a mixture of fuels increases mitochondrial congestion and metabolic risk. It is one of the clearest explanations we have for how sustained overfeeding damages the machinery rather than just filling the storage tanks.
+
+What this is, and what it isn't. Gridlock describes a chronic state, not a single meal. Metabolic inflexibility is a trait of metabolism that has already become insulin resistant — it develops over months and years of a sustained pattern, and it is measured as a reduced ability to switch fuels on demand, not as an event you can point to after dinner. One mixed meal does not cause it. What a pizza does in the moment is what Lesson 9 describes: insulin rises, and that meal's fat is tipped toward storage rather than burning. That is ordinary, reversible physiology, and it happens in metabolically healthy people too. Gridlock is what that ordinary response looks like once it has stopped switching back.
+
+Which points directly at the fix, and it isn't eating less of everything. It is giving your cells clear signals about which fuel to use, and periods where they aren't processing anything at all. Lesson 9 covers which food combinations push hardest in the wrong direction, and why they are almost always manufactured rather than grown.
+
+<!-- chunk -->
 ## Giving Your Cells What They Need
 <!-- page: Lesson 4 -->
 

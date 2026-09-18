@@ -40,6 +40,16 @@ Exhaustion: Reaching for food (especially sugar) in a desperate attempt to gain 
 
 Reward and Celebration: The ingrained belief that you "deserve" a specific treat after a long day or a hard task.
 
+<!-- chunk -->
+## Progress Takes Time
+<!-- page: Lesson 18 -->
+
+Give this process the time it deserves. You are not just trying to lose weight — you are working to undo years of ingrained habits and, in many cases, real physiological damage to your metabolism. That is meaningful work, and it does not happen overnight.
+
+It is all about progress over perfection. If you fall off the wagon, do not spiral. Instead, look back at how much better you ate last week compared to before you started. Feel genuinely proud of the times you made a good choice. Then get back to work. It is going to take time to learn new routines and build new habits. That is completely normal and expected.
+
+"Every time you make a good choice is a win worth celebrating. Acknowledge it, feel it, and let it build momentum for the next one."
+
 # Conclusion: Putting It All Together
 
 <!-- chunk -->

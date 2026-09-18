@@ -22,7 +22,17 @@ By now, you understand that this model is fundamentally flawed. Exercise is not 
 ## Weight Lifting: Building the Metabolic Engine
 <!-- page: Lesson 17 -->
 
-If there is one non-negotiable form of exercise for long-term fat loss and metabolic health, it is resistance training. Muscle is the largest source of your metabolism. The more lean muscle tissue you carry on your frame, the higher your resting metabolic rate becomes. Muscle is a highly demanding tissue; your body has to spend a massive amount of internal energy 24 hours a day simply to maintain it.
+If there is one non-negotiable form of exercise for long-term fat loss and metabolic health, it is resistance training.
+
+Muscle is the largest tissue you can actually change, and carrying more of it does raise your resting energy needs — your body spends energy maintaining it around the clock.
+
+But the bigger reason is where your blood sugar goes.
+
+When insulin does its job, skeletal muscle is the primary destination for glucose. It's the largest container you have. Well-developed muscle means your body has somewhere to put the carbohydrate you eat without pumping out large amounts of insulin to force it there.
+
+Which cuts both ways. Lose muscle and you shrink the container. The same meal now requires more insulin, because there's less room. You come out of a weight-loss attempt more insulin resistant than you went in — which is exactly why each round feels harder than the last, as Lesson 13 explains.
+
+Strength training directly and profoundly improves your insulin sensitivity. That's the real case for it, and it's far more consequential than the calories.
 
 More importantly, muscle acts as a "sink" for glucose. When you have well-developed muscle mass, your body has a place to rapidly store the carbohydrates you eat without needing to pump out massive amounts of insulin. Strength training directly and profoundly improves your insulin sensitivity.
 
@@ -38,7 +48,13 @@ We have been taught to view our bodies like a math equation — that a 300-calor
 
 If you want to maximize your fat-burning potential and mitochondrial health in a very short amount of time, High-Intensity Interval Training (HIIT) is an incredible tool.
 
-HIIT involves alternating between short bursts of all-out, intense effort and periods of low-intensity recovery. When you push your body to its absolute limit for a brief moment, you create a massive demand for cellular energy. This triggers a biological phenomenon known as Excess Post-Exercise Oxygen Consumption (EPOC)—often referred to as the "afterburn effect." Because the physical demand was so intense, your metabolism stays significantly elevated for hours after the workout is over, burning energy even while you are resting on the couch.
+HIIT involves alternating between short bursts of all-out, intense effort and periods of low-intensity recovery. When you push your body to its absolute limit for a brief moment, you create a massive demand for cellular energy. This triggers a biological phenomenon known as Excess Post-Exercise Oxygen Consumption (EPOC)—often referred to as the "afterburn effect."
+
+Because the demand was so intense, your metabolism stays elevated after the workout ends. It's real, and I'd be honest that it's a modest bonus rather than the main event. A hard session buys you a small amount of extra energy expenditure afterward, not hundreds of calories.
+
+The reason HIIT is worth doing is what it builds. It's one of the most potent stimuli for mitochondrial biogenesis there is — Lesson 4's construction, not maintenance. It improves cardiovascular capacity, enhances brain health through growth factors, and does it in fifteen to twenty minutes.
+
+You're buying capacity, not afterburn. Same as everything else in this chapter.
 
 Furthermore, HIIT directly improves mitochondrial function, increases cardiovascular endurance, and enhances brain health by stimulating the release of growth factors that support cognition and mood. One very short workout is packed with massive systemic benefits.
 
@@ -74,9 +90,21 @@ Activities like brisk walking, light cycling, or easy jogging typically fall int
 
 You do not need to be in a gym sweating profusely to positively influence your metabolism. One of the most effective, accessible strategies you can implement is simply moving your body immediately after a meal. When you activate your muscles after eating, they act like a sponge, pulling the glucose from your meal directly out of your bloodstream without requiring the pancreas to release high amounts of insulin. This simple habit completely blunts the post-meal blood sugar spike and helps your body transition back into a fat-burning state much faster.
 
-The "Squat Snack" (Quicker and More Effective Than Walking)
+The "Squat Snack"
 
-While a 10-to-15-minute post-meal walk is a fantastic tool, recent clinical studies have revealed an even faster, more effective strategy: "exercise snacks" using bodyweight squats. Research shows that interrupting your sitting with just 15 or so bodyweight squats a few times throughout the day—especially shortly after meals—can improve glucose clearance even better than continuous moderate walking. Because your glutes and quadriceps are the largest muscles in your body, forcing them to contract via squats creates a massive, immediate demand for fuel. It takes less than 60 seconds, requires zero equipment, and powerfully stabilizes your blood sugar.
+A ten-to-fifteen-minute post-meal walk is excellent. But there's something worth knowing that makes this far more practical for anyone stuck at a desk.
+
+Frequent short bouts of movement beat one longer session for post-meal blood sugar.
+
+In one study, people who interrupted their sitting with brief walks or bodyweight squats did better than people who took a single thirty-minute walk. And the improvement tracked with how much muscle activity they generated — particularly in the quadriceps and glutes, the largest muscles you have.
+
+Which is why squats are such an efficient tool. You don't need to go anywhere. Fifteen or twenty bodyweight squats takes under a minute, requires nothing, and forces your largest muscles to contract hard — creating immediate demand for fuel and pulling glucose out of your bloodstream without insulin.
+
+The research dose is more frequent than most people assume: two to five minutes of movement roughly every half hour during long periods of sitting. That sounds like a lot until you realize it's one set of squats an hour.
+
+So if you have a desk job, this may be the single highest-value habit in this chapter. Not one workout — a dozen thirty-second interruptions.
+
+One bonus finding: the same brief squat and walking breaks also improved how well participants' muscles used the protein from their meals. So you're not only managing blood sugar — you're getting more out of the protein from Lesson 9.
 
 # Key Insight
 
@@ -93,6 +121,6 @@ Muscle acts as a powerful "glucose sink" — well-developed muscle mass allows t
 <!-- page: Lesson 17 -->
 
 - Resistance training is the single most important form of exercise for sustainable fat loss because muscle tissue drives your resting metabolic rate 24 hours a day.
-- HIIT triggers Excess Post-Exercise Oxygen Consumption (EPOC), keeping the metabolism significantly elevated for hours after the workout ends.
-- Just 15 bodyweight squats immediately after meals forces the largest muscles in the body to rapidly absorb blood glucose — more effectively than 30 minutes of steady-state walking.
+- HIIT triggers Excess Post-Exercise Oxygen Consumption (EPOC), but the afterburn is a modest bonus rather than the main event — you are buying capacity, not afterburn.
+- Frequent short bouts of movement beat one longer session for post-meal blood sugar — fifteen bodyweight squats forces your largest muscles to contract hard and pull glucose out of your bloodstream without insulin.
 

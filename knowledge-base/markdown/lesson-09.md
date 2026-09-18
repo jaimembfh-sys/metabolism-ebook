@@ -71,14 +71,48 @@ If you eat carbohydrates on an empty stomach, they are rapidly broken down and a
 The fiber and protein create a physical matrix in your digestive tract, naturally slowing down gastric emptying. When the carbohydrates finally arrive, their absorption is drastically delayed. This simple shift in sequencing can significantly blunt your blood sugar and insulin spike, keeping your body in a stable, fat-burning state for much longer after a meal—without changing a single ingredient on your plate.
 
 <!-- chunk -->
-## The Randle Cycle: Avoid the Traffic Jam
+## Why Pizza Is Different
 <!-- page: Lesson 9 -->
 
-There is a crucial biological mechanism known as the Randle Cycle that explains why the modern diet is so uniquely destructive. The Randle Cycle describes the competition between fats and carbohydrates for use as fuel inside your cells.
+There is a reason certain food combinations work against you, and it isn't a character weakness. Two different things are happening at once, and they answer two different questions.
 
-If you eat a meal that is very high in fat, your cells burn fat. If you eat a meal that is very high in carbohydrates, your cells burn carbohydrates. But if you eat a meal that is high in both refined carbohydrates and high amounts of fat at the exact same time—like a pizza, a donut, or a burger with fries—you create a metabolic traffic jam.
+First, what happens to the fat. When a large load of refined carbohydrate raises insulin, your body's priority shifts toward storing energy rather than burning it. Insulin drives up a molecule called malonyl-CoA, which blocks the doorway — an enzyme called CPT-1 — that fat has to pass through to get inside your mitochondria and be burned. At the same time, insulin activates lipoprotein lipase, the enzyme that pulls fat out of your bloodstream and into storage.
 
-The cell cannot burn both fuels simultaneously. The system gets overwhelmed, oxidative stress skyrockets, and the body's emergency response is to aggressively lock away the fat into storage while desperately trying to clear the sugar from the blood. Nature rarely packages high carbohydrates and high fats together. To keep your metabolism running smoothly, avoid combining heavy starches and heavy fats in the same meal.
+So the fat in that meal arrives at the worst possible moment. Your cells are still burning some of it — fat burning never stops completely — but the balance has tipped. Dietary fat eaten alongside a large refined-carb load is more likely to be stored than burned. Not because your cells can't handle both, but because insulin has told them which one to prioritize.
+
+And nature almost never packages the two together. Nothing that grows is both high in fat and high in refined starch at high density. Bread and butter. Cheese and crackers. Pastries. Chips. Ice cream. That combination has to be manufactured.
+
+Second, why you can't stop. That is a separate question with a separate answer. When researchers put people in a scanner, foods combining fat and refined carbohydrate were valued more than the sum of their parts — people worked harder and paid more for them, and it wasn't explained by calories, or even by how much they said they liked the food.
+
+So it is engineered on two levels. The combination tips your body toward storing the fat, and it also overrides the signal that tells you to stop. To keep your metabolism running smoothly, avoid combining heavy refined starches and heavy fats in the same meal. Lesson 4 covers what sustained exposure to mixed fuels does to the machinery itself over time.
+
+<!-- chunk -->
+## Why Your Body Might Burn Fuel Differently Than Your Friend's
+<!-- page: Lesson 9 -->
+
+Fuel priority explains more than just what happens inside a single meal. It also helps explain why the exact same diet can produce wildly different results in two different people. When you eat fat, your body has a choice: burn that fat you just ate for immediate energy, or reach into your own stored body fat instead. Research shows your body actually prioritizes the fat sitting in your bloodstream from your last meal before it will touch what's stored on your hips, waist, or thighs.1
+
+This is why some people can eat generously on a ketogenic diet—plenty of fat, plenty of food—and still lose weight steadily.2 Their bodies are efficient at reaching past the dietary fat and pulling from stored reserves. Other people can eat the exact same way, stay in ketosis, avoid gaining weight, and still find their stored fat barely budges. Their bodies are simply better at burning what's freshly eaten than what's already stored.3
+
+Efficient Stored-Fat Burners
+
+Some bodies are highly efficient at reaching past recently eaten fat to tap into stored reserves. These individuals often see steady fat loss on a well-formulated low-carb or ketogenic diet, even with generous fat intake.
+
+Dietary-Fat Preferential Burners
+
+Other bodies preferentially burn whatever fat was just eaten before ever reaching stored fat. These individuals may stay weight-stable on a high-fat diet without much fat loss, even without gaining weight.
+
+This isn't a character flaw or a sign you're doing something wrong. Genuine genetic differences exist in the enzymes and transporters responsible for fat-burning capacity,4 and a history of past weight loss and regain can also reduce how efficiently your body burns fat, even at the very same body weight as someone who has never struggled with their weight. This is one of the many reasons a truly personalized approach matters more than a one-size-fits-all rule.
+
+Fat burning and fat loss are not automatically the same thing. Your body can be actively burning fat all day and still not be touching your stored reserves, if it keeps reaching for what you just ate instead.
+
+<!-- chunk -->
+## Exercise and Carbohydrate Tolerance
+<!-- page: Lesson 9 -->
+
+Exercise shifts that same fuel priority in your favor. When you exercise, especially with resistance training or higher-intensity movement, you deplete the glycogen (stored carbohydrate) in your muscles. This temporarily makes your muscles unusually receptive to absorbing carbohydrates without the same insulin spike they'd normally trigger. In practical terms, the day you exercise hard is often the day your body is best equipped to handle the carbohydrates in your meal.5
+
+Beyond meal composition and exercise timing, several other factors can prevent your body from reaching a fat-burning state, even on a well-formulated low-carb plan. We cover these in depth in Lesson 13, including chronic stress and elevated cortisol, poor sleep, a history of chronic dieting, systemic inflammation, and certain medications.
 
 # Key Insight
 
@@ -96,5 +130,5 @@ Industrial seed oils force your fat cells into hypertrophy — sick, inflamed, o
 
 - Protein is the non-negotiable foundation of every metabolically healthy meal — it preserves muscle, triggers GLP-1 satiety hormones, and generates the highest thermic effect.
 - Eating fiber and protein before carbohydrates physically blunts post-meal blood sugar and insulin spikes by slowing gastric emptying.
-- Combining high refined carbohydrates with high fat in the same meal creates a metabolic traffic jam that forces the body to lock fat into storage.
+- Combining high refined carbohydrates with high fat in the same meal raises insulin, which tips that meal's fat toward storage rather than burning — and makes the food harder to stop eating.
 

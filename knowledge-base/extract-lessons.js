@@ -115,11 +115,18 @@ function splitByH4(sectionHtml) {
   return blocks;
 }
 
-function extractKeyInsight($, $lessonDiv) {
-  const $ki = $lessonDiv.find(".key-insight").first();
-  if ($ki.length === 0) return null;
-  const fact = normalizeMojibake($ki.find(".key-insight-fact").first().text().trim());
-  return fact || null;
+// A lesson may carry more than one .key-insight box (Lesson 15 has two:
+// the liver-clock box and the circadian thermic-response box). This
+// previously took .first() only, so every box after the first was
+// reader-visible but absent from the retrieval corpus. Returns all of
+// them, in document order. Note stripBoilerplate() runs on a *clone* of
+// each section, so the originals are still intact here.
+function extractKeyInsights($, $lessonDiv) {
+  return $lessonDiv
+    .find(".key-insight")
+    .map((_, el) => normalizeMojibake($(el).find(".key-insight-fact").first().text().trim()))
+    .get()
+    .filter(Boolean);
 }
 
 function extractLessonSummary($, $lessonDiv) {
@@ -168,18 +175,23 @@ function buildLessonMarkdown(n, $) {
     }
   }
 
-  const keyInsight = extractKeyInsight($, $lessonDiv);
-  if (keyInsight) {
-    lines.push(
-      "# Key Insight",
-      "",
-      "<!-- chunk -->",
-      "## Key Insight",
-      `<!-- page: Lesson ${n} -->`,
-      "",
-      keyInsight,
-      ""
-    );
+  const keyInsights = extractKeyInsights($, $lessonDiv);
+  if (keyInsights.length) {
+    lines.push("# Key Insight", "");
+    keyInsights.forEach((fact, i) => {
+      // Numbered only when a lesson actually has more than one, so the
+      // single-box lessons keep their existing "## Key Insight" heading
+      // and their chunks stay byte-identical across this change.
+      const heading = keyInsights.length > 1 ? `Key Insight ${i + 1}` : "Key Insight";
+      lines.push(
+        "<!-- chunk -->",
+        `## ${heading}`,
+        `<!-- page: Lesson ${n} -->`,
+        "",
+        fact,
+        ""
+      );
+    });
   }
 
   const summary = extractLessonSummary($, $lessonDiv);
