@@ -73,18 +73,32 @@ const MODELS = {
   recipe_scale: "claude-haiku-4-5-20251001",
 };
 
-// Per-request-type output budget. Most structured-tool calls (protocol,
-// chat replies) comfortably fit in 1024 tokens; the weekly meal plan is
-// meaningfully bigger (up to 7 days x 3 meals, each with a title/slot/
-// description/macros note) so it gets its own larger ceiling rather than
-// bumping every other call's cost. recipe_scale (My Recipes > Scale a
-// Recipe) returns a full scaled ingredient list plus rewritten
-// instructions for one recipe — bigger than a normal chat reply, but
-// nowhere near meal_plan's 21-meal-slot output.
+// Per-request-type output budget. max_tokens is a CEILING, not a spend —
+// billing is on tokens actually generated — so headroom above the real
+// worst case is close to free, while too little headroom truncates the
+// response mid-JSON.
+//
+// "protocol" covers BOTH the Protocol Builder (record_protocol) and the
+// intake goal synthesis / goal update (record_goal_profile), since both
+// go through requestType "protocol". It was 1024, which the worst realistic
+// protocol nearly fills on its own: a staged-plan case emits eating_pattern,
+// macro_approach, 2-3 starter_habits, a 3-5 sentence rationale, a sources
+// array, up to 2 staged_plan entries each with focus + habits, AND a
+// professional_guidance_note. That lands around 800-1000 tokens of JSON,
+// so the ceiling was clipping the most safety-critical protocols — the
+// chronic-fatigue and diabetes staged plans — and thinning every other one.
+// Raised to 4096 (same as meal_plan): roughly 4x the observed worst case,
+// still far below any HTTP-timeout concern on a non-streaming Haiku call.
+//
+// NOTE: nothing downstream checks response.stop_reason === "max_tokens"
+// before parsing the tool result, so a truncated tool input is still
+// returned as if complete (see callClaudeTool / extractToolFields in
+// index.html). Headroom reduces how often that can happen; it does not
+// fix it.
 const MAX_TOKENS = {
   chat: 1024,
   photo_scan: 1024,
-  protocol: 1024,
+  protocol: 4096,
   meal_plan: 4096,
   recipe_scale: 2048,
 };
