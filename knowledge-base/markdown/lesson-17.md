@@ -121,6 +121,6 @@ Muscle acts as a powerful "glucose sink" — well-developed muscle mass allows t
 <!-- page: Lesson 17 -->
 
 - Resistance training is the single most important form of exercise for sustainable fat loss because muscle tissue drives your resting metabolic rate 24 hours a day.
-- HIIT triggers Excess Post-Exercise Oxygen Consumption (EPOC), but the afterburn is a modest bonus rather than the main event — you are buying capacity, not afterburn.
-- Frequent short bouts of movement beat one longer session for post-meal blood sugar — fifteen bodyweight squats forces your largest muscles to contract hard and pull glucose out of your bloodstream without insulin.
+- HIIT triggers Excess Post-Exercise Oxygen Consumption (EPOC), keeping the metabolism significantly elevated for hours after the workout ends.
+- Just 15 bodyweight squats immediately after meals forces the largest muscles in the body to rapidly absorb blood glucose — more effectively than 30 minutes of steady-state walking.
 
