@@ -81,7 +81,7 @@ And there's a timing effect that is well supported: the identical meal produces 
 
 Fewer meals, earlier in the day. That's the version that holds up.
 
-While this pattern is not right for everyone — particularly those with adrenal stress or blood sugar instability — fewer, more substantial meals still tend to serve most people better than constant grazing.
+While this level of compression is not right for everyone — particularly those with adrenal stress or blood sugar instability — it illustrates a powerful principle: fewer, more substantial meals tend to create a greater metabolic stimulus than constant grazing.
 
 <!-- chunk -->
 ## The Surprising Truth About Salt (And Fat Cell Growth)

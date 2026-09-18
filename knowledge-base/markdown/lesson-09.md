@@ -90,9 +90,9 @@ So it is engineered on two levels. The combination tips your body toward storing
 ## Why Your Body Might Burn Fuel Differently Than Your Friend's
 <!-- page: Lesson 9 -->
 
-Fuel priority explains more than just what happens inside a single meal. It also helps explain why the exact same diet can produce wildly different results in two different people. When you eat fat, your body has a choice: burn that fat you just ate for immediate energy, or reach into your own stored body fat instead. When researchers have tracked both sources separately, the answer is the opposite of what most people assume: in the hours after a meal, the large majority of the fat being burned comes from your own stores, while the fat you just ate is routed toward storage.1 Insulin is what decides that split — and it is why the same meal behaves differently depending on what else is on the plate.
+Fuel priority explains more than just what happens inside a single meal. It also helps explain why the exact same diet can produce wildly different results in two different people. When you eat fat, your body has a choice: burn that fat you just ate for immediate energy, or reach into your own stored body fat instead. Research shows your body actually prioritizes the fat sitting in your bloodstream from your last meal before it will touch what's stored on your hips, waist, or thighs.1
 
-This is also why a ketogenic diet often works without deliberate restriction — not because ketosis burns meaningfully more energy, but because appetite falls and people eat less without setting out to. Their bodies are efficient at reaching past the dietary fat and pulling from stored reserves. Other people can eat the exact same way, stay in ketosis, avoid gaining weight, and still find their stored fat barely budges. Some people shift more readily into burning stored fat between meals than others.2
+This is why some people can eat generously on a ketogenic diet—plenty of fat, plenty of food—and still lose weight steadily.2 Their bodies are efficient at reaching past the dietary fat and pulling from stored reserves. Other people can eat the exact same way, stay in ketosis, avoid gaining weight, and still find their stored fat barely budges. Their bodies are simply better at burning what's freshly eaten than what's already stored.3
 
 Efficient Stored-Fat Burners
 
@@ -102,7 +102,7 @@ Dietary-Fat Preferential Burners
 
 Other bodies preferentially burn whatever fat was just eaten before ever reaching stored fat. These individuals may stay weight-stable on a high-fat diet without much fat loss, even without gaining weight.
 
-This isn't a character flaw or a sign you're doing something wrong. Genuine genetic differences exist in the enzymes and transporters responsible for fat-burning capacity,3 and a history of past weight loss and regain can also reduce how efficiently your body burns fat, even at the very same body weight as someone who has never struggled with their weight. This is one of the many reasons a truly personalized approach matters more than a one-size-fits-all rule.
+This isn't a character flaw or a sign you're doing something wrong. Genuine genetic differences exist in the enzymes and transporters responsible for fat-burning capacity,4 and a history of past weight loss and regain can also reduce how efficiently your body burns fat, even at the very same body weight as someone who has never struggled with their weight. This is one of the many reasons a truly personalized approach matters more than a one-size-fits-all rule.
 
 Fat burning and fat loss are not automatically the same thing. Your body can be actively burning fat all day and still not be touching your stored reserves, if it keeps reaching for what you just ate instead.
 
@@ -110,7 +110,7 @@ Fat burning and fat loss are not automatically the same thing. Your body can be 
 ## Exercise and Carbohydrate Tolerance
 <!-- page: Lesson 9 -->
 
-Exercise shifts that same fuel priority in your favor. When you exercise, especially with resistance training or higher-intensity movement, you deplete the glycogen (stored carbohydrate) in your muscles. This temporarily makes your muscles unusually receptive to absorbing carbohydrates without the same insulin spike they'd normally trigger. In practical terms, the day you exercise hard is often the day your body is best equipped to handle the carbohydrates in your meal.4
+Exercise shifts that same fuel priority in your favor. When you exercise, especially with resistance training or higher-intensity movement, you deplete the glycogen (stored carbohydrate) in your muscles. This temporarily makes your muscles unusually receptive to absorbing carbohydrates without the same insulin spike they'd normally trigger. In practical terms, the day you exercise hard is often the day your body is best equipped to handle the carbohydrates in your meal.5
 
 Beyond meal composition and exercise timing, several other factors can prevent your body from reaching a fat-burning state, even on a well-formulated low-carb plan. We cover these in depth in Lesson 13, including chronic stress and elevated cortisol, poor sleep, a history of chronic dieting, systemic inflammation, and certain medications.
 
