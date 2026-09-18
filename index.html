@@ -4529,6 +4529,28 @@
 
             // --- CLAUDE API (via Netlify proxy) ---
 
+            // Truncation guard, shared by all three call wrappers below.
+            //
+            // The API returns HTTP 200 with stop_reason "max_tokens" when the
+            // model hit the output ceiling mid-response. For a forced-tool
+            // call that means the tool input JSON is INCOMPLETE — and the
+            // parser can hand back a partial `input` object that looks
+            // structurally fine, so extractToolFields() returns it as if it
+            // were a finished protocol or goal profile. Nothing downstream
+            // could tell the difference.
+            //
+            // Raise instead, so the caller's existing catch/retry path runs.
+            // (MAX_TOKENS.protocol was raised 1024 -> 4096 server-side, which
+            // makes this far rarer; it does not make it impossible.)
+            function assertNotTruncated(data, label) {
+                if (data && data.stop_reason === 'max_tokens') {
+                    const err = new Error('That response got cut off before it finished. Please try again.');
+                    err.truncated = true;
+                    console.error('[' + label + '] stop_reason=max_tokens — refusing to parse partial output.');
+                    throw err;
+                }
+            }
+
             // Single-turn: Meal Coach and Fridge Chef
             async function callClaude(userMessage, systemInstruction, requestType) {
                 const response = await fetch('/api/claude', {
@@ -4548,6 +4570,7 @@
                     err.limitReached = response.status === 429;
                     throw err;
                 }
+                assertNotTruncated(data, requestType);
                 return data.content[0].text;
             }
 
@@ -4582,6 +4605,7 @@
                     err.limitReached = response.status === 429;
                     throw err;
                 }
+                assertNotTruncated(data, requestType);
                 const text = (data.content || [])
                     .filter(function(b) { return b.type === 'text'; })
                     .map(function(b) { return b.text; })
@@ -4667,6 +4691,7 @@
                     err.limitReached = response.status === 429;
                     throw err;
                 }
+                assertNotTruncated(data, requestType);
                 const content = data.content || [];
                 const toolBlock = content.find(function(b) { return b.type === 'tool_use' && b.name === tool.name; });
                 const rawText = content.map(function(b) { return b.text || ''; }).join('');
