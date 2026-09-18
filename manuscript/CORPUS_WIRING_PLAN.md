@@ -5,6 +5,43 @@ Written 2026-09-18.
 
 ---
 
+# ⛔ BLOCKING PREREQUISITE
+
+**Do not wire `coach-reference/` into `build-corpus.js` until the coach layer has
+been reconciled against the finished book.** Set by Jaime, 2026-09-18.
+
+**Reason.** As of commit `86cb2bd` the coach layer and the book disagree in twelve
+places — four conflict-flag rows that flag claims the book no longer makes, and
+eight prose passages describing course text that has since changed:
+
+| Type | Location | Disagreement |
+|---|---|---|
+| Flag row | L2 sweetener | Book corrected; coach still routes around Lesson 2 |
+| Flag row | L5 cold exposure | Book says "progressively"; flag says "permanently" |
+| Flag row | L9 cannot burn both fuels | Removed by A7; flag still active |
+| Flag row | L15 38% claim | Removed by FIX 1; flag still active |
+| Prose | `Chapter_15_Coach.md:18` | Says the lesson teaches the 38% claim |
+| Prose | `Chapter_15_Coach.md:45` | "appears twice, including a Key Insight box" |
+| Prose | `Chapter_15_Coach.md:274` | Salt claim "appears twice" |
+| Prose | `AI_Coach_Knowledge_Corpus.md:244` | 38% "appeared in Lesson 9 and has been removed" — wrong lesson, wrong state |
+| Prose | `Lesson_05_Coach_Depth.md:151` | Says Lesson 5 says "permanently" |
+| Prose | `Lesson_06_Coach_Depth.md:52` | Says Lesson 6 says carbs "bypass this system almost entirely" |
+| Prose | `Chapter_17_Coach.md:73` | Says squats beat continuous moderate walking |
+| Prose | `Chapter_17_Coach.md:92` | Says muscle is "the largest source of your metabolism" |
+
+None of this reaches a user today, precisely because the folder is not wired in.
+Wiring it in first would make every one of those disagreements live at once — the
+coach would be citing a book that no longer says what the coach thinks it says, and
+declining to cite lessons that are already correct.
+
+**Do not reconcile the twelve yet either.** The open review items in `MY_REVIEW.md`
+will change what several of them should say — R-4, R-7, 1747 and 1871 all bear
+directly on the L9 and L15 rows. Reconciling now would mean doing it twice.
+
+**Order: finish the book → reconcile the coach layer against it → then wire.**
+
+---
+
 ## 1. What is indexed, and what is orphaned
 
 `build-corpus.js` reads exactly two files:
@@ -155,7 +192,7 @@ Ordered so that the highest-value, lowest-risk work lands first.
 | 5 | Resolve every supersede statement; archive superseded files to `coach-reference/_superseded/` | **Medium** | `Lesson_04_Coach_Depth.md` is explicitly dead but still ingestible |
 | 6 | Deduplicate the topic vs lesson sets, **carving out §10–11** | **High** | The largest judgment call. Lesson-organized is primary per Jaime's decision, but §10–11 has no counterpart and §12/§17 carry detail the lesson files lack |
 | 7 | Promote prohibited claims + safety gates into the coach **system prompt** (Level 2) | **Low, high value** | Do this *before* step 8. A few hundred cached tokens |
-| 8 | Add `coach-reference/` as a third corpus source (Level 1) | **Medium** | Corpus roughly triples, 173 → ~450 chunks. See cost note below |
+| 8 | Add `coach-reference/` as a third corpus source (Level 1) | **⛔ BLOCKED** | Gated on the reconciliation prerequisite at the top of this document. Corpus roughly triples, 173 → ~450 chunks. See cost note below |
 | 9 | Build the elicitation + adversarial test fixtures | **Low** | Start with safety-critical claims only |
 | 10 | Add the Level 3 post-response check for pattern-matchable claims | **Medium** | Model it on `stripMealMacrosIfFlagged` |
 
