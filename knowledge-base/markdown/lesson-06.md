@@ -60,7 +60,77 @@ Standard Caloric Restriction: Even on a typical "eat less, move more" calorie-re
 
 Low-Carbohydrate / Ketogenic Diets: When individuals lose weight by managing insulin through low-carbohydrate diets, the percentage of muscle lost is vastly reduced, often down to just 10% to 15%—and in many cases, lean mass is completely preserved or even increased if paired with adequate protein and resistance training.
 
+<!-- chunk -->
+## What's Happening Outside the Trials
+<!-- page: Lesson 6 -->
+
+The studies you read about are carefully run. Patients are selected, monitored, and supported. Real-world prescribing looks nothing like that.
+
+A recent analysis looked at 670,422 patients starting these medications in routine clinical care — not a trial, just people getting prescriptions.
+
+Among those who had their body composition actually measured before and after, researchers identified what they called a depletive pattern: heavy weight loss combined with substantial lean tissue loss.
+
+It occurred in roughly one in ten patients on tirzepatide, and one in fifteen on semaglutide. Lean tissue loss exceeding 15% happened in about eight to nine percent of patients.
+
+Three things about that finding matter enormously.
+
+It's dose-dependent. Higher doses and longer use produced progressively more lean tissue loss, in both drugs. That's not a footnote — that's something a patient can actually act on in a conversation with her doctor.
+
+The two drugs are not the same. Tirzepatide showed consistently more lean tissue loss than semaglutide at every point measured — three months, six, nine, and twelve.
+
+And now the part that should genuinely bother you. Of those 670,000 patients, only about 8,000 had their body composition measured at all.
+
+Read that again. These medications are being prescribed at enormous scale, and in the overwhelming majority of cases nobody is checking what tissue is being lost. No body composition. No strength testing. No protein target. No resistance training prescribed alongside.
+
+That's the real problem here. Not that these drugs cause muscle loss — rapid weight loss of any kind does that. It's that a meaningful fraction of patients are being genuinely depleted, it's happening in a predictable and dose-related way, and almost nobody is looking.
+
+One more thing worth knowing: researchers are openly arguing about this. It was formally debated at a major diabetes conference in 2026, with serious scientists on both sides. Anyone who tells you this question is settled — in either direction — isn't being straight with you.
+
 Why the difference? Diets that lower insulin and increase ketones naturally signal the body to preserve muscle tissue while exclusively burning stored fat. Ketones act as a muscle-sparing fuel. The synthetic GLP-1 drugs do not possess this muscle-sparing mechanism; they simply force starvation, causing the body to frantically cannibalize its own lean tissue for survival.
+
+<!-- chunk -->
+## If You're on One of These Right Now
+<!-- page: Lesson 6 -->
+
+A lot of women reading this are taking one of these medications today. If that's you, I want to speak to you directly.
+
+I'm not telling you to stop. That's a decision between you and your physician, and stopping a medication because of something you read in a course — including this one — isn't the way to make it.
+
+What I am telling you is that you can change what you lose.
+
+The muscle loss that comes with rapid weight loss is substantially preventable, and almost nobody is telling patients how. Three things:
+
+Protein, deliberately and on a schedule. This is the big one, and the appetite suppression is exactly what makes it hard. When you're not hungry, protein is the easiest thing to skip and the most important thing to keep. You will probably need to eat it whether you want it or not. Lesson 9 has the amount.
+
+Lift something heavy, twice a week minimum. This is the intervention with the strongest evidence for protecting lean tissue during weight loss — by any method. Cardio does not do this job. Lesson 17. If you do one thing from this book while you're on the medication, do this.
+
+Watch your total intake. The appetite suppression is strong enough that people routinely eat far less than they intend. Under-eating is what drives tissue loss — the drug just makes it effortless. If you've been eating noticeably less without deciding to, that's worth correcting.
+
+And Here's Where This Book Earns Its Place
+
+The research is clear that the vulnerable moment is when you come off.
+
+Everything in these eighteen lessons — insulin, meal composition, appetite signalling, sleep, movement, muscle — is what you need in place before that happens.
+
+And here's the thing: it is far easier to build these habits while you're still on the medication than after. Right now you have appetite suppression working for you. That's the best window you will ever get to establish how you eat. Starting from scratch after you stop, while you're hungry, is a much harder project.
+
+Think of this course as what the medication can't do for you — not as an argument against it.
+
+<!-- chunk -->
+## Full and Not Hungry Are Not the Same Thing
+<!-- page: Lesson 6 -->
+
+Something worth understanding before we go further, because it explains a frustration almost everyone has had.
+
+Your stomach has stretch sensors that fire when it's physically full. They don't care what you ate — you get the same signal from a glass of water. And they fade within about an hour as your stomach empties.
+
+Real appetite shutdown is a completely separate system. It comes from your intestines detecting protein, fat, and fiber arriving — that's GLP-1 and its partners — and it lasts for hours.
+
+So a large meal that's light on those three gives you plenty of stretch and very little actual satiety. You feel stuffed at the table and you're back in the kitchen ninety minutes later.
+
+That isn't a discipline failure. It's two signals doing two different jobs, and only one of them got triggered.
+
+It also explains why the standard advice underdelivers. Fill up on salad. Drink a big glass of water before you eat. Those activate the signal that fades, and skip the one that lasts.
 
 <!-- chunk -->
 ## Stimulating GLP-1 Naturally
