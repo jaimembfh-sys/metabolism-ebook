@@ -128,5 +128,5 @@ Industrial seed oils force your fat cells into hypertrophy — sick, inflamed, o
 
 - Protein is the non-negotiable foundation of every metabolically healthy meal — it preserves muscle, triggers GLP-1 satiety hormones, and generates the highest thermic effect.
 - Eating fiber and protein before carbohydrates physically blunts post-meal blood sugar and insulin spikes by slowing gastric emptying.
-- Combining high refined carbohydrates with high fat in the same meal creates a metabolic traffic jam that forces the body to lock fat into storage.
+- The combination overwhelms your cells, and it also overrides the signal that tells you to stop.
 

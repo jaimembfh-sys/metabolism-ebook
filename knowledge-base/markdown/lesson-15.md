@@ -181,5 +181,5 @@ The identical meal produces a greater thermic response eaten in the morning than
 
 - Time-restricted eating or the Rule of 3s — three balanced meals with zero snacking — are both valid strategies depending on your individual metabolic and stress state.
 - Meal timing matters profoundly: eat larger meals earlier when insulin sensitivity is highest, and finish eating 2-3 hours before bed to align with melatonin onset.
-- Liberally salting food on a low-carb diet is essential — low insulin causes sodium loss, and the resulting hormonal response to replace it actively promotes fat cell growth.
+- Studies restricting sodium have found exactly what you'd predict: worse insulin sensitivity, higher triglycerides, more inflammation, and more visceral fat.
 
