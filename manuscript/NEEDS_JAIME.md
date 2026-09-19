@@ -209,3 +209,34 @@ Not a wording difference — one document defers the decision to you, the other 
 **What I need:** confirmation to use the `Chapter_17_Course.md` REFINE 1 copy. If yes, note it cross-references "Chapter 9" (I'd normalize to Lesson 9) and that `Chapter_17_Course.md` also contains REFINE 2 (muscle/metabolic-rate claim) and REFINE 3 (afterburn/EPOC) — both correcting live claims, neither yet applied or queued separately.
 
 ---
+
+---
+
+# CHAPTER RUN — QUEUED ITEMS (2026-09-19)
+
+All 18 chapters applied. Two items could not be applied and are queued here.
+
+## Q-1 — Chapter 6 ADD 3 contains an unfilled placeholder
+
+**File:** `Ch6_Additions.md` ADD 3 — "Give the Absolute Numbers Too"
+**Target:** `index.html`, Lesson 6 digestive-risk list (the 9.09x / 4.22x / 3.67x hazard ratios)
+
+Your copy block reads:
+
+> **And here's the context you need to interpret them.** These are large increases in risk for events that are **uncommon to begin with.** **[Insert absolute incidence rates.]** Both numbers matter.
+
+**The absolute incidence rates were never supplied.** The whole point of the addition is to put the absolute numbers beside the relative ones, and the numbers aren't in the file. Not applied.
+
+**Also relevant:** the Key Insight box in Lesson 6 still carries "up to 9.09 times" and "up to 40%", both of which breach your no-"up to" rule.
+
+## Q-2 — Chapter 6 "STILL YOUR CALL" has no reader copy
+
+**File:** `Ch6_Additions.md` — the SELECT outcome data
+
+You asked to include the three items you'd marked undecided, and the other two (Ch3 OPTIONAL labs, Ch18 ONE OPTIONAL CLAUSE) both had copy blocks and were applied. **This one doesn't.** The section argues the case to yourself, lists the trial findings as notes, and offers one italicised sentence prefaced "Something like:". There is no finished passage to place.
+
+Writing reader copy from those notes would be composing in your voice, so it's queued.
+
+## Chapter 11 — skipped as instructed
+
+`Chapter_11_Course.md` does not exist. `Ch11_Stomach_Acid_Revised.md` was not applied.
