@@ -1,10 +1,10 @@
 ---
-title: Lesson 7: Other Key Metabolic Hormones: Leptin and Ghrelin
+title: Lesson 7: Other Key Metabolic Hormones: Leptin, Ghrelin, and Adiponectin
 subtitle: How Your Body Burns (course)
 byline: Mind-Body Functional Health
 source_file: index.html#lesson-7
 ---
-# Other Key Metabolic Hormones: Leptin and Ghrelin
+# Other Key Metabolic Hormones: Leptin, Ghrelin, and Adiponectin
 
 <!-- chunk -->
 ## Overview
