@@ -349,6 +349,104 @@
             #ebook-content { flex-direction: row; }
         }
         #ebook-content.pw-visible { opacity: 1; }
+
+        /* ============================================================
+           COMPONENT CLASSES — Design Audit Phase 2
+           ============================================================
+           index.html carried 119 button instances across 48 distinct class
+           signatures, almost all of them ad-hoc Tailwind utility strings. The
+           four below covered 37 of those instances verbatim.
+
+           Each class reproduces its utility string exactly, so adopting it
+           moves nothing on screen. The elements that use these carry the
+           component class INSTEAD of the utilities, not alongside them, so
+           there is no specificity contest with the Tailwind CDN.
+
+           Values transcribed from Tailwind's defaults:
+             rounded-lg .5rem | rounded-xl .75rem | text-sm .875rem/1.25rem
+             text-lg 1.125rem/1.75rem | shadow-lg 0 10px 15px -3px rgb(0 0 0/.1)
+             shadow-xl 0 20px 25px -5px rgb(0 0 0/.1)
+           ============================================================ */
+
+        /* The main call-to-action. Was 18 copies of a 14-utility string. */
+        .c-btn-primary {
+            width: 100%;
+            margin-top: 2rem;
+            padding: 1.25rem 2rem;
+            background: #c19a6b;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            border-radius: 0.75rem;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            transition: all 0.15s ease;
+        }
+        .c-btn-primary:hover {
+            background: #a68256;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            transform: translateY(-0.125rem);
+        }
+
+        /* Compact teal action. Was 7 copies. */
+        .c-btn-secondary {
+            background: #34657a;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            font-weight: 600;
+            transition: background-color 0.15s ease;
+        }
+        .c-btn-secondary:hover { background: #234553; }
+        .c-btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        /* Inline text action. Was 7 copies. */
+        .c-link-accent {
+            color: #c19a6b;
+            text-decoration: underline;
+            font-weight: 600;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        /* Pill toggle. Was two near-identical signatures, 9 instances, differing
+           only in padding and text size - consolidated to one with a modifier. */
+        .c-btn-pill {
+            border: 1px solid #d1d5db;
+            border-radius: 9999px;
+            padding: 0.375rem 1rem;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            font-weight: 500;
+            color: #374151;
+            background: none;
+            cursor: pointer;
+            transition: border-color 0.15s ease;
+        }
+        .c-btn-pill:hover { border-color: #34657a; }
+        .c-btn-pill--xs { padding: 0.375rem 0.75rem; font-size: 0.75rem; line-height: 1rem; }
+
+        /* Keyboard focus. The audit found no visible focus treatment anywhere;
+           without this these controls are unusable by keyboard. */
+        .c-btn-primary:focus-visible,
+        .c-btn-secondary:focus-visible,
+        .c-link-accent:focus-visible,
+        .c-btn-pill:focus-visible {
+            outline: 2px solid #34657a;
+            outline-offset: 2px;
+        }
 </style>
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -646,7 +744,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>Food must be understood as biological signals that create a hormonal response, not simply as units of energy.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(2)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(2)" class="c-btn-primary">
                 &#x2713; Lesson 1 Complete &#x2014; Continue to Lesson 2 &#x2192;
             </button>
         </div>
@@ -758,7 +856,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>Chronically elevated insulin drives systemic inflammation, blocks leptin signaling, and increases risk of nearly every modern disease.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(3)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(3)" class="c-btn-primary">
                 &#x2713; Lesson 2 Complete &#x2014; Continue to Lesson 3 &#x2192;
             </button>
         </div>
@@ -870,7 +968,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>The body prioritizes survival above all else &mdash; perceived safety is a biological prerequisite for fat loss.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(4)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(4)" class="c-btn-primary">
                 &#x2713; Lesson 3 Complete &#x2014; Continue to Lesson 4 &#x2192;
             </button>
         </div>
@@ -987,7 +1085,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>B vitamins, magnesium, CoQ10, and omega-3 fatty acids are critical raw materials for sustaining ATP production.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(5)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(5)" class="c-btn-primary">
                 &#x2713; Lesson 4 Complete &#x2014; Continue to Lesson 5 &#x2192;
             </button>
         </div>
@@ -1132,7 +1230,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>Even 15 to 30 seconds of cold exposure daily activates brown fat thermogenesis and progressively elevates resting metabolic rate.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(6)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(6)" class="c-btn-primary">
                 &#x2713; Lesson 5 Complete &#x2014; Continue to Lesson 6 &#x2192;
             </button>
         </div>
@@ -1312,7 +1410,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>Protein, healthy fats, fermented foods, and dietary fiber all naturally stimulate your own GLP-1 production without any pharmaceutical risk.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(7)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(7)" class="c-btn-primary">
                 &#x2713; Lesson 6 Complete &#x2014; Continue to Lesson 7 &#x2192;
             </button>
         </div>
@@ -1424,7 +1522,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>Restoring leptin sensitivity requires lowering insulin through proper nutrition &mdash; not calorie restriction, which worsens the problem.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(8)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(8)" class="c-btn-primary">
                 &#x2713; Lesson 7 Complete &#x2014; Continue to Lesson 8 &#x2192;
             </button>
         </div>
@@ -1650,7 +1748,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>For women in menopause, ketone production provides critical metabolic support that compensates for the decline in estrogen's insulin-sensitizing effects.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(9)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(9)" class="c-btn-primary">
                 &#x2713; Lesson 8 Complete &#x2014; Continue to Lesson 9 &#x2192;
             </button>
         </div>
@@ -1980,7 +2078,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>The combination overwhelms your cells, and it also overrides the signal that tells you to stop.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(10)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(10)" class="c-btn-primary">
                 &#x2713; Lesson 9 Complete &#x2014; Continue to Lesson 10 &#x2192;
             </button>
 
@@ -2099,7 +2197,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>Lowering insulin, eliminating seed oils, reducing toxin exposure, and managing stress all work together to extinguish ceramide overproduction.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(11)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(11)" class="c-btn-primary">
                 &#x2713; Lesson 10 Complete &#x2014; Continue to Lesson 11 &#x2192;
             </button>
         </div>
@@ -2185,7 +2283,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>Drinking too much liquid with meals dilutes stomach acid, enzymes, and bile &mdash; undermining digestion and feeding the very bacteria that cause gut dysbiosis.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(12)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(12)" class="c-btn-primary">
                 &#x2713; Lesson 11 Complete &#x2014; Continue to Lesson 12 &#x2192;
             </button>
         </div>
@@ -2300,7 +2398,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>When the gut-brain axis communicates clearly, the body accurately gauges its energy needs, reducing cravings and enabling effortless fat loss.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(13)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(13)" class="c-btn-primary">
                 &#x2713; Lesson 12 Complete &#x2014; Continue to Lesson 13 &#x2192;
             </button>
         </div>
@@ -2506,7 +2604,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>Nutrient deficiencies in magnesium, iodine, vitamin D, and selenium can completely stall metabolism despite eating a clean, whole-food diet.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(14)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(14)" class="c-btn-primary">
                 &#x2713; Lesson 13 Complete &#x2014; Continue to Lesson 14 &#x2192;
             </button>
         </div>
@@ -2665,7 +2763,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>Eliminating seed oils and refined sugars dramatically reduces free radical production, extinguishing the systemic inflammation that drives insulin resistance.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(15)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(15)" class="c-btn-primary">
                 &#x2713; Lesson 14 Complete &#x2014; Continue to Lesson 15 &#x2192;
             </button>
         </div>
@@ -2923,7 +3021,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>Studies restricting sodium have found exactly what you'd predict: worse insulin sensitivity, higher triglycerides, more inflammation, and more visceral fat.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(16)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(16)" class="c-btn-primary">
                 &#x2713; Lesson 15 Complete &#x2014; Continue to Lesson 16 &#x2192;
             </button>
 
@@ -3091,7 +3189,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>Active stress management through meditation, yoga, vagus nerve work, and somatic practices lowers cortisol and creates the hormonal conditions for effortless fat release.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(17)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(17)" class="c-btn-primary">
                 &#x2713; Lesson 16 Complete &#x2014; Continue to Lesson 17 &#x2192;
             </button>
         </div>
@@ -3265,7 +3363,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>Frequent short bouts of movement beat one longer session for post-meal blood sugar.</span></div>
                 </div>
             </div>
-<button onclick="showLesson(18)" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="showLesson(18)" class="c-btn-primary">
                 &#x2713; Lesson 17 Complete &#x2014; Continue to Lesson 18 &#x2192;
             </button>
         </div>
@@ -3452,7 +3550,7 @@
                     <div class="lesson-summary-item"><span class="lesson-summary-diamond">&#x2736;</span><span>Progress is infinitely more powerful than perfection &mdash; celebrating every good choice and viewing setbacks with curiosity rather than shame builds transformation that actually lasts.</span></div>
                 </div>
             </div>
-<button onclick="window.switchTab('summary')" class="w-full mt-8 py-5 px-8 bg-brand-accent hover:bg-[#a68256] text-white font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+<button onclick="window.switchTab('summary')" class="c-btn-primary">
                 &#x2713; I've Completed How Your Body Burns &#x2014; Continue to Your Bonus Materials &#x2192;
             </button>
                 </div>
@@ -3953,10 +4051,10 @@
                                 </div>
                             </div>
                             <nav class="space-y-1">
-                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-goals">My Goals</button>
-                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-protocol">My Protocol - Daily Tracker</button>
-                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-health-history">Health History</button>
-                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-recipes">My Recipes</button>
+                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-goals">My Goals</button>
+                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-protocol">My Protocol - Daily Tracker</button>
+                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-health-history">Health History</button>
+                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-recipes">My Recipes</button>
                             </nav>
                         </div>
                     </div>
@@ -4287,7 +4385,7 @@
                         <!-- Long Term Goals subsection -->
                         <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
                             <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">Long Term Goals</p>
-                            <p id="account-long-term-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t set a long-term goal yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get started.</p>
+                            <p id="account-long-term-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t set a long-term goal yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="c-link-accent">Chat with the Interactive Metabolic Coach</button> to get started.</p>
                             <div id="account-long-term-content" class="hidden">
                                 <div class="flex items-start justify-between gap-2">
                                     <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">Your Long-Term Goal</p>
@@ -4305,7 +4403,7 @@
                                         <textarea id="account-long-term-edit-reason-input" rows="2" placeholder="e.g., My priorities shifted after..." class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark"></textarea>
                                     </div>
                                     <div class="flex items-center gap-3">
-                                        <button id="account-long-term-edit-save-btn" type="button" class="bg-brand-dark hover:bg-[#234553] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Save update</button>
+                                        <button id="account-long-term-edit-save-btn" type="button" class="c-btn-secondary">Save update</button>
                                         <button id="account-long-term-edit-cancel-btn" type="button" class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500">Cancel</button>
                                         <span id="account-long-term-edit-status" class="hidden text-sm text-brand-dark"></span>
                                     </div>
@@ -4316,7 +4414,7 @@
                         <!-- Weekly Goals subsection (monthly + weekly checkpoints together, with their own simple no-reason-required edit form) -->
                         <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
                             <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">Weekly Goals</p>
-                            <p id="account-weekly-empty" class="text-sm text-gray-500 italic mb-4">You haven&#x2019;t set these yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get started.</p>
+                            <p id="account-weekly-empty" class="text-sm text-gray-500 italic mb-4">You haven&#x2019;t set these yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="c-link-accent">Chat with the Interactive Metabolic Coach</button> to get started.</p>
                             <div id="account-weekly-content" class="hidden mb-5">
                                 <div class="mb-4">
                                     <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">This Month</p>
@@ -4339,7 +4437,7 @@
                                     <textarea id="account-weekly-edit-weekly" rows="2" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark"></textarea>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <button id="account-weekly-save-btn" type="button" class="bg-brand-dark hover:bg-[#234553] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Save</button>
+                                    <button id="account-weekly-save-btn" type="button" class="c-btn-secondary">Save</button>
                                     <span id="account-weekly-save-status" class="hidden text-sm text-brand-dark"></span>
                                 </div>
                             </div>
@@ -4348,7 +4446,7 @@
                         <!-- My Purpose subsection (read-only) -->
                         <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
                             <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">My Purpose</p>
-                            <p id="account-purpose-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t shared your why yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get started.</p>
+                            <p id="account-purpose-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t shared your why yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="c-link-accent">Chat with the Interactive Metabolic Coach</button> to get started.</p>
                             <div id="account-purpose-content" class="hidden">
                                 <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">Your Why</p>
                                 <p id="account-purpose-text" class="font-serif text-lg italic text-brand-dark"></p>
@@ -4362,7 +4460,7 @@
                              just a pointer, not a duplicate of that content. -->
                         <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
                             <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">This Week&#x2019;s Plan at a Glance</p>
-                            <p id="account-weekly-glance-empty" class="text-sm text-gray-500 italic">You don&#x2019;t have a protocol or weekly plan yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get started.</p>
+                            <p id="account-weekly-glance-empty" class="text-sm text-gray-500 italic">You don&#x2019;t have a protocol or weekly plan yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="c-link-accent">Chat with the Interactive Metabolic Coach</button> to get started.</p>
                             <div id="account-weekly-glance-content" class="hidden">
                                 <p id="account-weekly-glance-text" class="font-serif text-lg text-brand-dark mb-2"></p>
                                 <button type="button" onclick="window.switchAiToolsView('account-protocol')" class="text-xs font-semibold underline text-brand-accent">View full plan &amp; daily tracker in My Protocol</button>
@@ -4391,7 +4489,7 @@
                                     <label class="block text-xs font-semibold text-brand-dark mb-1">Date</label>
                                     <input type="date" id="weight-log-date" class="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
                                 </div>
-                                <button id="weight-log-save-btn" type="button" class="bg-brand-dark hover:bg-[#234553] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Save entry</button>
+                                <button id="weight-log-save-btn" type="button" class="c-btn-secondary">Save entry</button>
                                 <span id="weight-log-status" class="hidden text-sm text-brand-dark"></span>
                             </div>
 
@@ -4445,7 +4543,7 @@
                                     <label class="block text-xs font-semibold text-brand-dark mb-1">Caption (optional)</label>
                                     <input type="text" id="progress-photo-caption" placeholder="e.g., Week 6" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
                                 </div>
-                                <button id="progress-photo-upload-btn" type="button" class="bg-brand-dark hover:bg-[#234553] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Upload</button>
+                                <button id="progress-photo-upload-btn" type="button" class="c-btn-secondary">Upload</button>
                             </div>
                             <div id="progress-photo-loading" class="hidden text-brand-accent text-sm font-medium animate-pulse mb-3">Uploading photo&hellip;</div>
                             <div id="progress-photo-error" class="hidden text-sm font-semibold mb-3" style="color:#b45309;"></div>
@@ -4489,7 +4587,7 @@
                         <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">My Protocol</h3>
                         <p class="font-sans text-sm text-gray-500 mb-6">Your personalized starting protocol from the Interactive Metabolic Coach.</p>
                         <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                            <p id="account-protocol-empty" class="text-sm text-gray-500 italic">You don&#x2019;t have a starting protocol yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get one built for you.</p>
+                            <p id="account-protocol-empty" class="text-sm text-gray-500 italic">You don&#x2019;t have a starting protocol yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="c-link-accent">Chat with the Interactive Metabolic Coach</button> to get one built for you.</p>
                             <div id="protocol-banner" class="hidden rounded-xl p-6 shadow-sm" style="background:linear-gradient(135deg, rgba(52,101,122,0.10), rgba(193,154,107,0.08));border:1px solid rgba(52,101,122,0.3);">
                                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                                     <div>
@@ -4566,7 +4664,7 @@
                                             <label class="block text-xs font-semibold text-brand-dark mb-1">Duration (min)</label>
                                             <input type="number" id="daily-tracker-exercise-duration" min="0" max="600" step="5" class="w-24 px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
                                         </div>
-                                        <button type="button" id="daily-tracker-exercise-save-btn" class="bg-brand-dark hover:bg-[#234553] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Save</button>
+                                        <button type="button" id="daily-tracker-exercise-save-btn" class="c-btn-secondary">Save</button>
                                         <span id="daily-tracker-exercise-status" class="hidden text-sm text-brand-dark"></span>
                                     </div>
                                     <p id="daily-tracker-exercise-coaching-note" class="hidden text-sm text-gray-600 italic mt-3 bg-brand-light/40 border border-brand-accent/20 rounded-lg px-3 py-2"></p>
@@ -4579,7 +4677,7 @@
                                             <label class="block text-xs font-semibold text-brand-dark mb-1">Hours fasted today</label>
                                             <input type="number" id="daily-tracker-fasting-input" min="0" max="24" step="0.5" class="w-24 px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark">
                                         </div>
-                                        <button type="button" id="daily-tracker-fasting-save-btn" class="bg-brand-dark hover:bg-[#234553] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Save</button>
+                                        <button type="button" id="daily-tracker-fasting-save-btn" class="c-btn-secondary">Save</button>
                                         <span id="daily-tracker-fasting-status" class="hidden text-sm text-brand-dark"></span>
                                     </div>
                                 </div>
@@ -4600,7 +4698,7 @@
                                             <div><label class="block text-[10px] text-gray-500 mb-1">Fat (g)</label><input type="number" min="0" id="daily-tracker-extra-fat" class="w-full px-2 py-1.5 rounded-lg border border-gray-300 text-sm"></div>
                                         </div>
                                         <div class="flex items-center gap-3">
-                                            <button type="button" id="daily-tracker-extra-save-btn" class="bg-brand-dark hover:bg-[#234553] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Save</button>
+                                            <button type="button" id="daily-tracker-extra-save-btn" class="c-btn-secondary">Save</button>
                                             <button type="button" id="daily-tracker-extra-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500">Cancel</button>
                                             <span id="daily-tracker-extra-status" class="hidden text-sm text-red-600"></span>
                                         </div>
@@ -4621,11 +4719,11 @@
                                         <p class="text-sm font-semibold text-brand-dark mb-1">Feeling stressed or craving something?</p>
                                         <p class="text-xs text-gray-500 mb-3">Tap what&#x2019;s going on right now for a quick, grounding suggestion.</p>
                                         <div class="flex flex-wrap gap-2 mb-3">
-                                            <button type="button" class="stress-checkin-trigger-btn border border-gray-300 rounded-full px-3 py-1.5 text-xs font-medium text-gray-700 hover:border-brand-dark transition-colors" data-value="stress_work">Stress/work</button>
-                                            <button type="button" class="stress-checkin-trigger-btn border border-gray-300 rounded-full px-3 py-1.5 text-xs font-medium text-gray-700 hover:border-brand-dark transition-colors" data-value="boredom">Boredom</button>
-                                            <button type="button" class="stress-checkin-trigger-btn border border-gray-300 rounded-full px-3 py-1.5 text-xs font-medium text-gray-700 hover:border-brand-dark transition-colors" data-value="sadness">Sadness</button>
-                                            <button type="button" class="stress-checkin-trigger-btn border border-gray-300 rounded-full px-3 py-1.5 text-xs font-medium text-gray-700 hover:border-brand-dark transition-colors" data-value="social_pressure">Social pressure</button>
-                                            <button type="button" class="stress-checkin-trigger-btn border border-gray-300 rounded-full px-3 py-1.5 text-xs font-medium text-gray-700 hover:border-brand-dark transition-colors" data-value="fatigue">Fatigue</button>
+                                            <button type="button" class="stress-checkin-trigger-btn c-btn-pill c-btn-pill--xs" data-value="stress_work">Stress/work</button>
+                                            <button type="button" class="stress-checkin-trigger-btn c-btn-pill c-btn-pill--xs" data-value="boredom">Boredom</button>
+                                            <button type="button" class="stress-checkin-trigger-btn c-btn-pill c-btn-pill--xs" data-value="sadness">Sadness</button>
+                                            <button type="button" class="stress-checkin-trigger-btn c-btn-pill c-btn-pill--xs" data-value="social_pressure">Social pressure</button>
+                                            <button type="button" class="stress-checkin-trigger-btn c-btn-pill c-btn-pill--xs" data-value="fatigue">Fatigue</button>
                                         </div>
                                         <input type="text" id="stress-checkin-detail" placeholder="Anything more specific? (optional)" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-dark mb-3">
                                         <p id="stress-checkin-validation" class="hidden text-xs font-semibold text-red-600 mb-2">Tap what&#x2019;s going on, or describe it above, first.</p>
@@ -4650,7 +4748,7 @@
                         <div class="mt-6">
                             <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">This Week&#x2019;s Meal Plan</p>
                             <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                                <p id="account-weekly-plan-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t generated a weekly plan yet. <button type="button" onclick="window.switchAiToolsView('meal-planner')" class="text-brand-accent underline font-semibold">Generate one in the Metabolic Meal Planner</button>.</p>
+                                <p id="account-weekly-plan-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t generated a weekly plan yet. <button type="button" onclick="window.switchAiToolsView('meal-planner')" class="c-link-accent">Generate one in the Metabolic Meal Planner</button>.</p>
                                 <div id="account-weekly-plan-content" class="hidden"></div>
                             </div>
                         </div>
@@ -4661,7 +4759,7 @@
                         <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">Health History</h3>
                         <p class="font-sans text-sm text-gray-500 mb-6">What you shared during your Interactive Metabolic Coach intake. This is used solely to personalize your plan and never replaces medical advice.</p>
                         <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm space-y-4">
-                            <p id="account-hh-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t completed your Health History yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="text-brand-accent underline font-semibold">Chat with the Interactive Metabolic Coach</button> to get started.</p>
+                            <p id="account-hh-empty" class="text-sm text-gray-500 italic">You haven&#x2019;t completed your Health History yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="c-link-accent">Chat with the Interactive Metabolic Coach</button> to get started.</p>
                             <div id="account-hh-content" class="hidden space-y-4">
                                 <p id="account-hh-safety-note" class="hidden text-xs font-semibold text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">This profile has a disordered-eating safety signal on file. Numeric weight/calorie targets are intentionally not used anywhere in this app for you, and we encourage having a therapist or doctor involved alongside this program.</p>
                                 <div class="grid sm:grid-cols-2 gap-4 text-sm">
@@ -4740,10 +4838,10 @@
                                 <p class="text-sm text-gray-700 mb-1">Scaling <strong id="scale-recipe-selected-title"></strong></p>
                                 <p id="scale-recipe-selected-servings" class="text-xs text-gray-500 mb-3"></p>
                                 <div class="flex flex-wrap gap-2 mb-4">
-                                    <button type="button" class="scale-multiplier-btn border border-gray-300 rounded-full px-4 py-1.5 text-sm font-medium text-gray-700 hover:border-brand-dark transition-colors" data-multiplier="0.5">0.5x (Half)</button>
-                                    <button type="button" class="scale-multiplier-btn border border-gray-300 rounded-full px-4 py-1.5 text-sm font-medium text-gray-700 hover:border-brand-dark transition-colors" data-multiplier="1.5">1.5x</button>
-                                    <button type="button" class="scale-multiplier-btn border border-gray-300 rounded-full px-4 py-1.5 text-sm font-medium text-gray-700 hover:border-brand-dark transition-colors" data-multiplier="2">2x (Double)</button>
-                                    <button type="button" class="scale-multiplier-btn border border-gray-300 rounded-full px-4 py-1.5 text-sm font-medium text-gray-700 hover:border-brand-dark transition-colors" data-multiplier="3">3x (Triple)</button>
+                                    <button type="button" class="scale-multiplier-btn c-btn-pill" data-multiplier="0.5">0.5x (Half)</button>
+                                    <button type="button" class="scale-multiplier-btn c-btn-pill" data-multiplier="1.5">1.5x</button>
+                                    <button type="button" class="scale-multiplier-btn c-btn-pill" data-multiplier="2">2x (Double)</button>
+                                    <button type="button" class="scale-multiplier-btn c-btn-pill" data-multiplier="3">3x (Triple)</button>
                                 </div>
                                 <div class="flex gap-3">
                                     <button id="scale-recipe-go-btn" type="button" disabled class="bg-brand-dark hover:bg-[#234553] disabled:opacity-40 disabled:cursor-not-allowed text-white px-5 py-2 rounded-lg font-medium text-sm">Scale Recipe</button>
