@@ -1,0 +1,39 @@
+/* ============================================================
+   Mind-Body Functional Health — shared brand tokens
+   ============================================================
+
+   Design Audit Phase 1. Before this file, every page carried its own
+   copy of the palette: account-info.html, order-history.html and
+   create-new-password.html each defined --brand-dark and --brand-accent
+   independently (byte-identical, three times over), and the remaining
+   pages hardcoded hex values inline. Across the site that produced 137
+   distinct hex declarations against a five-value palette.
+
+   PHASE 1 IS DELIBERATELY PIXEL-NEUTRAL. Every value here is the value
+   those pages already used, so adopting it changes nothing on screen.
+   Consolidating first, converging second, means any later colour change
+   shows up as its own reviewable diff rather than hiding inside a
+   refactor.
+
+   NOT YET ADOPTED BY:
+   - index.html — carries the palette in an inline tailwind.config with
+     257 brand-* utility usages. Moving it is Phase 2 and needs care.
+   - understanding-metabolism.html — mid-rework; it uses a --ink of
+     #1f2e35 where the course uses #2c3e50 for body text. Which of those
+     two becomes the site-wide ink is Jaime's call, and is the one
+     decision Phase 1 deliberately does not preempt.
+   ============================================================ */
+
+:root {
+    /* The five canonical brand values, from index.html's tailwind.config. */
+    --brand-dark: #34657a;      /* teal — headings, primary UI */
+    --brand-light: #eef3f5;     /* soft icy-teal background */
+    --brand-accent: #c19a6b;    /* gold — CTAs, rules, accents */
+    --brand-accent-hover: #a68256;
+    --brand-text: #2c3e50;      /* slate — body copy */
+
+    /* Typeface stacks. Both faces are loaded by the pages that use them;
+       this only names the fallback chain so it is consistent everywhere. */
+    --font-serif: "Cormorant Garamond", Georgia, serif;
+    --font-sans: "Montserrat", "Segoe UI", sans-serif;
+}
