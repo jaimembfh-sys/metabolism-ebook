@@ -37,3 +37,57 @@
     --font-serif: "Cormorant Garamond", Georgia, serif;
     --font-sans: "Montserrat", "Segoe UI", sans-serif;
 }
+
+/* ============================================================
+   ACCESSIBILITY BASELINE — TASK 4
+   ============================================================
+   The audit found no visible focus treatment anywhere on the site, which
+   makes every interactive control unusable by keyboard. :focus-visible
+   shows the ring for keyboard users without putting an outline around
+   everything a mouse user clicks.
+   ============================================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--brand-dark);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Paired with scripts/a11y.js, which injects the link. Off-screen until
+   focused, then the first thing a keyboard user lands on. */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10000;
+    padding: 0.7rem 1.1rem;
+    background: var(--brand-dark);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 6px 0;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
+/* Respect a reduced-motion preference. index.html uses animate-pulse on every
+   AI loading state, which is exactly the kind of thing this setting is for. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
