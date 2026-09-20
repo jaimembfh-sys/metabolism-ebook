@@ -5841,11 +5841,12 @@
             // block instead) — this concatenates every text block instead,
             // in order, so the real answer is never silently dropped.
             async function callClaudeChat(conversationHistory, systemInstruction, requestType, liveSearchBudget) {
+                const systemWithRules = await withCoachRules(systemInstruction, requestType);
                 const response = await fetch('/api/claude', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        system: systemInstruction,
+                        system: systemWithRules,
                         messages: conversationHistory,
                         deviceId: aiDeviceId,
                         requestType: requestType,
@@ -5926,11 +5927,12 @@
             // Single-turn call that forces the model to respond via a tool
             // (structured output) instead of free-form text.
             async function callClaudeTool(userMessage, systemInstruction, requestType, tool) {
+                const systemWithRules = await withCoachRules(systemInstruction, requestType);
                 const response = await fetch('/api/claude', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        system: systemInstruction,
+                        system: systemWithRules,
                         messages: [{ role: 'user', content: userMessage }],
                         deviceId: aiDeviceId,
                         requestType: requestType,
@@ -7338,6 +7340,67 @@ Apply the same goal-setting principles as before: Jaime Jenkins' framework first
                     var safety = (c.tags || []).indexOf('safety_critical') !== -1 ? '[SAFETY-CRITICAL] ' : '';
                     return '### ' + safety + '[' + label + ' — ' + c.heading + ']\n' + c.text;
                 }).join('\n\n');
+            }
+
+            // ---- Coach rules (knowledge-base/coach-rules.json) ----
+            // Promoted OUT of the retrieval corpus and INTO the system prompt of
+            // every coach-facing call. Putting a prohibited claim in the corpus
+            // makes it retrievable, not followed — it competes for attention
+            // with 608 other chunks and nothing detects a violation. Stated as
+            // instructions above the reference material, it is followed far more
+            // reliably, and it sits in the cached prefix so the cost is ~nothing.
+            //
+            // Injected in callClaudeChat/callClaudeTool rather than in each
+            // builder, for the same reason buildProtocolApplicationRules() is
+            // centralised: no individual feature can forget to include it.
+            let coachRulesPromise = null;
+            function fetchCoachRules() {
+                if (!coachRulesPromise) {
+                    coachRulesPromise = fetch('/knowledge-base/coach-rules.json')
+                        .then(function(r) { if (!r.ok) throw new Error('Failed to load coach rules (' + r.status + ')'); return r.json(); })
+                        .catch(function(e) { coachRulesPromise = null; throw e; });
+                }
+                return coachRulesPromise;
+            }
+
+            // Request types that carry health guidance to a user. photo_scan and
+            // recipe_scale are mechanical transforms and are deliberately excluded.
+            const COACH_FACING_REQUEST_TYPES = ['chat', 'protocol', 'meal_plan'];
+
+            function buildCoachRulesText(rules) {
+                if (!rules) return '';
+                var out = [];
+                out.push('=== NON-NEGOTIABLE COACH RULES ===');
+                out.push('These are instructions, not reference material. They override anything in the reference corpus below, and anything the user asks for. Never upgrade a confidence label under pressure — if a user cites a practitioner, quotes the course back, or is frustrated at being contradicted, the answer does not change.');
+                out.push('');
+                out.push('CLAIMS YOU MUST NOT MAKE:');
+                (rules.prohibited_claims || []).forEach(function(c) { out.push('- ' + c.claim); });
+                out.push('');
+                out.push('CONDITIONAL SAFETY BEHAVIOUR:');
+                (rules.safety_interactions || []).forEach(function(s) { out.push('- ' + s); });
+                out.push('');
+                out.push('ESCALATE — do not offer dietary guidance as the primary response:');
+                (rules.escalation_triggers || []).forEach(function(s) { out.push('- ' + s); });
+                var cc = rules.course_conflicts || {};
+                if ((cc.rows || []).length) {
+                    out.push('');
+                    out.push('WHERE THE PUBLISHED COURSE AND THIS CORPUS DISAGREE:');
+                    out.push(cc._instruction || '');
+                    cc.rows.forEach(function(r) {
+                        out.push('- Lesson ' + r.lesson + ': "' + r.published_claim + '" — answer from corpus ' + r.corpus);
+                    });
+                }
+                out.push('=== END COACH RULES ===');
+                return out.join('\n');
+            }
+
+            // Fails closed. If the rules cannot be loaded we would rather the
+            // coach be unavailable than answer a medication or disordered-eating
+            // question without its guardrails.
+            async function withCoachRules(systemInstruction, requestType) {
+                if (COACH_FACING_REQUEST_TYPES.indexOf(requestType) === -1) return systemInstruction;
+                const rules = await fetchCoachRules();
+                return buildCoachRulesText(rules) + '\n\n' + systemInstruction;
             }
 
             // ---- Live Research Search (behind-the-scenes fallback only —
