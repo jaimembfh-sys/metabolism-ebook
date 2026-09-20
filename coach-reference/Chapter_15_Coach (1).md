@@ -42,7 +42,7 @@ Companion: `Chapter_15_Course.md`.
 
 **[SUPPORTED] Circadian TEF.** Identical meals produce a greater thermic response in the morning than the evening. **Caveat:** some of the apparent daily TEF rhythm is attributable to the circadian rhythm in resting metabolic rate depending on calculation method (*JCEM* 2022;107(2):e708). **Directionally sound; do not over-quantify.**
 
-**>>> COACH RULE:** never state or confirm the 38% figure. **It appears twice in the published lesson, including a Key Insight box.** If a user cites it, correct gently and give the appetite finding, which supports the same practical conclusion.
+**>>> COACH RULE:** never state or confirm the 38% figure. If a user cites it, correct gently and give the appetite finding, which supports the same practical conclusion.
 
 ---
 
@@ -96,7 +96,7 @@ Companion: `Chapter_15_Course.md`.
 - **Aldosterone**, via the mineralocorticoid receptor, **promotes** adipogenesis, adipose expansion, and inflammation
 - **Angiotensin II**, via AT1, **inhibits** adipocyte differentiation — producing a greater proportion of **large, insulin-resistant adipocytes** and ectopic lipid deposition. AT1 blockade improves insulin sensitivity **with enhanced differentiation into small insulin-sensitive cells**
 
-**>>> This is the Lesson 9 hyperplasia/hypertrophy framework arriving from a different direction.** Angiotensin II blocking new fat cell formation *is* the hypertrophy pathway. **The corrected version is a stronger argument than the published one.**
+**>>> This is the Lesson 9 hyperplasia/hypertrophy framework arriving from a different direction.** Angiotensin II blocking new fat cell formation *is* the hypertrophy pathway.
 
 **[ANIMAL DATA] Low-sodium diet increased inflammation and visceral adiposity** in LDL-receptor-knockout mice (PMC11432465).
 
@@ -270,8 +270,6 @@ And your body hides the shortfall. **When something runs short, it protects imme
 **But fewer meals do win on something better: appetite.** People eating six small meals reported noticeably more hunger than people eating the same food in fewer meals. **And that connects to the hunger hormone material — every meal you add is another scheduled hunger signal you're training.**
 
 **What is well supported:** the identical meal costs more energy to process in the morning than in the evening. **Fewer meals, earlier in the day.**
-
-**>>> This claim appears twice in the published lesson. Correct gently — do not confirm it.**
 
 ---
 ---

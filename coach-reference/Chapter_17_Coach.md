@@ -106,7 +106,7 @@ Landmark studies in overweight/obese and T2DM populations report **reductions re
 
 **[CALIBRATE] EPOC magnitude** is typically on the order of **6–15% of the exercise session's energy expenditure** — a real but modest addition. **Verify the range.**
 
-**>>> COACH RULE:** EPOC is real and small. **Do not present it as a major contributor.** The published lesson's "metabolism stays significantly elevated for hours, burning energy even while you are resting on the couch" oversells it. **The substantive benefits are the adaptations, not the afterburn.**
+**>>> COACH RULE:** EPOC is real and small. **Do not present it as a major contributor.** **The substantive benefits are the adaptations, not the afterburn.**
 
 **>>> On HIIT dosing:** the format is inherently self-limiting — short intervals with rest, 15–20 minutes total, typically 3 sessions weekly. **The coach should not caution against HIIT specifically on cortisol grounds; there is no HIIT-specific evidence supporting that concern at this dose.** The relevant caution is general recovery capacity — see B7.
 

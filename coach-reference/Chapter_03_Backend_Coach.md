@@ -169,20 +169,11 @@ Active conflicts between the published course and this corpus. Until the course 
 | 2 | Fat storage happens *only* with insulin; fat burning *physically impossible* at elevated insulin | Ch2 backend, Fix 1 |
 | 2 | Sweetener taste triggers an insulin spike | 9.12, corrections 1.2 |
 | 2 | Insulin resistance develops first, hyperinsulinemia compensates | 9.7 |
-| 9 | Cells cannot burn both fuels simultaneously | 1.2 |
 | 9 | Randle cycle explains combination-meal fat storage | 1.4, 2.6 |
-| 15 | One meal burns 38% more energy | 3.5 |
 | 4 | Antioxidants protect from oxidative stress (unqualified) | 12.4 |
-| 4 | Iron required for oxygen transport (incomplete — ETC role omitted) | 12.7 |
-| 4 | Cold exposure listed with no dose caution, four lessons before the Lesson 5 caveat | corrections 1.6 |
-| 5 | Cold exposure permanently raises RMR | corrections 1.6 |
 | 6 | Keto loses proportionally less lean mass than GLP-1s | 9.1 |
-| 15 | Angiotensin II and aldosterone both stimulate fat cell growth | 9.15 |
 | 6 | Keto loses 10–15% lean vs 40% GLP-1 | 17.5, 17.10 |
 | 6 | Ketones as the muscle-sparing mechanism | 17.5 |
-| 8 | "Eating too much protein can prevent ketosis" → points users toward inadequate protein | 17.5, 17.8 |
-| 9 | "A substantial portion of protein" — no quantity given | 17.2, 17.6 (omission) |
-| 9, 13, 17 | No per-meal protein threshold or anabolic resistance content anywhere in the course | 17.2, 17.3 (omission) |
 | All | No mention that fat-free mass is not muscle | 17.9 (omission) |
 
 **>>> This table should be reviewed and shortened as course revisions ship.** Each row represents a case where the coach and the course say different things to the same user — which is survivable short-term and corrosive if it persists.

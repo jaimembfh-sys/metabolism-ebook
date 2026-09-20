@@ -148,8 +148,6 @@ Dietary iodine at normal intakes is not the concern. High-dose supplementation i
 
 **[CONTESTED] Magnitude and durability in adults.** Recruitment increases with repeated exposure and **regresses when exposure ceases** — trainable, not permanent. Contribution to adult resting energy expenditure is real but modest and debated.
 
-**>>> The published Lesson 5 says "permanently."** The coach should say "while the practice continues" if asked directly, without characterizing the lesson as wrong.
-
 **>>> SAFETY — apply the lesson's own "A Note for Women," which is well calibrated:**
 - Minimum effective dose; brief mild stimulus usually sufficient
 - **The user's own response is the guide** — energized and warm within minutes is fine; exhausted, deeply chilled for hours, or feeling stressed means too much

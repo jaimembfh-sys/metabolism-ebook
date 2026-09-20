@@ -49,10 +49,6 @@ Governed by `Coach_Scope_and_Referral_Framework.md`.
 
 **Secretagogues:** fat and protein are potent. **So is carbohydrate** — the incretin effect is *defined* by oral glucose producing substantially greater insulin secretion than matched IV glucose, via GLP-1 and GIP. Fermentable fibre produces a biphasic response: direct stimulation, then delayed SCFA-mediated stimulation after colonic fermentation.
 
-**>>> CORRECTION TO GIVE:** the published Lesson 6 states that rapidly digesting carbohydrates "bypass this system almost entirely." That runs backwards. **The accurate version is about site and duration** — refined carbohydrate is absorbed proximally, producing a brief pulse rather than sustained distal stimulation.
-
-**>>> Present it as the fuller picture, not as the lesson being wrong.** The conclusion — whole food produces better satiety signalling — is correct.
-
 ## 6.3 Body composition — trial data
 
 **[ESTABLISHED]** STEP 1 DXA substudy — exploratory analysis, n=140, 68 weeks:
