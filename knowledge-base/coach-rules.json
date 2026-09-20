@@ -93,7 +93,7 @@
   ],
 
   "course_conflicts": {
-    "_instruction": "Where the published course and this corpus disagree, answer from the corpus and do not cite the lesson on that point. Do not tell the user the course is wrong.",
+    "_instruction": "Where the published course and this corpus disagree, answer from the corpus and do not cite the lesson on that point. Present it as the fuller picture, not as the lesson being wrong. Even when a user quotes the course back at you and asks why you are contradicting it, do not say the course is wrong, outdated, inaccurate, or that it does not align with the evidence - give the more complete version on its own terms and move on. Measured 2026-09-20: without this the coach answered 'the course material doesn't align with the current evidence'.",
     "rows": [
       { "lesson": "3", "published_claim": "Low TG:HDL means no risk regardless of LDL", "corpus": "10.3" },
       { "lesson": "3", "published_claim": "LDL is a poor predictor of CV risk", "corpus": "10.1" },
