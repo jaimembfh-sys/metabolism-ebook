@@ -79,6 +79,36 @@ summary:focus-visible,
     left: 0;
 }
 
+/* ============================================================
+   TOUCH TARGETS — TASK 5
+   ============================================================
+   WCAG 2.5.5 asks for 44x44px. The compact controls across the app land
+   around 30px: the pill toggles are 0.375rem padding on ~16px text, and
+   42 buttons use py-1/py-1.5/py-2.
+
+   Scoped to `pointer: coarse` so it only applies on touch devices - a
+   mouse user keeps the denser layout, which is the right trade for a
+   reading app with this many inline controls.
+   ============================================================ */
+@media (pointer: coarse) {
+    button,
+    a[role="button"],
+    input[type="checkbox"],
+    input[type="radio"],
+    select {
+        min-height: 44px;
+    }
+
+    /* Inline text actions sit inside sentences; forcing a 44px box there
+       would break the line. Give them vertical padding instead so the tap
+       area grows without changing the text flow. */
+    button.c-link-accent,
+    .btn-link {
+        min-height: 0;
+        padding-block: 0.5rem;
+    }
+}
+
 /* Respect a reduced-motion preference. index.html uses animate-pulse on every
    AI loading state, which is exactly the kind of thing this setting is for. */
 @media (prefers-reduced-motion: reduce) {
