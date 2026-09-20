@@ -9123,13 +9123,132 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
             // on the raw text if the tool_use block is ever missing. Logs
             // distinctly on fallback (should be rare) and on total failure
             // (with the raw response, truncated) so failures are debuggable.
+            // ============================================================
+            // TOOL OUTPUT VALIDATION
+            // ============================================================
+            // tool_choice forces a tool call but does NOT guarantee the input
+            // matches input_schema. Measured 2026-09-20 on the chronic-condition
+            // profile, n=5: with the full corpus in context, 2 of 5 runs
+            // violated PROTOCOL_TOOL's schema — one returned staged_plan as a
+            // STRING where the schema types it ['array','null'], another
+            // returned 3 staged_plan entries against maxItems: 2. Nothing
+            // downstream checked, so a string staged_plan would have been
+            // iterated as an array of characters and rendered to a user.
+            //
+            // Supports exactly the JSON Schema subset these tools use: type
+            // (including the ['x','null'] union form), enum, required,
+            // properties, items, minItems, maxItems, minimum, maximum. It does
+            // NOT support $ref, oneOf, allOf or additionalProperties — none of
+            // the seven tools use them. If you add one, extend this or it will
+            // silently pass.
+            function jsonTypeOf(value) {
+                if (value === null) return 'null';
+                if (Array.isArray(value)) return 'array';
+                return typeof value; // string | number | boolean | object | undefined
+            }
+
+            function typeMatches(value, declared) {
+                const types = Array.isArray(declared) ? declared : [declared];
+                const actual = jsonTypeOf(value);
+                return types.some(function (t) {
+                    if (t === 'integer') return actual === 'number' && Number.isInteger(value);
+                    if (t === 'number') return actual === 'number' && Number.isFinite(value);
+                    return t === actual;
+                });
+            }
+
+            function validateAgainstSchema(value, schema, path, errors) {
+                if (!schema || typeof schema !== 'object') return errors;
+
+                if (schema.type && !typeMatches(value, schema.type)) {
+                    const want = Array.isArray(schema.type) ? schema.type.join('|') : schema.type;
+                    errors.push(path + ': expected ' + want + ', got ' + jsonTypeOf(value) +
+                        (jsonTypeOf(value) === 'string' ? ' (length ' + value.length + ')' : ''));
+                    return errors; // type is wrong, further checks would be noise
+                }
+
+                if (value === null || value === undefined) return errors;
+
+                if (schema.enum && schema.enum.indexOf(value) === -1) {
+                    errors.push(path + ': ' + JSON.stringify(value) + ' is not one of [' + schema.enum.join(', ') + ']');
+                }
+
+                if (typeof value === 'number') {
+                    if (typeof schema.minimum === 'number' && value < schema.minimum) {
+                        errors.push(path + ': ' + value + ' is below minimum ' + schema.minimum);
+                    }
+                    if (typeof schema.maximum === 'number' && value > schema.maximum) {
+                        errors.push(path + ': ' + value + ' is above maximum ' + schema.maximum);
+                    }
+                }
+
+                if (Array.isArray(value)) {
+                    if (typeof schema.minItems === 'number' && value.length < schema.minItems) {
+                        errors.push(path + ': ' + value.length + ' items, minItems is ' + schema.minItems);
+                    }
+                    if (typeof schema.maxItems === 'number' && value.length > schema.maxItems) {
+                        errors.push(path + ': ' + value.length + ' items, maxItems is ' + schema.maxItems);
+                    }
+                    if (schema.items) {
+                        value.forEach(function (item, i) {
+                            validateAgainstSchema(item, schema.items, path + '[' + i + ']', errors);
+                        });
+                    }
+                }
+
+                if (jsonTypeOf(value) === 'object' && schema.properties) {
+                    (schema.required || []).forEach(function (key) {
+                        if (value[key] === undefined) errors.push(path + '.' + key + ': required field is missing');
+                    });
+                    Object.keys(schema.properties).forEach(function (key) {
+                        if (value[key] !== undefined) {
+                            validateAgainstSchema(value[key], schema.properties[key], path + '.' + key, errors);
+                        }
+                    });
+                }
+
+                return errors;
+            }
+
+            function validateToolInput(input, tool) {
+                if (!tool || !tool.input_schema) return [];
+                return validateAgainstSchema(input, tool.input_schema, tool.name, []);
+            }
+
             async function extractToolFields(userMessage, systemInstruction, requestType, tool, logLabel) {
                 const result = await callClaudeTool(userMessage, systemInstruction, requestType, tool);
-                if (result.input) return result.input;
+                if (result.input) {
+                    // Fail loudly. A malformed protocol or meal plan must not
+                    // reach a user, and a silent repair would hide a real
+                    // regression in prompt or corpus quality.
+                    const errors = validateToolInput(result.input, tool);
+                    if (errors.length) {
+                        console.error('[' + logLabel + '] tool output failed schema validation:', errors,
+                            '\nReceived:', truncateForLog(JSON.stringify(result.input)));
+                        const err = new Error('The AI returned a malformed response. Please try again.');
+                        err.schemaErrors = errors;
+                        err.toolName = tool && tool.name;
+                        throw err;
+                    }
+                    return result.input;
+                }
 
                 console.warn('[' + logLabel + '] tool_use block missing — falling back to parseJsonLoose. Raw response:', truncateForLog(result.rawText));
                 const parsed = parseJsonLoose(result.rawText);
-                if (parsed) return parsed;
+                if (parsed) {
+                    // The loose path is strictly more likely to be malformed
+                    // than the tool path, so it gets the same check.
+                    const looseErrors = validateToolInput(parsed, tool);
+                    if (looseErrors.length) {
+                        console.error('[' + logLabel + '] parseJsonLoose output failed schema validation:', looseErrors,
+                            '\nReceived:', truncateForLog(JSON.stringify(parsed)));
+                        const err = new Error('The AI returned a malformed response. Please try again.');
+                        err.schemaErrors = looseErrors;
+                        err.toolName = tool && tool.name;
+                        throw err;
+                    }
+                    return parsed;
+                }
 
                 console.error('[' + logLabel + '] both tool-use and parseJsonLoose failed. Raw response:', truncateForLog(result.rawText));
                 return null;
