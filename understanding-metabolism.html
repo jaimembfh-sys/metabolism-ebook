@@ -30,7 +30,7 @@
 
         .hero-wrapper {
             background: linear-gradient(140deg, #edf4f7 0%, #f9f4ea 100%);
-            padding: 3rem 2rem;
+            padding: 2.25rem 2rem;
         }
 
         .eyebrow {
@@ -46,7 +46,7 @@
             margin: 1rem 0 0.6rem;
             font-family: "Cormorant Garamond", Georgia, serif;
             color: var(--teal);
-            font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+            font-size: clamp(2.2rem, 4.4vw, 3.5rem);
             line-height: 1.02;
             font-weight: 700;
         }
@@ -98,15 +98,21 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1.02fr 0.98fr;
-            gap: 3rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         /* ---- hero art: book cover + CSS phone ---- */
+        /* max-width caps the composition so it stops driving the hero's height.
+           Uncapped it filled its grid column, rendering the cover at 362px wide
+           and pushing the hero past 700px, so the hook below never cleared the
+           fold. */
         .hero-art {
             container-type: inline-size;
             position: relative;
             width: 100%;
+            max-width: 430px;
+            margin-left: auto;
         }
 
         /* Stage holds a stable aspect so the absolute children never collapse. */
@@ -121,7 +127,7 @@
             top: 50%;
             left: 0;
             transform: translateY(-50%);
-            width: 64%;
+            width: 60%;
             border-radius: 3px 8px 8px 3px;
             background: var(--ink);
             box-shadow:
@@ -140,7 +146,7 @@
             position: absolute;
             right: 0;
             bottom: 4%;
-            width: 33%;
+            width: 36%;
             background: linear-gradient(160deg, #2b3339 0%, #14191d 55%, #1f262b 100%);
             border-radius: 9.5cqw;
             padding: 1.05cqw;
@@ -318,6 +324,91 @@
             color: var(--teal);
             font-weight: 700;
             display: inline;
+        }
+
+        .bonus-label {
+            color: var(--gold);
+        }
+
+        /* ---- pricing product shot ----
+           Reuses the hero's .hero-cover / .hero-phone / .hero-art-stage
+           components rather than duplicating them; only the sizing and the
+           phone's screen content differ. */
+        .pricing-inner {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 2.25rem;
+            align-items: center;
+        }
+
+        .pricing-art {
+            max-width: 330px;
+            margin: 0 auto;
+        }
+
+        .pricing-art .hero-cover { width: 58%; }
+        .pricing-art .hero-phone { width: 38%; bottom: 3%; }
+
+        /* The phone screen here renders the Metabolic Kitchen section of the
+           course, live, the same way the hero's renders Lesson 1. */
+        .ks-photo { line-height: 0; }
+
+        .ks-photo img {
+            width: 100%;
+            height: 5.4em;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ks-body { padding: 1.1em 1.15em 0; }
+
+        .ks-title {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.75em;
+            line-height: 1.05;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .ks-sub {
+            margin: 0.55em 0 0;
+            font-size: 0.82em;
+            line-height: 1.35;
+            color: var(--muted);
+        }
+
+        .ks-heading {
+            margin: 1.15em 0 0;
+            padding-bottom: 0.3em;
+            border-bottom: 0.12em solid var(--gold);
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.12em;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .ks-card {
+            margin-top: 0.95em;
+            padding: 0.75em 0.8em;
+            border-left: 0.22em solid var(--gold);
+            border-radius: 0 0.4em 0.4em 0;
+            background: var(--bluegreen);
+        }
+
+        .ks-card-title {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.02em;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .ks-card-body {
+            margin: 0.4em 0 0;
+            font-size: 0.76em;
+            line-height: 1.35;
+            color: #3d4a50;
         }
 
         .inside-item p {
@@ -511,6 +602,15 @@
                 justify-items: center;
                 text-align: center;
             }
+            /* Art drops below the price on a phone so the number still leads. */
+            .pricing-inner {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .pricing-art {
+                order: 2;
+                max-width: 260px;
+            }
         }
 
         @media (max-width: 640px) {
@@ -606,22 +706,47 @@
                 <li class="inside-item"><span class="inside-item-title">The Complete Metabolism Course</span><p>18 lessons taking you from why the calorie model fails through insulin, mitochondria, thyroid, the hunger hormones, ketones, the gut-brain axis and emotional eating. Every claim backed by research you can check yourself.</p></li>
                 <li class="inside-item"><span class="inside-item-title">Body Burn Basics</span><p>Your quick reference guide. The dietary non-negotiables, lifestyle and movement essentials, the hidden hindrances most people miss, what to measure and monitor, and when to dig deeper.</p></li>
                 <li class="inside-item"><span class="inside-item-title">Nutrient and Supplement Guidance</span><p>Which nutrients your metabolism actually depends on and why, woven through the lessons where they matter. Including the ones that aren't worth buying.</p></li>
-                <li class="inside-item"><span class="inside-item-title">BONUS: The Recipe Collection</span><p>40+ printable recipes across breakfast, entr&eacute;es, sides, sauces and desserts, built around the principles in the course. Plus a Low Carb Whole Food Snacks guide and Super Quick Meal Ideas, all ready in 15 minutes or less.</p></li>
-                <li class="inside-item"><span class="inside-item-title">BONUS: Diet Breakdown</span><p>A clear breakdown of paleo, Mediterranean, ketogenic, carnivore along with other popular diets. What each one does, how it works biologically, and who it's actually right for.</p></li>
+                <li class="inside-item"><span class="inside-item-title"><span class="bonus-label">BONUS</span>: The Recipe Collection</span><p>40+ printable recipes across breakfast, entr&eacute;es, sides, sauces and desserts, built around the principles in the course. Plus a Low Carb Whole Food Snacks guide and Super Quick Meal Ideas, all ready in 15 minutes or less.</p></li>
+                <li class="inside-item"><span class="inside-item-title"><span class="bonus-label">BONUS</span>: Diet Breakdown</span><p>A clear breakdown of paleo, Mediterranean, ketogenic, carnivore along with other popular diets. What each one does, how it works biologically, and who it's actually right for.</p></li>
             </ul>
         </section>
 
         <section class="section section-cream">
             <h2>EARLY ACCESS PRICING</h2>
-            <ul class="value-table">
-                <li><span>The Complete Metabolism Course</span><span>$79</span></li>
-                <li><span>Body Burn Basics</span><span>$5</span></li>
-                <li><span>The Recipe Collection</span><span>$29</span></li>
-                <li><span>Diet Breakdown</span><span>$17</span></li>
-                <li class="total"><span>Total Value</span><span>$130</span></li>
-            </ul>
-            <p class="investment"><s style="color:var(--muted);font-size:0.55em;font-weight:600;">$79</s> &nbsp;$47</p>
-            <p>Early access price while the course is new.</p>
+            <div class="pricing-inner">
+                <div class="hero-art pricing-art">
+                    <div class="hero-art-stage">
+                        <div class="hero-cover">
+                            <img src="images/1778224470356.png" alt="How Your Body Burns &mdash; The Real Science of Metabolism">
+                        </div>
+                        <div class="hero-phone">
+                            <div class="hero-phone-screen">
+                                <div class="ks-photo"><img src="images/4 - Copy.webp" alt=""></div>
+                                <div class="ks-body">
+                                    <h4 class="ks-title">The Metabolic Kitchen</h4>
+                                    <p class="ks-sub">Translating the science of metabolism directly to your plate.</p>
+                                    <p class="ks-heading">The Easy Meal &amp; Snack Guide</p>
+                                    <div class="ks-card">
+                                        <p class="ks-card-title">If You MUST Snack&hellip;</p>
+                                        <p class="ks-card-body">Ideally, you want to cut snacks to let insulin drop. But if you are in a pinch&hellip;</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <ul class="value-table">
+                        <li><span>The Complete Metabolism Course</span><span>$79</span></li>
+                        <li><span>Body Burn Basics</span><span>$5</span></li>
+                        <li><span>The Recipe Collection</span><span>$29</span></li>
+                        <li><span>Diet Breakdown</span><span>$17</span></li>
+                        <li class="total"><span>Total Value</span><span>$130</span></li>
+                    </ul>
+                    <p class="investment"><s style="color:var(--muted);font-size:0.55em;font-weight:600;">$79</s> &nbsp;$47</p>
+                    <p>Early access price while the course is new.</p>
+                </div>
+            </div>
         </section>
 
         <div class="cta-band">
