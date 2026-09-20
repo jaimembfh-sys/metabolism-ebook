@@ -5866,7 +5866,7 @@
                     .map(function(b) { return b.text; })
                     .join(' ')
                     .trim();
-                return { text: text, liveSearchesUsed: data.liveSearchesUsed || 0 };
+                return { text: scrubDisconnectedHelpline(text), liveSearchesUsed: data.liveSearchesUsed || 0 };
             }
 
             // Structured-output tool for goal/why extraction. Forcing the
@@ -7392,6 +7392,39 @@ Apply the same goal-setting principles as before: Jaime Jenkins' framework first
                 }
                 out.push('=== END COACH RULES ===');
                 return out.join('\n');
+            }
+
+            // ---- Level 3 enforcement: post-response scrub ----
+            // The prompt rule alone is not sufficient. Measured 2026-09-20: with
+            // the rule present in the system prompt, the disordered-eating
+            // fixture STILL returned "NEDA Helpline: 1-800-931-2237" as a
+            // formatted resource block. The model's prior for "eating disorder
+            // helpline" is strong enough to override the instruction, and the
+            // cost of it winning is a distressed user calling a dead line.
+            //
+            // Same principle as stripMealMacrosIfFlagged: that's a prompt
+            // instruction only; this forces it regardless of what the model
+            // actually returned.
+            const ALT_HELPLINE = 'the National Alliance for Eating Disorders (search for their current helpline number)';
+
+            function scrubDisconnectedHelpline(text) {
+                if (!text) return text;
+                var out = text;
+                // Label+number as one unit first, so the replacement doesn't read
+                // as "National Alliance...: the National Alliance...".
+                out = out.replace(
+                    /\*{0,2}NEDA(?:\s+Helpline)?\*{0,2}\s*[:—-]?\s*\(?\s*1?[-\s.]?800[-\s.]?931[-\s.]?2237\s*\)?(?:\s*\([^)]*\))?/gi,
+                    '**National Alliance for Eating Disorders** — search for their current helpline number'
+                );
+                // Then any bare number or text-line that survived.
+                out = out.replace(/\b1?[-\s.]?800[-\s.]?931[-\s.]?2237\b/gi, ALT_HELPLINE);
+                out = out.replace(/text\s+["“]?NEDA["”]?\s+to\s+741741/gi, ALT_HELPLINE);
+                // Finally a bare label with no number attached.
+                out = out.replace(/\bNEDA\s+Helpline\b/gi, 'National Alliance for Eating Disorders');
+                if (out !== text) {
+                    console.warn('scrubDisconnectedHelpline: removed a disconnected NEDA reference from a coach response.');
+                }
+                return out;
             }
 
             // Fails closed. If the rules cannot be loaded we would rather the

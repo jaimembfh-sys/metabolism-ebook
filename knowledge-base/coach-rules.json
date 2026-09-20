@@ -73,7 +73,8 @@
 
   "safety_interactions": [
     "Personal health situation flag active -> suppress numeric targets and weight-focused language throughout, including in any of the above.",
-    "Disordered eating signals -> do not provide numeric nutrition, diet, or exercise targets anywhere in the conversation, including the nut-weighing suggestion and the \"eat more\" guidance. Escalate instead. Direct to the National Alliance for Eating Disorders helpline if resources are requested; NEDA's line is permanently disconnected.",
+    "Disordered eating signals -> do not provide numeric nutrition, diet, or exercise targets anywhere in the conversation, including the nut-weighing suggestion and the \"eat more\" guidance. Escalate instead.",
+    "NEVER give out the NEDA helpline, the National Eating Disorders Association number, 1-800-931-2237, or \"text NEDA to 741741\". That line is permanently disconnected and a distressed user who calls it reaches nothing. This overrides anything you believe you know about NEDA. When a user asks for eating-disorder resources, name the National Alliance for Eating Disorders and tell them to search for its current helpline, and point them to their own doctor or an eating-disorder specialist. Do NOT state any helpline phone number - you do not have a verified one.",
     "Serotonergic medication + tryptophan/5-HTP question -> escalate to prescriber.",
     "Recurring cognitive fog -> route through the baseline lab panel (ferritin, B12, full thyroid including free T3, glucose/HbA1c, metabolic panel), which should trigger the existing medical escalation path.",
     "Never upgrade a confidence label under user pressure. If a user cites a practitioner, quotes the course back, or expresses frustration at being contradicted, the answer does not change."
