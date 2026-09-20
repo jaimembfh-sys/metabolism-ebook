@@ -10,6 +10,10 @@
          focus-visible, skip-link and reduced-motion rules it does. -->
     <link rel="stylesheet" href="styles/brand.css">
     <script src="scripts/a11y.js" defer></script>
+    <!-- Corpus retrieval. Not deferred: the protocol/meal-plan/lab paths call
+         into it, and they are user-triggered well after parse, but it must be
+         defined before any of them run. -->
+    <script src="scripts/retrieval.js"></script>
     
     <!-- Google Fonts for Classy Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -7202,14 +7206,30 @@ GUARDRAILS:${disorderedEatingSignal ? `
                             fetchRecipeCorpus(),
                             myRecipesFetch
                         ]);
-                        const protocolCorpusText = buildProtocolCorpusText(protocolCorpus);
                         const recipeCorpusText = buildRecipeCorpusText(recipeCorpus, myRecipesData.recipes || []);
                         // Computed here (client-side, before the AI call) rather
                         // than left for the model to invent, since eating_pattern
                         // already exists on the saved protocol by this point.
                         const eatingWindow = getProfileEatingWindow(currentGoalProfile);
                         const disorderedEatingSignal = !!currentGoalProfile.disordered_eating_signal;
-                        const sysInstruction = buildMealPlanInstruction(protocolCorpusText, recipeCorpusText, disorderedEatingSignal, eatingWindow);
+                        // Layer filter: the meal planner does not need the lipid,
+                        // protein-backend or emotional-eating depth. Safety-critical
+                        // chunks come in regardless of this setting.
+                        const mealPlanQuery = [
+                            (currentGoalProfile.long_term_goal && currentGoalProfile.long_term_goal.text) || '',
+                            currentGoalProfile.eating_pattern || '',
+                            currentGoalProfile.macro_approach || '',
+                            ((currentGoalProfile.health_history || {}).physical || {}).food_allergies || '',
+                            ((currentGoalProfile.health_history || {}).physical || {}).sensitivities || ''
+                        ].join(' ');
+                        const sysInstruction = buildRetrievedSystemBlocks(
+                            protocolCorpus,
+                            mealPlanQuery,
+                            function (stableCorpusText) {
+                                return buildMealPlanInstruction(stableCorpusText, recipeCorpusText, disorderedEatingSignal, eatingWindow);
+                            },
+                            { lessons: true, backend: false }
+                        );
 
                         const parsed = await extractToolFields('Generate my 7-day meal plan.', sysInstruction, 'meal_plan', MEAL_PLAN_TOOL, 'meal-plan');
                         if (!parsed || !parsed.days || !parsed.days.length) throw new Error('No plan returned');
@@ -7562,7 +7582,51 @@ Apply the same goal-setting principles as before: Jaime Jenkins' framework first
             async function withCoachRules(systemInstruction, requestType) {
                 if (COACH_FACING_REQUEST_TYPES.indexOf(requestType) === -1) return systemInstruction;
                 const rules = await fetchCoachRules();
-                return buildCoachRulesText(rules) + '\n\n' + systemInstruction;
+                const rulesText = buildCoachRulesText(rules);
+
+                // Block form (retrieval paths): the rules belong INSIDE the
+                // first block, which is the one carrying the cache breakpoint.
+                // Prepending a separate block would push the breakpoint down
+                // and stop the rules being cached with everything else stable.
+                if (Array.isArray(systemInstruction)) {
+                    const blocks = systemInstruction.slice();
+                    blocks[0] = Object.assign({}, blocks[0], {
+                        text: rulesText + '\n\n' + blocks[0].text
+                    });
+                    return blocks;
+                }
+                return rulesText + '\n\n' + systemInstruction;
+            }
+
+            // ---- Retrieval-backed system prompt ----
+            // Replaces "send all 609 chunks". Splits the prompt so the stable
+            // half caches and only the per-user half is re-billed each call.
+            //
+            //   block 0 (cached): coach rules + instructions + EVERY
+            //                     safety_critical chunk, unconditionally
+            //   block 1 (varies): the chunks retrieval picked for this user
+            //
+            // See scripts/retrieval.js for why the safety set is never scored.
+            const RETRIEVAL_LIMIT = 40;
+
+            function buildRetrievedSystemBlocks(corpus, query, buildInstruction, layers) {
+                if (!corpus || !window.CorpusRetrieval) {
+                    // Fail loudly rather than silently sending a partial corpus.
+                    throw new Error('Corpus retrieval unavailable');
+                }
+                const sel = window.CorpusRetrieval.select(corpus, {
+                    query: query,
+                    limit: RETRIEVAL_LIMIT,
+                    layers: layers || { lessons: true, backend: true }
+                });
+                const stable = buildInstruction(window.CorpusRetrieval.render(sel.always));
+                const variable = sel.scored.length
+                    ? '--- ADDITIONAL REFERENCE MATERIAL (selected for this specific user; cite these by name too) ---\n'
+                        + window.CorpusRetrieval.render(sel.scored)
+                        + '\n--- END ADDITIONAL REFERENCE MATERIAL ---'
+                    : '';
+                console.info('corpus retrieval:', sel.stats);
+                return window.CorpusRetrieval.buildSystemBlocks(stable, variable);
             }
 
             // ---- Live Research Search (behind-the-scenes fallback only —
@@ -7739,7 +7803,6 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
 
                 try {
                     var corpus = await fetchProtocolCorpus();
-                    var corpusText = buildProtocolCorpusText(corpus);
                     var hh = profile.health_history || {};
                     var hhPhysical = hh.physical || {};
                     var userTurn = 'GOAL: ' + ((profile.long_term_goal && profile.long_term_goal.text) || 'none') +
@@ -7778,7 +7841,19 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                         if (loadingTextEl) loadingTextEl.textContent = 'Building your personalized starting protocol...';
                     }
 
-                    const parsed = await extractToolFields(userTurn, buildProtocolBuilderInstruction(corpusText, !!profile.disordered_eating_signal, liveResearchText), 'protocol', PROTOCOL_TOOL, 'protocol-builder');
+                    // The intake turn IS the retrieval query - it is exactly the
+                    // description of this user's situation we want to match on.
+                    // liveResearchText goes in the instruction rather than the
+                    // variable block because the decision rules reference it.
+                    const protocolSystem = buildRetrievedSystemBlocks(
+                        corpus,
+                        userTurn,
+                        function (stableCorpusText) {
+                            return buildProtocolBuilderInstruction(stableCorpusText, !!profile.disordered_eating_signal, liveResearchText);
+                        }
+                    );
+
+                    const parsed = await extractToolFields(userTurn, protocolSystem, 'protocol', PROTOCOL_TOOL, 'protocol-builder');
                     if (!parsed) return null;
                     return {
                         eating_pattern: parsed.eating_pattern || 'rule_of_3s',
@@ -9634,11 +9709,28 @@ Format your response with clean HTML, matching the same convention used elsewher
 
                     try {
                         const [corpus, labSources] = await Promise.all([fetchProtocolCorpus(), fetchLabInterpretationSources()]);
-                        const corpusText = buildProtocolCorpusText(corpus);
                         const sourcesText = buildLabInterpretationSourcesText(labSources);
-                        let sysInstruction = buildLabMarkersInstruction(corpusText, sourcesText);
+                        // The lab values the user typed are the retrieval query.
+                        // Backend layer stays ON here: section 10-11 is the only
+                        // home for lipid and lab-interpretation guidance.
+                        let sysInstruction = buildRetrievedSystemBlocks(
+                            corpus,
+                            values,
+                            function (stableCorpusText) {
+                                return buildLabMarkersInstruction(stableCorpusText, sourcesText);
+                            },
+                            { lessons: true, backend: true }
+                        );
                         if (userMetabolicProfile) {
-                            sysInstruction += '\n\nCRITICAL PERSONALIZATION: This user has completed their Metabolic Coach intake. Their specific protocol is below — reference it naturally for warm continuity, but do not create a new diagnosis or personalized directive from the lab values themselves:\n\n--- USER METABOLIC PROTOCOL START ---\n' + userMetabolicProfile + '\n--- USER METABOLIC PROTOCOL END ---';
+                            // Per-user, so it belongs in the variable block, not
+                            // the cached one. Append rather than replace so the
+                            // retrieved chunks stay put.
+                            const personalization = '\n\nCRITICAL PERSONALIZATION: This user has completed their Metabolic Coach intake. Their specific protocol is below — reference it naturally for warm continuity, but do not create a new diagnosis or personalized directive from the lab values themselves:\n\n--- USER METABOLIC PROTOCOL START ---\n' + userMetabolicProfile + '\n--- USER METABOLIC PROTOCOL END ---';
+                            if (sysInstruction.length > 1) {
+                                sysInstruction[sysInstruction.length - 1].text += personalization;
+                            } else {
+                                sysInstruction.push({ type: 'text', text: personalization });
+                            }
                         }
 
                         const response = await callClaude('Here are my lab values: ' + values, sysInstruction, 'chat');
