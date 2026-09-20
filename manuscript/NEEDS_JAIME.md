@@ -2,6 +2,58 @@
 
 ---
 
+# QUEUED 2026-09-20 (overnight run 3)
+
+## N-1 — The eating-disorder helpline number ⚠ SAFETY
+
+**Found by running the fixtures for real.** The coach was handing a user reporting 700 kcal/day the **NEDA helpline, 1-800-931-2237** — the line your own coach corpus records as *permanently disconnected*.
+
+Fixed in two layers (`6ca4224`), but **I deliberately did not supply a replacement number.** Your `AI_Coach_Knowledge_Corpus.md` §6.4 names the National Alliance for Eating Disorders without giving one, and inventing a number would repeat the original failure in a new form.
+
+**What I need:** the verified current helpline number, or confirmation that you want the coach to name the organisation without a number and route to the user's own doctor. Right now it does the latter.
+
+## N-2 — Lesson 2 summary bullet still asserts the sweetener claim
+
+`index.html:757` reads *"Even artificial sweeteners and the sight or smell of sweet foods can trigger an insulin response through the cephalic phase."*
+
+The body copy above it is now properly hedged (*"theorized… the research isn't settled"*). Body and bullet now contradict each other. This is why the Lesson 2 sweetener conflict flag is still live in the coach layer.
+
+**Needs your words.** I have not touched it.
+
+## N-3 — Three "up to" constructions, against your standing rule
+
+- `index.html:1185` — *"up to 40% of the total weight lost is lean muscle mass"*
+- `index.html:1269` — *"up to 9.09 times higher risk of pancreatitis"*, *"up to 40%"*
+- `index.html:2880` — *"up to six times more key nutrients"*
+
+**Needs your words.**
+
+## N-4 — The paid tier can be unlocked from the URL ⚠ SECURITY
+
+`index.html:5297`, the code's own comment says **"STOPGAP — NOT SECURE"**. `?metaburn_purchase_confirmed=1` grants permanent access on that device. Already live. Product decision, not a styling one, so I left it.
+
+## N-5 — Both sales-page CTAs are still `mailto:`
+
+Every buyer becomes a manual email thread. Needs the Shopify checkout URL.
+
+## N-6 — Production model overrides
+
+`.env` points protocol and meal_plan at Sonnet locally. **Production still runs Haiku.** Enabling them in the Netlify dashboard costs **10.8× per call** and, per the measured before/after, does not improve output. Your call.
+
+## N-7 — Phase 1 colour convergence
+
+`--ink` #1f2e35 (sales page) vs #2c3e50 (course body text). Still unpicked, so Phase 1 shipped pixel-neutral.
+
+## N-8 — 65 inputs still need real `for` attributes
+
+`scripts/a11y.js` wires them at runtime, which fails with JS disabled. The markup fix is mechanical but needs 65 individual edits under the Edit-only rule.
+
+## N-9 — `manuscript/Chapter_15_Course (1).md`
+
+Byte-identical duplicate, same as the coach one you had me delete. Left because you only named the coach file.
+
+---
+
 # REVERSION ORPHANS (2026-09-18)
 
 All Claude-authored prose was reverted to Jaime's original text. Six of those
