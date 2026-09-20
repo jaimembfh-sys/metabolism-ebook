@@ -10,6 +10,25 @@ The live site has not been updated since **2026-07-25**. Since then: **58 commit
 
 # ⛔ BLOCKERS — do not ship until these are decided
 
+## 0. Everyone is logged in. `TEST_MODE_LOGGED_IN = true`
+
+`index.html:5287`
+
+```js
+const TEST_MODE_LOGGED_IN = true;
+let isLoggedIn = TEST_MODE_LOGGED_IN;
+```
+
+Hardcoded. **Every visitor is treated as logged in**, and clicking Log In pops *"Test mode is enabled. You are already treated as logged in."*
+
+**This is almost certainly the "test mode" you meant.** There is no Stripe in this repo; this is the test flag that exists.
+
+In place since 2026-07-16 and live at the 2026-07-25 deploy, so deploying does not introduce it — but it is the first thing a visitor to the new sales page will hit.
+
+**Flipping it to `false` does not give you real auth.** The `else` branch reads `localStorage.getItem('mbfhLoggedIn')`, which any visitor can set from devtools. Both branches are client-side. Real gating needs a server check — the same larger project the `metaburn_purchase_confirmed` comment at `index.html:8051` already defers to.
+
+**I have not changed it.** Flipping it alters live access behaviour for every visitor, which is your call, not a styling decision.
+
 ## 1. The paid AI Coach can be unlocked by editing the URL
 
 `index.html:5297` — the code's own comment says **"STOPGAP — NOT SECURE"**.
@@ -22,7 +41,7 @@ if (earlyParams.get('metaburn_purchase_confirmed') === '1') {
 
 Anyone who appends `?metaburn_purchase_confirmed=1` gets permanent access to the paid tier on that device. No server check, no receipt validation. This is already live, so deploying does not introduce it — but it is the single most consequential thing in the codebase and it should not still be true when you start driving traffic to the sales page.
 
-**You asked me to flag Stripe being in test mode.** There is no Stripe integration in this codebase at all — payments run through Shopify redirect plus Memberstack (`app_cmpaq9ev900520sz36ulugs78`). If Stripe test mode is a concern, it lives somewhere outside this repo. Worth confirming before launch.
+**On Stripe:** there is no Stripe integration in this codebase at all — payments run through Shopify redirect plus Memberstack (`app_cmpaq9ev900520sz36ulugs78`). The test mode that does exist is blocker 0 above. If there is *also* a Stripe account in test mode, it lives outside this repo.
 
 ## 2. The model overrides are local-only
 

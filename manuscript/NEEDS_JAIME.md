@@ -28,6 +28,16 @@ The body copy above it is now properly hedged (*"theorized… the research isn't
 
 **Needs your words.**
 
+## N-0 — `TEST_MODE_LOGGED_IN = true` ⚠ SECURITY
+
+`index.html:5287`, hardcoded. **Every visitor is treated as logged in**; the Log In button pops *"Test mode is enabled."* In place since 2026-07-16, live at the last deploy.
+
+**This is what you meant by "test mode."** There is no Stripe in this repo at all.
+
+Flipping it to `false` does **not** give you real auth — the other branch reads `localStorage.getItem('mbfhLoggedIn')`, which anyone can set from devtools. Both are client-side. Real gating needs the server-side check `index.html:8051` already defers to.
+
+**Not changed.** It alters access for every visitor — your call.
+
 ## N-4 — The paid tier can be unlocked from the URL ⚠ SECURITY
 
 `index.html:5297`, the code's own comment says **"STOPGAP — NOT SECURE"**. `?metaburn_purchase_confirmed=1` grants permanent access on that device. Already live. Product decision, not a styling one, so I left it.

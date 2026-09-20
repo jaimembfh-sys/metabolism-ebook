@@ -224,13 +224,20 @@ Two things my first scan flagged were false positives, recorded so nobody re-ope
 
 # §6 — TASK 6: Deploy readiness
 
-`manuscript/DEPLOY_CHECKLIST.md`. Three blockers at the top:
+`manuscript/DEPLOY_CHECKLIST.md`. Four blockers at the top:
 
-1. **The paid AI Coach unlocks from a URL parameter** — `index.html:5297`, the code's own comment says "STOPGAP — NOT SECURE." Already live, so deploying does not introduce it, but it should not still be true when traffic starts.
+0. **`TEST_MODE_LOGGED_IN = true`** — `index.html:5287`. Hardcoded. Every visitor is treated as logged in.
+1. **The paid AI Coach unlocks from a URL parameter** — `index.html:5297`, the code's own comment says "STOPGAP — NOT SECURE."
 2. **Model overrides are local-only** — production still runs Haiku, which is the safe default.
 3. **The corpus is 286K tokens per call** and ships whether or not you switch models.
 
-**On Stripe:** you asked me to flag it being in test mode. **There is no Stripe integration in this codebase at all.** Payments run through Shopify redirect plus Memberstack. If Stripe test mode is a live concern it is somewhere outside this repo — worth confirming before launch.
+Blockers 0 and 1 are both already live (0 since 2026-07-16), so deploying introduces neither — but both should be settled before you drive traffic to the new sales page.
+
+**⚠ A correction to my own answer on Stripe.** I first told you there is no test mode in this repo. That was wrong, and it was wrong because my search was too narrow — I grepped for `pk_test|sk_test|pk_live|stripe` and concluded from no matches. A broader search for the literal phrase "test mode" found `TEST_MODE_LOGGED_IN` immediately.
+
+The accurate answer: **there is no Stripe integration here** — payments run through Shopify plus Memberstack — **but there is very much a test mode, and it is blocker 0.** That is almost certainly what you were asking about.
+
+**Flipping it to `false` does not buy real auth.** The `else` branch reads `localStorage.getItem('mbfhLoggedIn')`, which any visitor can set from devtools. Both branches are client-side. Real gating needs the server-side check that `index.html:8051` already defers to as "a separate, larger planned project." I have not changed the flag — it alters access for every visitor, which is your decision.
 
 ---
 
