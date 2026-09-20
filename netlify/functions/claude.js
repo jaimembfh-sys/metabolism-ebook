@@ -108,6 +108,10 @@ const MAX_TOKENS = {
 // these are only used for the rough per-request cost log/estimate.
 const PRICING_USD_PER_MTOK = {
   "claude-haiku-4-5-20251001": { input: 1.0, output: 5.0, cacheWrite: 1.25, cacheRead: 0.1 },
+  // Added 2026-09-20 so the cost log stays accurate when ANTHROPIC_PROTOCOL_MODEL
+  // or ANTHROPIC_MEAL_PLAN_MODEL point here. Without an entry estimateCostUsd
+  // returns null and the per-request cost silently stops being reported.
+  "claude-sonnet-5": { input: 3.0, output: 15.0, cacheWrite: 3.75, cacheRead: 0.3 },
 };
 
 // ============================================================
