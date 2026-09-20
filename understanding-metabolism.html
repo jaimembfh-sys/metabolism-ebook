@@ -156,13 +156,19 @@
                 inset 0 0 0 0.18cqw rgba(255, 255, 255, 0.14);
         }
 
+        /* Everything inside the screen is sized in em against this font-size,
+           so it is the single dial controlling how much content fits before
+           overflow:hidden clips it. Column flex lets the trailing element
+           absorb the leftover space instead of spilling past the bezel. */
         .hero-phone-screen {
             position: relative;
             border-radius: 8.4cqw;
             overflow: hidden;
             background: var(--paper);
             aspect-ratio: 1170 / 2094;
-            font-size: 1.62cqw;
+            font-size: 1.38cqw;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Speaker slot, drawn over the screen like a modern cutout. */
@@ -223,7 +229,13 @@
             white-space: nowrap;
         }
 
-        .ps-body { padding: 1.9em 1.35em 0; }
+        .ps-body {
+            padding: 1.9em 1.35em 1.2em;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
 
         .ps-eyebrow {
             margin: 0;
@@ -243,16 +255,21 @@
             color: var(--teal);
         }
 
+        /* Takes whatever vertical space the text above leaves, so the photo is
+           cropped to fit rather than overflowing and being clipped mid-image. */
         .ps-photo {
             border: 0.09em solid var(--gold);
             border-radius: 0.55em;
             overflow: hidden;
             line-height: 0;
+            flex: 1;
+            min-height: 0;
         }
 
         .ps-photo img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
@@ -353,14 +370,20 @@
            course, live, the same way the hero's renders Lesson 1. */
         .ks-photo { line-height: 0; }
 
+        /* Was 5.4em, which rendered a ~29px strip of a tall photo and read as
+           a clipped image rather than a photo. */
         .ks-photo img {
             width: 100%;
-            height: 5.4em;
+            height: 13em;
             object-fit: cover;
             display: block;
         }
 
-        .ks-body { padding: 1.1em 1.15em 0; }
+        .ks-body {
+            padding: 1.1em 1.15em 1.1em;
+            flex: 1;
+            min-height: 0;
+        }
 
         .ks-title {
             margin: 0;
