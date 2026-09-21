@@ -63,6 +63,19 @@ const MAP3 = {
   "dark chocolate":       { fdc: 170272, expect: "Chocolate, dark, 60-69% cacao solids", grams: { cup: 170, oz: 28.35, tbsp: 11 } },
   "freshly grated parmesan": { fdc: 170848, expect: "Cheese, parmesan, hard", grams: { cup: 100, tbsp: 6.25, oz: 28.35 } },
   "corn":                 { fdc: 169998, expect: "Corn, sweet, yellow, raw", grams: { cup: 154, each: 90, oz: 28.35, can: 425 } },
+
+  /* Collision fix, found while applying the Foundation rule. Neither of these
+   * had a key of its own, so findKey matched the substring "butter" and costed
+   * them as salted butter - 81 g fat per 100 g. Peanut butter is 51 and
+   * buttermilk is 3.3. Same class of bug as "pepper" zeroing "bell pepper".
+   * Affects keto-peanut-butter-balls, thai-slaw-with-peanut-dressing,
+   * thai-panang-chicken-curry and homemade-greek-yogurt-ranch-dip.
+   */
+  "peanut butter":        { fdc: 172470, expect: "Peanut butter, smooth style, without salt", grams: { cup: 258, tbsp: 16, oz: 28.35 } },
+  "natural creamy peanut butter": { fdc: 172470, expect: "Peanut butter, smooth style, without salt", grams: { cup: 258, tbsp: 16, oz: 28.35 } },
+  "smooth peanut butter": { fdc: 172470, expect: "Peanut butter, smooth style, without salt", grams: { cup: 258, tbsp: 16, oz: 28.35 } },
+  "buttermilk":           { fdc: 172225, expect: "Milk, buttermilk, fluid, whole", grams: { cup: 245, tbsp: 15.3, oz: 29.6 } },
+  "buttermilk or milk":   { fdc: 172225, expect: "Milk, buttermilk, fluid, whole", grams: { cup: 245, tbsp: 15.3, oz: 29.6 } },
 };
 
 /* Unit additions for entries already mapped in earlier batches, where a recipe

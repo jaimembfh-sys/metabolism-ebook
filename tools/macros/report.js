@@ -23,11 +23,23 @@ const { MAP3, EXTRA_NEGLIGIBLE, STILL_FLAGGED, UNIT_PATCH } = require("./usda-ma
 // Meat picks from the 60th-percentile rule in meat-rule.js. Declared here
 // because the verification block below reads it.
 const MEAT_OVERRIDE = require("./usda-map-3.js").MEAT_OVERRIDE || {};
+// Foundation-first rule, 2026-09-21. Foundation is lab-measured and newer, so
+// it wins wherever an entry exists for the same food; SR Legacy is the
+// fallback. Hand-curated - see the header of foundation-map.js for why an
+// auto-matcher was rejected.
+const { FOUNDATION_MAP, FOUNDATION_REJECTED, verifyFoundation } = require("./foundation-map.js");
 
 const USDA = JSON.parse(fs.readFileSync(SCRATCH, "utf8"));
 const BY_ID = {};
 USDA.foods.forEach((f) => (BY_ID[f.fdc_id] = f));
 verifyMap(BY_ID);
+
+const FND_BY_ID = {};
+JSON.parse(fs.readFileSync(path.join(__dirname, "foundation-index.json"), "utf8"))
+  .foods.forEach((f) => (FND_BY_ID[f.fdc_id] = f));
+verifyFoundation(FND_BY_ID);
+// Every switch made, collected for the report.
+const SWITCHES = {};
 
 // Verify the extra SR Legacy ids too.
 Object.entries(Object.assign({}, EXTRA_MAP, MAP2, MAP3, MEAT_OVERRIDE)).forEach(([k, v]) => {
@@ -143,7 +155,49 @@ function resolve(line) {
   if (isNeg(food)) return { raw, food, kind: "negligible", ...Z };
 
   let src = null, per100 = null, gramsTable = null, label = null, fdc = null, note = null;
-  if (brandKey) {
+  // Foundation-first: it outranks both SR Legacy and the Branded stand-ins
+  // (coconut flour was on a Branded entry only because SR Legacy had none).
+  // MACRO_NO_FOUNDATION=1 reproduces the pre-Foundation numbers, so the
+  // before/after tables are generated from the same code path rather than
+  // from a remembered earlier run.
+  const fndKey = process.env.MACRO_NO_FOUNDATION ? null
+    : (FOUNDATION_MAP[mapKey] ? mapKey : (FOUNDATION_MAP[brandKey] ? brandKey : null));
+  if (fndKey) {
+    const n = FND_BY_ID[FOUNDATION_MAP[fndKey].fdc];
+    src = "Foundation"; fdc = n.fdc_id; label = n.desc;
+    // Foundation does not report fiber for every food - avocado, chia, celery,
+    // cucumber, romaine and cabbage all come back without it, even from the
+    // full detail endpoint. Left at zero, net carbs would be badly overstated
+    // (guacamole read 86 g net carbs per serving instead of 27). Where
+    // Foundation has no fiber, it is taken from the SR Legacy entry this
+    // ingredient was on and the breakdown says so. For meat, cheese, cream and
+    // oil that fallback is 0 either way.
+    let fiber = n.fiber, fiberFrom = null;
+    if (fiber == null) {
+      const sr = ALL_MAP[fndKey] ? BY_ID[ALL_MAP[fndKey].fdc] : null;
+      fiber = sr && sr.fiber ? sr.fiber : 0;
+      if (fiber) fiberFrom = sr.fdc_id;
+    }
+    per100 = { kcal: n.kcal, fat: n.fat, protein: n.protein, carb: n.carb, fiber };
+    // Unit conversions are unchanged by the switch, so keep whatever gram
+    // table the SR Legacy or Branded entry already carried.
+    gramsTable = (ALL_MAP[fndKey] && ALL_MAP[fndKey].grams) || (BRANDED[fndKey] && BRANDED[fndKey].grams);
+    const t = TYPICAL[fndKey];
+    if (t) note = "assumed " + t.g + " g each — " + t.why;
+    if (fiberFrom) {
+      note = (note ? note + "; " : "") + "fiber " + fiber + " g/100 g from SR Legacy " + fiberFrom + " — Foundation reports none for this food";
+    }
+    if (!SWITCHES[fndKey]) {
+      const old = ALL_MAP[fndKey] ? BY_ID[ALL_MAP[fndKey].fdc] : null;
+      const ob = !old && BRANDED[fndKey] ? BRANDED[fndKey] : null;
+      SWITCHES[fndKey] = {
+        key: fndKey,
+        from: old ? { src: "SR Legacy", fdc: old.fdc_id, desc: old.desc, fat: old.fat, protein: old.protein, carb: old.carb, fiber: old.fiber || 0, kcal: old.kcal }
+                  : { src: "Branded", fdc: ob.fdc, desc: ob.expect, fat: ob.per100g.fat, protein: ob.per100g.protein, carb: ob.per100g.carb, fiber: ob.per100g.fiber || 0, kcal: ob.per100g.kcal },
+        to: { src: "Foundation", fdc: n.fdc_id, desc: n.desc, fat: n.fat, protein: n.protein, carb: n.carb, fiber: n.fiber || 0, kcal: n.kcal },
+      };
+    }
+  } else if (brandKey) {
     const b = BRANDED[brandKey];
     src = "Branded"; per100 = b.per100g; gramsTable = b.grams; label = b.expect; fdc = b.fdc; note = b.note;
   } else {
@@ -276,6 +330,18 @@ const head = [
 
 fs.writeFileSync(path.join(ROOT, "manuscript", "RECIPE_MACROS.md"), head.join("\n") + list.map(md).join(""), "utf8");
 console.log(`wrote manuscript/RECIPE_MACROS.md for ${list.length} recipe(s)`);
+
+// MACRO_DUMP=<path> writes the per-serving numbers and the switch list as
+// JSON, so before/after tables are diffed from two real runs.
+if (process.env.MACRO_DUMP) {
+  const out = { per: {}, switches: SWITCHES, sources: {} };
+  list.forEach((r) => {
+    const b = build(r);
+    out.per[r.slug] = b.per;
+    b.rows.forEach((x) => { if (x.src) out.sources[x.food] = { src: x.src, fdc: x.fdc, label: x.label }; });
+  });
+  fs.writeFileSync(process.env.MACRO_DUMP, JSON.stringify(out, null, 1), "utf8");
+}
 list.forEach((r) => {
   const b = build(r);
   const f = b.rows.filter((x) => x.kind === "flag").length;

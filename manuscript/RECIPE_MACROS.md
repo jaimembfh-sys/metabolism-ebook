@@ -628,22 +628,22 @@ Divided by **1 servings**.
 |---|---|---|---|---|---|---|
 | 1 cup plain Greek yogurt (full-fat or 2%) | 245 g | Yogurt, Greek, plain, whole milk <br>`FDC 171304` | SR Legacy | 12.3 | 22.1 | 9.8 |
 | 1/2 cup homemade mayonnaise | 110 g | Salad dressing, mayonnaise, soybean oil, without salt <br>`FDC 171418` | SR Legacy | 87.3 | 1.2 | 3 |
-| 1 to 2 tbsp buttermilk or milk (to adjust thickness) | 21.3 g | Butter, salted <br>`FDC 173410` | SR Legacy | 17.3 | 0.2 | 0 |
+| 1 to 2 tbsp buttermilk or milk (to adjust thickness) | 23 g | Milk, buttermilk, fluid, whole <br>`FDC 172225` | SR Legacy | 0.8 | 0.7 | 1.1 |
 | 1 tbsp fresh dill (or 1 tsp dried) | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tbsp fresh chives (or 1 tsp dried) | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp garlic powder | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp onion powder | — | *negligible* | — | 0 | 0 | 0 |
 | 1/2 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp black pepper | — | *negligible* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **116.9** | **23.5** | **12.8** |
+| **WHOLE RECIPE TOTAL** | | | | **100.4** | **24.0** | **13.9** |
 
-Whole recipe: **1179 kcal**, fat 116.9 g, protein 23.5 g, carbs 12.8 g, fiber 0.0 g
+Whole recipe: **1041 kcal**, fat 100.4 g, protein 24.0 g, carbs 13.9 g, fiber 0.0 g
 Divided by **12 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 80 | **98** | +23% |
-| Fat (g) | 7 | **10** | +43% |
+| Calories | 80 | **87** | +9% |
+| Fat (g) | 7 | **8** | +14% |
 | Protein (g) | 2 | **2** | 0% |
 | Total carbs (g) | 1 | **1** | 0% |
 | Fiber (g) | 0 | **0** | — |
@@ -1397,7 +1397,7 @@ Divided by **4 servings**.
 | 12 kaffir lime leaves, crushed (optional) | 804 g | Limes, raw <br>`FDC 168155` | SR Legacy | 1.6 | 5.6 | 84.7 |
 | 1 Tbsp beef tallow | 12.8 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 12.8 | 0 | 0 |
 | 1 to 2 Tbsp Mae Ploy panang curry paste <!-- linked_product: url=null --> (start with 1 Tbsp if you've never made this before) | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
-| 1 Tbsp peanut butter | 14.2 g | Butter, salted <br>`FDC 173410` | SR Legacy | 11.5 | 0.1 | 0 |
+| 1 Tbsp peanut butter | 16 g | Peanut butter, smooth style, without salt <br>`FDC 172470` | SR Legacy | 8.2 | 3.6 | 3.6 |
 | 13.5 oz canned unsweetened coconut milk | 382.7 g | Nuts, coconut milk, canned (liquid expressed from grated meat and water) <br>`FDC 170173` | SR Legacy | 81.6 | 7.7 | 10.8 |
 | 1 Tbsp fish sauce | 18 g | Sauce, fish, ready-to-serve <br>`FDC 174531` | SR Legacy | 0 | 0.9 | 0.7 |
 | 2 Tbsp monk fruit/allulose sweetener <!-- linked_product: url=null --> | — | *negligible* | — | 0 | 0 | 0 |
@@ -1406,15 +1406,15 @@ Divided by **4 servings**.
 | Chopped chicken (from prep step) | — | *back-reference, already counted above* | — | 0 | 0 | 0 |
 | 1/2 cup fresh Thai basil, chopped (any basil works) | 12 g | Basil, fresh <br>`FDC 172232` | SR Legacy | 0.1 | 0.4 | 0.3 |
 | Juice of 1 lime (about 1 Tbsp) | — | ⚠️ **FLAGGED** — no gram weight for unit 'each' and no quantity given | — | — | — | — |
-| **WHOLE RECIPE TOTAL** | | | | **126.3** | **171.9** | **124.3** |
+| **WHOLE RECIPE TOTAL** | | | | **123.0** | **175.4** | **127.9** |
 
-Whole recipe: **2158 kcal**, fat 126.3 g, protein 171.9 g, carbs 124.3 g, fiber 29.8 g
+Whole recipe: **2152 kcal**, fat 123.0 g, protein 175.4 g, carbs 127.9 g, fiber 30.6 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 325 | **360** | +11% |
-| Fat (g) | 22 | **21** | -5% |
+| Calories | 325 | **359** | +10% |
+| Fat (g) | 22 | **20** | -9% |
 | Protein (g) | 24 | **29** | +21% |
 | Total carbs (g) | 7 | **21** | +200% |
 | Fiber (g) | 2 | **5** | +150% |
@@ -1441,7 +1441,7 @@ Divided by **6 servings**.
 | 1/2 cup sliced green onions | 80 g | Onions, raw <br>`FDC 170000` | SR Legacy | 0.1 | 0.9 | 7.5 |
 | 1/3 cup chopped cilantro | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
 | 2 cups sliced cooked chicken breast (grilled or rotisserie), optional, for a full meal | 280 g | Chicken, broilers or fryers, meat only, cooked, roasted <br>`FDC 171054` | SR Legacy | 20.7 | 81 | 0 |
-| 2/3 cup natural creamy peanut butter (no sugar added) | 151.3 g | Butter, salted <br>`FDC 173410` | SR Legacy | 122.7 | 1.3 | 0.1 |
+| 2/3 cup natural creamy peanut butter (no sugar added) | 172 g | Peanut butter, smooth style, without salt <br>`FDC 172470` | SR Legacy | 88.3 | 38.2 | 38.4 |
 | 4 Tbsp fresh lime juice | — | *negligible* | — | 0 | 0 | 0 |
 | 4 Tbsp rice vinegar | — | *negligible* | — | 0 | 0 | 0 |
 | 3 Tbsp tamari or coconut aminos | 54 g | Soy sauce made from soy (tamari) <br>`FDC 174278` <br>*recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.* | SR Legacy | 0.1 | 5.7 | 3 |
@@ -1452,19 +1452,19 @@ Divided by **6 servings**.
 | 2 large cloves garlic, finely minced | 6 g | Garlic, raw <br>`FDC 169230` | SR Legacy | 0 | 0.4 | 2 |
 | 1/4 cup peanuts, chopped | 32.5 g | Peanuts, spanish, raw <br>`FDC 174263` | SR Legacy | 16.1 | 8.5 | 5.1 |
 | Sesame seeds, optional | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **174.7** | **107.4** | **72.3** |
+| **WHOLE RECIPE TOTAL** | | | | **140.3** | **144.3** | **110.6** |
 
-Whole recipe: **2232 kcal**, fat 174.7 g, protein 107.4 g, carbs 72.3 g, fiber 25.2 g
+Whole recipe: **2175 kcal**, fat 140.3 g, protein 144.3 g, carbs 110.6 g, fiber 33.8 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 127 | **372** | +193% |
-| Fat (g) | 8 | **29** | +263% |
-| Protein (g) | 4 | **18** | +350% |
-| Total carbs (g) | 6 | **12** | +100% |
-| Fiber (g) | 2 | **4** | +100% |
-| Net carbs (g) | 4 | **8** | +100% |
+| Calories | 127 | **363** | +186% |
+| Fat (g) | 8 | **23** | +188% |
+| Protein (g) | 4 | **24** | +500% |
+| Total carbs (g) | 6 | **18** | +200% |
+| Fiber (g) | 2 | **6** | +200% |
+| Net carbs (g) | 4 | **12** | +200% |
 
 > ⚠️ **2 ingredients flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
 > - `1/3 cup chopped cilantro` — no confident USDA match
