@@ -5,66 +5,84 @@
  * what the figures assume.
  */
 
-/* ---- 1. Ground beef and salmon: the 60th-percentile meat rule ------------
+/* ---- 1a. Ground beef: Jaime uses 92/8 -----------------------------------
  *
- * Under the Foundation-first rule the population is the Foundation entries for
- * that meat, so SR Legacy's 85/15 ground beef (15.0 g fat) and its sockeye
- * (7.28 g) drop out of the running.
+ * Neither dataset carries a 92/8 entry, so the rule is the nearest lean
+ * percentage, Foundation preferred. Foundation holds two raw ground beefs:
  *
- * Foundation carries exactly TWO entries for each:
+ *   90% lean / 10% fat   12.8 g fat   fdc 2514743   <- nearest to 92
+ *   80% lean / 20% fat   19.4 g fat   fdc 2514744
  *
- *   ground beef   12.8 g fat  90% lean / 10% fat, raw   fdc 2514743
- *                 19.4 g fat  80% lean / 20% fat, raw   fdc 2514744
- *
- *   salmon         4.94 g fat  sockeye, wild caught     fdc 2684440
- *                 13.1  g fat  Atlantic, farm raised    fdc 2684441
- *
- * The rule picks a REAL entry at the 60th percentile by fat, not an
- * interpolated figure, so the id, the protein and the carbs stay coherent:
- *
- *   idx = round(0.6 * (n - 1)) = round(0.6 * 1) = 1  ->  the upper entry
- *
- * CAVEAT, and it is a real one: with n = 2 the 60th percentile is degenerate.
- * It can only return one of the two entries, and any percentile above the 50th
- * returns the fattier one. So this is not "slightly above the average" the way
- * it was for chicken breast, where 14 entries made the percentile meaningful -
- * it is the top of a two-entry range. For ground beef that is 19.4 g against a
- * 12.8-19.4 range; the midpoint would be 16.1 g.
+ * WORTH KNOWING: 12.8 g fat is what Foundation measured for beef LABELLED
+ * 10% fat, so it runs well above its own label. Against a 92/8 label the
+ * implied figure is about 8 g. SR Legacy's 93/7 (fdc 173110, 7.0 g fat) is
+ * both nearer to 92% lean and nearer to what 92/8 beef should test at, but it
+ * is SR Legacy and this pick prefers Foundation as instructed.
  */
 const MEAT_PICKS = {
   "ground beef": {
-    fdc: 2514744, expect: "Beef, ground, 80% lean meat / 20% fat, raw",
+    fdc: 2514743, expect: "Beef, ground, 90% lean meat / 10% fat, raw",
     population: [
-      { fdc: 2514743, fat: 12.8, desc: "Beef, ground, 90% lean meat / 10% fat, raw" },
-      { fdc: 2514744, fat: 19.4, desc: "Beef, ground, 80% lean meat / 20% fat, raw" },
+      { fdc: 2514743, fat: 12.8, lean: 90, desc: "Beef, ground, 90% lean meat / 10% fat, raw" },
+      { fdc: 2514744, fat: 19.4, lean: 80, desc: "Beef, ground, 80% lean meat / 20% fat, raw" },
     ],
-    assumes: "80/20 ground beef",
-  },
-  "salmon fillet": {
-    fdc: 2684441, expect: "Fish, salmon, Atlantic, farm raised, raw",
-    population: [
-      { fdc: 2684440, fat: 4.94, desc: "Fish, salmon, sockeye, wild caught, raw" },
-      { fdc: 2684441, fat: 13.1, desc: "Fish, salmon, Atlantic, farm raised, raw" },
-    ],
-    assumes: "farmed Atlantic salmon",
+    nearestLean: 92,
+    assumes: "92/8 ground beef",
   },
 };
-MEAT_PICKS["salmon"] = MEAT_PICKS["salmon fillet"];
+
+/* ---- 1b. Salmon: just above the midpoint of the two Foundation entries ---
+ *
+ * Jaime, 2026-09-21: not the fattiest entry, a value just above the midpoint.
+ *
+ *   sockeye, wild caught    4.94 g fat   fdc 2684440
+ *   Atlantic, farm raised  13.1  g fat   fdc 2684441
+ *   midpoint                9.02 g fat
+ *
+ * "Just above the midpoint" is taken as the 60th percentile by linear
+ * interpolation - the same 0.6 that governs every other meat, but interpolated
+ * rather than snapped to an index, because with two entries snapping can only
+ * ever land on one end:
+ *
+ *   4.94 + 0.6 * (13.1 - 4.94) = 9.84 g fat
+ *
+ * which is 0.82 g above the midpoint. Equivalently it is a 40/60 blend of the
+ * two entries, and that is how it is computed, so protein, carbs and calories
+ * are blended on the same weighting instead of being taken from one entry
+ * while fat comes from somewhere else. Both ids stay on the row.
+ *
+ * This is the one figure in the whole rebuild that is not a single USDA entry.
+ * It is a stated blend of two, not an estimate.
+ */
+const BLENDS = {
+  "salmon fillet": {
+    w: 0.6,
+    parts: [
+      { fdc: 2684440, expect: "Fish, salmon, sockeye, wild caught, raw" },
+      { fdc: 2684441, expect: "Fish, salmon, Atlantic, farm raised, raw" },
+    ],
+    assumes: "a mid-range salmon",
+  },
+};
+BLENDS["salmon"] = BLENDS["salmon fillet"];
 
 /* ---- 2. Mixed vegetables of choice --------------------------------------
  *
- * Jaime: use a common non-starchy mix - broccoli, bell pepper, zucchini and
- * onion in equal parts - rather than leaving the recipe as a floor.
+ * Jaime, 2026-09-21: leave the optional vegetables OUT of the nutrition
+ * numbers; the note says they are not included.
  *
- * The recipe gives no quantity, so one is assumed: 900 g raw across the four,
- * 225 g each. That is 113 g (about 4 oz) of raw vegetables per serving across
- * the recipe's 8 servings - a normal side portion.
+ * They sit under the recipe's own "Optional: Roast or Grill Vegetables in the
+ * Marinade" heading, so excluding them is consistent with how the guacamole
+ * treats its dipping vegetables.
  *
- * Equal parts by weight means the blended per-100 g profile is the plain mean
- * of the four, which is what is computed here. All four ids stay on the row.
+ * The composite is kept, unused, because the earlier instruction was to resolve
+ * it and this records what that resolution was: equal parts broccoli, red bell
+ * pepper, zucchini and red onion at 900 g. Set EXCLUDE to false to count it.
  */
 const COMPOSITES = {
   "mixed vegetables of choice": {
+    exclude: true,
+    excludeWhy: "optional in the recipe — Jaime's instruction is to leave these out of the nutrition numbers",
     total_g: 900,
     parts: [
       { fdc: 747447,  expect: "Broccoli, raw" },
@@ -115,16 +133,27 @@ function verifyAssumptions(fndById) {
   };
   Object.entries(MEAT_PICKS).forEach(([k, v]) => {
     check("MEAT_PICKS " + k, v.fdc, v.expect);
-    // The picked entry must actually be the 60th percentile of its population.
-    const sorted = v.population.slice().sort((a, b) => a.fat - b.fat);
-    const idx = Math.min(sorted.length - 1, Math.max(0, Math.round(0.6 * (sorted.length - 1))));
-    if (sorted[idx].fdc !== v.fdc)
-      problems.push(`MEAT_PICKS ${k}: 60th percentile is ${sorted[idx].fdc}, not the picked ${v.fdc}`);
+    // The picked entry must be the one nearest the lean percentage Jaime buys.
+    const near = v.population.slice()
+      .sort((a, b) => Math.abs(a.lean - v.nearestLean) - Math.abs(b.lean - v.nearestLean))[0];
+    if (near.fdc !== v.fdc)
+      problems.push(`MEAT_PICKS ${k}: nearest to ${v.nearestLean}% lean is ${near.fdc} (${near.lean}%), not the picked ${v.fdc}`);
+  });
+  Object.entries(BLENDS).forEach(([k, v]) => {
+    v.parts.forEach((p) => check("BLENDS " + k, p.fdc, p.expect));
+    // A blend must sit strictly above the midpoint of its parts, or it is not
+    // doing what it was asked to do.
+    const fats = v.parts.map((p) => fndById[p.fdc]).filter(Boolean).map((f) => f.fat).sort((a, b) => a - b);
+    if (fats.length === 2) {
+      const mid = (fats[0] + fats[1]) / 2;
+      const val = fats[0] + v.w * (fats[1] - fats[0]);
+      if (!(val > mid)) problems.push(`BLENDS ${k}: ${val.toFixed(2)} g fat is not above the midpoint ${mid.toFixed(2)}`);
+    }
   });
   Object.entries(COMPOSITES).forEach(([k, v]) =>
     v.parts.forEach((p) => check("COMPOSITES " + k, p.fdc, p.expect)));
   if (problems.length) throw new Error("Assumption verification FAILED:\n  " + problems.join("\n  "));
-  return Object.keys(MEAT_PICKS).length + Object.keys(COMPOSITES).length;
+  return Object.keys(MEAT_PICKS).length + Object.keys(BLENDS).length + Object.keys(COMPOSITES).length;
 }
 
-module.exports = { MEAT_PICKS, COMPOSITES, YIELD, verifyAssumptions };
+module.exports = { MEAT_PICKS, BLENDS, COMPOSITES, YIELD, verifyAssumptions };

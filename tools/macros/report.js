@@ -29,7 +29,7 @@ const MEAT_OVERRIDE = require("./usda-map-3.js").MEAT_OVERRIDE || {};
 // auto-matcher was rejected.
 const { FOUNDATION_MAP, FOUNDATION_REJECTED, verifyFoundation } = require("./foundation-map.js");
 // Ground beef, salmon, the mixed-vegetable composite and the guacamole yield.
-const { MEAT_PICKS, COMPOSITES, YIELD, verifyAssumptions } = require("./assumptions.js");
+const { MEAT_PICKS, BLENDS, COMPOSITES, YIELD, verifyAssumptions } = require("./assumptions.js");
 
 const USDA = JSON.parse(fs.readFileSync(SCRATCH, "utf8"));
 const BY_ID = {};
@@ -145,6 +145,43 @@ function composite(raw, food, c) {
   };
 }
 
+// The gram weight for a key, using whichever unit table already covers it.
+function gramsFor(food, qty, unit) {
+  const k = findKey(food, ALL_MAP);
+  const t = k && ALL_MAP[k].grams;
+  if (!t || qty == null) return null;
+  const u = unit || "each";
+  if (u === "g") return qty;
+  if (t[u] != null) return qty * t[u];
+  return t.each != null ? qty * t.each : null;
+}
+
+/* A weighted blend of two entries. w is the position between the lower-fat and
+ * the higher-fat part, so w = 0.6 sits just above their midpoint. Every macro
+ * is blended on the same weighting - taking fat from a blend while protein
+ * came from one entry would not describe any real fish.
+ */
+function blend(raw, food, b, grams, qty, unit) {
+  const ns = b.parts.map((p) => FND_BY_ID[p.fdc]).sort((x, y) => x.fat - y.fat);
+  const mix = (f) => {
+    const lo = ns[0][f] || 0, hi = ns[1][f] || 0;
+    return lo + b.w * (hi - lo);
+  };
+  const k = grams / 100;
+  const mid = ((ns[0].fat || 0) + (ns[1].fat || 0)) / 2;
+  return {
+    raw, food, kind: "ok", src: "Foundation",
+    fdc: b.parts.map((p) => p.fdc).join(" + "),
+    label: ns.map((n) => n.desc).join("  |  "),
+    note: `blended at the ${Math.round(b.w * 100)}th percentile between the two Foundation entries — `
+      + `${mix("fat").toFixed(2)} g fat/100 g, just above their ${mid.toFixed(2)} g midpoint. Assumes ${b.assumes}.`,
+    qty, unit, grams: +grams.toFixed(1),
+    kcal: +(mix("kcal") * k).toFixed(1), fat: +(mix("fat") * k).toFixed(1),
+    protein: +(mix("protein") * k).toFixed(1), carb: +(mix("carb") * k).toFixed(1),
+    fiber: +(mix("fiber") * k).toFixed(1),
+  };
+}
+
 function resolve(line) {
   const raw = line.replace(/^\s*[-*]\s*/, "").trim();
   let rest = raw;
@@ -170,7 +207,20 @@ function resolve(line) {
   // Composites resolve before the map lookups, because the line they stand for
   // names no single food and would otherwise fall through to FLAGGED.
   const compKey = findKey(food, COMPOSITES);
-  if (compKey) return composite(raw, food, COMPOSITES[compKey]);
+  if (compKey) {
+    const c = COMPOSITES[compKey];
+    if (c.exclude) return { raw, food, kind: "excluded", why: c.excludeWhy, ...Z };
+    return composite(raw, food, c);
+  }
+
+  // A blend of two entries, for a meat where Jaime asked for a value between
+  // them rather than either one. Both ids stay on the row.
+  const blendKey = findKey(food, BLENDS);
+  if (blendKey) {
+    const b = BLENDS[blendKey];
+    const g = gramsFor(food, qty, unit);
+    if (g != null) return blend(raw, food, b, g, qty, unit);
+  }
 
   // Order matters. A real mapping always wins over FLAGGED and NEGLIGIBLE:
   // "tamari or coconut aminos" was being flagged on the words "coconut aminos"
