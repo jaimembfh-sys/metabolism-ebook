@@ -28,6 +28,8 @@ const MEAT_OVERRIDE = require("./usda-map-3.js").MEAT_OVERRIDE || {};
 // fallback. Hand-curated - see the header of foundation-map.js for why an
 // auto-matcher was rejected.
 const { FOUNDATION_MAP, FOUNDATION_REJECTED, verifyFoundation } = require("./foundation-map.js");
+// Ground beef, salmon, the mixed-vegetable composite and the guacamole yield.
+const { MEAT_PICKS, COMPOSITES, YIELD, verifyAssumptions } = require("./assumptions.js");
 
 const USDA = JSON.parse(fs.readFileSync(SCRATCH, "utf8"));
 const BY_ID = {};
@@ -38,6 +40,10 @@ const FND_BY_ID = {};
 JSON.parse(fs.readFileSync(path.join(__dirname, "foundation-index.json"), "utf8"))
   .foods.forEach((f) => (FND_BY_ID[f.fdc_id] = f));
 verifyFoundation(FND_BY_ID);
+verifyAssumptions(FND_BY_ID);
+// Ground beef and salmon resolve through the same Foundation path as every
+// other meat, now that the 60th-percentile rule has picked an entry for each.
+Object.entries(MEAT_PICKS).forEach(([k, v]) => { FOUNDATION_MAP[k] = { fdc: v.fdc, expect: v.expect }; });
 // Every switch made, collected for the report.
 const SWITCHES = {};
 
@@ -119,6 +125,26 @@ function findKey(name, obj) {
   return null;
 }
 
+/* One ingredient line standing for several foods in equal parts. Equal parts
+ * by weight makes the blended per-100 g profile the plain mean of the parts,
+ * and every id stays on the row so it can be checked.
+ */
+function composite(raw, food, c) {
+  const ns = c.parts.map((p) => FND_BY_ID[p.fdc]);
+  const avg = (f) => ns.reduce((a, n) => a + (n[f] || 0), 0) / ns.length;
+  const k = c.total_g / 100;
+  return {
+    raw, food, kind: "ok", src: "Foundation",
+    fdc: c.parts.map((p) => p.fdc).join(", "),
+    label: ns.map((n) => n.desc).join(" + "),
+    note: "no quantity in the recipe — assumed " + c.assumes,
+    qty: null, unit: null, grams: c.total_g,
+    kcal: +(avg("kcal") * k).toFixed(1), fat: +(avg("fat") * k).toFixed(1),
+    protein: +(avg("protein") * k).toFixed(1), carb: +(avg("carb") * k).toFixed(1),
+    fiber: +(avg("fiber") * k).toFixed(1),
+  };
+}
+
 function resolve(line) {
   const raw = line.replace(/^\s*[-*]\s*/, "").trim();
   let rest = raw;
@@ -141,6 +167,11 @@ function resolve(line) {
   if (ambKey && /cauliflower rice|fried eggs/.test(ambKey)) return { raw, food, kind: "excluded", why: AMBIGUOUS[ambKey], ...Z };
   if (isOptional(raw, qty)) return { raw, food, kind: "optional", ...Z };
 
+  // Composites resolve before the map lookups, because the line they stand for
+  // names no single food and would otherwise fall through to FLAGGED.
+  const compKey = findKey(food, COMPOSITES);
+  if (compKey) return composite(raw, food, COMPOSITES[compKey]);
+
   // Order matters. A real mapping always wins over FLAGGED and NEGLIGIBLE:
   // "tamari or coconut aminos" was being flagged on the words "coconut aminos"
   // even though tamari is mapped and AMBIGUOUS already says to use it.
@@ -155,6 +186,7 @@ function resolve(line) {
   if (isNeg(food)) return { raw, food, kind: "negligible", ...Z };
 
   let src = null, per100 = null, gramsTable = null, label = null, fdc = null, note = null;
+
   // Foundation-first: it outranks both SR Legacy and the Branded stand-ins
   // (coconut flour was on a Branded entry only because SR Legacy had none).
   // MACRO_NO_FOUNDATION=1 reproduces the pre-Foundation numbers, so the
@@ -244,14 +276,17 @@ function build(recipe) {
     tot.kcal += r.kcal || 0; tot.fat += r.fat || 0; tot.protein += r.protein || 0;
     tot.carb += r.carb || 0; tot.fiber += r.fiber || 0;
   });
-  const s = recipe.servings || 1;
+  // recipes.json carries no serving count for the guacamole; its nutrition is
+  // stated per 3/4 cup, so the count is the computed yield divided by 3/4.
+  const y = YIELD[recipe.slug];
+  const s = y ? y.servings : (recipe.servings || 1);
   const per = {
     calories: Math.round(tot.kcal / s), fat: Math.round(tot.fat / s),
     protein: Math.round(tot.protein / s), carbs: Math.round(tot.carb / s),
     fiber: Math.round(tot.fiber / s),
   };
   per.net_carbs = Math.max(0, per.carbs - per.fiber);
-  return { rows, tot, per, servings: s, stated: statedOf(recipe.full_text) };
+  return { rows, tot, per, servings: s, yield: y, stated: statedOf(recipe.full_text) };
 }
 
 function md(recipe) {
@@ -259,7 +294,9 @@ function md(recipe) {
   const L = [];
   L.push(`## ${recipe.title}`);
   L.push("");
-  L.push(`\`${recipe.slug}\` · **servings: ${b.servings}** (as stated in the recipe)`);
+  L.push(b.yield
+    ? `\`${recipe.slug}\` · **servings: ${b.servings}** — not stated in the recipe; ${b.yield.why}`
+    : `\`${recipe.slug}\` · **servings: ${b.servings}** (as stated in the recipe)`);
   L.push("");
   L.push("| Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |");
   L.push("|---|---|---|---|---|---|---|");

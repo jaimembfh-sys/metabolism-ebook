@@ -118,6 +118,11 @@ const FOUNDATION_MAP = {
   "avocado":                          { fdc: 2710824, expect: "Avocado, Hass, peeled, raw" },
   // "tart apple" is a Granny Smith.
   "tart apple":                       { fdc: 1750342, expect: "Apples, granny smith, with skin, raw" },
+  // Foundation carries the Roma as its own food, which is what the guacamole
+  // names. This clears a flag rather than switching a source.
+  "roma tomato":                      { fdc: 1999634, expect: "Tomato, roma" },
+  "cherry or grape tomatoes":         { fdc: 321360,  expect: "Tomatoes, grape, raw" },
+  "halved cherry tomatoes":           { fdc: 321360,  expect: "Tomatoes, grape, raw" },
 
   // ---- nuts and seeds
   "pecans":                           { fdc: 2346395, expect: "Nuts, pecans, halves, raw" },

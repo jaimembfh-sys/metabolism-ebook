@@ -20,20 +20,24 @@ const EXTRA_NEGLIGIBLE = [
   // Jaime, 2026-09-21: xanthan gum is used in teaspoon amounts, count as zero.
   "xanthan gum",
   // herbs, aromatics and seasonings at recipe quantities
+  // norm() strips "chopped"/"fresh" qualifiers before the negligible test,
+  // which is an exact match, so the post-norm forms are the ones that have to
+  // be listed. "chopped parsley" alone never matched and was being flagged.
   "chopped parsley", "chopped fresh parsley leaves", "fresh parsley or dill",
+  "parsley", "fresh parsley leaves", "parsley leaves",
   "sprig fresh rosemary", "fresh rosemary sprigs", "whole cloves",
   "ground black pepper", "pinch of sea salt", "seasoned salt",
   "kosher salt and freshly ground black pepper", "real vanilla extract",
   "zest of 1 lemon", "zest of 1/2 lemon", "lemon zest", "avocado oil spray",
   "cold water or aquafaba", "ice", "fresh thyme sprigs",
+  // A dash, and the only flagged item left in the guacamole.
+  "dash of tapatío hot sauce", "tapatío hot sauce",
 ];
 
 // No SR Legacy entry. Excluded from totals and reported per recipe.
 const STILL_FLAGGED = {
-  // "mixed vegetables of choice" names no food, so nothing can be matched.
-  // Jaime's answer on this one did not come through - the choice between
-  // leaving it as a floor and naming vegetables is still open.
-  "mixed vegetables of choice": "recipe does not name the vegetables, so no food can be matched",
+  // "mixed vegetables of choice" is resolved as a composite from 2026-09-21 -
+  // see COMPOSITES in assumptions.js. No longer flagged.
   "the soaked and drained macadamia nuts": "back-reference to the macadamia nuts already counted above",
 };
 
@@ -75,6 +79,8 @@ const MAP3 = {
   "natural creamy peanut butter": { fdc: 172470, expect: "Peanut butter, smooth style, without salt", grams: { cup: 258, tbsp: 16, oz: 28.35 } },
   "smooth peanut butter": { fdc: 172470, expect: "Peanut butter, smooth style, without salt", grams: { cup: 258, tbsp: 16, oz: 28.35 } },
   "buttermilk":           { fdc: 172225, expect: "Milk, buttermilk, fluid, whole", grams: { cup: 245, tbsp: 15.3, oz: 29.6 } },
+  // Roma/plum tomato, 62 g each — USDA's standard weight for the variety.
+  "roma tomato":          { fdc: 170457, expect: "Tomatoes, red, ripe, raw, year round average", grams: { each: 62, cup: 180, oz: 28.35 } },
   "buttermilk or milk":   { fdc: 172225, expect: "Milk, buttermilk, fluid, whole", grams: { cup: 245, tbsp: 15.3, oz: 29.6 } },
 };
 
