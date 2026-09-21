@@ -6015,21 +6015,28 @@
                     .trim();
                 const scrubbed = scrubDisconnectedHelpline(text);
 
-                // Detect-and-regenerate, same pattern as the allergen gate.
-                // _edRetry guards against recursing: one regeneration, then the
-                // response goes out as-is rather than leaving the user with
-                // nothing at all, which would be worse than a weekday-only
-                // number. The scrubber below still runs on the retry.
-                if (!isEdRetry && edEscalationMissingCrisisLine(scrubbed)) {
-                    console.warn('[coach] eating-disorder escalation had no 24/7 option — regenerating.');
-                    const corrective = appendToSystem(
-                        systemInstruction,
-                        '\n\nYOUR PREVIOUS REPLY WAS REJECTED. It escalated for disordered eating but offered no 24/7 option. ' +
-                        'The National Alliance line (866-662-1235) is Monday–Friday 9am–7pm Eastern only. ' +
-                        'Regenerate the reply and include BOTH resources together: the Alliance line with its hours and findEDhelp.com, ' +
-                        'AND the 24/7 option — call or text 988, or text ALLIANCE to 741-741.'
-                    );
-                    return await callClaudeChat(conversationHistory, corrective, requestType, liveSearchBudget, true);
+                // Detect-and-regenerate, same pattern as the allergen gate, but
+                // with a deterministic floor underneath it. Three tiers:
+                //   1. the prompt rule asks for the 24/7 option
+                //   2. a failed reply is regenerated once, naming the gap
+                //   3. if that ALSO fails, the block is appended in code
+                // Tier 3 exists because the 24/7 option is the half that matters
+                // at 2am on a Sunday, and no amount of prompting makes a
+                // probabilistic generator a guarantee.
+                if (edEscalationMissingCrisisLine(scrubbed)) {
+                    if (!isEdRetry) {
+                        console.warn('[coach] eating-disorder escalation had no 24/7 option — regenerating.');
+                        const corrective = appendToSystem(
+                            systemInstruction,
+                            '\n\nYOUR PREVIOUS REPLY WAS REJECTED. It escalated for disordered eating but offered no 24/7 option. ' +
+                            'The National Alliance line (866-662-1235) is Monday–Friday 9am–7pm Eastern only. ' +
+                            'Regenerate the reply and include BOTH resources together: the Alliance line with its hours and findEDhelp.com, ' +
+                            'AND the 24/7 option — call or text 988, or text ALLIANCE to 741-741.'
+                        );
+                        return await callClaudeChat(conversationHistory, corrective, requestType, liveSearchBudget, true);
+                    }
+                    console.error('[coach] 24/7 option still missing after regeneration — appending it deterministically.');
+                    scrubbed = scrubbed + '\n' + CRISIS_247_BLOCK;
                 }
 
                 return { text: scrubbed, liveSearchesUsed: data.liveSearchesUsed || 0 };
@@ -7590,7 +7597,17 @@ Apply the same goal-setting principles as before: Jaime Jenkins' framework first
             // The verified resources, supplied by Jaime 2026-09-21. Both halves
             // always go out together: the Alliance line is weekday daytime only,
             // so on its own it is no use to someone in distress at 2am.
-            const ED_RESOURCES = '**National Alliance for Eating Disorders** — 866-662-1235, Monday–Friday 9am–7pm Eastern, staffed by licensed therapists. findEDhelp.com to find treatment. **For 24/7 support:** call or text **988**, or text **ALLIANCE** to **741-741**';
+            // HTML, not markdown. The coach prompts say "Do NOT use asterisks
+            // for bolding. Format with clean HTML", and appendChatMessage
+            // assigns straight to innerHTML - so markdown injected here would
+            // render as literal asterisks.
+            const ED_RESOURCES = '<strong>National Alliance for Eating Disorders</strong> — 866-662-1235, Monday–Friday 9am–7pm Eastern, staffed by licensed therapists. findEDhelp.com to find treatment. <strong>For 24/7 support:</strong> call or text <strong>988</strong>, or text <strong>ALLIANCE</strong> to <strong>741-741</strong>';
+
+            // The deterministic floor. Appended verbatim when a reply escalates
+            // for disordered eating and the model has twice failed to include a
+            // 24/7 route. Guarantees the option is present regardless of what
+            // the model does.
+            const CRISIS_247_BLOCK = '<p><strong>For 24/7 support anytime:</strong> Call or text <strong>988</strong> · Or text <strong>ALLIANCE</strong> to <strong>741-741</strong></p>';
 
             function scrubDisconnectedHelpline(text) {
                 if (!text) return text;
@@ -7603,7 +7620,7 @@ Apply the same goal-setting principles as before: Jaime Jenkins' framework first
                 );
                 // Then any bare number or text-line that survived.
                 out = out.replace(/\b1?[-\s.]?800[-\s.]?931[-\s.]?2237\b/gi, ED_RESOURCES);
-                out = out.replace(/text\s+["“]?NEDA["”]?\s+to\s+741741/gi, 'text **ALLIANCE** to **741-741**');
+                out = out.replace(/text\s+["“]?NEDA["”]?\s+to\s+741741/gi, 'text <strong>ALLIANCE</strong> to <strong>741-741</strong>');
                 // Finally a bare label with no number attached.
                 out = out.replace(/\bNEDA\s+Helpline\b/gi, 'National Alliance for Eating Disorders');
                 if (out !== text) {
