@@ -23,9 +23,9 @@ const EXTRA_MAP = {
   "thai chilies":         { fdc: 170106, expect: "Peppers, hot chili, red, raw", grams: { each: 2 } },
   "holy basil":           { fdc: 172232, expect: "Basil, fresh", grams: { cup: 24, tbsp: 1.5 } },
   "basil":                { fdc: 172232, expect: "Basil, fresh", grams: { cup: 24, tbsp: 1.5 } },
-  // "boneless, skinless chicken" with no cut named. Mapped to BREAST on
-  // Jaime's explicit instruction not to substitute a fattier cut, and flagged
-  // as an assumption in every breakdown that uses it.
+  // "boneless, skinless chicken" with no cut named. Jaime confirmed
+  // 2026-09-21 that this is BREAST in every recipe, so it is no longer
+  // reported as an assumption.
   "boneless": { fdc: 171077, expect: "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw", grams: { lb: 453.6, oz: 28.35, cup: 140, each: 174 } },
   "boneless skinless chicken": { fdc: 171077, expect: "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw", grams: { lb: 453.6, oz: 28.35, cup: 140 } },
 };

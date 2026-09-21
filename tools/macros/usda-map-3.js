@@ -17,6 +17,8 @@ const EXTRA_NEGLIGIBLE = [
   "monk fruit/allulose blend", "allulose/monk fruit blend", "powdered sweetener",
   "sugar-free powdered sweetener", "so nourished monk fruit sweetener with allulose",
   "granulated sweetener", "brown sweetener", "confectioners sweetener",
+  // Jaime, 2026-09-21: xanthan gum is used in teaspoon amounts, count as zero.
+  "xanthan gum",
   // herbs, aromatics and seasonings at recipe quantities
   "chopped parsley", "chopped fresh parsley leaves", "fresh parsley or dill",
   "sprig fresh rosemary", "fresh rosemary sprigs", "whole cloves",
@@ -28,12 +30,17 @@ const EXTRA_NEGLIGIBLE = [
 
 // No SR Legacy entry. Excluded from totals and reported per recipe.
 const STILL_FLAGGED = {
-  "xanthan gum": "no SR Legacy entry; used in trace amounts as a thickener",
+  // "mixed vegetables of choice" names no food, so nothing can be matched.
+  // Jaime's answer on this one did not come through - the choice between
+  // leaving it as a floor and naming vegetables is still open.
   "mixed vegetables of choice": "recipe does not name the vegetables, so no food can be matched",
   "the soaked and drained macadamia nuts": "back-reference to the macadamia nuts already counted above",
 };
 
 const MAP3 = {
+  // Jaime, 2026-09-21: almond flour IS ground blanched almonds, so it maps to
+  // the same food rather than staying flagged.
+  "almond flour":         { fdc: 170568, expect: "Nuts, almonds, blanched", grams: { cup: 96, tbsp: 6, oz: 28.35, g: 1 } },
   // Keys WITHOUT the leading unit word. "cans tuna..." could never match,
   // because the unit is consumed before the food name is read.
   "tuna packed in water": { fdc: 171986, expect: "Fish, tuna, light, canned in water, without salt, drained solids", grams: { can: 142, each: 142, cup: 154, oz: 28.35 } },

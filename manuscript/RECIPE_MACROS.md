@@ -757,7 +757,7 @@ Divided by **6 servings**.
 | 4 oz sliced ham | 113.4 g | Ham, sliced, regular (approximately 11% fat) <br>`FDC 173864` | SR Legacy | 10 | 18.8 | 4.1 |
 | 2 eggs, beaten | 100 g | Egg, whole, raw, fresh <br>`FDC 171287` | SR Legacy | 9.5 | 12.6 | 0.7 |
 | 3/4 cup finely grated Parmesan cheese | 75 g | Cheese, parmesan, grated <br>`FDC 171247` | SR Legacy | 20.9 | 21.3 | 10.4 |
-| 1/2 cup almond flour (or 1/4 cup coconut flour) | — | ⚠️ **FLAGGED** — no SR Legacy entry for the defatted flour | — | — | — | — |
+| 1/2 cup almond flour (or 1/4 cup coconut flour) | 48 g | Nuts, almonds, blanched <br>`FDC 170568` | SR Legacy | 25.2 | 10.3 | 9 |
 | 2 tsp Italian seasoning | — | *negligible* | — | 0 | 0 | 0 |
 | Avocado oil spray | — | *negligible* | — | 0 | 0 | 0 |
 | 2 tbsp avocado oil (oven/skillet method only) | 27.2 g | Oil, avocado <br>`FDC 173573` | SR Legacy | 27.2 | 0 | 0 |
@@ -768,25 +768,19 @@ Divided by **6 servings**.
 | 2 tbsp Dijon mustard | 30 g | Mustard, prepared, yellow <br>`FDC 172234` | SR Legacy | 1 | 1.1 | 1.7 |
 | 1 cup shredded Parmesan cheese | 100 g | Cheese, parmesan, grated <br>`FDC 171247` | SR Legacy | 27.8 | 28.4 | 13.9 |
 | Salt and pepper to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **303.7** | **274.6** | **39.5** |
+| **WHOLE RECIPE TOTAL** | | | | **328.9** | **284.9** | **48.5** |
 
-Whole recipe: **4005 kcal**, fat 303.7 g, protein 274.6 g, carbs 39.5 g, fiber 2.7 g
+Whole recipe: **4288 kcal**, fat 328.9 g, protein 284.9 g, carbs 48.5 g, fiber 7.5 g
 Divided by **8 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 543 | **501** | -8% |
-| Fat (g) | 42 | **38** | -10% |
-| Protein (g) | 37 | **34** | -8% |
-| Total carbs (g) | 4 | **5** | +25% |
-| Fiber (g) | 1 | **0** | -100% |
+| Calories | 543 | **536** | -1% |
+| Fat (g) | 42 | **41** | -2% |
+| Protein (g) | 37 | **36** | -3% |
+| Total carbs (g) | 4 | **6** | +50% |
+| Fiber (g) | 1 | **1** | 0% |
 | Net carbs (g) | 3 | **5** | +67% |
-
-> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `1/2 cup almond flour (or 1/4 cup coconut flour)` — no SR Legacy entry for the defatted flour
-
-**Assumptions made:**
-- `1/2 cup almond flour (or 1/4 cup coconut flour)` — no SR Legacy entry for the defatted flour
 
 ---
 ## Keto Chicken Parmesan
@@ -797,7 +791,7 @@ Divided by **8 servings**.
 |---|---|---|---|---|---|---|
 | 6 small chicken breasts (1 1/2 lbs) | 840 g | Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw <br>`FDC 171077` | SR Legacy | 22 | 189 | 0 |
 | 1/2 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
-| 2 cups almond flour | — | ⚠️ **FLAGGED** — no SR Legacy entry for the defatted flour | — | — | — | — |
+| 2 cups almond flour | 192 g | Nuts, almonds, blanched <br>`FDC 170568` | SR Legacy | 100.8 | 41.1 | 35.8 |
 | 3 large eggs | 150 g | Egg, whole, raw, fresh <br>`FDC 171287` | SR Legacy | 14.3 | 18.8 | 1.1 |
 | 1/2 cup parmesan cheese | 50 g | Cheese, parmesan, grated <br>`FDC 171247` | SR Legacy | 13.9 | 14.2 | 7 |
 | Garlic powder | — | *negligible* | — | 0 | 0 | 0 |
@@ -806,25 +800,19 @@ Divided by **8 servings**.
 | 2 cups marinara sauce (see Related Recipe below) | 490 g | Sauce, pasta, spaghetti/marinara, ready-to-serve <br>`FDC 171192` | SR Legacy | 7.9 | 6.8 | 36.4 |
 | 1 1/2 cups mozzarella cheese, freshly sliced | 169.5 g | Cheese, mozzarella, whole milk <br>`FDC 170845` | SR Legacy | 37.5 | 37.6 | 4.1 |
 | 1/3 cup parmesan cheese | 33.3 g | Cheese, parmesan, grated <br>`FDC 171247` | SR Legacy | 9.3 | 9.5 | 4.6 |
-| **WHOLE RECIPE TOTAL** | | | | **130.5** | **275.9** | **53.2** |
+| **WHOLE RECIPE TOTAL** | | | | **231.3** | **317.0** | **89.0** |
 
-Whole recipe: **2555 kcal**, fat 130.5 g, protein 275.9 g, carbs 53.2 g, fiber 8.8 g
+Whole recipe: **3688 kcal**, fat 231.3 g, protein 317.0 g, carbs 89.0 g, fiber 27.8 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 349 | **426** | +22% |
-| Fat (g) | 12 | **22** | +83% |
-| Protein (g) | 45 | **46** | +2% |
-| Total carbs (g) | 4 | **9** | +125% |
-| Fiber (g) | 2 | **1** | -50% |
-| Net carbs (g) | 2 | **8** | +300% |
-
-> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `2 cups almond flour` — no SR Legacy entry for the defatted flour
-
-**Assumptions made:**
-- `2 cups almond flour` — no SR Legacy entry for the defatted flour
+| Calories | 349 | **615** | +76% |
+| Fat (g) | 12 | **39** | +225% |
+| Protein (g) | 45 | **53** | +18% |
+| Total carbs (g) | 4 | **15** | +275% |
+| Fiber (g) | 2 | **5** | +150% |
+| Net carbs (g) | 2 | **10** | +400% |
 
 ---
 ## Keto Chili
@@ -914,7 +902,7 @@ Divided by **16 servings**.
 | 1/2 tsp toasted sesame oil | 2.3 g | Oil, sesame, salad or cooking <br>`FDC 171016` | SR Legacy | 2.3 | 0 | 0 |
 | 4 tsp minced fresh ginger | 8 g | Ginger root, raw <br>`FDC 169231` | SR Legacy | 0.1 | 0.1 | 1.4 |
 | 4 tsp minced fresh garlic (4 cloves) | 11.2 g | Garlic, raw <br>`FDC 169230` | SR Legacy | 0.1 | 0.7 | 3.7 |
-| 1 tsp xanthan gum <!-- linked_product: url=null --> | — | ⚠️ **FLAGGED** — no SR Legacy entry; used in trace amounts as a thickener | — | — | — | — |
+| 1 tsp xanthan gum <!-- linked_product: url=null --> | — | *negligible* | — | 0 | 0 | 0 |
 | **WHOLE RECIPE TOTAL** | | | | **2.6** | **15.9** | **13.1** |
 
 Whole recipe: **129 kcal**, fat 2.6 g, protein 15.9 g, carbs 13.1 g, fiber 1.6 g
@@ -929,12 +917,8 @@ Divided by **1 servings**.
 | Fiber (g) | 0 | **2** | — |
 | Net carbs (g) | 1 | **11** | +1000% |
 
-> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `1 tsp xanthan gum <!-- linked_product: url=null -->` — no SR Legacy entry; used in trace amounts as a thickener
-
 **Assumptions made:**
 - `1/2 cup tamari or coconut aminos` — recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.
-- `1 tsp xanthan gum <!-- linked_product: url=null -->` — no SR Legacy entry; used in trace amounts as a thickener
 
 ---
 ## Marinara Sauce
@@ -1376,7 +1360,7 @@ Divided by **6 servings**.
 | 1/4 tsp toasted sesame oil | 1.1 g | Oil, sesame, salad or cooking <br>`FDC 171016` | SR Legacy | 1.1 | 0 | 0 |
 | 2 tsp peeled and minced fresh ginger | 4 g | Ginger root, raw <br>`FDC 169231` | SR Legacy | 0 | 0.1 | 0.7 |
 | 2 tsp peeled and minced fresh garlic (2 cloves) | 5.6 g | Garlic, raw <br>`FDC 169230` | SR Legacy | 0 | 0.4 | 1.9 |
-| 1/2 tsp xanthan gum <!-- linked_product: url=null --> | — | ⚠️ **FLAGGED** — no SR Legacy entry; used in trace amounts as a thickener | — | — | — | — |
+| 1/2 tsp xanthan gum <!-- linked_product: url=null --> | — | *negligible* | — | 0 | 0 | 0 |
 | 1 Tbsp beef tallow or avocado oil | 12.8 g | Fat, beef tallow <br>`FDC 171400` <br>*recipe offers a choice. Both are ~100% fat and within 1 kcal/g of each other, so the macro effect is negligible. Calculated with beef tallow.* | SR Legacy | 12.8 | 0 | 0 |
 | Sesame seeds and chopped green onions, for serving (optional) | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | **WHOLE RECIPE TOTAL** | | | | **28.9** | **135.7** | **6.6** |
@@ -1393,12 +1377,8 @@ Divided by **4 servings**.
 | Fiber (g) | 0 | **0** | — |
 | Net carbs (g) | 3 | **2** | -33% |
 
-> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `1/2 tsp xanthan gum <!-- linked_product: url=null -->` — no SR Legacy entry; used in trace amounts as a thickener
-
 **Assumptions made:**
 - `1/4 cup tamari or coconut aminos` — recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.
-- `1/2 tsp xanthan gum <!-- linked_product: url=null -->` — no SR Legacy entry; used in trace amounts as a thickener
 - `1 Tbsp beef tallow or avocado oil` — recipe offers a choice. Both are ~100% fat and within 1 kcal/g of each other, so the macro effect is negligible. Calculated with beef tallow.
 
 ---
