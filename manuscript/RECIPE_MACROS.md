@@ -980,7 +980,7 @@ Divided by **6 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 2 1/2 lbs pork tenderloin | 1134 g | Pork, fresh, loin, tenderloin, separable lean only, raw <br>`FDC 168249` | SR Legacy | 24.6 | 237.6 | 0 |
+| 2 1/2 lbs pork tenderloin | 1134 g | Pork, fresh, loin, tenderloin, separable lean and fat, with added solution, raw <br>`FDC 169184` | SR Legacy | 35.6 | 228.6 | 0 |
 | 1 sprig fresh rosemary | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 cup olive oil | 54 g | Oil, olive, salad or cooking <br>`FDC 171413` | SR Legacy | 54 | 0 | 0 |
 | 2 Tbsp tamari or coconut aminos | 36 g | Soy sauce made from soy (tamari) <br>`FDC 174278` <br>*recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.* | SR Legacy | 0 | 3.8 | 2 |
@@ -995,16 +995,16 @@ Divided by **6 servings**.
 | Ground black pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | Mixed vegetables of choice, cut into similar-sized pieces (bell peppers, zucchini, asparagus, broccoli, Brussels sprouts, mushrooms, red onion, or carrots all work well) | — | ⚠️ **FLAGGED** — recipe does not name the vegetables, so no food can be matched | — | — | — | — |
 | The reserved marinade from the pork | — | *back-reference, already counted above* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **79.6** | **242.9** | **6.7** |
+| **WHOLE RECIPE TOTAL** | | | | **90.6** | **233.9** | **6.7** |
 
-Whole recipe: **1766 kcal**, fat 79.6 g, protein 242.9 g, carbs 6.7 g, fiber 1.6 g
+Whole recipe: **1823 kcal**, fat 90.6 g, protein 233.9 g, carbs 6.7 g, fiber 1.6 g
 Divided by **8 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 210 | **221** | +5% |
-| Fat (g) | 9 | **10** | +11% |
-| Protein (g) | 28 | **30** | +7% |
+| Calories | 210 | **228** | +9% |
+| Fat (g) | 9 | **11** | +22% |
+| Protein (g) | 28 | **29** | +4% |
 | Total carbs (g) | 2 | **1** | -50% |
 | Fiber (g) | 0 | **0** | — |
 | Net carbs (g) | 2 | **1** | -50% |
@@ -1083,7 +1083,7 @@ Divided by **7 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 2 lbs salmon fillet, cut into six 6 oz portions | 907.2 g | Fish, salmon, Atlantic, wild, raw <br>`FDC 173686` | SR Legacy | 57.5 | 180 | 0 |
+| 2 lbs salmon fillet, cut into six 6 oz portions | 907.2 g | Fish, salmon, sockeye (red), raw (Alaska Native) <br>`FDC 168045` | SR Legacy | 66 | 199 | 0 |
 | 2 lbs asparagus, fibrous ends removed | 907.2 g | Asparagus, raw <br>`FDC 168389` | SR Legacy | 1.1 | 20 | 35.2 |
 | 1 tbsp avocado oil | 13.6 g | Oil, avocado <br>`FDC 173573` | SR Legacy | 13.6 | 0 | 0 |
 | Salt and black pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
@@ -1095,16 +1095,16 @@ Divided by **7 servings**.
 | 1 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp black pepper | — | *negligible* | — | 0 | 0 | 0 |
 | 1 small lemon, sliced into rings | 58 g | Lemons, raw, without peel <br>`FDC 167746` | SR Legacy | 0.2 | 0.6 | 5.4 |
-| **WHOLE RECIPE TOTAL** | | | | **141.5** | **201.7** | **42.7** |
+| **WHOLE RECIPE TOTAL** | | | | **150.0** | **220.7** | **42.7** |
 
-Whole recipe: **2226 kcal**, fat 141.5 g, protein 201.7 g, carbs 42.7 g, fiber 20.8 g
+Whole recipe: **2326 kcal**, fat 150.0 g, protein 220.7 g, carbs 42.7 g, fiber 20.8 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 374 | **371** | -1% |
-| Fat (g) | 24 | **24** | 0% |
-| Protein (g) | 34 | **34** | 0% |
+| Calories | 374 | **388** | +4% |
+| Fat (g) | 24 | **25** | +4% |
+| Protein (g) | 34 | **37** | +9% |
 | Total carbs (g) | 8 | **7** | -12% |
 | Fiber (g) | 4 | **3** | -25% |
 | Net carbs (g) | 4 | **4** | 0% |
@@ -1150,7 +1150,7 @@ Divided by **4 servings**.
 | 1 tbsp extra-virgin olive oil | 13.5 g | Oil, olive, salad or cooking <br>`FDC 171413` | SR Legacy | 13.5 | 0 | 0 |
 | 1 shallot, finely chopped | 25 g | Shallots, raw <br>`FDC 170499` | SR Legacy | 0 | 0.6 | 4.2 |
 | 4 garlic cloves, minced (about 1 1/2 tbsp) | 12 g | Garlic, raw <br>`FDC 169230` | SR Legacy | 0.1 | 0.8 | 4 |
-| 1 lb large raw shrimp, peeled and deveined, tails on | 453.6 g | Crustaceans, shrimp, raw <br>`FDC 175179` | SR Legacy | 2.3 | 91.2 | 0 |
+| 1 lb large raw shrimp, peeled and deveined, tails on | 453.6 g | Crustaceans, shrimp, mixed species, raw (may contain additives to retain moisture) <br>`FDC 174210` | SR Legacy | 4.6 | 61.7 | 4.1 |
 | 1 tsp kosher salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/2 tsp red pepper flakes | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp ground black pepper | — | *negligible* | — | 0 | 0 | 0 |
@@ -1160,19 +1160,19 @@ Divided by **4 servings**.
 | 1 1/2 lbs zucchini noodles (from about 4 medium zucchini) | — | *back-reference, already counted above* | — | 0 | 0 | 0 |
 | 1/4 cup chopped fresh parsley leaves | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
 | 2 tbsp freshly grated Parmesan | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
-| **WHOLE RECIPE TOTAL** | | | | **27.5** | **93.3** | **9.9** |
+| **WHOLE RECIPE TOTAL** | | | | **29.8** | **63.8** | **14.0** |
 
-Whole recipe: **650 kcal**, fat 27.5 g, protein 93.3 g, carbs 9.9 g, fiber 1.5 g
+Whole recipe: **587 kcal**, fat 29.8 g, protein 63.8 g, carbs 14.0 g, fiber 1.5 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 224 | **163** | -27% |
+| Calories | 224 | **147** | -34% |
 | Fat (g) | 9 | **7** | -22% |
-| Protein (g) | 27 | **23** | -15% |
-| Total carbs (g) | 9 | **2** | -78% |
+| Protein (g) | 27 | **16** | -41% |
+| Total carbs (g) | 9 | **4** | -56% |
 | Fiber (g) | 2 | **0** | -100% |
-| Net carbs (g) | 7 | **2** | -71% |
+| Net carbs (g) | 7 | **4** | -43% |
 
 > ⚠️ **2 ingredients flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
 > - `1/4 cup chopped fresh parsley leaves` — no confident USDA match

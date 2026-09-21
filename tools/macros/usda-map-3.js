@@ -92,3 +92,18 @@ const UNIT_PATCH = {
 };
 
 module.exports = { MAP3, EXTRA_NEGLIGIBLE, STILL_FLAGGED, UNIT_PATCH };
+
+/* ---- Meat rule overrides, 2026-09-21 ----
+ * Applied after the 60th-percentile analysis in meat-rule.js. Four picks
+ * changed; chicken breast, ground beef, flank steak and ribeye were already
+ * sitting at their 60th percentile and are unchanged.
+ */
+module.exports.MEAT_OVERRIDE = {
+  "boneless skinless chicken thighs": { fdc: 173627, expect: "Chicken, broilers or fryers, dark meat, thigh, meat only, raw", grams: { lb: 453.6, oz: 28.35, each: 75, cup: 140 } },
+  "chicken thighs":                   { fdc: 173627, expect: "Chicken, broilers or fryers, dark meat, thigh, meat only, raw", grams: { lb: 453.6, oz: 28.35, each: 75, cup: 140 } },
+  "pork tenderloin":                  { fdc: 169184, expect: "Pork, fresh, loin, tenderloin, separable lean and fat, raw", grams: { lb: 453.6, oz: 28.35, each: 450 } },
+  "large raw shrimp":                 { fdc: 174210, expect: "Crustaceans, shrimp, mixed species, raw", grams: { lb: 453.6, oz: 28.35, each: 11, cup: 145 } },
+  "shrimp":                           { fdc: 174210, expect: "Crustaceans, shrimp, mixed species, raw", grams: { lb: 453.6, oz: 28.35, each: 11, cup: 145 } },
+  "salmon fillet":                    { fdc: 168045, expect: "Fish, salmon, sockeye (red), raw", grams: { each: 170, oz: 28.35, lb: 453.6, fillet: 170 } },
+  "salmon":                           { fdc: 168045, expect: "Fish, salmon, sockeye (red), raw", grams: { each: 170, oz: 28.35, lb: 453.6, fillet: 170 } },
+};

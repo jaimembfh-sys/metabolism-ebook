@@ -20,6 +20,9 @@ const { MAP, NEGLIGIBLE, FLAGGED, verifyMap } = require("./usda-map.js");
 const { EXTRA_MAP, BRANDED, AMBIGUOUS } = require("./usda-map-extra.js");
 const MAP2 = require("./usda-map-2.js");
 const { MAP3, EXTRA_NEGLIGIBLE, STILL_FLAGGED, UNIT_PATCH } = require("./usda-map-3.js");
+// Meat picks from the 60th-percentile rule in meat-rule.js. Declared here
+// because the verification block below reads it.
+const MEAT_OVERRIDE = require("./usda-map-3.js").MEAT_OVERRIDE || {};
 
 const USDA = JSON.parse(fs.readFileSync(SCRATCH, "utf8"));
 const BY_ID = {};
@@ -27,7 +30,7 @@ USDA.foods.forEach((f) => (BY_ID[f.fdc_id] = f));
 verifyMap(BY_ID);
 
 // Verify the extra SR Legacy ids too.
-Object.entries(Object.assign({}, EXTRA_MAP, MAP2, MAP3)).forEach(([k, v]) => {
+Object.entries(Object.assign({}, EXTRA_MAP, MAP2, MAP3, MEAT_OVERRIDE)).forEach(([k, v]) => {
   const f = BY_ID[v.fdc];
   if (!f) throw new Error(`EXTRA_MAP ${k}: fdc_id ${v.fdc} not in index`);
   const want = v.expect.toLowerCase().slice(0, 40);
@@ -36,7 +39,7 @@ Object.entries(Object.assign({}, EXTRA_MAP, MAP2, MAP3)).forEach(([k, v]) => {
   }
 });
 
-const ALL_MAP = Object.assign({}, MAP3, MAP2, MAP, EXTRA_MAP);
+const ALL_MAP = Object.assign({}, MAP3, MAP2, MAP, EXTRA_MAP, MEAT_OVERRIDE);
 // Merge unit additions onto whatever table the entry already had.
 Object.entries(UNIT_PATCH).forEach(([k, extra]) => {
   if (ALL_MAP[k]) ALL_MAP[k] = Object.assign({}, ALL_MAP[k], { grams: Object.assign({}, ALL_MAP[k].grams, extra) });
