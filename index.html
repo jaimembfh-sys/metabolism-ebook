@@ -7769,6 +7769,52 @@ ${researcherSourcesText}
                 return v;
             }
 
+            // ============================================================
+            // ALLERGEN ENFORCEMENT
+            // ============================================================
+            // The binding-allergy decision rule is necessary but not
+            // sufficient. Measured 2026-09-21, n=6, gluten+dairy profile: the
+            // prompt rule alone still produced "toast" and "butter" in 2 of 6
+            // protocols. A one-in-three chance of recommending an allergen is
+            // not a rule, it is a suggestion.
+            //
+            // Same escalation as scrubDisconnectedHelpline and
+            // stripMealMacrosIfFlagged: state it in the prompt, then enforce it
+            // in code. Here the enforcement is a detect-and-regenerate rather
+            // than a scrub, because you cannot safely delete "toast" from a
+            // sentence and have what is left mean anything.
+            //
+            // Plant-milk exclusions matter: "almond milk" and "coconut cream"
+            // are correct dairy-free recommendations and must not trip this.
+            const PLANT_PREFIX = '(?<!coconut |almond |oat |soy |soya |cashew |rice |hemp |flax |pea |plant-based |plant )';
+            const ALLERGEN_TERMS = {
+                gluten: new RegExp('\\b(?<!gluten-free )(bread|pasta|couscous|wheat|barley|rye|bagel|toast|cracker|cereal|tortilla|breadcrumb|flour|oats|oatmeal|pita|naan|seitan)\\b', 'i'),
+                dairy: new RegExp('\\b' + PLANT_PREFIX + '(milk|cheese|yoghurt|yogurt|butter|cream|whey|kefir|ghee)\\b', 'i'),
+                nuts: /\b(almond|walnut|pecan|cashew|pistachio|hazelnut|macadamia|nut butter|peanut)\b/i,
+                soy: /\b(soy|soya|tofu|tempeh|edamame|miso)\b/i,
+                shellfish: /\b(shrimp|prawn|crab|lobster|crayfish|scallop|mussel|clam|oyster)\b/i
+            };
+
+            function findAllergenViolations(protocol, allergies) {
+                if (!protocol || !allergies || !allergies.length) return [];
+                const haystack = [
+                    (protocol.starter_habits || []).join(' \n '),
+                    protocol.rationale || '',
+                    (protocol.staged_plan || []).map(function (s) {
+                        return (s.focus || '') + ' ' + (s.habits || []).join(' ');
+                    }).join(' ')
+                ].join(' \n ');
+
+                const found = [];
+                allergies.forEach(function (a) {
+                    const re = ALLERGEN_TERMS[String(a).toLowerCase()];
+                    if (!re) return; // "other" and anything unrecognised: not machine-checkable
+                    const m = haystack.match(re);
+                    if (m) found.push({ allergen: a, term: m[0] });
+                });
+                return found;
+            }
+
             function buildProtocolIntakeTurn(profile) {
                 const hh = profile.health_history || {};
                 const p = hh.physical || {};
@@ -7855,7 +7901,9 @@ DECISION RULES:${disorderedEatingSignal ? `
 - Only choose "strict_low_carb" or "time_restricted_eating" when stress_baseline is "low" or "moderate" AND there are no disclosed_health_conditions${disorderedEatingSignal ? ' AND there is no disordered-eating safety signal' : ''}.
 - If behavioral_style is "all_or_nothing": keep starter_habits and rationale clear-cut and structured, not moderation-framed ("allow yourself a treat sometimes").
 - starter_habits must be grounded in the reference material above and prioritized by relevance to self_identified_barrier and past_plans_tried — not a generic "eat more veggies" list, and never repeating an approach past_plans_tried already shows failed.
-- If food allergies or diagnosed sensitivities are noted in the health history, never suggest starter habits that conflict with them.
+- FOOD ALLERGIES ARE BINDING, NOT ADVISORY. This rule overrides every rule below it. When the intake's "Food allergies" line lists anything other than "none" or "not captured", no starter habit, rationale sentence or example food may contain or imply those allergens — including indirect forms. "dairy" rules out milk, cheese, yoghurt, butter, cream and whey. "gluten" rules out wheat, barley, rye, bread, pasta, couscous and most oats. "nuts" rules out nut butters and nut flours. "soy" rules out tofu, tempeh, edamame and soy sauce. "shellfish" rules out shrimp, prawns, crab and lobster. Treat "other" as a signal to stay generic rather than guess which food it is.
+- WHENEVER A HABIT NAMES A FOOD CATEGORY, NAME COMPLIANT OPTIONS. A habit like "protein at every meal" given to someone with a dairy allergy pushes the substitution work back onto the user, which is the work they came here to have done. Give at least two concrete foods that are safe against their specific allergy list. If allergies are "none", concrete examples are still preferred but optional.
+- SENSITIVITIES SHAPE FOOD CHOICE — they are not just acknowledged. "ibs": favour low-FODMAP examples; do not use onion, garlic, beans or large raw-vegetable volumes as examples. "acid_reflux": avoid recommending large or high-fat meals late in the evening, and avoid tomato, citrus and coffee as examples. "bloating": favour cooked over raw vegetables, raise fibre gradually rather than in one step, and avoid sugar alcohols. Say in the rationale which adjustment you made and why, so the user can see their plan was shaped around it.
 - Fat distribution (midsection/abdomen vs. hips/thighs vs. evenly distributed) reflects the visceral-vs-subcutaneous fat distinction covered in the indexed material — midsection-predominant distribution is associated with more metabolically active visceral fat, which can support (never solely justify) a more conservative macro_approach when combined with the other signals above. Never treat this alone as reason to escalate to strict_low_carb.
 - rationale must be plain-language, second person, and cite real lesson/document names from the reference material — never invent a source.
 - Never suggest more than 3 meals/day or calorie-counting language.`;
@@ -7949,8 +7997,33 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                         }
                     );
 
-                    const parsed = await extractToolFields(userTurn, protocolSystem, 'protocol', PROTOCOL_TOOL, 'protocol-builder');
+                    let parsed = await extractToolFields(userTurn, protocolSystem, 'protocol', PROTOCOL_TOOL, 'protocol-builder');
                     if (!parsed) return null;
+
+                    // Allergen gate. One regeneration, with the specific
+                    // violation named — telling the model exactly which word
+                    // broke the rule works far better than repeating the rule.
+                    // Throws if the second attempt also violates: serving a
+                    // known allergen is worse than showing an error.
+                    const declaredAllergies = (hhPhysical.food_allergies || []);
+                    let violations = findAllergenViolations(parsed, declaredAllergies);
+                    if (violations.length) {
+                        console.warn('[protocol-builder] allergen violation, regenerating:', violations);
+                        const corrective = userTurn +
+                            '\n\nYOUR PREVIOUS ATTEMPT VIOLATED THIS USER\'S ALLERGIES and was rejected. ' +
+                            'It contained: ' + violations.map(function (v) { return '"' + v.term + '" (' + v.allergen + ')'; }).join(', ') + '. ' +
+                            'Regenerate the whole protocol. Name only foods that are safe against every allergy listed in the MEDICAL section, ' +
+                            'and give at least two concrete compliant options wherever you name a food category.';
+                        parsed = await extractToolFields(corrective, protocolSystem, 'protocol', PROTOCOL_TOOL, 'protocol-builder-retry');
+                        if (!parsed) return null;
+                        violations = findAllergenViolations(parsed, declaredAllergies);
+                        if (violations.length) {
+                            console.error('[protocol-builder] allergen violation survived regeneration:', violations);
+                            const err = new Error('We could not build a plan that safely avoids your listed allergies. Please try again.');
+                            err.allergenViolations = violations;
+                            throw err;
+                        }
+                    }
                     return {
                         eating_pattern: parsed.eating_pattern || 'rule_of_3s',
                         macro_approach: parsed.macro_approach || 'safe_starches',
