@@ -320,15 +320,72 @@ const head = [
   "",
   "Every number below traces to a USDA FDC id that was found by searching the dataset and then read to confirm it is the right food. `verifyMap()` asserts each id still resolves to the description it was chosen for and throws otherwise.",
   "",
-  "**Sources.** SR Legacy (2018-04), downloaded in full and indexed locally — 7,793 foods. Two ingredients come from FDC Branded Foods, marked as such, because SR Legacy has no entry for them.",
+  "**Sources, in order of precedence.** Foundation Foods first — the newest, lab-measured data — wherever an entry exists for the food the recipe names. SR Legacy (2018-04) is the fallback. Foundation is 394 foods and was pulled in full via the API; SR Legacy is 7,793 foods, downloaded in full and indexed locally. One ingredient came from FDC Branded Foods and has since moved to Foundation.",
   "",
-  "**Ingredients are mapped to what the recipe says**, never to a fattier cut or a near neighbour. Where a recipe names a food loosely, or offers a choice, the ingredient is flagged or the assumption is stated rather than resolved silently.",
+  "**Ingredients are mapped to what the recipe says**, never to a fattier cut or a near neighbour. Where a recipe names a food loosely, or offers a choice, the ingredient is flagged or the assumption is stated rather than resolved silently. A Foundation entry is used only when it describes the same food — where it describes a different one, the ingredient stays on SR Legacy and section 2b gives the reason.",
+  "",
+  "**Fiber.** Foundation does not report fiber for every food. Where it reports none, fiber is taken from the SR Legacy entry for the same ingredient and the row says so. For meat, cheese, cream and oil that fallback is zero either way.",
   "",
   "---",
   "",
 ];
 
-fs.writeFileSync(path.join(ROOT, "manuscript", "RECIPE_MACROS.md"), head.join("\n") + list.map(md).join(""), "utf8");
+/* The Foundation switch report. MACRO_BASELINE points at a dump produced by
+ * a MACRO_NO_FOUNDATION=1 run, so the before column is a real run of this
+ * same code rather than remembered numbers.
+ */
+function foundationSection() {
+  const body = list.map(build);
+  const sw = Object.values(SWITCHES).sort((a, b) => a.key.localeCompare(b.key));
+  const L = [];
+  L.push("\n---\n", "## Foundation-first: what changed\n");
+  L.push("Jaime's rule, 2026-09-21 — use a Foundation entry whenever one exists for that food, SR Legacy only as fallback.\n");
+
+  L.push("\n### 1. Ingredients that switched from SR Legacy to Foundation\n");
+  L.push("Values are per 100 g. `Δ` is Foundation minus the previous source.\n");
+  L.push("\n| Ingredient | Was | Fat | Protein | Carbs | Now | Fat | Protein | Carbs | Δ fat | Δ protein |");
+  L.push("|---|---|--:|--:|--:|---|--:|--:|--:|--:|--:|");
+  const d = (a, b) => { const v = +(b - a).toFixed(2); return (v > 0 ? "+" : "") + v; };
+  sw.forEach((s) => L.push(`| ${s.key} | ${s.from.src} ${s.from.fdc}<br>${s.from.desc} | ${s.from.fat} | ${s.from.protein} | ${s.from.carb} | Foundation ${s.to.fdc}<br>${s.to.desc} | ${s.to.fat} | ${s.to.protein} | ${s.to.carb} | ${d(s.from.fat, s.to.fat)} | ${d(s.from.protein, s.to.protein)} |`));
+  L.push(`\n**${sw.length} ingredients switched.**\n`);
+
+  const stayed = {};
+  body.forEach((b) => b.rows.forEach((x) => { if (x.src && x.src !== "Foundation") stayed[x.food] = x; }));
+  const keys = Object.keys(stayed).sort();
+  L.push("\n### 2. Ingredients still on SR Legacy — Foundation has no entry for the food\n");
+  L.push("\n| Ingredient | Source | Entry used |");
+  L.push("|---|---|---|");
+  keys.forEach((k) => L.push(`| ${k} | ${stayed[k].src} ${stayed[k].fdc} | ${stayed[k].label} |`));
+  L.push(`\n**${keys.length} ingredients stayed.** Foundation is only 394 foods, so most pantry items, oils, spices, sauces, broths and herbs simply are not in it.\n`);
+
+  L.push("\n### 2b. Foundation has an entry, but for a different food — deliberately not switched\n");
+  L.push("\n| Ingredient | Why it stayed |");
+  L.push("|---|---|");
+  Object.entries(FOUNDATION_REJECTED).forEach(([k, why]) => L.push(`| ${k} | ${why} |`));
+
+  const basePath = process.env.MACRO_BASELINE;
+  if (basePath && fs.existsSync(basePath)) {
+    const base = JSON.parse(fs.readFileSync(basePath, "utf8")).per;
+    const net = (p) => (p.net_carbs != null ? p.net_carbs : +(p.carbs - (p.fiber || 0)).toFixed(1));
+    L.push("\n\n### 3. Per-serving change, every recipe that moved\n");
+    L.push("\n| Recipe | Fat | Protein | Net carbs | Calories |");
+    L.push("|---|---|---|---|---|");
+    let n = 0;
+    list.forEach((r, i) => {
+      const a = body[i].per, b = base[r.slug];
+      if (!b) return;
+      if (a.fat === b.fat && a.protein === b.protein && net(a) === net(b) && a.calories === b.calories) return;
+      n++;
+      const c = (x, y, u) => (x === y ? `${x}${u}` : `${x}${u} → **${y}${u}**`);
+      L.push(`| ${r.title} | ${c(b.fat, a.fat, "g")} | ${c(b.protein, a.protein, "g")} | ${c(net(b), net(a), "g")} | ${c(b.calories, a.calories, "")} |`);
+    });
+    L.push(`\n**${n} of ${list.length} recipes changed.** The before column is a real run with \`MACRO_NO_FOUNDATION=1\`, not a remembered figure.\n`);
+  }
+  return L.join("\n");
+}
+
+fs.writeFileSync(path.join(ROOT, "manuscript", "RECIPE_MACROS.md"),
+  head.join("\n") + list.map(md).join("") + foundationSection(), "utf8");
 console.log(`wrote manuscript/RECIPE_MACROS.md for ${list.length} recipe(s)`);
 
 // MACRO_DUMP=<path> writes the per-serving numbers and the switch list as
