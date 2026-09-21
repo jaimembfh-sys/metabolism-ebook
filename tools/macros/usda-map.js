@@ -92,8 +92,12 @@ const MAP = {
   "romaine lettuce":        { fdc: 169247, expect: "Lettuce, cos or romaine, raw", grams: { cup: 47 } },
   "cherry or grape tomatoes": { fdc: 170457, expect: "Tomatoes, red, ripe, raw, year round average", grams: { cup: 149, each: 17 } },
   "pickled red onion":      { fdc: 170000, expect: "Onions, raw", grams: { cup: 160 } },
-  "red onion":              { fdc: 170000, expect: "Onions, raw", grams: { each: 110, cup: 160, medium: 110 } },
-  "onion":                  { fdc: 170000, expect: "Onions, raw", grams: { each: 110, cup: 160, medium: 110 } },
+  // small/medium/large carried on every onion key, not just "yellow onion".
+  // Without them "1 small onion" and "1 large onion" both fell back to
+  // each:110, so the size Jaime wrote was silently ignored - while "1 small
+  // YELLOW onion" correctly gave 70 g. USDA standard weights.
+  "red onion":              { fdc: 170000, expect: "Onions, raw", grams: { each: 110, cup: 160, small: 70, medium: 110, large: 150 } },
+  "onion":                  { fdc: 170000, expect: "Onions, raw", grams: { each: 110, cup: 160, small: 70, medium: 110, large: 150 } },
   "fresh ginger":           { fdc: 169231, expect: "Ginger root, raw", grams: { tsp: 2, tbsp: 6 } },
   "celery":                 { fdc: 169988, expect: "Celery, raw", grams: { rib: 40, cup: 101 } },
 

@@ -35,6 +35,14 @@ const EXTRA_NEGLIGIBLE = [
   "cilantro", "fresh cilantro", "chopped cilantro", "chopped fresh cilantro",
   "zest of 1 lemon", "zest of 1/2 lemon", "lemon zest", "avocado oil spray",
   "cold water or aquafaba", "ice", "fresh thyme sprigs",
+  /* Kaffir lime LEAVES are an aromatic, crushed into the pan and fished out
+   * before serving - they weigh well under a gram each. They were matching the
+   * "lime" key and being costed as twelve whole limes: 804 g, contributing
+   * 84.7 g of the Thai Panang curry's 130.7 g of carbs, from a leaf nobody
+   * eats. NEGLIGIBLE is tested after the map lookup, so listing them here
+   * overrides that match.
+   */
+  "kaffir lime leaves", "kaffir lime leaves if using", "lime leaves",
   // A dash, and the only flagged item left in the guacamole.
   "dash of tapatío hot sauce", "tapatío hot sauce",
 ];

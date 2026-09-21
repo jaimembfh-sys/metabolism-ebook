@@ -226,6 +226,30 @@ function blend(raw, food, b, grams, qty, unit) {
   };
 }
 
+const WEIGHT_UNIT_G = { g: 1, gram: 1, grams: 1, oz: 28.35, ounce: 28.35, ounces: 28.35, lb: 453.6, lbs: 453.6, pound: 453.6, pounds: 453.6 };
+
+/* A weight stated in brackets after the food name - the total for the line.
+ * Returns null for a bracket that comes before the food name, which is a
+ * per-item size ("2 (5 oz) cans tuna") and is handled by the unit tables.
+ */
+function statedTotal(raw) {
+  const re = /\(([^)]*?)\)/g;
+  let m;
+  while ((m = re.exec(raw)) !== null) {
+    // Leading bracket: nothing but digits and spaces before it.
+    if (/^[\d\s/.]*$/.test(raw.slice(0, m.index))) continue;
+    const inner = m[1].replace(/^\s*(about|approx\w*)\s+/i, "");
+    const w = inner.match(/^([\d]+(?:\s+\d+\/\d+)?(?:\.\d+)?|\d+\/\d+)\s*-?\s*([a-z]+)\.?$/i);
+    if (!w) continue;
+    const mult = WEIGHT_UNIT_G[w[2].toLowerCase()];
+    if (!mult) continue;
+    const q = parseQty(w[1]);
+    if (!q || q.v == null) continue;
+    return q.v * mult;
+  }
+  return null;
+}
+
 function resolve(line) {
   const raw = line.replace(/^\s*[-*]\s*/, "").trim();
   let rest = raw;
@@ -338,6 +362,31 @@ function resolve(line) {
   }
 
   if (!unit) unit = "each";
+
+  /* A weight Jaime wrote in brackets AFTER the food name is the total for the
+   * line, and it beats any count-times-typical-weight this tool would infer.
+   * "6 small chicken breasts (1 1/2 lbs)" was being costed at 840 g against
+   * the 680 g stated, and "3 chicken breasts (about 1 lb)" at 522 g against
+   * 454 g.
+   *
+   * A bracket BEFORE the food name is a per-item size instead - "2 (5 oz) cans
+   * tuna" is two 5 oz cans - and that already resolves correctly, so it is
+   * left alone.
+   */
+  const stated = statedTotal(raw);
+  if (stated != null) {
+    const ambNote = ambKey ? AMBIGUOUS[ambKey] : null;
+    const g0 = stated;
+    const k0 = g0 / 100;
+    return {
+      raw, food, kind: ambNote ? "ok-ambiguous" : "ok", fdc, label, src,
+      note: (note ? note + "; " : "") + "weight taken from the recipe line",
+      why: ambNote, qty, qtyRange, unit, grams: +g0.toFixed(1),
+      kcal: +(per100.kcal * k0).toFixed(1), fat: +(per100.fat * k0).toFixed(1),
+      protein: +(per100.protein * k0).toFixed(1), carb: +(per100.carb * k0).toFixed(1),
+      fiber: +((per100.fiber || 0) * k0).toFixed(1),
+    };
+  }
   // "Juice of 1 lime" states its own quantity in words, so nothing parsed off
   // the front of the line. The key supplies it.
   if (qty == null) {
@@ -534,6 +583,11 @@ if (process.env.MACRO_DUMP) {
     const b = build(r);
     out.per[r.slug] = b.per;
     b.rows.forEach((x) => { if (x.src) out.sources[x.food] = { src: x.src, fdc: x.fdc, label: x.label }; });
+    out.rows = out.rows || {};
+    out.rows[r.slug] = b.rows.map((x) => ({
+      raw: x.raw, food: x.food, kind: x.kind, unit: x.unit, qty: x.qty,
+      grams: x.grams, label: x.label, note: x.note,
+    }));
   });
   fs.writeFileSync(process.env.MACRO_DUMP, JSON.stringify(out, null, 1), "utf8");
 }
