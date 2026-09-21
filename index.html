@@ -7723,6 +7723,115 @@ ${researcherSourcesText}
                 }
             };
 
+            // ============================================================
+            // PROTOCOL INTAKE PAYLOAD
+            // ============================================================
+            // The Protocol Builder used to receive 14 flat lines while the app
+            // collected 30 Health History fields, ~18 conversational answers and
+            // a Daily Tracker. Only 4 of the 30 reached plan generation
+            // structurally; the rest arrived, if at all, as whatever the
+            // extraction model happened to fold into disclosed_health_conditions
+            // free text. That is why plans read generic.
+            //
+            // Three rules this code follows, each deliberate:
+            //
+            // 1. "not captured" is NOT the same as "none". Health History is
+            //    skippable. Emitting "Thyroid condition: no" for a form nobody
+            //    filled in tells the model a clinical negative that was never
+            //    established. Unanswered fields say so.
+            //
+            // 2. Six fields keep their snake_case identifiers - stress_baseline,
+            //    disclosed_health_conditions, behavioral_style, past_plans_tried,
+            //    self_identified_barrier, sleep_baseline. The decision rules in
+            //    the system prompt address them by exact name, including the
+            //    hard rule that high stress_baseline OR non-empty
+            //    disclosed_health_conditions forces macro_approach to
+            //    safe_starches. Renaming them would silently break that.
+            //
+            // 3. Weight and numeric targets are withheld entirely when the
+            //    disordered-eating signal is set, matching the existing
+            //    suppression rule. Reflecting a target weight back at someone in
+            //    a restrict-binge cycle works against everything else the safety
+            //    layer does. The other 22 fields still pass through.
+            // ============================================================
+            function intakeYesNo(v) {
+                if (v === true) return 'yes';
+                if (v === false) return 'no';
+                return 'not captured';
+            }
+
+            function intakeList(a) {
+                return (a && a.length) ? a.join(', ') : 'none';
+            }
+
+            function intakeVal(v, fallback) {
+                if (v === null || v === undefined || v === '') return fallback || 'not captured';
+                return v;
+            }
+
+            function buildProtocolIntakeTurn(profile) {
+                const hh = profile.health_history || {};
+                const p = hh.physical || {};
+                const l = hh.lifestyle || {};
+                const de = !!profile.disordered_eating_signal;
+                const L = [];
+
+                L.push('GOALS');
+                L.push('- Long-term goal: ' + intakeVal(profile.long_term_goal && profile.long_term_goal.text, 'none'));
+                if (!de) {
+                    L.push('- Target weight: ' + intakeVal(profile.target_weight, 'not given'));
+                    L.push('- Timeframe: ' + intakeVal(profile.timeframe, 'not given'));
+                    L.push('- Monthly goal: ' + intakeVal(profile.monthly_goal, 'not set'));
+                    L.push('- Weekly goal: ' + intakeVal(profile.weekly_goal, 'not set'));
+                }
+                L.push('- Core why: ' + intakeVal(profile.core_why_summary, 'none'));
+                L.push('');
+
+                L.push('BEHAVIOUR AND HISTORY');
+                L.push('- behavioral_style: ' + intakeVal(profile.behavioral_style, 'mixed_unsure'));
+                L.push('- self_identified_barrier: ' + intakeVal(profile.self_identified_barrier, 'none'));
+                L.push('- Biggest barrier (health history): ' + intakeVal(hh.biggest_barrier));
+                L.push('- past_plans_tried: ' + intakeList(profile.past_plans_tried));
+                L.push('');
+
+                L.push('MEDICAL');
+                L.push('- Diabetes: ' + intakeVal(p.diabetes, 'none'));
+                L.push('- Thyroid condition: ' + intakeYesNo(p.thyroid));
+                L.push('- PCOS / insulin resistance: ' + intakeYesNo(p.pcos_insulin_resistance));
+                L.push('- Significant hormonal shifts (postpartum/peri/menopause): ' + intakeYesNo(p.hormonal_shifts));
+                L.push('- On heart/BP/blood-sugar medication: ' + intakeYesNo(p.heart_bp_bloodsugar_meds));
+                L.push('- On a GLP-1 medication: ' + intakeYesNo(p.glp1_meds));
+                L.push('- Recent injury or surgery: ' + intakeYesNo(p.recent_injury_surgery));
+                L.push('- Chronic pain locations: ' + intakeList(p.chronic_pain_locations));
+                L.push('- Food allergies: ' + intakeList(p.food_allergies));
+                L.push('- Sensitivities: ' + intakeList(p.sensitivities));
+                L.push('- Fat distribution: ' + intakeVal(p.fat_distribution, 'not_sure'));
+                L.push('- disclosed_health_conditions: ' + intakeList(profile.disclosed_health_conditions));
+                L.push('- Family disease history: ' + intakeList(hh.family_history));
+                L.push('');
+
+                L.push('SLEEP AND ROUTINE');
+                L.push('- sleep_baseline: ' + intakeVal(profile.sleep_baseline, 'inconsistent'));
+                L.push('- Average sleep: ' + intakeVal(l.avg_sleep));
+                L.push('- Usual wake time: ' + intakeVal(l.wake_time));
+                L.push('- Wakes refreshed: ' + intakeYesNo(l.wake_refreshed));
+                L.push('- Energy pattern: ' + intakeVal(l.energy_pattern));
+                L.push('- Digestion: ' + intakeVal(l.digestion));
+                L.push('- Daily routine: ' + intakeVal(l.routine_type));
+                L.push('- Home meal prep frequency: ' + intakeVal(l.meal_prep_frequency));
+                L.push('');
+
+                L.push('STRESS AND EATING BEHAVIOUR');
+                L.push('- stress_baseline: ' + intakeVal(profile.stress_baseline, 'moderate'));
+                L.push('- Stress level (self-reported 1-10): ' + intakeVal(hh.stress_level));
+                L.push('- Emotional eating triggers: ' + intakeList(hh.emotional_triggers));
+                L.push('- Feels pressure to finish everything on the plate: ' + intakeYesNo(hh.plate_pressure));
+                L.push('- Already works with a therapist or mental health professional: ' + intakeYesNo(hh.works_with_therapist));
+                L.push('- DISORDERED-EATING SAFETY SIGNAL: ' + (de ? 'YES' : 'no'));
+
+                return L.join('\n');
+            }
+
             function buildProtocolBuilderInstruction(corpusText, disorderedEatingSignal, liveResearchText) {
                 return `You are Jaime Jenkins' Protocol Builder for the metabolic health coaching app. Using ONLY the indexed reference material below plus the user's intake profile, generate their personalized starting protocol by calling the record_protocol tool.
 
@@ -7736,7 +7845,7 @@ ${liveResearchText}
 --- END LIVE RESEARCH FINDING ---
 ` : ''}
 DECISION RULES:${disorderedEatingSignal ? `
-- DISORDERED-EATING SAFETY CASE — evaluate this FIRST, before any other rule below: this user has a disordered-eating safety signal on file. rationale and starter_habits MUST stay qualitative and food-quality-focused — NEVER a specific calorie target, macro gram target, or numeric weight-loss timeline. Frame progress around non-scale outcomes (energy, sleep, strength, mood), never a number on a scale. macro_approach MUST be "safe_starches" or "flexible" (never "strict_low_carb"), and eating_pattern MUST be "rule_of_3s" (never a fasting-window pattern). professional_guidance_note MUST recommend professional support (a therapist and/or doctor) alongside this app, framed as a genuine care team, not a replacement for the app. Never assert or imply a psychological reason for their eating patterns in rationale — only reflect back what was explicitly said in the transcript.` : ''}
+- DISORDERED-EATING SAFETY CASE — evaluate this FIRST, before any other rule below: this user has a disordered-eating safety signal on file. rationale and starter_habits MUST stay qualitative and food-quality-focused — NEVER a specific calorie target, macro gram target, or numeric weight-loss timeline. Frame progress around non-scale outcomes (energy, sleep, strength, mood), never a number on a scale. macro_approach MUST be "safe_starches" or "flexible" (never "strict_low_carb"), and eating_pattern MUST be "rule_of_3s" (never a fasting-window pattern). professional_guidance_note MUST recommend professional support (a therapist and/or doctor) alongside this app, framed as a genuine care team, not a replacement for the app. CHECK the "Already works with a therapist or mental health professional" line in the intake FIRST: if it says yes, do NOT tell them to find a therapist — acknowledge the support they already have and frame this as something to bring to that person. Telling someone already in care to "find a therapist" reads as though nothing they said was heard. Never assert or imply a psychological reason for their eating patterns in rationale — only reflect back what was explicitly said in the transcript.` : ''}
 - STAGED-PLAN CASES — evaluate these FIRST (after the disordered-eating case above, if applicable), before any other rule below:
   - Chronic fatigue combined with a chronic infection, or a similarly severe fatigue-presenting chronic condition, disclosed in disclosed_health_conditions or implied by the intake transcript: macro_approach MUST be "safe_starches" and eating_pattern MUST be "rule_of_3s" — never strict_low_carb or aggressive carbohydrate restriction, regardless of what other factors might otherwise suggest. Populate staged_plan with a Stage 1 entry whose focus is nervous-system regulation (breathing, gentle movement, sleep hygiene) as the primary emphasis, with only gentle, gradual dietary changes as secondary. rationale MUST explicitly note that exercise should increase slowly and only as energy allows, never on a fixed schedule. professional_guidance_note MUST clearly state this situation warrants real medical/practitioner support — the plan is a starting point, not a substitute for that care.
   - Diabetes, especially Type 1 — disclosed in disclosed_health_conditions, implied by the intake transcript, OR flagged directly via the Health History form's diabetes field: macro_approach MUST be "safe_starches" and eating_pattern MUST be "rule_of_3s" — never strict_low_carb or any jump directly into aggressive carbohydrate reduction, since rapid carb reduction can be dangerous for someone managing insulin dosing. Populate staged_plan with a Stage 1 entry focused on reaching exactly 3 meals/day with no snacking (unless managing a hypoglycemic emergency) while reducing carbohydrates gradually at each meal rather than all at once. Never state a specific carbohydrate gram target, in this stage or any later one — that crosses into medical advice. professional_guidance_note MUST be an explicit, prominent reminder that any carbohydrate/insulin adjustment, at any stage, must be coordinated with their prescribing doctor, since insulin dosing depends on food intake and this plan cannot safely manage that relationship.
@@ -7805,20 +7914,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                     var corpus = await fetchProtocolCorpus();
                     var hh = profile.health_history || {};
                     var hhPhysical = hh.physical || {};
-                    var userTurn = 'GOAL: ' + ((profile.long_term_goal && profile.long_term_goal.text) || 'none') +
-                        '\nCORE WHY: ' + (profile.core_why_summary || 'none') +
-                        '\nBEHAVIORAL STYLE: ' + (profile.behavioral_style || 'mixed_unsure') +
-                        '\nSELF-IDENTIFIED BARRIER: ' + (profile.self_identified_barrier || 'none') +
-                        '\nPAST PLANS TRIED: ' + ((profile.past_plans_tried && profile.past_plans_tried.join(', ')) || 'none') +
-                        '\nDISCLOSED HEALTH CONDITIONS: ' + ((profile.disclosed_health_conditions && profile.disclosed_health_conditions.join(', ')) || 'none') +
-                        '\nSTRESS BASELINE: ' + (profile.stress_baseline || 'moderate') +
-                        '\nSLEEP BASELINE: ' + (profile.sleep_baseline || 'inconsistent') +
-                        '\nHEALTH HISTORY — DIABETES: ' + (hhPhysical.diabetes || 'none') +
-                        '\nHEALTH HISTORY — FAT DISTRIBUTION: ' + (hhPhysical.fat_distribution || 'not_sure') +
-                        '\nHEALTH HISTORY — FOOD ALLERGIES: ' + ((hhPhysical.food_allergies && hhPhysical.food_allergies.join(', ')) || 'none') +
-                        '\nHEALTH HISTORY — SENSITIVITIES: ' + ((hhPhysical.sensitivities && hhPhysical.sensitivities.join(', ')) || 'none') +
-                        '\nHEALTH HISTORY — FAMILY DISEASE HISTORY: ' + ((hh.family_history && hh.family_history.join(', ')) || 'none') +
-                        '\nDISORDERED-EATING SAFETY SIGNAL: ' + (profile.disordered_eating_signal ? 'YES' : 'no');
+                    var userTurn = buildProtocolIntakeTurn(profile);
                     if (profile._feedback) {
                         userTurn += '\n\nUSER FEEDBACK ON DRAFT PLAN (adjust the plan to address this): ' + profile._feedback;
                     }
