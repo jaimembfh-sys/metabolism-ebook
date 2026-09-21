@@ -18,6 +18,8 @@ const SCRATCH = process.env.MACRO_INDEX ||
 
 const { MAP, NEGLIGIBLE, FLAGGED, verifyMap } = require("./usda-map.js");
 const { EXTRA_MAP, BRANDED, AMBIGUOUS } = require("./usda-map-extra.js");
+const MAP2 = require("./usda-map-2.js");
+const { MAP3, EXTRA_NEGLIGIBLE, STILL_FLAGGED, UNIT_PATCH } = require("./usda-map-3.js");
 
 const USDA = JSON.parse(fs.readFileSync(SCRATCH, "utf8"));
 const BY_ID = {};
@@ -25,7 +27,7 @@ USDA.foods.forEach((f) => (BY_ID[f.fdc_id] = f));
 verifyMap(BY_ID);
 
 // Verify the extra SR Legacy ids too.
-Object.entries(EXTRA_MAP).forEach(([k, v]) => {
+Object.entries(Object.assign({}, EXTRA_MAP, MAP2, MAP3)).forEach(([k, v]) => {
   const f = BY_ID[v.fdc];
   if (!f) throw new Error(`EXTRA_MAP ${k}: fdc_id ${v.fdc} not in index`);
   const want = v.expect.toLowerCase().slice(0, 40);
@@ -34,7 +36,13 @@ Object.entries(EXTRA_MAP).forEach(([k, v]) => {
   }
 });
 
-const ALL_MAP = Object.assign({}, MAP, EXTRA_MAP);
+const ALL_MAP = Object.assign({}, MAP3, MAP2, MAP, EXTRA_MAP);
+// Merge unit additions onto whatever table the entry already had.
+Object.entries(UNIT_PATCH).forEach(([k, extra]) => {
+  if (ALL_MAP[k]) ALL_MAP[k] = Object.assign({}, ALL_MAP[k], { grams: Object.assign({}, ALL_MAP[k].grams, extra) });
+});
+NEGLIGIBLE.push(...EXTRA_NEGLIGIBLE);
+Object.assign(FLAGGED, STILL_FLAGGED);
 
 // ---- parsing ----
 const FRAC = { "¼": .25, "½": .5, "¾": .75, "⅓": 1 / 3, "⅔": 2 / 3, "⅛": .125 };
@@ -73,7 +81,11 @@ const TYPICAL = {
 
 function norm(s) {
   return s.replace(/<!--[\s\S]*?-->/g, "").replace(/\(.*?\)/g, "").split(",")[0]
-    .replace(/\b(chopped|diced|minced|shredded|crumbled|grated|halved|cubed|melted|softened|divided|optional|to taste|for garnish|for sprinkling|for serving|heaping|packed|plus more|cooked|thinly sliced|freshly ground|ripe but firm|room temperature)\b/gi, "")
+    // "cooked" is NOT stripped. Cooked and raw are different foods with
+    // materially different macros per 100 g, and stripping it also meant the
+    // "cooked chicken" key could never match - chicken salad came out at 1 g
+    // of protein per serving.
+    .replace(/\b(chopped|diced|minced|shredded|crumbled|grated|halved|cubed|melted|softened|divided|optional|to taste|for garnish|for sprinkling|for serving|heaping|plus more|thinly sliced|freshly ground|ripe but firm|room temperature|well drained|finely)\b/gi, "")
     .replace(/\s+/g, " ").trim().toLowerCase();
 }
 const isBackRef = (raw) => /\bfrom step\b|\bremaining\b|\breserved\b|\(from /i.test(raw);

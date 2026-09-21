@@ -1,0 +1,87 @@
+/* Third and final batch of verified mappings.
+ *
+ * Same discipline as the first two: every fdc_id was found by searching the SR
+ * Legacy dataset and then read to confirm it is the right food, and report.js
+ * asserts each one at load.
+ *
+ * EXTRA_NEGLIGIBLE covers the sweetener, herb and salt variants that kept
+ * flagging only because the negligible test is an exact match (deliberately -
+ * a substring test previously zeroed "bell pepper" on the word "pepper").
+ *
+ * STILL_FLAGGED are foods with no SR Legacy entry. They stay flagged and
+ * excluded rather than being approximated by a near neighbour.
+ */
+
+const EXTRA_NEGLIGIBLE = [
+  // sweeteners - no SR Legacy entry, treated as inert per Jaime's course
+  "monk fruit/allulose blend", "allulose/monk fruit blend", "powdered sweetener",
+  "sugar-free powdered sweetener", "so nourished monk fruit sweetener with allulose",
+  "granulated sweetener", "brown sweetener", "confectioners sweetener",
+  // herbs, aromatics and seasonings at recipe quantities
+  "chopped parsley", "chopped fresh parsley leaves", "fresh parsley or dill",
+  "sprig fresh rosemary", "fresh rosemary sprigs", "whole cloves",
+  "ground black pepper", "pinch of sea salt", "seasoned salt",
+  "kosher salt and freshly ground black pepper", "real vanilla extract",
+  "zest of 1 lemon", "zest of 1/2 lemon", "lemon zest", "avocado oil spray",
+  "cold water or aquafaba", "ice", "fresh thyme sprigs",
+];
+
+// No SR Legacy entry. Excluded from totals and reported per recipe.
+const STILL_FLAGGED = {
+  "xanthan gum": "no SR Legacy entry; used in trace amounts as a thickener",
+  "mixed vegetables of choice": "recipe does not name the vegetables, so no food can be matched",
+  "the soaked and drained macadamia nuts": "back-reference to the macadamia nuts already counted above",
+};
+
+const MAP3 = {
+  // Keys WITHOUT the leading unit word. "cans tuna..." could never match,
+  // because the unit is consumed before the food name is read.
+  "tuna packed in water": { fdc: 171986, expect: "Fish, tuna, light, canned in water, without salt, drained solids", grams: { can: 142, each: 142, cup: 154, oz: 28.35 } },
+  "diced green chilies":  { fdc: 168577, expect: "Peppers, chili, green, canned", grams: { can: 113, each: 113, cup: 139, oz: 28.35 } },
+  "chickpeas":            { fdc: 173800, expect: "Chickpeas (garbanzo beans, bengal gram), mature seeds, canned", grams: { can: 425, each: 425, cup: 240, oz: 28.35 } },
+  "black beans":          { fdc: 175188, expect: "Beans, black turtle, mature seeds, canned", grams: { can: 425, each: 425, cup: 240, oz: 28.35 } },
+  "salmon fillet":        { fdc: 173686, expect: "Fish, salmon, Atlantic, wild, raw", grams: { each: 170, oz: 28.35, lb: 453.6, fillet: 170 } },
+  "salmon":               { fdc: 173686, expect: "Fish, salmon, Atlantic, wild, raw", grams: { each: 170, oz: 28.35, lb: 453.6, fillet: 170 } },
+  "large raw shrimp":     { fdc: 175179, expect: "Crustaceans, shrimp, raw", grams: { lb: 453.6, oz: 28.35, each: 11, cup: 145 } },
+  "shrimp":               { fdc: 175179, expect: "Crustaceans, shrimp, raw", grams: { lb: 453.6, oz: 28.35, each: 11, cup: 145 } },
+  "kielbasa smoked sausage": { fdc: 174577, expect: "Polish sausage, pork", grams: { lb: 453.6, oz: 28.35, each: 370, link: 370, cup: 150 } },
+  "head red or green cabbage": { fdc: 169975, expect: "Cabbage, raw", grams: { head: 900, each: 900, cup: 89, lb: 453.6, oz: 28.35 } },
+  "cabbage":              { fdc: 169975, expect: "Cabbage, raw", grams: { head: 900, each: 900, cup: 89, lb: 453.6, oz: 28.35 } },
+  "zucchini or yellow summer squash": { fdc: 169291, expect: "Squash, summer, zucchini, includes skin, raw", grams: { each: 196, medium: 196, large: 320, cup: 124, lb: 453.6 } },
+  "zucchini":             { fdc: 169291, expect: "Squash, summer, zucchini, includes skin, raw", grams: { each: 196, medium: 196, large: 320, cup: 124, lb: 453.6 } },
+  "diced jarred jalapeños": { fdc: 168576, expect: "Peppers, jalapeno, raw", grams: { cup: 90, tbsp: 5.6, each: 14, oz: 28.35 } },
+  "jalapeño":             { fdc: 168576, expect: "Peppers, jalapeno, raw", grams: { cup: 90, tbsp: 5.6, each: 14, oz: 28.35 } },
+  "cans diced green chilies": { fdc: 168577, expect: "Peppers, chili, green, canned", grams: { can: 113, cup: 139, oz: 28.35 } },
+  "60% ghirardelli dark chocolate": { fdc: 170272, expect: "Chocolate, dark, 60-69% cacao solids", grams: { cup: 170, oz: 28.35, tbsp: 11 } },
+  "dark chocolate":       { fdc: 170272, expect: "Chocolate, dark, 60-69% cacao solids", grams: { cup: 170, oz: 28.35, tbsp: 11 } },
+  "freshly grated parmesan": { fdc: 170848, expect: "Cheese, parmesan, hard", grams: { cup: 100, tbsp: 6.25, oz: 28.35 } },
+  "corn":                 { fdc: 169998, expect: "Corn, sweet, yellow, raw", grams: { cup: 154, each: 90, oz: 28.35, can: 425 } },
+};
+
+/* Unit additions for entries already mapped in earlier batches, where a recipe
+ * used a measure the original table did not carry - "2 tbsp celery",
+ * "1 can chickpeas", "8 oz romaine". Merged over the existing grams table.
+ */
+const UNIT_PATCH = {
+  "celery":                  { tbsp: 7.5, stalk: 40, each: 40 },
+  "celery ribs":             { tbsp: 7.5, stalk: 40, each: 40 },
+  "can chickpeas":           { each: 425, can: 425 },
+  "chickpeas":               { each: 425, can: 425 },
+  "can black beans":         { each: 425, can: 425 },
+  "can tomato sauce":        { each: 411, can: 411 },
+  "can diced tomatoes":      { each: 411, can: 411 },
+  "diced tomatoes":          { each: 411, can: 411 },
+  "cans tuna packed in water": { each: 142, can: 142 },
+  "cans diced green chilies": { each: 113, can: 113 },
+  "romaine lettuce":         { oz: 28.35, head: 300, each: 300 },
+  "leafy green or romaine lettuce": { oz: 28.35, head: 300, each: 300 },
+  "bacon":                   { lb: 453.6, slice: 28, oz: 28.35, cup: 60 },
+  "dijon mustard":           { each: 15 },        // "1 heaping Tbsp"
+  "juice of 1/2 lime":       { each: 15 },
+  "halved cherry tomatoes":  { cup: 149, each: 17, pint: 300 },
+  "shredded cheddar cheese": { cup: 113, oz: 28.35, tbsp: 7, slice: 21 },
+  "cooked chicken":          { cup: 140, each: 174, lb: 453.6, oz: 28.35 },
+  "almond flour":            { cup: 96, tbsp: 6, oz: 28.35 },
+};
+
+module.exports = { MAP3, EXTRA_NEGLIGIBLE, STILL_FLAGGED, UNIT_PATCH };
