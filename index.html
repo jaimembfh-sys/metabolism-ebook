@@ -14,6 +14,9 @@
          into it, and they are user-triggered well after parse, but it must be
          defined before any of them run. -->
     <script src="scripts/retrieval.js"></script>
+    <!-- Markdown-to-HTML and sanitisation for coach replies. Not deferred:
+         callClaudeChat calls into it on every response. -->
+    <script src="scripts/format.js"></script>
     
     <!-- Google Fonts for Classy Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -6013,7 +6016,15 @@
                     .map(function(b) { return b.text; })
                     .join(' ')
                     .trim();
-                const scrubbed = scrubDisconnectedHelpline(text);
+                // Format and sanitise before anything else inspects the text.
+                // Every coach prompt asks for HTML and the model complied in 1
+                // of 5 measured runs, so the conversion happens here rather than
+                // being hoped for. It also sanitises: this lands in innerHTML,
+                // and the model sees user-supplied text.
+                const formatted = window.CoachFormat
+                    ? window.CoachFormat.renderCoachMarkdown(text)
+                    : text;
+                const scrubbed = scrubDisconnectedHelpline(formatted);
 
                 // Detect-and-regenerate, same pattern as the allergen gate, but
                 // with a deterministic floor underneath it. Three tiers:
