@@ -88,7 +88,7 @@ Divided by **4 servings**.
 |---|---|---|---|---|---|---|
 | 1 tbsp beef tallow | 12.8 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 12.8 | 0 | 0 |
 | 1 regular yellow or white onion, diced | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
-| 1 lb ground beef | 453.6 g | Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 2514743` | Foundation | 58.1 | 82.6 | 0 |
+| 1 lb ground beef | 453.6 g | Beef, ground, 93% lean meat / 7% fat, raw  |  Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 173110 + 2514743` <br>*weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.* | SR Legacy + Foundation | 40.5 | 90.6 | 0 |
 | 2 garlic cloves, minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
 | 1/2 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | Black pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
@@ -98,34 +98,30 @@ Divided by **4 servings**.
 | 1 tbsp dried onion flakes | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
 | Salt and pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | 1 head leafy green or romaine lettuce, chopped | 300 g | Lettuce, romaine, green, raw <br>`FDC 2346389` <br>*fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food* | Foundation | 0.2 | 2.9 | 12.2 |
-| 1 cup shredded cheddar cheese | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
+| 1 cup shredded cheddar cheese | 113 g | Cheese, cheddar <br>`FDC 328637` | Foundation | 38.4 | 26.3 | 2.8 |
 | 1/2 cup crumbled bacon | 30 g | Pork, cured, bacon, cooked, baked <br>`FDC 167914` | SR Legacy | 13 | 10.7 | 0.4 |
 | 1/2 cup dill pickles, sliced | 71.5 g | Pickles, cucumber, dill or kosher dill <br>`FDC 324653` | Foundation | 0.3 | 0.3 | 1.4 |
-| 1/2 cup diced tomatoes (optional) | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
+| 1/2 cup diced tomatoes (optional) | 122.5 g | Tomatoes, canned, red, ripe, diced <br>`FDC 333281` <br>*fiber 1.9 g/100 g from SR Legacy 170051 — Foundation reports none for this food* | Foundation | 0.6 | 1 | 4.1 |
 | 1 avocado, peeled, pitted, and chopped (optional) | 201 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food* | Foundation | 40.8 | 3.6 | 16.7 |
 | 1 tbsp sesame seeds | 9 g | Seeds, sesame seeds, whole, dried <br>`FDC 170150` | SR Legacy | 4.5 | 1.6 | 2.1 |
-| **WHOLE RECIPE TOTAL** | | | | **188.2** | **105.5** | **71.8** |
+| **WHOLE RECIPE TOTAL** | | | | **209.6** | **140.8** | **78.7** |
 
-Whole recipe: **2348 kcal**, fat 188.2 g, protein 105.5 g, carbs 71.8 g, fiber 26.5 g
+Whole recipe: **2716 kcal**, fat 209.6 g, protein 140.8 g, carbs 78.7 g, fiber 28.8 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 530 | **587** | +11% |
-| Fat (g) | 38 | **47** | +24% |
-| Protein (g) | 36 | **26** | -28% |
-| Total carbs (g) | 13 | **18** | +38% |
+| Calories | 530 | **679** | +28% |
+| Fat (g) | 38 | **52** | +37% |
+| Protein (g) | 36 | **35** | -3% |
+| Total carbs (g) | 13 | **20** | +54% |
 | Fiber (g) | 5 | **7** | +40% |
-| Net carbs (g) | 8 | **11** | +38% |
-
-> ⚠️ **2 ingredients flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `1 cup shredded cheddar cheese` — no confident USDA match
-> - `1/2 cup diced tomatoes (optional)` — no confident USDA match
+| Net carbs (g) | 8 | **13** | +63% |
 
 **Assumptions made:**
+- `1 lb ground beef` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
 - `1 head leafy green or romaine lettuce, chopped` — fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food
-- `1 cup shredded cheddar cheese` — no confident USDA match
-- `1/2 cup diced tomatoes (optional)` — no confident USDA match
+- `1/2 cup diced tomatoes (optional)` — fiber 1.9 g/100 g from SR Legacy 170051 — Foundation reports none for this food
 - `1 avocado, peeled, pitted, and chopped (optional)` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food
 
 ---
@@ -136,7 +132,7 @@ Divided by **4 servings**.
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
 | 2 boneless ribeye steaks (1 to 1.5 inches thick) | 680 g | Beef, ribeye, steak, boneless, choice, raw <br>`FDC 2646172` <br>*assumed 340 g each — 12 oz per steak, typical 1–1.5 inch cut* | Foundation | 136.3 | 127.5 | 0 |
-| Kosher salt and freshly ground black pepper | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
+| Kosher salt and freshly ground black pepper | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tbsp beef tallow, melted | 12.8 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 12.8 | 0 | 0 |
 | 2 tbsp butter | 28.4 g | Butter, salted <br>`FDC 173410` | SR Legacy | 23 | 0.2 | 0 |
 | 8 oz sliced mushrooms | 226.8 g | Mushrooms, white button <br>`FDC 1999629` | Foundation | 0.8 | 6.6 | 9.3 |
@@ -156,12 +152,8 @@ Divided by **2 servings**.
 | Fiber (g) | 1 | **2** | +100% |
 | Net carbs (g) | 4 | **4** | 0% |
 
-> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `Kosher salt and freshly ground black pepper` — no confident USDA match
-
 **Assumptions made:**
 - `2 boneless ribeye steaks (1 to 1.5 inches thick)` — assumed 340 g each — 12 oz per steak, typical 1–1.5 inch cut
-- `Kosher salt and freshly ground black pepper` — no confident USDA match
 
 ---
 ## Chicken or Beef Fajitas
@@ -173,7 +165,7 @@ Divided by **2 servings**.
 | 1 medium onion, cut into slivers | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
 | 3 bell peppers (red, yellow, green, or orange), sliced | 357 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.4 | 3.2 | 23.8 |
 | 1 lime | 67 g | Limes, raw <br>`FDC 168155` | SR Legacy | 0.1 | 0.5 | 7.1 |
-| Juice of 1/2 lime | — | ⚠️ **FLAGGED** — no gram weight for unit 'each' and no quantity given | — | — | — | — |
+| Juice of 1/2 lime | 15 g | Lime juice, raw <br>`FDC 168156` | SR Legacy | 0 | 0.1 | 1.3 |
 | 1 tsp chili powder | — | *negligible* | — | 0 | 0 | 0 |
 | 1/2 tsp smoked paprika | — | *negligible* | — | 0 | 0 | 0 |
 | 1/2 tsp onion powder | — | *negligible* | — | 0 | 0 | 0 |
@@ -183,25 +175,21 @@ Divided by **2 servings**.
 | 3 boneless skinless chicken breasts (about 1 lb), cut into strips, OR 1 lb skirt steak, sliced into strips against the grain | 522 g | Chicken, breast, boneless, skinless, raw <br>`FDC 2646170` | Foundation | 10.1 | 117.6 | 0 |
 | 2 tbsp beef tallow or avocado oil, divided | 25.6 g | Fat, beef tallow <br>`FDC 171400` <br>*recipe offers a choice. Both are ~100% fat and within 1 kcal/g of each other, so the macro effect is negligible. Calculated with beef tallow.* | SR Legacy | 25.6 | 0 | 0 |
 | 1/4 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **36.5** | **122.4** | **40.8** |
+| **WHOLE RECIPE TOTAL** | | | | **36.5** | **122.5** | **42.1** |
 
-Whole recipe: **979 kcal**, fat 36.5 g, protein 122.4 g, carbs 40.8 g, fiber 8.2 g
+Whole recipe: **982 kcal**, fat 36.5 g, protein 122.5 g, carbs 42.1 g, fiber 8.3 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 286 | **245** | -14% |
+| Calories | 286 | **246** | -14% |
 | Fat (g) | 13 | **9** | -31% |
 | Protein (g) | 29 | **31** | +7% |
-| Total carbs (g) | 11 | **10** | -9% |
+| Total carbs (g) | 11 | **11** | 0% |
 | Fiber (g) | 3 | **2** | -33% |
-| Net carbs (g) | 8 | **8** | 0% |
-
-> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `Juice of 1/2 lime` — no gram weight for unit 'each' and no quantity given
+| Net carbs (g) | 8 | **9** | +13% |
 
 **Assumptions made:**
-- `Juice of 1/2 lime` — no gram weight for unit 'each' and no quantity given
 - `2 tbsp beef tallow or avocado oil, divided` — recipe offers a choice. Both are ~100% fat and within 1 kcal/g of each other, so the macro effect is negligible. Calculated with beef tallow.
 
 ---
@@ -219,7 +207,7 @@ Divided by **4 servings**.
 | 1 tsp ground cumin | — | *negligible* | — | 0 | 0 | 0 |
 | Salt to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | 1 (15-oz) can chickpeas, drained | 425 g | Chickpeas (garbanzo beans, bengal gram), canned, sodium added, drained and rinsed <br>`FDC 2644288` | Foundation | 13.2 | 29.8 | 86.4 |
-| The soaked and drained macadamia nuts | — | ⚠️ **FLAGGED** — back-reference to the macadamia nuts already counted above | — | — | — | — |
+| The soaked and drained macadamia nuts | — | *back-reference, already counted above* | — | 0 | 0 | 0 |
 | 4 to 6 tbsp cold water or aquafaba (chickpea juice) | — | *negligible* | — | 0 | 0 | 0 |
 | **WHOLE RECIPE TOTAL** | | | | **418.2** | **86.9** | **207.6** |
 
@@ -234,12 +222,6 @@ Divided by **24 servings**.
 | Total carbs (g) | 8 | **9** | +13% |
 | Fiber (g) | 3 | **3** | 0% |
 | Net carbs (g) | 5 | **6** | +20% |
-
-> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `The soaked and drained macadamia nuts` — back-reference to the macadamia nuts already counted above
-
-**Assumptions made:**
-- `The soaked and drained macadamia nuts` — back-reference to the macadamia nuts already counted above
 
 ---
 ## Classic Chicken Salad
@@ -550,31 +532,27 @@ Divided by **12 servings**.
 | Freshly ground black pepper | — | *negligible* | — | 0 | 0 | 0 |
 | 1 English cucumber, sliced into 1/4-inch thick half-moons | 300 g | Cucumber, with peel, raw <br>`FDC 2346406` <br>*fiber 0.5 g/100 g from SR Legacy 168409 — Foundation reports none for this food* | Foundation | 0.5 | 1.9 | 8.9 |
 | 1 yellow or orange bell pepper, chopped into 1-inch pieces | 119 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.1 | 1.1 | 7.9 |
-| 2 cups halved cherry tomatoes | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
+| 2 cups halved cherry tomatoes | 298 g | Tomatoes, grape, raw <br>`FDC 321360` | Foundation | 1.9 | 2.5 | 16.4 |
 | 5 oz feta cheese, cut into 1/2-inch cubes | 141.8 g | Cheese, feta, whole milk, crumbled <br>`FDC 2259796` | Foundation | 27 | 27.9 | 7.9 |
 | 1/3 cup thinly sliced red onion | 53.3 g | Onions, red, raw <br>`FDC 790577` | Foundation | 0.1 | 0.5 | 5.3 |
 | 1/3 cup pitted Kalamata olives | 45 g | Olives, ripe, canned (small-extra large) <br>`FDC 169094` | SR Legacy | 4.9 | 0.4 | 2.7 |
 | 1/3 cup fresh mint leaves, optional | 8 g | Peppermint, fresh <br>`FDC 173474` | SR Legacy | 0.1 | 0.3 | 1.2 |
-| **WHOLE RECIPE TOTAL** | | | | **86.7** | **32.4** | **34.8** |
+| **WHOLE RECIPE TOTAL** | | | | **88.6** | **34.9** | **51.2** |
 
-Whole recipe: **1025 kcal**, fat 86.7 g, protein 32.4 g, carbs 34.8 g, fiber 5.6 g
+Whole recipe: **1106 kcal**, fat 88.6 g, protein 34.9 g, carbs 51.2 g, fiber 11.9 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 230 | **256** | +11% |
+| Calories | 230 | **276** | +20% |
 | Fat (g) | 20 | **22** | +10% |
-| Protein (g) | 6 | **8** | +33% |
-| Total carbs (g) | 9 | **9** | 0% |
-| Fiber (g) | 2 | **1** | -50% |
-| Net carbs (g) | 7 | **8** | +14% |
-
-> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `2 cups halved cherry tomatoes` — no confident USDA match
+| Protein (g) | 6 | **9** | +50% |
+| Total carbs (g) | 9 | **13** | +44% |
+| Fiber (g) | 2 | **3** | +50% |
+| Net carbs (g) | 7 | **10** | +43% |
 
 **Assumptions made:**
 - `1 English cucumber, sliced into 1/4-inch thick half-moons` — fiber 0.5 g/100 g from SR Legacy 168409 — Foundation reports none for this food
-- `2 cups halved cherry tomatoes` — no confident USDA match
 
 ---
 ## Grilled Chicken Kabobs
@@ -674,37 +652,35 @@ Divided by **12 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 1 lb ground beef (or 1/2 lb ground Italian sausage and 1/2 lb ground beef) | 453.6 g | Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 2514743` | Foundation | 58.1 | 82.6 | 0 |
+| 1 lb ground beef (or 1/2 lb ground Italian sausage and 1/2 lb ground beef) | 453.6 g | Beef, ground, 93% lean meat / 7% fat, raw  |  Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 173110 + 2514743` <br>*weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.* | SR Legacy + Foundation | 40.5 | 90.6 | 0 |
 | Salt and pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | 1 medium onion, chopped | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
 | 2 cloves garlic, minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
 | 15 oz tomato sauce | 425.3 g | Tomato, sauce, canned, with salt added <br>`FDC 2685579` | Foundation | 1.6 | 5.7 | 26.9 |
-| 1 (15 oz) can diced tomatoes | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
+| 1 (15 oz) can diced tomatoes | 411 g | Tomatoes, canned, red, ripe, diced <br>`FDC 333281` <br>*fiber 1.9 g/100 g from SR Legacy 170051 — Foundation reports none for this food* | Foundation | 2.1 | 3.5 | 13.6 |
 | 1/2 tsp Italian seasoning | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp honey | 7 g | Honey <br>`FDC 169640` | SR Legacy | 0 | 0 | 5.8 |
 | 1/4 cup fresh basil leaves, chopped, or 1 tsp dried basil | 6 g | Basil, fresh <br>`FDC 172232` | SR Legacy | 0 | 0.2 | 0.2 |
 | 1 medium spaghetti squash | 1000 g | Squash, winter, spaghetti, raw <br>`FDC 169298` | SR Legacy | 5.7 | 6.4 | 69.1 |
 | 1 Tbsp olive oil | 13.5 g | Oil, olive, salad or cooking <br>`FDC 171413` | SR Legacy | 13.5 | 0 | 0 |
 | Salt and pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **79.0** | **96.2** | **113.2** |
+| **WHOLE RECIPE TOTAL** | | | | **63.5** | **107.7** | **126.8** |
 
-Whole recipe: **1488 kcal**, fat 79.0 g, protein 96.2 g, carbs 113.2 g, fiber 24.4 g
+Whole recipe: **1447 kcal**, fat 63.5 g, protein 107.7 g, carbs 126.8 g, fiber 32.2 g
 Divided by **5 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 265 | **298** | +12% |
-| Fat (g) | 16 | **16** | 0% |
-| Protein (g) | 18 | **19** | +6% |
-| Total carbs (g) | 15 | **23** | +53% |
-| Fiber (g) | 3 | **5** | +67% |
-| Net carbs (g) | 12 | **18** | +50% |
-
-> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `1 (15 oz) can diced tomatoes` — no confident USDA match
+| Calories | 265 | **289** | +9% |
+| Fat (g) | 16 | **13** | -19% |
+| Protein (g) | 18 | **22** | +22% |
+| Total carbs (g) | 15 | **25** | +67% |
+| Fiber (g) | 3 | **6** | +100% |
+| Net carbs (g) | 12 | **19** | +58% |
 
 **Assumptions made:**
-- `1 (15 oz) can diced tomatoes` — no confident USDA match
+- `1 lb ground beef (or 1/2 lb ground Italian sausage and 1/2 lb ground beef)` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
+- `1 (15 oz) can diced tomatoes` — fiber 1.9 g/100 g from SR Legacy 170051 — Foundation reports none for this food
 
 ---
 ## Keto Carolina Mustard BBQ Sauce
@@ -839,7 +815,7 @@ Divided by **6 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 1 lb ground beef | 453.6 g | Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 2514743` | Foundation | 58.1 | 82.6 | 0 |
+| 1 lb ground beef | 453.6 g | Beef, ground, 93% lean meat / 7% fat, raw  |  Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 173110 + 2514743` <br>*weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.* | SR Legacy + Foundation | 40.5 | 90.6 | 0 |
 | 1 large onion, finely chopped | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
 | 3 garlic cloves, pressed | 9 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.6 | 2.5 |
 | 2 whole cloves | — | *negligible* | — | 0 | 0 | 0 |
@@ -848,29 +824,27 @@ Divided by **6 servings**.
 | 1 1/2 tsp paprika, to taste | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp ground oregano | 2 g | Spices, oregano, dried <br>`FDC 171328` | SR Legacy | 0.1 | 0.2 | 1.4 |
 | 1/2 tsp chipotle powder, optional | 1 g | Spices, chili powder <br>`FDC 171319` | SR Legacy | 0.1 | 0.1 | 0.5 |
-| 1 (15 oz) can diced tomatoes | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
+| 1 (15 oz) can diced tomatoes | 411 g | Tomatoes, canned, red, ripe, diced <br>`FDC 333281` <br>*fiber 1.9 g/100 g from SR Legacy 170051 — Foundation reports none for this food* | Foundation | 2.1 | 3.5 | 13.6 |
 | 1 cup beef broth | 240 g | Soup, beef broth or bouillon canned, ready-to-serve <br>`FDC 171538` | SR Legacy | 0.5 | 2.7 | 0.1 |
 | 3 tbsp diced jarred jalapeños | 16.8 g | Peppers, jalapeno, raw <br>`FDC 168576` | SR Legacy | 0.1 | 0.2 | 1.1 |
 | 1/2 tsp kosher salt, to taste | — | *negligible* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **59.0** | **87.3** | **15.1** |
+| **WHOLE RECIPE TOTAL** | | | | **43.5** | **98.8** | **28.7** |
 
-Whole recipe: **946 kcal**, fat 59.0 g, protein 87.3 g, carbs 15.1 g, fiber 3.9 g
+Whole recipe: **905 kcal**, fat 43.5 g, protein 98.8 g, carbs 28.7 g, fiber 11.7 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 233 | **158** | -32% |
-| Fat (g) | 16 | **10** | -37% |
-| Protein (g) | 14 | **15** | +7% |
-| Total carbs (g) | 8 | **3** | -62% |
-| Fiber (g) | 2 | **1** | -50% |
-| Net carbs (g) | 6 | **2** | -67% |
-
-> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `1 (15 oz) can diced tomatoes` — no confident USDA match
+| Calories | 233 | **151** | -35% |
+| Fat (g) | 16 | **7** | -56% |
+| Protein (g) | 14 | **16** | +14% |
+| Total carbs (g) | 8 | **5** | -37% |
+| Fiber (g) | 2 | **2** | 0% |
+| Net carbs (g) | 6 | **3** | -50% |
 
 **Assumptions made:**
-- `1 (15 oz) can diced tomatoes` — no confident USDA match
+- `1 lb ground beef` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
+- `1 (15 oz) can diced tomatoes` — fiber 1.9 g/100 g from SR Legacy 170051 — Foundation reports none for this food
 
 ---
 ## Keto Peanut Butter Balls
@@ -879,31 +853,25 @@ Divided by **6 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 1 cup all natural, no sugar added smooth peanut butter | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
+| 1 cup all natural, no sugar added smooth peanut butter | 258 g | Peanut butter, creamy <br>`FDC 2262072` | Foundation | 127.5 | 61.9 | 58.6 |
 | 1/2 cup coconut flour <!-- linked_product: url=null --> | 56 g | Flour, coconut <br>`FDC 2515382` | Foundation | 8.6 | 9 | 33 |
 | 3 Tbsp low carb keto maple syrup <!-- linked_product: url=null --> | 60 g | Syrups, maple <br>`FDC 169661` | SR Legacy | 0 | 0 | 40.2 |
 | 1/4 tsp salt (optional, balances the sweetness) | — | *negligible* | — | 0 | 0 | 0 |
 | 1 cup 60% Ghirardelli dark chocolate, chopped or chips | 170 g | Chocolate, dark, 60-69% cacao solids <br>`FDC 170272` | SR Legacy | 65.1 | 10.4 | 89.1 |
 | 1 tsp coconut oil (helps the coating stay smooth) | 4.5 g | Oil, coconut <br>`FDC 330458` | Foundation | 4.5 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **78.2** | **19.4** | **162.3** |
+| **WHOLE RECIPE TOTAL** | | | | **205.7** | **81.3** | **220.9** |
 
-Whole recipe: **1415 kcal**, fat 78.2 g, protein 19.4 g, carbs 162.3 g, fiber 32.8 g
+Whole recipe: **2936 kcal**, fat 205.7 g, protein 81.3 g, carbs 220.9 g, fiber 49.1 g
 Divided by **16 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 108 | **88** | -19% |
-| Fat (g) | 8 | **5** | -37% |
-| Protein (g) | 4 | **1** | -75% |
-| Total carbs (g) | 4 | **10** | +150% |
-| Fiber (g) | 2 | **2** | 0% |
-| Net carbs (g) | 2 | **8** | +300% |
-
-> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `1 cup all natural, no sugar added smooth peanut butter` — no confident USDA match
-
-**Assumptions made:**
-- `1 cup all natural, no sugar added smooth peanut butter` — no confident USDA match
+| Calories | 108 | **183** | +69% |
+| Fat (g) | 8 | **13** | +63% |
+| Protein (g) | 4 | **5** | +25% |
+| Total carbs (g) | 4 | **14** | +250% |
+| Fiber (g) | 2 | **3** | +50% |
+| Net carbs (g) | 2 | **11** | +450% |
 
 ---
 ## Make-Ahead Teriyaki Sauce
@@ -1098,7 +1066,7 @@ Divided by **7 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 2 lbs salmon fillet, cut into six 6 oz portions | 907.2 g | Fish, salmon, sockeye, wild caught, raw  |  Fish, salmon, Atlantic, farm raised, raw <br>`FDC 2684440 + 2684441` <br>*blended at the 60th percentile between the two Foundation entries — 9.84 g fat/100 g, just above their 9.02 g midpoint. Assumes a mid-range salmon.* | Foundation | 89.2 | 191.4 | 0 |
+| 2 lbs salmon fillet, cut into six 6 oz portions | 907.2 g | Fish, salmon, sockeye, wild caught, raw  |  Fish, salmon, Atlantic, farm raised, raw <br>`FDC 2684440 + 2684441` <br>*blended at the 60th percentile between the two entries — 9.84 g fat/100 g, just above their 9.02 g midpoint. Assumes a mid-range salmon.* | Foundation | 89.2 | 191.4 | 0 |
 | 2 lbs asparagus, fibrous ends removed | 907.2 g | Asparagus, green, raw <br>`FDC 2710823` | Foundation | 2 | 13 | 46.3 |
 | 1 tbsp avocado oil | 13.6 g | Oil, avocado <br>`FDC 173573` | SR Legacy | 13.6 | 0 | 0 |
 | Salt and black pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
@@ -1125,7 +1093,7 @@ Divided by **6 servings**.
 | Net carbs (g) | 4 | **6** | +50% |
 
 **Assumptions made:**
-- `2 lbs salmon fillet, cut into six 6 oz portions` — blended at the 60th percentile between the two Foundation entries — 9.84 g fat/100 g, just above their 9.02 g midpoint. Assumes a mid-range salmon.
+- `2 lbs salmon fillet, cut into six 6 oz portions` — blended at the 60th percentile between the two entries — 9.84 g fat/100 g, just above their 9.02 g midpoint. Assumes a mid-range salmon.
 
 ---
 ## Sausage and Cabbage Skillet
@@ -1180,26 +1148,20 @@ Divided by **4 servings**.
 | 1/4 cup freshly squeezed lemon juice | 14.5 g | Lemons, raw, without peel <br>`FDC 167746` | SR Legacy | 0 | 0.2 | 1.4 |
 | 1 1/2 lbs zucchini noodles (from about 4 medium zucchini) | — | *back-reference, already counted above* | — | 0 | 0 | 0 |
 | 1/4 cup chopped fresh parsley leaves | — | *negligible* | — | 0 | 0 | 0 |
-| 2 tbsp freshly grated Parmesan | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
-| **WHOLE RECIPE TOTAL** | | | | **28.7** | **72.7** | **11.5** |
+| 2 tbsp freshly grated Parmesan | 12.5 g | Cheese, parmesan, grated <br>`FDC 325036` | Foundation | 3.5 | 3.7 | 1.6 |
+| **WHOLE RECIPE TOTAL** | | | | **32.2** | **76.4** | **13.1** |
 
-Whole recipe: **608 kcal**, fat 28.7 g, protein 72.7 g, carbs 11.5 g, fiber 1.5 g
+Whole recipe: **660 kcal**, fat 32.2 g, protein 76.4 g, carbs 13.1 g, fiber 1.5 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 224 | **152** | -32% |
-| Fat (g) | 9 | **7** | -22% |
-| Protein (g) | 27 | **18** | -33% |
+| Calories | 224 | **165** | -26% |
+| Fat (g) | 9 | **8** | -11% |
+| Protein (g) | 27 | **19** | -30% |
 | Total carbs (g) | 9 | **3** | -67% |
 | Fiber (g) | 2 | **0** | -100% |
 | Net carbs (g) | 7 | **3** | -57% |
-
-> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `2 tbsp freshly grated Parmesan` — no confident USDA match
-
-**Assumptions made:**
-- `2 tbsp freshly grated Parmesan` — no confident USDA match
 
 ---
 ## Slow Cooker White Chicken Chili
@@ -1212,7 +1174,7 @@ Divided by **4 servings**.
 | 2 garlic cloves, minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
 | 2 lbs raw boneless, skinless chicken breasts | 907.2 g | Chicken, breast, boneless, skinless, raw <br>`FDC 2646170` | Foundation | 17.5 | 204.3 | 0 |
 | 2 1/2 cups low-sodium chicken broth | 600 g | Soup, chicken broth, ready-to-serve <br>`FDC 174536` | SR Legacy | 1.3 | 3.8 | 2.6 |
-| 2 (4 oz) cans diced green chilies | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
+| 2 (4 oz) cans diced green chilies | 226 g | Peppers, chili, green, canned <br>`FDC 168577` | SR Legacy | 0.6 | 1.6 | 10.4 |
 | 1 (15 oz) can black beans, drained and rinsed | 425 g | Beans, black, canned, sodium added, drained and rinsed <br>`FDC 2644285` | Foundation | 5.4 | 29.4 | 84.2 |
 | 1/2 cup corn, fresh or frozen | 77 g | Corn, sweet, yellow and white kernels,  fresh, raw <br>`FDC 2710826` | Foundation | 1.3 | 2.1 | 11.3 |
 | 8 oz cream cheese, cubed | 226.8 g | Cream cheese, full fat, block <br>`FDC 2346385` | Foundation | 76 | 13.1 | 10.3 |
@@ -1220,32 +1182,24 @@ Divided by **4 servings**.
 | 1/2 tsp paprika | — | *negligible* | — | 0 | 0 | 0 |
 | 1/2 tsp dried oregano | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp cayenne pepper | 0.5 g | Spices, pepper, red or cayenne <br>`FDC 170932` | SR Legacy | 0.1 | 0.1 | 0.3 |
-| Juice of 1/2 lime | — | ⚠️ **FLAGGED** — no gram weight for unit 'each' and no quantity given | — | — | — | — |
+| Juice of 1/2 lime | 15 g | Lime juice, raw <br>`FDC 168156` | SR Legacy | 0 | 0.1 | 1.3 |
 | Salt and pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | Fresh cilantro, optional | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | Shredded cheese, optional | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | Avocado, optional | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **101.6** | **253.8** | **116.4** |
+| **WHOLE RECIPE TOTAL** | | | | **102.2** | **255.5** | **128.1** |
 
-Whole recipe: **2400 kcal**, fat 101.6 g, protein 253.8 g, carbs 116.4 g, fiber 31.9 g
+Whole recipe: **2452 kcal**, fat 102.2 g, protein 255.5 g, carbs 128.1 g, fiber 35.8 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 325 | **400** | +23% |
+| Calories | 325 | **409** | +26% |
 | Fat (g) | 15 | **17** | +13% |
-| Protein (g) | 32 | **42** | +31% |
-| Total carbs (g) | 21 | **19** | -10% |
-| Fiber (g) | 5 | **5** | 0% |
-| Net carbs (g) | 16 | **14** | -12% |
-
-> ⚠️ **2 ingredients flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `2 (4 oz) cans diced green chilies` — no confident USDA match
-> - `Juice of 1/2 lime` — no gram weight for unit 'each' and no quantity given
-
-**Assumptions made:**
-- `2 (4 oz) cans diced green chilies` — no confident USDA match
-- `Juice of 1/2 lime` — no gram weight for unit 'each' and no quantity given
+| Protein (g) | 32 | **43** | +34% |
+| Total carbs (g) | 21 | **21** | 0% |
+| Fiber (g) | 5 | **6** | +20% |
+| Net carbs (g) | 16 | **15** | -6% |
 
 ---
 ## Spicy Thai Basil Chicken (Pad Krapow Gai)
@@ -1299,7 +1253,7 @@ Divided by **4 servings**.
 | 2 Tbsp beef tallow | 25.6 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 25.6 | 0 | 0 |
 | 1 medium onion, diced | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
 | 2 to 3 cloves garlic, minced | 7.5 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.5 | 2.1 |
-| 1/2 lb ground beef | 226.8 g | Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 2514743` | Foundation | 29 | 41.3 | 0 |
+| 1/2 lb ground beef | 226.8 g | Beef, ground, 93% lean meat / 7% fat, raw  |  Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 173110 + 2514743` <br>*weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.* | SR Legacy + Foundation | 20.3 | 45.3 | 0 |
 | 1/2 lb Italian sausage | 226.8 g | Sausage, Italian, sweet, links <br>`FDC 172952` | SR Legacy | 19.1 | 36.6 | 4.8 |
 | 1 cup cauliflower rice | — | *excluded — recipe lists it 'for serving' with no amount, and the recipe's own nutrition line excludes it.* | — | 0 | 0 | 0 |
 | 1 (15 oz) can tomato sauce | 411 g | Tomato, sauce, canned, with salt added <br>`FDC 2685579` | Foundation | 1.6 | 5.6 | 26 |
@@ -1308,21 +1262,22 @@ Divided by **4 servings**.
 | Kosher salt and pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | 1 cup shredded Parmesan cheese | 100 g | Cheese, parmesan, grated <br>`FDC 325036` | Foundation | 28 | 29.6 | 12.4 |
 | Fresh parsley, chopped, for garnish | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **104.3** | **120.9** | **102.3** |
+| **WHOLE RECIPE TOTAL** | | | | **95.6** | **124.9** | **102.3** |
 
-Whole recipe: **1786 kcal**, fat 104.3 g, protein 120.9 g, carbs 102.3 g, fiber 17.3 g
+Whole recipe: **1728 kcal**, fat 95.6 g, protein 124.9 g, carbs 102.3 g, fiber 17.3 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 330 | **298** | -10% |
-| Fat (g) | 22 | **17** | -23% |
-| Protein (g) | 24 | **20** | -17% |
+| Calories | 330 | **288** | -13% |
+| Fat (g) | 22 | **16** | -27% |
+| Protein (g) | 24 | **21** | -12% |
 | Total carbs (g) | 8 | **17** | +113% |
 | Fiber (g) | 3 | **3** | 0% |
 | Net carbs (g) | 5 | **14** | +180% |
 
 **Assumptions made:**
+- `1/2 lb ground beef` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
 - `1 cup cauliflower rice` — recipe lists it 'for serving' with no amount, and the recipe's own nutrition line excludes it.
 
 ---
@@ -1334,36 +1289,31 @@ Divided by **6 servings**.
 |---|---|---|---|---|---|---|
 | 1 tsp avocado oil (or any oil) | 4.5 g | Oil, avocado <br>`FDC 173573` | SR Legacy | 4.5 | 0 | 0 |
 | 1 cup chopped onion | 160 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 1.3 | 13.8 |
-| 1 lb ground beef | 453.6 g | Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 2514743` | Foundation | 58.1 | 82.6 | 0 |
+| 1 lb ground beef | 453.6 g | Beef, ground, 93% lean meat / 7% fat, raw  |  Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 173110 + 2514743` <br>*weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.* | SR Legacy + Foundation | 40.5 | 90.6 | 0 |
 | 2 tbsp taco seasoning | 12 g | Seasoning mix, dry, taco, original <br>`FDC 172243` | SR Legacy | 0 | 0.5 | 7 |
 | 8 oz romaine lettuce, chopped | 226.8 g | Lettuce, romaine, green, raw <br>`FDC 2346389` <br>*fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food* | Foundation | 0.2 | 2.2 | 9.2 |
-| 1 1/3 cups grape tomatoes, halved | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
-| 3/4 cup shredded cheddar cheese | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
+| 1 1/3 cups grape tomatoes, halved | 198.7 g | Tomatoes, red, ripe, raw, year round average <br>`FDC 170457` | SR Legacy | 0.4 | 1.7 | 7.7 |
+| 3/4 cup shredded cheddar cheese | 84.8 g | Cheese, cheddar <br>`FDC 328637` | Foundation | 28.8 | 19.7 | 2.1 |
 | 1 medium avocado, cubed | 201 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food* | Foundation | 40.8 | 3.6 | 16.7 |
 | 1/2 cup green onions, chopped | — | *negligible* | — | 0 | 0 | 0 |
 | 1/3 cup salsa | 81.7 g | Sauce, salsa, ready-to-serve <br>`FDC 746777` | Foundation | 0.2 | 1.2 | 5.5 |
-| **WHOLE RECIPE TOTAL** | | | | **103.9** | **91.4** | **52.2** |
+| **WHOLE RECIPE TOTAL** | | | | **115.5** | **120.8** | **62.0** |
 
-Whole recipe: **1479 kcal**, fat 103.9 g, protein 91.4 g, carbs 52.2 g, fiber 24.4 g
+Whole recipe: **1745 kcal**, fat 115.5 g, protein 120.8 g, carbs 62.0 g, fiber 26.8 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 342 | **246** | -28% |
-| Fat (g) | 25 | **17** | -32% |
-| Protein (g) | 20 | **15** | -25% |
-| Total carbs (g) | 12 | **9** | -25% |
+| Calories | 342 | **291** | -15% |
+| Fat (g) | 25 | **19** | -24% |
+| Protein (g) | 20 | **20** | 0% |
+| Total carbs (g) | 12 | **10** | -17% |
 | Fiber (g) | 5 | **4** | -20% |
-| Net carbs (g) | 7 | **5** | -29% |
-
-> ⚠️ **2 ingredients flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `1 1/3 cups grape tomatoes, halved` — no confident USDA match
-> - `3/4 cup shredded cheddar cheese` — no confident USDA match
+| Net carbs (g) | 7 | **6** | -14% |
 
 **Assumptions made:**
+- `1 lb ground beef` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
 - `8 oz romaine lettuce, chopped` — fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food
-- `1 1/3 cups grape tomatoes, halved` — no confident USDA match
-- `3/4 cup shredded cheddar cheese` — no confident USDA match
 - `1 medium avocado, cubed` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food
 
 ---
@@ -1409,7 +1359,7 @@ Divided by **4 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 1 1/2 lbs boneless, skinless chicken thighs, chopped | 680.4 g | Chicken, breast, boneless, skinless, raw <br>`FDC 2646170` | Foundation | 13.2 | 153.3 | 0 |
+| 1 1/2 lbs boneless, skinless chicken thighs, chopped | 680.4 g | Chicken, thigh, boneless, skinless, raw <br>`FDC 2646171` | Foundation | 53.9 | 126.6 | 0 |
 | 1 small onion, chopped | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
 | 1 red bell pepper, chopped | 119 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.1 | 1.1 | 7.9 |
 | 1 orange bell pepper, chopped | 119 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.1 | 1.1 | 7.9 |
@@ -1426,28 +1376,26 @@ Divided by **4 servings**.
 | Kaffir lime leaves, if using (from prep step) | — | *back-reference, already counted above* | — | 0 | 0 | 0 |
 | Chopped chicken (from prep step) | — | *back-reference, already counted above* | — | 0 | 0 | 0 |
 | 1/2 cup fresh Thai basil, chopped (any basil works) | 12 g | Basil, fresh <br>`FDC 172232` | SR Legacy | 0.1 | 0.4 | 0.3 |
-| Juice of 1 lime (about 1 Tbsp) | — | ⚠️ **FLAGGED** — no gram weight for unit 'each' and no quantity given | — | — | — | — |
-| **WHOLE RECIPE TOTAL** | | | | **117.5** | **175.3** | **128.2** |
+| Juice of 1 lime (about 1 Tbsp) | 30 g | Lime juice, raw <br>`FDC 168156` | SR Legacy | 0 | 0.1 | 2.5 |
+| **WHOLE RECIPE TOTAL** | | | | **158.2** | **148.7** | **130.7** |
 
-Whole recipe: **2097 kcal**, fat 117.5 g, protein 175.3 g, carbs 128.2 g, fiber 28.9 g
+Whole recipe: **2357 kcal**, fat 158.2 g, protein 148.7 g, carbs 130.7 g, fiber 29.0 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 325 | **349** | +7% |
-| Fat (g) | 22 | **20** | -9% |
-| Protein (g) | 24 | **29** | +21% |
-| Total carbs (g) | 7 | **21** | +200% |
+| Calories | 325 | **393** | +21% |
+| Fat (g) | 22 | **26** | +18% |
+| Protein (g) | 24 | **25** | +4% |
+| Total carbs (g) | 7 | **22** | +214% |
 | Fiber (g) | 2 | **5** | +150% |
-| Net carbs (g) | 5 | **16** | +220% |
+| Net carbs (g) | 5 | **17** | +240% |
 
-> ⚠️ **2 ingredients flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
+> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
 > - `1 to 2 Tbsp Mae Ploy panang curry paste <!-- linked_product: url=null --> (start with 1 Tbsp if you've never made this before)` — no confident USDA match
-> - `Juice of 1 lime (about 1 Tbsp)` — no gram weight for unit 'each' and no quantity given
 
 **Assumptions made:**
 - `1 to 2 Tbsp Mae Ploy panang curry paste <!-- linked_product: url=null --> (start with 1 Tbsp if you've never made this before)` — no confident USDA match
-- `Juice of 1 lime (about 1 Tbsp)` — no gram weight for unit 'each' and no quantity given
 
 ---
 ## Thai Slaw with Peanut Dressing
@@ -1460,7 +1408,7 @@ Divided by **6 servings**.
 | 1 cup matchstick carrots, roughly chopped | 150 g | Carrots, mature, raw <br>`FDC 2258586` | Foundation | 0.5 | 1.4 | 15.4 |
 | 1 red bell pepper, cut into matchsticks | 119 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.1 | 1.1 | 7.9 |
 | 1/2 cup sliced green onions | 80 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0 | 0.7 | 6.9 |
-| 1/3 cup chopped cilantro | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
+| 1/3 cup chopped cilantro | — | *negligible* | — | 0 | 0 | 0 |
 | 2 cups sliced cooked chicken breast (grilled or rotisserie), optional, for a full meal | 280 g | Chicken, broilers or fryers, meat only, cooked, roasted <br>`FDC 171054` | SR Legacy | 20.7 | 81 | 0 |
 | 2/3 cup natural creamy peanut butter (no sugar added) | 172 g | Peanut butter, creamy <br>`FDC 2262072` | Foundation | 85 | 41.3 | 39.1 |
 | 4 Tbsp fresh lime juice | — | *negligible* | — | 0 | 0 | 0 |
@@ -1469,33 +1417,27 @@ Divided by **6 servings**.
 | 8 Tbsp monk fruit/allulose sweetener <!-- linked_product: url=null --> | — | *negligible* | — | 0 | 0 | 0 |
 | 1 Tbsp sesame oil | 13.6 g | Oil, sesame, salad or cooking <br>`FDC 171016` | SR Legacy | 13.6 | 0 | 0 |
 | 2 tsp sriracha | 10.6 g | Sauce, hot chile, sriracha <br>`FDC 171186` | SR Legacy | 0.1 | 0.2 | 2 |
-| 4 tsp peeled and finely minced ginger | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
+| 4 tsp peeled and finely minced ginger | 8 g | Ginger root, raw <br>`FDC 169231` | SR Legacy | 0.1 | 0.1 | 1.4 |
 | 2 large cloves garlic, finely minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
 | 1/4 cup peanuts, chopped | 32.5 g | Peanuts, raw <br>`FDC 2515376` | Foundation | 14.1 | 7.5 | 8.6 |
 | Sesame seeds, optional | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **135.4** | **144.4** | **118.7** |
+| **WHOLE RECIPE TOTAL** | | | | **135.5** | **144.5** | **120.1** |
 
-Whole recipe: **2175 kcal**, fat 135.4 g, protein 144.4 g, carbs 118.7 g, fiber 35.1 g
+Whole recipe: **2181 kcal**, fat 135.5 g, protein 144.5 g, carbs 120.1 g, fiber 35.3 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 127 | **362** | +185% |
+| Calories | 127 | **364** | +187% |
 | Fat (g) | 8 | **23** | +188% |
 | Protein (g) | 4 | **24** | +500% |
 | Total carbs (g) | 6 | **20** | +233% |
 | Fiber (g) | 2 | **6** | +200% |
 | Net carbs (g) | 4 | **14** | +250% |
 
-> ⚠️ **2 ingredients flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `1/3 cup chopped cilantro` — no confident USDA match
-> - `4 tsp peeled and finely minced ginger` — no confident USDA match
-
 **Assumptions made:**
 - `6 cups shredded cabbage` — fiber 2.5 g/100 g from SR Legacy 169975 — Foundation reports none for this food
-- `1/3 cup chopped cilantro` — no confident USDA match
 - `3 Tbsp tamari or coconut aminos` — recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.
-- `4 tsp peeled and finely minced ginger` — no confident USDA match
 
 ---
 ## Traditional Guacamole with Veggies
@@ -1552,14 +1494,15 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | asparagus | SR Legacy 168389<br>Asparagus, raw | 0.12 | 2.2 | 3.88 | Foundation 2710823<br>Asparagus, green, raw | 0.2163 | 1.4375 | 5.1012 | +0.1 | -0.76 |
 | avocado | SR Legacy 171705<br>Avocados, raw, all commercial varieties | 14.66 | 2 | 8.53 | Foundation 2710824<br>Avocado, Hass, peeled, raw | 20.31 | 1.8125 | 8.3235 | +5.65 | -0.19 |
 | bell pepper | SR Legacy 170108<br>Peppers, sweet, red, raw | 0.3 | 0.99 | 6.03 | Foundation 2258590<br>Peppers, bell, red, raw | 0.1256 | 0.895625 | 6.653175 | -0.17 | -0.09 |
-| boneless | SR Legacy 171077<br>Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw | 2.62 | 22.5 | 0 | Foundation 2646170<br>Chicken, breast, boneless, skinless, raw | 1.934 | 22.525 | 0 | -0.69 | +0.02 |
 | boneless ribeye steaks | SR Legacy 173402<br>Beef, rib eye steak, boneless, lip off, separable lean and fat, trimmed to 0" fat, all grades, raw | 16.71 | 19.26 | 0.12 | Foundation 2646172<br>Beef, ribeye, steak, boneless, choice, raw | 20.04 | 18.74375 | 0 | +3.33 | -0.52 |
+| boneless skinless chicken | SR Legacy 171077<br>Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw | 2.62 | 22.5 | 0 | Foundation 2646170<br>Chicken, breast, boneless, skinless, raw | 1.934 | 22.525 | 0 | -0.69 | +0.02 |
 | boneless skinless chicken breasts | SR Legacy 171077<br>Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw | 2.62 | 22.5 | 0 | Foundation 2646170<br>Chicken, breast, boneless, skinless, raw | 1.934 | 22.525 | 0 | -0.69 | +0.02 |
 | brussels sprouts | SR Legacy 170383<br>Brussels sprouts, raw | 0.3 | 3.38 | 8.95 | Foundation 2685575<br>Brussels sprouts, raw | 0.565 | 3.984375 | 9.615625 | +0.26 | +0.6 |
 | buttermilk or milk | SR Legacy 172225<br>Milk, buttermilk, fluid, whole | 3.31 | 3.21 | 4.88 | Foundation 2259792<br>Buttermilk, low fat | 1.081 | 3.464978 | 4.811522 | -2.23 | +0.25 |
 | cabbage | SR Legacy 169975<br>Cabbage, raw | 0.1 | 1.28 | 5.8 | Foundation 2346407<br>Cabbage, green, raw | 0.2275 | 0.96125 | 6.38375 | +0.13 | -0.32 |
 | can black beans | SR Legacy 175188<br>Beans, black turtle, mature seeds, canned | 0.29 | 6.03 | 16.55 | Foundation 2644285<br>Beans, black, canned, sodium added, drained and rinsed | 1.273 | 6.9125 | 19.8135 | +0.98 | +0.88 |
 | can chickpeas | SR Legacy 173800<br>Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained solids | 2.77 | 7.05 | 22.53 | Foundation 2644288<br>Chickpeas (garbanzo beans, bengal gram), canned, sodium added, drained and rinsed | 3.096 | 7.01875 | 20.32025 | +0.33 | -0.03 |
+| can diced tomatoes | SR Legacy 170051<br>Tomatoes, red, ripe, canned, packed in tomato juice | 0.25 | 0.79 | 3.47 | Foundation 333281<br>Tomatoes, canned, red, ripe, diced | 0.5 | 0.84 | 3.32 | +0.25 | +0.05 |
 | can tomato sauce | SR Legacy 170054<br>Tomato products, canned, sauce | 0.3 | 1.2 | 5.31 | Foundation 2685579<br>Tomato, sauce, canned, with salt added | 0.3825 | 1.351875 | 6.331625 | +0.08 | +0.15 |
 | canned crushed tomatoes | SR Legacy 170501<br>Tomatoes, crushed, canned | 0.28 | 1.64 | 7.29 | Foundation 2685581<br>Tomatoes, crushed, canned | 0.3975 | 1.4375 | 7.137 | +0.12 | -0.2 |
 | cans tuna packed in water | SR Legacy 171986<br>Fish, tuna, light, canned in water, without salt, drained solids | 0.82 | 25.51 | 0 | Foundation 334194<br>Fish, tuna, light, canned in water, drained solids | 0.94 | 19 | 0.08 | +0.12 | -6.51 |
@@ -1569,10 +1512,12 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | cherry or grape tomatoes | SR Legacy 170457<br>Tomatoes, red, ripe, raw, year round average | 0.2 | 0.88 | 3.89 | Foundation 321360<br>Tomatoes, grape, raw | 0.63 | 0.83 | 5.51 | +0.43 | -0.05 |
 | chia seeds | SR Legacy 170554<br>Seeds, chia seeds, dried | 30.74 | 16.54 | 42.12 | Foundation 2710819<br>Chia seeds, dry, raw | 32.89 | 17.013 | 38.273 | +2.15 | +0.47 |
 | chicken breasts | SR Legacy 171077<br>Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw | 2.62 | 22.5 | 0 | Foundation 2646170<br>Chicken, breast, boneless, skinless, raw | 1.934 | 22.525 | 0 | -0.69 | +0.02 |
+| chicken thighs | SR Legacy 173627<br>Chicken, broilers or fryers, dark meat, thigh, meat only, raw | 4.12 | 19.66 | 0 | Foundation 2646171<br>Chicken, thigh, boneless, skinless, raw | 7.916 | 18.6125 | 0 | +3.8 | -1.05 |
 | coconut flour | Branded 2339682<br>COCONUT FLOUR — Whole Foods Market | 13.3 | 13.3 | 60 | Foundation 2515382<br>Flour, coconut | 15.28 | 16.1385 | 58.9025 | +1.98 | +2.84 |
 | coconut oil | SR Legacy 171412<br>Oil, coconut | 99.06 | 0 | 0 | Foundation 330458<br>Oil, coconut | 99.1 | 0 | 0.84 | +0.04 | 0 |
 | corn | SR Legacy 169998<br>Corn, sweet, yellow, raw | 1.35 | 3.27 | 18.7 | Foundation 2710826<br>Corn, sweet, yellow and white kernels,  fresh, raw | 1.626 | 2.789375 | 14.689625 | +0.28 | -0.48 |
 | cream cheese | SR Legacy 173418<br>Cheese, cream | 34.44 | 6.15 | 5.52 | Foundation 2346385<br>Cream cheese, full fat, block | 33.49 | 5.78985 | 4.55615 | -0.95 | -0.36 |
+| diced tomatoes | SR Legacy 170051<br>Tomatoes, red, ripe, canned, packed in tomato juice | 0.25 | 0.79 | 3.47 | Foundation 333281<br>Tomatoes, canned, red, ripe, diced | 0.5 | 0.84 | 3.32 | +0.25 | +0.05 |
 | dijon mustard | SR Legacy 172234<br>Mustard, prepared, yellow | 3.34 | 3.74 | 5.83 | Foundation 326698<br>Mustard, prepared, yellow | 3.38 | 4.25 | 5.3 | +0.04 | +0.51 |
 | dill pickle | SR Legacy 168558<br>Pickles, cucumber, dill or kosher dill | 0.3 | 0.5 | 2.41 | Foundation 324653<br>Pickles, cucumber, dill or kosher dill | 0.43 | 0.48 | 1.99 | +0.13 | -0.02 |
 | egg yolks | SR Legacy 172184<br>Egg, yolk, raw, fresh | 26.54 | 15.86 | 3.59 | Foundation 748236<br>Eggs, Grade A, Large, egg yolk | 28.8 | 16.2 | 1.02 | +2.26 | +0.34 |
@@ -1582,10 +1527,11 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | flank steak | SR Legacy 169563<br>Beef, flank, steak, separable lean and fat, trimmed to 0" fat, all grades, raw | 7.17 | 21.22 | 0 | Foundation 2646175<br>Beef, flank, steak, boneless, choice, raw | 9.399 | 20.13125 | 0 | +2.23 | -1.09 |
 | flaxseed meal | SR Legacy 169414<br>Seeds, flaxseed | 42.16 | 18.29 | 28.88 | Foundation 2262075<br>Flaxseed, ground | 37.28 | 18.0359 | 34.3551 | -4.88 | -0.25 |
 | fresh broccoli | SR Legacy 170379<br>Broccoli, raw | 0.37 | 2.82 | 6.64 | Foundation 747447<br>Broccoli, raw | 0.34 | 2.57 | 6.27 | -0.03 | -0.25 |
+| freshly grated parmesan | SR Legacy 170848<br>Cheese, parmesan, hard | 25 | 35.75 | 3.22 | Foundation 325036<br>Cheese, parmesan, grated | 28 | 29.6 | 12.4 | +3 | -6.15 |
 | garlic | SR Legacy 169230<br>Garlic, raw | 0.5 | 6.36 | 33.06 | Foundation 1104647<br>Garlic, raw | 0.38 | 6.62 | 28.2 | -0.12 | +0.26 |
 | garlic cloves | SR Legacy 169230<br>Garlic, raw | 0.5 | 6.36 | 33.06 | Foundation 1104647<br>Garlic, raw | 0.38 | 6.62 | 28.2 | -0.12 | +0.26 |
 | green leaf or romaine lettuce | SR Legacy 169247<br>Lettuce, cos or romaine, raw | 0.3 | 1.23 | 3.29 | Foundation 2346389<br>Lettuce, romaine, green, raw | 0.07125 | 0.976875 | 4.055575 | -0.23 | -0.25 |
-| ground beef | SR Legacy 171796<br>Beef, ground, 85% lean meat / 15% fat, raw (Includes foods for USDA's Food Distribution Program) | 15 | 18.59 | 0 | Foundation 2514743<br>Beef, ground, 90% lean meat / 10% fat, raw | 12.8 | 18.2 | 0 | -2.2 | -0.39 |
+| halved cherry tomatoes | SR Legacy 170457<br>Tomatoes, red, ripe, raw, year round average | 0.2 | 0.88 | 3.89 | Foundation 321360<br>Tomatoes, grape, raw | 0.63 | 0.83 | 5.51 | +0.43 | -0.05 |
 | head red or green cabbage | SR Legacy 169975<br>Cabbage, raw | 0.1 | 1.28 | 5.8 | Foundation 2346407<br>Cabbage, green, raw | 0.2275 | 0.96125 | 6.38375 | +0.13 | -0.32 |
 | heavy cream | SR Legacy 170859<br>Cream, fluid, heavy whipping | 36.08 | 2.84 | 2.84 | Foundation 2346386<br>Cream, heavy | 35.56 | 2.017994 | 3.799506 | -0.52 | -0.82 |
 | heavy whipping cream | SR Legacy 170859<br>Cream, fluid, heavy whipping | 36.08 | 2.84 | 2.84 | Foundation 2346386<br>Cream, heavy | 35.56 | 2.017994 | 3.799506 | -0.52 | -0.82 |
@@ -1609,7 +1555,9 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | roma tomato | SR Legacy 170457<br>Tomatoes, red, ripe, raw, year round average | 0.2 | 0.88 | 3.89 | Foundation 1999634<br>Tomato, roma | 0.425 | 0.696 | 3.84 | +0.22 | -0.18 |
 | romaine lettuce | SR Legacy 169247<br>Lettuce, cos or romaine, raw | 0.3 | 1.23 | 3.29 | Foundation 2346389<br>Lettuce, romaine, green, raw | 0.07125 | 0.976875 | 4.055575 | -0.23 | -0.25 |
 | salsa | SR Legacy 174524<br>Sauce, salsa, ready-to-serve | 0.17 | 1.52 | 6.64 | Foundation 746777<br>Sauce, salsa, ready-to-serve | 0.19 | 1.44 | 6.74 | +0.02 | -0.08 |
+| shredded cheddar cheese | SR Legacy 170899<br>Cheese, cheddar, sharp, sliced | 33.82 | 24.25 | 2.13 | Foundation 328637<br>Cheese, cheddar | 34 | 23.3 | 2.44 | +0.18 | -0.95 |
 | sliced swiss cheese | SR Legacy 171251<br>Cheese, swiss | 30.99 | 26.96 | 1.44 | Foundation 746767<br>Cheese, swiss | 31 | 27 | 1.44 | +0.01 | +0.04 |
+| smooth peanut butter | SR Legacy 172470<br>Peanut butter, smooth style, without salt | 51.36 | 22.21 | 22.31 | Foundation 2262072<br>Peanut butter, creamy | 49.43 | 23.99124 | 22.70376 | -1.93 | +1.78 |
 | tart apple | SR Legacy 171688<br>Apples, raw, with skin (Includes foods for USDA's Food Distribution Program) | 0.17 | 0.26 | 13.81 | Foundation 1750342<br>Apples, granny smith, with skin, raw | 0.1375 | 0.265625 | 14.142975 | -0.03 | +0.01 |
 | tomato sauce | SR Legacy 170054<br>Tomato products, canned, sauce | 0.3 | 1.2 | 5.31 | Foundation 2685579<br>Tomato, sauce, canned, with salt added | 0.3825 | 1.351875 | 6.331625 | +0.08 | +0.15 |
 | well-stirred tahini | SR Legacy 168604<br>Seeds, sesame butter, tahini, type of kernels unspecified | 53.01 | 17.4 | 21.5 | Foundation 2262073<br>Sesame butter, creamy | 62.4 | 19.7054 | 14.179 | +9.39 | +2.31 |
@@ -1617,7 +1565,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | yellow onion | SR Legacy 170000<br>Onions, raw | 0.1 | 1.1 | 9.34 | Foundation 790646<br>Onions, yellow, raw | 0.05 | 0.83 | 8.61 | -0.05 | -0.27 |
 | zucchini or yellow summer squash | SR Legacy 169291<br>Squash, summer, zucchini, includes skin, raw | 0.32 | 1.21 | 3.11 | Foundation 2685568<br>Squash, summer, green, zucchini, includes skin, raw | 0.205 | 0.984375 | 3.27 | -0.12 | -0.23 |
 
-**69 ingredients switched.**
+**75 ingredients switched.**
 
 
 ### 2. Ingredients still on SR Legacy — Foundation has no entry for the food
@@ -1636,6 +1584,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | butter | SR Legacy 173410 | Butter, salted |
 | canned coconut milk | SR Legacy 170173 | Nuts, coconut milk, canned (liquid expressed from grated meat and water) |
 | canned unsweetened coconut milk | SR Legacy 170173 | Nuts, coconut milk, canned (liquid expressed from grated meat and water) |
+| cans green chilies | SR Legacy 168577 | Peppers, chili, green, canned |
 | cayenne pepper | SR Legacy 170932 | Spices, pepper, red or cayenne |
 | chicken broth | SR Legacy 174536 | Soup, chicken broth, ready-to-serve |
 | chipotle powder | SR Legacy 171319 | Spices, chili powder |
@@ -1652,6 +1601,8 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | fresh mint leaves | SR Legacy 173474 | Peppermint, fresh |
 | fresh thai basil | SR Legacy 172232 | Basil, fresh |
 | freshly squeezed lemon juice | SR Legacy 167746 | Lemons, raw, without peel |
+| grape tomatoes | SR Legacy 170457 | Tomatoes, red, ripe, raw, year round average |
+| ground beef | SR Legacy + Foundation 173110 + 2514743 | Beef, ground, 93% lean meat / 7% fat, raw  |  Beef, ground, 90% lean meat / 10% fat, raw |
 | ground oregano | SR Legacy 171328 | Spices, oregano, dried |
 | hard-boiled eggs | SR Legacy 173424 | Egg, whole, cooked, hard-boiled |
 | holy basil | SR Legacy 172232 | Basil, fresh |
@@ -1661,6 +1612,8 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | italian sausage | SR Legacy 172952 | Sausage, Italian, sweet, links |
 | jarred jalapeño | SR Legacy 168576 | Peppers, jalapeno, raw |
 | jarred jalapeños | SR Legacy 168576 | Peppers, jalapeno, raw |
+| juice of 1 lime | SR Legacy 168156 | Lime juice, raw |
+| juice of 1/2 lime | SR Legacy 168156 | Lime juice, raw |
 | kaffir lime leaves | SR Legacy 168155 | Limes, raw |
 | kielbasa smoked sausage | SR Legacy 174577 | Polish sausage, pork |
 | lemon | SR Legacy 167746 | Lemons, raw, without peel |
@@ -1674,6 +1627,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | olive oil | SR Legacy 171413 | Oil, olive, salad or cooking |
 | oyster sauce | SR Legacy 174529 | Sauce, oyster, ready-to-serve |
 | peeled and fresh ginger | SR Legacy 169231 | Ginger root, raw |
+| peeled and ginger | SR Legacy 169231 | Ginger root, raw |
 | pitted kalamata olives | SR Legacy 169094 | Olives, ripe, canned (small-extra large) |
 | rotisserie chicken | SR Legacy 171054 | Chicken, broilers or fryers, meat only, cooked, roasted |
 | sesame oil | SR Legacy 171016 | Oil, sesame, salad or cooking |
@@ -1693,7 +1647,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | unsweetened coconut flakes | SR Legacy 170579 | Nuts, coconut meat, dried (desiccated), toasted |
 | worcestershire sauce | SR Legacy 171610 | Sauce, worcestershire |
 
-**67 ingredients stayed.** Foundation is only 394 foods, so most pantry items, oils, spices, sauces, broths and herbs simply are not in it.
+**73 ingredients stayed.** Foundation is only 394 foods, so most pantry items, oils, spices, sauces, broths and herbs simply are not in it.
 
 
 ### 2b. Foundation has an entry, but for a different food — deliberately not switched
@@ -1731,9 +1685,9 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 |---|---|---|---|---|
 | Avocado Egg Bake | 22g → **28g** | 9g → **8g** | 2g | 256 → **311** |
 | Beef and Broccoli | 23g → **25g** | 31g → **29g** | 10g → **9g** | 373 → **386** |
-| Big Mac Bowl | 47g | 27g → **26g** | 11g | 593 → **587** |
+| Big Mac Bowl | 47g → **52g** | 27g → **35g** | 11g → **13g** | 593 → **679** |
 | Cast Iron Ribeye with Garlic Mushrooms | 75g → **86g** | 69g → **67g** | 5g → **4g** | 966 → **1077** |
-| Chicken or Beef Fajitas | 10g → **9g** | 31g | 7g → **8g** | 255 → **245** |
+| Chicken or Beef Fajitas | 10g → **9g** | 31g | 7g → **9g** | 255 → **246** |
 | Chickpea and Macadamia Hummus | 19g → **17g** | 4g | 5g → **6g** | 202 → **195** |
 | Classic Chicken Salad | 30g | 21g | 4g → **5g** | 379 → **380** |
 | Classic Cobb Salad | 67g → **70g** | 46g | 4g → **6g** | 823 → **851** |
@@ -1744,30 +1698,31 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | Dairy Free Avocado Chocolate Mousse | 19g → **23g** | 4g | 4g | 204 → **240** |
 | Fluffy Coconut Keto Pancakes | 28g | 7g | 2g | 294 → **298** |
 | Grain-Free Cinnamon Coconut Granola | 19g → **18g** | 4g | 7g | 205 → **204** |
-| Greek Salad | 23g → **22g** | 6g → **8g** | 6g → **8g** | 253 → **256** |
+| Greek Salad | 23g → **22g** | 6g → **9g** | 6g → **10g** | 253 → **276** |
 | Grilled Chicken Kabobs | 17g → **16g** | 31g | 7g → **8g** | 311 → **305** |
 | Homemade Avocado Oil Mayo | 227g → **228g** | 6g | 2g → **1g** | 2043 → **2047** |
 | Homemade Greek Yogurt Ranch Dip | 8g | 2g | 1g | 87 → **86** |
-| Homemade Spaghetti Sauce with Spaghetti Squash | 18g → **16g** | 20g → **19g** | 17g → **18g** | 316 → **298** |
+| Homemade Spaghetti Sauce with Spaghetti Squash | 18g → **13g** | 20g → **22g** | 17g → **19g** | 316 → **289** |
 | Keto Carolina Mustard BBQ Sauce | 6g | 7g → **8g** | 7g → **5g** | 127 → **131** |
 | Keto Cheesecake Fluff | 27g | 3g | 3g | 267 → **261** |
 | Keto Chicken Cordon Bleu | 41g → **40g** | 36g | 5g | 536 → **528** |
 | Keto Chicken Parmesan | 39g → **37g** | 53g → **55g** | 10g | 615 → **597** |
-| Keto Chili | 11g → **10g** | 15g | 2g | 177 → **158** |
+| Keto Chili | 11g → **7g** | 15g → **16g** | 2g → **3g** | 177 → **151** |
+| Keto Peanut Butter Balls | 5g → **13g** | 1g → **5g** | 8g → **11g** | 88 → **183** |
 | Marinara Sauce | 32g → **33g** | 28g → **24g** | 94g → **89g** | 794 → **797** |
 | Pork Tenderloin Marinade | 11g → **12g** | 29g → **31g** | 1g | 228 → **243** |
 | Roasted Garlic Parmesan Brussels Sprouts | 12g → **13g** | 6g | 8g → **7g** | 167 → **174** |
 | Roasted Summer Vegetables | 5g | 3g | 8g → **10g** | 99 → **102** |
 | Salmon and Asparagus Bake | 25g → **29g** | 37g → **34g** | 4g → **6g** | 388 → **428** |
 | Sausage and Cabbage Skillet | 38g | 19g | 12g → **13g** | 484 → **489** |
-| Shrimp Scampi with Zucchini Noodles | 7g | 16g → **18g** | 4g → **3g** | 147 → **152** |
-| Slow Cooker White Chicken Chili | 18g → **17g** | 42g | 13g → **14g** | 402 → **400** |
+| Shrimp Scampi with Zucchini Noodles | 7g → **8g** | 16g → **19g** | 4g → **3g** | 147 → **165** |
+| Slow Cooker White Chicken Chili | 18g → **17g** | 42g → **43g** | 13g → **15g** | 402 → **409** |
 | Spicy Thai Basil Chicken (Pad Krapow Gai) | 11g → **10g** | 41g | 6g | 299 → **285** |
-| Stuffed Bell Peppers | 18g → **17g** | 20g | 12g → **14g** | 303 → **298** |
-| Taco Salad | 17g | 16g → **15g** | 5g | 250 → **246** |
+| Stuffed Bell Peppers | 18g → **16g** | 20g → **21g** | 12g → **14g** | 303 → **288** |
+| Taco Salad | 17g → **19g** | 16g → **20g** | 5g → **6g** | 250 → **291** |
 | Teriyaki Chicken | 7g → **6g** | 34g | 2g | 215 → **204** |
-| Thai Panang Chicken Curry | 20g | 29g | 16g | 359 → **349** |
-| Thai Slaw with Peanut Dressing | 23g | 24g | 12g → **14g** | 363 → **362** |
+| Thai Panang Chicken Curry | 20g → **26g** | 29g → **25g** | 16g → **17g** | 359 → **393** |
+| Thai Slaw with Peanut Dressing | 23g | 24g | 12g → **14g** | 363 → **364** |
 | Traditional Guacamole with Veggies | 135g → **28g** | 20g → **3g** | 27g → **4g** | 1519 → **289** |
 
-**40 of 43 recipes changed.** The before column is a real run with `MACRO_NO_FOUNDATION=1`, not a remembered figure.
+**41 of 43 recipes changed.** The before column is a real run with `MACRO_NO_FOUNDATION=1`, not a remembered figure.

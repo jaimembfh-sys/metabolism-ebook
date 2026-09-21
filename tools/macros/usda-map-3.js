@@ -28,6 +28,11 @@ const EXTRA_NEGLIGIBLE = [
   "sprig fresh rosemary", "fresh rosemary sprigs", "whole cloves",
   "ground black pepper", "pinch of sea salt", "seasoned salt",
   "kosher salt and freshly ground black pepper", "real vanilla extract",
+  // Post-norm forms. norm() strips "freshly ground", so the key above could
+  // never be reached on its own.
+  "kosher salt and black pepper", "salt and pepper", "black pepper",
+  // 1/3 cup of chopped cilantro is about 5 kcal and no measurable macro.
+  "cilantro", "fresh cilantro", "chopped cilantro", "chopped fresh cilantro",
   "zest of 1 lemon", "zest of 1/2 lemon", "lemon zest", "avocado oil spray",
   "cold water or aquafaba", "ice", "fresh thyme sprigs",
   // A dash, and the only flagged item left in the guacamole.
@@ -35,11 +40,18 @@ const EXTRA_NEGLIGIBLE = [
 ];
 
 // No SR Legacy entry. Excluded from totals and reported per recipe.
-const STILL_FLAGGED = {
-  // "mixed vegetables of choice" is resolved as a composite from 2026-09-21 -
-  // see COMPOSITES in assumptions.js. No longer flagged.
-  "the soaked and drained macadamia nuts": "back-reference to the macadamia nuts already counted above",
-};
+/* Nothing is permanently flagged any more.
+ *
+ * "mixed vegetables of choice" became a composite, then an exclusion, on
+ * Jaime's instruction - see assumptions.js. "the soaked and drained macadamia
+ * nuts" is a back-reference and is now detected as one by isBackRef rather
+ * than being reported as a missing match.
+ *
+ * The only ingredient still unresolved is the Mae Ploy panang curry paste,
+ * which is a branded product neither dataset carries, and it flags through the
+ * ordinary "no confident USDA match" path rather than being listed here.
+ */
+const STILL_FLAGGED = {};
 
 const MAP3 = {
   // Jaime, 2026-09-21: almond flour IS ground blanched almonds, so it maps to
@@ -81,6 +93,15 @@ const MAP3 = {
   "buttermilk":           { fdc: 172225, expect: "Milk, buttermilk, fluid, whole", grams: { cup: 245, tbsp: 15.3, oz: 29.6 } },
   // Roma/plum tomato, 62 g each — USDA's standard weight for the variety.
   "roma tomato":          { fdc: 170457, expect: "Tomatoes, red, ripe, raw, year round average", grams: { each: 62, cup: 180, oz: 28.35 } },
+  "grape tomatoes":       { fdc: 170457, expect: "Tomatoes, red, ripe, raw, year round average", grams: { cup: 149, each: 8, pint: 300, oz: 28.35 } },
+  // "4 tsp peeled and finely minced ginger" reduces to "peeled and ginger",
+  // which reached neither "fresh ginger" nor "peeled and fresh ginger".
+  "ginger":               { fdc: 169231, expect: "Ginger root, raw", grams: { tsp: 2, tbsp: 6, cup: 96, each: 30, oz: 28.35 } },
+  // "Juice of 1 lime", "Juice of 1/2 lime" — the line leads with the word
+  // "Juice", so no quantity parses off the front and the row used to flag for
+  // want of one. DEFAULT_QTY below supplies it.
+  "juice of 1 lime":      { fdc: 168156, expect: "Lime juice, raw", grams: { each: 30, tbsp: 15, cup: 242 } },
+  "juice of 1 lemon":     { fdc: 167747, expect: "Lemon juice, raw", grams: { each: 45, tbsp: 15, cup: 244 } },
   "buttermilk or milk":   { fdc: 172225, expect: "Milk, buttermilk, fluid, whole", grams: { cup: 245, tbsp: 15.3, oz: 29.6 } },
 };
 
@@ -110,7 +131,17 @@ const UNIT_PATCH = {
   "almond flour":            { cup: 96, tbsp: 6, oz: 28.35 },
 };
 
-module.exports = { MAP3, EXTRA_NEGLIGIBLE, STILL_FLAGGED, UNIT_PATCH };
+/* Lines that name their own quantity in words rather than as a leading
+ * numeral, so nothing parses off the front. "Juice of 1 lime" is one lime's
+ * worth of juice; the gram weight then comes from the entry's "each".
+ */
+const DEFAULT_QTY = {
+  "juice of 1 lime": 1,
+  "juice of 1/2 lime": 1,
+  "juice of 1 lemon": 1,
+};
+
+module.exports = { MAP3, EXTRA_NEGLIGIBLE, STILL_FLAGGED, UNIT_PATCH, DEFAULT_QTY };
 
 /* ---- Meat rule overrides, 2026-09-21 ----
  * Applied after the 60th-percentile analysis in meat-rule.js. Four picks

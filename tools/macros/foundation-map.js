@@ -22,7 +22,11 @@
 // key -> Foundation fdc_id. `expect` is asserted at load.
 const FOUNDATION_MAP = {
   // ---- meat and fish: Foundation entry matches the recipe's wording exactly
-  "boneless":                         { fdc: 2646170, expect: "Chicken, breast, boneless, skinless, raw" },
+  // No bare "boneless" key. It existed only because the matcher used to split
+  // at the first comma, so "boneless, skinless chicken thighs" reduced to
+  // "boneless" - and then matched CHICKEN BREAST, costing a thigh line at
+  // 1.93 g fat instead of 7.92. The matcher now tries the whole line first, so
+  // "chicken thighs" is reached directly and the catch-all is a liability.
   "boneless skinless chicken":        { fdc: 2646170, expect: "Chicken, breast, boneless, skinless, raw" },
   "boneless skinless chicken breasts":{ fdc: 2646170, expect: "Chicken, breast, boneless, skinless, raw" },
   "chicken breasts":                  { fdc: 2646170, expect: "Chicken, breast, boneless, skinless, raw" },

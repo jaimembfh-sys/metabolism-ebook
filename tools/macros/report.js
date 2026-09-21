@@ -19,7 +19,7 @@ const SCRATCH = process.env.MACRO_INDEX ||
 const { MAP, NEGLIGIBLE, FLAGGED, verifyMap } = require("./usda-map.js");
 const { EXTRA_MAP, BRANDED, AMBIGUOUS } = require("./usda-map-extra.js");
 const MAP2 = require("./usda-map-2.js");
-const { MAP3, EXTRA_NEGLIGIBLE, STILL_FLAGGED, UNIT_PATCH } = require("./usda-map-3.js");
+const { MAP3, EXTRA_NEGLIGIBLE, STILL_FLAGGED, UNIT_PATCH, DEFAULT_QTY } = require("./usda-map-3.js");
 // Meat picks from the 60th-percentile rule in meat-rule.js. Declared here
 // because the verification block below reads it.
 const MEAT_OVERRIDE = require("./usda-map-3.js").MEAT_OVERRIDE || {};
@@ -29,7 +29,7 @@ const MEAT_OVERRIDE = require("./usda-map-3.js").MEAT_OVERRIDE || {};
 // auto-matcher was rejected.
 const { FOUNDATION_MAP, FOUNDATION_REJECTED, verifyFoundation } = require("./foundation-map.js");
 // Ground beef, salmon, the mixed-vegetable composite and the guacamole yield.
-const { MEAT_PICKS, BLENDS, COMPOSITES, YIELD, verifyAssumptions } = require("./assumptions.js");
+const { BLENDS, COMPOSITES, YIELD, blendWeight, verifyAssumptions } = require("./assumptions.js");
 
 const USDA = JSON.parse(fs.readFileSync(SCRATCH, "utf8"));
 const BY_ID = {};
@@ -40,10 +40,7 @@ const FND_BY_ID = {};
 JSON.parse(fs.readFileSync(path.join(__dirname, "foundation-index.json"), "utf8"))
   .foods.forEach((f) => (FND_BY_ID[f.fdc_id] = f));
 verifyFoundation(FND_BY_ID);
-verifyAssumptions(FND_BY_ID);
-// Ground beef and salmon resolve through the same Foundation path as every
-// other meat, now that the 60th-percentile rule has picked an entry for each.
-Object.entries(MEAT_PICKS).forEach(([k, v]) => { FOUNDATION_MAP[k] = { fdc: v.fdc, expect: v.expect }; });
+verifyAssumptions(FND_BY_ID, BY_ID);
 // Every switch made, collected for the report.
 const SWITCHES = {};
 
@@ -100,16 +97,53 @@ const TYPICAL = {
   "ribeye steaks": { g: 340, why: "12 oz per steak, typical 1–1.5 inch cut" },
 };
 
-function norm(s) {
-  return s.replace(/<!--[\s\S]*?-->/g, "").replace(/\(.*?\)/g, "").split(",")[0]
-    // "cooked" is NOT stripped. Cooked and raw are different foods with
-    // materially different macros per 100 g, and stripping it also meant the
-    // "cooked chicken" key could never match - chicken salad came out at 1 g
-    // of protein per serving.
-    .replace(/\b(chopped|diced|minced|shredded|crumbled|grated|halved|cubed|melted|softened|divided|optional|to taste|for garnish|for sprinkling|for serving|heaping|plus more|thinly sliced|freshly ground|ripe but firm|room temperature|well drained|finely)\b/gi, "")
+/* Ingredient text is reduced in three steps, and a key is looked up against
+ * ALL THREE in turn - widest first.
+ *
+ * Reducing in one step was losing real mappings. "diced", "shredded",
+ * "grated" and "halved" were stripped before lookup, so every key containing
+ * one of those words - "shredded cheddar cheese", "diced tomatoes", "can
+ * diced tomatoes", "halved cherry tomatoes", "freshly grated parmesan" - could
+ * never be reached, and the ingredient came back "no confident USDA match".
+ * Splitting at the first comma lost others: "1 cup all natural, no sugar added
+ * smooth peanut butter" became "all natural".
+ *
+ * So: try the whole line, then the part before the comma, then that with the
+ * qualifiers removed. Longest and most specific wins, which is also what
+ * findKey already prefers.
+ */
+function clean(s) {
+  return s.replace(/<!--[\s\S]*?-->/g, "").replace(/\(.*?\)/g, "")
     .replace(/\s+/g, " ").trim().toLowerCase();
 }
-const isBackRef = (raw) => /\bfrom step\b|\bremaining\b|\breserved\b|\(from /i.test(raw);
+// "cooked" is NOT stripped. Cooked and raw are different foods with materially
+// different macros per 100 g, and stripping it also meant the "cooked chicken"
+// key could never match - chicken salad came out at 1 g of protein per serving.
+const QUALIFIER = /\b(chopped|diced|minced|shredded|crumbled|grated|halved|cubed|melted|softened|divided|optional|to taste|for garnish|for sprinkling|for serving|heaping|plus more|thinly sliced|freshly ground|ripe but firm|room temperature|well drained|finely)\b/gi;
+
+function normForms(s) {
+  const whole = clean(s);
+  // Map keys are written without punctuation, so "boneless, skinless chicken"
+  // has to lose its comma before it can reach the "boneless skinless chicken"
+  // key. Without this the line falls through to a bare "boneless" catch-all,
+  // which is how a chicken THIGH line came to be costed as breast.
+  const flat = clean(whole.replace(/,/g, " "));
+  const head = clean(s.replace(/<!--[\s\S]*?-->/g, "").replace(/\(.*?\)/g, "").split(",")[0]);
+  const bare = clean(head.replace(QUALIFIER, ""));
+  return [...new Set([whole, flat, head, bare].filter(Boolean))];
+}
+function norm(s) { const f = normForms(s); return f[f.length - 1]; }
+
+// Look a key up against every reduction of the ingredient text, widest first.
+function findKeyAny(forms, obj) {
+  for (const f of forms) { const k = findKey(f, obj); if (k) return k; }
+  return null;
+}
+// "The soaked and drained macadamia nuts" points back at an ingredient already
+// weighed further up the list, the same as "the reserved marinade". It was
+// sitting in FLAGGED, which made a fully-resolved recipe read as if it had a
+// gap in it.
+const isBackRef = (raw) => /\bfrom step\b|\bremaining\b|\breserved\b|\(from |^the soaked and drained\b/i.test(raw);
 const isOptional = (raw, q) => q == null && /\boptional\b|for garnish|for sprinkling|for serving|to taste/i.test(raw);
 
 // EXACT match only. A substring test here meant "pepper" swallowed "bell
@@ -146,8 +180,8 @@ function composite(raw, food, c) {
 }
 
 // The gram weight for a key, using whichever unit table already covers it.
-function gramsFor(food, qty, unit) {
-  const k = findKey(food, ALL_MAP);
+function gramsFor(forms, qty, unit) {
+  const k = findKeyAny(forms, ALL_MAP);
   const t = k && ALL_MAP[k].grams;
   if (!t || qty == null) return null;
   const u = unit || "each";
@@ -156,27 +190,37 @@ function gramsFor(food, qty, unit) {
   return t.each != null ? qty * t.each : null;
 }
 
-/* A weighted blend of two entries. w is the position between the lower-fat and
- * the higher-fat part, so w = 0.6 sits just above their midpoint. Every macro
- * is blended on the same weighting - taking fat from a blend while protein
- * came from one entry would not describe any real fish.
+/* A weighted blend of two entries, which may come from different datasets.
+ * The weight is the position between the lower-fat and the higher-fat part.
+ * Every macro is blended on the same weighting - taking fat from a blend while
+ * protein came from one entry would not describe any real food.
  */
 function blend(raw, food, b, grams, qty, unit) {
-  const ns = b.parts.map((p) => FND_BY_ID[p.fdc]).sort((x, y) => x.fat - y.fat);
+  const w = blendWeight(b);
+  const ns = b.parts
+    .map((p) => ({ p, n: (p.src === "SR Legacy" ? BY_ID : FND_BY_ID)[p.fdc] }))
+    .sort((x, y) => x.n.fat - y.n.fat);
   const mix = (f) => {
-    const lo = ns[0][f] || 0, hi = ns[1][f] || 0;
-    return lo + b.w * (hi - lo);
+    const lo = ns[0].n[f] || 0, hi = ns[1].n[f] || 0;
+    return lo + w * (hi - lo);
   };
   const k = grams / 100;
-  const mid = ((ns[0].fat || 0) + (ns[1].fat || 0)) / 2;
+  const mid = ((ns[0].n.fat || 0) + (ns[1].n.fat || 0)) / 2;
+  const fat = mix("fat");
+  const how = b.leanTarget != null
+    ? `weighted to ${b.leanTarget}% lean between the ${ns[0].p.lean}/${100 - ns[0].p.lean} and the `
+      + `${ns[1].p.lean}/${100 - ns[1].p.lean} — ${fat.toFixed(2)} g fat/100 g, against the `
+      + `${100 - b.leanTarget} g a ${b.leanTarget}/${100 - b.leanTarget} label implies`
+    : `blended at the ${Math.round(w * 100)}th percentile between the two entries — `
+      + `${fat.toFixed(2)} g fat/100 g, just above their ${mid.toFixed(2)} g midpoint`;
   return {
-    raw, food, kind: "ok", src: "Foundation",
-    fdc: b.parts.map((p) => p.fdc).join(" + "),
-    label: ns.map((n) => n.desc).join("  |  "),
-    note: `blended at the ${Math.round(b.w * 100)}th percentile between the two Foundation entries — `
-      + `${mix("fat").toFixed(2)} g fat/100 g, just above their ${mid.toFixed(2)} g midpoint. Assumes ${b.assumes}.`,
+    raw, food, kind: "ok",
+    src: [...new Set(ns.map((x) => x.p.src))].join(" + "),
+    fdc: ns.map((x) => x.p.fdc).join(" + "),
+    label: ns.map((x) => x.n.desc).join("  |  "),
+    note: `${how}. Assumes ${b.assumes}.`,
     qty, unit, grams: +grams.toFixed(1),
-    kcal: +(mix("kcal") * k).toFixed(1), fat: +(mix("fat") * k).toFixed(1),
+    kcal: +(mix("kcal") * k).toFixed(1), fat: +(fat * k).toFixed(1),
     protein: +(mix("protein") * k).toFixed(1), carb: +(mix("carb") * k).toFixed(1),
     fiber: +(mix("fiber") * k).toFixed(1),
   };
@@ -187,7 +231,7 @@ function resolve(line) {
   let rest = raw;
   const qm = rest.match(/^([\d¼½¾⅓⅔⅛/.\s]+(?:to|-|–)?\s*[\d.]*)/);
   const parsed = qm ? parseQty(qm[1]) : null;
-  const qty = parsed ? parsed.v : null;
+  let qty = parsed ? parsed.v : null;
   const qtyRange = parsed && parsed.range;
   if (qm && parsed) rest = rest.slice(qm[0].length);
 
@@ -195,18 +239,19 @@ function resolve(line) {
   let unit = um ? UNIT_ALIAS[um[1].toLowerCase()] : null;
   if (um) rest = rest.trim().slice(um[0].length);
 
-  const food = norm(rest);
+  const forms = normForms(rest);
+  const food = forms[forms.length - 1];
   if (!food) return null;
   const Z = { grams: 0, kcal: 0, fat: 0, protein: 0, carb: 0, fiber: 0 };
 
   if (isBackRef(raw)) return { raw, food, kind: "backref", ...Z };
-  const ambKey = findKey(food, AMBIGUOUS);
+  const ambKey = findKeyAny(forms, AMBIGUOUS);
   if (ambKey && /cauliflower rice|fried eggs/.test(ambKey)) return { raw, food, kind: "excluded", why: AMBIGUOUS[ambKey], ...Z };
   if (isOptional(raw, qty)) return { raw, food, kind: "optional", ...Z };
 
   // Composites resolve before the map lookups, because the line they stand for
   // names no single food and would otherwise fall through to FLAGGED.
-  const compKey = findKey(food, COMPOSITES);
+  const compKey = findKeyAny(forms, COMPOSITES);
   if (compKey) {
     const c = COMPOSITES[compKey];
     if (c.exclude) return { raw, food, kind: "excluded", why: c.excludeWhy, ...Z };
@@ -215,20 +260,20 @@ function resolve(line) {
 
   // A blend of two entries, for a meat where Jaime asked for a value between
   // them rather than either one. Both ids stay on the row.
-  const blendKey = findKey(food, BLENDS);
+  const blendKey = findKeyAny(forms, BLENDS);
   if (blendKey) {
     const b = BLENDS[blendKey];
-    const g = gramsFor(food, qty, unit);
+    const g = gramsFor(forms, qty, unit);
     if (g != null) return blend(raw, food, b, g, qty, unit);
   }
 
   // Order matters. A real mapping always wins over FLAGGED and NEGLIGIBLE:
   // "tamari or coconut aminos" was being flagged on the words "coconut aminos"
   // even though tamari is mapped and AMBIGUOUS already says to use it.
-  const brandKey = findKey(food, BRANDED);
-  const mapKey = findKey(food, ALL_MAP);
+  const brandKey = findKeyAny(forms, BRANDED);
+  const mapKey = findKeyAny(forms, ALL_MAP);
   if (!brandKey && !mapKey) {
-    const flagKey = findKey(food, FLAGGED);
+    const flagKey = findKeyAny(forms, FLAGGED);
     if (flagKey) return { raw, food, kind: "flag", why: FLAGGED[flagKey] };
     if (isNeg(food)) return { raw, food, kind: "negligible", ...Z };
     return { raw, food, kind: "flag", why: "no confident USDA match" };
@@ -293,6 +338,12 @@ function resolve(line) {
   }
 
   if (!unit) unit = "each";
+  // "Juice of 1 lime" states its own quantity in words, so nothing parsed off
+  // the front of the line. The key supplies it.
+  if (qty == null) {
+    const dq = findKeyAny(forms, DEFAULT_QTY);
+    if (dq) qty = DEFAULT_QTY[dq];
+  }
   let g = null;
   if (unit === "g") g = qty;
   else if (gramsTable && gramsTable[unit] != null && qty != null) g = qty * gramsTable[unit];

@@ -26,8 +26,13 @@ const EXTRA_MAP = {
   // "boneless, skinless chicken" with no cut named. Jaime confirmed
   // 2026-09-21 that this is BREAST in every recipe, so it is no longer
   // reported as an assumption.
-  "boneless": { fdc: 171077, expect: "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw", grams: { lb: 453.6, oz: 28.35, cup: 140, each: 174 } },
-  "boneless skinless chicken": { fdc: 171077, expect: "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw", grams: { lb: 453.6, oz: 28.35, cup: 140 } },
+  //
+  // The bare "boneless" key is GONE. It only ever existed because the matcher
+  // split ingredient text at the first comma, so "boneless, skinless chicken
+  // thighs" reduced to "boneless" - which then matched this breast entry and
+  // costed a thigh line at breast's fat. The matcher now tries the whole line
+  // first and reaches "chicken thighs" directly.
+  "boneless skinless chicken": { fdc: 171077, expect: "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw", grams: { lb: 453.6, oz: 28.35, cup: 140, each: 174 } },
 };
 
 // FDC Branded Foods. Values are per 100 g, taken from the named product.

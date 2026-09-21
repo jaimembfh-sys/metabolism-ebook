@@ -5,31 +5,27 @@
  * what the figures assume.
  */
 
-/* ---- 1a. Ground beef: Jaime uses 92/8 -----------------------------------
+/* ---- 1a. Ground beef: Jaime buys 92/8 ------------------------------------
  *
- * Neither dataset carries a 92/8 entry, so the rule is the nearest lean
- * percentage, Foundation preferred. Foundation holds two raw ground beefs:
+ * Neither dataset carries a 92/8 entry, and the two nearest sit on opposite
+ * sides of it in different datasets:
  *
- *   90% lean / 10% fat   12.8 g fat   fdc 2514743   <- nearest to 92
- *   80% lean / 20% fat   19.4 g fat   fdc 2514744
+ *   93% lean / 7% fat    7.0  g fat   fdc 173110    SR Legacy
+ *   92% lean / 8% fat        the target
+ *   90% lean / 10% fat  12.8  g fat   fdc 2514743   Foundation
  *
- * WORTH KNOWING: 12.8 g fat is what Foundation measured for beef LABELLED
- * 10% fat, so it runs well above its own label. Against a 92/8 label the
- * implied figure is about 8 g. SR Legacy's 93/7 (fdc 173110, 7.0 g fat) is
- * both nearer to 92% lean and nearer to what 92/8 beef should test at, but it
- * is SR Legacy and this pick prefers Foundation as instructed.
+ * So the value is a blend weighted to 92% lean, the same construction used
+ * for the salmon. 92 sits one point below 93 and two above 90, so the weight
+ * falls two-thirds on the 93/7 entry and one-third on the 90/10:
+ *
+ *   w  = (93 - 92) / (93 - 90) = 1/3      measured from the leaner part
+ *   fat = 7.0 + (1/3) * (12.8 - 7.0) = 8.93 g
+ *
+ * 8.93 g is close to the 8 g a 92/8 label implies, which the Foundation-only
+ * pick was not - Foundation's 90/10 tests at 12.8 g, well above its own label.
+ * This is the one place in the rebuild where the two datasets are mixed, and
+ * it is mixed deliberately because neither one brackets 92% lean on its own.
  */
-const MEAT_PICKS = {
-  "ground beef": {
-    fdc: 2514743, expect: "Beef, ground, 90% lean meat / 10% fat, raw",
-    population: [
-      { fdc: 2514743, fat: 12.8, lean: 90, desc: "Beef, ground, 90% lean meat / 10% fat, raw" },
-      { fdc: 2514744, fat: 19.4, lean: 80, desc: "Beef, ground, 80% lean meat / 20% fat, raw" },
-    ],
-    nearestLean: 92,
-    assumes: "92/8 ground beef",
-  },
-};
 
 /* ---- 1b. Salmon: just above the midpoint of the two Foundation entries ---
  *
@@ -55,16 +51,35 @@ const MEAT_PICKS = {
  * It is a stated blend of two, not an estimate.
  */
 const BLENDS = {
+  "ground beef": {
+    leanTarget: 92,
+    parts: [
+      { fdc: 173110,  src: "SR Legacy",  lean: 93, expect: "Beef, ground, 93% lean meat / 7% fat, raw" },
+      { fdc: 2514743, src: "Foundation", lean: 90, expect: "Beef, ground, 90% lean meat / 10% fat, raw" },
+    ],
+    assumes: "92/8 ground beef",
+  },
   "salmon fillet": {
     w: 0.6,
     parts: [
-      { fdc: 2684440, expect: "Fish, salmon, sockeye, wild caught, raw" },
-      { fdc: 2684441, expect: "Fish, salmon, Atlantic, farm raised, raw" },
+      { fdc: 2684440, src: "Foundation", expect: "Fish, salmon, sockeye, wild caught, raw" },
+      { fdc: 2684441, src: "Foundation", expect: "Fish, salmon, Atlantic, farm raised, raw" },
     ],
     assumes: "a mid-range salmon",
   },
 };
 BLENDS["salmon"] = BLENDS["salmon fillet"];
+
+/* The blend weight, measured from the LOWER-fat part toward the higher-fat
+ * one. Where a lean target is given it is derived from the lean percentages so
+ * the weighting is a statement about the beef, not a hand-set number.
+ */
+function blendWeight(b) {
+  if (b.w != null) return b.w;
+  const sorted = b.parts.slice().sort((x, y) => y.lean - x.lean); // leanest first = lowest fat
+  const [hi, lo] = sorted;                                        // hi.lean > lo.lean
+  return (hi.lean - b.leanTarget) / (hi.lean - lo.lean);
+}
 
 /* ---- 2. Mixed vegetables of choice --------------------------------------
  *
@@ -123,37 +138,37 @@ const YIELD = {
   },
 };
 
-function verifyAssumptions(fndById) {
+function verifyAssumptions(fndById, srById) {
   const problems = [];
-  const check = (what, fdc, expect) => {
-    const f = fndById[fdc];
-    if (!f) { problems.push(`${what}: Foundation fdc ${fdc} not in index`); return; }
-    if (!f.desc.toLowerCase().startsWith(expect.toLowerCase().slice(0, 30)))
-      problems.push(`${what}: fdc ${fdc}\n      expected "${expect}"\n      actual   "${f.desc}"`);
+  const idx = (p) => (p.src === "SR Legacy" ? srById : fndById);
+  const check = (what, p) => {
+    const f = idx(p)[p.fdc];
+    if (!f) { problems.push(`${what}: ${p.src || "Foundation"} fdc ${p.fdc} not in index`); return; }
+    if (!f.desc.toLowerCase().startsWith(p.expect.toLowerCase().slice(0, 30)))
+      problems.push(`${what}: fdc ${p.fdc}\n      expected "${p.expect}"\n      actual   "${f.desc}"`);
   };
-  Object.entries(MEAT_PICKS).forEach(([k, v]) => {
-    check("MEAT_PICKS " + k, v.fdc, v.expect);
-    // The picked entry must be the one nearest the lean percentage Jaime buys.
-    const near = v.population.slice()
-      .sort((a, b) => Math.abs(a.lean - v.nearestLean) - Math.abs(b.lean - v.nearestLean))[0];
-    if (near.fdc !== v.fdc)
-      problems.push(`MEAT_PICKS ${k}: nearest to ${v.nearestLean}% lean is ${near.fdc} (${near.lean}%), not the picked ${v.fdc}`);
-  });
   Object.entries(BLENDS).forEach(([k, v]) => {
-    v.parts.forEach((p) => check("BLENDS " + k, p.fdc, p.expect));
-    // A blend must sit strictly above the midpoint of its parts, or it is not
-    // doing what it was asked to do.
-    const fats = v.parts.map((p) => fndById[p.fdc]).filter(Boolean).map((f) => f.fat).sort((a, b) => a - b);
-    if (fats.length === 2) {
+    v.parts.forEach((p) => check("BLENDS " + k, p));
+    const fats = v.parts.map((p) => idx(p)[p.fdc]).filter(Boolean).map((f) => f.fat).sort((a, b) => a - b);
+    if (fats.length !== 2) return;
+    const w = blendWeight(v);
+    if (!(w > 0 && w < 1)) { problems.push(`BLENDS ${k}: weight ${w} is not strictly between the two parts`); return; }
+    const val = fats[0] + w * (fats[1] - fats[0]);
+    if (v.leanTarget != null) {
+      // The blend must land between the two entries and, for a lean target,
+      // near the fat the label implies - within 1.5 g of (100 - lean).
+      const implied = 100 - v.leanTarget;
+      if (Math.abs(val - implied) > 1.5)
+        problems.push(`BLENDS ${k}: ${val.toFixed(2)} g fat is more than 1.5 g from the ${implied} g a ${v.leanTarget}/${implied} label implies`);
+    } else {
       const mid = (fats[0] + fats[1]) / 2;
-      const val = fats[0] + v.w * (fats[1] - fats[0]);
       if (!(val > mid)) problems.push(`BLENDS ${k}: ${val.toFixed(2)} g fat is not above the midpoint ${mid.toFixed(2)}`);
     }
   });
   Object.entries(COMPOSITES).forEach(([k, v]) =>
-    v.parts.forEach((p) => check("COMPOSITES " + k, p.fdc, p.expect)));
+    v.parts.forEach((p) => check("COMPOSITES " + k, p)));
   if (problems.length) throw new Error("Assumption verification FAILED:\n  " + problems.join("\n  "));
-  return Object.keys(MEAT_PICKS).length + Object.keys(BLENDS).length + Object.keys(COMPOSITES).length;
+  return Object.keys(BLENDS).length + Object.keys(COMPOSITES).length;
 }
 
-module.exports = { MEAT_PICKS, BLENDS, COMPOSITES, YIELD, verifyAssumptions };
+module.exports = { BLENDS, COMPOSITES, YIELD, blendWeight, verifyAssumptions };
