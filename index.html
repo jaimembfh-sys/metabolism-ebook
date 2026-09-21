@@ -5973,7 +5973,21 @@
             // search happens mid-turn (content[0] becomes a server_tool_use
             // block instead) — this concatenates every text block instead,
             // in order, so the real answer is never silently dropped.
-            async function callClaudeChat(conversationHistory, systemInstruction, requestType, liveSearchBudget) {
+            // Appends corrective text to a system prompt in either shape: a
+            // plain string, or the two-block cache-aware form the retrieval
+            // paths use. For blocks it goes on the LAST block, so the cached
+            // stable prefix is left byte-identical.
+            function appendToSystem(systemInstruction, extra) {
+                if (Array.isArray(systemInstruction)) {
+                    const blocks = systemInstruction.slice();
+                    const i = blocks.length - 1;
+                    blocks[i] = Object.assign({}, blocks[i], { text: blocks[i].text + extra });
+                    return blocks;
+                }
+                return systemInstruction + extra;
+            }
+
+            async function callClaudeChat(conversationHistory, systemInstruction, requestType, liveSearchBudget, isEdRetry) {
                 const systemWithRules = await withCoachRules(systemInstruction, requestType);
                 const response = await fetch('/api/claude', {
                     method: 'POST',
@@ -5999,7 +6013,26 @@
                     .map(function(b) { return b.text; })
                     .join(' ')
                     .trim();
-                return { text: scrubDisconnectedHelpline(text), liveSearchesUsed: data.liveSearchesUsed || 0 };
+                const scrubbed = scrubDisconnectedHelpline(text);
+
+                // Detect-and-regenerate, same pattern as the allergen gate.
+                // _edRetry guards against recursing: one regeneration, then the
+                // response goes out as-is rather than leaving the user with
+                // nothing at all, which would be worse than a weekday-only
+                // number. The scrubber below still runs on the retry.
+                if (!isEdRetry && edEscalationMissingCrisisLine(scrubbed)) {
+                    console.warn('[coach] eating-disorder escalation had no 24/7 option — regenerating.');
+                    const corrective = appendToSystem(
+                        systemInstruction,
+                        '\n\nYOUR PREVIOUS REPLY WAS REJECTED. It escalated for disordered eating but offered no 24/7 option. ' +
+                        'The National Alliance line (866-662-1235) is Monday–Friday 9am–7pm Eastern only. ' +
+                        'Regenerate the reply and include BOTH resources together: the Alliance line with its hours and findEDhelp.com, ' +
+                        'AND the 24/7 option — call or text 988, or text ALLIANCE to 741-741.'
+                    );
+                    return await callClaudeChat(conversationHistory, corrective, requestType, liveSearchBudget, true);
+                }
+
+                return { text: scrubbed, liveSearchesUsed: data.liveSearchesUsed || 0 };
             }
 
             // Structured-output tool for goal/why extraction. Forcing the
@@ -7554,7 +7587,10 @@ Apply the same goal-setting principles as before: Jaime Jenkins' framework first
             // Same principle as stripMealMacrosIfFlagged: that's a prompt
             // instruction only; this forces it regardless of what the model
             // actually returned.
-            const ALT_HELPLINE = 'the National Alliance for Eating Disorders (search for their current helpline number)';
+            // The verified resources, supplied by Jaime 2026-09-21. Both halves
+            // always go out together: the Alliance line is weekday daytime only,
+            // so on its own it is no use to someone in distress at 2am.
+            const ED_RESOURCES = '**National Alliance for Eating Disorders** — 866-662-1235, Monday–Friday 9am–7pm Eastern, staffed by licensed therapists. findEDhelp.com to find treatment. **For 24/7 support:** call or text **988**, or text **ALLIANCE** to **741-741**';
 
             function scrubDisconnectedHelpline(text) {
                 if (!text) return text;
@@ -7563,17 +7599,31 @@ Apply the same goal-setting principles as before: Jaime Jenkins' framework first
                 // as "National Alliance...: the National Alliance...".
                 out = out.replace(
                     /\*{0,2}NEDA(?:\s+Helpline)?\*{0,2}\s*[:—-]?\s*\(?\s*1?[-\s.]?800[-\s.]?931[-\s.]?2237\s*\)?(?:\s*\([^)]*\))?/gi,
-                    '**National Alliance for Eating Disorders** — search for their current helpline number'
+                    ED_RESOURCES
                 );
                 // Then any bare number or text-line that survived.
-                out = out.replace(/\b1?[-\s.]?800[-\s.]?931[-\s.]?2237\b/gi, ALT_HELPLINE);
-                out = out.replace(/text\s+["“]?NEDA["”]?\s+to\s+741741/gi, ALT_HELPLINE);
+                out = out.replace(/\b1?[-\s.]?800[-\s.]?931[-\s.]?2237\b/gi, ED_RESOURCES);
+                out = out.replace(/text\s+["“]?NEDA["”]?\s+to\s+741741/gi, 'text **ALLIANCE** to **741-741**');
                 // Finally a bare label with no number attached.
                 out = out.replace(/\bNEDA\s+Helpline\b/gi, 'National Alliance for Eating Disorders');
                 if (out !== text) {
-                    console.warn('scrubDisconnectedHelpline: removed a disconnected NEDA reference from a coach response.');
+                    console.warn('scrubDisconnectedHelpline: replaced a disconnected NEDA reference in a coach response.');
                 }
                 return out;
+            }
+
+            // ---- 24/7 coverage check ----
+            // The Alliance line is Monday-Friday 9am-7pm Eastern. An escalation
+            // that offers only that number hands someone in crisis on a Saturday
+            // night a closed office. Prompt rule first, then this, same as the
+            // allergen gate.
+            const ED_ESCALATION_RE = /eating disorder|disordered eating|National Alliance for Eating Disorders|findEDhelp|662-1235/i;
+            const CRISIS_247_RE = /\b988\b|741[-\s.]?741|\b24\/7\b|around the clock/i;
+
+            function edEscalationMissingCrisisLine(text) {
+                if (!text) return false;
+                if (!ED_ESCALATION_RE.test(text)) return false;
+                return !CRISIS_247_RE.test(text);
             }
 
             // Fails closed. If the rules cannot be loaded we would rather the
