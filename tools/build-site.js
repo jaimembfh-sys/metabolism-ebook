@@ -58,11 +58,16 @@ const FILES = [
 ];
 
 const DIRS = [
-  "styles",    // brand.css
-  "scripts",   // a11y.js, format.js, retrieval.js — all three are loaded
-  "images",    // several referenced directly, and one built at runtime
-  "logos",     // favicon-mind-body.png, mind-body-cropped.png
-  "recipes",   // the 43 recipe PDFs, linked from the recipe list
+  "styles",       // brand.css
+  "scripts",      // a11y.js, format.js, retrieval.js — all three are loaded
+  "images",       // several referenced directly, and one built at runtime
+  "logos",        // favicon-mind-body.png, mind-body-cropped.png
+  "recipes",      // the 43 recipe PDFs, linked from the recipe list
+  // Approved by Jaime 2026-09-22. The coach links to these by the `page`
+  // field build-recipes-corpus.js writes into recipes.json, so they have to
+  // be reachable for those links to resolve. The PDFs stay published beside
+  // them until he retires them.
+  "recipes-html",
 ];
 
 /* Deliberately NOT published, and why:

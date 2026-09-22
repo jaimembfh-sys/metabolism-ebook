@@ -14,10 +14,87 @@
 
 const fs = require("fs");
 const path = require("path");
+const { tagRecipe } = require(path.join(__dirname, "..", "tools", "allergens.js"));
 
 const ROOT = path.resolve(__dirname, "..");
 const RECIPES_DIR = path.join(__dirname, "recipes", "markdown");
 const OUT_PATH = path.join(__dirname, "recipes.json");
+
+/* Per-recipe fields the coach needs that the markdown does not state directly.
+ *
+ *   page       where the built recipe page lives, so anything the coach names
+ *              can be linked rather than just mentioned
+ *   allergens  computed from the ingredient lines by tools/allergens.js, using
+ *              the same vocabulary as the Protocol Builder's live gate
+ *   summary    the nutrition panel as numbers, so a compact index can be sent
+ *              to the model instead of 77 KB of full text
+ *
+ * The allergen tags are DATA here, not yet a rule: index.html gates every use
+ * of them behind ALLERGEN_TAGS_CONFIRMED, which stays false until Jaime has
+ * read tools/recipes/allergen-table.js and said the tags are right.
+ */
+function recipePage(slug) {
+  return "/recipes-html/" + slug + ".html";
+}
+
+/** First nutrition panel, as numbers. Two-panel recipes (with/without an
+ *  optional component) report the first, which is the base dish. */
+function nutritionSummary(body) {
+  const sec = body.split(/^## Nutrition\s*$/m)[1];
+  if (!sec) return null;
+  const block = sec.split(/^## /m)[0];
+  const num = (label) => {
+    const m = block.match(new RegExp("^- " + label + ":\\s*([\\d.]+)", "m"));
+    return m ? Number(m[1]) : null;
+  };
+  const heading = (block.match(/^### (.+)$/m) || [])[1] || null;
+  const out = {
+    per: heading ? heading.replace(/\s*—.*$/, "").trim() : null,
+    calories: num("Calories"),
+    fat_g: num("Total Fat"),
+    carbs_g: num("Total Carbs"),
+    fiber_g: num("Fiber"),
+    net_carbs_g: num("Net Carbs"),
+    protein_g: num("Protein"),
+  };
+  return out.calories == null ? null : out;
+}
+
+/** The handful of words that say what a dish actually is, for the compact
+ *  index. Quantities and preparation notes are dropped - "1 1/2 lbs boneless,
+ *  skinless chicken thighs, chopped" becomes "chicken thighs". */
+function keyIngredients(body, limit) {
+  const m = body.match(/## Ingredients\n([\s\S]*?)(\n## |$)/);
+  if (!m) return [];
+  const seen = new Set();
+  const out = [];
+  for (const line of m[1].split("\n")) {
+    const t = line.trim();
+    if (t.indexOf("- ") !== 0) continue;
+    let s = t.slice(2)
+      .replace(/<!--[\s\S]*?-->/g, "")
+      .replace(/\([^)]*\)/g, "")
+      // The unit needs a word boundary after it, or the "g" in the unit list
+      // eats the "g" of "garlic" and the ingredient comes out as "arlic".
+      .replace(/^[\d\s/.]+(?:to\s+[\d\s/.]+)?\s*(?:(?:tsp|Tbsp|cups?|oz|lbs?|g|cans?|cloves?|slices?|heads?|ribs?|stalks?|sticks?|large|small|medium|regular)\b\s*)?/i, "")
+      .trim()
+      .toLowerCase();
+    /* Strip leading modifiers before taking the first clause, or
+     * "boneless, skinless chicken thighs" reduces to "boneless" - the same
+     * catch-all that once made the macro tool cost a thigh at breast's fat. */
+    let prev;
+    do {
+      prev = s;
+      s = s.replace(/^(boneless|skinless|fresh|raw|cooked|chopped|diced|minced|shredded|grated|sliced|halved|frozen|canned|jarred|dried|whole|natural|all natural|no sugar added|unsweetened|low sugar|extra-virgin|extra virgin|freshly|finely|roughly|thinly|ripe|smooth|creamy)\b[,\s]*/, "");
+    } while (s !== prev && s);
+    s = s.split(",")[0].trim();
+    if (!s || s.length < 3 || seen.has(s)) continue;
+    seen.add(s);
+    out.push(s);
+    if (out.length >= (limit || 6)) break;
+  }
+  return out;
+}
 
 function parseFrontmatterValue(raw) {
   if (raw === "null") return null;
@@ -41,18 +118,26 @@ function parseRecipeFile(filePath) {
     const value = line.slice(idx + 1).trim();
     meta[key] = parseFrontmatterValue(value);
   });
-  return Object.assign(
-    {
-      slug: path.basename(filePath, ".md"),
-      title: meta.title || path.basename(filePath, ".md"),
-      description: meta.description || "",
-      category: meta.category || "uncategorized",
-      servings: meta.servings != null ? meta.servings : null,
-      source_file: meta.source_file || null,
-      full_text: body.trim(),
-    },
-    {}
-  );
+  const slug = path.basename(filePath, ".md");
+  const full = body.trim();
+  const tagged = tagRecipe(full);
+  return {
+    slug: slug,
+    title: meta.title || slug,
+    description: meta.description || "",
+    category: meta.category || "uncategorized",
+    servings: meta.servings != null ? meta.servings : null,
+    source_file: meta.source_file || null,
+    page: recipePage(slug),
+    allergens: tagged.allergens,
+    // True where the tagger itself is unsure - a doubtful hit or a term it
+    // knows it does not cover. Surfaced so the coach can decline to promise
+    // a recipe is safe on a tag nobody has checked.
+    allergens_uncertain: (tagged.uncertain.length + tagged.misses.length) > 0,
+    nutrition: nutritionSummary(full),
+    key_ingredients: keyIngredients(full, 6),
+    full_text: full,
+  };
 }
 
 function main() {
