@@ -472,22 +472,25 @@ Divided by **6 servings**.
 | 4 Tbsp coconut flour | 28 g | Flour, coconut <br>`FDC 2515382` | Foundation | 4.3 | 4.5 | 16.5 |
 | 4 Tbsp monk fruit/allulose sweetener <!-- linked_product: url=null --> | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp baking powder | — | *negligible* | — | 0 | 0 | 0 |
-| 9 Tbsp butter, melted | 127.8 g | Butter, salted <br>`FDC 173410` | SR Legacy | 103.7 | 1.1 | 0.1 |
+| 9 Tbsp ghee or coconut oil, melted | 126 g | Butter, Clarified butter (ghee) <br>`FDC 171314` <br>*recipe offers a choice. Ghee is 900 kcal and 100 g fat per 100 g, coconut oil 862 and 100 — within 4% on energy and identical on fat, so the macro effect is small. Calculated with ghee, the first option. Coconut oil is the dairy-free way to make it.* | SR Legacy | 126 | 0 | 0 |
 | 3 Tbsp coconut milk | 42 g | Nuts, coconut milk, canned (liquid expressed from grated meat and water) <br>`FDC 170173` | SR Legacy | 9 | 0.8 | 1.2 |
 | 2 tsp vanilla extract | — | *negligible* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **141.9** | **37.4** | **20.2** |
+| **WHOLE RECIPE TOTAL** | | | | **164.2** | **36.3** | **20.1** |
 
-Whole recipe: **1488 kcal**, fat 141.9 g, protein 37.4 g, carbs 20.2 g, fiber 9.6 g
+Whole recipe: **1705 kcal**, fat 164.2 g, protein 36.3 g, carbs 20.1 g, fiber 9.6 g
 Divided by **5 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 298 | **298** | 0% |
-| Fat (g) | 28 | **28** | 0% |
+| Calories | 298 | **341** | +14% |
+| Fat (g) | 28 | **33** | +18% |
 | Protein (g) | 7 | **7** | 0% |
 | Total carbs (g) | 4 | **4** | 0% |
 | Fiber (g) | 2 | **2** | 0% |
 | Net carbs (g) | 2 | **2** | 0% |
+
+**Assumptions made:**
+- `9 Tbsp ghee or coconut oil, melted` — recipe offers a choice. Ghee is 900 kcal and 100 g fat per 100 g, coconut oil 862 and 100 — within 4% on energy and identical on fat, so the macro effect is small. Calculated with ghee, the first option. Coconut oil is the dairy-free way to make it.
 
 ---
 ## Grain-Free Cinnamon Coconut Granola
@@ -1642,6 +1645,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | fresh mint leaves | SR Legacy 173474 | Peppermint, fresh |
 | fresh thai basil | SR Legacy 172232 | Basil, fresh |
 | freshly squeezed lemon juice | SR Legacy 167746 | Lemons, raw, without peel |
+| ghee or coconut oil | SR Legacy 171314 | Butter, Clarified butter (ghee) |
 | grape tomatoes | SR Legacy 170457 | Tomatoes, red, ripe, raw, year round average |
 | ground beef | SR Legacy + Foundation 173110 + 2514743 | Beef, ground, 93% lean meat / 7% fat, raw  |  Beef, ground, 90% lean meat / 10% fat, raw |
 | ground oregano | SR Legacy 171328 | Spices, oregano, dried |
@@ -1688,7 +1692,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | unsweetened coconut flakes | SR Legacy 170579 | Nuts, coconut meat, dried (desiccated), toasted |
 | worcestershire sauce | SR Legacy 171610 | Sauce, worcestershire |
 
-**73 ingredients stayed.** Foundation is only 394 foods, so most pantry items, oils, spices, sauces, broths and herbs simply are not in it.
+**74 ingredients stayed.** Foundation is only 394 foods, so most pantry items, oils, spices, sauces, broths and herbs simply are not in it.
 
 
 ### 2b. Foundation has an entry, but for a different food — deliberately not switched
@@ -1737,7 +1741,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | Classic Tuna Salad | 15g | 19g → **14g** | 6g → **5g** | 240 → **224** |
 | Coconut Chia Pudding | 30g | 5g | 5g → **4g** | 314 → **315** |
 | Dairy Free Avocado Chocolate Mousse | 19g → **23g** | 4g → **3g** | 4g | 204 → **238** |
-| Fluffy Coconut Keto Pancakes | 28g | 7g | 2g | 294 → **298** |
+| Fluffy Coconut Keto Pancakes | 28g → **33g** | 7g | 2g | 294 → **341** |
 | Grain-Free Cinnamon Coconut Granola | 19g → **18g** | 4g | 7g | 205 → **204** |
 | Greek Salad | 23g → **22g** | 6g → **9g** | 6g → **10g** | 253 → **277** |
 | Grilled Chicken Kabobs | 17g → **16g** | 31g | 7g → **8g** | 311 → **305** |
