@@ -24,9 +24,13 @@
  * the consequence is measured rather than argued about: the projection below
  * costs every proposal through to the per-serving number a reader sees.
  *
- * Usage:
- *   MACRO_INDEX=<usda-index.json> MACRO_DUMP=<dump.json> node tools/macros/report.js
- *   MACRO_INDEX=<usda-index.json> node tools/macros/weight-proposals.js <dump.json>
+ * Usage - needs a report.js dump for its per-ingredient rows, and reads the
+ * nutrient indexes committed beside this file to cost the projection:
+ *
+ *   MACRO_DUMP=/tmp/dump.json node tools/macros/report.js
+ *   node tools/macros/weight-proposals.js /tmp/dump.json
+ *
+ * MACRO_INDEX overrides the SR Legacy index; there is no other environment.
  */
 const fs = require("fs");
 const path = require("path");
@@ -56,9 +60,14 @@ R.forEach((r) => {
 const FND = {}, SR = {};
 JSON.parse(fs.readFileSync(path.join(__dirname, "foundation-index.json"), "utf8"))
   .foods.forEach((f) => (FND[f.fdc_id] = f));
-if (process.env.MACRO_INDEX && fs.existsSync(process.env.MACRO_INDEX)) {
-  JSON.parse(fs.readFileSync(process.env.MACRO_INDEX, "utf8")).foods.forEach((f) => (SR[f.fdc_id] = f));
+const INDEX = process.env.MACRO_INDEX || path.join(__dirname, "usda-index.json");
+if (!fs.existsSync(INDEX)) {
+  // Without it every SR Legacy line goes unpriced and the projection quietly
+  // under-reports, which is worse than not running.
+  console.error("missing nutrient index: " + INDEX);
+  process.exit(1);
 }
+JSON.parse(fs.readFileSync(INDEX, "utf8")).foods.forEach((f) => (SR[f.fdc_id] = f));
 function per100(food) {
   const s = D.sources[food];
   if (!s) return null;

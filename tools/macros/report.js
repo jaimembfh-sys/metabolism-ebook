@@ -14,15 +14,20 @@
  * a number, then run with no arguments before committing, or the other 41
  * recipes are gone from the file.
  *
- * Environment:
- *   MACRO_INDEX=<usda-index.json>   the SR Legacy index. Defaults to a path in
- *       a Claude session scratch directory, which is a temp directory and will
- *       not survive a cleanup - rebuild it with build-usda-index.js from the
- *       SR Legacy CSVs if the default is gone.
- *   MACRO_BASELINE=<dump.json>      earlier run to diff against. Without it
- *       the "Per-serving change, every recipe that moved" section is NOT
- *       written, so a plain run drops it from the committed file. The baseline
- *       behind the current section is a MACRO_NO_FOUNDATION=1 run.
+ * Both datasets it reads are committed beside this file, so a plain run with
+ * no environment set reproduces manuscript/RECIPE_MACROS.md exactly:
+ *
+ *   usda-index.json               SR Legacy (2018-04), 7,793 foods. Rebuild
+ *                                 with build-usda-index.js from the SR Legacy
+ *                                 CSVs; it writes to this same path.
+ *   baseline-pre-foundation.json  the MACRO_NO_FOUNDATION=1 run that the
+ *                                 "Per-serving change" section is diffed
+ *                                 against. Regenerate with:
+ *                                 MACRO_NO_FOUNDATION=1 MACRO_DUMP=<path>
+ *
+ * Environment, all optional overrides:
+ *   MACRO_INDEX=<usda-index.json>   use a different nutrient index.
+ *   MACRO_BASELINE=<dump.json>      diff against a different earlier run.
  *   MACRO_DUMP=<path>               also write the per-serving numbers, the
  *       per-ingredient rows and the source list as JSON.
  *   MACRO_NO_FOUNDATION=1           ignore Foundation, use SR Legacy only.
@@ -31,8 +36,11 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..", "..");
-const SCRATCH = process.env.MACRO_INDEX ||
-  "C:/Users/jaime/AppData/Local/Temp/claude/c--Projects-metabolism-ebook/154b03b6-0897-41cc-8ddb-69add87f5178/scratchpad/usda-index.json";
+// Both datasets live beside this file. They used to default into a Claude
+// session scratch directory, which is a temp folder one cleanup away from
+// taking the whole pipeline with it.
+const SCRATCH = process.env.MACRO_INDEX || path.join(__dirname, "usda-index.json");
+const BASELINE = process.env.MACRO_BASELINE || path.join(__dirname, "baseline-pre-foundation.json");
 
 const { MAP, NEGLIGIBLE, FLAGGED, verifyMap } = require("./usda-map.js");
 const { EXTRA_MAP, BRANDED, AMBIGUOUS } = require("./usda-map-extra.js");
@@ -574,7 +582,7 @@ function foundationSection() {
   L.push("|---|---|");
   Object.entries(FOUNDATION_REJECTED).forEach(([k, why]) => L.push(`| ${k} | ${why} |`));
 
-  const basePath = process.env.MACRO_BASELINE;
+  const basePath = BASELINE;
   if (basePath && fs.existsSync(basePath)) {
     const base = JSON.parse(fs.readFileSync(basePath, "utf8")).per;
     const net = (p) => (p.net_carbs != null ? p.net_carbs : +(p.carbs - (p.fiber || 0)).toFixed(1));

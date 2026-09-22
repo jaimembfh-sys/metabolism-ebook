@@ -1,0 +1,1151 @@
+{
+ "per": {
+  "avocado-egg-bake": {
+   "calories": 256,
+   "fat": 22,
+   "protein": 9,
+   "carbs": 10,
+   "fiber": 8,
+   "net_carbs": 2
+  },
+  "beef-and-broccoli": {
+   "calories": 373,
+   "fat": 23,
+   "protein": 31,
+   "carbs": 13,
+   "fiber": 3,
+   "net_carbs": 10
+  },
+  "big-mac-bowl": {
+   "calories": 593,
+   "fat": 47,
+   "protein": 27,
+   "carbs": 18,
+   "fiber": 7,
+   "net_carbs": 11
+  },
+  "cast-iron-ribeye-with-garlic-mushrooms": {
+   "calories": 966,
+   "fat": 75,
+   "protein": 69,
+   "carbs": 6,
+   "fiber": 1,
+   "net_carbs": 5
+  },
+  "chicken-or-beef-fajitas": {
+   "calories": 255,
+   "fat": 10,
+   "protein": 31,
+   "carbs": 10,
+   "fiber": 3,
+   "net_carbs": 7
+  },
+  "chickpea-and-macadamia-hummus": {
+   "calories": 202,
+   "fat": 19,
+   "protein": 4,
+   "carbs": 8,
+   "fiber": 3,
+   "net_carbs": 5
+  },
+  "classic-chicken-salad": {
+   "calories": 379,
+   "fat": 30,
+   "protein": 21,
+   "carbs": 6,
+   "fiber": 2,
+   "net_carbs": 4
+  },
+  "classic-cobb-salad": {
+   "calories": 823,
+   "fat": 67,
+   "protein": 46,
+   "carbs": 10,
+   "fiber": 6,
+   "net_carbs": 4
+  },
+  "classic-deviled-eggs": {
+   "calories": 59,
+   "fat": 5,
+   "protein": 3,
+   "carbs": 1,
+   "fiber": 0,
+   "net_carbs": 1
+  },
+  "classic-mustard-egg-salad": {
+   "calories": 263,
+   "fat": 22,
+   "protein": 10,
+   "carbs": 7,
+   "fiber": 1,
+   "net_carbs": 6
+  },
+  "classic-tuna-salad": {
+   "calories": 240,
+   "fat": 15,
+   "protein": 19,
+   "carbs": 7,
+   "fiber": 1,
+   "net_carbs": 6
+  },
+  "coconut-chia-pudding": {
+   "calories": 314,
+   "fat": 30,
+   "protein": 5,
+   "carbs": 11,
+   "fiber": 6,
+   "net_carbs": 5
+  },
+  "dairy-free-avocado-chocolate-mousse": {
+   "calories": 204,
+   "fat": 19,
+   "protein": 4,
+   "carbs": 12,
+   "fiber": 8,
+   "net_carbs": 4
+  },
+  "fluffy-coconut-keto-pancakes": {
+   "calories": 294,
+   "fat": 28,
+   "protein": 7,
+   "carbs": 4,
+   "fiber": 2,
+   "net_carbs": 2
+  },
+  "grain-free-cinnamon-coconut-granola": {
+   "calories": 205,
+   "fat": 19,
+   "protein": 4,
+   "carbs": 9,
+   "fiber": 2,
+   "net_carbs": 7
+  },
+  "greek-salad": {
+   "calories": 253,
+   "fat": 23,
+   "protein": 6,
+   "carbs": 8,
+   "fiber": 2,
+   "net_carbs": 6
+  },
+  "grilled-chicken-kabobs": {
+   "calories": 311,
+   "fat": 17,
+   "protein": 31,
+   "carbs": 10,
+   "fiber": 3,
+   "net_carbs": 7
+  },
+  "homemade-avocado-oil-mayo": {
+   "calories": 2043,
+   "fat": 227,
+   "protein": 6,
+   "carbs": 2,
+   "fiber": 0,
+   "net_carbs": 2
+  },
+  "homemade-greek-yogurt-ranch-dip": {
+   "calories": 87,
+   "fat": 8,
+   "protein": 2,
+   "carbs": 1,
+   "fiber": 0,
+   "net_carbs": 1
+  },
+  "homemade-spaghetti-sauce-with-spaghetti-squash": {
+   "calories": 316,
+   "fat": 18,
+   "protein": 20,
+   "carbs": 22,
+   "fiber": 5,
+   "net_carbs": 17
+  },
+  "keto-carolina-mustard-bbq-sauce": {
+   "calories": 127,
+   "fat": 6,
+   "protein": 7,
+   "carbs": 15,
+   "fiber": 8,
+   "net_carbs": 7
+  },
+  "keto-cheesecake-fluff": {
+   "calories": 267,
+   "fat": 27,
+   "protein": 3,
+   "carbs": 3,
+   "fiber": 0,
+   "net_carbs": 3
+  },
+  "keto-chicken-cordon-bleu": {
+   "calories": 536,
+   "fat": 41,
+   "protein": 36,
+   "carbs": 6,
+   "fiber": 1,
+   "net_carbs": 5
+  },
+  "keto-chicken-parmesan": {
+   "calories": 615,
+   "fat": 39,
+   "protein": 53,
+   "carbs": 15,
+   "fiber": 5,
+   "net_carbs": 10
+  },
+  "keto-chili": {
+   "calories": 177,
+   "fat": 11,
+   "protein": 15,
+   "carbs": 3,
+   "fiber": 1,
+   "net_carbs": 2
+  },
+  "keto-peanut-butter-balls": {
+   "calories": 88,
+   "fat": 5,
+   "protein": 1,
+   "carbs": 10,
+   "fiber": 2,
+   "net_carbs": 8
+  },
+  "make-ahead-teriyaki-sauce": {
+   "calories": 129,
+   "fat": 3,
+   "protein": 16,
+   "carbs": 13,
+   "fiber": 2,
+   "net_carbs": 11
+  },
+  "marinara-sauce": {
+   "calories": 794,
+   "fat": 32,
+   "protein": 28,
+   "carbs": 127,
+   "fiber": 33,
+   "net_carbs": 94
+  },
+  "oven-baked-bacon": {
+   "calories": 414,
+   "fat": 33,
+   "protein": 27,
+   "carbs": 1,
+   "fiber": 0,
+   "net_carbs": 1
+  },
+  "pork-tenderloin-marinade": {
+   "calories": 228,
+   "fat": 11,
+   "protein": 29,
+   "carbs": 1,
+   "fiber": 0,
+   "net_carbs": 1
+  },
+  "roasted-garlic-parmesan-brussels-sprouts": {
+   "calories": 167,
+   "fat": 12,
+   "protein": 6,
+   "carbs": 12,
+   "fiber": 4,
+   "net_carbs": 8
+  },
+  "roasted-summer-vegetables": {
+   "calories": 99,
+   "fat": 5,
+   "protein": 3,
+   "carbs": 12,
+   "fiber": 4,
+   "net_carbs": 8
+  },
+  "salmon-and-asparagus-bake": {
+   "calories": 388,
+   "fat": 25,
+   "protein": 37,
+   "carbs": 7,
+   "fiber": 3,
+   "net_carbs": 4
+  },
+  "sausage-and-cabbage-skillet": {
+   "calories": 484,
+   "fat": 38,
+   "protein": 19,
+   "carbs": 18,
+   "fiber": 6,
+   "net_carbs": 12
+  },
+  "shrimp-scampi-with-zucchini-noodles": {
+   "calories": 147,
+   "fat": 7,
+   "protein": 16,
+   "carbs": 4,
+   "fiber": 0,
+   "net_carbs": 4
+  },
+  "slow-cooker-white-chicken-chili": {
+   "calories": 402,
+   "fat": 18,
+   "protein": 42,
+   "carbs": 18,
+   "fiber": 5,
+   "net_carbs": 13
+  },
+  "spicy-thai-basil-chicken": {
+   "calories": 299,
+   "fat": 11,
+   "protein": 41,
+   "carbs": 7,
+   "fiber": 1,
+   "net_carbs": 6
+  },
+  "stuffed-bell-peppers": {
+   "calories": 303,
+   "fat": 18,
+   "protein": 20,
+   "carbs": 16,
+   "fiber": 4,
+   "net_carbs": 12
+  },
+  "taco-salad": {
+   "calories": 250,
+   "fat": 17,
+   "protein": 16,
+   "carbs": 9,
+   "fiber": 4,
+   "net_carbs": 5
+  },
+  "teriyaki-chicken": {
+   "calories": 215,
+   "fat": 7,
+   "protein": 34,
+   "carbs": 2,
+   "fiber": 0,
+   "net_carbs": 2
+  },
+  "thai-panang-chicken-curry": {
+   "calories": 359,
+   "fat": 20,
+   "protein": 29,
+   "carbs": 21,
+   "fiber": 5,
+   "net_carbs": 16
+  },
+  "thai-slaw-with-peanut-dressing": {
+   "calories": 363,
+   "fat": 23,
+   "protein": 24,
+   "carbs": 18,
+   "fiber": 6,
+   "net_carbs": 12
+  },
+  "traditional-guacamole-with-veggies": {
+   "calories": 1519,
+   "fat": 135,
+   "protein": 20,
+   "carbs": 92,
+   "fiber": 65,
+   "net_carbs": 27
+  }
+ },
+ "switches": {},
+ "sources": {
+  "avocado": {
+   "src": "SR Legacy",
+   "fdc": 171705,
+   "label": "Avocados, raw, all commercial varieties"
+  },
+  "eggs": {
+   "src": "SR Legacy",
+   "fdc": 171287,
+   "label": "Egg, whole, raw, fresh"
+  },
+  "flank steak": {
+   "src": "SR Legacy",
+   "fdc": 169563,
+   "label": "Beef, flank, steak, separable lean and fat, trimmed to 0\" fat, all grades, raw"
+  },
+  "fresh ginger": {
+   "src": "SR Legacy",
+   "fdc": 169231,
+   "label": "Ginger root, raw"
+  },
+  "garlic": {
+   "src": "SR Legacy",
+   "fdc": 169230,
+   "label": "Garlic, raw"
+  },
+  "tamari or coconut aminos": {
+   "src": "SR Legacy",
+   "fdc": 174278,
+   "label": "Soy sauce made from soy (tamari)"
+  },
+  "corn starch": {
+   "src": "SR Legacy",
+   "fdc": 169698,
+   "label": "Cornstarch"
+  },
+  "sesame oil": {
+   "src": "SR Legacy",
+   "fdc": 171016,
+   "label": "Oil, sesame, salad or cooking"
+  },
+  "avocado oil": {
+   "src": "SR Legacy",
+   "fdc": 173573,
+   "label": "Oil, avocado"
+  },
+  "fresh broccoli": {
+   "src": "SR Legacy",
+   "fdc": 170379,
+   "label": "Broccoli, raw"
+  },
+  "sesame seeds": {
+   "src": "SR Legacy",
+   "fdc": 170150,
+   "label": "Seeds, sesame seeds, whole, dried"
+  },
+  "beef tallow": {
+   "src": "SR Legacy",
+   "fdc": 171400,
+   "label": "Fat, beef tallow"
+  },
+  "regular yellow or white onion": {
+   "src": "SR Legacy",
+   "fdc": 170000,
+   "label": "Onions, raw"
+  },
+  "ground beef": {
+   "src": "SR Legacy",
+   "fdc": 171796,
+   "label": "Beef, ground, 85% lean meat / 15% fat, raw (Includes foods for USDA's Food Distribution Program)"
+  },
+  "garlic cloves": {
+   "src": "SR Legacy",
+   "fdc": 169230,
+   "label": "Garlic, raw"
+  },
+  "homemade mayo": {
+   "src": "SR Legacy",
+   "fdc": 171418,
+   "label": "Salad dressing, mayonnaise, soybean oil, without salt"
+  },
+  "low sugar ketchup": {
+   "src": "SR Legacy",
+   "fdc": 168556,
+   "label": "Catsup"
+  },
+  "dill relish": {
+   "src": "SR Legacy",
+   "fdc": 168560,
+   "label": "Pickle relish, hot dog"
+  },
+  "dried onion flakes": {
+   "src": "SR Legacy",
+   "fdc": 170000,
+   "label": "Onions, raw"
+  },
+  "head leafy green or romaine lettuce": {
+   "src": "SR Legacy",
+   "fdc": 169247,
+   "label": "Lettuce, cos or romaine, raw"
+  },
+  "bacon": {
+   "src": "SR Legacy",
+   "fdc": 167914,
+   "label": "Pork, cured, bacon, cooked, baked"
+  },
+  "dill pickles": {
+   "src": "SR Legacy",
+   "fdc": 168558,
+   "label": "Pickles, cucumber, dill or kosher dill"
+  },
+  "boneless ribeye steaks": {
+   "src": "SR Legacy",
+   "fdc": 173402,
+   "label": "Beef, rib eye steak, boneless, lip off, separable lean and fat, trimmed to 0\" fat, all grades, raw"
+  },
+  "butter": {
+   "src": "SR Legacy",
+   "fdc": 173410,
+   "label": "Butter, salted"
+  },
+  "sliced mushrooms": {
+   "src": "SR Legacy",
+   "fdc": 169251,
+   "label": "Mushrooms, white, raw"
+  },
+  "onion": {
+   "src": "SR Legacy",
+   "fdc": 170000,
+   "label": "Onions, raw"
+  },
+  "bell peppers": {
+   "src": "SR Legacy",
+   "fdc": 170108,
+   "label": "Peppers, sweet, red, raw"
+  },
+  "lime": {
+   "src": "SR Legacy",
+   "fdc": 168155,
+   "label": "Limes, raw"
+  },
+  "cumin": {
+   "src": "SR Legacy",
+   "fdc": 170923,
+   "label": "Spices, cumin seed"
+  },
+  "boneless skinless chicken breasts": {
+   "src": "SR Legacy",
+   "fdc": 171077,
+   "label": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw"
+  },
+  "beef tallow or avocado oil": {
+   "src": "SR Legacy",
+   "fdc": 171400,
+   "label": "Fat, beef tallow"
+  },
+  "raw macadamia nuts": {
+   "src": "SR Legacy",
+   "fdc": 170178,
+   "label": "Nuts, macadamia nuts, raw"
+  },
+  "well-stirred tahini": {
+   "src": "SR Legacy",
+   "fdc": 168604,
+   "label": "Seeds, sesame butter, tahini, type of kernels unspecified"
+  },
+  "extra-virgin olive oil": {
+   "src": "SR Legacy",
+   "fdc": 171413,
+   "label": "Oil, olive, salad or cooking"
+  },
+  "can chickpeas": {
+   "src": "SR Legacy",
+   "fdc": 173800,
+   "label": "Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained solids"
+  },
+  "cooked chicken": {
+   "src": "SR Legacy",
+   "fdc": 171054,
+   "label": "Chicken, broilers or fryers, meat only, cooked, roasted"
+  },
+  "celery ribs": {
+   "src": "SR Legacy",
+   "fdc": 169988,
+   "label": "Celery, raw"
+  },
+  "tart apple": {
+   "src": "SR Legacy",
+   "fdc": 171688,
+   "label": "Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)"
+  },
+  "pecans or walnuts": {
+   "src": "SR Legacy",
+   "fdc": 170182,
+   "label": "Nuts, pecans"
+  },
+  "mayonnaise": {
+   "src": "SR Legacy",
+   "fdc": 171418,
+   "label": "Salad dressing, mayonnaise, soybean oil, without salt"
+  },
+  "dijon mustard": {
+   "src": "SR Legacy",
+   "fdc": 172234,
+   "label": "Mustard, prepared, yellow"
+  },
+  "green leaf or romaine lettuce": {
+   "src": "SR Legacy",
+   "fdc": 169247,
+   "label": "Lettuce, cos or romaine, raw"
+  },
+  "rotisserie chicken": {
+   "src": "SR Legacy",
+   "fdc": 171054,
+   "label": "Chicken, broilers or fryers, meat only, cooked, roasted"
+  },
+  "hard-boiled eggs": {
+   "src": "SR Legacy",
+   "fdc": 173424,
+   "label": "Egg, whole, cooked, hard-boiled"
+  },
+  "cherry or grape tomatoes": {
+   "src": "SR Legacy",
+   "fdc": 170457,
+   "label": "Tomatoes, red, ripe, raw, year round average"
+  },
+  "blue cheese": {
+   "src": "SR Legacy",
+   "fdc": 172175,
+   "label": "Cheese, blue"
+  },
+  "pickled red onion": {
+   "src": "SR Legacy",
+   "fdc": 170000,
+   "label": "Onions, raw"
+  },
+  "olive oil": {
+   "src": "SR Legacy",
+   "fdc": 171413,
+   "label": "Oil, olive, salad or cooking"
+  },
+  "tbsp dijon mustard": {
+   "src": "SR Legacy",
+   "fdc": 172234,
+   "label": "Mustard, prepared, yellow"
+  },
+  "honey": {
+   "src": "SR Legacy",
+   "fdc": 169640,
+   "label": "Honey"
+  },
+  "brown eggs": {
+   "src": "SR Legacy",
+   "fdc": 171287,
+   "label": "Egg, whole, raw, fresh"
+  },
+  "celery": {
+   "src": "SR Legacy",
+   "fdc": 169988,
+   "label": "Celery, raw"
+  },
+  "chives or green onion": {
+   "src": "SR Legacy",
+   "fdc": 170000,
+   "label": "Onions, raw"
+  },
+  "cans tuna packed in water": {
+   "src": "SR Legacy",
+   "fdc": 171986,
+   "label": "Fish, tuna, light, canned in water, without salt, drained solids"
+  },
+  "red onion": {
+   "src": "SR Legacy",
+   "fdc": 170000,
+   "label": "Onions, raw"
+  },
+  "chia seeds": {
+   "src": "SR Legacy",
+   "fdc": 170554,
+   "label": "Seeds, chia seeds, dried"
+  },
+  "canned coconut milk": {
+   "src": "SR Legacy",
+   "fdc": 170173,
+   "label": "Nuts, coconut milk, canned (liquid expressed from grated meat and water)"
+  },
+  "ripe avocados": {
+   "src": "SR Legacy",
+   "fdc": 171705,
+   "label": "Avocados, raw, all commercial varieties"
+  },
+  "unsweetened cocoa powder": {
+   "src": "SR Legacy",
+   "fdc": 169593,
+   "label": "Cocoa, dry powder, unsweetened"
+  },
+  "coconut cream": {
+   "src": "SR Legacy",
+   "fdc": 170580,
+   "label": "Nuts, coconut cream, raw (liquid expressed from grated meat)"
+  },
+  "coconut flour": {
+   "src": "Branded",
+   "fdc": 2339682,
+   "label": "COCONUT FLOUR — Whole Foods Market"
+  },
+  "coconut milk": {
+   "src": "SR Legacy",
+   "fdc": 170173,
+   "label": "Nuts, coconut milk, canned (liquid expressed from grated meat and water)"
+  },
+  "almonds": {
+   "src": "SR Legacy",
+   "fdc": 170567,
+   "label": "Nuts, almonds"
+  },
+  "pecans": {
+   "src": "SR Legacy",
+   "fdc": 170182,
+   "label": "Nuts, pecans"
+  },
+  "unsweetened coconut flakes": {
+   "src": "SR Legacy",
+   "fdc": 170579,
+   "label": "Nuts, coconut meat, dried (desiccated), toasted"
+  },
+  "pumpkin seeds": {
+   "src": "SR Legacy",
+   "fdc": 170556,
+   "label": "Seeds, pumpkin and squash seed kernels, dried"
+  },
+  "flaxseed meal": {
+   "src": "SR Legacy",
+   "fdc": 169414,
+   "label": "Seeds, flaxseed"
+  },
+  "maple syrup": {
+   "src": "SR Legacy",
+   "fdc": 169661,
+   "label": "Syrups, maple"
+  },
+  "garlic clove": {
+   "src": "SR Legacy",
+   "fdc": 169230,
+   "label": "Garlic, raw"
+  },
+  "english cucumber": {
+   "src": "SR Legacy",
+   "fdc": 168409,
+   "label": "Cucumber, with peel, raw"
+  },
+  "yellow or orange bell pepper": {
+   "src": "SR Legacy",
+   "fdc": 170108,
+   "label": "Peppers, sweet, red, raw"
+  },
+  "feta cheese": {
+   "src": "SR Legacy",
+   "fdc": 173420,
+   "label": "Cheese, feta"
+  },
+  "pitted kalamata olives": {
+   "src": "SR Legacy",
+   "fdc": 169094,
+   "label": "Olives, ripe, canned (small-extra large)"
+  },
+  "fresh mint leaves": {
+   "src": "SR Legacy",
+   "fdc": 173474,
+   "label": "Peppermint, fresh"
+  },
+  "boneless": {
+   "src": "SR Legacy",
+   "fdc": 171077,
+   "label": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw"
+  },
+  "red bell pepper": {
+   "src": "SR Legacy",
+   "fdc": 170108,
+   "label": "Peppers, sweet, red, raw"
+  },
+  "yellow bell pepper": {
+   "src": "SR Legacy",
+   "fdc": 170108,
+   "label": "Peppers, sweet, red, raw"
+  },
+  "white button mushrooms": {
+   "src": "SR Legacy",
+   "fdc": 169251,
+   "label": "Mushrooms, white, raw"
+  },
+  "egg yolks": {
+   "src": "SR Legacy",
+   "fdc": 172184,
+   "label": "Egg, yolk, raw, fresh"
+  },
+  "fresh dijon mustard": {
+   "src": "SR Legacy",
+   "fdc": 172234,
+   "label": "Mustard, prepared, yellow"
+  },
+  "plain greek yogurt": {
+   "src": "SR Legacy",
+   "fdc": 171304,
+   "label": "Yogurt, Greek, plain, whole milk"
+  },
+  "homemade mayonnaise": {
+   "src": "SR Legacy",
+   "fdc": 171418,
+   "label": "Salad dressing, mayonnaise, soybean oil, without salt"
+  },
+  "buttermilk or milk": {
+   "src": "SR Legacy",
+   "fdc": 172225,
+   "label": "Milk, buttermilk, fluid, whole"
+  },
+  "tomato sauce": {
+   "src": "SR Legacy",
+   "fdc": 170054,
+   "label": "Tomato products, canned, sauce"
+  },
+  "fresh basil leaves": {
+   "src": "SR Legacy",
+   "fdc": 172232,
+   "label": "Basil, fresh"
+  },
+  "spaghetti squash": {
+   "src": "SR Legacy",
+   "fdc": 169298,
+   "label": "Squash, winter, spaghetti, raw"
+  },
+  "yellow mustard": {
+   "src": "SR Legacy",
+   "fdc": 172234,
+   "label": "Mustard, prepared, yellow"
+  },
+  "worcestershire sauce": {
+   "src": "SR Legacy",
+   "fdc": 171610,
+   "label": "Sauce, worcestershire"
+  },
+  "heavy whipping cream": {
+   "src": "SR Legacy",
+   "fdc": 170859,
+   "label": "Cream, fluid, heavy whipping"
+  },
+  "cream cheese": {
+   "src": "SR Legacy",
+   "fdc": 173418,
+   "label": "Cheese, cream"
+  },
+  "boneless chicken breasts": {
+   "src": "SR Legacy",
+   "fdc": 171077,
+   "label": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw"
+  },
+  "sliced swiss cheese": {
+   "src": "SR Legacy",
+   "fdc": 171251,
+   "label": "Cheese, swiss"
+  },
+  "sliced ham": {
+   "src": "SR Legacy",
+   "fdc": 173864,
+   "label": "Ham, sliced, regular (approximately 11% fat)"
+  },
+  "parmesan cheese": {
+   "src": "SR Legacy",
+   "fdc": 171247,
+   "label": "Cheese, parmesan, grated"
+  },
+  "almond flour": {
+   "src": "SR Legacy",
+   "fdc": 170568,
+   "label": "Nuts, almonds, blanched"
+  },
+  "stick unsalted butter": {
+   "src": "SR Legacy",
+   "fdc": 173430,
+   "label": "Butter, without salt"
+  },
+  "chicken broth": {
+   "src": "SR Legacy",
+   "fdc": 174536,
+   "label": "Soup, chicken broth, ready-to-serve"
+  },
+  "heavy cream": {
+   "src": "SR Legacy",
+   "fdc": 170859,
+   "label": "Cream, fluid, heavy whipping"
+  },
+  "chicken breasts": {
+   "src": "SR Legacy",
+   "fdc": 171077,
+   "label": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw"
+  },
+  "marinara sauce": {
+   "src": "SR Legacy",
+   "fdc": 171192,
+   "label": "Sauce, pasta, spaghetti/marinara, ready-to-serve"
+  },
+  "mozzarella cheese": {
+   "src": "SR Legacy",
+   "fdc": 170845,
+   "label": "Cheese, mozzarella, whole milk"
+  },
+  "ground oregano": {
+   "src": "SR Legacy",
+   "fdc": 171328,
+   "label": "Spices, oregano, dried"
+  },
+  "chipotle powder": {
+   "src": "SR Legacy",
+   "fdc": 171319,
+   "label": "Spices, chili powder"
+  },
+  "beef broth": {
+   "src": "SR Legacy",
+   "fdc": 171538,
+   "label": "Soup, beef broth or bouillon canned, ready-to-serve"
+  },
+  "jarred jalapeños": {
+   "src": "SR Legacy",
+   "fdc": 168576,
+   "label": "Peppers, jalapeno, raw"
+  },
+  "low carb keto maple syrup": {
+   "src": "SR Legacy",
+   "fdc": 169661,
+   "label": "Syrups, maple"
+  },
+  "60% ghirardelli dark chocolate": {
+   "src": "SR Legacy",
+   "fdc": 170272,
+   "label": "Chocolate, dark, 60-69% cacao solids"
+  },
+  "coconut oil": {
+   "src": "SR Legacy",
+   "fdc": 171412,
+   "label": "Oil, coconut"
+  },
+  "toasted sesame oil": {
+   "src": "SR Legacy",
+   "fdc": 171016,
+   "label": "Oil, sesame, salad or cooking"
+  },
+  "fresh garlic": {
+   "src": "SR Legacy",
+   "fdc": 169230,
+   "label": "Garlic, raw"
+  },
+  "stalks celery": {
+   "src": "SR Legacy",
+   "fdc": 169988,
+   "label": "Celery, raw"
+  },
+  "canned crushed tomatoes": {
+   "src": "SR Legacy",
+   "fdc": 170501,
+   "label": "Tomatoes, crushed, canned"
+  },
+  "basil": {
+   "src": "SR Legacy",
+   "fdc": 172232,
+   "label": "Basil, fresh"
+  },
+  "pork tenderloin": {
+   "src": "SR Legacy",
+   "fdc": 169184,
+   "label": "Pork, fresh, loin, tenderloin, separable lean and fat, with added solution, raw"
+  },
+  "brussels sprouts": {
+   "src": "SR Legacy",
+   "fdc": 170383,
+   "label": "Brussels sprouts, raw"
+  },
+  "zucchini or yellow summer squash": {
+   "src": "SR Legacy",
+   "fdc": 169291,
+   "label": "Squash, summer, zucchini, includes skin, raw"
+  },
+  "cremini mushrooms": {
+   "src": "SR Legacy",
+   "fdc": 169251,
+   "label": "Mushrooms, white, raw"
+  },
+  "carrots": {
+   "src": "SR Legacy",
+   "fdc": 170393,
+   "label": "Carrots, raw"
+  },
+  "salmon fillet": {
+   "src": "SR Legacy",
+   "fdc": 168045,
+   "label": "Fish, salmon, sockeye (red), raw (Alaska Native)"
+  },
+  "asparagus": {
+   "src": "SR Legacy",
+   "fdc": 168389,
+   "label": "Asparagus, raw"
+  },
+  "unsalted butter": {
+   "src": "SR Legacy",
+   "fdc": 173430,
+   "label": "Butter, without salt"
+  },
+  "lemon": {
+   "src": "SR Legacy",
+   "fdc": 167746,
+   "label": "Lemons, raw, without peel"
+  },
+  "kielbasa smoked sausage": {
+   "src": "SR Legacy",
+   "fdc": 174577,
+   "label": "Polish sausage, pork"
+  },
+  "head red or green cabbage": {
+   "src": "SR Legacy",
+   "fdc": 169975,
+   "label": "Cabbage, raw"
+  },
+  "shallot": {
+   "src": "SR Legacy",
+   "fdc": 170499,
+   "label": "Shallots, raw"
+  },
+  "large raw shrimp": {
+   "src": "SR Legacy",
+   "fdc": 174210,
+   "label": "Crustaceans, shrimp, mixed species, raw (may contain additives to retain moisture)"
+  },
+  "freshly squeezed lemon juice": {
+   "src": "SR Legacy",
+   "fdc": 167746,
+   "label": "Lemons, raw, without peel"
+  },
+  "yellow onion": {
+   "src": "SR Legacy",
+   "fdc": 170000,
+   "label": "Onions, raw"
+  },
+  "raw boneless": {
+   "src": "SR Legacy",
+   "fdc": 171077,
+   "label": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw"
+  },
+  "low-sodium chicken broth": {
+   "src": "SR Legacy",
+   "fdc": 174536,
+   "label": "Soup, chicken broth, ready-to-serve"
+  },
+  "can black beans": {
+   "src": "SR Legacy",
+   "fdc": 175188,
+   "label": "Beans, black turtle, mature seeds, canned"
+  },
+  "corn": {
+   "src": "SR Legacy",
+   "fdc": 169998,
+   "label": "Corn, sweet, yellow, raw"
+  },
+  "cayenne pepper": {
+   "src": "SR Legacy",
+   "fdc": 170932,
+   "label": "Spices, pepper, red or cayenne"
+  },
+  "oyster sauce": {
+   "src": "SR Legacy",
+   "fdc": 174529,
+   "label": "Sauce, oyster, ready-to-serve"
+  },
+  "fish sauce": {
+   "src": "SR Legacy",
+   "fdc": 174531,
+   "label": "Sauce, fish, ready-to-serve"
+  },
+  "bell pepper": {
+   "src": "SR Legacy",
+   "fdc": 170108,
+   "label": "Peppers, sweet, red, raw"
+  },
+  "thai chilies": {
+   "src": "SR Legacy",
+   "fdc": 170106,
+   "label": "Peppers, hot chili, red, raw"
+  },
+  "holy basil": {
+   "src": "SR Legacy",
+   "fdc": 172232,
+   "label": "Basil, fresh"
+  },
+  "italian sausage": {
+   "src": "SR Legacy",
+   "fdc": 172952,
+   "label": "Sausage, Italian, sweet, links"
+  },
+  "can tomato sauce": {
+   "src": "SR Legacy",
+   "fdc": 170054,
+   "label": "Tomato products, canned, sauce"
+  },
+  "taco seasoning": {
+   "src": "SR Legacy",
+   "fdc": 172243,
+   "label": "Seasoning mix, dry, taco, original"
+  },
+  "romaine lettuce": {
+   "src": "SR Legacy",
+   "fdc": 169247,
+   "label": "Lettuce, cos or romaine, raw"
+  },
+  "salsa": {
+   "src": "SR Legacy",
+   "fdc": 174524,
+   "label": "Sauce, salsa, ready-to-serve"
+  },
+  "peeled and fresh ginger": {
+   "src": "SR Legacy",
+   "fdc": 169231,
+   "label": "Ginger root, raw"
+  },
+  "peeled and fresh garlic": {
+   "src": "SR Legacy",
+   "fdc": 169230,
+   "label": "Garlic, raw"
+  },
+  "orange bell pepper": {
+   "src": "SR Legacy",
+   "fdc": 170108,
+   "label": "Peppers, sweet, red, raw"
+  },
+  "kaffir lime leaves": {
+   "src": "SR Legacy",
+   "fdc": 168155,
+   "label": "Limes, raw"
+  },
+  "peanut butter": {
+   "src": "SR Legacy",
+   "fdc": 172470,
+   "label": "Peanut butter, smooth style, without salt"
+  },
+  "canned unsweetened coconut milk": {
+   "src": "SR Legacy",
+   "fdc": 170173,
+   "label": "Nuts, coconut milk, canned (liquid expressed from grated meat and water)"
+  },
+  "fresh thai basil": {
+   "src": "SR Legacy",
+   "fdc": 172232,
+   "label": "Basil, fresh"
+  },
+  "cabbage": {
+   "src": "SR Legacy",
+   "fdc": 169975,
+   "label": "Cabbage, raw"
+  },
+  "matchstick carrots": {
+   "src": "SR Legacy",
+   "fdc": 170393,
+   "label": "Carrots, raw"
+  },
+  "sliced green onions": {
+   "src": "SR Legacy",
+   "fdc": 170000,
+   "label": "Onions, raw"
+  },
+  "sliced cooked chicken breast": {
+   "src": "SR Legacy",
+   "fdc": 171054,
+   "label": "Chicken, broilers or fryers, meat only, cooked, roasted"
+  },
+  "natural creamy peanut butter": {
+   "src": "SR Legacy",
+   "fdc": 172470,
+   "label": "Peanut butter, smooth style, without salt"
+  },
+  "sriracha": {
+   "src": "SR Legacy",
+   "fdc": 171186,
+   "label": "Sauce, hot chile, sriracha"
+  },
+  "cloves garlic": {
+   "src": "SR Legacy",
+   "fdc": 169230,
+   "label": "Garlic, raw"
+  },
+  "peanuts": {
+   "src": "SR Legacy",
+   "fdc": 174263,
+   "label": "Peanuts, spanish, raw"
+  },
+  "avocados": {
+   "src": "SR Legacy",
+   "fdc": 171705,
+   "label": "Avocados, raw, all commercial varieties"
+  },
+  "jarred jalapeño": {
+   "src": "SR Legacy",
+   "fdc": 168576,
+   "label": "Peppers, jalapeno, raw"
+  }
+ }
+}
