@@ -169,7 +169,13 @@ function findKeyAny(forms, obj) {
 // weighed further up the list, the same as "the reserved marinade". It was
 // sitting in FLAGGED, which made a fully-resolved recipe read as if it had a
 // gap in it.
-const isBackRef = (raw) => /\bfrom step\b|\bremaining\b|\breserved\b|\(from |^the soaked and drained\b/i.test(raw);
+/* The bracket has to point at a STEP to be a back-reference. A bare "(from "
+ * also matched "1 1/2 lbs zucchini noodles (from about 4 medium zucchini)",
+ * where the bracket says what to buy rather than pointing back at something
+ * already weighed - so the dish's main vegetable, 680 g of it, was counted as
+ * zero and Shrimp Scampi came out at 165 kcal instead of 194.
+ */
+const isBackRef = (raw) => /\bfrom step\b|\bremaining\b|\breserved\b|\(from [^)]*\bstep\b|^the soaked and drained\b/i.test(raw);
 const isOptional = (raw, q) => q == null && /\boptional\b|for garnish|for sprinkling|for serving|to taste/i.test(raw);
 
 // EXACT match only. A substring test here meant "pepper" swallowed "bell

@@ -47,12 +47,12 @@ Remove from the oven and serve immediately.
 ## Nutrition
 
 ### Per serving (makes 6) — does not include marinara sauce
-- Calories: 349
-- Total Fat: 12g
-- Total Carbs: 4g
-- Fiber: 2g
-- Net Carbs: 2g
-- Protein: 45g
+- Calories: 567
+- Total Fat: 36g
+- Total Carbs: 14g
+- Fiber: 4g
+- Net Carbs: 10g
+- Protein: 49g
 
 ## Notes
 

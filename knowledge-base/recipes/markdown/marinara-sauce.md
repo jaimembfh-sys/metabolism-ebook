@@ -36,12 +36,12 @@ Remove from heat and serve immediately, or let cool completely before storing.
 ## Nutrition
 
 ### Per 2/3 cup serving (makes about 8 cups)
-- Calories: 72
-- Total Fat: 2g
-- Total Carbs: 5g
+- Calories: 65
+- Total Fat: 3g
+- Total Carbs: 10g
 - Fiber: 3g
-- Net Carbs: 2g
-- Protein: 1g
+- Net Carbs: 7g
+- Protein: 2g
 
 ## Notes
 

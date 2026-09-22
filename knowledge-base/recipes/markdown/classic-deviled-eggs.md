@@ -46,9 +46,8 @@ Spoon or pipe the filling into each egg white. Sprinkle with paprika and bacon, 
 ## Nutrition
 
 ### Per deviled egg (makes 24)
-- Calories: 55
-- Total Fat: 4g
-- Saturated Fat: 1g
+- Calories: 60
+- Total Fat: 5g
 - Total Carbs: 1g
 - Fiber: 0g
 - Net Carbs: 1g

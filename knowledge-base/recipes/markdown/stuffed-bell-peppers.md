@@ -54,12 +54,14 @@ Remove the dish from the oven and sprinkle the Parmesan evenly over the peppers.
 ## Nutrition
 
 ### Per stuffed pepper (makes 6)
-- Calories: 330
-- Total Fat: 22g
-- Total Carbs: 8g
+- Calories: 302
+- Total Fat: 16g
+- Total Carbs: 21g
 - Fiber: 3g
-- Net Carbs: 5g
-- Protein: 24g
+- Net Carbs: 18g
+- Protein: 21g
+
+Based on 92/8 ground beef.
 
 ## Notes
 

@@ -38,11 +38,11 @@ Gently fold spoonfuls of the whipped egg whites into the yolk batter, being care
 ## Nutrition
 
 ### Per pancake (makes 5)
-- Calories: 277
-- Total Fat: 26g
-- Total Carbs: 5g
+- Calories: 298
+- Total Fat: 28g
+- Total Carbs: 4g
 - Fiber: 2g
-- Net Carbs: 3g
+- Net Carbs: 2g
 - Protein: 7g
 
 ## Notes

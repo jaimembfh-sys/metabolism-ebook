@@ -50,12 +50,12 @@ Serve warm over cauliflower rice, garnished with sesame seeds and green onions i
 ## Nutrition
 
 ### Per serving (makes about 4 servings) — does not include cauliflower rice
-- Calories: 210
-- Total Fat: 7g
-- Total Carbs: 3g
+- Calories: 204
+- Total Fat: 6g
+- Total Carbs: 2g
 - Fiber: 0g
-- Net Carbs: 3g
-- Protein: 30g
+- Net Carbs: 2g
+- Protein: 34g
 
 ## Notes
 

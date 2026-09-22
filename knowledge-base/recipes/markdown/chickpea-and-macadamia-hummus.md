@@ -51,12 +51,12 @@ Taste and adjust with more salt or lemon juice as needed. Serve with a drizzle o
 ## Nutrition
 
 ### Per 1/4 cup serving (makes about 6 cups)
-- Calories: 212
-- Total Fat: 20g
-- Total Carbs: 8g
+- Calories: 195
+- Total Fat: 17g
+- Total Carbs: 9g
 - Fiber: 3g
-- Net Carbs: 5g
-- Protein: 3g
+- Net Carbs: 6g
+- Protein: 4g
 
 ## Notes
 

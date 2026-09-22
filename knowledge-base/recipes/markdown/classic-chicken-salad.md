@@ -37,12 +37,12 @@ Pour the dressing over the chicken mixture and toss well to coat everything even
 ## Nutrition
 
 ### Per serving (makes about 6 servings)
-- Calories: 358
-- Total Fat: 26g
+- Calories: 379
+- Total Fat: 30g
 - Total Carbs: 6g
-- Fiber: 2g
-- Net Carbs: 4g
-- Protein: 22g
+- Fiber: 1g
+- Net Carbs: 5g
+- Protein: 21g
 
 ## Notes
 

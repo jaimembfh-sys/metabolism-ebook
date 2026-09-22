@@ -45,12 +45,12 @@ Drizzle the vinaigrette over the salad, or serve it on the side so everyone can 
 ## Nutrition
 
 ### Per serving (makes about 4 servings)
-- Calories: 663
-- Total Fat: 55g
-- Total Carbs: 9g
-- Fiber: 5g
-- Net Carbs: 4g
-- Protein: 34g
+- Calories: 786
+- Total Fat: 67g
+- Total Carbs: 11g
+- Fiber: 6g
+- Net Carbs: 5g
+- Protein: 36g
 
 ## Notes
 

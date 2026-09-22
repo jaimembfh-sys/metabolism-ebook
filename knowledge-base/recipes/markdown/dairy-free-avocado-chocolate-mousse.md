@@ -27,12 +27,12 @@ Divide the mousse between 6 small glasses or serving bowls. Chill until ready to
 ## Nutrition
 
 ### Per serving (makes 6)
-- Calories: 157
-- Total Fat: 14g
-- Total Carbs: 10.5g
-- Fiber: 6.7g
-- Net Carbs: 3.8g
-- Protein: 2.8g
+- Calories: 238
+- Total Fat: 23g
+- Total Carbs: 12g
+- Fiber: 8g
+- Net Carbs: 4g
+- Protein: 3g
 
 ## Notes
 

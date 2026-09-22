@@ -43,12 +43,14 @@ Once the squash is cool enough to handle, use a fork to scrape the flesh into sp
 ## Nutrition
 
 ### Per serving (makes 5) — sauce only, does not include spaghetti squash
-- Calories: 265
-- Total Fat: 16g
-- Total Carbs: 15g
-- Fiber: 3g
-- Net Carbs: 12g
-- Protein: 18g
+- Calories: 291
+- Total Fat: 13g
+- Total Carbs: 26g
+- Fiber: 7g
+- Net Carbs: 19g
+- Protein: 22g
+
+Based on 92/8 ground beef.
 
 ## Notes
 

@@ -37,13 +37,15 @@ Serve immediately with sliced cucumber and bell peppers, a healthy, low-carb alt
 
 ## Nutrition
 
-### Per 3/4 cup serving — Estimated, does not include the dipping vegetables
-- Calories: 210
-- Total Fat: 18g
-- Total Carbs: 12g
-- Fiber: 8g
+### Per 3/4 cup serving — does not include the dipping vegetables
+- Calories: 284
+- Total Fat: 27g
+- Total Carbs: 13g
+- Fiber: 9g
 - Net Carbs: 4g
 - Protein: 3g
+
+Makes about 5 cups, or about 6 servings of 3/4 cup.
 
 ## Notes
 

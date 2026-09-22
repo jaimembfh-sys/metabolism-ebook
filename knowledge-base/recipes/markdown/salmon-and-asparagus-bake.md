@@ -43,12 +43,14 @@ Top each salmon fillet with a slice of lemon. Bake uncovered at 450°F for 10-12
 ## Nutrition
 
 ### Per serving (makes about 6 servings)
-- Calories: 374
-- Total Fat: 24g
-- Total Carbs: 8g
-- Fiber: 4g
-- Net Carbs: 4g
+- Calories: 428
+- Total Fat: 29g
+- Total Carbs: 9g
+- Fiber: 3g
+- Net Carbs: 6g
 - Protein: 34g
+
+Based on a mid-range salmon.
 
 ## Notes
 

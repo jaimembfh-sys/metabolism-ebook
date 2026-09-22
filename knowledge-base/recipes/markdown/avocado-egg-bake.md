@@ -39,12 +39,12 @@ Season with the remaining salt, pepper, and red pepper flakes. Garnish with pars
 ## Nutrition
 
 ### Per serving (makes 2, 1/2 avocado each)
-- Calories: 208
-- Total Fat: 17g
-- Total Carbs: 8g
-- Fiber: 6g
+- Calories: 308
+- Total Fat: 28g
+- Total Carbs: 10g
+- Fiber: 8g
 - Net Carbs: 2g
-- Protein: 7g
+- Protein: 8g
 
 ## Notes
 

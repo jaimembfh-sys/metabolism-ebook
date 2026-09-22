@@ -33,12 +33,12 @@ Spoon or pipe into serving glasses and enjoy right away, or chill until ready to
 ## Nutrition
 
 ### Per serving (makes 6) — cheesecake fluff only, does not include toppings
-- Calories: 258
+- Calories: 261
 - Total Fat: 27g
-- Total Carbs: 4g
+- Total Carbs: 3g
 - Fiber: 0g
-- Net Carbs: 4g
-- Protein: 4g
+- Net Carbs: 3g
+- Protein: 3g
 
 ## Notes
 

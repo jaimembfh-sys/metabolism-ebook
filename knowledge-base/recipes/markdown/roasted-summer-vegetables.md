@@ -43,13 +43,13 @@ Transfer to a serving dish, garnish with fresh herbs if desired, and cover to ke
 
 ## Nutrition
 
-### Per 1 cup serving (makes about 6 to 8 servings) — Estimated
-- Calories: 80
-- Total Fat: 4g
+### Per 1 cup serving (makes about 6 to 8 servings)
+- Calories: 92
+- Total Fat: 5g
 - Total Carbs: 10g
 - Fiber: 3g
 - Net Carbs: 7g
-- Protein: 2g
+- Protein: 3g
 
 ## Notes
 

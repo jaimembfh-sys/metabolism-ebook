@@ -60,13 +60,15 @@ Serve alongside the pork.
 
 ## Nutrition
 
-### Per serving (makes 8) — Estimated, pork and marinade only, does not include vegetables
-- Calories: 210
-- Total Fat: 9g
-- Total Carbs: 2g
+### Per serving (makes 8) — pork and marinade only
+- Calories: 243
+- Total Fat: 12g
+- Total Carbs: 1g
 - Fiber: 0g
-- Net Carbs: 2g
-- Protein: 28g
+- Net Carbs: 1g
+- Protein: 31g
+
+Nutrition does not include the optional vegetables.
 
 ## Notes
 

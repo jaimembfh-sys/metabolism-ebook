@@ -44,11 +44,11 @@ Taste and adjust salt, pepper, or mustard to your liking. Serve right away, or c
 ## Nutrition
 
 ### Per serving (makes about 4 servings)
-- Calories: 246
-- Total Fat: 21g
-- Total Carbs: 1g
-- Fiber: 0g
-- Net Carbs: 1g
+- Calories: 266
+- Total Fat: 22g
+- Total Carbs: 6g
+- Fiber: 1g
+- Net Carbs: 5g
 - Protein: 10g
 
 ## Notes

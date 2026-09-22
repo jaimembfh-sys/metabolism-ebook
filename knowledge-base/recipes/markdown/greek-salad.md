@@ -37,12 +37,12 @@ On a large platter, arrange the cucumber, bell pepper, cherry tomatoes, feta, re
 ## Nutrition
 
 ### Per serving (makes 4)
-- Calories: 230
-- Total Fat: 20g
-- Total Carbs: 9g
-- Fiber: 2g
-- Net Carbs: 7g
-- Protein: 6g
+- Calories: 277
+- Total Fat: 22g
+- Total Carbs: 13g
+- Fiber: 3g
+- Net Carbs: 10g
+- Protein: 9g
 
 ## Notes
 

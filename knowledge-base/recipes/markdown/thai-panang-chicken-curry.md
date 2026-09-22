@@ -61,14 +61,11 @@ Remove from heat and stir in the basil and lime juice. Serve warm over cauliflow
 ## Nutrition
 
 ### Per serving (makes 6 servings) — does not include cauliflower rice
-- Calories: 325
-- Total Fat: 22g
-- Saturated Fat: 15g
-- Cholesterol: 107mg
-- Sodium: 480mg
-- Total Carbs: 7g
-- Fiber: 2g
-- Net Carbs: 5g
+- Calories: 356
+- Total Fat: 26g
+- Total Carbs: 8g
+- Fiber: 1g
+- Net Carbs: 7g
 - Protein: 24g
 
 ## Notes

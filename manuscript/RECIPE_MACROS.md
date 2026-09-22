@@ -32,11 +32,11 @@ Divided by **2 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 208 | **308** | +48% |
-| Fat (g) | 17 | **28** | +65% |
-| Protein (g) | 7 | **8** | +14% |
-| Total carbs (g) | 8 | **10** | +25% |
-| Fiber (g) | 6 | **8** | +33% |
+| Calories | 308 | **308** | 0% |
+| Fat (g) | 28 | **28** | 0% |
+| Protein (g) | 8 | **8** | 0% |
+| Total carbs (g) | 10 | **10** | 0% |
+| Fiber (g) | 8 | **8** | 0% |
 | Net carbs (g) | 2 | **2** | 0% |
 
 **Assumptions made:**
@@ -69,12 +69,12 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 350 | **386** | +10% |
-| Fat (g) | 21 | **25** | +19% |
+| Calories | 386 | **386** | 0% |
+| Fat (g) | 25 | **25** | 0% |
 | Protein (g) | 29 | **29** | 0% |
-| Total carbs (g) | 8 | **12** | +50% |
+| Total carbs (g) | 12 | **12** | 0% |
 | Fiber (g) | 3 | **3** | 0% |
-| Net carbs (g) | 5 | **9** | +80% |
+| Net carbs (g) | 9 | **9** | 0% |
 
 **Assumptions made:**
 - `6 Tbsp tamari or coconut aminos` — recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.
@@ -111,12 +111,12 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 530 | **679** | +28% |
-| Fat (g) | 38 | **52** | +37% |
-| Protein (g) | 36 | **35** | -3% |
-| Total carbs (g) | 13 | **20** | +54% |
-| Fiber (g) | 5 | **7** | +40% |
-| Net carbs (g) | 8 | **13** | +63% |
+| Calories | 679 | **679** | 0% |
+| Fat (g) | 52 | **52** | 0% |
+| Protein (g) | 35 | **35** | 0% |
+| Total carbs (g) | 20 | **20** | 0% |
+| Fiber (g) | 7 | **7** | 0% |
+| Net carbs (g) | 13 | **13** | 0% |
 
 **Assumptions made:**
 - `1 regular yellow or white onion (about 4 oz), diced` — weight taken from the recipe line
@@ -146,11 +146,11 @@ Divided by **2 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 870 | **1077** | +24% |
-| Fat (g) | 64 | **86** | +34% |
-| Protein (g) | 72 | **67** | -7% |
-| Total carbs (g) | 5 | **6** | +20% |
-| Fiber (g) | 1 | **2** | +100% |
+| Calories | 1077 | **1077** | 0% |
+| Fat (g) | 86 | **86** | 0% |
+| Protein (g) | 67 | **67** | 0% |
+| Total carbs (g) | 6 | **6** | 0% |
+| Fiber (g) | 2 | **2** | 0% |
 | Net carbs (g) | 4 | **4** | 0% |
 
 **Assumptions made:**
@@ -183,11 +183,11 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 286 | **226** | -21% |
-| Fat (g) | 13 | **9** | -31% |
-| Protein (g) | 29 | **27** | -7% |
-| Total carbs (g) | 11 | **10** | -9% |
-| Fiber (g) | 3 | **2** | -33% |
+| Calories | 226 | **226** | 0% |
+| Fat (g) | 9 | **9** | 0% |
+| Protein (g) | 27 | **27** | 0% |
+| Total carbs (g) | 10 | **10** | 0% |
+| Fiber (g) | 2 | **2** | 0% |
 | Net carbs (g) | 8 | **8** | 0% |
 
 **Assumptions made:**
@@ -220,12 +220,12 @@ Divided by **24 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 212 | **195** | -8% |
-| Fat (g) | 20 | **17** | -15% |
-| Protein (g) | 3 | **4** | +33% |
-| Total carbs (g) | 8 | **9** | +13% |
+| Calories | 195 | **195** | 0% |
+| Fat (g) | 17 | **17** | 0% |
+| Protein (g) | 4 | **4** | 0% |
+| Total carbs (g) | 9 | **9** | 0% |
 | Fiber (g) | 3 | **3** | 0% |
-| Net carbs (g) | 5 | **6** | +20% |
+| Net carbs (g) | 6 | **6** | 0% |
 
 ---
 ## Classic Chicken Salad
@@ -252,12 +252,12 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 358 | **379** | +6% |
-| Fat (g) | 26 | **30** | +15% |
-| Protein (g) | 22 | **21** | -5% |
+| Calories | 379 | **379** | 0% |
+| Fat (g) | 30 | **30** | 0% |
+| Protein (g) | 21 | **21** | 0% |
 | Total carbs (g) | 6 | **6** | 0% |
-| Fiber (g) | 2 | **1** | -50% |
-| Net carbs (g) | 4 | **5** | +25% |
+| Fiber (g) | 1 | **1** | 0% |
+| Net carbs (g) | 5 | **5** | 0% |
 
 **Assumptions made:**
 - `3 celery ribs (about 4 oz), diced` — fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food; weight taken from the recipe line
@@ -291,12 +291,12 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 663 | **786** | +19% |
-| Fat (g) | 55 | **67** | +22% |
-| Protein (g) | 34 | **36** | +6% |
-| Total carbs (g) | 9 | **11** | +22% |
-| Fiber (g) | 5 | **6** | +20% |
-| Net carbs (g) | 4 | **5** | +25% |
+| Calories | 786 | **786** | 0% |
+| Fat (g) | 67 | **67** | 0% |
+| Protein (g) | 36 | **36** | 0% |
+| Total carbs (g) | 11 | **11** | 0% |
+| Fiber (g) | 6 | **6** | 0% |
+| Net carbs (g) | 5 | **5** | 0% |
 
 **Assumptions made:**
 - `6 cups chopped green leaf or romaine lettuce (or a mix of both)` — fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food
@@ -330,8 +330,8 @@ Divided by **24 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 55 | **60** | +9% |
-| Fat (g) | 4 | **5** | +25% |
+| Calories | 60 | **60** | 0% |
+| Fat (g) | 5 | **5** | 0% |
 | Protein (g) | 3 | **3** | 0% |
 | Total carbs (g) | 1 | **1** | 0% |
 | Fiber (g) | 0 | **0** | — |
@@ -360,12 +360,12 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 246 | **266** | +8% |
-| Fat (g) | 21 | **22** | +5% |
+| Calories | 266 | **266** | 0% |
+| Fat (g) | 22 | **22** | 0% |
 | Protein (g) | 10 | **10** | 0% |
-| Total carbs (g) | 1 | **6** | +500% |
-| Fiber (g) | 0 | **1** | — |
-| Net carbs (g) | 1 | **5** | +400% |
+| Total carbs (g) | 6 | **6** | 0% |
+| Fiber (g) | 1 | **1** | 0% |
+| Net carbs (g) | 5 | **5** | 0% |
 
 **Assumptions made:**
 - `2 tbsp celery, finely diced` — fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food
@@ -392,12 +392,12 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 211 | **224** | +6% |
-| Fat (g) | 14 | **15** | +7% |
-| Protein (g) | 18 | **14** | -22% |
-| Total carbs (g) | 1 | **7** | +600% |
-| Fiber (g) | 0 | **2** | — |
-| Net carbs (g) | 1 | **5** | +400% |
+| Calories | 224 | **224** | 0% |
+| Fat (g) | 15 | **15** | 0% |
+| Protein (g) | 14 | **14** | 0% |
+| Total carbs (g) | 7 | **7** | 0% |
+| Fiber (g) | 2 | **2** | 0% |
+| Net carbs (g) | 5 | **5** | 0% |
 
 **Assumptions made:**
 - `2 tbsp celery, finely diced` — fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food
@@ -421,12 +421,12 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 120 | **315** | +163% |
-| Fat (g) | 9 | **30** | +233% |
-| Protein (g) | 4 | **5** | +25% |
-| Total carbs (g) | 9 | **10** | +11% |
-| Fiber (g) | 8 | **6** | -25% |
-| Net carbs (g) | 1 | **4** | +300% |
+| Calories | 315 | **315** | 0% |
+| Fat (g) | 30 | **30** | 0% |
+| Protein (g) | 5 | **5** | 0% |
+| Total carbs (g) | 10 | **10** | 0% |
+| Fiber (g) | 6 | **6** | 0% |
+| Net carbs (g) | 4 | **4** | 0% |
 
 **Assumptions made:**
 - `1/2 cup chia seeds` — fiber 34.4 g/100 g from SR Legacy 170554 — Foundation reports none for this food
@@ -451,12 +451,12 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 157 | **238** | +52% |
-| Fat (g) | 14 | **23** | +64% |
-| Protein (g) | 2.8 | **3** | +7% |
-| Total carbs (g) | 10.5 | **12** | +14% |
-| Fiber (g) | 6.7 | **8** | +19% |
-| Net carbs (g) | 3.8 | **4** | +5% |
+| Calories | 238 | **238** | 0% |
+| Fat (g) | 23 | **23** | 0% |
+| Protein (g) | 3 | **3** | 0% |
+| Total carbs (g) | 12 | **12** | 0% |
+| Fiber (g) | 8 | **8** | 0% |
+| Net carbs (g) | 4 | **4** | 0% |
 
 **Assumptions made:**
 - `2 large ripe avocados (about 1 lb)` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line
@@ -482,12 +482,12 @@ Divided by **5 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 277 | **298** | +8% |
-| Fat (g) | 26 | **28** | +8% |
+| Calories | 298 | **298** | 0% |
+| Fat (g) | 28 | **28** | 0% |
 | Protein (g) | 7 | **7** | 0% |
-| Total carbs (g) | 5 | **4** | -20% |
+| Total carbs (g) | 4 | **4** | 0% |
 | Fiber (g) | 2 | **2** | 0% |
-| Net carbs (g) | 3 | **2** | -33% |
+| Net carbs (g) | 2 | **2** | 0% |
 
 ---
 ## Grain-Free Cinnamon Coconut Granola
@@ -514,12 +514,12 @@ Divided by **12 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 199 | **204** | +3% |
+| Calories | 204 | **204** | 0% |
 | Fat (g) | 18 | **18** | 0% |
 | Protein (g) | 4 | **4** | 0% |
-| Total carbs (g) | 11 | **9** | -18% |
-| Fiber (g) | 3 | **2** | -33% |
-| Net carbs (g) | 4 | **7** | +75% |
+| Total carbs (g) | 9 | **9** | 0% |
+| Fiber (g) | 2 | **2** | 0% |
+| Net carbs (g) | 7 | **7** | 0% |
 
 ---
 ## Greek Salad
@@ -549,12 +549,12 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 230 | **277** | +20% |
-| Fat (g) | 20 | **22** | +10% |
-| Protein (g) | 6 | **9** | +50% |
-| Total carbs (g) | 9 | **13** | +44% |
-| Fiber (g) | 2 | **3** | +50% |
-| Net carbs (g) | 7 | **10** | +43% |
+| Calories | 277 | **277** | 0% |
+| Fat (g) | 22 | **22** | 0% |
+| Protein (g) | 9 | **9** | 0% |
+| Total carbs (g) | 13 | **13** | 0% |
+| Fiber (g) | 3 | **3** | 0% |
+| Net carbs (g) | 10 | **10** | 0% |
 
 **Assumptions made:**
 - `1 English cucumber (about 11 oz), sliced into 1/4-inch thick half-moons` — fiber 0.5 g/100 g from SR Legacy 168409 — Foundation reports none for this food; weight taken from the recipe line
@@ -585,12 +585,12 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 220 | **305** | +39% |
-| Fat (g) | 12 | **16** | +33% |
-| Protein (g) | 27 | **31** | +15% |
-| Total carbs (g) | 8 | **10** | +25% |
+| Calories | 305 | **305** | 0% |
+| Fat (g) | 16 | **16** | 0% |
+| Protein (g) | 31 | **31** | 0% |
+| Total carbs (g) | 10 | **10** | 0% |
 | Fiber (g) | 2 | **2** | 0% |
-| Net carbs (g) | 6 | **8** | +33% |
+| Net carbs (g) | 8 | **8** | 0% |
 
 **Assumptions made:**
 - `1/3 cup tamari or coconut aminos` — recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.
@@ -647,8 +647,8 @@ Divided by **12 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 80 | **86** | +8% |
-| Fat (g) | 7 | **8** | +14% |
+| Calories | 86 | **86** | 0% |
+| Fat (g) | 8 | **8** | 0% |
 | Protein (g) | 2 | **2** | 0% |
 | Total carbs (g) | 1 | **1** | 0% |
 | Fiber (g) | 0 | **0** | — |
@@ -680,12 +680,12 @@ Divided by **5 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 265 | **291** | +10% |
-| Fat (g) | 16 | **13** | -19% |
-| Protein (g) | 18 | **22** | +22% |
-| Total carbs (g) | 15 | **26** | +73% |
-| Fiber (g) | 3 | **7** | +133% |
-| Net carbs (g) | 12 | **19** | +58% |
+| Calories | 291 | **291** | 0% |
+| Fat (g) | 13 | **13** | 0% |
+| Protein (g) | 22 | **22** | 0% |
+| Total carbs (g) | 26 | **26** | 0% |
+| Fiber (g) | 7 | **7** | 0% |
+| Net carbs (g) | 19 | **19** | 0% |
 
 **Assumptions made:**
 - `1 lb ground beef (or 1/2 lb ground Italian sausage and 1/2 lb ground beef)` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
@@ -717,12 +717,12 @@ Divided by **28 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 10 | **5** | -50% |
+| Calories | 5 | **5** | 0% |
 | Fat (g) | 0 | **0** | — |
 | Protein (g) | 0 | **0** | — |
-| Total carbs (g) | 1 | **0** | -100% |
+| Total carbs (g) | 0 | **0** | — |
 | Fiber (g) | 0 | **0** | — |
-| Net carbs (g) | 1 | **0** | -100% |
+| Net carbs (g) | 0 | **0** | — |
 
 ---
 ## Keto Cheesecake Fluff
@@ -742,12 +742,12 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 258 | **261** | +1% |
+| Calories | 261 | **261** | 0% |
 | Fat (g) | 27 | **27** | 0% |
-| Protein (g) | 4 | **3** | -25% |
-| Total carbs (g) | 4 | **3** | -25% |
+| Protein (g) | 3 | **3** | 0% |
+| Total carbs (g) | 3 | **3** | 0% |
 | Fiber (g) | 0 | **0** | — |
-| Net carbs (g) | 4 | **3** | -25% |
+| Net carbs (g) | 3 | **3** | 0% |
 
 ---
 ## Keto Chicken Cordon Bleu
@@ -780,12 +780,12 @@ Divided by **8 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 543 | **528** | -3% |
-| Fat (g) | 42 | **40** | -5% |
-| Protein (g) | 37 | **36** | -3% |
-| Total carbs (g) | 4 | **6** | +50% |
+| Calories | 528 | **528** | 0% |
+| Fat (g) | 40 | **40** | 0% |
+| Protein (g) | 36 | **36** | 0% |
+| Total carbs (g) | 6 | **6** | 0% |
 | Fiber (g) | 1 | **1** | 0% |
-| Net carbs (g) | 3 | **5** | +67% |
+| Net carbs (g) | 5 | **5** | 0% |
 
 **Assumptions made:**
 - `1 stick unsalted butter (about 4 oz)` — weight taken from the recipe line
@@ -815,12 +815,12 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 349 | **567** | +62% |
-| Fat (g) | 12 | **36** | +200% |
-| Protein (g) | 45 | **49** | +9% |
-| Total carbs (g) | 4 | **14** | +250% |
-| Fiber (g) | 2 | **4** | +100% |
-| Net carbs (g) | 2 | **10** | +400% |
+| Calories | 567 | **567** | 0% |
+| Fat (g) | 36 | **36** | 0% |
+| Protein (g) | 49 | **49** | 0% |
+| Total carbs (g) | 14 | **14** | 0% |
+| Fiber (g) | 4 | **4** | 0% |
+| Net carbs (g) | 10 | **10** | 0% |
 
 **Assumptions made:**
 - `6 small chicken breasts (1 1/2 lbs)` — weight taken from the recipe line
@@ -852,12 +852,12 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 233 | **153** | -34% |
-| Fat (g) | 16 | **7** | -56% |
-| Protein (g) | 14 | **17** | +21% |
-| Total carbs (g) | 8 | **5** | -37% |
+| Calories | 153 | **153** | 0% |
+| Fat (g) | 7 | **7** | 0% |
+| Protein (g) | 17 | **17** | 0% |
+| Total carbs (g) | 5 | **5** | 0% |
 | Fiber (g) | 2 | **2** | 0% |
-| Net carbs (g) | 6 | **3** | -50% |
+| Net carbs (g) | 3 | **3** | 0% |
 
 **Assumptions made:**
 - `1 lb ground beef` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
@@ -884,12 +884,12 @@ Divided by **16 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 108 | **183** | +69% |
-| Fat (g) | 8 | **13** | +63% |
+| Calories | 119 | **183** | +54% |
+| Fat (g) | 9 | **13** | +44% |
 | Protein (g) | 4 | **5** | +25% |
-| Total carbs (g) | 4 | **14** | +250% |
+| Total carbs (g) | 8 | **14** | +75% |
 | Fiber (g) | 2 | **3** | +50% |
-| Net carbs (g) | 2 | **11** | +450% |
+| Net carbs (g) | 6 | **11** | +83% |
 
 ---
 ## Make-Ahead Teriyaki Sauce
@@ -913,7 +913,7 @@ Divided by **24 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 10 | **5** | -50% |
+| Calories | 5 | **5** | 0% |
 | Fat (g) | 0 | **0** | — |
 | Protein (g) | 1 | **1** | 0% |
 | Total carbs (g) | 1 | **1** | 0% |
@@ -947,12 +947,12 @@ Divided by **12 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 72 | **65** | -10% |
-| Fat (g) | 2 | **3** | +50% |
-| Protein (g) | 1 | **2** | +100% |
-| Total carbs (g) | 5 | **10** | +100% |
+| Calories | 65 | **65** | 0% |
+| Fat (g) | 3 | **3** | 0% |
+| Protein (g) | 2 | **2** | 0% |
+| Total carbs (g) | 10 | **10** | 0% |
 | Fiber (g) | 3 | **3** | 0% |
-| Net carbs (g) | 2 | **7** | +250% |
+| Net carbs (g) | 7 | **7** | 0% |
 
 **Assumptions made:**
 - `1 small onion (about 2 oz), finely chopped` — weight taken from the recipe line
@@ -973,12 +973,12 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 161 | **297** | +84% |
-| Fat (g) | 12 | **28** | +133% |
-| Protein (g) | 12 | **10** | -17% |
-| Total carbs (g) | 0.5 | **0** | -100% |
+| Calories | 297 | **297** | 0% |
+| Fat (g) | 28 | **28** | 0% |
+| Protein (g) | 10 | **10** | 0% |
+| Total carbs (g) | 0 | **0** | — |
 | Fiber (g) | 0 | **0** | — |
-| Net carbs (g) | 0.5 | **0** | -100% |
+| Net carbs (g) | 0 | **0** | — |
 
 ---
 ## Pork Tenderloin Marinade
@@ -1009,12 +1009,12 @@ Divided by **8 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 210 | **243** | +16% |
-| Fat (g) | 9 | **12** | +33% |
-| Protein (g) | 28 | **31** | +11% |
-| Total carbs (g) | 2 | **1** | -50% |
+| Calories | 243 | **243** | 0% |
+| Fat (g) | 12 | **12** | 0% |
+| Protein (g) | 31 | **31** | 0% |
+| Total carbs (g) | 1 | **1** | 0% |
 | Fiber (g) | 0 | **0** | — |
-| Net carbs (g) | 2 | **1** | -50% |
+| Net carbs (g) | 1 | **1** | 0% |
 
 **Assumptions made:**
 - `2 Tbsp tamari or coconut aminos` — recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.
@@ -1040,11 +1040,11 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 167 | **174** | +4% |
-| Fat (g) | 12 | **13** | +8% |
+| Calories | 174 | **174** | 0% |
+| Fat (g) | 13 | **13** | 0% |
 | Protein (g) | 6 | **6** | 0% |
-| Total carbs (g) | 11 | **12** | +9% |
-| Fiber (g) | 4 | **5** | +25% |
+| Total carbs (g) | 12 | **12** | 0% |
+| Fiber (g) | 5 | **5** | 0% |
 | Net carbs (g) | 7 | **7** | 0% |
 
 ---
@@ -1071,9 +1071,9 @@ Divided by **7 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 80 | **92** | +15% |
-| Fat (g) | 4 | **5** | +25% |
-| Protein (g) | 2 | **3** | +50% |
+| Calories | 92 | **92** | 0% |
+| Fat (g) | 5 | **5** | 0% |
+| Protein (g) | 3 | **3** | 0% |
 | Total carbs (g) | 10 | **10** | 0% |
 | Fiber (g) | 3 | **3** | 0% |
 | Net carbs (g) | 7 | **7** | 0% |
@@ -1110,12 +1110,12 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 374 | **428** | +14% |
-| Fat (g) | 24 | **29** | +21% |
+| Calories | 428 | **428** | 0% |
+| Fat (g) | 29 | **29** | 0% |
 | Protein (g) | 34 | **34** | 0% |
-| Total carbs (g) | 8 | **9** | +13% |
-| Fiber (g) | 4 | **3** | -25% |
-| Net carbs (g) | 4 | **6** | +50% |
+| Total carbs (g) | 9 | **9** | 0% |
+| Fiber (g) | 3 | **3** | 0% |
+| Net carbs (g) | 6 | **6** | 0% |
 
 **Assumptions made:**
 - `2 lbs salmon fillet, cut into six 6 oz portions` — blended at the 60th percentile between the two entries — 9.84 g fat/100 g, just above their 9.02 g midpoint. Assumes a mid-range salmon.
@@ -1144,12 +1144,12 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 484 | **490** | +1% |
+| Calories | 490 | **490** | 0% |
 | Fat (g) | 38 | **38** | 0% |
 | Protein (g) | 19 | **19** | 0% |
-| Total carbs (g) | 17 | **19** | +12% |
+| Total carbs (g) | 19 | **19** | 0% |
 | Fiber (g) | 6 | **6** | 0% |
-| Net carbs (g) | 11 | **13** | +18% |
+| Net carbs (g) | 13 | **13** | 0% |
 
 **Assumptions made:**
 - `1 medium onion (about 4 oz), chopped` — weight taken from the recipe line
@@ -1173,22 +1173,22 @@ Divided by **4 servings**.
 | 1/4 cup chicken broth | 60 g | Soup, chicken broth, ready-to-serve <br>`FDC 174536` | SR Legacy | 0.1 | 0.4 | 0.3 |
 | Zest of 1/2 lemon | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 cup freshly squeezed lemon juice | 14.5 g | Lemons, raw, without peel <br>`FDC 167746` | SR Legacy | 0 | 0.2 | 1.4 |
-| 1 1/2 lbs zucchini noodles (from about 4 medium zucchini) | — | *back-reference, already counted above* | — | 0 | 0 | 0 |
+| 1 1/2 lbs zucchini noodles (from about 4 medium zucchini) | 680.4 g | Squash, summer, green, zucchini, includes skin, raw <br>`FDC 2685568` | Foundation | 1.4 | 6.7 | 22.2 |
 | 1/4 cup chopped fresh parsley leaves | — | *negligible* | — | 0 | 0 | 0 |
 | 2 tbsp freshly grated Parmesan | 12.5 g | Cheese, parmesan, grated <br>`FDC 325036` | Foundation | 3.5 | 3.7 | 1.6 |
-| **WHOLE RECIPE TOTAL** | | | | **32.2** | **76.4** | **13.1** |
+| **WHOLE RECIPE TOTAL** | | | | **33.6** | **83.1** | **35.3** |
 
-Whole recipe: **660 kcal**, fat 32.2 g, protein 76.4 g, carbs 13.1 g, fiber 1.5 g
+Whole recipe: **769 kcal**, fat 33.6 g, protein 83.1 g, carbs 35.3 g, fiber 6.6 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 224 | **165** | -26% |
-| Fat (g) | 9 | **8** | -11% |
-| Protein (g) | 27 | **19** | -30% |
-| Total carbs (g) | 9 | **3** | -67% |
-| Fiber (g) | 2 | **0** | -100% |
-| Net carbs (g) | 7 | **3** | -57% |
+| Calories | 165 | **192** | +16% |
+| Fat (g) | 8 | **8** | 0% |
+| Protein (g) | 19 | **21** | +11% |
+| Total carbs (g) | 3 | **9** | +200% |
+| Fiber (g) | 0 | **2** | — |
+| Net carbs (g) | 3 | **7** | +133% |
 
 ---
 ## Slow Cooker White Chicken Chili
@@ -1221,12 +1221,12 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 325 | **408** | +26% |
-| Fat (g) | 15 | **17** | +13% |
-| Protein (g) | 32 | **43** | +34% |
+| Calories | 408 | **408** | 0% |
+| Fat (g) | 17 | **17** | 0% |
+| Protein (g) | 43 | **43** | 0% |
 | Total carbs (g) | 21 | **21** | 0% |
-| Fiber (g) | 5 | **6** | +20% |
-| Net carbs (g) | 16 | **15** | -6% |
+| Fiber (g) | 6 | **6** | 0% |
+| Net carbs (g) | 15 | **15** | 0% |
 
 **Assumptions made:**
 - `1 small yellow onion (about 2 oz), chopped` — weight taken from the recipe line
@@ -1259,9 +1259,9 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 290 | **284** | -2% |
-| Fat (g) | 15 | **10** | -33% |
-| Protein (g) | 30 | **41** | +37% |
+| Calories | 284 | **284** | 0% |
+| Fat (g) | 10 | **10** | 0% |
+| Protein (g) | 41 | **41** | 0% |
 | Total carbs (g) | 6 | **6** | 0% |
 | Fiber (g) | 1 | **1** | 0% |
 | Net carbs (g) | 5 | **5** | 0% |
@@ -1300,12 +1300,12 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 330 | **302** | -8% |
-| Fat (g) | 22 | **16** | -27% |
-| Protein (g) | 24 | **21** | -12% |
-| Total carbs (g) | 8 | **21** | +163% |
+| Calories | 302 | **302** | 0% |
+| Fat (g) | 16 | **16** | 0% |
+| Protein (g) | 21 | **21** | 0% |
+| Total carbs (g) | 21 | **21** | 0% |
 | Fiber (g) | 3 | **3** | 0% |
-| Net carbs (g) | 5 | **18** | +260% |
+| Net carbs (g) | 18 | **18** | 0% |
 
 **Assumptions made:**
 - `6 large bell peppers (about 2 1/4 lbs), tops and cores removed` — weight taken from the recipe line
@@ -1337,12 +1337,12 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 342 | **290** | -15% |
-| Fat (g) | 25 | **19** | -24% |
+| Calories | 290 | **290** | 0% |
+| Fat (g) | 19 | **19** | 0% |
 | Protein (g) | 20 | **20** | 0% |
-| Total carbs (g) | 12 | **10** | -17% |
-| Fiber (g) | 5 | **4** | -20% |
-| Net carbs (g) | 7 | **6** | -14% |
+| Total carbs (g) | 10 | **10** | 0% |
+| Fiber (g) | 4 | **4** | 0% |
+| Net carbs (g) | 6 | **6** | 0% |
 
 **Assumptions made:**
 - `1 lb ground beef` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
@@ -1374,12 +1374,12 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 210 | **204** | -3% |
-| Fat (g) | 7 | **6** | -14% |
-| Protein (g) | 30 | **34** | +13% |
-| Total carbs (g) | 3 | **2** | -33% |
+| Calories | 204 | **204** | 0% |
+| Fat (g) | 6 | **6** | 0% |
+| Protein (g) | 34 | **34** | 0% |
+| Total carbs (g) | 2 | **2** | 0% |
 | Fiber (g) | 0 | **0** | — |
-| Net carbs (g) | 3 | **2** | -33% |
+| Net carbs (g) | 2 | **2** | 0% |
 
 **Assumptions made:**
 - `1/4 cup tamari or coconut aminos` — recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.
@@ -1417,12 +1417,12 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 325 | **356** | +10% |
-| Fat (g) | 22 | **26** | +18% |
+| Calories | 356 | **356** | 0% |
+| Fat (g) | 26 | **26** | 0% |
 | Protein (g) | 24 | **24** | 0% |
-| Total carbs (g) | 7 | **8** | +14% |
-| Fiber (g) | 2 | **1** | -50% |
-| Net carbs (g) | 5 | **7** | +40% |
+| Total carbs (g) | 8 | **8** | 0% |
+| Fiber (g) | 1 | **1** | 0% |
+| Net carbs (g) | 7 | **7** | 0% |
 
 **Assumptions made:**
 - `1 small onion (about 2 oz), chopped` — weight taken from the recipe line
@@ -1461,12 +1461,12 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 127 | **361** | +184% |
-| Fat (g) | 8 | **23** | +188% |
-| Protein (g) | 4 | **24** | +500% |
-| Total carbs (g) | 6 | **19** | +217% |
-| Fiber (g) | 2 | **6** | +200% |
-| Net carbs (g) | 4 | **13** | +225% |
+| Calories | 272 | **361** | +33% |
+| Fat (g) | 20 | **23** | +15% |
+| Protein (g) | 10 | **24** | +140% |
+| Total carbs (g) | 19 | **19** | 0% |
+| Fiber (g) | 6 | **6** | 0% |
+| Net carbs (g) | 13 | **13** | 0% |
 
 **Assumptions made:**
 - `6 cups shredded cabbage` — fiber 2.5 g/100 g from SR Legacy 169975 — Foundation reports none for this food
@@ -1497,11 +1497,11 @@ Divided by **6.77 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 210 | **284** | +35% |
-| Fat (g) | 18 | **27** | +50% |
+| Calories | 284 | **284** | 0% |
+| Fat (g) | 27 | **27** | 0% |
 | Protein (g) | 3 | **3** | 0% |
-| Total carbs (g) | 12 | **13** | +8% |
-| Fiber (g) | 8 | **9** | +13% |
+| Total carbs (g) | 13 | **13** | 0% |
+| Fiber (g) | 9 | **9** | 0% |
 | Net carbs (g) | 4 | **4** | 0% |
 
 **Assumptions made:**
@@ -1600,9 +1600,10 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | well-stirred tahini | SR Legacy 168604<br>Seeds, sesame butter, tahini, type of kernels unspecified | 53.01 | 17.4 | 21.5 | Foundation 2262073<br>Sesame butter, creamy | 62.4 | 19.7054 | 14.179 | +9.39 | +2.31 |
 | yellow mustard | SR Legacy 172234<br>Mustard, prepared, yellow | 3.34 | 3.74 | 5.83 | Foundation 326698<br>Mustard, prepared, yellow | 3.38 | 4.25 | 5.3 | +0.04 | +0.51 |
 | yellow onion | SR Legacy 170000<br>Onions, raw | 0.1 | 1.1 | 9.34 | Foundation 790646<br>Onions, yellow, raw | 0.05 | 0.83 | 8.61 | -0.05 | -0.27 |
+| zucchini | SR Legacy 169291<br>Squash, summer, zucchini, includes skin, raw | 0.32 | 1.21 | 3.11 | Foundation 2685568<br>Squash, summer, green, zucchini, includes skin, raw | 0.205 | 0.984375 | 3.27 | -0.12 | -0.23 |
 | zucchini or yellow summer squash | SR Legacy 169291<br>Squash, summer, zucchini, includes skin, raw | 0.32 | 1.21 | 3.11 | Foundation 2685568<br>Squash, summer, green, zucchini, includes skin, raw | 0.205 | 0.984375 | 3.27 | -0.12 | -0.23 |
 
-**75 ingredients switched.**
+**76 ingredients switched.**
 
 
 ### 2. Ingredients still on SR Legacy — Foundation has no entry for the food
@@ -1754,7 +1755,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | Roasted Summer Vegetables | 5g | 3g | 8g → **7g** | 99 → **92** |
 | Salmon and Asparagus Bake | 25g → **29g** | 37g → **34g** | 4g → **6g** | 388 → **428** |
 | Sausage and Cabbage Skillet | 38g | 19g | 12g → **13g** | 484 → **490** |
-| Shrimp Scampi with Zucchini Noodles | 7g → **8g** | 16g → **19g** | 4g → **3g** | 147 → **165** |
+| Shrimp Scampi with Zucchini Noodles | 7g → **8g** | 16g → **21g** | 4g → **7g** | 147 → **192** |
 | Slow Cooker White Chicken Chili | 18g → **17g** | 42g → **43g** | 13g → **15g** | 402 → **408** |
 | Spicy Thai Basil Chicken (Pad Krapow Gai) | 11g → **10g** | 41g | 6g → **5g** | 299 → **284** |
 | Stuffed Bell Peppers | 18g → **16g** | 20g → **21g** | 12g → **18g** | 303 → **302** |

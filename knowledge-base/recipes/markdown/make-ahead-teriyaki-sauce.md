@@ -33,8 +33,8 @@ Transfer to a jar or airtight container and refrigerate. It's ready to drizzle, 
 
 ## Nutrition
 
-### Per tablespoon (makes about 1 1/2 cups) — Estimated
-- Calories: 10
+### Per tablespoon (makes about 1 1/2 cups)
+- Calories: 5
 - Total Fat: 0g
 - Total Carbs: 1g
 - Fiber: 0g

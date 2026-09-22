@@ -52,15 +52,12 @@ While the chicken cooks, melt the butter in a saucepan over medium heat. Add the
 ## Nutrition
 
 ### Per serving (makes about 8 servings)
-- Calories: 543
-- Total Fat: 42g
-- Saturated Fat: 21g
-- Cholesterol: 193mg
-- Sodium: 879mg
-- Total Carbs: 4g
+- Calories: 528
+- Total Fat: 40g
+- Total Carbs: 6g
 - Fiber: 1g
-- Net Carbs: 3g
-- Protein: 37g
+- Net Carbs: 5g
+- Protein: 36g
 
 ## Notes
 

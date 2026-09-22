@@ -34,10 +34,10 @@ Roast uncovered for 20 to 25 minutes, until crisp, brown, and caramelized on the
 ## Nutrition
 
 ### Per serving (makes 4)
-- Calories: 167
-- Total Fat: 12g
-- Total Carbs: 11g
-- Fiber: 4g
+- Calories: 174
+- Total Fat: 13g
+- Total Carbs: 12g
+- Fiber: 5g
 - Net Carbs: 7g
 - Protein: 6g
 

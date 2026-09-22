@@ -44,21 +44,21 @@ Pour the dressing over the salad and toss to coat. Sprinkle with the peanuts and
 
 ## Nutrition
 
-### Without chicken (per serving, makes 6) — Estimated
-- Calories: 127
-- Total Fat: 8g
-- Total Carbs: 6g
-- Fiber: 2g
-- Net Carbs: 4g
-- Protein: 4g
+### Without chicken (per serving, makes 6)
+- Calories: 272
+- Total Fat: 20g
+- Total Carbs: 19g
+- Fiber: 6g
+- Net Carbs: 13g
+- Protein: 10g
 
-### With chicken (per serving, makes 6) — Estimated
-- Calories: 193
-- Total Fat: 9g
-- Total Carbs: 6g
-- Fiber: 2g
-- Net Carbs: 4g
-- Protein: 17g
+### With chicken (per serving, makes 6)
+- Calories: 361
+- Total Fat: 23g
+- Total Carbs: 19g
+- Fiber: 6g
+- Net Carbs: 13g
+- Protein: 24g
 
 ## Notes
 

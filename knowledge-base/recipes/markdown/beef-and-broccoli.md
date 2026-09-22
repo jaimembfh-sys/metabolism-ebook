@@ -50,12 +50,12 @@ Add the sauce, reduce the heat to medium-low, and simmer 3 to 4 minutes, until t
 
 ## Nutrition
 
-### Per serving (makes 4) — Estimated
-- Calories: 350
-- Total Fat: 21g
-- Total Carbs: 8g
+### Per serving (makes 4)
+- Calories: 386
+- Total Fat: 25g
+- Total Carbs: 12g
 - Fiber: 3g
-- Net Carbs: 5g
+- Net Carbs: 9g
 - Protein: 29g
 
 ## Notes

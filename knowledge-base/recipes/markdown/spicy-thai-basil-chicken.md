@@ -49,13 +49,13 @@ Stir in the basil. Cook and stir until wilted, about 20 seconds. Serve hot over 
 
 ## Nutrition
 
-### Per serving (makes 4) — Estimated, does not include cauliflower rice or egg
-- Calories: 290
-- Total Fat: 15g
+### Per serving (makes 4) — does not include cauliflower rice or egg
+- Calories: 284
+- Total Fat: 10g
 - Total Carbs: 6g
 - Fiber: 1g
 - Net Carbs: 5g
-- Protein: 30g
+- Protein: 41g
 
 ## Notes
 

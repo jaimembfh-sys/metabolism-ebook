@@ -52,12 +52,14 @@ Remove the whole cloves. Taste and adjust salt. Serve with your favorite keto to
 ## Nutrition
 
 ### Per serving (makes about 6 servings)
-- Calories: 233
-- Total Fat: 16g
-- Total Carbs: 8g
+- Calories: 153
+- Total Fat: 7g
+- Total Carbs: 5g
 - Fiber: 2g
-- Net Carbs: 6g
-- Protein: 14g
+- Net Carbs: 3g
+- Protein: 17g
+
+Based on 92/8 ground beef.
 
 ## Notes
 

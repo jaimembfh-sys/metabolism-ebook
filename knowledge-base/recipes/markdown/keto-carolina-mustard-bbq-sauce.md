@@ -32,12 +32,12 @@ Let cool to room temperature, then transfer to a jar or airtight container and r
 
 ## Nutrition
 
-### Per tablespoon (makes about 1 3/4 cups) — Estimated
-- Calories: 10
+### Per tablespoon (makes about 1 3/4 cups)
+- Calories: 5
 - Total Fat: 0g
-- Total Carbs: 1g
+- Total Carbs: 0g
 - Fiber: 0g
-- Net Carbs: 1g
+- Net Carbs: 0g
 - Protein: 0g
 
 ## Notes

@@ -43,12 +43,14 @@ While the beef cooks, combine the lettuce, tomatoes, cheese, avocado, green onio
 ## Nutrition
 
 ### Per serving (makes about 6 servings)
-- Calories: 342
-- Total Fat: 25g
-- Total Carbs: 12g
-- Fiber: 5g
-- Net Carbs: 7g
+- Calories: 290
+- Total Fat: 19g
+- Total Carbs: 10g
+- Fiber: 4g
+- Net Carbs: 6g
 - Protein: 20g
+
+Based on 92/8 ground beef.
 
 ## Notes
 

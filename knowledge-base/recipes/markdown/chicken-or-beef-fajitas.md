@@ -49,12 +49,12 @@ Squeeze the remaining lime over the top. Serve spooned into large lettuce leaves
 ## Nutrition
 
 ### Per serving (makes about 4 servings, chicken version)
-- Calories: 286
-- Total Fat: 13g
-- Total Carbs: 11g
-- Fiber: 3g
+- Calories: 226
+- Total Fat: 9g
+- Total Carbs: 10g
+- Fiber: 2g
 - Net Carbs: 8g
-- Protein: 29g
+- Protein: 27g
 
 ## Notes
 

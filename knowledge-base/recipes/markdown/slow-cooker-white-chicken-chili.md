@@ -45,12 +45,12 @@ Remove the chicken to a plate and shred with two forks. Return the shredded chic
 ## Nutrition
 
 ### Per serving (makes 6)
-- Calories: 325
-- Total Fat: 15g
+- Calories: 408
+- Total Fat: 17g
 - Total Carbs: 21g
-- Fiber: 5g
-- Net Carbs: 16g
-- Protein: 32g
+- Fiber: 6g
+- Net Carbs: 15g
+- Protein: 43g
 
 ## Notes
 

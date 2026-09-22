@@ -37,11 +37,11 @@ Stir in the vinegar and return the sausage to the pan. Stir, cover, and cook for
 ## Nutrition
 
 ### Per serving (makes about 4 servings)
-- Calories: 484
+- Calories: 490
 - Total Fat: 38g
-- Total Carbs: 17g
+- Total Carbs: 19g
 - Fiber: 6g
-- Net Carbs: 11g
+- Net Carbs: 13g
 - Protein: 19g
 
 ## Notes

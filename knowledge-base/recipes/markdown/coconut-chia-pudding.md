@@ -29,12 +29,12 @@ Once thickened, top with your favorite toppings — fresh berries, toasted cocon
 ## Nutrition
 
 ### Per serving (makes 4)
-- Calories: 120
-- Total Fat: 9g
-- Total Carbs: 9g
-- Fiber: 8g
-- Net Carbs: 1g
-- Protein: 4g
+- Calories: 315
+- Total Fat: 30g
+- Total Carbs: 10g
+- Fiber: 6g
+- Net Carbs: 4g
+- Protein: 5g
 
 ## Notes
 

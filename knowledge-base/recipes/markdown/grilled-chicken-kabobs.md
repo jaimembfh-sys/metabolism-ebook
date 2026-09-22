@@ -44,13 +44,13 @@ Sprinkle with parsley and serve.
 
 ## Nutrition
 
-### Per serving (makes 4) — Estimated
-- Calories: 220
-- Total Fat: 12g
-- Total Carbs: 8g
+### Per serving (makes 4)
+- Calories: 305
+- Total Fat: 16g
+- Total Carbs: 10g
 - Fiber: 2g
-- Net Carbs: 6g
-- Protein: 27g
+- Net Carbs: 8g
+- Protein: 31g
 
 ## Notes
 

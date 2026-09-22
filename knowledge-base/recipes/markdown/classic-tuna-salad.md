@@ -37,12 +37,12 @@ Taste and adjust salt, pepper, or lemon juice to your liking. Serve right away, 
 ## Nutrition
 
 ### Per serving (makes about 4 servings)
-- Calories: 211
-- Total Fat: 14g
-- Total Carbs: 1g
-- Fiber: 0g
-- Net Carbs: 1g
-- Protein: 18g
+- Calories: 224
+- Total Fat: 15g
+- Total Carbs: 7g
+- Fiber: 2g
+- Net Carbs: 5g
+- Protein: 14g
 
 ## Notes
 

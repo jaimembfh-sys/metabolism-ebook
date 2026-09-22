@@ -32,19 +32,19 @@ Melt the chocolate and coconut oil together in the microwave or a double boiler,
 ## Nutrition
 
 ### Without chocolate coating (per ball, makes 16)
-- Calories: 108
-- Total Fat: 8g
-- Total Carbs: 4g
+- Calories: 119
+- Total Fat: 9g
+- Total Carbs: 8g
 - Fiber: 2g
-- Net Carbs: 2g
+- Net Carbs: 6g
 - Protein: 4g
 
 ### With chocolate coating (per ball, makes 16)
-- Calories: 193
-- Total Fat: 14g
-- Total Carbs: 12g
-- Fiber: 4g
-- Net Carbs: 8g
+- Calories: 183
+- Total Fat: 13g
+- Total Carbs: 14g
+- Fiber: 3g
+- Net Carbs: 11g
 - Protein: 5g
 
 ## Notes

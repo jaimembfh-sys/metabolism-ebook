@@ -38,15 +38,12 @@ While the steaks rest, melt the butter in a large skillet over medium heat. Add 
 ## Nutrition
 
 ### Per serving (makes 2 servings)
-- Calories: 870
-- Total Fat: 64g
-- Saturated Fat: 32g
-- Cholesterol: 253mg
-- Sodium: 318mg
-- Total Carbs: 5g
-- Fiber: 1g
+- Calories: 1077
+- Total Fat: 86g
+- Total Carbs: 6g
+- Fiber: 2g
 - Net Carbs: 4g
-- Protein: 72g
+- Protein: 67g
 
 ## Notes
 

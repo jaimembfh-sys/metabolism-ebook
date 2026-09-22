@@ -35,8 +35,8 @@ Cover and refrigerate for at least 30 minutes before serving — this gives the 
 ## Nutrition
 
 ### Per 2 tbsp serving (makes about 12 servings)
-- Calories: 80
-- Total Fat: 7g
+- Calories: 86
+- Total Fat: 8g
 - Total Carbs: 1g
 - Fiber: 0g
 - Net Carbs: 1g

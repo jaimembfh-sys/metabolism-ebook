@@ -47,12 +47,12 @@ Stir in the zucchini noodles and parsley. Toss everything together so the noodle
 ## Nutrition
 
 ### Per serving (makes about 4 servings)
-- Calories: 224
-- Total Fat: 9g
+- Calories: 192
+- Total Fat: 8g
 - Total Carbs: 9g
 - Fiber: 2g
 - Net Carbs: 7g
-- Protein: 27g
+- Protein: 21g
 
 ## Notes
 

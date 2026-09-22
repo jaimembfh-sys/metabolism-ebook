@@ -54,12 +54,14 @@ Divide the lettuce among four large bowls. Top with the beef and onion mixture, 
 ## Nutrition
 
 ### Per serving (makes about 4 servings)
-- Calories: 530
-- Total Fat: 38g
-- Total Carbs: 13g
-- Fiber: 5g
-- Net Carbs: 8g
-- Protein: 36g
+- Calories: 679
+- Total Fat: 52g
+- Total Carbs: 20g
+- Fiber: 7g
+- Net Carbs: 13g
+- Protein: 35g
+
+Based on 92/8 ground beef.
 
 ## Notes
 

@@ -49,11 +49,11 @@ Let cool completely on the pan before breaking into pieces — it crisps up as i
 ## Nutrition
 
 ### Per 1/4 cup serving (makes about 12 servings)
-- Calories: 199
+- Calories: 204
 - Total Fat: 18g
-- Total Carbs: 11g
-- Fiber: 3g
-- Net Carbs: 4g
+- Total Carbs: 9g
+- Fiber: 2g
+- Net Carbs: 7g
 - Protein: 4g
 
 ## Notes
