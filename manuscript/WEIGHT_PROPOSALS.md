@@ -352,7 +352,7 @@ Full projection in section 4.
 
 ### Thai Panang Chicken Curry
 
-*Per serving if applied: 350 → 349 kcal, net carbs 6 → 6 g.*
+*Per serving if applied: 358 → 357 kcal, net carbs 7 → 7 g.*
 
 | | |
 |---|---|
@@ -476,7 +476,7 @@ A weight here would be noise, and in several cases longer than the ingredient.
 | Spicy Thai Basil Chicken (Pad Krapow Gai) | 4 | 2 | 285 → **283** | 6 `=` |
 | Classic Cobb Salad | 4 | 2 | 851 → **853** | 6 `=` |
 | Homemade Spaghetti Sauce with Spaghetti Squash | 5 | 2 | 289 → **291** | 19 `=` |
-| Thai Panang Chicken Curry | 6 | 3 | 350 → **349** | 6 `=` |
+| Thai Panang Chicken Curry | 6 | 3 | 358 → **357** | 7 `=` |
 | Classic Chicken Salad | 6 | 2 | 380 → **379** | 5 `=` |
 | Taco Salad | 6 | 1 | 291 → **290** | 6 `=` |
 | Slow Cooker White Chicken Chili | 6 | 1 | 409 → **408** | 15 `=` |
