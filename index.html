@@ -11334,12 +11334,18 @@ Format your response with clean HTML, matching the same convention used elsewher
                 var matches = (scaleRecipeCorpusData.recipes || []).filter(function(r) { return r.title.toLowerCase().indexOf(q) !== -1; });
                 scaleRecipeListShared.innerHTML = '';
                 matches.forEach(function(r) {
+                    // A row now holds two actions: pick it to scale (the button,
+                    // unchanged) and ask whether it fits the protocol.
+                    var row = document.createElement('div');
+                    row.className = 'border-b border-gray-100 last:border-0';
                     var btn = document.createElement('button');
                     btn.type = 'button';
                     btn.className = 'scale-recipe-option w-full text-left px-3 py-2 hover:bg-brand-light/40 text-sm text-gray-700';
                     btn.textContent = r.title + (r.servings != null ? ' — ' + r.servings + ' servings' : ' — batch/yield');
                     btn.addEventListener('click', function() { selectScaleRecipeSource('shared', r, btn); });
-                    scaleRecipeListShared.appendChild(btn);
+                    row.appendChild(btn);
+                    attachRecipeFitControl(row, r);
+                    scaleRecipeListShared.appendChild(row);
                 });
                 if (scaleRecipeListSharedEmpty) scaleRecipeListSharedEmpty.classList.toggle('hidden', matches.length > 0);
             }
@@ -11349,6 +11355,143 @@ Format your response with clean HTML, matching the same convention used elsewher
                 document.querySelectorAll('.scale-recipe-option').forEach(function(b) { b.classList.remove('bg-brand-light/60', 'font-semibold'); });
                 btnEl.classList.add('bg-brand-light/60', 'font-semibold');
                 if (scaleRecipeContinueBtn) scaleRecipeContinueBtn.disabled = false;
+            }
+
+            // ============================================================
+            // DOES THIS RECIPE FIT MY PLAN?
+            // ============================================================
+            // Rides on the Scale a Recipe picker rather than adding a second
+            // one: the user is already looking at a list of every recipe, and
+            // "does this fit" is the question they have while looking at it.
+            //
+            // An allergen is answered in CODE, before any model call. A hard no
+            // is a fact about the ingredient list, not a judgement, and the one
+            // thing this must never do is let a model talk itself into a yes.
+            // The macro/timing half is a genuine judgement and does go to the
+            // model.
+
+            /* Allergen hits computed live from the recipe's own ingredient
+             * lines, not read off the tags. Works before Jaime has confirmed
+             * the tags, and stays correct after — same vocabulary either way. */
+            function recipeAllergenHitsLive(recipe, allergies) {
+                const lines = parseSharedRecipeIngredientLines(recipe.full_text || '');
+                const text = lines.length ? lines.join(' \n ') : [recipe.ingredients || '', recipe.title || ''].join(' \n ');
+                const out = [];
+                (allergies || []).forEach(function (a) {
+                    const key = String(a).toLowerCase();
+                    if (key === 'other') return;
+                    const re = ALLERGEN_TERMS[key];
+                    if (!re) return;
+                    const m = text.match(re);
+                    if (m) out.push({ allergen: key, term: m[0] });
+                });
+                return out;
+            }
+
+            const RECIPE_FIT_TOOL = {
+                name: 'record_recipe_fit',
+                description: "Judge whether one recipe fits this user's protocol, and say why.",
+                input_schema: {
+                    type: 'object',
+                    properties: {
+                        verdict: { type: 'string', enum: ['fits', 'fits_with_change', 'does_not_fit'] },
+                        reason: { type: 'string', description: "2-4 sentences, second person, explaining the verdict against THIS user's macro approach, eating pattern, staged plan and sensitivities. Name the specific thing about the recipe that decided it." },
+                        change: { type: ['string', 'null'], description: 'ONLY for fits_with_change or does_not_fit: one concrete, encouraging swap or portion change that would make it work — a named ingredient, not a principle. null for fits.' },
+                        best_slot: { type: ['string', 'null'], description: "Which of the user's meal slots this suits best, if any. null if it does not fit at all." }
+                    },
+                    required: ['verdict', 'reason']
+                }
+            };
+
+            function buildRecipeFitInstruction(recipe, eatingWindow, disorderedEatingSignal, swapNotes) {
+                const nutritionBlock = disorderedEatingSignal
+                    ? 'The nutrition panel is deliberately withheld for this user.'
+                    : (recipe.nutrition
+                        ? ('Per serving: ' + recipe.nutrition.calories + ' cal, ' + recipe.nutrition.protein_g +
+                           'g protein, ' + recipe.nutrition.net_carbs_g + 'g net carbs, ' + recipe.nutrition.fat_g + 'g fat.')
+                        : 'No nutrition panel on file.');
+                const body = disorderedEatingSignal ? stripNutritionPanels(recipe.full_text || '') : (recipe.full_text || '');
+                return "You are Jaime Jenkins' metabolic coach, answering one question: does this specific recipe fit this specific person's protocol?\n\n" +
+                    '--- USER METABOLIC PROFILE START ---\n' + (userMetabolicProfile || 'No protocol on file yet.') + '\n--- USER METABOLIC PROFILE END ---\n\n' +
+                    (eatingWindow ? 'Their target eating window is ' + eatingWindow.start_label + '–' + eatingWindow.end_label + '. This is a timing target, never a limit on how much they eat.\n\n' : '') +
+                    '--- RECIPE START ---\n' + recipe.title + '\n' + nutritionBlock + '\n\n' + body + '\n--- RECIPE END ---\n\n' +
+                    'ALLERGIES HAVE ALREADY BEEN CHECKED IN CODE before you were called. Do not re-litigate them, and never tell the user a recipe is safe or unsafe for an allergy — that is not your call here.\n' +
+                    (swapNotes && swapNotes.length ? 'YOU MUST INCLUDE THIS INSTRUCTION IN YOUR REASON, in your own words: ' + swapNotes.join(' ') + '\n' : '') +
+                    'Judge it on their macro approach, eating pattern, any active staged plan, and their stated sensitivities. Be specific about what in the recipe decided it. Be encouraging: a recipe that does not fit today is not a failure, and a small swap usually fixes it.\n' +
+                    (disorderedEatingSignal
+                        ? 'SAFETY: this user has a disordered-eating safety signal on file. Keep everything qualitative and food-quality-focused. NEVER mention a calorie count, a gram figure, or any number. Never use restriction language ("too much", "cut back", "only"). If you cannot make the point without a number, make a different point.\n'
+                        : '') +
+                    'Call record_recipe_fit with your answer.';
+            }
+
+            async function runRecipeFitCheck(recipe, panel) {
+                const profile = currentGoalProfile;
+                if (!profile || !profile.protocol) {
+                    panel.innerHTML = '<p class="text-sm text-gray-500 italic">Build your protocol with the Interactive Metabolic Coach first, so this can be answered against it.</p>';
+                    return;
+                }
+                const disorderedEatingSignal = !!profile.disordered_eating_signal;
+                const allergies = getDeclaredAllergies(profile);
+                const pageLink = recipe.page
+                    ? ' <a href="' + escapeHtml(recipe.page) + '" class="text-brand-dark underline" target="_blank" rel="noopener">Open the recipe</a>.'
+                    : '';
+
+                // Hard no, decided here, with no model in the loop.
+                const hits = recipeAllergenHitsLive(recipe, allergies);
+                if (hits.length) {
+                    panel.innerHTML =
+                        '<div class="rounded-lg border border-red-200 bg-red-50 p-3">' +
+                        '<p class="text-sm font-semibold text-red-800">No — this one is not for you.</p>' +
+                        '<p class="text-sm text-gray-700 mt-1">It contains ' +
+                        hits.map(function (h) { return escapeHtml(h.allergen) + ' (' + escapeHtml(h.term) + ')'; }).join(' and ') +
+                        ', and you have that listed as an allergy. Ask for something else and I will find you one that works.</p></div>';
+                    return;
+                }
+
+                const swapNotes = swapInstructionsFor(recipe, allergies);
+                panel.innerHTML = '<p class="text-sm text-brand-accent italic">Checking it against your protocol…</p>';
+                try {
+                    const eatingWindow = getProfileEatingWindow(profile);
+                    const sys = buildRecipeFitInstruction(recipe, eatingWindow, disorderedEatingSignal, swapNotes);
+                    const parsed = await extractToolFields('Does this recipe fit my plan?', sys, 'chat', RECIPE_FIT_TOOL, 'recipe-fit');
+                    if (!parsed) throw new Error('No answer returned');
+
+                    const reason = disorderedEatingSignal ? (scrubText(parsed.reason) || 'This one sits well with how you are eating right now.') : parsed.reason;
+                    const change = disorderedEatingSignal ? scrubText(parsed.change) : parsed.change;
+                    const head = parsed.verdict === 'fits' ? { t: 'Yes — this fits your plan.', c: 'green' }
+                        : parsed.verdict === 'fits_with_change' ? { t: 'Yes, with one change.', c: 'amber' }
+                        : { t: 'Not as written.', c: 'amber' };
+                    panel.innerHTML =
+                        '<div class="rounded-lg border p-3 ' + (head.c === 'green' ? 'border-green-200 bg-green-50' : 'border-amber-200 bg-amber-50') + '">' +
+                        '<p class="text-sm font-semibold text-brand-dark">' + escapeHtml(head.t) + '</p>' +
+                        '<p class="text-sm text-gray-700 mt-1">' + modelText(reason) + pageLink + '</p>' +
+                        (change ? '<p class="text-sm text-gray-700 mt-2"><strong>Try this:</strong> ' + modelText(change) + '</p>' : '') +
+                        (parsed.best_slot && !disorderedEatingSignal ? '<p class="text-xs text-gray-500 mt-2">Best as your ' + escapeHtml(parsed.best_slot) + '.</p>' : '') +
+                        '</div>';
+                } catch (error) {
+                    panel.innerHTML = buildAiErrorHtml(error, 'Could not check that recipe just now. Please try again in a moment.');
+                }
+            }
+
+            /* One "Does this fit?" control per row, wired by the list renderers. */
+            function attachRecipeFitControl(row, recipe) {
+                const wrap = document.createElement('div');
+                wrap.className = 'px-3 pb-2';
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'text-xs text-brand-dark underline hover:no-underline';
+                btn.textContent = 'Does this fit my plan?';
+                const panel = document.createElement('div');
+                panel.className = 'mt-2';
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    if (isAiLimitReached('chat')) return;
+                    btn.disabled = true;
+                    runRecipeFitCheck(recipe, panel).finally(function () { btn.disabled = false; });
+                });
+                wrap.appendChild(btn);
+                wrap.appendChild(panel);
+                row.appendChild(wrap);
             }
 
             function closeScaleRecipeFlow() {

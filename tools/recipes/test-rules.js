@@ -249,7 +249,8 @@ const NEEDED = ["const KEEP_NUMBER =", "function sentenceIsSafe(", "function scr
   "const SLOTS_BY_PATTERN =", "function slotsFor(", "function findSlotViolations(",
   "function recipeViolates(", "function filterPoolByAllergies(", "function swapInstructionsFor(",
   "function findMealPlanAllergenViolations(", "const PLANT_PREFIX", "const NON_GLUTEN_FLOUR",
-  "const ALLERGEN_TERMS ="];
+  "const ALLERGEN_TERMS =", "function getDeclaredAllergies(",
+  "function parseSharedRecipeIngredientLines(", "function recipeAllergenHitsLive("];
 const missing = NEEDED.filter((n) => !extract(html, n));
 check("all mirrored rules found in index.html", missing, []);
 
@@ -257,7 +258,8 @@ let mirror = null;
 if (!missing.length) {
   const src = NEEDED.map((n) => extract(html, n)).join("\n") +
     "\nreturn { scrubText, stripNutritionPanels, scrubNumbersIfFlagged, slotsFor, findSlotViolations," +
-    " filterPoolByAllergies, swapInstructionsFor, findMealPlanAllergenViolations };";
+    " filterPoolByAllergies, swapInstructionsFor, findMealPlanAllergenViolations," +
+    " getDeclaredAllergies, recipeAllergenHitsLive };";
   try { mirror = new Function(src)(); }
   catch (e) { check("index.html rules evaluate", "error: " + e.message, "no error"); }
 }
@@ -290,6 +292,46 @@ if (mirror && runtime) {
   check("mirror swapInstructionsFor(soy)",
     mirror.swapInstructionsFor(bySlug["beef-and-broccoli"], ["soy"]),
     runtime.swapInstructionsFor(bySlug["beef-and-broccoli"], ["soy"]));
+
+  section("8. \"Does this recipe fit?\" — the hard no is decided in code");
+
+  // Hard no, computed live from the ingredient list, so it works before the
+  // tags are confirmed and stays right afterwards.
+  const hitsDairy = mirror.recipeAllergenHitsLive(bySlug["greek-salad"], ["dairy"]);
+  check("fit: greek salad is a hard no for a dairy allergy", hitsDairy.length > 0, true);
+  check("fit: it names the term that decided it", typeof (hitsDairy[0] || {}).term === "string", true);
+
+  check("fit: thai panang is NOT a dairy no (peanut butter is not dairy)",
+    mirror.recipeAllergenHitsLive(bySlug["thai-panang-chicken-curry"], ["dairy"]).length, 0);
+  check("fit: thai panang IS a nut no",
+    mirror.recipeAllergenHitsLive(bySlug["thai-panang-chicken-curry"], ["nuts"]).length > 0, true);
+  check("fit: coconut chia pudding is not a dairy no (coconut milk)",
+    mirror.recipeAllergenHitsLive(bySlug["coconut-chia-pudding"], ["dairy"]).length, 0);
+  check("fit: keto chicken parmesan is not a gluten no (almond flour)",
+    mirror.recipeAllergenHitsLive(bySlug["keto-chicken-parmesan"], ["gluten"]).length, 0);
+  check("fit: an unlisted allergy cannot produce a no",
+    mirror.recipeAllergenHitsLive(bySlug["greek-salad"], ["other"]).length, 0);
+  check("fit: no allergies means no hits",
+    mirror.recipeAllergenHitsLive(bySlug["greek-salad"], []).length, 0);
+
+  // The soy carve-out: available, with the instruction attached.
+  const soyPool = mirror.filterPoolByAllergies(corpus.recipes, ["soy"]);
+  const bb = soyPool.find((r) => r.slug === "beef-and-broccoli");
+  check("fit: beef-and-broccoli survives a soy allergy", !!bb, true);
+  const swaps = mirror.swapInstructionsFor(bb, ["soy"]);
+  check("fit: and carries exactly one swap instruction", swaps.length, 1);
+  check("fit: the instruction names coconut aminos", /coconut aminos/.test(swaps[0] || ""), true);
+  check("fit: the instruction names what to avoid", /tamari/.test(swaps[0] || ""), true);
+  check("fit: worcestershire recipe warns to check the label",
+    mirror.swapInstructionsFor(bySlug["keto-carolina-mustard-bbq-sauce"], ["soy"])
+      .some((s) => /label/i.test(s)), true);
+
+  // getDeclaredAllergies must not silently lose a string-shaped list.
+  check("fit: allergies as an array", mirror.getDeclaredAllergies(
+    { health_history: { physical: { food_allergies: ["dairy", "nuts"] } } }), ["dairy", "nuts"]);
+  check("fit: allergies as a string still parse", mirror.getDeclaredAllergies(
+    { health_history: { physical: { food_allergies: "dairy, nuts" } } }), ["dairy", "nuts"]);
+  check("fit: missing profile yields none", mirror.getDeclaredAllergies(null), []);
 }
 
 // ---------------------------------------------------------------------------
