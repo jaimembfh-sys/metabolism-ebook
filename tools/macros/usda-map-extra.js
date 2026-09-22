@@ -95,6 +95,13 @@ const AMBIGUOUS = {
     "recipe lists it 'for serving' with no amount, and the recipe's own nutrition line excludes it.",
   "fried eggs":
     "optional, no amount given; excluded by the recipe's own nutrition line.",
+  /* Jaime, 2026-09-21: exclude it, to match the heading the recipe already
+   * prints. Marinara is its own recipe with its own panel, so counting it here
+   * would put the same sauce in two sets of numbers. Keto Chicken Parmesan is
+   * the only recipe that lists it as an ingredient.
+   */
+  "marinara sauce":
+    "the recipe's own nutrition line says it is not included, and marinara has its own recipe and its own panel.",
 };
 
 module.exports = { EXTRA_MAP, BRANDED, AMBIGUOUS };

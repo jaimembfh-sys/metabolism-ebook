@@ -173,6 +173,67 @@ const YIELD = {
     why: "1 1/2 cups yield × 16 Tbsp per cup = 24 tablespoons",
     assumes: "the recipe's own yield of about 1 1/2 cups, by the tablespoon",
   },
+  /* Jaime, 2026-09-21: give the mayo a panel by the tablespoon. The recipe
+   * states no yield, so it is computed from the ingredients two ways, which
+   * agree:
+   *
+   *   by volume     1 cup oil            16     Tbsp
+   *                 2 large egg yolks     2.2   (17 g each, about 1.1 Tbsp)
+   *                 1 Tbsp lemon juice    1
+   *                 2 tsp Dijon           0.67
+   *                 salt                  0     (dissolves)
+   *                                      19.9   Tbsp
+   *
+   *   by weight     280 g total / 0.93 g per mL = 301 mL = 20.4 Tbsp
+   *                 (0.91-0.95 g/mL spans 19.9 to 20.8)
+   *
+   * Call it 20 Tbsp, or 1 1/4 cups. The check that this is right: it puts the
+   * mayo at 102 kcal and 11.4 g fat per tablespoon, and a commercial avocado
+   * oil mayonnaise label reads 100 kcal and 11 g.
+   */
+  "homemade-avocado-oil-mayo": {
+    servings: 20,
+    cups: 1.25,
+    why: "about 1 1/4 cups yield × 16 Tbsp per cup = 20 tablespoons",
+    assumes: "a yield of about 1 1/4 cups, by the tablespoon",
+  },
+};
+
+/* ---- 2. Cooking yield: bought raw, eaten cooked ------------------------
+ *
+ * Bacon is the one ingredient here where costing the raw weight is wrong in
+ * the reader's direction. A pound goes in the oven, a great deal of fat
+ * renders out, and it is poured off - it never reaches the plate. Costing the
+ * raw pound counts that fat as eaten.
+ *
+ * The yield is USDA's own, taken from the portion weights it publishes for
+ * the same food either side of the pan:
+ *
+ *   Pork, cured, bacon, unprepared      (168277)   1 slice raw    = 28   g
+ *   Pork, cured, bacon, cooked, baked   (167914)   1 slice cooked =  8.1 g
+ *
+ *   8.1 / 28 = 0.289
+ *
+ * So the line's raw weight is multiplied by 0.289 and priced against the
+ * COOKED entry. Both halves have to move together: cooked density on a raw
+ * weight is the error this replaces, and raw density on a cooked weight would
+ * be the same error the other way.
+ *
+ * A pound of bacon is then 131 g cooked at 548 kcal per 100 g = 719 kcal,
+ * against 1,783 kcal for the raw pound priced raw. The difference is the fat
+ * in the bottom of the pan.
+ *
+ * Keyed on the RESOLVED map key, exactly, not by substring - "crumbled bacon"
+ * is bought already cooked and measured by the cup, so it takes no yield and
+ * must not inherit this one.
+ */
+const COOK_YIELD = {
+  "bacon": {
+    factor: 8.1 / 28,
+    raw_fdc: 168277,
+    cooked_fdc: 167914,
+    why: "USDA slice weights, 28 g raw to 8.1 g cooked",
+  },
 };
 
 function verifyAssumptions(fndById, srById) {
@@ -208,4 +269,4 @@ function verifyAssumptions(fndById, srById) {
   return Object.keys(BLENDS).length + Object.keys(COMPOSITES).length;
 }
 
-module.exports = { BLENDS, COMPOSITES, YIELD, blendWeight, verifyAssumptions };
+module.exports = { BLENDS, COMPOSITES, YIELD, COOK_YIELD, blendWeight, verifyAssumptions };

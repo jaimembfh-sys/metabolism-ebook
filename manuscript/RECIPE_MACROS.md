@@ -272,7 +272,7 @@ Divided by **6 servings**.
 |---|---|---|---|---|---|---|
 | 6 cups chopped green leaf or romaine lettuce (or a mix of both) | 282 g | Lettuce, romaine, green, raw <br>`FDC 2346389` <br>*fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food* | Foundation | 0.2 | 2.8 | 11.4 |
 | 2 cups cubed rotisserie chicken | 280 g | Chicken, broilers or fryers, meat only, cooked, roasted <br>`FDC 171054` | SR Legacy | 20.7 | 81 | 0 |
-| 6 slices bacon (about 6 oz), cooked and crumbled (or 1/3 cup bacon bits) | 170.1 g | Pork, cured, bacon, unprepared <br>`FDC 168277` <br>*weight taken from the recipe line* | SR Legacy | 63.2 | 23.2 | 0 |
+| 6 slices bacon (about 6 oz), cooked and crumbled (or 1/3 cup bacon bits) | 49.2 g | Pork, cured, bacon, cooked, baked <br>`FDC 167914` <br>*weight taken from the recipe line; raw weight 170.1 g; cooked yield 29% — USDA slice weights, 28 g raw to 8.1 g cooked* | SR Legacy | 21.3 | 17.6 | 0.7 |
 | 3 hard-boiled eggs, chopped | 150 g | Egg, whole, cooked, hard-boiled <br>`FDC 173424` | SR Legacy | 15.9 | 18.9 | 1.7 |
 | 1 avocado (about 7 oz), diced | 198.5 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 40.3 | 3.6 | 16.5 |
 | 1 cup cherry or grape tomatoes, halved | 149 g | Tomatoes, grape, raw <br>`FDC 321360` | Foundation | 0.9 | 1.2 | 8.2 |
@@ -284,23 +284,23 @@ Divided by **6 servings**.
 | 1/4 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp black pepper | — | *negligible* | — | 0 | 0 | 0 |
 | Pinch of sugar (optional) | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **268.8** | **145.7** | **43.7** |
+| **WHOLE RECIPE TOTAL** | | | | **226.9** | **140.1** | **44.4** |
 
-Whole recipe: **3145 kcal**, fat 268.8 g, protein 145.7 g, carbs 43.7 g, fiber 23.4 g
+Whole recipe: **2746 kcal**, fat 226.9 g, protein 140.1 g, carbs 44.4 g, fiber 23.4 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 786 | **786** | 0% |
-| Fat (g) | 67 | **67** | 0% |
-| Protein (g) | 36 | **36** | 0% |
+| Calories | 786 | **687** | -13% |
+| Fat (g) | 67 | **57** | -15% |
+| Protein (g) | 36 | **35** | -3% |
 | Total carbs (g) | 11 | **11** | 0% |
 | Fiber (g) | 6 | **6** | 0% |
 | Net carbs (g) | 5 | **5** | 0% |
 
 **Assumptions made:**
 - `6 cups chopped green leaf or romaine lettuce (or a mix of both)` — fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food
-- `6 slices bacon (about 6 oz), cooked and crumbled (or 1/3 cup bacon bits)` — weight taken from the recipe line
+- `6 slices bacon (about 6 oz), cooked and crumbled (or 1/3 cup bacon bits)` — weight taken from the recipe line; raw weight 170.1 g; cooked yield 29% — USDA slice weights, 28 g raw to 8.1 g cooked
 - `1 avocado (about 7 oz), diced` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line
 
 ---
@@ -601,7 +601,7 @@ Divided by **4 servings**.
 ---
 ## Homemade Avocado Oil Mayo
 
-`homemade-avocado-oil-mayo` · **servings: 1** (as stated in the recipe)
+`homemade-avocado-oil-mayo` · **servings: 20** — not stated in the recipe; about 1 1/4 cups yield × 16 Tbsp per cup = 20 tablespoons
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
@@ -613,16 +613,16 @@ Divided by **4 servings**.
 | **WHOLE RECIPE TOTAL** | | | | **228.1** | **5.9** | **0.8** |
 
 Whole recipe: **2047 kcal**, fat 228.1 g, protein 5.9 g, carbs 0.8 g, fiber 0.4 g
-Divided by **1 servings**.
+Divided by **20 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | — | **2047** | — |
-| Fat (g) | — | **228** | — |
-| Protein (g) | — | **6** | — |
-| Total carbs (g) | — | **1** | — |
+| Calories | — | **102** | — |
+| Fat (g) | — | **11** | — |
+| Protein (g) | — | **0** | — |
+| Total carbs (g) | — | **0** | — |
 | Fiber (g) | — | **0** | — |
-| Net carbs (g) | — | **1** | — |
+| Net carbs (g) | — | **0** | — |
 
 ---
 ## Homemade Greek Yogurt Ranch Dip
@@ -805,25 +805,26 @@ Divided by **8 servings**.
 | Garlic powder | — | *negligible* | — | 0 | 0 | 0 |
 | Onion powder | — | *negligible* | — | 0 | 0 | 0 |
 | 2 Tbsp beef tallow | 25.6 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 25.6 | 0 | 0 |
-| 2 cups marinara sauce (see Related Recipe below) | 490 g | Sauce, pasta, spaghetti/marinara, ready-to-serve <br>`FDC 332282` | Foundation | 7.3 | 6.9 | 39.4 |
+| 2 cups marinara sauce (see Related Recipe below) | — | *excluded — the recipe's own nutrition line says it is not included, and marinara has its own recipe and its own panel.* | — | 0 | 0 | 0 |
 | 1 1/2 cups mozzarella cheese, freshly sliced | 169.5 g | Cheese, mozzarella, whole milk <br>`FDC 170845` | SR Legacy | 37.5 | 37.6 | 4.1 |
 | 1/3 cup parmesan cheese | 33.3 g | Cheese, parmesan, grated <br>`FDC 325036` | Foundation | 9.3 | 9.9 | 4.1 |
-| **WHOLE RECIPE TOTAL** | | | | **218.2** | **291.5** | **86.4** |
+| **WHOLE RECIPE TOTAL** | | | | **210.9** | **284.6** | **47.0** |
 
-Whole recipe: **3403 kcal**, fat 218.2 g, protein 291.5 g, carbs 86.4 g, fiber 26.6 g
+Whole recipe: **3183 kcal**, fat 210.9 g, protein 284.6 g, carbs 47.0 g, fiber 17.8 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 567 | **567** | 0% |
-| Fat (g) | 36 | **36** | 0% |
-| Protein (g) | 49 | **49** | 0% |
-| Total carbs (g) | 14 | **14** | 0% |
-| Fiber (g) | 4 | **4** | 0% |
-| Net carbs (g) | 10 | **10** | 0% |
+| Calories | 567 | **530** | -7% |
+| Fat (g) | 36 | **35** | -3% |
+| Protein (g) | 49 | **47** | -4% |
+| Total carbs (g) | 14 | **8** | -43% |
+| Fiber (g) | 4 | **3** | -25% |
+| Net carbs (g) | 10 | **5** | -50% |
 
 **Assumptions made:**
 - `6 small chicken breasts (1 1/2 lbs)` — weight taken from the recipe line
+- `2 cups marinara sauce (see Related Recipe below)` — the recipe's own nutrition line says it is not included, and marinara has its own recipe and its own panel.
 
 ---
 ## Keto Chili
@@ -965,20 +966,23 @@ Divided by **12 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 1 lb bacon (about 12-14 slices) | 453.6 g | Pork, cured, bacon, unprepared <br>`FDC 168277` | SR Legacy | 168.4 | 62 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **168.4** | **62.0** | **0.0** |
+| 1 lb bacon (about 12-14 slices) | 131.2 g | Pork, cured, bacon, cooked, baked <br>`FDC 167914` <br>*raw weight 453.6 g; cooked yield 29% — USDA slice weights, 28 g raw to 8.1 g cooked* | SR Legacy | 56.8 | 46.9 | 1.8 |
+| **WHOLE RECIPE TOTAL** | | | | **56.8** | **46.9** | **1.8** |
 
-Whole recipe: **1783 kcal**, fat 168.4 g, protein 62.0 g, carbs 0.0 g, fiber 0.0 g
+Whole recipe: **719 kcal**, fat 56.8 g, protein 46.9 g, carbs 1.8 g, fiber 0.0 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 297 | **297** | 0% |
-| Fat (g) | 28 | **28** | 0% |
-| Protein (g) | 10 | **10** | 0% |
+| Calories | 297 | **120** | -60% |
+| Fat (g) | 28 | **9** | -68% |
+| Protein (g) | 10 | **8** | -20% |
 | Total carbs (g) | 0 | **0** | — |
 | Fiber (g) | 0 | **0** | — |
 | Net carbs (g) | 0 | **0** | — |
+
+**Assumptions made:**
+- `1 lb bacon (about 12-14 slices)` — raw weight 453.6 g; cooked yield 29% — USDA slice weights, 28 g raw to 8.1 g cooked
 
 ---
 ## Pork Tenderloin Marinade
@@ -1183,12 +1187,12 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 165 | **192** | +16% |
+| Calories | 192 | **192** | 0% |
 | Fat (g) | 8 | **8** | 0% |
-| Protein (g) | 19 | **21** | +11% |
-| Total carbs (g) | 3 | **9** | +200% |
-| Fiber (g) | 0 | **2** | — |
-| Net carbs (g) | 3 | **7** | +133% |
+| Protein (g) | 21 | **21** | 0% |
+| Total carbs (g) | 9 | **9** | 0% |
+| Fiber (g) | 2 | **2** | 0% |
+| Net carbs (g) | 7 | **7** | 0% |
 
 ---
 ## Slow Cooker White Chicken Chili
@@ -1574,7 +1578,6 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | heavy whipping cream | SR Legacy 170859<br>Cream, fluid, heavy whipping | 36.08 | 2.84 | 2.84 | Foundation 2346386<br>Cream, heavy | 35.56 | 2.017994 | 3.799506 | -0.52 | -0.82 |
 | large raw shrimp | SR Legacy 174210<br>Crustaceans, shrimp, mixed species, raw (may contain additives to retain moisture) | 1.01 | 13.61 | 0.91 | Foundation 2684443<br>Crustaceans, shrimp, farm raised, raw | 0.8013 | 15.56875 | 0.48495 | -0.21 | +1.96 |
 | leafy green or romaine lettuce | SR Legacy 169247<br>Lettuce, cos or romaine, raw | 0.3 | 1.23 | 3.29 | Foundation 2346389<br>Lettuce, romaine, green, raw | 0.07125 | 0.976875 | 4.055575 | -0.23 | -0.25 |
-| marinara sauce | SR Legacy 171192<br>Sauce, pasta, spaghetti/marinara, ready-to-serve | 1.61 | 1.39 | 7.43 | Foundation 332282<br>Sauce, pasta, spaghetti/marinara, ready-to-serve | 1.48 | 1.41 | 8.05 | -0.13 | +0.02 |
 | mushrooms | SR Legacy 169251<br>Mushrooms, white, raw | 0.34 | 3.09 | 3.26 | Foundation 1999629<br>Mushrooms, white button | 0.3708 | 2.890625 | 4.079375 | +0.03 | -0.2 |
 | natural creamy peanut butter | SR Legacy 172470<br>Peanut butter, smooth style, without salt | 51.36 | 22.21 | 22.31 | Foundation 2262072<br>Peanut butter, creamy | 49.43 | 23.99124 | 22.70376 | -1.93 | +1.78 |
 | onion | SR Legacy 170000<br>Onions, raw | 0.1 | 1.1 | 9.34 | Foundation 790646<br>Onions, yellow, raw | 0.05 | 0.83 | 8.61 | -0.05 | -0.27 |
@@ -1603,7 +1606,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | zucchini | SR Legacy 169291<br>Squash, summer, zucchini, includes skin, raw | 0.32 | 1.21 | 3.11 | Foundation 2685568<br>Squash, summer, green, zucchini, includes skin, raw | 0.205 | 0.984375 | 3.27 | -0.12 | -0.23 |
 | zucchini or yellow summer squash | SR Legacy 169291<br>Squash, summer, zucchini, includes skin, raw | 0.32 | 1.21 | 3.11 | Foundation 2685568<br>Squash, summer, green, zucchini, includes skin, raw | 0.205 | 0.984375 | 3.27 | -0.12 | -0.23 |
 
-**76 ingredients switched.**
+**75 ingredients switched.**
 
 
 ### 2. Ingredients still on SR Legacy — Foundation has no entry for the food
@@ -1613,7 +1616,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 |---|---|---|
 | 60% ghirardelli dark chocolate | SR Legacy 170272 | Chocolate, dark, 60-69% cacao solids |
 | avocado oil | SR Legacy 173573 | Oil, avocado |
-| bacon | SR Legacy 168277 | Pork, cured, bacon, unprepared |
+| bacon | SR Legacy 167914 | Pork, cured, bacon, cooked, baked |
 | basil | SR Legacy 172232 | Basil, fresh |
 | beef broth | SR Legacy 171538 | Soup, beef broth or bouillon canned, ready-to-serve |
 | beef tallow | SR Legacy 171400 | Fat, beef tallow |
@@ -1728,7 +1731,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | Chicken or Beef Fajitas | 10g → **9g** | 31g → **27g** | 7g → **8g** | 255 → **226** |
 | Chickpea and Macadamia Hummus | 19g → **17g** | 4g | 5g → **6g** | 202 → **195** |
 | Classic Chicken Salad | 30g | 21g | 4g → **5g** | 379 |
-| Classic Cobb Salad | 67g | 46g → **36g** | 4g → **5g** | 823 → **786** |
+| Classic Cobb Salad | 67g → **57g** | 46g → **35g** | 4g → **5g** | 823 → **687** |
 | Classic Deviled Eggs | 5g | 3g | 1g | 59 → **60** |
 | Classic Mustard Egg Salad | 22g | 10g | 6g → **5g** | 263 → **266** |
 | Classic Tuna Salad | 15g | 19g → **14g** | 6g → **5g** | 240 → **224** |
@@ -1738,18 +1741,18 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | Grain-Free Cinnamon Coconut Granola | 19g → **18g** | 4g | 7g | 205 → **204** |
 | Greek Salad | 23g → **22g** | 6g → **9g** | 6g → **10g** | 253 → **277** |
 | Grilled Chicken Kabobs | 17g → **16g** | 31g | 7g → **8g** | 311 → **305** |
-| Homemade Avocado Oil Mayo | 227g → **228g** | 6g | 2g → **1g** | 2043 → **2047** |
+| Homemade Avocado Oil Mayo | 227g → **11g** | 6g → **0g** | 2g → **0g** | 2043 → **102** |
 | Homemade Greek Yogurt Ranch Dip | 8g | 2g | 1g | 87 → **86** |
 | Homemade Spaghetti Sauce with Spaghetti Squash | 18g → **13g** | 20g → **22g** | 17g → **19g** | 316 → **291** |
 | Keto Carolina Mustard BBQ Sauce | 6g → **0g** | 7g → **0g** | 7g → **0g** | 127 → **5** |
 | Keto Cheesecake Fluff | 27g | 3g | 3g | 267 → **261** |
 | Keto Chicken Cordon Bleu | 41g → **40g** | 36g | 5g | 536 → **528** |
-| Keto Chicken Parmesan | 39g → **36g** | 53g → **49g** | 10g | 615 → **567** |
+| Keto Chicken Parmesan | 39g → **35g** | 53g → **47g** | 10g → **5g** | 615 → **530** |
 | Keto Chili | 11g → **7g** | 15g → **17g** | 2g → **3g** | 177 → **153** |
 | Keto Peanut Butter Balls | 5g → **13g** | 1g → **5g** | 8g → **11g** | 88 → **183** |
 | Make-Ahead Teriyaki Sauce | 3g → **0g** | 16g → **1g** | 11g → **1g** | 129 → **5** |
 | Marinara Sauce | 32g → **3g** | 28g → **2g** | 94g → **7g** | 794 → **65** |
-| Oven-Baked Bacon | 33g → **28g** | 27g → **10g** | 1g → **0g** | 414 → **297** |
+| Oven-Baked Bacon | 33g → **9g** | 27g → **8g** | 1g → **0g** | 414 → **120** |
 | Pork Tenderloin Marinade | 11g → **12g** | 29g → **31g** | 1g | 228 → **243** |
 | Roasted Garlic Parmesan Brussels Sprouts | 12g → **13g** | 6g | 8g → **7g** | 167 → **174** |
 | Roasted Summer Vegetables | 5g | 3g | 8g → **7g** | 99 → **92** |

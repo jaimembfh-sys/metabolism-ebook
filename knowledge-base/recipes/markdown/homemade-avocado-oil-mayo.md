@@ -43,6 +43,16 @@ Once the new small batch is visibly thickened, start adding your failed mayo mix
 ### 9. Keep Going Until It's All Incorporated
 Continue slowly blending in the rest of the failed batch until everything is combined into one thick, creamy mayo. This rescues almost every broken batch, since the small fresh yolk emulsion acts as a base the rest of the oil can bind to.
 
+## Nutrition
+
+### Per Tbsp (makes about 1 1/4 cups)
+- Calories: 102
+- Total Fat: 11g
+- Total Carbs: 0g
+- Fiber: 0g
+- Net Carbs: 0g
+- Protein: 0g
+
 ## Notes
 
 ### The Science of Mayo

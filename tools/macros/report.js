@@ -55,7 +55,7 @@ const MEAT_OVERRIDE = require("./usda-map-3.js").MEAT_OVERRIDE || {};
 // auto-matcher was rejected.
 const { FOUNDATION_MAP, FOUNDATION_REJECTED, verifyFoundation } = require("./foundation-map.js");
 // Ground beef, salmon, the mixed-vegetable composite and the guacamole yield.
-const { BLENDS, COMPOSITES, YIELD, blendWeight, verifyAssumptions } = require("./assumptions.js");
+const { BLENDS, COMPOSITES, YIELD, COOK_YIELD, blendWeight, verifyAssumptions } = require("./assumptions.js");
 
 const USDA = JSON.parse(fs.readFileSync(SCRATCH, "utf8"));
 const BY_ID = {};
@@ -302,7 +302,7 @@ function resolve(line) {
 
   if (isBackRef(raw)) return { raw, food, kind: "backref", ...Z };
   const ambKey = findKeyAny(forms, AMBIGUOUS);
-  if (ambKey && /cauliflower rice|fried eggs/.test(ambKey)) return { raw, food, kind: "excluded", why: AMBIGUOUS[ambKey], ...Z };
+  if (ambKey && /cauliflower rice|fried eggs|marinara sauce/.test(ambKey)) return { raw, food, kind: "excluded", why: AMBIGUOUS[ambKey], ...Z };
   if (isOptional(raw, qty)) return { raw, food, kind: "optional", ...Z };
 
   // Composites resolve before the map lookups, because the line they stand for
@@ -395,6 +395,21 @@ function resolve(line) {
 
   if (!unit) unit = "each";
 
+  /* Bought raw, eaten cooked. The weight on the line is what goes in the pan;
+   * this is what comes out of it. Exact lookup on the resolved key, so
+   * "crumbled bacon" - already cooked, measured by the cup - does not inherit
+   * the raw bacon yield by substring. See COOK_YIELD in assumptions.js.
+   */
+  const cy = mapKey ? COOK_YIELD[mapKey] : null;
+  const cook = (g) => {
+    if (!cy || g == null) return g;
+    return g * cy.factor;
+  };
+  const cookNote = (g) => (cy && g != null
+    ? "raw weight " + (+g.toFixed(1)) + " g; cooked yield " +
+      Math.round(cy.factor * 100) + "% — " + cy.why
+    : null);
+
   /* A weight Jaime wrote in brackets AFTER the food name is the total for the
    * line, and it beats any count-times-typical-weight this tool would infer.
    * "6 small chicken breasts (1 1/2 lbs)" was being costed at 840 g against
@@ -408,11 +423,12 @@ function resolve(line) {
   const stated = statedTotal(raw);
   if (stated != null) {
     const ambNote = ambKey ? AMBIGUOUS[ambKey] : null;
-    const g0 = stated;
+    const cn0 = cookNote(stated);
+    const g0 = cook(stated);
     const k0 = g0 / 100;
     return {
       raw, food, kind: ambNote ? "ok-ambiguous" : "ok", fdc, label, src,
-      note: (note ? note + "; " : "") + "weight taken from the recipe line",
+      note: (note ? note + "; " : "") + "weight taken from the recipe line" + (cn0 ? "; " + cn0 : ""),
       why: ambNote, qty, qtyRange, unit, grams: +g0.toFixed(1),
       kcal: +(per100.kcal * k0).toFixed(1), fat: +(per100.fat * k0).toFixed(1),
       protein: +(per100.protein * k0).toFixed(1), carb: +(per100.carb * k0).toFixed(1),
@@ -436,6 +452,9 @@ function resolve(line) {
   else if (gramsTable && gramsTable[unit] != null && qty != null) g = qty * gramsTable[unit];
   else if (gramsTable && gramsTable.each != null && qty != null) g = qty * gramsTable.each;
   if (g == null) return { raw, food, kind: "flag", why: "no gram weight for unit '" + unit + "'" + (qty == null ? " and no quantity given" : "") };
+  const cn = cookNote(g);
+  g = cook(g);
+  if (cn) note = (note ? note + "; " : "") + cn;
 
   const k = g / 100;
   const amb = ambKey ? AMBIGUOUS[ambKey] : null;

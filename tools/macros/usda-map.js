@@ -86,7 +86,7 @@ const MAP = {
    * is what it is: a cooked product, measured by the cup. findKeyAny tries the
    * fuller forms of the ingredient name first, so the longer key wins.
    */
-  "bacon":                  { fdc: 168277, expect: "Pork, cured, bacon, unprepared", grams: { slice: 28, lb: 453.6, oz: 28.35 }, note: "raw weight, as bought" },
+  "bacon":                  { fdc: 167914, expect: "Pork, cured, bacon, cooked, baked", grams: { slice: 28, lb: 453.6, oz: 28.35 }, note: "raw weight as bought; COOK_YIELD converts it to cooked" },
   "crumbled bacon":         { fdc: 167914, expect: "Pork, cured, bacon, cooked, baked", grams: { cup: 60, tbsp: 3.75, oz: 28.35 }, note: "cooked product, measured by volume" },
 
   // ---- dairy ----

@@ -28,12 +28,12 @@ Transfer the cooked bacon to a paper-towel-lined plate to drain excess grease. L
 ## Nutrition
 
 ### Per serving (makes about 6 servings, 2 slices each)
-- Calories: 297
-- Total Fat: 28g
+- Calories: 120
+- Total Fat: 9g
 - Total Carbs: 0g
 - Fiber: 0g
 - Net Carbs: 0g
-- Protein: 10g
+- Protein: 8g
 
 ## Notes
 
