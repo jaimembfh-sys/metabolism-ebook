@@ -6223,11 +6223,46 @@
                 return recipeCorpusPromise;
             }
 
-            function buildRecipeCorpusText(recipeCorpus, myRecipes) {
+            /* The pool the model is shown.
+             *
+             * Three things changed here on 2026-09-22:
+             *
+             * 1. ALLERGIES FILTER THE POOL, not just the prompt. A recipe
+             *    carrying a declared allergen is removed before the model sees
+             *    it — it cannot suggest what it was never given. Gated on
+             *    ALLERGEN_TAGS_CONFIRMED until Jaime has checked the tags.
+             *    Soy is his carve-out: a recipe whose only soy is "tamari or
+             *    coconut aminos" stays, carrying the swap instruction.
+             *
+             * 2. A COMPACT INDEX, not 43 full texts. Sending every recipe in
+             *    full was ~20k tokens a call and buried the useful signal.
+             *    Title, category, servings, macros, allergens and the handful
+             *    of words that say what the dish is — enough to choose from.
+             *
+             * 3. NUTRITION PANELS COME OUT for a flagged user, so the numbers
+             *    are not in the prompt at all. Nulling the output fields while
+             *    the input is full of calorie counts was always the weaker
+             *    half of that rule.
+             */
+            function buildRecipeCorpusText(recipeCorpus, myRecipes, allergies, disorderedEatingSignal) {
                 var parts = [];
                 var shared = (recipeCorpus && recipeCorpus.recipes) || [];
+                if (ALLERGEN_TAGS_CONFIRMED) shared = filterPoolByAllergies(shared, allergies);
                 shared.forEach(function(r) {
-                    parts.push('### [Shared Recipe: ' + r.title + ' — category: ' + r.category + ', servings: ' + (r.servings != null ? r.servings : '?') + ']\n' + r.full_text);
+                    var head = '### [Shared Recipe: ' + r.title + ' — category: ' + r.category +
+                        ', servings: ' + (r.servings != null ? r.servings : '?') +
+                        ', page: ' + (r.page || '?') + ']';
+                    var bits = [];
+                    if (r.key_ingredients && r.key_ingredients.length) bits.push('Key ingredients: ' + r.key_ingredients.join(', '));
+                    if (r.nutrition && !disorderedEatingSignal) {
+                        bits.push('Per serving: ' + r.nutrition.calories + ' cal, ' + r.nutrition.protein_g +
+                            'g protein, ' + r.nutrition.net_carbs_g + 'g net carbs, ' + r.nutrition.fat_g + 'g fat');
+                    }
+                    if (r.allergens && r.allergens.length) bits.push('Contains: ' + r.allergens.join(', '));
+                    var swaps = swapInstructionsFor(r, allergies);
+                    if (swaps.length) bits.push('MUST TELL THE USER: ' + swaps.join(' '));
+                    if (r.allergens_uncertain) bits.push('Allergen tags on this recipe are unverified — do not promise it is free of anything.');
+                    parts.push(head + '\n' + (r.description || '') + (bits.length ? '\n' + bits.join('\n') : ''));
                 });
                 (myRecipes || []).forEach(function(r) {
                     var macros = r.estimated_macros || {};
@@ -6320,7 +6355,9 @@ MEALS PER DAY — determined by this user's eating_pattern above:
 
 TARGET EATING WINDOW: ${eatingWindow ? `This user's target eating window is ${eatingWindow.start_label}–${eatingWindow.end_label} (already calculated for them from their own wake time and sleep habits — do not recalculate or second-guess it, just use it). Reference these exact clock times when framing meal timing in your rationale and, where natural, in a slot's description (e.g. "your ${eatingWindow.start_label} first meal"). This is a timing target only — never rephrase it as a restriction on how much they can eat.` : `No wake-time data is on file for this user yet, so do NOT invent specific clock times — keep meal timing framed generically (e.g. "your first meal," "your last meal of the day").`}
 
-RECIPE POOL — treat this as your PREFERRED source. Reuse a shared or personal recipe (source: "shared_recipe" or "personal_recipe", title matching EXACTLY) whenever it genuinely fits the day/slot/macro approach — do not force a bad fit just to reuse one. There are only a handful of recipes available, so most weeks will need real additional variety — invent original meals (source: "ai_generated") to fill the rest. Every ai_generated meal must still strictly follow this user's macro_approach, eating_pattern, and the allergy/sensitivity rules below.
+RECIPE POOL — treat this as your PREFERRED source. Reuse a shared or personal recipe (source: "shared_recipe" or "personal_recipe", title matching EXACTLY) whenever it genuinely fits the day/slot/macro approach. There are 43 shared recipes below, which is more than enough to build most weeks from them — reach for an invented meal (source: "ai_generated") only where the pool genuinely has no good fit for a slot, not as a default. Every ai_generated meal must still strictly follow this user's macro_approach, eating_pattern, and the allergy/sensitivity rules below.
+
+Each pool entry gives you its title, category, servings, page, key ingredients, per-serving macros and any allergens it contains. That is enough to choose from; you do not need the full method to decide whether a dish fits a slot. Where an entry carries a "MUST TELL THE USER" line, repeat that instruction in that meal's description — it is how a reader with an allergy uses the recipe safely.
 
 INGREDIENTS (for the shopping list feature — read carefully, this differs by source): for every "ai_generated" meal, populate its "ingredients" field with the FULL ingredient list, one per line with quantity (e.g. "1 lb ground beef", "1/2 cup diced onion", "2 tbsp olive oil") — be complete, this is the ONLY place these ingredients are ever recorded. For "shared_recipe"/"personal_recipe" meals, leave "ingredients" as an empty array — their full ingredient lists already exist in the recipe pool above/My Recipes and are looked up from there, so duplicating them here would risk drifting out of sync with the real recipe.
 
@@ -7242,22 +7279,12 @@ GUARDRAILS:${disorderedEatingSignal ? `
             const mealPlanLoading = document.getElementById('meal-plan-loading');
             const mealPlanOutput = document.getElementById('meal-plan-output');
 
-            // SAFETY: hard, code-level backstop — mirrors the target_weight override
-            // in triggerGoalSynthesis. buildMealPlanInstruction already tells the
-            // model to null macros_note/macros for every meal when
-            // disordered_eating_signal is true, but that's a prompt instruction
-            // only; this forces it regardless of what the model actually returned,
-            // so a numeric figure can never reach a flagged user's saved plan.
-            function stripMealMacrosIfFlagged(days, disorderedEatingSignal) {
-                if (!disorderedEatingSignal) return days;
-                return (days || []).map(function(day) {
-                    return Object.assign({}, day, {
-                        meals: (day.meals || []).map(function(meal) {
-                            return Object.assign({}, meal, { macros_note: null, macros: null });
-                        })
-                    });
-                });
-            }
+            // stripMealMacrosIfFlagged lived here. It nulled macros and
+            // macros_note and stopped, which left description — required on
+            // every meal, and rendered on the card — free to say "a 308-calorie
+            // start with 28g of fat" to a flagged user. scrubNumbersIfFlagged
+            // replaces it and covers the free text and the prompt input too.
+            // See the RECIPE + MEAL-PLAN RULES block.
 
             if (generateMealPlanBtn) {
                 generateMealPlanBtn.addEventListener('click', async () => {
@@ -7281,12 +7308,14 @@ GUARDRAILS:${disorderedEatingSignal ? `
                             fetchRecipeCorpus(),
                             myRecipesFetch
                         ]);
-                        const recipeCorpusText = buildRecipeCorpusText(recipeCorpus, myRecipesData.recipes || []);
                         // Computed here (client-side, before the AI call) rather
                         // than left for the model to invent, since eating_pattern
                         // already exists on the saved protocol by this point.
                         const eatingWindow = getProfileEatingWindow(currentGoalProfile);
                         const disorderedEatingSignal = !!currentGoalProfile.disordered_eating_signal;
+                        const declaredAllergiesForPlan = getDeclaredAllergies(currentGoalProfile);
+                        const recipeCorpusText = buildRecipeCorpusText(
+                            recipeCorpus, myRecipesData.recipes || [], declaredAllergiesForPlan, disorderedEatingSignal);
                         // Layer filter: the meal planner does not need the lipid,
                         // protein-backend or emotional-eating depth. Safety-critical
                         // chunks come in regardless of this setting.
@@ -7306,13 +7335,73 @@ GUARDRAILS:${disorderedEatingSignal ? `
                             { lessons: true, backend: false }
                         );
 
-                        const parsed = await extractToolFields('Generate my 7-day meal plan.', sysInstruction, 'meal_plan', MEAL_PLAN_TOOL, 'meal-plan');
+                        let parsed = await extractToolFields('Generate my 7-day meal plan.', sysInstruction, 'meal_plan', MEAL_PLAN_TOOL, 'meal-plan');
                         if (!parsed || !parsed.days || !parsed.days.length) throw new Error('No plan returned');
 
-                        const weeklyPlan = {
-                            days: stripMealMacrosIfFlagged(parsed.days, disorderedEatingSignal),
+                        /* Detect and regenerate, same escalation the Protocol
+                         * Builder uses and for the same reason: the prompt rule
+                         * alone measured 2 failures in 6. Naming the exact
+                         * violation works far better than repeating the rule.
+                         *
+                         * Two rules are checked. An allergen on the plate is
+                         * the serious one — a snack slot is a course-fidelity
+                         * problem, not a safety one — so an allergen that
+                         * survives regeneration throws, while a stubborn slot
+                         * is dropped and the plan is kept. */
+                        const poolForCheck = (recipeCorpus && recipeCorpus.recipes) || [];
+                        const eatingPatternForCheck = currentGoalProfile.eating_pattern;
+                        function planProblems(p) {
+                            return {
+                                allergens: findMealPlanAllergenViolations(p, declaredAllergiesForPlan, poolForCheck),
+                                slots: findSlotViolations(p, eatingPatternForCheck)
+                            };
+                        }
+                        let problems = planProblems(parsed);
+                        if (problems.allergens.length || problems.slots.length) {
+                            console.warn('[meal-plan] rejected, regenerating:', problems);
+                            const corrective = 'Generate my 7-day meal plan.' +
+                                '\n\nYOUR PREVIOUS ATTEMPT WAS REJECTED.' +
+                                (problems.allergens.length ? '\nIt put a declared allergen on the plate: ' +
+                                    problems.allergens.map(function (v) {
+                                        return v.title + ' (' + v.day + ', ' + v.allergen + (v.term ? ' — "' + v.term + '"' : '') + ')';
+                                    }).join('; ') + '. Every allergy is a hard filter with no exceptions.' : '') +
+                                (problems.slots.length ? '\nIts meal slots were wrong: ' +
+                                    problems.slots.map(function (v) { return v.day + ' ' + (v.slot ? '"' + v.slot + '" ' : '') + '— ' + v.problem; }).join('; ') +
+                                    '. Use exactly these slots, no others, and never a snack: ' + slotsFor(eatingPatternForCheck).join(', ') + '.' : '') +
+                                '\nRegenerate the whole week.';
+                            const retry = await extractToolFields(corrective, sysInstruction, 'meal_plan', MEAL_PLAN_TOOL, 'meal-plan-retry');
+                            if (retry && retry.days && retry.days.length) { parsed = retry; problems = planProblems(parsed); }
+                            if (problems.allergens.length) {
+                                console.error('[meal-plan] allergen violation survived regeneration:', problems.allergens);
+                                const err = new Error('We could not build a week that safely avoids your listed allergies. Please try again.');
+                                err.allergenViolations = problems.allergens;
+                                throw err;
+                            }
+                            if (problems.slots.length) {
+                                // Keep the week, drop the offending meals rather than
+                                // failing the whole thing over a slot label.
+                                console.warn('[meal-plan] dropping meals with bad slots:', problems.slots);
+                                const allowedSlots = slotsFor(eatingPatternForCheck);
+                                parsed.days = parsed.days.map(function (day) {
+                                    return Object.assign({}, day, {
+                                        meals: (day.meals || []).filter(function (m) {
+                                            return allowedSlots.indexOf((m && m.slot) || '') !== -1;
+                                        })
+                                    });
+                                });
+                            }
+                        }
+
+                        const scrubbedPlan = scrubNumbersIfFlagged({
+                            days: parsed.days,
                             rationale: parsed.rationale || '',
-                            allergy_note: parsed.allergy_note || null,
+                            allergy_note: parsed.allergy_note || null
+                        }, disorderedEatingSignal);
+
+                        const weeklyPlan = {
+                            days: scrubbedPlan.days,
+                            rationale: scrubbedPlan.rationale || '',
+                            allergy_note: scrubbedPlan.allergy_note || null,
                             generated_at: Date.now()
                         };
 
@@ -8046,6 +8135,20 @@ ${researcherSourcesText}
                     });
                 });
                 return out;
+            }
+
+            /* The Protocol Builder reads hhPhysical.food_allergies directly and
+             * assumes an array; the meal-plan query path treats it as a string.
+             * One helper so both mean the same thing, and a stray string does
+             * not silently become zero allergies. */
+            function getDeclaredAllergies(profile) {
+                const p = ((profile || {}).health_history || {}).physical || {};
+                const a = p.food_allergies;
+                if (Array.isArray(a)) return a.filter(Boolean);
+                if (typeof a === 'string' && a.trim()) {
+                    return a.split(/[,;]/).map(function (s) { return s.trim().toLowerCase(); }).filter(Boolean);
+                }
+                return [];
             }
 
             /* The model cannot suggest a recipe it was never shown. Strictly
