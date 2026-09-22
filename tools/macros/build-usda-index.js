@@ -1,5 +1,28 @@
 // Builds a compact per-100g nutrient index from the USDA SR Legacy CSVs.
 // Every number in the rebuilt macros traces to an fdc_id in here.
+//
+// You do not normally need to run this. Its output, usda-index.json, is
+// committed beside this file, and report.js reads that. Run it only to change
+// what gets extracted - to pull a nutrient WANT does not currently carry, say.
+//
+// THE CSVs ARE NOT IN THE REPO. They are ~38 MB unpacked against a 1.3 MB
+// derived index, so only the index is kept. To get them:
+//
+//   https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip
+//
+//   5.8 MB zip, last revised by USDA 2023-10-25. Listed as "SR Legacy" on
+//   https://fdc.nal.usda.gov/download-datasets if that direct link moves.
+//
+// Unpack so the CSVs sit at the DIR below - tools/macros/sr/ is gitignored:
+//
+//   tools/macros/sr/FoodData_Central_sr_legacy_food_csv_2018-04/*.csv
+//
+// This script reads two of them, food.csv and food_nutrient.csv. A third is
+// worth knowing about: food_portion.csv carries USDA's standard weights - the
+// 164 g large bell pepper, the 72 g large carrot, the 50 g large egg. Those
+// are the numbers behind the gram tables in usda-map-*.js, and reading them
+// out of there rather than from memory is how the placeholder weights in
+// 5eeb2a7 were caught.
 const fs = require("fs");
 const path = require("path");
 
