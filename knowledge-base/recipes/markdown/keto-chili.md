@@ -17,7 +17,7 @@ source_file: recipes/Keto_Chili_Recipe.pdf
 
 ### Add Spices
 - 2 whole cloves
-- 1 1/2 tbsp chili powder
+- 1 1/2 Tbsp chili powder
 - 1 1/2 tsp ground cumin, to taste
 - 1 1/2 tsp paprika, to taste
 - 1 tsp ground oregano
@@ -26,7 +26,7 @@ source_file: recipes/Keto_Chili_Recipe.pdf
 ### Build the Chili
 - 1 (15 oz) can diced tomatoes
 - 1 cup beef broth
-- 3 tbsp diced jarred jalapeños
+- 3 Tbsp diced jarred jalapeños
 - 1/2 tsp kosher salt, to taste
 
 ## Instructions

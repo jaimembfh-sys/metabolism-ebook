@@ -22,14 +22,14 @@ source_file: recipes/Keto_Chicken_Cordon_Bleu_Recipe.pdf
 
 ### Cook the Chicken
 - Avocado oil spray
-- 2 tbsp avocado oil (oven/skillet method only)
+- 2 Tbsp avocado oil (oven/skillet method only)
 
 ### Make the Dijon Parmesan Sauce
 - 1 stick unsalted butter (about 4 oz)
 - 1/2 cup chicken broth
 - 1/2 cup heavy cream
 - 2 oz cream cheese
-- 2 tbsp Dijon mustard
+- 2 Tbsp Dijon mustard
 - 1 cup shredded Parmesan cheese
 - Salt and pepper to taste
 

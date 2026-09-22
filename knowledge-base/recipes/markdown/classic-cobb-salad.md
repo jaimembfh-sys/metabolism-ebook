@@ -21,7 +21,7 @@ source_file: recipes/Classic_Cobb_Salad_Recipe.pdf
 - 1/4 cup pickled red onion
 
 ### Make the Vinaigrette
-- 3 tbsp red wine vinegar
+- 3 Tbsp red wine vinegar
 - 1 tsp Dijon mustard
 - 1/2 cup olive oil
 - 1/4 tsp salt

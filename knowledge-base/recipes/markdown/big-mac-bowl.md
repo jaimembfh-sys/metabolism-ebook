@@ -9,7 +9,7 @@ source_file: recipes/Big_Mac_Bowl_Recipe.pdf
 ## Ingredients
 
 ### Saute the Onion
-- 1 tbsp beef tallow
+- 1 Tbsp beef tallow
 - 1 regular yellow or white onion (about 4 oz), diced
 
 ### Cook the Beef
@@ -20,9 +20,9 @@ source_file: recipes/Big_Mac_Bowl_Recipe.pdf
 
 ### Make the Big Mac Sauce
 - 1/3 cup homemade mayo
-- 2 tbsp low sugar ketchup
-- 2 tbsp dill relish
-- 1 tbsp dried onion flakes
+- 2 Tbsp low sugar ketchup
+- 2 Tbsp dill relish
+- 1 Tbsp dried onion flakes
 - Salt and pepper, to taste
 
 ### Prep the Toppings
@@ -32,7 +32,7 @@ source_file: recipes/Big_Mac_Bowl_Recipe.pdf
 - 1/2 cup dill pickles, sliced
 - 1/2 cup diced tomatoes (optional)
 - 1 avocado (about 7 oz), peeled, pitted, and chopped (optional)
-- 1 tbsp sesame seeds
+- 1 Tbsp sesame seeds
 
 ## Instructions
 

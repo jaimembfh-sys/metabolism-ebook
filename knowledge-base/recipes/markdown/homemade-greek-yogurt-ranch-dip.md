@@ -11,11 +11,11 @@ source_file: recipes/Homemade_Greek_Yogurt_Ranch_Dip_Recipe.pdf
 ### Combine the Base
 - 1 cup plain Greek yogurt (full-fat or 2%)
 - 1/2 cup homemade mayonnaise
-- 1 to 2 tbsp buttermilk or milk (to adjust thickness)
+- 1 to 2 Tbsp buttermilk or milk (to adjust thickness)
 
 ### Add the Herbs and Seasonings
-- 1 tbsp fresh dill (or 1 tsp dried)
-- 1 tbsp fresh chives (or 1 tsp dried)
+- 1 Tbsp fresh dill (or 1 tsp dried)
+- 1 Tbsp fresh chives (or 1 tsp dried)
 - 1 tsp garlic powder
 - 1 tsp onion powder
 - 1/2 tsp salt
@@ -34,7 +34,7 @@ Cover and refrigerate for at least 30 minutes before serving — this gives the 
 
 ## Nutrition
 
-### Per 2 tbsp serving (makes about 12 servings)
+### Per 2 Tbsp serving (makes about 12 servings)
 - Calories: 86
 - Total Fat: 8g
 - Total Carbs: 1g

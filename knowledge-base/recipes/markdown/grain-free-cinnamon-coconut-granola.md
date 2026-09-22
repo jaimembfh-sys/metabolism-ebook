@@ -13,13 +13,13 @@ source_file: recipes/Grain_Free_Cinnamon_Coconut_Granola_Recipe.pdf
 - 3/4 cup pecans, chopped
 - 1 cup unsweetened coconut flakes
 - 1/3 cup pumpkin seeds
-- 3 tbsp flaxseed meal
+- 3 Tbsp flaxseed meal
 - 1 1/2 tsp ground cinnamon
 - 1/4 tsp salt
 - 1/4 cup So Nourished Monk Fruit Sweetener with Allulose <!-- linked_product: url=null -->
 
 ### In a Medium Saucepan, Combine
-- 2 tbsp maple syrup
+- 2 Tbsp maple syrup
 - 1/4 cup butter
 - 1 tsp vanilla extract
 

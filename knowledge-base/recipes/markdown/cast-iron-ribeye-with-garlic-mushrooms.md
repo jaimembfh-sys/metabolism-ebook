@@ -13,10 +13,10 @@ source_file: recipes/Cast_Iron_Ribeye_with_Garlic_Mushrooms_Recipe.pdf
 - Kosher salt and freshly ground black pepper
 
 ### Sear the Steaks
-- 1 tbsp beef tallow, melted
+- 1 Tbsp beef tallow, melted
 
 ### Make the Garlic Mushrooms
-- 2 tbsp butter
+- 2 Tbsp butter
 - 8 oz sliced mushrooms
 - 3 cloves garlic, minced
 - Fresh parsley, chopped (optional, for garnish)

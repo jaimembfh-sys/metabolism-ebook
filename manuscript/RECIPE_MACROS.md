@@ -86,16 +86,16 @@ Divided by **4 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 1 tbsp beef tallow | 12.8 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 12.8 | 0 | 0 |
+| 1 Tbsp beef tallow | 12.8 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 12.8 | 0 | 0 |
 | 1 regular yellow or white onion (about 4 oz), diced | 113.4 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0.1 | 0.9 | 9.8 |
 | 1 lb ground beef | 453.6 g | Beef, ground, 93% lean meat / 7% fat, raw  |  Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 173110 + 2514743` <br>*weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.* | SR Legacy + Foundation | 40.5 | 90.6 | 0 |
 | 2 garlic cloves, minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
 | 1/2 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | Black pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | 1/3 cup homemade mayo | 73.3 g | Salad dressing, mayonnaise, soybean oil, without salt <br>`FDC 171418` | SR Legacy | 58.2 | 0.8 | 2 |
-| 2 tbsp low sugar ketchup | 34 g | Catsup <br>`FDC 168556` | SR Legacy | 0 | 0.4 | 9.3 |
-| 2 tbsp dill relish | 30 g | Pickle relish, hot dog <br>`FDC 168560` | SR Legacy | 0.1 | 0.4 | 7 |
-| 1 tbsp dried onion flakes | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
+| 2 Tbsp low sugar ketchup | 34 g | Catsup <br>`FDC 168556` | SR Legacy | 0 | 0.4 | 9.3 |
+| 2 Tbsp dill relish | 30 g | Pickle relish, hot dog <br>`FDC 168560` | SR Legacy | 0.1 | 0.4 | 7 |
+| 1 Tbsp dried onion flakes | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
 | Salt and pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | 1 head leafy green or romaine lettuce (about 11 oz), chopped | 311.9 g | Lettuce, romaine, green, raw <br>`FDC 2346389` <br>*fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 0.2 | 3 | 12.6 |
 | 1 cup shredded cheddar cheese | 113 g | Cheese, cheddar <br>`FDC 328637` | Foundation | 38.4 | 26.3 | 2.8 |
@@ -103,7 +103,7 @@ Divided by **4 servings**.
 | 1/2 cup dill pickles, sliced | 71.5 g | Pickles, cucumber, dill or kosher dill <br>`FDC 324653` | Foundation | 0.3 | 0.3 | 1.4 |
 | 1/2 cup diced tomatoes (optional) | 122.5 g | Tomatoes, canned, red, ripe, diced <br>`FDC 333281` <br>*fiber 1.9 g/100 g from SR Legacy 170051 — Foundation reports none for this food* | Foundation | 0.6 | 1 | 4.1 |
 | 1 avocado (about 7 oz), peeled, pitted, and chopped (optional) | 198.5 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 40.3 | 3.6 | 16.5 |
-| 1 tbsp sesame seeds | 9 g | Seeds, sesame seeds, whole, dried <br>`FDC 170150` | SR Legacy | 4.5 | 1.6 | 2.1 |
+| 1 Tbsp sesame seeds | 9 g | Seeds, sesame seeds, whole, dried <br>`FDC 170150` | SR Legacy | 4.5 | 1.6 | 2.1 |
 | **WHOLE RECIPE TOTAL** | | | | **209.1** | **140.9** | **79.2** |
 
 Whole recipe: **2714 kcal**, fat 209.1 g, protein 140.9 g, carbs 79.2 g, fiber 28.9 g
@@ -134,8 +134,8 @@ Divided by **4 servings**.
 |---|---|---|---|---|---|---|
 | 2 boneless ribeye steaks (1 to 1.5 inches thick, about 1 1/2 lbs) | 680 g | Beef, ribeye, steak, boneless, choice, raw <br>`FDC 2646172` <br>*assumed 340 g each — 12 oz per steak, typical 1–1.5 inch cut* | Foundation | 136.3 | 127.5 | 0 |
 | Kosher salt and freshly ground black pepper | — | *negligible* | — | 0 | 0 | 0 |
-| 1 tbsp beef tallow, melted | 12.8 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 12.8 | 0 | 0 |
-| 2 tbsp butter | 28.4 g | Butter, salted <br>`FDC 173410` | SR Legacy | 23 | 0.2 | 0 |
+| 1 Tbsp beef tallow, melted | 12.8 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 12.8 | 0 | 0 |
+| 2 Tbsp butter | 28.4 g | Butter, salted <br>`FDC 173410` | SR Legacy | 23 | 0.2 | 0 |
 | 8 oz sliced mushrooms | 226.8 g | Mushrooms, white button <br>`FDC 1999629` | Foundation | 0.8 | 6.6 | 9.3 |
 | 3 cloves garlic, minced | 9 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.6 | 2.5 |
 | Fresh parsley, chopped (optional, for garnish) | — | *optional, no amount given* | — | 0 | 0 | 0 |
@@ -174,7 +174,7 @@ Divided by **2 servings**.
 | 1/2 tsp cumin (optional) | 1 g | Spices, cumin seed <br>`FDC 170923` | SR Legacy | 0.2 | 0.2 | 0.4 |
 | 1/2 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | 3 boneless skinless chicken breasts (about 1 lb), cut into strips, OR 1 lb skirt steak, sliced into strips against the grain | 453.6 g | Chicken, breast, boneless, skinless, raw <br>`FDC 2646170` <br>*weight taken from the recipe line* | Foundation | 8.8 | 102.2 | 0 |
-| 2 tbsp beef tallow or avocado oil, divided | 25.6 g | Fat, beef tallow <br>`FDC 171400` <br>*recipe offers a choice. Both are ~100% fat and within 1 kcal/g of each other, so the macro effect is negligible. Calculated with beef tallow.* | SR Legacy | 25.6 | 0 | 0 |
+| 2 Tbsp beef tallow or avocado oil, divided | 25.6 g | Fat, beef tallow <br>`FDC 171400` <br>*recipe offers a choice. Both are ~100% fat and within 1 kcal/g of each other, so the macro effect is negligible. Calculated with beef tallow.* | SR Legacy | 25.6 | 0 | 0 |
 | 1/4 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | **WHOLE RECIPE TOTAL** | | | | **35.2** | **107.0** | **41.3** |
 
@@ -194,7 +194,7 @@ Divided by **4 servings**.
 - `1 medium onion (about 4 oz), cut into slivers` — weight taken from the recipe line
 - `1 lime (about 2 oz)` — weight taken from the recipe line
 - `3 boneless skinless chicken breasts (about 1 lb), cut into strips, OR 1 lb skirt steak, sliced into strips against the grain` — weight taken from the recipe line
-- `2 tbsp beef tallow or avocado oil, divided` — recipe offers a choice. Both are ~100% fat and within 1 kcal/g of each other, so the macro effect is negligible. Calculated with beef tallow.
+- `2 Tbsp beef tallow or avocado oil, divided` — recipe offers a choice. Both are ~100% fat and within 1 kcal/g of each other, so the macro effect is negligible. Calculated with beef tallow.
 
 ---
 ## Chickpea and Macadamia Hummus
@@ -212,7 +212,7 @@ Divided by **4 servings**.
 | Salt to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | 1 (15-oz) can chickpeas, drained | 425 g | Chickpeas (garbanzo beans, bengal gram), canned, sodium added, drained and rinsed <br>`FDC 2644288` | Foundation | 13.2 | 29.8 | 86.4 |
 | The soaked and drained macadamia nuts | — | *back-reference, already counted above* | — | 0 | 0 | 0 |
-| 4 to 6 tbsp cold water or aquafaba (chickpea juice) | — | *negligible* | — | 0 | 0 | 0 |
+| 4 to 6 Tbsp cold water or aquafaba (chickpea juice) | — | *negligible* | — | 0 | 0 | 0 |
 | **WHOLE RECIPE TOTAL** | | | | **418.2** | **86.9** | **207.6** |
 
 Whole recipe: **4672 kcal**, fat 418.2 g, protein 86.9 g, carbs 207.6 g, fiber 67.6 g
@@ -240,8 +240,8 @@ Divided by **24 servings**.
 | 1 1/2 green onions, thinly sliced | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 cup pecans or walnuts, chopped | 24.8 g | Nuts, pecans, halves, raw <br>`FDC 2346395` <br>*recipe offers a choice. Pecans 72 g fat/100g, walnuts 65 g. Calculated with pecans.* | Foundation | 18.1 | 2.5 | 3.1 |
 | 3/4 cup mayonnaise | 165 g | Salad dressing, mayonnaise, soybean oil, without salt <br>`FDC 171418` | SR Legacy | 131 | 1.8 | 4.5 |
-| 1 tbsp Dijon mustard | 15 g | Mustard, prepared, yellow <br>`FDC 326698` | Foundation | 0.5 | 0.6 | 0.8 |
-| 1 tbsp fresh lemon juice | — | *negligible* | — | 0 | 0 | 0 |
+| 1 Tbsp Dijon mustard | 15 g | Mustard, prepared, yellow <br>`FDC 326698` | Foundation | 0.5 | 0.6 | 0.8 |
+| 1 Tbsp fresh lemon juice | — | *negligible* | — | 0 | 0 | 0 |
 | 1/2 tsp seasoned salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp black pepper | — | *negligible* | — | 0 | 0 | 0 |
 | 1 1/2 tsp fresh dill, chopped (or 1/2 tsp dried dill) | — | *negligible* | — | 0 | 0 | 0 |
@@ -278,7 +278,7 @@ Divided by **6 servings**.
 | 1 cup cherry or grape tomatoes, halved | 149 g | Tomatoes, grape, raw <br>`FDC 321360` | Foundation | 0.9 | 1.2 | 8.2 |
 | 1/2 cup crumbled blue cheese (or shredded cheddar) | 67.5 g | Cheese, blue <br>`FDC 172175` | SR Legacy | 19.4 | 14.4 | 1.6 |
 | 1/4 cup pickled red onion | 40 g | Onions, red, raw <br>`FDC 790577` | Foundation | 0 | 0.4 | 4 |
-| 3 tbsp red wine vinegar | — | *negligible* | — | 0 | 0 | 0 |
+| 3 Tbsp red wine vinegar | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp Dijon mustard | 5 g | Mustard, prepared, yellow <br>`FDC 326698` | Foundation | 0.2 | 0.2 | 0.3 |
 | 1/2 cup olive oil | 108 g | Oil, olive, salad or cooking <br>`FDC 171413` | SR Legacy | 108 | 0 | 0 |
 | 1/4 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
@@ -291,9 +291,9 @@ Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 786 | **687** | -13% |
-| Fat (g) | 67 | **57** | -15% |
-| Protein (g) | 36 | **35** | -3% |
+| Calories | 687 | **687** | 0% |
+| Fat (g) | 57 | **57** | 0% |
+| Protein (g) | 35 | **35** | 0% |
 | Total carbs (g) | 11 | **11** | 0% |
 | Fiber (g) | 6 | **6** | 0% |
 | Net carbs (g) | 5 | **5** | 0% |
@@ -345,12 +345,12 @@ Divided by **24 servings**.
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
 | 6 large brown eggs | 300 g | Eggs, Grade A, Large, egg whole <br>`FDC 748967` | Foundation | 29.9 | 37.2 | 2.9 |
-| 1 tbsp white vinegar | — | *negligible* | — | 0 | 0 | 0 |
+| 1 Tbsp white vinegar | — | *negligible* | — | 0 | 0 | 0 |
 | 1/3 cup mayonnaise | 73.3 g | Salad dressing, mayonnaise, soybean oil, without salt <br>`FDC 171418` | SR Legacy | 58.2 | 0.8 | 2 |
-| 1 tbsp Dijon mustard | 15 g | Mustard, prepared, yellow <br>`FDC 326698` | Foundation | 0.5 | 0.6 | 0.8 |
-| 2 tbsp celery, finely diced | 15 g | Celery, raw <br>`FDC 2346405` <br>*fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food* | Foundation | 0 | 0.1 | 0.5 |
-| 2 tbsp chives or green onion, finely chopped | 220 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 1.8 | 18.9 |
-| 1 tbsp fresh dill, chopped (or 1/2 tsp dried dill) | — | *negligible* | — | 0 | 0 | 0 |
+| 1 Tbsp Dijon mustard | 15 g | Mustard, prepared, yellow <br>`FDC 326698` | Foundation | 0.5 | 0.6 | 0.8 |
+| 2 Tbsp celery, finely diced | 15 g | Celery, raw <br>`FDC 2346405` <br>*fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food* | Foundation | 0 | 0.1 | 0.5 |
+| 2 Tbsp chives or green onion, finely chopped | 220 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 1.8 | 18.9 |
+| 1 Tbsp fresh dill, chopped (or 1/2 tsp dried dill) | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/8 tsp black pepper | — | *negligible* | — | 0 | 0 | 0 |
 | **WHOLE RECIPE TOTAL** | | | | **88.7** | **40.5** | **25.1** |
@@ -368,7 +368,7 @@ Divided by **4 servings**.
 | Net carbs (g) | 5 | **5** | 0% |
 
 **Assumptions made:**
-- `2 tbsp celery, finely diced` — fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food
+- `2 Tbsp celery, finely diced` — fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food
 
 ---
 ## Classic Tuna Salad
@@ -379,10 +379,10 @@ Divided by **4 servings**.
 |---|---|---|---|---|---|---|
 | 2 (5 oz) cans tuna packed in water, well drained | 284 g | Fish, tuna, light, canned in water, drained solids <br>`FDC 334194` | Foundation | 2.7 | 54 | 0.2 |
 | 1/3 cup mayonnaise | 73.3 g | Salad dressing, mayonnaise, soybean oil, without salt <br>`FDC 171418` | SR Legacy | 58.2 | 0.8 | 2 |
-| 2 tbsp dill pickles, finely diced | 130 g | Pickles, cucumber, dill or kosher dill <br>`FDC 324653` | Foundation | 0.6 | 0.6 | 2.6 |
-| 2 tbsp celery, finely diced | 15 g | Celery, raw <br>`FDC 2346405` <br>*fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food* | Foundation | 0 | 0.1 | 0.5 |
-| 2 tbsp red onion, finely diced | 220 g | Onions, red, raw <br>`FDC 790577` | Foundation | 0.2 | 2.1 | 21.8 |
-| 1 tbsp fresh lemon juice | — | *negligible* | — | 0 | 0 | 0 |
+| 2 Tbsp dill pickles, finely diced | 130 g | Pickles, cucumber, dill or kosher dill <br>`FDC 324653` | Foundation | 0.6 | 0.6 | 2.6 |
+| 2 Tbsp celery, finely diced | 15 g | Celery, raw <br>`FDC 2346405` <br>*fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food* | Foundation | 0 | 0.1 | 0.5 |
+| 2 Tbsp red onion, finely diced | 220 g | Onions, red, raw <br>`FDC 790577` | Foundation | 0.2 | 2.1 | 21.8 |
+| 1 Tbsp fresh lemon juice | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/8 tsp black pepper | — | *negligible* | — | 0 | 0 | 0 |
 | **WHOLE RECIPE TOTAL** | | | | **61.7** | **57.6** | **27.1** |
@@ -400,7 +400,7 @@ Divided by **4 servings**.
 | Net carbs (g) | 5 | **5** | 0% |
 
 **Assumptions made:**
-- `2 tbsp celery, finely diced` — fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food
+- `2 Tbsp celery, finely diced` — fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food
 
 ---
 ## Coconut Chia Pudding
@@ -500,11 +500,11 @@ Divided by **5 servings**.
 | 3/4 cup pecans, chopped | 97.5 g | Nuts, pecans, halves, raw <br>`FDC 2346395` | Foundation | 71.4 | 9.7 | 12.4 |
 | 1 cup unsweetened coconut flakes | 80 g | Nuts, coconut meat, dried (desiccated), toasted <br>`FDC 170579` | SR Legacy | 37.6 | 4.2 | 35.5 |
 | 1/3 cup pumpkin seeds | 50 g | Seeds, pumpkin seeds (pepitas), raw <br>`FDC 2515380` | Foundation | 20 | 15 | 9.3 |
-| 3 tbsp flaxseed meal | 28.2 g | Flaxseed, ground <br>`FDC 2262075` | Foundation | 10.5 | 5.1 | 9.7 |
+| 3 Tbsp flaxseed meal | 28.2 g | Flaxseed, ground <br>`FDC 2262075` | Foundation | 10.5 | 5.1 | 9.7 |
 | 1 1/2 tsp ground cinnamon | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 cup So Nourished Monk Fruit Sweetener with Allulose <!-- linked_product: url=null --> | — | *negligible* | — | 0 | 0 | 0 |
-| 2 tbsp maple syrup | 40 g | Syrups, maple <br>`FDC 169661` | SR Legacy | 0 | 0 | 26.8 |
+| 2 Tbsp maple syrup | 40 g | Syrups, maple <br>`FDC 169661` | SR Legacy | 0 | 0 | 26.8 |
 | 1/4 cup butter | 56.8 g | Butter, salted <br>`FDC 173410` | SR Legacy | 46 | 0.5 | 0 |
 | 1 tsp vanilla extract | — | *negligible* | — | 0 | 0 | 0 |
 | **WHOLE RECIPE TOTAL** | | | | **218.7** | **48.4** | **106.7** |
@@ -607,7 +607,7 @@ Divided by **4 servings**.
 |---|---|---|---|---|---|---|
 | 2 large egg yolks, room temperature | 34 g | Eggs, Grade A, Large, egg yolk <br>`FDC 748236` | Foundation | 9.8 | 5.5 | 0.3 |
 | 1 cup avocado oil (Kirkland Signature from Costco works great) <!-- linked_product: url=null --> | 218 g | Oil, avocado <br>`FDC 173573` | SR Legacy | 218 | 0 | 0 |
-| 1 tbsp fresh lemon juice | — | *negligible* | — | 0 | 0 | 0 |
+| 1 Tbsp fresh lemon juice | — | *negligible* | — | 0 | 0 | 0 |
 | 2 tsp fresh Dijon mustard | 10 g | Mustard, prepared, yellow <br>`FDC 326698` | Foundation | 0.3 | 0.4 | 0.5 |
 | 1/2 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | **WHOLE RECIPE TOTAL** | | | | **228.1** | **5.9** | **0.8** |
@@ -617,12 +617,12 @@ Divided by **20 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | — | **102** | — |
-| Fat (g) | — | **11** | — |
-| Protein (g) | — | **0** | — |
-| Total carbs (g) | — | **0** | — |
-| Fiber (g) | — | **0** | — |
-| Net carbs (g) | — | **0** | — |
+| Calories | 102 | **102** | 0% |
+| Fat (g) | 11 | **11** | 0% |
+| Protein (g) | 0 | **0** | — |
+| Total carbs (g) | 0 | **0** | — |
+| Fiber (g) | 0 | **0** | — |
+| Net carbs (g) | 0 | **0** | — |
 
 ---
 ## Homemade Greek Yogurt Ranch Dip
@@ -633,9 +633,9 @@ Divided by **20 servings**.
 |---|---|---|---|---|---|---|
 | 1 cup plain Greek yogurt (full-fat or 2%) | 245 g | Yogurt, Greek, plain, whole milk <br>`FDC 2259794` | Foundation | 10.8 | 21.5 | 11.6 |
 | 1/2 cup homemade mayonnaise | 110 g | Salad dressing, mayonnaise, soybean oil, without salt <br>`FDC 171418` | SR Legacy | 87.3 | 1.2 | 3 |
-| 1 to 2 tbsp buttermilk or milk (to adjust thickness) | 23 g | Buttermilk, low fat <br>`FDC 2259792` | Foundation | 0.2 | 0.8 | 1.1 |
-| 1 tbsp fresh dill (or 1 tsp dried) | — | *negligible* | — | 0 | 0 | 0 |
-| 1 tbsp fresh chives (or 1 tsp dried) | — | *negligible* | — | 0 | 0 | 0 |
+| 1 to 2 Tbsp buttermilk or milk (to adjust thickness) | 23 g | Buttermilk, low fat <br>`FDC 2259792` | Foundation | 0.2 | 0.8 | 1.1 |
+| 1 Tbsp fresh dill (or 1 tsp dried) | — | *negligible* | — | 0 | 0 | 0 |
+| 1 Tbsp fresh chives (or 1 tsp dried) | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp garlic powder | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp onion powder | — | *negligible* | — | 0 | 0 | 0 |
 | 1/2 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
@@ -765,12 +765,12 @@ Divided by **6 servings**.
 | 1/2 cup almond flour (or 1/4 cup coconut flour) | 48 g | Flour, almond <br>`FDC 2261420` | Foundation | 24.1 | 12.6 | 7.8 |
 | 2 tsp Italian seasoning | — | *negligible* | — | 0 | 0 | 0 |
 | Avocado oil spray | — | *negligible* | — | 0 | 0 | 0 |
-| 2 tbsp avocado oil (oven/skillet method only) | 27.2 g | Oil, avocado <br>`FDC 173573` | SR Legacy | 27.2 | 0 | 0 |
+| 2 Tbsp avocado oil (oven/skillet method only) | 27.2 g | Oil, avocado <br>`FDC 173573` | SR Legacy | 27.2 | 0 | 0 |
 | 1 stick unsalted butter (about 4 oz) | 113.4 g | Butter, without salt <br>`FDC 173430` <br>*weight taken from the recipe line* | SR Legacy | 92 | 1 | 0.1 |
 | 1/2 cup chicken broth | 120 g | Soup, chicken broth, ready-to-serve <br>`FDC 174536` | SR Legacy | 0.3 | 0.8 | 0.5 |
 | 1/2 cup heavy cream | 119 g | Cream, heavy <br>`FDC 2346386` | Foundation | 42.3 | 2.4 | 4.5 |
 | 2 oz cream cheese | 56.7 g | Cream cheese, full fat, block <br>`FDC 2346385` | Foundation | 19 | 3.3 | 2.6 |
-| 2 tbsp Dijon mustard | 30 g | Mustard, prepared, yellow <br>`FDC 326698` | Foundation | 1 | 1.3 | 1.6 |
+| 2 Tbsp Dijon mustard | 30 g | Mustard, prepared, yellow <br>`FDC 326698` | Foundation | 1 | 1.3 | 1.6 |
 | 1 cup shredded Parmesan cheese | 100 g | Cheese, parmesan, grated <br>`FDC 325036` | Foundation | 28 | 29.6 | 12.4 |
 | Salt and pepper to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | **WHOLE RECIPE TOTAL** | | | | **323.3** | **288.3** | **45.5** |
@@ -815,12 +815,12 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 567 | **530** | -7% |
-| Fat (g) | 36 | **35** | -3% |
-| Protein (g) | 49 | **47** | -4% |
-| Total carbs (g) | 14 | **8** | -43% |
-| Fiber (g) | 4 | **3** | -25% |
-| Net carbs (g) | 10 | **5** | -50% |
+| Calories | 530 | **530** | 0% |
+| Fat (g) | 35 | **35** | 0% |
+| Protein (g) | 47 | **47** | 0% |
+| Total carbs (g) | 8 | **8** | 0% |
+| Fiber (g) | 3 | **3** | 0% |
+| Net carbs (g) | 5 | **5** | 0% |
 
 **Assumptions made:**
 - `6 small chicken breasts (1 1/2 lbs)` — weight taken from the recipe line
@@ -837,14 +837,14 @@ Divided by **6 servings**.
 | 1 large onion (about 5 oz), finely chopped | 141.8 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0.1 | 1.2 | 12.2 |
 | 3 garlic cloves, pressed | 9 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.6 | 2.5 |
 | 2 whole cloves | — | *negligible* | — | 0 | 0 | 0 |
-| 1 1/2 tbsp chili powder | — | *negligible* | — | 0 | 0 | 0 |
+| 1 1/2 Tbsp chili powder | — | *negligible* | — | 0 | 0 | 0 |
 | 1 1/2 tsp ground cumin, to taste | — | *negligible* | — | 0 | 0 | 0 |
 | 1 1/2 tsp paprika, to taste | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp ground oregano | 2 g | Spices, oregano, dried <br>`FDC 171328` | SR Legacy | 0.1 | 0.2 | 1.4 |
 | 1/2 tsp chipotle powder, optional | 1 g | Spices, chili powder <br>`FDC 171319` | SR Legacy | 0.1 | 0.1 | 0.5 |
 | 1 (15 oz) can diced tomatoes | 411 g | Tomatoes, canned, red, ripe, diced <br>`FDC 333281` <br>*fiber 1.9 g/100 g from SR Legacy 170051 — Foundation reports none for this food* | Foundation | 2.1 | 3.5 | 13.6 |
 | 1 cup beef broth | 240 g | Soup, beef broth or bouillon canned, ready-to-serve <br>`FDC 171538` | SR Legacy | 0.5 | 2.7 | 0.1 |
-| 3 tbsp diced jarred jalapeños | 16.8 g | Peppers, jalapeno, raw <br>`FDC 168576` | SR Legacy | 0.1 | 0.2 | 1.1 |
+| 3 Tbsp diced jarred jalapeños | 16.8 g | Peppers, jalapeno, raw <br>`FDC 168576` | SR Legacy | 0.1 | 0.2 | 1.1 |
 | 1/2 tsp kosher salt, to taste | — | *negligible* | — | 0 | 0 | 0 |
 | **WHOLE RECIPE TOTAL** | | | | **43.5** | **99.1** | **31.4** |
 
@@ -974,9 +974,9 @@ Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 297 | **120** | -60% |
-| Fat (g) | 28 | **9** | -68% |
-| Protein (g) | 10 | **8** | -20% |
+| Calories | 120 | **120** | 0% |
+| Fat (g) | 9 | **9** | 0% |
+| Protein (g) | 8 | **8** | 0% |
 | Total carbs (g) | 0 | **0** | — |
 | Fiber (g) | 0 | **0** | — |
 | Net carbs (g) | 0 | **0** | — |
@@ -1097,13 +1097,13 @@ Divided by **7 servings**.
 |---|---|---|---|---|---|---|
 | 2 lbs salmon fillet, cut into six 6 oz portions | 907.2 g | Fish, salmon, sockeye, wild caught, raw  |  Fish, salmon, Atlantic, farm raised, raw <br>`FDC 2684440 + 2684441` <br>*blended at the 60th percentile between the two entries — 9.84 g fat/100 g, just above their 9.02 g midpoint. Assumes a mid-range salmon.* | Foundation | 89.2 | 191.4 | 0 |
 | 2 lbs asparagus, fibrous ends removed | 907.2 g | Asparagus, green, raw <br>`FDC 2710823` | Foundation | 2 | 13 | 46.3 |
-| 1 tbsp avocado oil | 13.6 g | Oil, avocado <br>`FDC 173573` | SR Legacy | 13.6 | 0 | 0 |
+| 1 Tbsp avocado oil | 13.6 g | Oil, avocado <br>`FDC 173573` | SR Legacy | 13.6 | 0 | 0 |
 | Salt and black pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| 6 tbsp unsalted butter, softened | 85.2 g | Butter, without salt <br>`FDC 173430` | SR Legacy | 69.1 | 0.7 | 0.1 |
-| 2 tbsp fresh lemon juice | — | *negligible* | — | 0 | 0 | 0 |
+| 6 Tbsp unsalted butter, softened | 85.2 g | Butter, without salt <br>`FDC 173430` | SR Legacy | 69.1 | 0.7 | 0.1 |
+| 2 Tbsp fresh lemon juice | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp lemon zest (optional) | — | *negligible* | — | 0 | 0 | 0 |
 | 2 garlic cloves, pressed or minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
-| 2 tbsp fresh parsley or dill, finely chopped | — | *negligible* | — | 0 | 0 | 0 |
+| 2 Tbsp fresh parsley or dill, finely chopped | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp black pepper | — | *negligible* | — | 0 | 0 | 0 |
 | 1 small lemon (about 2 oz), sliced into rings | 56.7 g | Lemons, raw, without peel <br>`FDC 167746` <br>*weight taken from the recipe line* | SR Legacy | 0.2 | 0.6 | 5.3 |
@@ -1133,8 +1133,8 @@ Divided by **6 servings**.
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
 | 1 lb kielbasa smoked sausage, halved lengthwise and sliced into 1/2-inch pieces | 453.6 g | Polish sausage, pork <br>`FDC 174577` | SR Legacy | 130.3 | 64 | 7.4 |
-| 1/2 tbsp beef tallow | 6.4 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 6.4 | 0 | 0 |
-| 1 tbsp beef tallow | 12.8 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 12.8 | 0 | 0 |
+| 1/2 Tbsp beef tallow | 6.4 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 6.4 | 0 | 0 |
+| 1 Tbsp beef tallow | 12.8 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 12.8 | 0 | 0 |
 | 1 medium onion (about 4 oz), chopped | 113.4 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0.1 | 0.9 | 9.8 |
 | 3 garlic cloves, minced | 9 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.6 | 2.5 |
 | 1 medium head red or green cabbage, cored and chopped into 1-inch pieces (about 2 lbs) | 907.2 g | Cabbage, green, raw <br>`FDC 2346407` <br>*fiber 2.5 g/100 g from SR Legacy 169975 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 2.1 | 8.7 | 57.9 |
@@ -1166,10 +1166,10 @@ Divided by **4 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 1 tbsp butter | 14.2 g | Butter, salted <br>`FDC 173410` | SR Legacy | 11.5 | 0.1 | 0 |
-| 1 tbsp extra-virgin olive oil | 13.5 g | Oil, olive, salad or cooking <br>`FDC 171413` | SR Legacy | 13.5 | 0 | 0 |
+| 1 Tbsp butter | 14.2 g | Butter, salted <br>`FDC 173410` | SR Legacy | 11.5 | 0.1 | 0 |
+| 1 Tbsp extra-virgin olive oil | 13.5 g | Oil, olive, salad or cooking <br>`FDC 171413` | SR Legacy | 13.5 | 0 | 0 |
 | 1 shallot, finely chopped | 25 g | Shallots, raw <br>`FDC 170499` | SR Legacy | 0 | 0.6 | 4.2 |
-| 4 garlic cloves, minced (about 1 1/2 tbsp) | 12 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.8 | 3.4 |
+| 4 garlic cloves, minced (about 1 1/2 Tbsp) | 12 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.8 | 3.4 |
 | 1 lb large raw shrimp, peeled and deveined, tails on | 453.6 g | Crustaceans, shrimp, farm raised, raw <br>`FDC 2684443` | Foundation | 3.6 | 70.6 | 2.2 |
 | 1 tsp kosher salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/2 tsp red pepper flakes | — | *negligible* | — | 0 | 0 | 0 |
@@ -1179,7 +1179,7 @@ Divided by **4 servings**.
 | 1/4 cup freshly squeezed lemon juice | 14.5 g | Lemons, raw, without peel <br>`FDC 167746` | SR Legacy | 0 | 0.2 | 1.4 |
 | 1 1/2 lbs zucchini noodles (from about 4 medium zucchini) | 680.4 g | Squash, summer, green, zucchini, includes skin, raw <br>`FDC 2685568` | Foundation | 1.4 | 6.7 | 22.2 |
 | 1/4 cup chopped fresh parsley leaves | — | *negligible* | — | 0 | 0 | 0 |
-| 2 tbsp freshly grated Parmesan | 12.5 g | Cheese, parmesan, grated <br>`FDC 325036` | Foundation | 3.5 | 3.7 | 1.6 |
+| 2 Tbsp freshly grated Parmesan | 12.5 g | Cheese, parmesan, grated <br>`FDC 325036` | Foundation | 3.5 | 3.7 | 1.6 |
 | **WHOLE RECIPE TOTAL** | | | | **33.6** | **83.1** | **35.3** |
 
 Whole recipe: **769 kcal**, fat 33.6 g, protein 83.1 g, carbs 35.3 g, fiber 6.6 g
@@ -1327,7 +1327,7 @@ Divided by **6 servings**.
 | 1 tsp avocado oil (or any oil) | 4.5 g | Oil, avocado <br>`FDC 173573` | SR Legacy | 4.5 | 0 | 0 |
 | 1 cup chopped onion | 160 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 1.3 | 13.8 |
 | 1 lb ground beef | 453.6 g | Beef, ground, 93% lean meat / 7% fat, raw  |  Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 173110 + 2514743` <br>*weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.* | SR Legacy + Foundation | 40.5 | 90.6 | 0 |
-| 2 tbsp taco seasoning | 12 g | Seasoning mix, dry, taco, original <br>`FDC 172243` | SR Legacy | 0 | 0.5 | 7 |
+| 2 Tbsp taco seasoning | 12 g | Seasoning mix, dry, taco, original <br>`FDC 172243` | SR Legacy | 0 | 0.5 | 7 |
 | 8 oz romaine lettuce, chopped | 226.8 g | Lettuce, romaine, green, raw <br>`FDC 2346389` <br>*fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food* | Foundation | 0.2 | 2.2 | 9.2 |
 | 1 1/3 cups grape tomatoes, halved | 198.7 g | Tomatoes, red, ripe, raw, year round average <br>`FDC 170457` | SR Legacy | 0.4 | 1.7 | 7.7 |
 | 3/4 cup shredded cheddar cheese | 84.8 g | Cheese, cheddar <br>`FDC 328637` | Foundation | 28.8 | 19.7 | 2.1 |

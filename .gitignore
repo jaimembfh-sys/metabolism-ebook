@@ -32,3 +32,6 @@ deno.lock
 # (tools/macros/usda-index.json), so the source stays local. Download link is
 # in the header of tools/macros/build-usda-index.js.
 tools/macros/sr/
+
+# Built by tools/build-site.js and published by Netlify. Generated, never edited.
+dist/

@@ -1,4 +1,16 @@
+# No publish directory was set here, so Netlify's default applied and the whole
+# repository root was the website. A check against howyourbodyburns.netlify.app
+# on 2026-09-22 found /knowledge-base/protocol-corpus.json, /package.json and
+# /server.js all answering 200. manuscript/, coach-reference/ and tools/ only
+# 404ed because they postdate the last deploy - the next one would have served
+# the AI coach corpus, every internal report and the USDA tooling.
+#
+# dist/ is assembled by tools/build-site.js from an explicit allowlist, read off
+# the src, href and fetch() calls in the eight public pages. It is gitignored:
+# the build makes it, nobody edits it.
 [build]
+  command = "node tools/build-site.js"
+  publish = "dist"
   functions = "netlify/functions"
 
 [[redirects]]

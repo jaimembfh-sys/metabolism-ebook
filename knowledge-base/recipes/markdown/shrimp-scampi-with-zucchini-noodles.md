@@ -9,10 +9,10 @@ source_file: recipes/Shrimp_Scampi_with_Zucchini_Noodles_Recipe.pdf
 ## Ingredients
 
 ### Sauté the Shallot and Garlic
-- 1 tbsp butter
-- 1 tbsp extra-virgin olive oil
+- 1 Tbsp butter
+- 1 Tbsp extra-virgin olive oil
 - 1 shallot, finely chopped
-- 4 garlic cloves, minced (about 1 1/2 tbsp)
+- 4 garlic cloves, minced (about 1 1/2 Tbsp)
 
 ### Cook the Shrimp
 - 1 lb large raw shrimp, peeled and deveined, tails on
@@ -28,7 +28,7 @@ source_file: recipes/Shrimp_Scampi_with_Zucchini_Noodles_Recipe.pdf
 ### Add the Noodles and Finish
 - 1 1/2 lbs zucchini noodles (from about 4 medium zucchini)
 - 1/4 cup chopped fresh parsley leaves
-- 2 tbsp freshly grated Parmesan
+- 2 Tbsp freshly grated Parmesan
 
 ## Instructions
 

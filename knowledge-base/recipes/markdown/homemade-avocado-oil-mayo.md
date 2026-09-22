@@ -10,7 +10,7 @@ source_file: recipes/Homemade_Avocado_Oil_Mayo_Recipe_1.pdf
 
 - 2 large egg yolks, room temperature
 - 1 cup avocado oil (Kirkland Signature from Costco works great) <!-- linked_product: url=null -->
-- 1 tbsp fresh lemon juice
+- 1 Tbsp fresh lemon juice
 - 2 tsp fresh Dijon mustard
 - 1/2 tsp salt
 

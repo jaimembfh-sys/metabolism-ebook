@@ -11,15 +11,15 @@ source_file: recipes/Salmon_and_Asparagus_Bake_Recipe.pdf
 ### Arrange the Salmon and Asparagus
 - 2 lbs salmon fillet, cut into six 6 oz portions
 - 2 lbs asparagus, fibrous ends removed
-- 1 tbsp avocado oil
+- 1 Tbsp avocado oil
 - Salt and black pepper, to taste
 
 ### Make the Flavored Butter
-- 6 tbsp unsalted butter, softened
-- 2 tbsp fresh lemon juice
+- 6 Tbsp unsalted butter, softened
+- 2 Tbsp fresh lemon juice
 - 1 tsp lemon zest (optional)
 - 2 garlic cloves, pressed or minced
-- 2 tbsp fresh parsley or dill, finely chopped
+- 2 Tbsp fresh parsley or dill, finely chopped
 - 1 tsp salt
 - 1/4 tsp black pepper
 

@@ -13,10 +13,10 @@ source_file: recipes/Classic_Tuna_Salad_Recipe.pdf
 
 ### Add the Rest and Mix
 - 1/3 cup mayonnaise
-- 2 tbsp dill pickles, finely diced
-- 2 tbsp celery, finely diced
-- 2 tbsp red onion, finely diced
-- 1 tbsp fresh lemon juice
+- 2 Tbsp dill pickles, finely diced
+- 2 Tbsp celery, finely diced
+- 2 Tbsp red onion, finely diced
+- 1 Tbsp fresh lemon juice
 - 1/4 tsp salt
 - 1/8 tsp black pepper
 

@@ -17,8 +17,8 @@ source_file: recipes/Classic_Chicken_Salad_Recipe.pdf
 
 ### Mix the Dressing
 - 3/4 cup mayonnaise
-- 1 tbsp Dijon mustard
-- 1 tbsp fresh lemon juice
+- 1 Tbsp Dijon mustard
+- 1 Tbsp fresh lemon juice
 - 1/2 tsp seasoned salt
 - 1/4 tsp black pepper
 - 1 1/2 tsp fresh dill, chopped (or 1/2 tsp dried dill)

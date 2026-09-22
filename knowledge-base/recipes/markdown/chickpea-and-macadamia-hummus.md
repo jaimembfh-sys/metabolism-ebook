@@ -26,7 +26,7 @@ source_file: recipes/Chickpea_and_Macadamia_Hummus_Recipe.pdf
 - The soaked and drained macadamia nuts
 
 ### Thin to the Right Consistency
-- 4 to 6 tbsp cold water or aquafaba (chickpea juice)
+- 4 to 6 Tbsp cold water or aquafaba (chickpea juice)
 
 ## Instructions
 

@@ -16,7 +16,7 @@ source_file: recipes/Taco_Salad_Recipe.pdf
 - 1 lb ground beef
 
 ### Season the Meat
-- 2 tbsp taco seasoning
+- 2 Tbsp taco seasoning
 
 ### Assemble the Salad
 - 8 oz romaine lettuce, chopped

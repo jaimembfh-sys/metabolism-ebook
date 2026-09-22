@@ -10,14 +10,14 @@ source_file: recipes/Classic_Mustard_Egg_Salad_Recipe.pdf
 
 ### Boil the Eggs
 - 6 large brown eggs
-- 1 tbsp white vinegar
+- 1 Tbsp white vinegar
 
 ### Chop and Mix in a Bowl
 - 1/3 cup mayonnaise
-- 1 tbsp Dijon mustard
-- 2 tbsp celery, finely diced
-- 2 tbsp chives or green onion, finely chopped
-- 1 tbsp fresh dill, chopped (or 1/2 tsp dried dill)
+- 1 Tbsp Dijon mustard
+- 2 Tbsp celery, finely diced
+- 2 Tbsp chives or green onion, finely chopped
+- 1 Tbsp fresh dill, chopped (or 1/2 tsp dried dill)
 - 1/4 tsp salt
 - 1/8 tsp black pepper
 

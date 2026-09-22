@@ -10,10 +10,10 @@ source_file: recipes/Sausage_and_Cabbage_Skillet_Recipe.pdf
 
 ### Brown the Sausage
 - 1 lb kielbasa smoked sausage, halved lengthwise and sliced into 1/2-inch pieces
-- 1/2 tbsp beef tallow
+- 1/2 Tbsp beef tallow
 
 ### Cook the Onion, Garlic, and Cabbage
-- 1 tbsp beef tallow
+- 1 Tbsp beef tallow
 - 1 medium onion (about 4 oz), chopped
 - 3 garlic cloves, minced
 - 1 medium head red or green cabbage, cored and chopped into 1-inch pieces (about 2 lbs)

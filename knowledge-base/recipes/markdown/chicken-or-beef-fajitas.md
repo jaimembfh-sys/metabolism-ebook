@@ -24,7 +24,7 @@ source_file: recipes/Chicken_or_Beef_Fajitas_Recipe.pdf
 - 3 boneless skinless chicken breasts (about 1 lb), cut into strips, OR 1 lb skirt steak, sliced into strips against the grain
 
 ### Cook the Meat
-- 2 tbsp beef tallow or avocado oil, divided
+- 2 Tbsp beef tallow or avocado oil, divided
 
 ### Cook the Vegetables
 - 1/4 tsp salt
@@ -38,7 +38,7 @@ Slice the onion into slivers and the bell peppers into strips.
 Combine the lime juice and all the spices in a bowl. Toss the chicken or beef strips in the mixture to coat.
 
 ### 3. Cook the Meat
-Preheat 1 tbsp of tallow or oil in a skillet over medium-high heat. Add half the meat in a single layer (don't overcrowd the pan) and cook until done, about 3-5 minutes for chicken or 2-3 minutes per side for skirt steak. Remove and set aside. Repeat with the remaining meat, adding the second tablespoon of tallow or oil to the pan.
+Preheat 1 Tbsp of tallow or oil in a skillet over medium-high heat. Add half the meat in a single layer (don't overcrowd the pan) and cook until done, about 3-5 minutes for chicken or 2-3 minutes per side for skirt steak. Remove and set aside. Repeat with the remaining meat, adding the second tablespoon of tallow or oil to the pan.
 
 ### 4. Cook the Vegetables
 Set the cooked meat aside. Add the onions to the same pan and cook 2 minutes. Add the peppers and remaining salt, and cook another 2 minutes, or until just tender. Add the meat back to the pan and stir to combine.
