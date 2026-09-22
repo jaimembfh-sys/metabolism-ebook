@@ -1,0 +1,270 @@
+/* Recipe pages — Mind-Body Functional Health
+ *
+ * The type and colour are lifted from the existing PDFs in recipes/, whose
+ * content streams were decoded to read them off directly rather than matched
+ * by eye:
+ *
+ *   page 612x792 pt (US Letter), 70.8 pt left margin (0.98in)
+ *   title        Times-Bold        22pt   #1E4A5A   uppercase
+ *   description  Helvetica-Oblique 11pt   #231F20
+ *   section      Helvetica-Bold    13pt   #1E4A5A   uppercase
+ *   step         Helvetica-Bold    11.5pt #1E4A5A
+ *   body         Helvetica         10.5pt #231F20
+ *   linked item  Helvetica         10.5pt #1E4A5A
+ *   footer       Helvetica         8.5pt  #1E4A5A
+ *
+ * The PDFs use the base-14 faces, so this asks for the same ones and does not
+ * load a webfont: nothing to fetch, and print is identical offline.
+ */
+
+:root {
+  --ink:      #231F20;   /* body */
+  --teal:     #1E4A5A;   /* title, headings, links, footer */
+  --teal-mid: #35657B;   /* rules and quiet furniture */
+  --paper:    #FFFFFF;
+  --rule:     #D8E0E4;
+  --sans: Helvetica, Arial, "Helvetica Neue", sans-serif;
+  --serif: "Times New Roman", Times, serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #E8E6E3;
+    --teal: #7FB3C6;
+    --teal-mid: #5E93A6;
+    --paper: #14191C;
+    --rule: #2A363C;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #E8E6E3;
+  --teal: #7FB3C6;
+  --teal-mid: #5E93A6;
+  --paper: #14191C;
+  --rule: #2A363C;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 10.5pt;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* One sheet of US Letter with the PDF's 1in margins. */
+.sheet {
+  max-width: 8.5in;
+  margin: 0 auto;
+  padding: 1in;
+}
+
+/* ---- head ---------------------------------------------------------------- */
+.head { position: relative; margin-bottom: 18pt; }
+
+.logo {
+  position: absolute;
+  top: 0; right: 0;
+  width: 88.75pt;      /* the PDF's own placement, 499x224 at 88.75x39.84 pt */
+  height: auto;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 22pt;
+  line-height: 1.15;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin: 0 100pt 6pt 0;   /* clear of the logo */
+  letter-spacing: 0.01em;
+}
+
+.lede {
+  font-style: italic;
+  font-size: 11pt;
+  color: var(--ink);
+  margin: 0 100pt 0 0;
+}
+
+/* ---- hero photo, 2.5:1 at 4in wide, per the spec ------------------------- */
+.hero {
+  width: 4in;
+  aspect-ratio: 2.5 / 1;
+  margin: 16pt 0 20pt;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--paper);
+}
+.hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Holds its shape before the photographs land, so nothing reflows later. */
+.hero-empty {
+  border: 1px dashed var(--rule);
+  background: linear-gradient(135deg, transparent 49.6%, var(--rule) 49.6%, var(--rule) 50.4%, transparent 50.4%);
+}
+
+/* ---- blocks -------------------------------------------------------------- */
+.block { margin: 0 0 16pt; }
+
+h2 {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 13pt;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 18pt 0 8pt;
+  padding-bottom: 3pt;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 11.5pt;
+  color: var(--teal);
+  margin: 12pt 0 5pt;
+}
+
+p { margin: 0 0 7pt; }
+
+/* ---- a step and the ingredients it needs --------------------------------- */
+.step { margin: 0 0 12pt; }
+
+ul.ing {
+  list-style: none;
+  margin: 0 0 7pt;
+  padding: 0 0 0 2pt;
+}
+ul.ing li {
+  position: relative;
+  padding-left: 14pt;
+  margin-bottom: 2pt;
+}
+ul.ing li::before {
+  content: "\2022";
+  position: absolute;
+  left: 2pt;
+  color: var(--teal-mid);
+  font-size: 9pt;
+  line-height: 1.7;
+}
+
+/* A product Jaime links to. The PDFs set these in teal. */
+.linked { color: var(--teal); }
+
+/* ---- nutrition ----------------------------------------------------------- */
+.panel { margin: 0 0 10pt; }
+.panel-for {
+  font-weight: 700;
+  color: var(--teal);
+  margin: 0 0 5pt;
+}
+.nutrition ul {
+  list-style: none;
+  margin: 0 0 6pt;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2pt 16pt;
+  max-width: 5.6in;
+}
+.nutrition li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8pt;
+  border-bottom: 1px solid var(--rule);
+  padding: 2pt 0;
+}
+.nutrition li span { color: var(--ink); }
+.nutrition li b { color: var(--teal); font-weight: 700; }
+.panel-note { font-style: italic; margin: 4pt 0 0; }
+
+/* ---- notes --------------------------------------------------------------- */
+.note ul { margin: 0 0 7pt; padding-left: 16pt; }
+.note li { margin-bottom: 2pt; }
+
+/* ---- footer -------------------------------------------------------------- */
+.foot {
+  margin-top: 22pt;
+  padding-top: 8pt;
+  border-top: 1px solid var(--rule);
+  font-size: 8.5pt;
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16pt;
+}
+.foot p { margin: 0 0 2pt; }
+.foot a { color: var(--teal); }
+.qr { width: 54pt; height: 54pt; flex: none; }
+
+/* ---- index --------------------------------------------------------------- */
+ul.toc { list-style: none; margin: 0; padding: 0; }
+ul.toc li { padding: 4pt 0; border-bottom: 1px solid var(--rule); }
+ul.toc a { color: var(--teal); font-weight: 700; text-decoration: none; }
+ul.toc a:hover { text-decoration: underline; }
+.toc-d { display: block; font-size: 9.5pt; color: var(--ink); }
+
+/* ---- phones -------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .sheet { padding: 20px 16px; }
+  h1 { font-size: 19pt; margin-right: 0; }
+  .lede { margin-right: 0; }
+  .logo { position: static; display: block; width: 72pt; margin-bottom: 10pt; }
+  .hero { width: 100%; }
+  .nutrition ul { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; }
+  .foot { flex-direction: column; align-items: flex-start; }
+}
+
+/* ---- print --------------------------------------------------------------- *
+ * Each recipe is its own sheet or sheets. Nothing of the interface goes on
+ * paper, no heading is left stranded at the foot of a page, and the nutrition
+ * panel is never split across a break.
+ */
+@page {
+  size: Letter;
+  margin: 1in;
+}
+
+@media print {
+  :root {
+    --ink: #231F20;
+    --teal: #1E4A5A;
+    --teal-mid: #35657B;
+    --paper: #FFFFFF;
+    --rule: #C9D3D8;
+  }
+  body {
+    background: #FFFFFF;
+    color: #231F20;
+    font-size: 10.5pt;
+  }
+  .sheet { max-width: none; margin: 0; padding: 0; }
+
+  /* The page margin box already provides the inch. */
+  h1 { margin-right: 96pt; }
+  .lede { margin-right: 96pt; }
+
+  a { color: #1E4A5A; text-decoration: none; }
+
+  /* Keep things whole. */
+  .step, .panel, .note, .hero { break-inside: avoid; page-break-inside: avoid; }
+  h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+  .foot { break-inside: avoid; page-break-inside: avoid; }
+
+  /* The footer is the last thing in the flow, so it lands at the end of the
+   * final page. It is not position:fixed — browsers disagree about fixed
+   * elements in paged media, and a repeated footer on every sheet is not what
+   * the spec asks for. */
+  .foot { margin-top: 24pt; }
+
+  .hero-empty { display: none; }   /* an empty box wastes a quarter of a page */
+
+  ul.ing li::before { color: #35657B; }
+}
