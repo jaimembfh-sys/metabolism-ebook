@@ -302,3 +302,41 @@ Writing reader copy from those notes would be composing in your voice, so it's q
 ## Chapter 11 — skipped as instructed
 
 `Chapter_11_Course.md` does not exist. `Ch11_Stomach_Acid_Revised.md` was not applied.
+
+---
+
+# QUEUED 2026-09-22 (overnight run 4 — recipe/coach integration)
+
+## N-10 — Confirm the allergen tags, then flip one flag ⚠ BLOCKING
+
+`ALLERGEN_TAGS_CONFIRMED` in `index.html` is **false**, as you asked. While it is false the pool filter is a no-op: a recipe carrying a declared allergen is still sent to the model, and only the post-generation check catches it. That check reads ingredient text and works, but it is the second line, not the first.
+
+The full table is in `OVERNIGHT_REPORT_4.md`, or run `node tools/recipes/allergen-table.js`.
+
+**What I need:** confirmation the 43 tags are right. Then set `ALLERGEN_TAGS_CONFIRMED = true` — that is the whole change; everything behind it is built and tested.
+
+## N-11 — The live allergen fixture was not run (API cost)
+
+`test-allergens.js` in the old scratchpad makes **real API calls, n=6 per profile**, to measure how often the model names an allergen. I did not run it overnight: you were asleep, it costs money per run, and what changed here is deterministic regex, which `tools/recipes/test-rules.js` covers exactly — 123 assertions, no API.
+
+That live test measures something different and still worth measuring: whether the *model* has got better or worse at obeying, now that the vocabulary changed underneath it.
+
+**What I need:** say the word and I will port it into the repo properly and run it. It was never committed — same problem as `weight-proposals.js`.
+
+## N-12 — Worcestershire contains anchovies, and there is no fish category
+
+Two recipes call for Worcestershire sauce: **Keto Carolina Mustard BBQ Sauce** and **Pork Tenderloin Marinade**. Most brands contain anchovies. Three more use fish sauce (**Spicy Thai Basil Chicken**, **Thai Panang Chicken Curry**) or oyster sauce (**Spicy Thai Basil Chicken**).
+
+The intake form offers gluten / dairy / soy / nuts / shellfish / other. There is **no fish category**, so a fish allergy is declared as "other", which already triggers the honest "we could not filter this" note. That is consistent, not broken — but someone avoiding fish gets no filtering on five recipes.
+
+**What I need:** whether to add fish as a sixth allergy checkbox. Adding it means a new vocabulary entry and a re-tag; not adding it means "other" keeps carrying it.
+
+## N-13 — Two course images still have no file
+
+`2.jpg` ("Mitochondria") and `7 - Copy.jpg` ("Appetite Regulation and GLP-1") now hold a placeholder box. `images/11.webp` is sitting unreferenced and *might* be one of them, but that is a guess and I did not make it.
+
+## N-14 — The pancakes bonus recipe has its own nutrition line
+
+`fluffy-coconut-keto-pancakes.md` line 69 carries `**Nutrition** (per tablespoon, makes about 32 Tbsp) — Estimated` inside the Notes section, for the optional sugar-free maple syrup. It is not a main panel, so the rebuild did not touch it and it still says "Estimated" and "per tablespoon" where every other panel now says "Per Tbsp".
+
+**What I need:** whether that sub-recipe should get the same treatment as the 43 main panels.
