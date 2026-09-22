@@ -163,6 +163,19 @@ if (runtime) {
   check("scrub: day_label keeps its number", scrubbed.days[0].day_label, "Day 1");
   const untouched = runtime.scrubNumbersIfFlagged(plan, false);
   check("scrub: unflagged plan untouched", untouched.days[0].meals[0].macros_note, "~308 cal, 8g protein");
+  check("scrub: description never left null (it is required)",
+    typeof scrubbed.days[0].meals[0].description === "string" && scrubbed.days[0].meals[0].description.length > 0, true);
+  check("scrub: surviving sentence kept verbatim",
+    runtime.scrubText("A 308-calorie start with 28g of fat. Creamy baked avocado with a soft egg."),
+    "Creamy baked avocado with a soft egg.");
+  check("scrub: cooking numbers survive",
+    runtime.scrubText("Roast at 400°F for 25 minutes, then rest 5 minutes."),
+    "Roast at 400°F for 25 minutes, then rest 5 minutes.");
+  check("scrub: measurements survive",
+    runtime.scrubText("Use 1/2 cup coconut milk and 2 Tbsp peanut butter."),
+    "Use 1/2 cup coconut milk and 2 Tbsp peanut butter.");
+  check("scrub: all-numeric text returns null, not a stump",
+    runtime.scrubText("~450 cal, 35g protein"), null);
   check("scrub: nutrition panels stripped from pool text",
     /Calories:/.test(runtime.stripNutritionPanels("## Nutrition\n\n### Per serving\n- Calories: 356\n\n## Notes\nx")), false);
 
