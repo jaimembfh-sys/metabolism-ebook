@@ -313,6 +313,30 @@
             background: rgba(250,248,245,0.95);
             text-align: center;
         }
+        /* Holds the space for a lesson image that has not been supplied yet.
+           Two of these replaced <img> tags pointing at files that exist
+           nowhere - they had onerror="this.style.display='none'", so the page
+           silently closed up around them and the gap was invisible. Same
+           16/10 box as .catalog-card-media, so dropping the real photograph
+           in later changes nothing around it. */
+        .img-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #faf8f5;
+            border: 1px dashed rgba(52,101,122,0.35);
+            color: #34657a;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-style: italic;
+            letter-spacing: 0.04em;
+            text-align: center;
+            padding: 1rem;
+        }
+        .img-placeholder span { opacity: 0.75; }
+        @media print { .img-placeholder { display: none; } }
         .lesson-text::after {
             content: '';
             display: table;
@@ -1030,7 +1054,7 @@
                     <p class="inline-img-caption">Movement activates mitochondrial energy production</p>
                 </div>
             </div>
-            <img src="2.jpg" alt="Mitochondria" class="w-full h-auto object-cover rounded-xl shadow-md mb-8 my-6" onerror="this.style.display='none'">
+            <div class="img-placeholder rounded-xl shadow-md mb-8 my-6" role="img" aria-label="Mitochondria — image to come"><span>Mitochondria</span></div>
             <p>If your energy is low, your body feels inflamed, and fat loss feels harder than it should, this isn’t just about eating less. It is fundamentally about your cellular energy. Inside nearly every cell of your body are tiny structures called mitochondria. They act as the engine room of your body, converting the food you eat and the oxygen you breathe into usable energy (ATP). This energy powers everything—your brain, your hormones, your muscles, your immune system, and your overall ability to efficiently burn fuel.</p>
             <p>In many ways, your metabolism is only as strong as your ability to produce energy at the cellular level. When mitochondrial function is strong, energy production is highly efficient. You experience steadier energy, clearer thinking, better exercise recovery, and much more stable blood sugar. Most importantly, your body becomes more metabolically flexible, meaning it can seamlessly switch between using carbohydrates and stored fat as fuel depending on availability. Fat loss feels incredibly responsive because your cells have the fundamental energy they need to operate.</p>
             
@@ -1292,7 +1316,7 @@
                     <p class="inline-img-caption">Hydration and morning rituals influence appetite hormones</p>
                 </div>
             </div>
-            <img src="7 - Copy.jpg" alt="Appetite Regulation and GLP-1" class="w-full h-auto object-cover rounded-xl shadow-md mb-8 my-6" onerror="this.style.display='none'">
+            <div class="img-placeholder rounded-xl shadow-md mb-8 my-6" role="img" aria-label="Appetite Regulation and GLP-1 — image to come"><span>Appetite Regulation and GLP-1</span></div>
             
             <p>In recent years, the conversation around weight loss has been dominated by a specific hormone: GLP-1 (Glucagon-Like Peptide-1). You have likely heard of it in the context of wildly popular weight-loss medications. However, GLP-1 is actually a naturally occurring hormone that your body produces on its own. Understanding how it naturally works—and the severe consequences of artificially overriding it—is crucial to understanding your metabolism.</p>
             <p>GLP-1 is an incretin hormone, meaning it is secreted by the cells in your intestines in response to eating food. When food enters your digestive tract, natural GLP-1 is released and performs a few highly important tasks: it tells your pancreas to release an appropriate amount of insulin, it slows down gastric emptying (meaning food stays in your stomach longer), and it sends a powerful satiety signal to your brain, telling you that you are full.</p>
