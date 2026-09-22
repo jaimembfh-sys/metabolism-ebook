@@ -149,7 +149,17 @@ const DEFAULT_QTY = {
   "juice of 1 lemon": 1,
 };
 
-module.exports = { MAP3, EXTRA_NEGLIGIBLE, STILL_FLAGGED, UNIT_PATCH, DEFAULT_QTY };
+/* Ingredients written as a range are costed at their MIDPOINT by default -
+ * "2 to 3 Tbsp jalapeño" is calculated at 2.5. These take the upper bound
+ * instead, on Jaime's instruction.
+ */
+const RANGE_UPPER = {
+  // Jaime, 2026-09-21: calculate the panang curry paste at 2 Tbsp.
+  "mae ploy panang curry paste": true,
+  "panang curry paste": true,
+};
+
+module.exports = { MAP3, EXTRA_NEGLIGIBLE, STILL_FLAGGED, UNIT_PATCH, DEFAULT_QTY, RANGE_UPPER };
 
 /* ---- Meat rule overrides, 2026-09-21 ----
  * Applied after the 60th-percentile analysis in meat-rule.js. Four picks

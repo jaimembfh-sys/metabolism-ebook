@@ -1,6 +1,6 @@
 # Recipe macros — rebuilt from USDA FoodData Central
 
-Generated 2026-09-21 by `tools/macros/report.js`. **Review only — no recipe, PDF or `recipes.json` has been changed.**
+Generated 2026-09-22 by `tools/macros/report.js`. **Review only — no recipe, PDF or `recipes.json` has been changed.**
 
 Every number below traces to a USDA FDC id that was found by searching the dataset and then read to confirm it is the right food. `verifyMap()` asserts each id still resolves to the description it was chosen for and throws otherwise.
 

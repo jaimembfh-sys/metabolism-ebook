@@ -19,7 +19,7 @@ const SCRATCH = process.env.MACRO_INDEX ||
 const { MAP, NEGLIGIBLE, FLAGGED, verifyMap } = require("./usda-map.js");
 const { EXTRA_MAP, BRANDED, AMBIGUOUS } = require("./usda-map-extra.js");
 const MAP2 = require("./usda-map-2.js");
-const { MAP3, EXTRA_NEGLIGIBLE, STILL_FLAGGED, UNIT_PATCH, DEFAULT_QTY } = require("./usda-map-3.js");
+const { MAP3, EXTRA_NEGLIGIBLE, STILL_FLAGGED, UNIT_PATCH, DEFAULT_QTY, RANGE_UPPER } = require("./usda-map-3.js");
 // Meat picks from the 60th-percentile rule in meat-rule.js. Declared here
 // because the verification block below reads it.
 const MEAT_OVERRIDE = require("./usda-map-3.js").MEAT_OVERRIDE || {};
@@ -392,6 +392,12 @@ function resolve(line) {
   if (qty == null) {
     const dq = findKeyAny(forms, DEFAULT_QTY);
     if (dq) qty = DEFAULT_QTY[dq];
+  }
+  // A range is costed at its midpoint unless this ingredient is listed to take
+  // the upper bound instead.
+  if (qtyRange && findKeyAny(forms, RANGE_UPPER)) {
+    const hi = parseFloat(String(qtyRange).split(/[–-]/)[1]);
+    if (!isNaN(hi)) { qty = hi; note = (note ? note + "; " : "") + "calculated at the upper end of the " + qtyRange + " range"; }
   }
   let g = null;
   if (unit === "g") g = qty;
