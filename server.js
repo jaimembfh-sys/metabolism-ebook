@@ -2,7 +2,9 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 3000;
+// PORT=4173 node server.js — 3000 is often taken by another project on this
+// machine, and a hardcoded port meant the server just died with EADDRINUSE.
+const PORT = Number(process.env.PORT) || 3000;
 const DIR = __dirname;
 
 const MIME_TYPES = {
