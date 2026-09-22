@@ -9,11 +9,11 @@ source_file: recipes/Stuffed_Bell_Peppers_Recipe.pdf
 ## Ingredients
 
 ### Prep the Peppers
-- 6 large bell peppers, tops and cores removed
+- 6 large bell peppers (about 2 1/4 lbs), tops and cores removed
 
 ### Sauté the Onion and Garlic
 - 2 Tbsp beef tallow
-- 1 medium onion, diced
+- 1 medium onion (about 4 oz), diced
 - 2 to 3 cloves garlic, minced
 
 ### Cook the Meat

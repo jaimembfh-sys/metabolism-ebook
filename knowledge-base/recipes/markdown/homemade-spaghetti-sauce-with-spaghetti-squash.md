@@ -11,7 +11,7 @@ source_file: recipes/Homemade_Spaghetti_Sauce_with_Spaghetti_Squash_Recipe.pdf
 ### Brown the Beef and Onion
 - 1 lb ground beef (or 1/2 lb ground Italian sausage and 1/2 lb ground beef)
 - Salt and pepper, to taste
-- 1 medium onion, chopped
+- 1 medium onion (about 4 oz), chopped
 
 ### Simmer the Sauce
 - 2 cloves garlic, minced
@@ -22,7 +22,7 @@ source_file: recipes/Homemade_Spaghetti_Sauce_with_Spaghetti_Squash_Recipe.pdf
 - 1/4 cup fresh basil leaves, chopped, or 1 tsp dried basil
 
 ### Roast the Spaghetti Squash
-- 1 medium spaghetti squash
+- 1 medium spaghetti squash (about 2 1/4 lbs)
 - 1 Tbsp olive oil
 - Salt and pepper, to taste
 

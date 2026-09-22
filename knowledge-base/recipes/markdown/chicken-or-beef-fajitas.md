@@ -9,9 +9,9 @@ source_file: recipes/Chicken_or_Beef_Fajitas_Recipe.pdf
 ## Ingredients
 
 ### Prep the Vegetables
-- 1 medium onion, cut into slivers
-- 3 bell peppers (red, yellow, green, or orange), sliced
-- 1 lime
+- 1 medium onion (about 4 oz), cut into slivers
+- 3 bell peppers (red, yellow, green, or orange, about 13 oz), sliced
+- 1 lime (about 2 oz)
 
 ### Make the Marinade and Season the Meat
 - Juice of 1/2 lime

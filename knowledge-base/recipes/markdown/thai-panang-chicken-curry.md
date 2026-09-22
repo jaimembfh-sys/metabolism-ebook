@@ -10,9 +10,9 @@ source_file: recipes/Thai_Panang_Chicken_Curry_Recipe.pdf
 
 ### Prep the Ingredients
 - 1 1/2 lbs boneless, skinless chicken thighs, chopped
-- 1 small onion, chopped
-- 1 red bell pepper, chopped
-- 1 orange bell pepper, chopped
+- 1 small onion (about 2 oz), chopped
+- 1 red bell pepper (about 4 oz), chopped
+- 1 orange bell pepper (about 4 oz), chopped
 - 2 cloves garlic, minced
 - 1 Tbsp fresh ginger, minced or grated
 - 12 kaffir lime leaves, crushed (optional)

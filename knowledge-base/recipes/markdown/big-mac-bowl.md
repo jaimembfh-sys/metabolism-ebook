@@ -10,7 +10,7 @@ source_file: recipes/Big_Mac_Bowl_Recipe.pdf
 
 ### Saute the Onion
 - 1 tbsp beef tallow
-- 1 regular yellow or white onion, diced
+- 1 regular yellow or white onion (about 4 oz), diced
 
 ### Cook the Beef
 - 1 lb ground beef
@@ -26,12 +26,12 @@ source_file: recipes/Big_Mac_Bowl_Recipe.pdf
 - Salt and pepper, to taste
 
 ### Prep the Toppings
-- 1 head leafy green or romaine lettuce, chopped
+- 1 head leafy green or romaine lettuce (about 11 oz), chopped
 - 1 cup shredded cheddar cheese
 - 1/2 cup crumbled bacon
 - 1/2 cup dill pickles, sliced
 - 1/2 cup diced tomatoes (optional)
-- 1 avocado, peeled, pitted, and chopped (optional)
+- 1 avocado (about 7 oz), peeled, pitted, and chopped (optional)
 - 1 tbsp sesame seeds
 
 ## Instructions

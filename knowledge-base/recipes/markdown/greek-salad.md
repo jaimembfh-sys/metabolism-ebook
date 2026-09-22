@@ -18,8 +18,8 @@ source_file: recipes/Greek_Salad_Recipe.pdf
 - Freshly ground black pepper
 
 ### Arrange and Dress the Salad
-- 1 English cucumber, sliced into 1/4-inch thick half-moons
-- 1 yellow or orange bell pepper, chopped into 1-inch pieces
+- 1 English cucumber (about 11 oz), sliced into 1/4-inch thick half-moons
+- 1 yellow or orange bell pepper (about 4 oz), chopped into 1-inch pieces
 - 2 cups halved cherry tomatoes
 - 5 oz feta cheese, cut into 1/2-inch cubes
 - 1/3 cup thinly sliced red onion

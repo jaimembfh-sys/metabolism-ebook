@@ -9,15 +9,15 @@ source_file: recipes/Traditional_Guacamole_with_Veggies_Recipe.pdf
 ## Ingredients
 
 ### Mash the Avocados
-- 4 large avocados, ripe
+- 4 large avocados (about 2 lbs), ripe
 
 ### Add the Mix-Ins
-- 1/2 small yellow onion, finely diced
-- 1 Roma tomato, diced
+- 1/2 small yellow onion (about 1 oz), finely diced
+- 1 Roma tomato (about 2 oz), diced
 - 3 Tbsp finely chopped fresh cilantro
 - 2 to 3 Tbsp finely diced jarred jalapeño (chop the jarred slices further so they're finely diced)
 - 2 garlic cloves, minced
-- 1 lime, juiced
+- 1 lime (about 2 oz), juiced
 - 3/4 tsp sea salt
 - Dash of Tapatío hot sauce
 

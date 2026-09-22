@@ -11,7 +11,7 @@ source_file: recipes/Thai_Slaw_with_Peanut_Dressing_Recipe.pdf
 ### Prep and Toss the Salad
 - 6 cups shredded cabbage
 - 1 cup matchstick carrots, roughly chopped
-- 1 red bell pepper, cut into matchsticks
+- 1 red bell pepper (about 4 oz), cut into matchsticks
 - 1/2 cup sliced green onions
 - 1/3 cup chopped cilantro
 - 2 cups sliced cooked chicken breast (grilled or rotisserie), optional, for a full meal

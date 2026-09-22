@@ -24,7 +24,7 @@ source_file: recipes/Salmon_and_Asparagus_Bake_Recipe.pdf
 - 1/4 tsp black pepper
 
 ### Finish and Bake
-- 1 small lemon, sliced into rings
+- 1 small lemon (about 2 oz), sliced into rings
 
 ## Instructions
 

@@ -10,8 +10,8 @@ source_file: recipes/Marinara_Sauce_Recipe.pdf
 
 ### Sauté the Vegetables
 - 2 Tbsp olive oil
-- 1 small onion, finely chopped
-- 2 stalks celery, finely chopped
+- 1 small onion (about 2 oz), finely chopped
+- 2 stalks celery (about 3 oz), finely chopped
 - 2 cloves garlic, minced
 
 ### Simmer the Sauce

@@ -9,7 +9,7 @@ source_file: recipes/Dairy_Free_Avocado_Chocolate_Mousse_Recipe.pdf
 ## Ingredients
 
 ### Blend the Mousse
-- 2 large ripe avocados
+- 2 large ripe avocados (about 1 lb)
 - 1/2 cup unsweetened cocoa powder
 - 1/2 cup coconut cream
 - 1/2 cup powdered sweetener <!-- linked_product: url=null -->

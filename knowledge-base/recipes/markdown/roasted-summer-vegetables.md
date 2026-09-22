@@ -9,11 +9,11 @@ source_file: recipes/Roasted_Summer_Vegetables_Recipe.pdf
 ## Ingredients
 
 ### Prep the Oven and Vegetables
-- 2 large zucchini or yellow summer squash, sliced into 1/2-inch thick slices
-- 2 bell peppers, cut into 1-inch pieces
+- 2 large zucchini or yellow summer squash (about 1 1/2 lbs), sliced into 1/2-inch thick slices
+- 2 bell peppers (about 8 oz), cut into 1-inch pieces
 - 8 oz cremini mushrooms, halved
-- 1 red onion, cut into 1-inch wedges
-- 2 large carrots, cut into 1/2-inch thick rounds or half-moons
+- 1 red onion (about 4 oz), cut into 1-inch wedges
+- 2 large carrots (about 5 oz), cut into 1/2-inch thick rounds or half-moons
 
 ### Season
 - 2 to 3 Tbsp avocado oil

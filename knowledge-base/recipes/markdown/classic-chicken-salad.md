@@ -10,8 +10,8 @@ source_file: recipes/Classic_Chicken_Salad_Recipe.pdf
 
 ### Chop and Combine the Chicken and Add-Ins
 - 3 cups cooked chicken, chopped or shredded
-- 3 celery ribs, diced
-- 1 tart apple (like Granny Smith), chopped
+- 3 celery ribs (about 4 oz), diced
+- 1 tart apple (like Granny Smith, about 6 oz), chopped
 - 1 1/2 green onions, thinly sliced
 - 1/4 cup pecans or walnuts, chopped
 

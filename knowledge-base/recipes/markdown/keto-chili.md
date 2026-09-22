@@ -12,7 +12,7 @@ source_file: recipes/Keto_Chili_Recipe.pdf
 - 1 lb ground beef
 
 ### Sauté Aromatics
-- 1 large onion, finely chopped
+- 1 large onion (about 5 oz), finely chopped
 - 3 garlic cloves, pressed
 
 ### Add Spices

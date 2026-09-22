@@ -9,7 +9,7 @@ source_file: recipes/Slow_Cooker_White_Chicken_Chili_Recipe.pdf
 ## Ingredients
 
 ### Load the Slow Cooker or Instant Pot
-- 1 small yellow onion, chopped
+- 1 small yellow onion (about 2 oz), chopped
 - 2 garlic cloves, minced
 - 2 lbs raw boneless, skinless chicken breasts
 - 2 1/2 cups low-sodium chicken broth

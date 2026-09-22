@@ -22,7 +22,7 @@ source_file: recipes/Taco_Salad_Recipe.pdf
 - 8 oz romaine lettuce, chopped
 - 1 1/3 cups grape tomatoes, halved
 - 3/4 cup shredded cheddar cheese
-- 1 medium avocado, cubed
+- 1 medium avocado (about 7 oz), cubed
 - 1/2 cup green onions, chopped
 - 1/3 cup salsa
 

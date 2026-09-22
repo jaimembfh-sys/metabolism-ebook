@@ -17,10 +17,10 @@ source_file: recipes/Grilled_Chicken_Kabobs_Recipe.pdf
 
 ### Marinate the Chicken and Vegetables
 - 1 lb boneless, skinless chicken breasts, cut into 1-inch pieces
-- 1 red bell pepper, cut into 1-inch pieces
-- 1 yellow bell pepper, cut into 1-inch pieces
+- 1 red bell pepper (about 4 oz), cut into 1-inch pieces
+- 1 yellow bell pepper (about 4 oz), cut into 1-inch pieces
 - 8 oz white button mushrooms, halved or quartered
-- 1 red onion, cut into 1-inch pieces
+- 1 red onion (about 4 oz), cut into 1-inch pieces
 
 ### Garnish and Serve
 - 1 Tbsp chopped parsley

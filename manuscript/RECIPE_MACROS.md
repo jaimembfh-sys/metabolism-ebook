@@ -17,7 +17,7 @@ Every number below traces to a USDA FDC id that was found by searching the datas
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 1 large avocado, ripe but firm, room temperature | 230 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food* | Foundation | 46.7 | 4.2 | 19.1 |
+| 1 large avocado (about 8 oz), ripe but firm, room temperature | 226.8 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 46.1 | 4.1 | 18.9 |
 | 1/2 tsp sea salt, divided | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp black pepper, freshly ground, divided | — | *negligible* | — | 0 | 0 | 0 |
 | 2 eggs, the smaller the better | 100 g | Eggs, Grade A, Large, egg whole <br>`FDC 748967` | Foundation | 10 | 12.4 | 1 |
@@ -25,14 +25,14 @@ Every number below traces to a USDA FDC id that was found by searching the datas
 | 1 Tbsp fresh parsley, chopped | — | *negligible* | — | 0 | 0 | 0 |
 | Remaining salt and pepper | — | *back-reference, already counted above* | — | 0 | 0 | 0 |
 | Bacon bits, optional | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **56.7** | **16.6** | **20.1** |
+| **WHOLE RECIPE TOTAL** | | | | **56.1** | **16.5** | **19.9** |
 
-Whole recipe: **622 kcal**, fat 56.7 g, protein 16.6 g, carbs 20.1 g, fiber 15.4 g
+Whole recipe: **615 kcal**, fat 56.1 g, protein 16.5 g, carbs 19.9 g, fiber 15.2 g
 Divided by **2 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 208 | **311** | +50% |
+| Calories | 208 | **308** | +48% |
 | Fat (g) | 17 | **28** | +65% |
 | Protein (g) | 7 | **8** | +14% |
 | Total carbs (g) | 8 | **10** | +25% |
@@ -40,7 +40,7 @@ Divided by **2 servings**.
 | Net carbs (g) | 2 | **2** | 0% |
 
 **Assumptions made:**
-- `1 large avocado, ripe but firm, room temperature` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food
+- `1 large avocado (about 8 oz), ripe but firm, room temperature` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line
 
 ---
 ## Beef and Broccoli
@@ -87,7 +87,7 @@ Divided by **4 servings**.
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
 | 1 tbsp beef tallow | 12.8 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 12.8 | 0 | 0 |
-| 1 regular yellow or white onion, diced | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
+| 1 regular yellow or white onion (about 4 oz), diced | 113.4 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0.1 | 0.9 | 9.8 |
 | 1 lb ground beef | 453.6 g | Beef, ground, 93% lean meat / 7% fat, raw  |  Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 173110 + 2514743` <br>*weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.* | SR Legacy + Foundation | 40.5 | 90.6 | 0 |
 | 2 garlic cloves, minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
 | 1/2 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
@@ -97,16 +97,16 @@ Divided by **4 servings**.
 | 2 tbsp dill relish | 30 g | Pickle relish, hot dog <br>`FDC 168560` | SR Legacy | 0.1 | 0.4 | 7 |
 | 1 tbsp dried onion flakes | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
 | Salt and pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| 1 head leafy green or romaine lettuce, chopped | 300 g | Lettuce, romaine, green, raw <br>`FDC 2346389` <br>*fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food* | Foundation | 0.2 | 2.9 | 12.2 |
+| 1 head leafy green or romaine lettuce (about 11 oz), chopped | 311.9 g | Lettuce, romaine, green, raw <br>`FDC 2346389` <br>*fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 0.2 | 3 | 12.6 |
 | 1 cup shredded cheddar cheese | 113 g | Cheese, cheddar <br>`FDC 328637` | Foundation | 38.4 | 26.3 | 2.8 |
 | 1/2 cup crumbled bacon | 30 g | Pork, cured, bacon, cooked, baked <br>`FDC 167914` | SR Legacy | 13 | 10.7 | 0.4 |
 | 1/2 cup dill pickles, sliced | 71.5 g | Pickles, cucumber, dill or kosher dill <br>`FDC 324653` | Foundation | 0.3 | 0.3 | 1.4 |
 | 1/2 cup diced tomatoes (optional) | 122.5 g | Tomatoes, canned, red, ripe, diced <br>`FDC 333281` <br>*fiber 1.9 g/100 g from SR Legacy 170051 — Foundation reports none for this food* | Foundation | 0.6 | 1 | 4.1 |
-| 1 avocado, peeled, pitted, and chopped (optional) | 201 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food* | Foundation | 40.8 | 3.6 | 16.7 |
+| 1 avocado (about 7 oz), peeled, pitted, and chopped (optional) | 198.5 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 40.3 | 3.6 | 16.5 |
 | 1 tbsp sesame seeds | 9 g | Seeds, sesame seeds, whole, dried <br>`FDC 170150` | SR Legacy | 4.5 | 1.6 | 2.1 |
-| **WHOLE RECIPE TOTAL** | | | | **209.6** | **140.8** | **78.7** |
+| **WHOLE RECIPE TOTAL** | | | | **209.1** | **140.9** | **79.2** |
 
-Whole recipe: **2716 kcal**, fat 209.6 g, protein 140.8 g, carbs 78.7 g, fiber 28.8 g
+Whole recipe: **2714 kcal**, fat 209.1 g, protein 140.9 g, carbs 79.2 g, fiber 28.9 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
@@ -119,10 +119,11 @@ Divided by **4 servings**.
 | Net carbs (g) | 8 | **13** | +63% |
 
 **Assumptions made:**
+- `1 regular yellow or white onion (about 4 oz), diced` — weight taken from the recipe line
 - `1 lb ground beef` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
-- `1 head leafy green or romaine lettuce, chopped` — fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food
+- `1 head leafy green or romaine lettuce (about 11 oz), chopped` — fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food; weight taken from the recipe line
 - `1/2 cup diced tomatoes (optional)` — fiber 1.9 g/100 g from SR Legacy 170051 — Foundation reports none for this food
-- `1 avocado, peeled, pitted, and chopped (optional)` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food
+- `1 avocado (about 7 oz), peeled, pitted, and chopped (optional)` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line
 
 ---
 ## Cast Iron Ribeye with Garlic Mushrooms
@@ -131,7 +132,7 @@ Divided by **4 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 2 boneless ribeye steaks (1 to 1.5 inches thick) | 680 g | Beef, ribeye, steak, boneless, choice, raw <br>`FDC 2646172` <br>*assumed 340 g each — 12 oz per steak, typical 1–1.5 inch cut* | Foundation | 136.3 | 127.5 | 0 |
+| 2 boneless ribeye steaks (1 to 1.5 inches thick, about 1 1/2 lbs) | 680 g | Beef, ribeye, steak, boneless, choice, raw <br>`FDC 2646172` <br>*assumed 340 g each — 12 oz per steak, typical 1–1.5 inch cut* | Foundation | 136.3 | 127.5 | 0 |
 | Kosher salt and freshly ground black pepper | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tbsp beef tallow, melted | 12.8 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 12.8 | 0 | 0 |
 | 2 tbsp butter | 28.4 g | Butter, salted <br>`FDC 173410` | SR Legacy | 23 | 0.2 | 0 |
@@ -153,7 +154,7 @@ Divided by **2 servings**.
 | Net carbs (g) | 4 | **4** | 0% |
 
 **Assumptions made:**
-- `2 boneless ribeye steaks (1 to 1.5 inches thick)` — assumed 340 g each — 12 oz per steak, typical 1–1.5 inch cut
+- `2 boneless ribeye steaks (1 to 1.5 inches thick, about 1 1/2 lbs)` — assumed 340 g each — 12 oz per steak, typical 1–1.5 inch cut
 
 ---
 ## Chicken or Beef Fajitas
@@ -162,9 +163,9 @@ Divided by **2 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 1 medium onion, cut into slivers | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
-| 3 bell peppers (red, yellow, green, or orange), sliced | 357 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.4 | 3.2 | 23.8 |
-| 1 lime | 67 g | Limes, raw <br>`FDC 168155` | SR Legacy | 0.1 | 0.5 | 7.1 |
+| 1 medium onion (about 4 oz), cut into slivers | 113.4 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0.1 | 0.9 | 9.8 |
+| 3 bell peppers (red, yellow, green, or orange, about 13 oz), sliced | 357 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.4 | 3.2 | 23.8 |
+| 1 lime (about 2 oz) | 56.7 g | Limes, raw <br>`FDC 168155` <br>*weight taken from the recipe line* | SR Legacy | 0.1 | 0.4 | 6 |
 | Juice of 1/2 lime | 15 g | Lime juice, raw <br>`FDC 168156` | SR Legacy | 0 | 0.1 | 1.3 |
 | 1 tsp chili powder | — | *negligible* | — | 0 | 0 | 0 |
 | 1/2 tsp smoked paprika | — | *negligible* | — | 0 | 0 | 0 |
@@ -175,9 +176,9 @@ Divided by **2 servings**.
 | 3 boneless skinless chicken breasts (about 1 lb), cut into strips, OR 1 lb skirt steak, sliced into strips against the grain | 453.6 g | Chicken, breast, boneless, skinless, raw <br>`FDC 2646170` <br>*weight taken from the recipe line* | Foundation | 8.8 | 102.2 | 0 |
 | 2 tbsp beef tallow or avocado oil, divided | 25.6 g | Fat, beef tallow <br>`FDC 171400` <br>*recipe offers a choice. Both are ~100% fat and within 1 kcal/g of each other, so the macro effect is negligible. Calculated with beef tallow.* | SR Legacy | 25.6 | 0 | 0 |
 | 1/4 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **35.2** | **107.1** | **42.1** |
+| **WHOLE RECIPE TOTAL** | | | | **35.2** | **107.0** | **41.3** |
 
-Whole recipe: **906 kcal**, fat 35.2 g, protein 107.1 g, carbs 42.1 g, fiber 8.3 g
+Whole recipe: **904 kcal**, fat 35.2 g, protein 107.0 g, carbs 41.3 g, fiber 8.1 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
@@ -185,11 +186,13 @@ Divided by **4 servings**.
 | Calories | 286 | **226** | -21% |
 | Fat (g) | 13 | **9** | -31% |
 | Protein (g) | 29 | **27** | -7% |
-| Total carbs (g) | 11 | **11** | 0% |
+| Total carbs (g) | 11 | **10** | -9% |
 | Fiber (g) | 3 | **2** | -33% |
-| Net carbs (g) | 8 | **9** | +13% |
+| Net carbs (g) | 8 | **8** | 0% |
 
 **Assumptions made:**
+- `1 medium onion (about 4 oz), cut into slivers` — weight taken from the recipe line
+- `1 lime (about 2 oz)` — weight taken from the recipe line
 - `3 boneless skinless chicken breasts (about 1 lb), cut into strips, OR 1 lb skirt steak, sliced into strips against the grain` — weight taken from the recipe line
 - `2 tbsp beef tallow or avocado oil, divided` — recipe offers a choice. Both are ~100% fat and within 1 kcal/g of each other, so the macro effect is negligible. Calculated with beef tallow.
 
@@ -232,8 +235,8 @@ Divided by **24 servings**.
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
 | 3 cups cooked chicken, chopped or shredded | 420 g | Chicken, broilers or fryers, meat only, cooked, roasted <br>`FDC 171054` | SR Legacy | 31.1 | 121.5 | 0 |
-| 3 celery ribs, diced | 120 g | Celery, raw <br>`FDC 2346405` <br>*fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food* | Foundation | 0.2 | 0.6 | 4 |
-| 1 tart apple (like Granny Smith), chopped | 182 g | Apples, granny smith, with skin, raw <br>`FDC 1750342` | Foundation | 0.3 | 0.5 | 25.7 |
+| 3 celery ribs (about 4 oz), diced | 113.4 g | Celery, raw <br>`FDC 2346405` <br>*fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 0.2 | 0.6 | 3.8 |
+| 1 tart apple (like Granny Smith, about 6 oz), chopped | 182 g | Apples, granny smith, with skin, raw <br>`FDC 1750342` | Foundation | 0.3 | 0.5 | 25.7 |
 | 1 1/2 green onions, thinly sliced | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 cup pecans or walnuts, chopped | 24.8 g | Nuts, pecans, halves, raw <br>`FDC 2346395` <br>*recipe offers a choice. Pecans 72 g fat/100g, walnuts 65 g. Calculated with pecans.* | Foundation | 18.1 | 2.5 | 3.1 |
 | 3/4 cup mayonnaise | 165 g | Salad dressing, mayonnaise, soybean oil, without salt <br>`FDC 171418` | SR Legacy | 131 | 1.8 | 4.5 |
@@ -242,14 +245,14 @@ Divided by **24 servings**.
 | 1/2 tsp seasoned salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp black pepper | — | *negligible* | — | 0 | 0 | 0 |
 | 1 1/2 tsp fresh dill, chopped (or 1/2 tsp dried dill) | — | *negligible* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **181.2** | **127.5** | **38.1** |
+| **WHOLE RECIPE TOTAL** | | | | **181.2** | **127.5** | **37.9** |
 
-Whole recipe: **2278 kcal**, fat 181.2 g, protein 127.5 g, carbs 38.1 g, fiber 8.5 g
+Whole recipe: **2277 kcal**, fat 181.2 g, protein 127.5 g, carbs 37.9 g, fiber 8.4 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 358 | **380** | +6% |
+| Calories | 358 | **379** | +6% |
 | Fat (g) | 26 | **30** | +15% |
 | Protein (g) | 22 | **21** | -5% |
 | Total carbs (g) | 6 | **6** | 0% |
@@ -257,7 +260,7 @@ Divided by **6 servings**.
 | Net carbs (g) | 4 | **5** | +25% |
 
 **Assumptions made:**
-- `3 celery ribs, diced` — fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food
+- `3 celery ribs (about 4 oz), diced` — fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food; weight taken from the recipe line
 - `1/4 cup pecans or walnuts, chopped` — recipe offers a choice. Pecans 72 g fat/100g, walnuts 65 g. Calculated with pecans.
 
 ---
@@ -269,9 +272,9 @@ Divided by **6 servings**.
 |---|---|---|---|---|---|---|
 | 6 cups chopped green leaf or romaine lettuce (or a mix of both) | 282 g | Lettuce, romaine, green, raw <br>`FDC 2346389` <br>*fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food* | Foundation | 0.2 | 2.8 | 11.4 |
 | 2 cups cubed rotisserie chicken | 280 g | Chicken, broilers or fryers, meat only, cooked, roasted <br>`FDC 171054` | SR Legacy | 20.7 | 81 | 0 |
-| 6 slices bacon, cooked and crumbled (or 1/3 cup bacon bits) | 168 g | Pork, cured, bacon, cooked, baked <br>`FDC 167914` | SR Legacy | 72.7 | 60 | 2.3 |
+| 6 slices bacon (about 6 oz), cooked and crumbled (or 1/3 cup bacon bits) | 170.1 g | Pork, cured, bacon, cooked, baked <br>`FDC 167914` <br>*weight taken from the recipe line* | SR Legacy | 73.6 | 60.8 | 2.3 |
 | 3 hard-boiled eggs, chopped | 150 g | Egg, whole, cooked, hard-boiled <br>`FDC 173424` | SR Legacy | 15.9 | 18.9 | 1.7 |
-| 1 avocado, diced | 201 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food* | Foundation | 40.8 | 3.6 | 16.7 |
+| 1 avocado (about 7 oz), diced | 198.5 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 40.3 | 3.6 | 16.5 |
 | 1 cup cherry or grape tomatoes, halved | 149 g | Tomatoes, grape, raw <br>`FDC 321360` | Foundation | 0.9 | 1.2 | 8.2 |
 | 1/2 cup crumbled blue cheese (or shredded cheddar) | 67.5 g | Cheese, blue <br>`FDC 172175` | SR Legacy | 19.4 | 14.4 | 1.6 |
 | 1/4 cup pickled red onion | 40 g | Onions, red, raw <br>`FDC 790577` | Foundation | 0 | 0.4 | 4 |
@@ -281,23 +284,24 @@ Divided by **6 servings**.
 | 1/4 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp black pepper | — | *negligible* | — | 0 | 0 | 0 |
 | Pinch of sugar (optional) | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **278.8** | **182.5** | **46.2** |
+| **WHOLE RECIPE TOTAL** | | | | **279.2** | **183.3** | **46.0** |
 
-Whole recipe: **3402 kcal**, fat 278.8 g, protein 182.5 g, carbs 46.2 g, fiber 23.6 g
+Whole recipe: **3409 kcal**, fat 279.2 g, protein 183.3 g, carbs 46.0 g, fiber 23.4 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 663 | **851** | +28% |
+| Calories | 663 | **852** | +29% |
 | Fat (g) | 55 | **70** | +27% |
 | Protein (g) | 34 | **46** | +35% |
-| Total carbs (g) | 9 | **12** | +33% |
+| Total carbs (g) | 9 | **11** | +22% |
 | Fiber (g) | 5 | **6** | +20% |
-| Net carbs (g) | 4 | **6** | +50% |
+| Net carbs (g) | 4 | **5** | +25% |
 
 **Assumptions made:**
 - `6 cups chopped green leaf or romaine lettuce (or a mix of both)` — fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food
-- `1 avocado, diced` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food
+- `6 slices bacon (about 6 oz), cooked and crumbled (or 1/3 cup bacon bits)` — weight taken from the recipe line
+- `1 avocado (about 7 oz), diced` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line
 
 ---
 ## Classic Deviled Eggs
@@ -434,28 +438,28 @@ Divided by **4 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 2 large ripe avocados | 460 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food* | Foundation | 93.4 | 8.3 | 38.3 |
+| 2 large ripe avocados (about 1 lb) | 453.6 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 92.1 | 8.2 | 37.8 |
 | 1/2 cup unsweetened cocoa powder | 43 g | Cocoa, dry powder, unsweetened <br>`FDC 169593` | SR Legacy | 5.9 | 8.4 | 24.9 |
 | 1/2 cup coconut cream | 119 g | Nuts, coconut cream, raw (liquid expressed from grated meat) <br>`FDC 170580` | SR Legacy | 41.3 | 4.3 | 7.9 |
 | 1/2 cup powdered sweetener <!-- linked_product: url=null --> | — | *negligible* | — | 0 | 0 | 0 |
 | 1/2 tsp vanilla extract | — | *negligible* | — | 0 | 0 | 0 |
 | Pinch of sea salt | — | *negligible* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **140.6** | **21.0** | **71.1** |
+| **WHOLE RECIPE TOTAL** | | | | **139.3** | **20.9** | **70.6** |
 
-Whole recipe: **1439 kcal**, fat 140.6 g, protein 21.0 g, carbs 71.1 g, fiber 49.3 g
+Whole recipe: **1425 kcal**, fat 139.3 g, protein 20.9 g, carbs 70.6 g, fiber 48.9 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 157 | **240** | +53% |
+| Calories | 157 | **238** | +52% |
 | Fat (g) | 14 | **23** | +64% |
-| Protein (g) | 2.8 | **4** | +43% |
+| Protein (g) | 2.8 | **3** | +7% |
 | Total carbs (g) | 10.5 | **12** | +14% |
 | Fiber (g) | 6.7 | **8** | +19% |
 | Net carbs (g) | 3.8 | **4** | +5% |
 
 **Assumptions made:**
-- `2 large ripe avocados` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food
+- `2 large ripe avocados (about 1 lb)` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line
 
 ---
 ## Fluffy Coconut Keto Pancakes
@@ -531,21 +535,21 @@ Divided by **12 servings**.
 | 1/4 tsp Dijon mustard | 1.3 g | Mustard, prepared, yellow <br>`FDC 326698` | Foundation | 0 | 0.1 | 0.1 |
 | 1/4 tsp sea salt | — | *negligible* | — | 0 | 0 | 0 |
 | Freshly ground black pepper | — | *negligible* | — | 0 | 0 | 0 |
-| 1 English cucumber, sliced into 1/4-inch thick half-moons | 300 g | Cucumber, with peel, raw <br>`FDC 2346406` <br>*fiber 0.5 g/100 g from SR Legacy 168409 — Foundation reports none for this food* | Foundation | 0.5 | 1.9 | 8.9 |
-| 1 yellow or orange bell pepper, chopped into 1-inch pieces | 119 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.1 | 1.1 | 7.9 |
+| 1 English cucumber (about 11 oz), sliced into 1/4-inch thick half-moons | 311.9 g | Cucumber, with peel, raw <br>`FDC 2346406` <br>*fiber 0.5 g/100 g from SR Legacy 168409 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 0.6 | 1.9 | 9.2 |
+| 1 yellow or orange bell pepper (about 4 oz), chopped into 1-inch pieces | 113.4 g | Peppers, bell, red, raw <br>`FDC 2258590` <br>*weight taken from the recipe line* | Foundation | 0.1 | 1 | 7.5 |
 | 2 cups halved cherry tomatoes | 298 g | Tomatoes, grape, raw <br>`FDC 321360` | Foundation | 1.9 | 2.5 | 16.4 |
 | 5 oz feta cheese, cut into 1/2-inch cubes | 141.8 g | Cheese, feta, whole milk, crumbled <br>`FDC 2259796` | Foundation | 27 | 27.9 | 7.9 |
 | 1/3 cup thinly sliced red onion | 53.3 g | Onions, red, raw <br>`FDC 790577` | Foundation | 0.1 | 0.5 | 5.3 |
 | 1/3 cup pitted Kalamata olives | 45 g | Olives, ripe, canned (small-extra large) <br>`FDC 169094` | SR Legacy | 4.9 | 0.4 | 2.7 |
 | 1/3 cup fresh mint leaves, optional | 8 g | Peppermint, fresh <br>`FDC 173474` | SR Legacy | 0.1 | 0.3 | 1.2 |
-| **WHOLE RECIPE TOTAL** | | | | **88.6** | **34.9** | **51.2** |
+| **WHOLE RECIPE TOTAL** | | | | **88.7** | **34.8** | **51.1** |
 
-Whole recipe: **1106 kcal**, fat 88.6 g, protein 34.9 g, carbs 51.2 g, fiber 11.9 g
+Whole recipe: **1106 kcal**, fat 88.7 g, protein 34.8 g, carbs 51.1 g, fiber 11.9 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 230 | **276** | +20% |
+| Calories | 230 | **277** | +20% |
 | Fat (g) | 20 | **22** | +10% |
 | Protein (g) | 6 | **9** | +50% |
 | Total carbs (g) | 9 | **13** | +44% |
@@ -553,7 +557,8 @@ Divided by **4 servings**.
 | Net carbs (g) | 7 | **10** | +43% |
 
 **Assumptions made:**
-- `1 English cucumber, sliced into 1/4-inch thick half-moons` — fiber 0.5 g/100 g from SR Legacy 168409 — Foundation reports none for this food
+- `1 English cucumber (about 11 oz), sliced into 1/4-inch thick half-moons` — fiber 0.5 g/100 g from SR Legacy 168409 — Foundation reports none for this food; weight taken from the recipe line
+- `1 yellow or orange bell pepper (about 4 oz), chopped into 1-inch pieces` — weight taken from the recipe line
 
 ---
 ## Grilled Chicken Kabobs
@@ -568,14 +573,14 @@ Divided by **4 servings**.
 | 1 tsp minced garlic | 2.8 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.2 | 0.8 |
 | Salt and pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | 1 lb boneless, skinless chicken breasts, cut into 1-inch pieces | 453.6 g | Chicken, breast, boneless, skinless, raw <br>`FDC 2646170` | Foundation | 8.8 | 102.2 | 0 |
-| 1 red bell pepper, cut into 1-inch pieces | 119 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.1 | 1.1 | 7.9 |
-| 1 yellow bell pepper, cut into 1-inch pieces | 119 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.1 | 1.1 | 7.9 |
+| 1 red bell pepper (about 4 oz), cut into 1-inch pieces | 113.4 g | Peppers, bell, red, raw <br>`FDC 2258590` <br>*weight taken from the recipe line* | Foundation | 0.1 | 1 | 7.5 |
+| 1 yellow bell pepper (about 4 oz), cut into 1-inch pieces | 113.4 g | Peppers, bell, red, raw <br>`FDC 2258590` <br>*weight taken from the recipe line* | Foundation | 0.1 | 1 | 7.5 |
 | 8 oz white button mushrooms, halved or quartered | 226.8 g | Mushrooms, white button <br>`FDC 1999629` | Foundation | 0.8 | 6.6 | 9.3 |
-| 1 red onion, cut into 1-inch pieces | 110 g | Onions, red, raw <br>`FDC 790577` | Foundation | 0.1 | 1 | 10.9 |
+| 1 red onion (about 4 oz), cut into 1-inch pieces | 113.4 g | Onions, red, raw <br>`FDC 790577` <br>*weight taken from the recipe line* | Foundation | 0.1 | 1.1 | 11.3 |
 | 1 Tbsp chopped parsley | — | *negligible* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **64.5** | **122.3** | **42.1** |
+| **WHOLE RECIPE TOTAL** | | | | **64.5** | **122.2** | **41.7** |
 
-Whole recipe: **1221 kcal**, fat 64.5 g, protein 122.3 g, carbs 42.1 g, fiber 10.0 g
+Whole recipe: **1220 kcal**, fat 64.5 g, protein 122.2 g, carbs 41.7 g, fiber 9.9 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
@@ -583,12 +588,15 @@ Divided by **4 servings**.
 | Calories | 220 | **305** | +39% |
 | Fat (g) | 12 | **16** | +33% |
 | Protein (g) | 27 | **31** | +15% |
-| Total carbs (g) | 8 | **11** | +38% |
-| Fiber (g) | 2 | **3** | +50% |
+| Total carbs (g) | 8 | **10** | +25% |
+| Fiber (g) | 2 | **2** | 0% |
 | Net carbs (g) | 6 | **8** | +33% |
 
 **Assumptions made:**
 - `1/3 cup tamari or coconut aminos` — recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.
+- `1 red bell pepper (about 4 oz), cut into 1-inch pieces` — weight taken from the recipe line
+- `1 yellow bell pepper (about 4 oz), cut into 1-inch pieces` — weight taken from the recipe line
+- `1 red onion (about 4 oz), cut into 1-inch pieces` — weight taken from the recipe line
 
 ---
 ## Homemade Avocado Oil Mayo
@@ -655,33 +663,35 @@ Divided by **12 servings**.
 |---|---|---|---|---|---|---|
 | 1 lb ground beef (or 1/2 lb ground Italian sausage and 1/2 lb ground beef) | 453.6 g | Beef, ground, 93% lean meat / 7% fat, raw  |  Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 173110 + 2514743` <br>*weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.* | SR Legacy + Foundation | 40.5 | 90.6 | 0 |
 | Salt and pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| 1 medium onion, chopped | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
+| 1 medium onion (about 4 oz), chopped | 113.4 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0.1 | 0.9 | 9.8 |
 | 2 cloves garlic, minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
 | 15 oz tomato sauce | 425.3 g | Tomato, sauce, canned, with salt added <br>`FDC 2685579` | Foundation | 1.6 | 5.7 | 26.9 |
 | 1 (15 oz) can diced tomatoes | 411 g | Tomatoes, canned, red, ripe, diced <br>`FDC 333281` <br>*fiber 1.9 g/100 g from SR Legacy 170051 — Foundation reports none for this food* | Foundation | 2.1 | 3.5 | 13.6 |
 | 1/2 tsp Italian seasoning | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp honey | 7 g | Honey <br>`FDC 169640` | SR Legacy | 0 | 0 | 5.8 |
 | 1/4 cup fresh basil leaves, chopped, or 1 tsp dried basil | 6 g | Basil, fresh <br>`FDC 172232` | SR Legacy | 0 | 0.2 | 0.2 |
-| 1 medium spaghetti squash | 1000 g | Squash, winter, spaghetti, raw <br>`FDC 169298` | SR Legacy | 5.7 | 6.4 | 69.1 |
+| 1 medium spaghetti squash (about 2 1/4 lbs) | 1020.6 g | Squash, winter, spaghetti, raw <br>`FDC 169298` <br>*weight taken from the recipe line* | SR Legacy | 5.8 | 6.5 | 70.5 |
 | 1 Tbsp olive oil | 13.5 g | Oil, olive, salad or cooking <br>`FDC 171413` | SR Legacy | 13.5 | 0 | 0 |
 | Salt and pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **63.5** | **107.7** | **126.8** |
+| **WHOLE RECIPE TOTAL** | | | | **63.6** | **107.8** | **128.5** |
 
-Whole recipe: **1447 kcal**, fat 63.5 g, protein 107.7 g, carbs 126.8 g, fiber 32.2 g
+Whole recipe: **1455 kcal**, fat 63.6 g, protein 107.8 g, carbs 128.5 g, fiber 32.6 g
 Divided by **5 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 265 | **289** | +9% |
+| Calories | 265 | **291** | +10% |
 | Fat (g) | 16 | **13** | -19% |
 | Protein (g) | 18 | **22** | +22% |
-| Total carbs (g) | 15 | **25** | +67% |
-| Fiber (g) | 3 | **6** | +100% |
+| Total carbs (g) | 15 | **26** | +73% |
+| Fiber (g) | 3 | **7** | +133% |
 | Net carbs (g) | 12 | **19** | +58% |
 
 **Assumptions made:**
 - `1 lb ground beef (or 1/2 lb ground Italian sausage and 1/2 lb ground beef)` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
+- `1 medium onion (about 4 oz), chopped` — weight taken from the recipe line
 - `1 (15 oz) can diced tomatoes` — fiber 1.9 g/100 g from SR Legacy 170051 — Foundation reports none for this food
+- `1 medium spaghetti squash (about 2 1/4 lbs)` — weight taken from the recipe line
 
 ---
 ## Keto Carolina Mustard BBQ Sauce
@@ -756,16 +766,16 @@ Divided by **6 servings**.
 | 2 tsp Italian seasoning | — | *negligible* | — | 0 | 0 | 0 |
 | Avocado oil spray | — | *negligible* | — | 0 | 0 | 0 |
 | 2 tbsp avocado oil (oven/skillet method only) | 27.2 g | Oil, avocado <br>`FDC 173573` | SR Legacy | 27.2 | 0 | 0 |
-| 1 stick unsalted butter | 113 g | Butter, without salt <br>`FDC 173430` | SR Legacy | 91.7 | 1 | 0.1 |
+| 1 stick unsalted butter (about 4 oz) | 113.4 g | Butter, without salt <br>`FDC 173430` <br>*weight taken from the recipe line* | SR Legacy | 92 | 1 | 0.1 |
 | 1/2 cup chicken broth | 120 g | Soup, chicken broth, ready-to-serve <br>`FDC 174536` | SR Legacy | 0.3 | 0.8 | 0.5 |
 | 1/2 cup heavy cream | 119 g | Cream, heavy <br>`FDC 2346386` | Foundation | 42.3 | 2.4 | 4.5 |
 | 2 oz cream cheese | 56.7 g | Cream cheese, full fat, block <br>`FDC 2346385` | Foundation | 19 | 3.3 | 2.6 |
 | 2 tbsp Dijon mustard | 30 g | Mustard, prepared, yellow <br>`FDC 326698` | Foundation | 1 | 1.3 | 1.6 |
 | 1 cup shredded Parmesan cheese | 100 g | Cheese, parmesan, grated <br>`FDC 325036` | Foundation | 28 | 29.6 | 12.4 |
 | Salt and pepper to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **323.0** | **288.3** | **45.5** |
+| **WHOLE RECIPE TOTAL** | | | | **323.3** | **288.3** | **45.5** |
 
-Whole recipe: **4224 kcal**, fat 323.0 g, protein 288.3 g, carbs 45.5 g, fiber 7.2 g
+Whole recipe: **4227 kcal**, fat 323.3 g, protein 288.3 g, carbs 45.5 g, fiber 7.2 g
 Divided by **8 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
@@ -776,6 +786,9 @@ Divided by **8 servings**.
 | Total carbs (g) | 4 | **6** | +50% |
 | Fiber (g) | 1 | **1** | 0% |
 | Net carbs (g) | 3 | **5** | +67% |
+
+**Assumptions made:**
+- `1 stick unsalted butter (about 4 oz)` — weight taken from the recipe line
 
 ---
 ## Keto Chicken Parmesan
@@ -820,7 +833,7 @@ Divided by **6 servings**.
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
 | 1 lb ground beef | 453.6 g | Beef, ground, 93% lean meat / 7% fat, raw  |  Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 173110 + 2514743` <br>*weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.* | SR Legacy + Foundation | 40.5 | 90.6 | 0 |
-| 1 large onion, finely chopped | 150 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 1.2 | 12.9 |
+| 1 large onion (about 5 oz), finely chopped | 141.8 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0.1 | 1.2 | 12.2 |
 | 3 garlic cloves, pressed | 9 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.6 | 2.5 |
 | 2 whole cloves | — | *negligible* | — | 0 | 0 | 0 |
 | 1 1/2 tbsp chili powder | — | *negligible* | — | 0 | 0 | 0 |
@@ -832,9 +845,9 @@ Divided by **6 servings**.
 | 1 cup beef broth | 240 g | Soup, beef broth or bouillon canned, ready-to-serve <br>`FDC 171538` | SR Legacy | 0.5 | 2.7 | 0.1 |
 | 3 tbsp diced jarred jalapeños | 16.8 g | Peppers, jalapeno, raw <br>`FDC 168576` | SR Legacy | 0.1 | 0.2 | 1.1 |
 | 1/2 tsp kosher salt, to taste | — | *negligible* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **43.5** | **99.1** | **32.1** |
+| **WHOLE RECIPE TOTAL** | | | | **43.5** | **99.1** | **31.4** |
 
-Whole recipe: **921 kcal**, fat 43.5 g, protein 99.1 g, carbs 32.1 g, fiber 12.4 g
+Whole recipe: **917 kcal**, fat 43.5 g, protein 99.1 g, carbs 31.4 g, fiber 12.3 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
@@ -848,6 +861,7 @@ Divided by **6 servings**.
 
 **Assumptions made:**
 - `1 lb ground beef` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
+- `1 large onion (about 5 oz), finely chopped` — weight taken from the recipe line
 - `1 (15 oz) can diced tomatoes` — fiber 1.9 g/100 g from SR Legacy 170051 — Foundation reports none for this food
 
 ---
@@ -917,8 +931,8 @@ Divided by **1 servings**.
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
 | 2 Tbsp olive oil | 27 g | Oil, olive, salad or cooking <br>`FDC 171413` | SR Legacy | 27 | 0 | 0 |
-| 1 small onion, finely chopped | 70 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0 | 0.6 | 6 |
-| 2 stalks celery, finely chopped | 80 g | Celery, raw <br>`FDC 2346405` <br>*fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food* | Foundation | 0.1 | 0.4 | 2.7 |
+| 1 small onion (about 2 oz), finely chopped | 56.7 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0 | 0.5 | 4.9 |
+| 2 stalks celery (about 3 oz), finely chopped | 85.1 g | Celery, raw <br>`FDC 2346405` <br>*fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 0.1 | 0.4 | 2.8 |
 | 2 cloves garlic, minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
 | 54 oz canned crushed tomatoes | 1530.9 g | Tomatoes, crushed, canned <br>`FDC 2685581` | Foundation | 6.1 | 22 | 109.3 |
 | 1/4 cup basil, roughly chopped | 6 g | Basil, fresh <br>`FDC 172232` | SR Legacy | 0 | 0.2 | 0.2 |
@@ -926,22 +940,23 @@ Divided by **1 servings**.
 | 1 tsp lemon juice | — | *negligible* | — | 0 | 0 | 0 |
 | 1/2 tsp salt, to taste | — | *negligible* | — | 0 | 0 | 0 |
 | 1/2 tsp pepper | — | *negligible* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **33.2** | **23.6** | **119.9** |
+| **WHOLE RECIPE TOTAL** | | | | **33.2** | **23.5** | **118.9** |
 
-Whole recipe: **782 kcal**, fat 33.2 g, protein 23.6 g, carbs 119.9 g, fiber 32.7 g
+Whole recipe: **778 kcal**, fat 33.2 g, protein 23.5 g, carbs 118.9 g, fiber 32.6 g
 Divided by **1 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 72 | **782** | +986% |
+| Calories | 72 | **778** | +981% |
 | Fat (g) | 2 | **33** | +1550% |
 | Protein (g) | 1 | **24** | +2300% |
-| Total carbs (g) | 5 | **120** | +2300% |
+| Total carbs (g) | 5 | **119** | +2280% |
 | Fiber (g) | 3 | **33** | +1000% |
-| Net carbs (g) | 2 | **87** | +4250% |
+| Net carbs (g) | 2 | **86** | +4200% |
 
 **Assumptions made:**
-- `2 stalks celery, finely chopped` — fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food
+- `1 small onion (about 2 oz), finely chopped` — weight taken from the recipe line
+- `2 stalks celery (about 3 oz), finely chopped` — fiber 1.6 g/100 g from SR Legacy 169988 — Foundation reports none for this food; weight taken from the recipe line
 
 ---
 ## Oven-Baked Bacon
@@ -1039,29 +1054,35 @@ Divided by **4 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 2 large zucchini or yellow summer squash, sliced into 1/2-inch thick slices | 640 g | Squash, summer, green, zucchini, includes skin, raw <br>`FDC 2685568` | Foundation | 1.3 | 6.3 | 20.9 |
-| 2 bell peppers, cut into 1-inch pieces | 238 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.3 | 2.1 | 15.8 |
+| 2 large zucchini or yellow summer squash (about 1 1/2 lbs), sliced into 1/2-inch thick slices | 680.4 g | Squash, summer, green, zucchini, includes skin, raw <br>`FDC 2685568` <br>*weight taken from the recipe line* | Foundation | 1.4 | 6.7 | 22.2 |
+| 2 bell peppers (about 8 oz), cut into 1-inch pieces | 226.8 g | Peppers, bell, red, raw <br>`FDC 2258590` <br>*weight taken from the recipe line* | Foundation | 0.3 | 2 | 15.1 |
 | 8 oz cremini mushrooms, halved | 226.8 g | Mushrooms, white button <br>`FDC 1999629` | Foundation | 0.8 | 6.6 | 9.3 |
-| 1 red onion, cut into 1-inch wedges | 110 g | Onions, red, raw <br>`FDC 790577` | Foundation | 0.1 | 1 | 10.9 |
-| 2 large carrots, cut into 1/2-inch thick rounds or half-moons | 144 g | Carrots, mature, raw <br>`FDC 2258586` | Foundation | 0.5 | 1.4 | 14.8 |
+| 1 red onion (about 4 oz), cut into 1-inch wedges | 113.4 g | Onions, red, raw <br>`FDC 790577` <br>*weight taken from the recipe line* | Foundation | 0.1 | 1.1 | 11.3 |
+| 2 large carrots (about 5 oz), cut into 1/2-inch thick rounds or half-moons | 141.8 g | Carrots, mature, raw <br>`FDC 2258586` <br>*weight taken from the recipe line* | Foundation | 0.5 | 1.3 | 14.6 |
 | 2 to 3 Tbsp avocado oil | 34 g | Oil, avocado <br>`FDC 173573` | SR Legacy | 34 | 0 | 0 |
 | 1 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp pepper | — | *negligible* | — | 0 | 0 | 0 |
 | Optional: 1 tsp granulated garlic or onion powder, 1 tsp dried herbs (oregano, rosemary, thyme, or Italian seasoning), 1/2 tsp paprika, 1/4 tsp red pepper flakes | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | Fresh herb sprigs, for garnish, optional | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **37.0** | **17.4** | **71.7** |
+| **WHOLE RECIPE TOTAL** | | | | **37.1** | **17.7** | **72.5** |
 
-Whole recipe: **637 kcal**, fat 37.0 g, protein 17.4 g, carbs 71.7 g, fiber 18.4 g
+Whole recipe: **641 kcal**, fat 37.1 g, protein 17.7 g, carbs 72.5 g, fiber 18.5 g
 Divided by **7 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 80 | **91** | +14% |
+| Calories | 80 | **92** | +15% |
 | Fat (g) | 4 | **5** | +25% |
-| Protein (g) | 2 | **2** | 0% |
+| Protein (g) | 2 | **3** | +50% |
 | Total carbs (g) | 10 | **10** | 0% |
 | Fiber (g) | 3 | **3** | 0% |
 | Net carbs (g) | 7 | **7** | 0% |
+
+**Assumptions made:**
+- `2 large zucchini or yellow summer squash (about 1 1/2 lbs), sliced into 1/2-inch thick slices` — weight taken from the recipe line
+- `2 bell peppers (about 8 oz), cut into 1-inch pieces` — weight taken from the recipe line
+- `1 red onion (about 4 oz), cut into 1-inch wedges` — weight taken from the recipe line
+- `2 large carrots (about 5 oz), cut into 1/2-inch thick rounds or half-moons` — weight taken from the recipe line
 
 ---
 ## Salmon and Asparagus Bake
@@ -1081,10 +1102,10 @@ Divided by **7 servings**.
 | 2 tbsp fresh parsley or dill, finely chopped | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp black pepper | — | *negligible* | — | 0 | 0 | 0 |
-| 1 small lemon, sliced into rings | 58 g | Lemons, raw, without peel <br>`FDC 167746` | SR Legacy | 0.2 | 0.6 | 5.4 |
-| **WHOLE RECIPE TOTAL** | | | | **174.1** | **206.1** | **53.5** |
+| 1 small lemon (about 2 oz), sliced into rings | 56.7 g | Lemons, raw, without peel <br>`FDC 167746` <br>*weight taken from the recipe line* | SR Legacy | 0.2 | 0.6 | 5.3 |
+| **WHOLE RECIPE TOTAL** | | | | **174.1** | **206.1** | **53.4** |
 
-Whole recipe: **2569 kcal**, fat 174.1 g, protein 206.1 g, carbs 53.5 g, fiber 18.9 g
+Whole recipe: **2568 kcal**, fat 174.1 g, protein 206.1 g, carbs 53.4 g, fiber 18.9 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
@@ -1098,6 +1119,7 @@ Divided by **6 servings**.
 
 **Assumptions made:**
 - `2 lbs salmon fillet, cut into six 6 oz portions` — blended at the 60th percentile between the two entries — 9.84 g fat/100 g, just above their 9.02 g midpoint. Assumes a mid-range salmon.
+- `1 small lemon (about 2 oz), sliced into rings` — weight taken from the recipe line
 
 ---
 ## Sausage and Cabbage Skillet
@@ -1109,15 +1131,15 @@ Divided by **6 servings**.
 | 1 lb kielbasa smoked sausage, halved lengthwise and sliced into 1/2-inch pieces | 453.6 g | Polish sausage, pork <br>`FDC 174577` | SR Legacy | 130.3 | 64 | 7.4 |
 | 1/2 tbsp beef tallow | 6.4 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 6.4 | 0 | 0 |
 | 1 tbsp beef tallow | 12.8 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 12.8 | 0 | 0 |
-| 1 medium onion, chopped | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
+| 1 medium onion (about 4 oz), chopped | 113.4 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0.1 | 0.9 | 9.8 |
 | 3 garlic cloves, minced | 9 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.6 | 2.5 |
 | 1 medium head red or green cabbage, cored and chopped into 1-inch pieces (about 2 lbs) | 907.2 g | Cabbage, green, raw <br>`FDC 2346407` <br>*fiber 2.5 g/100 g from SR Legacy 169975 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 2.1 | 8.7 | 57.9 |
 | 3/4 tsp kosher salt, plus more to taste | — | *negligible* | — | 0 | 0 | 0 |
 | 1/2 tsp black pepper | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp red wine vinegar | — | *negligible* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **151.7** | **74.2** | **77.3** |
+| **WHOLE RECIPE TOTAL** | | | | **151.7** | **74.2** | **77.6** |
 
-Whole recipe: **1959 kcal**, fat 151.7 g, protein 74.2 g, carbs 77.3 g, fiber 25.0 g
+Whole recipe: **1961 kcal**, fat 151.7 g, protein 74.2 g, carbs 77.6 g, fiber 25.1 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
@@ -1130,6 +1152,7 @@ Divided by **4 servings**.
 | Net carbs (g) | 11 | **13** | +18% |
 
 **Assumptions made:**
+- `1 medium onion (about 4 oz), chopped` — weight taken from the recipe line
 - `1 medium head red or green cabbage, cored and chopped into 1-inch pieces (about 2 lbs)` — fiber 2.5 g/100 g from SR Legacy 169975 — Foundation reports none for this food; weight taken from the recipe line
 
 ---
@@ -1174,7 +1197,7 @@ Divided by **4 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 1 small yellow onion, chopped | 70 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0 | 0.6 | 6 |
+| 1 small yellow onion (about 2 oz), chopped | 56.7 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0 | 0.5 | 4.9 |
 | 2 garlic cloves, minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
 | 2 lbs raw boneless, skinless chicken breasts | 907.2 g | Chicken, breast, boneless, skinless, raw <br>`FDC 2646170` | Foundation | 17.5 | 204.3 | 0 |
 | 2 1/2 cups low-sodium chicken broth | 600 g | Soup, chicken broth, ready-to-serve <br>`FDC 174536` | SR Legacy | 1.3 | 3.8 | 2.6 |
@@ -1191,19 +1214,22 @@ Divided by **4 servings**.
 | Fresh cilantro, optional | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | Shredded cheese, optional | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | Avocado, optional | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **102.2** | **255.5** | **128.1** |
+| **WHOLE RECIPE TOTAL** | | | | **102.2** | **255.4** | **127.0** |
 
-Whole recipe: **2452 kcal**, fat 102.2 g, protein 255.5 g, carbs 128.1 g, fiber 35.8 g
+Whole recipe: **2447 kcal**, fat 102.2 g, protein 255.4 g, carbs 127.0 g, fiber 35.6 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 325 | **409** | +26% |
+| Calories | 325 | **408** | +26% |
 | Fat (g) | 15 | **17** | +13% |
 | Protein (g) | 32 | **43** | +34% |
 | Total carbs (g) | 21 | **21** | 0% |
 | Fiber (g) | 5 | **6** | +20% |
 | Net carbs (g) | 16 | **15** | -6% |
+
+**Assumptions made:**
+- `1 small yellow onion (about 2 oz), chopped` — weight taken from the recipe line
 
 ---
 ## Spicy Thai Basil Chicken (Pad Krapow Gai)
@@ -1219,30 +1245,31 @@ Divided by **6 servings**.
 | 4 tsp monk fruit/allulose sweetener <!-- linked_product: url=null --> | — | *negligible* | — | 0 | 0 | 0 |
 | 2 Tbsp beef tallow or avocado oil | 25.6 g | Fat, beef tallow <br>`FDC 171400` <br>*recipe offers a choice. Both are ~100% fat and within 1 kcal/g of each other, so the macro effect is negligible. Calculated with beef tallow.* | SR Legacy | 25.6 | 0 | 0 |
 | 1 1/2 lbs boneless, skinless chicken, diced | 680.4 g | Chicken, breast, boneless, skinless, raw <br>`FDC 2646170` | Foundation | 13.2 | 153.3 | 0 |
-| 1 small yellow onion, chopped | 70 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0 | 0.6 | 6 |
-| 1 bell pepper (red, yellow, or orange), chopped | 119 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.1 | 1.1 | 7.9 |
+| 1 small yellow onion (about 2 oz), chopped | 56.7 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0 | 0.5 | 4.9 |
+| 1 bell pepper (red, yellow, or orange, about 4 oz), chopped | 119 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.1 | 1.1 | 7.9 |
 | 4 cloves garlic, minced | 12 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.8 | 3.4 |
 | 4 to 8 Thai chilies, diced (adjust to taste) | 12 g | Peppers, hot chili, red, raw <br>`FDC 170106` | SR Legacy | 0.1 | 0.2 | 1.1 |
 | 1 1/2 cups Holy Basil | 36 g | Basil, fresh <br>`FDC 172232` | SR Legacy | 0.2 | 1.1 | 1 |
 | Cauliflower rice, cooked, for serving | — | *excluded — recipe lists it 'for serving' with no amount, and the recipe's own nutrition line excludes it.* | — | 0 | 0 | 0 |
 | Fried eggs, optional | — | *excluded — optional, no amount given; excluded by the recipe's own nutrition line.* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **39.6** | **163.6** | **26.9** |
+| **WHOLE RECIPE TOTAL** | | | | **39.6** | **163.5** | **25.8** |
 
-Whole recipe: **1141 kcal**, fat 39.6 g, protein 163.6 g, carbs 26.9 g, fiber 4.2 g
+Whole recipe: **1136 kcal**, fat 39.6 g, protein 163.5 g, carbs 25.8 g, fiber 4.0 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 290 | **285** | -2% |
+| Calories | 290 | **284** | -2% |
 | Fat (g) | 15 | **10** | -33% |
 | Protein (g) | 30 | **41** | +37% |
-| Total carbs (g) | 6 | **7** | +17% |
+| Total carbs (g) | 6 | **6** | 0% |
 | Fiber (g) | 1 | **1** | 0% |
-| Net carbs (g) | 5 | **6** | +20% |
+| Net carbs (g) | 5 | **5** | 0% |
 
 **Assumptions made:**
 - `2 Tbsp tamari or coconut aminos` — recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.
 - `2 Tbsp beef tallow or avocado oil` — recipe offers a choice. Both are ~100% fat and within 1 kcal/g of each other, so the macro effect is negligible. Calculated with beef tallow.
+- `1 small yellow onion (about 2 oz), chopped` — weight taken from the recipe line
 - `Cauliflower rice, cooked, for serving` — recipe lists it 'for serving' with no amount, and the recipe's own nutrition line excludes it.
 - `Fried eggs, optional` — optional, no amount given; excluded by the recipe's own nutrition line.
 
@@ -1253,9 +1280,9 @@ Divided by **4 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 6 large bell peppers, tops and cores removed | 984 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 1.2 | 8.8 | 65.5 |
+| 6 large bell peppers (about 2 1/4 lbs), tops and cores removed | 1020.6 g | Peppers, bell, red, raw <br>`FDC 2258590` <br>*weight taken from the recipe line* | Foundation | 1.3 | 9.1 | 67.9 |
 | 2 Tbsp beef tallow | 25.6 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 25.6 | 0 | 0 |
-| 1 medium onion, diced | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
+| 1 medium onion (about 4 oz), diced | 113.4 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0.1 | 0.9 | 9.8 |
 | 2 to 3 cloves garlic, minced | 7.5 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.5 | 2.1 |
 | 1/2 lb ground beef | 226.8 g | Beef, ground, 93% lean meat / 7% fat, raw  |  Beef, ground, 90% lean meat / 10% fat, raw <br>`FDC 173110 + 2514743` <br>*weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.* | SR Legacy + Foundation | 20.3 | 45.3 | 0 |
 | 1/2 lb Italian sausage | 226.8 g | Sausage, Italian, sweet, links <br>`FDC 172952` | SR Legacy | 19.1 | 36.6 | 4.8 |
@@ -1266,21 +1293,23 @@ Divided by **4 servings**.
 | Kosher salt and pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | 1 cup shredded Parmesan cheese | 100 g | Cheese, parmesan, grated <br>`FDC 325036` | Foundation | 28 | 29.6 | 12.4 |
 | Fresh parsley, chopped, for garnish | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **95.9** | **127.3** | **120.3** |
+| **WHOLE RECIPE TOTAL** | | | | **96.0** | **127.6** | **123.0** |
 
-Whole recipe: **1801 kcal**, fat 95.9 g, protein 127.3 g, carbs 120.3 g, fiber 20.4 g
+Whole recipe: **1812 kcal**, fat 96.0 g, protein 127.6 g, carbs 123.0 g, fiber 20.9 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 330 | **300** | -9% |
+| Calories | 330 | **302** | -8% |
 | Fat (g) | 22 | **16** | -27% |
 | Protein (g) | 24 | **21** | -12% |
-| Total carbs (g) | 8 | **20** | +150% |
+| Total carbs (g) | 8 | **21** | +163% |
 | Fiber (g) | 3 | **3** | 0% |
-| Net carbs (g) | 5 | **17** | +240% |
+| Net carbs (g) | 5 | **18** | +260% |
 
 **Assumptions made:**
+- `6 large bell peppers (about 2 1/4 lbs), tops and cores removed` — weight taken from the recipe line
+- `1 medium onion (about 4 oz), diced` — weight taken from the recipe line
 - `1/2 lb ground beef` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
 - `1 cup cauliflower rice` — recipe lists it 'for serving' with no amount, and the recipe's own nutrition line excludes it.
 
@@ -1298,17 +1327,17 @@ Divided by **6 servings**.
 | 8 oz romaine lettuce, chopped | 226.8 g | Lettuce, romaine, green, raw <br>`FDC 2346389` <br>*fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food* | Foundation | 0.2 | 2.2 | 9.2 |
 | 1 1/3 cups grape tomatoes, halved | 198.7 g | Tomatoes, red, ripe, raw, year round average <br>`FDC 170457` | SR Legacy | 0.4 | 1.7 | 7.7 |
 | 3/4 cup shredded cheddar cheese | 84.8 g | Cheese, cheddar <br>`FDC 328637` | Foundation | 28.8 | 19.7 | 2.1 |
-| 1 medium avocado, cubed | 201 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food* | Foundation | 40.8 | 3.6 | 16.7 |
+| 1 medium avocado (about 7 oz), cubed | 198.5 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 40.3 | 3.6 | 16.5 |
 | 1/2 cup green onions, chopped | — | *negligible* | — | 0 | 0 | 0 |
 | 1/3 cup salsa | 81.7 g | Sauce, salsa, ready-to-serve <br>`FDC 746777` | Foundation | 0.2 | 1.2 | 5.5 |
-| **WHOLE RECIPE TOTAL** | | | | **115.5** | **120.8** | **62.0** |
+| **WHOLE RECIPE TOTAL** | | | | **115.0** | **120.8** | **61.8** |
 
-Whole recipe: **1745 kcal**, fat 115.5 g, protein 120.8 g, carbs 62.0 g, fiber 26.8 g
+Whole recipe: **1740 kcal**, fat 115.0 g, protein 120.8 g, carbs 61.8 g, fiber 26.6 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 342 | **291** | -15% |
+| Calories | 342 | **290** | -15% |
 | Fat (g) | 25 | **19** | -24% |
 | Protein (g) | 20 | **20** | 0% |
 | Total carbs (g) | 12 | **10** | -17% |
@@ -1318,7 +1347,7 @@ Divided by **6 servings**.
 **Assumptions made:**
 - `1 lb ground beef` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
 - `8 oz romaine lettuce, chopped` — fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food
-- `1 medium avocado, cubed` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food
+- `1 medium avocado (about 7 oz), cubed` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line
 
 ---
 ## Teriyaki Chicken
@@ -1364,9 +1393,9 @@ Divided by **4 servings**.
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
 | 1 1/2 lbs boneless, skinless chicken thighs, chopped | 680.4 g | Chicken, thigh, boneless, skinless, raw <br>`FDC 2646171` | Foundation | 53.9 | 126.6 | 0 |
-| 1 small onion, chopped | 70 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0 | 0.6 | 6 |
-| 1 red bell pepper, chopped | 119 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.1 | 1.1 | 7.9 |
-| 1 orange bell pepper, chopped | 119 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.1 | 1.1 | 7.9 |
+| 1 small onion (about 2 oz), chopped | 56.7 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0 | 0.5 | 4.9 |
+| 1 red bell pepper (about 4 oz), chopped | 113.4 g | Peppers, bell, red, raw <br>`FDC 2258590` <br>*weight taken from the recipe line* | Foundation | 0.1 | 1 | 7.5 |
+| 1 orange bell pepper (about 4 oz), chopped | 113.4 g | Peppers, bell, red, raw <br>`FDC 2258590` <br>*weight taken from the recipe line* | Foundation | 0.1 | 1 | 7.5 |
 | 2 cloves garlic, minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
 | 1 Tbsp fresh ginger, minced or grated | 6 g | Ginger root, raw <br>`FDC 169231` | SR Legacy | 0 | 0.1 | 1.1 |
 | 12 kaffir lime leaves, crushed (optional) | — | *negligible* | — | 0 | 0 | 0 |
@@ -1381,14 +1410,14 @@ Divided by **4 servings**.
 | Chopped chicken (from prep step) | — | *back-reference, already counted above* | — | 0 | 0 | 0 |
 | 1/2 cup fresh Thai basil, chopped (any basil works) | 12 g | Basil, fresh <br>`FDC 172232` | SR Legacy | 0.1 | 0.4 | 0.3 |
 | Juice of 1 lime (about 1 Tbsp) | 30 g | Lime juice, raw <br>`FDC 168156` | SR Legacy | 0 | 0.1 | 2.5 |
-| **WHOLE RECIPE TOTAL** | | | | **157.3** | **144.3** | **48.5** |
+| **WHOLE RECIPE TOTAL** | | | | **157.3** | **144.0** | **46.6** |
 
-Whole recipe: **2146 kcal**, fat 157.3 g, protein 144.3 g, carbs 48.5 g, fiber 8.7 g
+Whole recipe: **2137 kcal**, fat 157.3 g, protein 144.0 g, carbs 46.6 g, fiber 8.3 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 325 | **358** | +10% |
+| Calories | 325 | **356** | +10% |
 | Fat (g) | 22 | **26** | +18% |
 | Protein (g) | 24 | **24** | 0% |
 | Total carbs (g) | 7 | **8** | +14% |
@@ -1396,6 +1425,9 @@ Divided by **6 servings**.
 | Net carbs (g) | 5 | **7** | +40% |
 
 **Assumptions made:**
+- `1 small onion (about 2 oz), chopped` — weight taken from the recipe line
+- `1 red bell pepper (about 4 oz), chopped` — weight taken from the recipe line
+- `1 orange bell pepper (about 4 oz), chopped` — weight taken from the recipe line
 - `1 to 2 Tbsp Mae Ploy panang curry paste <!-- linked_product: url=null --> (start with 1 Tbsp if you've never made this before)` — not in FDC; read off the label. Fat and protein at the midpoint of the label's rounding range (0.25 g and 0.5 g per 10 g serving), so neither is understated.; calculated at the upper end of the 1–2 range
 
 ---
@@ -1407,7 +1439,7 @@ Divided by **6 servings**.
 |---|---|---|---|---|---|---|
 | 6 cups shredded cabbage | 534 g | Cabbage, green, raw <br>`FDC 2346407` <br>*fiber 2.5 g/100 g from SR Legacy 169975 — Foundation reports none for this food* | Foundation | 1.2 | 5.1 | 34.1 |
 | 1 cup matchstick carrots, roughly chopped | 122 g | Carrots, mature, raw <br>`FDC 2258586` | Foundation | 0.4 | 1.1 | 12.5 |
-| 1 red bell pepper, cut into matchsticks | 119 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.1 | 1.1 | 7.9 |
+| 1 red bell pepper (about 4 oz), cut into matchsticks | 113.4 g | Peppers, bell, red, raw <br>`FDC 2258590` <br>*weight taken from the recipe line* | Foundation | 0.1 | 1 | 7.5 |
 | 1/2 cup sliced green onions | 80 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0 | 0.7 | 6.9 |
 | 1/3 cup chopped cilantro | — | *negligible* | — | 0 | 0 | 0 |
 | 2 cups sliced cooked chicken breast (grilled or rotisserie), optional, for a full meal | 280 g | Chicken, broilers or fryers, meat only, cooked, roasted <br>`FDC 171054` | SR Legacy | 20.7 | 81 | 0 |
@@ -1422,9 +1454,9 @@ Divided by **6 servings**.
 | 2 large cloves garlic, finely minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
 | 1/4 cup peanuts, chopped | 32.5 g | Peanuts, raw <br>`FDC 2515376` | Foundation | 14.1 | 7.5 | 8.6 |
 | Sesame seeds, optional | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **135.4** | **144.2** | **117.2** |
+| **WHOLE RECIPE TOTAL** | | | | **135.4** | **144.1** | **116.8** |
 
-Whole recipe: **2168 kcal**, fat 135.4 g, protein 144.2 g, carbs 117.2 g, fiber 34.5 g
+Whole recipe: **2167 kcal**, fat 135.4 g, protein 144.1 g, carbs 116.8 g, fiber 34.4 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
@@ -1432,12 +1464,13 @@ Divided by **6 servings**.
 | Calories | 127 | **361** | +184% |
 | Fat (g) | 8 | **23** | +188% |
 | Protein (g) | 4 | **24** | +500% |
-| Total carbs (g) | 6 | **20** | +233% |
+| Total carbs (g) | 6 | **19** | +217% |
 | Fiber (g) | 2 | **6** | +200% |
-| Net carbs (g) | 4 | **14** | +250% |
+| Net carbs (g) | 4 | **13** | +225% |
 
 **Assumptions made:**
 - `6 cups shredded cabbage` — fiber 2.5 g/100 g from SR Legacy 169975 — Foundation reports none for this food
+- `1 red bell pepper (about 4 oz), cut into matchsticks` — weight taken from the recipe line
 - `3 Tbsp tamari or coconut aminos` — recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.
 
 ---
@@ -1447,32 +1480,35 @@ Divided by **6 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 4 large avocados, ripe | 920 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food* | Foundation | 186.9 | 16.7 | 76.6 |
-| 1/2 small yellow onion, finely diced | 35 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0 | 0.3 | 3 |
-| 1 Roma tomato, diced | 62 g | Tomato, roma <br>`FDC 1999634` | Foundation | 0.3 | 0.4 | 2.4 |
+| 4 large avocados (about 2 lbs), ripe | 907.2 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 184.3 | 16.4 | 75.5 |
+| 1/2 small yellow onion (about 1 oz), finely diced | 28.4 g | Onions, yellow, raw <br>`FDC 790646` <br>*weight taken from the recipe line* | Foundation | 0 | 0.2 | 2.4 |
+| 1 Roma tomato (about 2 oz), diced | 56.7 g | Tomato, roma <br>`FDC 1999634` <br>*weight taken from the recipe line* | Foundation | 0.2 | 0.4 | 2.2 |
 | 3 Tbsp finely chopped fresh cilantro | — | *negligible* | — | 0 | 0 | 0 |
 | 2 to 3 Tbsp finely diced jarred jalapeño (chop the jarred slices further so they're finely diced) | 14 g | Peppers, jalapeno, raw <br>`FDC 168576` | SR Legacy | 0.1 | 0.1 | 0.9 |
 | 2 garlic cloves, minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
-| 1 lime, juiced | 67 g | Limes, raw <br>`FDC 168155` | SR Legacy | 0.1 | 0.5 | 7.1 |
+| 1 lime (about 2 oz), juiced | 56.7 g | Limes, raw <br>`FDC 168155` <br>*weight taken from the recipe line* | SR Legacy | 0.1 | 0.4 | 6 |
 | 3/4 tsp sea salt | — | *negligible* | — | 0 | 0 | 0 |
 | Dash of Tapatío hot sauce | — | *negligible* | — | 0 | 0 | 0 |
 | Sliced cucumber and bell peppers, for serving | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **187.4** | **18.4** | **91.7** |
+| **WHOLE RECIPE TOTAL** | | | | **184.7** | **17.9** | **88.7** |
 
-Whole recipe: **1954 kcal**, fat 187.4 g, protein 18.4 g, carbs 91.7 g, fiber 65.4 g
+Whole recipe: **1921 kcal**, fat 184.7 g, protein 17.9 g, carbs 88.7 g, fiber 64.1 g
 Divided by **6.77 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 210 | **289** | +38% |
-| Fat (g) | 18 | **28** | +56% |
+| Calories | 210 | **284** | +35% |
+| Fat (g) | 18 | **27** | +50% |
 | Protein (g) | 3 | **3** | 0% |
-| Total carbs (g) | 12 | **14** | +17% |
-| Fiber (g) | 8 | **10** | +25% |
+| Total carbs (g) | 12 | **13** | +8% |
+| Fiber (g) | 8 | **9** | +13% |
 | Net carbs (g) | 4 | **4** | 0% |
 
 **Assumptions made:**
-- `4 large avocados, ripe` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food
+- `4 large avocados (about 2 lbs), ripe` — fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line
+- `1/2 small yellow onion (about 1 oz), finely diced` — weight taken from the recipe line
+- `1 Roma tomato (about 2 oz), diced` — weight taken from the recipe line
+- `1 lime (about 2 oz), juiced` — weight taken from the recipe line
 
 ---
 
@@ -1684,46 +1720,46 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 
 | Recipe | Fat | Protein | Net carbs | Calories |
 |---|---|---|---|---|
-| Avocado Egg Bake | 22g → **28g** | 9g → **8g** | 2g | 256 → **311** |
+| Avocado Egg Bake | 22g → **28g** | 9g → **8g** | 2g | 256 → **308** |
 | Beef and Broccoli | 23g → **25g** | 31g → **29g** | 10g → **9g** | 373 → **386** |
 | Big Mac Bowl | 47g → **52g** | 27g → **35g** | 11g → **13g** | 593 → **679** |
 | Cast Iron Ribeye with Garlic Mushrooms | 75g → **86g** | 69g → **67g** | 5g → **4g** | 966 → **1077** |
-| Chicken or Beef Fajitas | 10g → **9g** | 31g → **27g** | 7g → **9g** | 255 → **226** |
+| Chicken or Beef Fajitas | 10g → **9g** | 31g → **27g** | 7g → **8g** | 255 → **226** |
 | Chickpea and Macadamia Hummus | 19g → **17g** | 4g | 5g → **6g** | 202 → **195** |
-| Classic Chicken Salad | 30g | 21g | 4g → **5g** | 379 → **380** |
-| Classic Cobb Salad | 67g → **70g** | 46g | 4g → **6g** | 823 → **851** |
+| Classic Chicken Salad | 30g | 21g | 4g → **5g** | 379 |
+| Classic Cobb Salad | 67g → **70g** | 46g | 4g → **5g** | 823 → **852** |
 | Classic Deviled Eggs | 5g | 3g | 1g | 59 → **60** |
 | Classic Mustard Egg Salad | 22g | 10g | 6g → **5g** | 263 → **266** |
 | Classic Tuna Salad | 15g | 19g → **14g** | 6g → **5g** | 240 → **224** |
 | Coconut Chia Pudding | 30g | 5g | 5g → **4g** | 314 → **315** |
-| Dairy Free Avocado Chocolate Mousse | 19g → **23g** | 4g | 4g | 204 → **240** |
+| Dairy Free Avocado Chocolate Mousse | 19g → **23g** | 4g → **3g** | 4g | 204 → **238** |
 | Fluffy Coconut Keto Pancakes | 28g | 7g | 2g | 294 → **298** |
 | Grain-Free Cinnamon Coconut Granola | 19g → **18g** | 4g | 7g | 205 → **204** |
-| Greek Salad | 23g → **22g** | 6g → **9g** | 6g → **10g** | 253 → **276** |
+| Greek Salad | 23g → **22g** | 6g → **9g** | 6g → **10g** | 253 → **277** |
 | Grilled Chicken Kabobs | 17g → **16g** | 31g | 7g → **8g** | 311 → **305** |
 | Homemade Avocado Oil Mayo | 227g → **228g** | 6g | 2g → **1g** | 2043 → **2047** |
 | Homemade Greek Yogurt Ranch Dip | 8g | 2g | 1g | 87 → **86** |
-| Homemade Spaghetti Sauce with Spaghetti Squash | 18g → **13g** | 20g → **22g** | 17g → **19g** | 316 → **289** |
+| Homemade Spaghetti Sauce with Spaghetti Squash | 18g → **13g** | 20g → **22g** | 17g → **19g** | 316 → **291** |
 | Keto Carolina Mustard BBQ Sauce | 6g | 7g → **8g** | 7g → **5g** | 127 → **131** |
 | Keto Cheesecake Fluff | 27g | 3g | 3g | 267 → **261** |
 | Keto Chicken Cordon Bleu | 41g → **40g** | 36g | 5g | 536 → **528** |
 | Keto Chicken Parmesan | 39g → **36g** | 53g → **49g** | 10g | 615 → **567** |
 | Keto Chili | 11g → **7g** | 15g → **17g** | 2g → **3g** | 177 → **153** |
 | Keto Peanut Butter Balls | 5g → **13g** | 1g → **5g** | 8g → **11g** | 88 → **183** |
-| Marinara Sauce | 32g → **33g** | 28g → **24g** | 94g → **87g** | 794 → **782** |
+| Marinara Sauce | 32g → **33g** | 28g → **24g** | 94g → **86g** | 794 → **778** |
 | Pork Tenderloin Marinade | 11g → **12g** | 29g → **31g** | 1g | 228 → **243** |
 | Roasted Garlic Parmesan Brussels Sprouts | 12g → **13g** | 6g | 8g → **7g** | 167 → **174** |
-| Roasted Summer Vegetables | 5g | 3g → **2g** | 8g → **7g** | 99 → **91** |
+| Roasted Summer Vegetables | 5g | 3g | 8g → **7g** | 99 → **92** |
 | Salmon and Asparagus Bake | 25g → **29g** | 37g → **34g** | 4g → **6g** | 388 → **428** |
 | Sausage and Cabbage Skillet | 38g | 19g | 12g → **13g** | 484 → **490** |
 | Shrimp Scampi with Zucchini Noodles | 7g → **8g** | 16g → **19g** | 4g → **3g** | 147 → **165** |
-| Slow Cooker White Chicken Chili | 18g → **17g** | 42g → **43g** | 13g → **15g** | 402 → **409** |
-| Spicy Thai Basil Chicken (Pad Krapow Gai) | 11g → **10g** | 41g | 6g | 299 → **285** |
-| Stuffed Bell Peppers | 18g → **16g** | 20g → **21g** | 12g → **17g** | 303 → **300** |
-| Taco Salad | 17g → **19g** | 16g → **20g** | 5g → **6g** | 250 → **291** |
+| Slow Cooker White Chicken Chili | 18g → **17g** | 42g → **43g** | 13g → **15g** | 402 → **408** |
+| Spicy Thai Basil Chicken (Pad Krapow Gai) | 11g → **10g** | 41g | 6g → **5g** | 299 → **284** |
+| Stuffed Bell Peppers | 18g → **16g** | 20g → **21g** | 12g → **18g** | 303 → **302** |
+| Taco Salad | 17g → **19g** | 16g → **20g** | 5g → **6g** | 250 → **290** |
 | Teriyaki Chicken | 7g → **6g** | 34g | 2g | 215 → **204** |
-| Thai Panang Chicken Curry | 20g → **26g** | 29g → **24g** | 16g → **7g** | 359 → **358** |
-| Thai Slaw with Peanut Dressing | 23g | 24g | 12g → **14g** | 363 → **361** |
-| Traditional Guacamole with Veggies | 135g → **28g** | 20g → **3g** | 27g → **4g** | 1519 → **289** |
+| Thai Panang Chicken Curry | 20g → **26g** | 29g → **24g** | 16g → **7g** | 359 → **356** |
+| Thai Slaw with Peanut Dressing | 23g | 24g | 12g → **13g** | 363 → **361** |
+| Traditional Guacamole with Veggies | 135g → **27g** | 20g → **3g** | 27g → **4g** | 1519 → **284** |
 
 **41 of 43 recipes changed.** The before column is a real run with `MACRO_NO_FOUNDATION=1`, not a remembered figure.

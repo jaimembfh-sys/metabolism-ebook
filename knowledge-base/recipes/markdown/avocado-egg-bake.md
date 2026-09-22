@@ -9,7 +9,7 @@ source_file: recipes/Avocado_Egg_Bake_Recipe.pdf
 ## Ingredients
 
 ### Prep the Avocado
-- 1 large avocado, ripe but firm, room temperature
+- 1 large avocado (about 8 oz), ripe but firm, room temperature
 - 1/2 tsp sea salt, divided
 - 1/4 tsp black pepper, freshly ground, divided
 

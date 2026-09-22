@@ -20,8 +20,8 @@ source_file: recipes/Spicy_Thai_Basil_Chicken_Recipe.pdf
 - 1 1/2 lbs boneless, skinless chicken, diced
 
 ### Add the Aromatics and Vegetables
-- 1 small yellow onion, chopped
-- 1 bell pepper (red, yellow, or orange), chopped
+- 1 small yellow onion (about 2 oz), chopped
+- 1 bell pepper (red, yellow, or orange, about 4 oz), chopped
 - 4 cloves garlic, minced
 - 4 to 8 Thai chilies, diced (adjust to taste)
 

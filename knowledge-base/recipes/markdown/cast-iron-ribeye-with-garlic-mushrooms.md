@@ -9,7 +9,7 @@ source_file: recipes/Cast_Iron_Ribeye_with_Garlic_Mushrooms_Recipe.pdf
 ## Ingredients
 
 ### Bring the Steak to Room Temperature
-- 2 boneless ribeye steaks (1 to 1.5 inches thick)
+- 2 boneless ribeye steaks (1 to 1.5 inches thick, about 1 1/2 lbs)
 - Kosher salt and freshly ground black pepper
 
 ### Sear the Steaks

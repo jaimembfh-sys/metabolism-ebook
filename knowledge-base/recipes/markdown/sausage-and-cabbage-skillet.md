@@ -14,7 +14,7 @@ source_file: recipes/Sausage_and_Cabbage_Skillet_Recipe.pdf
 
 ### Cook the Onion, Garlic, and Cabbage
 - 1 tbsp beef tallow
-- 1 medium onion, chopped
+- 1 medium onion (about 4 oz), chopped
 - 3 garlic cloves, minced
 - 1 medium head red or green cabbage, cored and chopped into 1-inch pieces (about 2 lbs)
 - 3/4 tsp kosher salt, plus more to taste

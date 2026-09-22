@@ -13,9 +13,9 @@ source_file: recipes/Classic_Cobb_Salad_Recipe.pdf
 
 ### Arrange the Toppings in Rows
 - 2 cups cubed rotisserie chicken
-- 6 slices bacon, cooked and crumbled (or 1/3 cup bacon bits)
+- 6 slices bacon (about 6 oz), cooked and crumbled (or 1/3 cup bacon bits)
 - 3 hard-boiled eggs, chopped
-- 1 avocado, diced
+- 1 avocado (about 7 oz), diced
 - 1 cup cherry or grape tomatoes, halved
 - 1/2 cup crumbled blue cheese (or shredded cheddar)
 - 1/4 cup pickled red onion
