@@ -10580,9 +10580,15 @@ Format your response with clean HTML, matching the same convention used elsewher
                     instructions: parsed.instructions,
                     original_recipe_text: originalRecipeText || '',
                     substitution_note: substitutionNote || null,
-                    // Carried through so buildRecipeSavePayload can persist it — never
-                    // itself a source of numbers, see the schema description above.
-                    qualitative_macro_note: parsed.qualitative_macro_note || null
+                    /* Carried through so buildRecipeSavePayload can persist it.
+                     * The schema says it must contain no number and the prompt
+                     * repeats it, but both are instructions — this is the same
+                     * field the rest of this file guards in code, so it goes
+                     * through the same scrub. A note that was nothing but
+                     * numbers becomes null and the caller's fallback shows. */
+                    qualitative_macro_note: disorderedEatingSignal
+                        ? scrubText(parsed.qualitative_macro_note || null)
+                        : (parsed.qualitative_macro_note || null)
                 };
                 if (myRecipeTitleInput && !myRecipeTitleInput.value.trim()) myRecipeTitleInput.value = parsed.title || '';
                 myRecipeReviewServings.value = servingsToUse;
@@ -10605,7 +10611,10 @@ Format your response with clean HTML, matching the same convention used elsewher
                     myRecipeReviewProtein.value = '';
                     if (myRecipeReviewMacrosGrid) myRecipeReviewMacrosGrid.classList.add('hidden');
                     if (myRecipeReviewQualitativeNote) {
-                        myRecipeReviewQualitativeNote.textContent = parsed.qualitative_macro_note ||
+                        // Scrubbed, not raw: if the model slipped a number into
+                        // the one field it was told to keep qualitative, the
+                        // fallback shows instead of the number.
+                        myRecipeReviewQualitativeNote.textContent = scrubText(parsed.qualitative_macro_note) ||
                             'Nutrition details are kept qualitative rather than numeric for your protocol.';
                         myRecipeReviewQualitativeNote.classList.remove('hidden');
                     }
@@ -10884,7 +10893,11 @@ Format your response with clean HTML, matching the same convention used elsewher
                     const macroLine = macros
                         ? ('Calories: ' + escapeHtml(macros.calories) + ' &middot; Fat: ' + escapeHtml(macros.total_fat_g) + 'g &middot; Carbs: ' + escapeHtml(macros.total_carbs_g) + 'g<br>' +
                            'Fiber: ' + escapeHtml(macros.fiber_g) + 'g &middot; Net Carbs: ' + escapeHtml(macros.net_carbs_g) + 'g &middot; Protein: ' + escapeHtml(macros.protein_g) + 'g')
-                        : modelText(r.qualitative_macro_note || 'Nutrition details are kept qualitative rather than numeric for your protocol.');
+                        // Scrubbed on the way out as well as on the way in.
+                        // Recipes saved before the scrub existed can still carry
+                        // a number in this field, and this is the branch a
+                        // flagged user actually sees.
+                        : modelText(scrubText(r.qualitative_macro_note) || 'Nutrition details are kept qualitative rather than numeric for your protocol.');
                     card.innerHTML =
                         '<div class="flex items-start justify-between gap-2 mb-2">' +
                             '<h5 class="font-serif text-lg font-bold text-brand-dark">' + escapeHtml(r.title) + '</h5>' +
