@@ -1371,7 +1371,7 @@ Divided by **4 servings**.
 | 1 Tbsp fresh ginger, minced or grated | 6 g | Ginger root, raw <br>`FDC 169231` | SR Legacy | 0 | 0.1 | 1.1 |
 | 12 kaffir lime leaves, crushed (optional) | — | *negligible* | — | 0 | 0 | 0 |
 | 1 Tbsp beef tallow | 12.8 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 12.8 | 0 | 0 |
-| 1 to 2 Tbsp Mae Ploy panang curry paste <!-- linked_product: url=null --> (start with 1 Tbsp if you've never made this before) | — | ⚠️ **FLAGGED** — no confident USDA match | — | — | — | — |
+| 1 to 2 Tbsp Mae Ploy panang curry paste <!-- linked_product: url=null --> (start with 1 Tbsp if you've never made this before) | 30 g | PANANG CURRY PASTE — Mae Ploy <br>`manufacturer label` <br>*not in FDC; read off the label. Fat and protein at the midpoint of the label's rounding range (0.25 g and 0.5 g per 10 g serving), so neither is understated.; calculated at the upper end of the 1–2 range* | Branded | 0.8 | 1.5 | 6 |
 | 1 Tbsp peanut butter | 16 g | Peanut butter, creamy <br>`FDC 2262072` | Foundation | 7.9 | 3.8 | 3.6 |
 | 13.5 oz canned unsweetened coconut milk | 382.7 g | Nuts, coconut milk, canned (liquid expressed from grated meat and water) <br>`FDC 170173` | SR Legacy | 81.6 | 7.7 | 10.8 |
 | 1 Tbsp fish sauce | 18 g | Sauce, fish, ready-to-serve <br>`FDC 174531` | SR Legacy | 0 | 0.9 | 0.7 |
@@ -1381,25 +1381,22 @@ Divided by **4 servings**.
 | Chopped chicken (from prep step) | — | *back-reference, already counted above* | — | 0 | 0 | 0 |
 | 1/2 cup fresh Thai basil, chopped (any basil works) | 12 g | Basil, fresh <br>`FDC 172232` | SR Legacy | 0.1 | 0.4 | 0.3 |
 | Juice of 1 lime (about 1 Tbsp) | 30 g | Lime juice, raw <br>`FDC 168156` | SR Legacy | 0 | 0.1 | 2.5 |
-| **WHOLE RECIPE TOTAL** | | | | **156.5** | **142.8** | **42.5** |
+| **WHOLE RECIPE TOTAL** | | | | **157.3** | **144.3** | **48.5** |
 
-Whole recipe: **2101 kcal**, fat 156.5 g, protein 142.8 g, carbs 42.5 g, fiber 5.7 g
+Whole recipe: **2146 kcal**, fat 157.3 g, protein 144.3 g, carbs 48.5 g, fiber 8.7 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 325 | **350** | +8% |
+| Calories | 325 | **358** | +10% |
 | Fat (g) | 22 | **26** | +18% |
 | Protein (g) | 24 | **24** | 0% |
-| Total carbs (g) | 7 | **7** | 0% |
+| Total carbs (g) | 7 | **8** | +14% |
 | Fiber (g) | 2 | **1** | -50% |
-| Net carbs (g) | 5 | **6** | +20% |
-
-> ⚠️ **1 ingredient flagged and excluded from the totals above.** The new numbers are therefore a floor, not a final figure.
-> - `1 to 2 Tbsp Mae Ploy panang curry paste <!-- linked_product: url=null --> (start with 1 Tbsp if you've never made this before)` — no confident USDA match
+| Net carbs (g) | 5 | **7** | +40% |
 
 **Assumptions made:**
-- `1 to 2 Tbsp Mae Ploy panang curry paste <!-- linked_product: url=null --> (start with 1 Tbsp if you've never made this before)` — no confident USDA match
+- `1 to 2 Tbsp Mae Ploy panang curry paste <!-- linked_product: url=null --> (start with 1 Tbsp if you've never made this before)` — not in FDC; read off the label. Fat and protein at the midpoint of the label's rounding range (0.25 g and 0.5 g per 10 g serving), so neither is understated.; calculated at the upper end of the 1–2 range
 
 ---
 ## Thai Slaw with Peanut Dressing
@@ -1624,6 +1621,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | low carb keto maple syrup | SR Legacy 169661 | Syrups, maple |
 | low sugar ketchup | SR Legacy 168556 | Catsup |
 | low-sodium chicken broth | SR Legacy 174536 | Soup, chicken broth, ready-to-serve |
+| mae ploy panang curry paste | Branded null | PANANG CURRY PASTE — Mae Ploy |
 | maple syrup | SR Legacy 169661 | Syrups, maple |
 | mayonnaise | SR Legacy 171418 | Salad dressing, mayonnaise, soybean oil, without salt |
 | mozzarella cheese | SR Legacy 170845 | Cheese, mozzarella, whole milk |
@@ -1650,7 +1648,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | unsweetened coconut flakes | SR Legacy 170579 | Nuts, coconut meat, dried (desiccated), toasted |
 | worcestershire sauce | SR Legacy 171610 | Sauce, worcestershire |
 
-**72 ingredients stayed.** Foundation is only 394 foods, so most pantry items, oils, spices, sauces, broths and herbs simply are not in it.
+**73 ingredients stayed.** Foundation is only 394 foods, so most pantry items, oils, spices, sauces, broths and herbs simply are not in it.
 
 
 ### 2b. Foundation has an entry, but for a different food — deliberately not switched
@@ -1724,7 +1722,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | Stuffed Bell Peppers | 18g → **16g** | 20g → **21g** | 12g → **17g** | 303 → **300** |
 | Taco Salad | 17g → **19g** | 16g → **20g** | 5g → **6g** | 250 → **291** |
 | Teriyaki Chicken | 7g → **6g** | 34g | 2g | 215 → **204** |
-| Thai Panang Chicken Curry | 20g → **26g** | 29g → **24g** | 16g → **6g** | 359 → **350** |
+| Thai Panang Chicken Curry | 20g → **26g** | 29g → **24g** | 16g → **7g** | 359 → **358** |
 | Thai Slaw with Peanut Dressing | 23g | 24g | 12g → **14g** | 363 → **361** |
 | Traditional Guacamole with Veggies | 135g → **28g** | 20g → **3g** | 27g → **4g** | 1519 → **289** |
 

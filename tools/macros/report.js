@@ -490,7 +490,10 @@ function md(recipe) {
     if (r.kind === "optional") { L.push(`| ${r.raw} | — | *optional, no amount given* | — | 0 | 0 | 0 |`); return; }
     if (r.kind === "excluded") { L.push(`| ${r.raw} | — | *excluded — ${r.why}* | — | 0 | 0 | 0 |`); return; }
     const extra = [r.note, r.why].filter(Boolean).join(" ");
-    L.push(`| ${r.raw} | ${amt} | ${r.label} <br>\`FDC ${r.fdc}\`${extra ? " <br>*" + extra + "*" : ""} | ${r.src} | ${r.fat} | ${r.protein} | ${r.carb} |`);
+    // A branded product read off its own label has no fdc_id, because it is
+    // not in FDC at all. Say so rather than printing "FDC null".
+    const ref = r.fdc ? `\`FDC ${r.fdc}\`` : "`manufacturer label`";
+    L.push(`| ${r.raw} | ${amt} | ${r.label} <br>${ref}${extra ? " <br>*" + extra + "*" : ""} | ${r.src} | ${r.fat} | ${r.protein} | ${r.carb} |`);
   });
   L.push(`| **WHOLE RECIPE TOTAL** | | | | **${b.tot.fat.toFixed(1)}** | **${b.tot.protein.toFixed(1)}** | **${b.tot.carb.toFixed(1)}** |`);
   L.push("");

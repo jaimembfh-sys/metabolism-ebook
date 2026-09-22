@@ -44,6 +44,39 @@ const BRANDED = {
     grams: { tbsp: 7, cup: 112 },
     note: "Branded Foods, not SR Legacy. 5 brands checked: fat 11.5–20 g/100g.",
   },
+
+  /* Mae Ploy panang curry paste. NOT in FDC at all - Branded carries 11 Mae
+   * Ploy products (masman, red and yellow curry paste among them) but no
+   * panang, and the four generic panang pastes that do exist span 50-222 kcal
+   * and 0-11.1 g fat per 100 g, a 4x spread, so none could stand in. Read off
+   * the jar instead, which is why there is no fdc id on this one.
+   *
+   * Label, 2026-09-21: serving 2 tsp (10 g) - 15 kcal, 0 g fat, 2 g total
+   * carbohydrate, 1 g fiber, less than 1 g protein.
+   *
+   * The two rounded-to-nothing values are taken at the MIDPOINT of the range
+   * the label leaves open, on Jaime's instruction, so neither is understated.
+   * FDA lets "0 g" stand for anything under 0.5 g, so fat is 0.25 g; "less
+   * than 1 g" protein is 0.5 g. Per 10 g serving, that is:
+   *
+   *   kcal 15   fat 0.25   carb 2   fiber 1   protein 0.5     x10 -> per 100 g
+   *
+   * The serving also fixes the volume: 2 tsp = 10 g, so 1 tsp = 5 g and
+   * 1 Tbsp = 15 g. The recipe's "1 to 2 Tbsp" is costed at 2 Tbsp = 30 g,
+   * exactly three label servings, via RANGE_UPPER in usda-map-3.js.
+   *
+   * Energy is the label's own. Atwater on the stated macros gives 122 kcal
+   * per 100 g against the label's 150; label energy is rounded to the nearest
+   * 5 kcal on a 10 g serving, so the two cannot be reconciled exactly. The
+   * label figure is the higher, which is the side Jaime wants to be on.
+   */
+  "mae ploy panang curry paste": {
+    fdc: null, source: "Manufacturer label",
+    expect: "PANANG CURRY PASTE — Mae Ploy",
+    per100g: { kcal: 150, fat: 2.5, protein: 5, carb: 20, fiber: 10 },
+    grams: { tsp: 5, tbsp: 15 },
+    note: "not in FDC; read off the label. Fat and protein at the midpoint of the label's rounding range (0.25 g and 0.5 g per 10 g serving), so neither is understated.",
+  },
 };
 
 /* Ingredients where the recipe itself offers a choice, or names a food loosely
