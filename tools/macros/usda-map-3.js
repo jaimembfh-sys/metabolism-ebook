@@ -137,6 +137,30 @@ const UNIT_PATCH = {
   "shredded cheddar cheese": { cup: 113, oz: 28.35, tbsp: 7, slice: 21 },
   "cooked chicken":          { cup: 140, each: 174, lb: 453.6, oz: 28.35 },
   "almond flour":            { cup: 96, tbsp: 6, oz: 28.35 },
+
+  /* Four produce entries in usda-map-2.js carry an identical gram table -
+   * {cup:150, oz:28.35, lb:453.6, each:120, medium:120, small:90, large:160}.
+   * It is a stamped placeholder, not a reading of the dataset: the same table
+   * sits on carrots and on cherry tomatoes, where "1 each = 120 g" is a whole
+   * tomato's weight for a single cherry. The real portions below are read out
+   * of food_portion.csv. Same class as the onion sizes fixed on 2026-09-21.
+   *
+   * Only two of the four changed a number in the book - carrots by size, and
+   * carrots by the cup. Brussels sprouts and asparagus are both bought by the
+   * pound in these recipes, so their placeholder never fired; it is corrected
+   * here so it cannot fire later.
+   */
+  // Peppers, sweet, red, raw (170108). Table had each/medium only, so
+  // "6 large bell peppers" was costed as six mediums.
+  "bell pepper":             { small: 74, medium: 119, large: 164, each: 119, cup: 149 },
+  // Carrots, raw (170393). Placeholder large was 160 g against USDA's 72.
+  // cup is "strips or slices" (122 g) rather than chopped (128 g) because the
+  // book's only carrot-by-the-cup line is matchsticks. Split the key if a
+  // recipe ever calls for chopped carrots by volume.
+  "carrots":                 { small: 50, medium: 61, large: 72, each: 61, cup: 122 },
+  // Brussels sprouts, raw (170383) and Asparagus, raw (168389). Latent only.
+  "brussels sprouts":        { each: 19, sprout: 19, cup: 88 },
+  "asparagus":               { each: 16, spear: 16, cup: 134 },
 };
 
 /* Lines that name their own quantity in words rather than as a leading

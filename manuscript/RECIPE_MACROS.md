@@ -1043,25 +1043,25 @@ Divided by **4 servings**.
 | 2 bell peppers, cut into 1-inch pieces | 238 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.3 | 2.1 | 15.8 |
 | 8 oz cremini mushrooms, halved | 226.8 g | Mushrooms, white button <br>`FDC 1999629` | Foundation | 0.8 | 6.6 | 9.3 |
 | 1 red onion, cut into 1-inch wedges | 110 g | Onions, red, raw <br>`FDC 790577` | Foundation | 0.1 | 1 | 10.9 |
-| 2 large carrots, cut into 1/2-inch thick rounds or half-moons | 320 g | Carrots, mature, raw <br>`FDC 2258586` | Foundation | 1.1 | 3 | 32.9 |
+| 2 large carrots, cut into 1/2-inch thick rounds or half-moons | 144 g | Carrots, mature, raw <br>`FDC 2258586` | Foundation | 0.5 | 1.4 | 14.8 |
 | 2 to 3 Tbsp avocado oil | 34 g | Oil, avocado <br>`FDC 173573` | SR Legacy | 34 | 0 | 0 |
 | 1 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1 tsp pepper | — | *negligible* | — | 0 | 0 | 0 |
 | Optional: 1 tsp granulated garlic or onion powder, 1 tsp dried herbs (oregano, rosemary, thyme, or Italian seasoning), 1/2 tsp paprika, 1/4 tsp red pepper flakes | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | Fresh herb sprigs, for garnish, optional | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **37.6** | **19.0** | **89.8** |
+| **WHOLE RECIPE TOTAL** | | | | **37.0** | **17.4** | **71.7** |
 
-Whole recipe: **716 kcal**, fat 37.6 g, protein 19.0 g, carbs 89.8 g, fiber 23.8 g
+Whole recipe: **637 kcal**, fat 37.0 g, protein 17.4 g, carbs 71.7 g, fiber 18.4 g
 Divided by **7 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 80 | **102** | +28% |
+| Calories | 80 | **91** | +14% |
 | Fat (g) | 4 | **5** | +25% |
-| Protein (g) | 2 | **3** | +50% |
-| Total carbs (g) | 10 | **13** | +30% |
+| Protein (g) | 2 | **2** | 0% |
+| Total carbs (g) | 10 | **10** | 0% |
 | Fiber (g) | 3 | **3** | 0% |
-| Net carbs (g) | 7 | **10** | +43% |
+| Net carbs (g) | 7 | **7** | 0% |
 
 ---
 ## Salmon and Asparagus Bake
@@ -1253,7 +1253,7 @@ Divided by **4 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 6 large bell peppers, tops and cores removed | 714 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.9 | 6.4 | 47.5 |
+| 6 large bell peppers, tops and cores removed | 984 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 1.2 | 8.8 | 65.5 |
 | 2 Tbsp beef tallow | 25.6 g | Fat, beef tallow <br>`FDC 171400` | SR Legacy | 25.6 | 0 | 0 |
 | 1 medium onion, diced | 110 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0.1 | 0.9 | 9.5 |
 | 2 to 3 cloves garlic, minced | 7.5 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.5 | 2.1 |
@@ -1266,19 +1266,19 @@ Divided by **4 servings**.
 | Kosher salt and pepper, to taste | — | *optional, no amount given* | — | 0 | 0 | 0 |
 | 1 cup shredded Parmesan cheese | 100 g | Cheese, parmesan, grated <br>`FDC 325036` | Foundation | 28 | 29.6 | 12.4 |
 | Fresh parsley, chopped, for garnish | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **95.6** | **124.9** | **102.3** |
+| **WHOLE RECIPE TOTAL** | | | | **95.9** | **127.3** | **120.3** |
 
-Whole recipe: **1728 kcal**, fat 95.6 g, protein 124.9 g, carbs 102.3 g, fiber 17.3 g
+Whole recipe: **1801 kcal**, fat 95.9 g, protein 127.3 g, carbs 120.3 g, fiber 20.4 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 330 | **288** | -13% |
+| Calories | 330 | **300** | -9% |
 | Fat (g) | 22 | **16** | -27% |
 | Protein (g) | 24 | **21** | -12% |
-| Total carbs (g) | 8 | **17** | +113% |
+| Total carbs (g) | 8 | **20** | +150% |
 | Fiber (g) | 3 | **3** | 0% |
-| Net carbs (g) | 5 | **14** | +180% |
+| Net carbs (g) | 5 | **17** | +240% |
 
 **Assumptions made:**
 - `1/2 lb ground beef` — weighted to 92% lean between the 93/7 and the 90/10 — 8.93 g fat/100 g, against the 8 g a 92/8 label implies. Assumes 92/8 ground beef.
@@ -1409,7 +1409,7 @@ Divided by **6 servings**.
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
 | 6 cups shredded cabbage | 534 g | Cabbage, green, raw <br>`FDC 2346407` <br>*fiber 2.5 g/100 g from SR Legacy 169975 — Foundation reports none for this food* | Foundation | 1.2 | 5.1 | 34.1 |
-| 1 cup matchstick carrots, roughly chopped | 150 g | Carrots, mature, raw <br>`FDC 2258586` | Foundation | 0.5 | 1.4 | 15.4 |
+| 1 cup matchstick carrots, roughly chopped | 122 g | Carrots, mature, raw <br>`FDC 2258586` | Foundation | 0.4 | 1.1 | 12.5 |
 | 1 red bell pepper, cut into matchsticks | 119 g | Peppers, bell, red, raw <br>`FDC 2258590` | Foundation | 0.1 | 1.1 | 7.9 |
 | 1/2 cup sliced green onions | 80 g | Onions, yellow, raw <br>`FDC 790646` | Foundation | 0 | 0.7 | 6.9 |
 | 1/3 cup chopped cilantro | — | *negligible* | — | 0 | 0 | 0 |
@@ -1425,14 +1425,14 @@ Divided by **6 servings**.
 | 2 large cloves garlic, finely minced | 6 g | Garlic, raw <br>`FDC 1104647` | Foundation | 0 | 0.4 | 1.7 |
 | 1/4 cup peanuts, chopped | 32.5 g | Peanuts, raw <br>`FDC 2515376` | Foundation | 14.1 | 7.5 | 8.6 |
 | Sesame seeds, optional | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **135.5** | **144.5** | **120.1** |
+| **WHOLE RECIPE TOTAL** | | | | **135.4** | **144.2** | **117.2** |
 
-Whole recipe: **2181 kcal**, fat 135.5 g, protein 144.5 g, carbs 120.1 g, fiber 35.3 g
+Whole recipe: **2168 kcal**, fat 135.4 g, protein 144.2 g, carbs 117.2 g, fiber 34.5 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 127 | **364** | +187% |
+| Calories | 127 | **361** | +184% |
 | Fat (g) | 8 | **23** | +188% |
 | Protein (g) | 4 | **24** | +500% |
 | Total carbs (g) | 6 | **20** | +233% |
@@ -1715,17 +1715,17 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | Marinara Sauce | 32g → **33g** | 28g → **24g** | 94g → **87g** | 794 → **782** |
 | Pork Tenderloin Marinade | 11g → **12g** | 29g → **31g** | 1g | 228 → **243** |
 | Roasted Garlic Parmesan Brussels Sprouts | 12g → **13g** | 6g | 8g → **7g** | 167 → **174** |
-| Roasted Summer Vegetables | 5g | 3g | 8g → **10g** | 99 → **102** |
+| Roasted Summer Vegetables | 5g | 3g → **2g** | 8g → **7g** | 99 → **91** |
 | Salmon and Asparagus Bake | 25g → **29g** | 37g → **34g** | 4g → **6g** | 388 → **428** |
 | Sausage and Cabbage Skillet | 38g | 19g | 12g → **13g** | 484 → **490** |
 | Shrimp Scampi with Zucchini Noodles | 7g → **8g** | 16g → **19g** | 4g → **3g** | 147 → **165** |
 | Slow Cooker White Chicken Chili | 18g → **17g** | 42g → **43g** | 13g → **15g** | 402 → **409** |
 | Spicy Thai Basil Chicken (Pad Krapow Gai) | 11g → **10g** | 41g | 6g | 299 → **285** |
-| Stuffed Bell Peppers | 18g → **16g** | 20g → **21g** | 12g → **14g** | 303 → **288** |
+| Stuffed Bell Peppers | 18g → **16g** | 20g → **21g** | 12g → **17g** | 303 → **300** |
 | Taco Salad | 17g → **19g** | 16g → **20g** | 5g → **6g** | 250 → **291** |
 | Teriyaki Chicken | 7g → **6g** | 34g | 2g | 215 → **204** |
 | Thai Panang Chicken Curry | 20g → **26g** | 29g → **24g** | 16g → **6g** | 359 → **350** |
-| Thai Slaw with Peanut Dressing | 23g | 24g | 12g → **14g** | 363 → **364** |
+| Thai Slaw with Peanut Dressing | 23g | 24g | 12g → **14g** | 363 → **361** |
 | Traditional Guacamole with Veggies | 135g → **28g** | 20g → **3g** | 27g → **4g** | 1519 → **289** |
 
 **41 of 43 recipes changed.** The before column is a real run with `MACRO_NO_FOUNDATION=1`, not a remembered figure.
