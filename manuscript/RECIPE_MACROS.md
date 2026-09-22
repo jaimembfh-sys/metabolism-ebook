@@ -272,7 +272,7 @@ Divided by **6 servings**.
 |---|---|---|---|---|---|---|
 | 6 cups chopped green leaf or romaine lettuce (or a mix of both) | 282 g | Lettuce, romaine, green, raw <br>`FDC 2346389` <br>*fiber 2.1 g/100 g from SR Legacy 169247 — Foundation reports none for this food* | Foundation | 0.2 | 2.8 | 11.4 |
 | 2 cups cubed rotisserie chicken | 280 g | Chicken, broilers or fryers, meat only, cooked, roasted <br>`FDC 171054` | SR Legacy | 20.7 | 81 | 0 |
-| 6 slices bacon (about 6 oz), cooked and crumbled (or 1/3 cup bacon bits) | 170.1 g | Pork, cured, bacon, cooked, baked <br>`FDC 167914` <br>*weight taken from the recipe line* | SR Legacy | 73.6 | 60.8 | 2.3 |
+| 6 slices bacon (about 6 oz), cooked and crumbled (or 1/3 cup bacon bits) | 170.1 g | Pork, cured, bacon, unprepared <br>`FDC 168277` <br>*weight taken from the recipe line* | SR Legacy | 63.2 | 23.2 | 0 |
 | 3 hard-boiled eggs, chopped | 150 g | Egg, whole, cooked, hard-boiled <br>`FDC 173424` | SR Legacy | 15.9 | 18.9 | 1.7 |
 | 1 avocado (about 7 oz), diced | 198.5 g | Avocado, Hass, peeled, raw <br>`FDC 2710824` <br>*fiber 6.7 g/100 g from SR Legacy 171705 — Foundation reports none for this food; weight taken from the recipe line* | Foundation | 40.3 | 3.6 | 16.5 |
 | 1 cup cherry or grape tomatoes, halved | 149 g | Tomatoes, grape, raw <br>`FDC 321360` | Foundation | 0.9 | 1.2 | 8.2 |
@@ -284,16 +284,16 @@ Divided by **6 servings**.
 | 1/4 tsp salt | — | *negligible* | — | 0 | 0 | 0 |
 | 1/4 tsp black pepper | — | *negligible* | — | 0 | 0 | 0 |
 | Pinch of sugar (optional) | — | *optional, no amount given* | — | 0 | 0 | 0 |
-| **WHOLE RECIPE TOTAL** | | | | **279.2** | **183.3** | **46.0** |
+| **WHOLE RECIPE TOTAL** | | | | **268.8** | **145.7** | **43.7** |
 
-Whole recipe: **3409 kcal**, fat 279.2 g, protein 183.3 g, carbs 46.0 g, fiber 23.4 g
+Whole recipe: **3145 kcal**, fat 268.8 g, protein 145.7 g, carbs 43.7 g, fiber 23.4 g
 Divided by **4 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 663 | **852** | +29% |
-| Fat (g) | 55 | **70** | +27% |
-| Protein (g) | 34 | **46** | +35% |
+| Calories | 663 | **786** | +19% |
+| Fat (g) | 55 | **67** | +22% |
+| Protein (g) | 34 | **36** | +6% |
 | Total carbs (g) | 9 | **11** | +22% |
 | Fiber (g) | 5 | **6** | +20% |
 | Net carbs (g) | 4 | **5** | +25% |
@@ -696,7 +696,7 @@ Divided by **5 servings**.
 ---
 ## Keto Carolina Mustard BBQ Sauce
 
-`keto-carolina-mustard-bbq-sauce` · **servings: 1** (as stated in the recipe)
+`keto-carolina-mustard-bbq-sauce` · **servings: 28** — not stated in the recipe; 1 3/4 cups yield × 16 Tbsp per cup = 28 tablespoons
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
@@ -713,16 +713,16 @@ Divided by **5 servings**.
 | **WHOLE RECIPE TOTAL** | | | | **6.4** | **8.3** | **13.8** |
 
 Whole recipe: **131 kcal**, fat 6.4 g, protein 8.3 g, carbs 13.8 g, fiber 8.5 g
-Divided by **1 servings**.
+Divided by **28 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 10 | **131** | +1210% |
-| Fat (g) | 0 | **6** | — |
-| Protein (g) | 0 | **8** | — |
-| Total carbs (g) | 1 | **14** | +1300% |
-| Fiber (g) | 0 | **9** | — |
-| Net carbs (g) | 1 | **5** | +400% |
+| Calories | 10 | **5** | -50% |
+| Fat (g) | 0 | **0** | — |
+| Protein (g) | 0 | **0** | — |
+| Total carbs (g) | 1 | **0** | -100% |
+| Fiber (g) | 0 | **0** | — |
+| Net carbs (g) | 1 | **0** | -100% |
 
 ---
 ## Keto Cheesecake Fluff
@@ -894,7 +894,7 @@ Divided by **16 servings**.
 ---
 ## Make-Ahead Teriyaki Sauce
 
-`make-ahead-teriyaki-sauce` · **servings: 1** (as stated in the recipe)
+`make-ahead-teriyaki-sauce` · **servings: 24** — not stated in the recipe; 1 1/2 cups yield × 16 Tbsp per cup = 24 tablespoons
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
@@ -909,16 +909,16 @@ Divided by **16 servings**.
 | **WHOLE RECIPE TOTAL** | | | | **2.5** | **15.9** | **12.6** |
 
 Whole recipe: **129 kcal**, fat 2.5 g, protein 15.9 g, carbs 12.6 g, fiber 1.7 g
-Divided by **1 servings**.
+Divided by **24 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 10 | **129** | +1190% |
-| Fat (g) | 0 | **3** | — |
-| Protein (g) | 1 | **16** | +1500% |
-| Total carbs (g) | 1 | **13** | +1200% |
-| Fiber (g) | 0 | **2** | — |
-| Net carbs (g) | 1 | **11** | +1000% |
+| Calories | 10 | **5** | -50% |
+| Fat (g) | 0 | **0** | — |
+| Protein (g) | 1 | **1** | 0% |
+| Total carbs (g) | 1 | **1** | 0% |
+| Fiber (g) | 0 | **0** | — |
+| Net carbs (g) | 1 | **1** | 0% |
 
 **Assumptions made:**
 - `1/2 cup tamari or coconut aminos` — recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.
@@ -926,7 +926,7 @@ Divided by **1 servings**.
 ---
 ## Marinara Sauce
 
-`marinara-sauce` · **servings: 1** (as stated in the recipe)
+`marinara-sauce` · **servings: 12** — not stated in the recipe; 8 cups yield ÷ 2/3 cup per serving = 12 servings
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
@@ -943,16 +943,16 @@ Divided by **1 servings**.
 | **WHOLE RECIPE TOTAL** | | | | **33.2** | **23.5** | **118.9** |
 
 Whole recipe: **778 kcal**, fat 33.2 g, protein 23.5 g, carbs 118.9 g, fiber 32.6 g
-Divided by **1 servings**.
+Divided by **12 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 72 | **778** | +981% |
-| Fat (g) | 2 | **33** | +1550% |
-| Protein (g) | 1 | **24** | +2300% |
-| Total carbs (g) | 5 | **119** | +2280% |
-| Fiber (g) | 3 | **33** | +1000% |
-| Net carbs (g) | 2 | **86** | +4200% |
+| Calories | 72 | **65** | -10% |
+| Fat (g) | 2 | **3** | +50% |
+| Protein (g) | 1 | **2** | +100% |
+| Total carbs (g) | 5 | **10** | +100% |
+| Fiber (g) | 3 | **3** | 0% |
+| Net carbs (g) | 2 | **7** | +250% |
 
 **Assumptions made:**
 - `1 small onion (about 2 oz), finely chopped` — weight taken from the recipe line
@@ -965,20 +965,20 @@ Divided by **1 servings**.
 
 | Ingredient as written | Amount | Mapped to | Source | Fat g | Protein g | Carbs g |
 |---|---|---|---|---|---|---|
-| 1 lb bacon (about 12-14 slices) | 453.6 g | Pork, cured, bacon, cooked, baked <br>`FDC 167914` | SR Legacy | 196.3 | 162.1 | 6.1 |
-| **WHOLE RECIPE TOTAL** | | | | **196.3** | **162.1** | **6.1** |
+| 1 lb bacon (about 12-14 slices) | 453.6 g | Pork, cured, bacon, unprepared <br>`FDC 168277` | SR Legacy | 168.4 | 62 | 0 |
+| **WHOLE RECIPE TOTAL** | | | | **168.4** | **62.0** | **0.0** |
 
-Whole recipe: **2486 kcal**, fat 196.3 g, protein 162.1 g, carbs 6.1 g, fiber 0.0 g
+Whole recipe: **1783 kcal**, fat 168.4 g, protein 62.0 g, carbs 0.0 g, fiber 0.0 g
 Divided by **6 servings**.
 
 | Per serving | Old (as printed) | New (USDA) | Change |
 |---|---|---|---|
-| Calories | 161 | **414** | +157% |
-| Fat (g) | 12 | **33** | +175% |
-| Protein (g) | 12 | **27** | +125% |
-| Total carbs (g) | 0.5 | **1** | +100% |
+| Calories | 161 | **297** | +84% |
+| Fat (g) | 12 | **28** | +133% |
+| Protein (g) | 12 | **10** | -17% |
+| Total carbs (g) | 0.5 | **0** | -100% |
 | Fiber (g) | 0 | **0** | — |
-| Net carbs (g) | 0.5 | **1** | +100% |
+| Net carbs (g) | 0.5 | **0** | -100% |
 
 ---
 ## Pork Tenderloin Marinade
@@ -1612,7 +1612,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 |---|---|---|
 | 60% ghirardelli dark chocolate | SR Legacy 170272 | Chocolate, dark, 60-69% cacao solids |
 | avocado oil | SR Legacy 173573 | Oil, avocado |
-| bacon | SR Legacy 167914 | Pork, cured, bacon, cooked, baked |
+| bacon | SR Legacy 168277 | Pork, cured, bacon, unprepared |
 | basil | SR Legacy 172232 | Basil, fresh |
 | beef broth | SR Legacy 171538 | Soup, beef broth or bouillon canned, ready-to-serve |
 | beef tallow | SR Legacy 171400 | Fat, beef tallow |
@@ -1727,7 +1727,7 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | Chicken or Beef Fajitas | 10g → **9g** | 31g → **27g** | 7g → **8g** | 255 → **226** |
 | Chickpea and Macadamia Hummus | 19g → **17g** | 4g | 5g → **6g** | 202 → **195** |
 | Classic Chicken Salad | 30g | 21g | 4g → **5g** | 379 |
-| Classic Cobb Salad | 67g → **70g** | 46g | 4g → **5g** | 823 → **852** |
+| Classic Cobb Salad | 67g | 46g → **36g** | 4g → **5g** | 823 → **786** |
 | Classic Deviled Eggs | 5g | 3g | 1g | 59 → **60** |
 | Classic Mustard Egg Salad | 22g | 10g | 6g → **5g** | 263 → **266** |
 | Classic Tuna Salad | 15g | 19g → **14g** | 6g → **5g** | 240 → **224** |
@@ -1740,13 +1740,15 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | Homemade Avocado Oil Mayo | 227g → **228g** | 6g | 2g → **1g** | 2043 → **2047** |
 | Homemade Greek Yogurt Ranch Dip | 8g | 2g | 1g | 87 → **86** |
 | Homemade Spaghetti Sauce with Spaghetti Squash | 18g → **13g** | 20g → **22g** | 17g → **19g** | 316 → **291** |
-| Keto Carolina Mustard BBQ Sauce | 6g | 7g → **8g** | 7g → **5g** | 127 → **131** |
+| Keto Carolina Mustard BBQ Sauce | 6g → **0g** | 7g → **0g** | 7g → **0g** | 127 → **5** |
 | Keto Cheesecake Fluff | 27g | 3g | 3g | 267 → **261** |
 | Keto Chicken Cordon Bleu | 41g → **40g** | 36g | 5g | 536 → **528** |
 | Keto Chicken Parmesan | 39g → **36g** | 53g → **49g** | 10g | 615 → **567** |
 | Keto Chili | 11g → **7g** | 15g → **17g** | 2g → **3g** | 177 → **153** |
 | Keto Peanut Butter Balls | 5g → **13g** | 1g → **5g** | 8g → **11g** | 88 → **183** |
-| Marinara Sauce | 32g → **33g** | 28g → **24g** | 94g → **86g** | 794 → **778** |
+| Make-Ahead Teriyaki Sauce | 3g → **0g** | 16g → **1g** | 11g → **1g** | 129 → **5** |
+| Marinara Sauce | 32g → **3g** | 28g → **2g** | 94g → **7g** | 794 → **65** |
+| Oven-Baked Bacon | 33g → **28g** | 27g → **10g** | 1g → **0g** | 414 → **297** |
 | Pork Tenderloin Marinade | 11g → **12g** | 29g → **31g** | 1g | 228 → **243** |
 | Roasted Garlic Parmesan Brussels Sprouts | 12g → **13g** | 6g | 8g → **7g** | 167 → **174** |
 | Roasted Summer Vegetables | 5g | 3g | 8g → **7g** | 99 → **92** |
@@ -1762,4 +1764,4 @@ Values are per 100 g. `Δ` is Foundation minus the previous source.
 | Thai Slaw with Peanut Dressing | 23g | 24g | 12g → **13g** | 363 → **361** |
 | Traditional Guacamole with Veggies | 135g → **27g** | 20g → **3g** | 27g → **4g** | 1519 → **284** |
 
-**41 of 43 recipes changed.** The before column is a real run with `MACRO_NO_FOUNDATION=1`, not a remembered figure.
+**43 of 43 recipes changed.** The before column is a real run with `MACRO_NO_FOUNDATION=1`, not a remembered figure.

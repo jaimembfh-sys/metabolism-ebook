@@ -74,7 +74,20 @@ const MAP = {
   "hard-boiled eggs":       { fdc: 173424, expect: "Egg, whole, cooked, hard-boiled", grams: { each: 50 } },
   "rotisserie chicken":     { fdc: 171054, expect: "Chicken, broilers or fryers, meat only, cooked, roasted", grams: { cup: 140, oz: 28.35, lb: 453.6 } },
   "cooked chicken":         { fdc: 171054, expect: "Chicken, broilers or fryers, meat only, cooked, roasted", grams: { cup: 140, oz: 28.35, lb: 453.6 } },
-  "bacon":                  { fdc: 167914, expect: "Pork, cured, bacon, cooked, baked", grams: { slice: 8, cup: 60, oz: 28.35 } },
+  /* Bacon is bought raw and weighed raw - "1 lb bacon", "6 slices bacon" -
+   * and usda-map-2.js already mapped it to the unprepared entry with the note
+   * "raw weight, as bought". This entry sat on top of that one (MAP beats MAP2
+   * in ALL_MAP) and put the COOKED food underneath raw weights: 548 kcal per
+   * 100 g against 393, on a slice weight of 28 g that is only true before it
+   * hits the pan. Oven-Baked Bacon came out at 414 kcal a serving for two
+   * slices. Both entries now name the same unprepared food.
+   *
+   * Crumbled bacon is the exception and keeps the cooked entry, because that
+   * is what it is: a cooked product, measured by the cup. findKeyAny tries the
+   * fuller forms of the ingredient name first, so the longer key wins.
+   */
+  "bacon":                  { fdc: 168277, expect: "Pork, cured, bacon, unprepared", grams: { slice: 28, lb: 453.6, oz: 28.35 }, note: "raw weight, as bought" },
+  "crumbled bacon":         { fdc: 167914, expect: "Pork, cured, bacon, cooked, baked", grams: { cup: 60, tbsp: 3.75, oz: 28.35 }, note: "cooked product, measured by volume" },
 
   // ---- dairy ----
   "blue cheese":            { fdc: 172175, expect: "Cheese, blue", grams: { cup: 135, oz: 28.35 } },

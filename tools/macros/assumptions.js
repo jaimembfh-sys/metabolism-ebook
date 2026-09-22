@@ -129,12 +129,49 @@ const COMPOSITES = {
  * The dipping cucumber and bell pepper are excluded, as the recipe's own
  * nutrition line already says they are.
  */
+/* ---- 1e. Three sauces were being reported a whole batch at a time --------
+ *
+ * Found 2026-09-21 while replacing the printed nutrition panels. These three
+ * carry no servings count in their frontmatter, so the divisor fell back to 1
+ * and the "per serving" line was the entire pot: marinara at 778 kcal and 86 g
+ * of net carbs, which is eight cups of sauce, not a portion of it.
+ *
+ * Each recipe states its own yield and its own serving size in the nutrition
+ * heading it already prints, so the divisor comes from the recipe rather than
+ * from anything assumed here:
+ *
+ *   marinara          "Per 2/3 cup serving (makes about 8 cups)"
+ *   bbq sauce         "Per tablespoon (makes about 1 3/4 cups)"
+ *   teriyaki sauce    "Per tablespoon (makes about 1 1/2 cups)"
+ *
+ * The results land near the figures those recipes used to print - marinara
+ * 65 kcal against 72, the two sauces 5 kcal against 10 - which is the check
+ * that the divisor is the right one and not an order of magnitude out.
+ */
 const YIELD = {
   "traditional-guacamole-with-veggies": {
     servings: 6.77,
     cups: 5.075,
     why: "5.08 cups total yield ÷ 3/4 cup per serving = 6.77 servings",
     assumes: "a yield of about 5 cups, or roughly 6 3/4 servings of 3/4 cup each",
+  },
+  "marinara-sauce": {
+    servings: 12,
+    cups: 8,
+    why: "8 cups yield ÷ 2/3 cup per serving = 12 servings",
+    assumes: "the recipe's own yield of about 8 cups, in 2/3-cup servings",
+  },
+  "keto-carolina-mustard-bbq-sauce": {
+    servings: 28,
+    cups: 1.75,
+    why: "1 3/4 cups yield × 16 Tbsp per cup = 28 tablespoons",
+    assumes: "the recipe's own yield of about 1 3/4 cups, by the tablespoon",
+  },
+  "make-ahead-teriyaki-sauce": {
+    servings: 24,
+    cups: 1.5,
+    why: "1 1/2 cups yield × 16 Tbsp per cup = 24 tablespoons",
+    assumes: "the recipe's own yield of about 1 1/2 cups, by the tablespoon",
   },
 };
 
