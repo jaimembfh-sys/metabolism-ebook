@@ -1,0 +1,409 @@
+/* ============================================================
+   MetaBurn AI Coaching Suite — app shell
+   ============================================================
+   Direction C, "modern health app", applied to the real suite.
+
+   SCOPED TO #tab-content-ai-tools ON PURPOSE. The AI suite is one of seven
+   tabs on index.html; the other six are the course itself, which is long-form
+   reading and must keep scrolling normally. The preview could set
+   `html,body{overflow:hidden}` because it was a page of its own. Here that
+   would break every lesson, so the shell instead fills the viewport below the
+   site chrome and only its own view bodies scroll.
+
+   Everything is prefixed mb- so nothing collides with Tailwind's utilities or
+   the classes the existing views already carry. The views themselves are
+   untouched: .ai-tool-view keeps its id, its data-view-id and its .hidden
+   toggling, so the existing switcher and every feature built on it still work.
+   ============================================================ */
+
+#tab-content-ai-tools {
+    /* Direction C's palette, with Jaime's --ink. */
+    --ink: #1f2e35;
+    --teal: #34657a;
+    --gold: #c19a6b;
+    --cream: #eef2f3;
+    --paper: #ffffff;
+    --muted: #77858c;
+    --line: #e2e8ea;
+    --tint: #e6eef1;
+    --radius: 18px;
+    --shadow: 0 2px 10px rgba(31, 46, 53, .06), 0 10px 30px -12px rgba(31, 46, 53, .12);
+
+    --mb-rail-w: 248px;
+    --mb-tabbar-h: 68px;
+    --mb-topbar-h: 56px;
+    /* Set at runtime by scripts/metaburn-shell.js to the shell's distance from
+       the top of the viewport, so the app fills exactly what is left. */
+    --mb-chrome: 0px;
+}
+
+/* ---------- shell ---------- */
+.mb-app {
+    display: flex;
+    background: var(--cream);
+    color: var(--ink);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    height: calc(100vh - var(--mb-chrome));
+    height: calc(100dvh - var(--mb-chrome));
+    min-height: 460px;
+}
+
+.mb-stage {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mb-topbar {
+    flex: 0 0 auto;
+    height: var(--mb-topbar-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    padding: 0 1.1rem;
+    background: var(--ink);
+}
+.mb-topbar-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: .01em;
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mb-topbar-badge {
+    flex: 0 0 auto;
+    font-size: .62rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: .3rem .55rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .12);
+    color: #cfe0e6;
+}
+
+/* A column, not a single positioned box: the Goal & Why banner is meant to
+   stay visible whichever view is open, so it sits above the views rather than
+   inside one of them. */
+.mb-screens {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--cream);
+}
+#tab-content-ai-tools #goal-why-banner {
+    flex: 0 0 auto;
+    margin: 1rem 1.15rem 0;
+    border-radius: var(--radius);
+}
+@media (min-width: 900px) {
+    #tab-content-ai-tools #goal-why-banner { margin: 1.2rem 2rem 0; }
+}
+.mb-views {
+    flex: 1;
+    min-height: 0;
+    position: relative;
+}
+
+/* Each view IS the scroller. The preview wrapped its content in a
+   [data-scroll] div; doing that here would mean adding a wrapper inside all
+   eight existing views and risking every selector that reaches into them.
+   Making the view itself scroll needs no structural change at all, and
+   metaburn-shell.js falls back to the view when no [data-scroll] exists. */
+#tab-content-ai-tools .ai-tool-view {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 1.15rem 1.15rem 2rem;
+}
+#tab-content-ai-tools .ai-tool-view.hidden { display: none; }
+
+/* ---------- side rail, 900px and up ---------- */
+.mb-rail { display: none; }
+
+@media (min-width: 900px) {
+    .mb-rail {
+        display: flex;
+        flex-direction: column;
+        width: var(--mb-rail-w);
+        flex: 0 0 var(--mb-rail-w);
+        background: var(--ink);
+        padding: 1.2rem .8rem;
+        gap: .3rem;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+    .mb-rail-brand {
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+        padding: .3rem .5rem 1.1rem;
+        font-weight: 700;
+        letter-spacing: -.01em;
+        color: #fff;
+        font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    }
+    .mb-rail-mark {
+        width: 30px; height: 30px; border-radius: 8px;
+        background: var(--gold); color: var(--ink);
+        display: grid; place-items: center;
+        font-size: .72rem; font-weight: 700;
+        flex: 0 0 auto;
+    }
+    .mb-rail-group {
+        font-size: .6rem; font-weight: 700; letter-spacing: .16em;
+        text-transform: uppercase; color: #7f959e;
+        padding: 1rem .75rem .35rem;
+    }
+    .mb-rail-nav { display: flex; flex-direction: column; gap: .18rem; }
+    .mb-rail-foot {
+        display: flex; align-items: center; gap: .6rem;
+        margin-top: auto;
+        padding: .9rem .5rem 0;
+        font-size: .82rem; font-weight: 600; color: #9fb3bb;
+    }
+    .mb-avatar {
+        width: 30px; height: 30px; border-radius: 50%;
+        display: grid; place-items: center;
+        font-size: .7rem; font-weight: 700;
+        background: var(--teal); color: #fff;
+        flex: 0 0 auto;
+    }
+    #tab-content-ai-tools .ai-tool-view { padding: 1.6rem 2rem 2.5rem; }
+    .mb-topbar { padding: 0 2rem; }
+}
+
+/* The rail items ARE the existing .ai-nav-item buttons. Their Tailwind classes
+   are overridden here rather than stripped out of the markup, so the existing
+   switcher can keep toggling whatever it likes on them without fighting this. */
+@media (min-width: 900px) {
+    .mb-rail .ai-nav-item {
+        display: flex; align-items: center; gap: .7rem;
+        width: 100%;
+        padding: .7rem .75rem;
+        min-height: 48px;
+        border-radius: 10px;
+        text-align: left;
+        background: transparent;
+        color: #9fb3bb;
+        font-size: .86rem; font-weight: 600;
+        font-family: 'Montserrat', 'Segoe UI', sans-serif;
+        transition: background .15s ease, color .15s ease;
+        border: none;
+        cursor: pointer;
+    }
+    .mb-rail .ai-nav-item:hover { background: rgba(255, 255, 255, .06); color: #fff; }
+    .mb-rail .ai-nav-item.is-active { background: rgba(255, 255, 255, .1); color: #fff; }
+    .mb-rail .ai-nav-item .mb-ico { color: inherit; font-size: 1rem; width: 1.2rem; text-align: center; flex: 0 0 auto; }
+    .mb-rail .ai-nav-item.is-active .mb-ico { color: var(--gold); }
+}
+
+/* ---------- bottom tab bar, under 900px ---------- */
+/* The tabs sit directly under the header, and the two read as ONE dark block
+   rather than a black bar with a white strip stuck beneath it. So the bar
+   takes the ink background, has no border between it and the header, and the
+   whole block casts a single shadow down onto the views.
+
+   That rules out a colour change as the active cue — teal on ink is close to
+   invisible — so the active tab is white text, a gold icon and a gold
+   underline. Jaime chose this over the bottom bar on 2026-09-22.
+
+   Order, because the tab bar comes after .mb-screens in the DOM: it is last
+   so that if the stylesheet never loads the page still degrades to header,
+   content, nav, which reads correctly. */
+.mb-topbar { order: 1; }
+.mb-tabbar { order: 2; }
+.mb-screens { order: 3; }
+
+.mb-tabbar {
+    flex: 0 0 auto;
+    display: flex;
+    height: var(--mb-tabbar-h);
+    background: var(--ink);
+    /* The home indicator is at the BOTTOM of the screen; a bar at the top
+       does not need to clear it. */
+    padding-bottom: 0;
+    box-shadow: 0 10px 24px -16px rgba(31, 46, 53, .55);
+}
+.mb-tab {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .18rem;
+    min-height: 48px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #9fb3bb;
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    transition: color .15s ease;
+    padding: 0 .1rem .3rem;
+}
+.mb-tab .mb-ico { font-size: 1.15rem; line-height: 1; transition: transform .15s ease; }
+.mb-tab.is-active { color: #fff; }
+.mb-tab.is-active .mb-ico { color: var(--gold); transform: translateY(-1px) scale(1.12); }
+.mb-tab .mb-lab { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* ::after rather than a border, so the label does not shift by a pixel when
+   the marker appears. */
+.mb-tab::after {
+    content: "";
+    position: absolute;
+    left: 22%; right: 22%; bottom: 0;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+    background: transparent;
+    transition: background .15s ease;
+}
+.mb-tab.is-active::after { background: var(--gold); }
+.mb-tab:focus-visible { outline-offset: -3px; }
+
+@media (min-width: 900px) { .mb-tabbar { display: none; } }
+
+/* The My Stuff sheet still rises from the BOTTOM even though its tab is now at
+   the top: a menu dropping from a top tab is a different component, and the
+   thumb is still at the bottom of the phone. */
+
+/* ---------- My Stuff sheet (mobile only) ----------
+   Eight views is too many for a tab bar. The four tools get tabs; the four
+   account screens live behind one, in a sheet that reuses the very same
+   .ai-nav-item buttons, so there is no second list to keep in sync. */
+.mb-sheet-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    background: rgba(31, 46, 53, .45);
+    display: none;
+}
+.mb-sheet-backdrop.is-open { display: block; }
+.mb-sheet {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    z-index: 31;
+    background: var(--paper);
+    border-radius: 18px 18px 0 0;
+    padding: 1.1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+    box-shadow: 0 -10px 40px -12px rgba(31, 46, 53, .45);
+    transform: translateY(100%);
+    transition: transform .22s ease;
+}
+.mb-sheet-backdrop.is-open .mb-sheet { transform: translateY(0); }
+.mb-sheet-title {
+    font-size: .68rem; font-weight: 700; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--muted);
+    margin: 0 0 .6rem; padding: 0 .25rem;
+}
+.mb-sheet .ai-nav-item {
+    display: flex; align-items: center; gap: .7rem;
+    width: 100%; text-align: left;
+    padding: .85rem .8rem; min-height: 48px;
+    border: none; border-radius: 12px;
+    background: transparent; color: var(--ink);
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    font-size: .9rem; font-weight: 600;
+    cursor: pointer;
+}
+.mb-sheet .ai-nav-item:hover { background: var(--tint); }
+.mb-sheet .ai-nav-item.is-active { background: var(--tint); color: var(--teal); }
+.mb-sheet .ai-nav-item .mb-ico { color: var(--teal); font-size: 1rem; width: 1.2rem; text-align: center; }
+@media (min-width: 900px) { .mb-sheet-backdrop { display: none !important; } }
+
+/* ---------- typing indicator + staged loading ---------- */
+.mb-typing { display: inline-flex; align-items: center; gap: .6rem; }
+.mb-dots { display: inline-flex; gap: 4px; }
+.mb-dots i {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor; opacity: .35;
+    animation: mb-blink 1.3s infinite;
+}
+.mb-dots i:nth-child(2) { animation-delay: .18s; }
+.mb-dots i:nth-child(3) { animation-delay: .36s; }
+@keyframes mb-blink { 0%, 60%, 100% { opacity: .25; } 30% { opacity: .9; } }
+.mb-typing-label { font-size: .78rem; opacity: .8; }
+
+.mb-spinner {
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 3px solid var(--tint); border-top-color: var(--teal);
+    animation: mb-spin .8s linear infinite;
+    display: inline-block; vertical-align: middle;
+}
+@keyframes mb-spin { to { transform: rotate(360deg); } }
+
+/* ---------- direction C surfaces applied to the real views ---------- */
+#tab-content-ai-tools .ai-tool-view > h3 {
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    color: var(--ink);
+}
+#tab-content-ai-tools .ai-view-desc { color: var(--muted); }
+
+/* Cards: the suite already uses white panels with a border; direction C
+   trades the border for a soft shadow and a larger radius. */
+#tab-content-ai-tools .bg-white.border,
+#tab-content-ai-tools .bg-brand-light\/50 {
+    border-color: transparent !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--shadow);
+}
+#tab-content-ai-tools .rounded-xl { border-radius: var(--radius); }
+
+/* Primary actions become the pill CTA. */
+#tab-content-ai-tools .bg-brand-dark:not(.ai-nav-item) {
+    border-radius: 999px;
+    box-shadow: 0 8px 20px -8px rgba(52, 101, 122, .6);
+}
+
+/* ---------- accessibility ---------- */
+#tab-content-ai-tools a:focus-visible,
+#tab-content-ai-tools button:focus-visible,
+#tab-content-ai-tools input:focus-visible,
+#tab-content-ai-tools select:focus-visible,
+#tab-content-ai-tools textarea:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+.mb-rail .ai-nav-item:focus-visible,
+.mb-tab:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: -2px;
+}
+.mb-skip {
+    position: absolute; left: -9999px; top: 0; z-index: 40;
+    padding: .7rem 1.1rem; background: var(--teal); color: #fff;
+    font-size: .85rem; font-weight: 600; text-decoration: none;
+}
+.mb-skip:focus { left: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+    .mb-sheet { transition: none; }
+    .mb-dots i, .mb-spinner { animation: none; }
+    .mb-tab.is-active .mb-ico { transform: none; }
+}
+
+/* Under 380px the five tabs get tight; drop to icons with smaller labels
+   rather than letting them wrap and break the 48px target. */
+@media (max-width: 380px) {
+    .mb-tab { font-size: .55rem; letter-spacing: 0; }
+}

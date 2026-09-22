@@ -9,7 +9,14 @@
          page does not consume (it uses the Tailwind config above), plus the
          focus-visible, skip-link and reduced-motion rules it does. -->
     <link rel="stylesheet" href="styles/brand.css">
+    <!-- Direction C app shell for the AI Coaching Suite. Scoped to
+         #tab-content-ai-tools; the other six tabs are the course and are
+         untouched by it. -->
+    <link rel="stylesheet" href="styles/metaburn-app.css">
     <script src="scripts/a11y.js" defer></script>
+    <!-- defer, so it runs after the inline script has defined
+         switchAiToolsView, which it wraps rather than replaces. -->
+    <script src="scripts/metaburn-shell.js" defer></script>
     <!-- Corpus retrieval. Not deferred: the protocol/meal-plan/lab paths call
          into it, and they are user-triggered well after parse, but it must be
          defined before any of them run. -->
@@ -4166,73 +4173,75 @@
         <!-- ========================================== -->
         <!-- TAB: AI COACH TOOLS                        -->
         <!-- ========================================== -->
-        <div id="tab-content-ai-tools" class="hidden transition-opacity duration-300 pt-8">
+        <div id="tab-content-ai-tools" class="hidden transition-opacity duration-300">
 
-            <!-- Page Header: MetaBurn AI Coach — logo pinned to the far left edge
-                 (taken out of normal flow so it doesn't shift the title block),
-                 title/subtitle centered over the main column (goal banner + AI box)
-                 below, via a spacer matching the left-nav panel's width. -->
-            <div class="mb-10" style="position:relative;min-height:140px;">
-                <img src="logos/mind-body-cropped.png" alt="Mindbody Functional Health" style="max-height:65px;width:auto;position:absolute;left:0;top:calc(50% + 15px);transform:translateY(-50%);" onerror="this.onerror=null;">
-                <div class="flex flex-col lg:flex-row gap-8">
-                    <div class="hidden lg:block w-72 flex-shrink-0"></div>
-                    <div class="flex-1 text-center">
-                        <h1 class="font-serif text-6xl font-bold text-brand-dark mb-1">MetaBurn AI Coach</h1>
-                        <p class="font-serif italic text-2xl text-gray-600 max-w-2xl mx-auto">Your personalized AI coaching tool highly trained in metabolic science to get you the best results!</p>
+            <!-- ==========================================================
+                 APP SHELL — direction C, "modern health app"
+                 ==========================================================
+                 The suite used to be a page header over a sticky left-nav
+                 column. It is now an app: a side rail at 900px and up, a
+                 bottom tab bar below that, and only the view bodies scroll.
+
+                 Scoped here. The other six tabs on this page are the course
+                 and still scroll as a document.
+
+                 The eight views below are UNCHANGED — same ids, same
+                 data-view-id, same .hidden toggling — so switchAiToolsView
+                 and every feature wired around it still work. The rail items
+                 are the same .ai-nav-item buttons that were in the old panel,
+                 restyled rather than rebuilt.
+                 ========================================================== -->
+            <a class="mb-skip" href="#mb-main">Skip to the tools</a>
+            <div class="mb-app">
+
+                <aside class="mb-rail" aria-label="AI Coaching Suite">
+                    <div class="mb-rail-brand">
+                        <span class="mb-rail-mark" aria-hidden="true">MB</span>
+                        <span>MetaBurn</span>
                     </div>
-                </div>
-                <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(193,154,107,0.65),transparent);margin-top:2.5rem;"></div>
-            </div>
-
-            <!-- Left-nav layout: one tool/account view visible at a time -->
-            <div class="flex flex-col lg:flex-row gap-8 items-start">
-
-                <!-- Left nav panel -->
-                <div class="w-full lg:w-72 flex-shrink-0 lg:sticky lg:top-6">
-                    <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
-                        <h2 class="font-serif text-2xl font-bold text-brand-dark mb-3 px-2">Your Personal AI Coaching Suite</h2>
-                        <div style="width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(193,154,107,0.65),transparent);margin-bottom:1rem;"></div>
-                        <nav class="space-y-1">
-                            <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="coach">Interactive Metabolic Coach</button>
-                            <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="meal-planner">Metabolic Meal Planner</button>
-                            <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="fridge-chef">Fridge to Meal Chef</button>
-                            <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="lab-tool">Metabolic Lab Tool</button>
-                        </nav>
-
-                        <div class="mt-5 pt-4 border-t border-gray-200">
-                            <div class="px-3 mb-2">
-                                <!-- TEMP SCAFFOLDING: no manual edit UI on purpose — see the
-                                     "Jaime Jenkins" filler fallback in renderAccountNameDisplay(). -->
-                                <div class="flex items-center justify-between gap-2">
-                                    <span class="text-sm font-bold uppercase tracking-widest text-black">My Stuff</span>
-                                    <p id="account-name-display" class="font-serif text-base font-bold text-brand-dark m-0"></p>
-                                </div>
-                            </div>
-                            <nav class="space-y-1">
-                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-goals">My Goals</button>
-                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-protocol">My Protocol - Daily Tracker</button>
-                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-health-history">Health History</button>
-                                <button type="button" class="ai-nav-item w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100" data-ai-view="account-recipes">My Recipes</button>
-                            </nav>
-                        </div>
+                    <nav class="mb-rail-nav" aria-label="Tools">
+                        <button type="button" class="ai-nav-item" data-ai-view="coach"><span class="mb-ico" aria-hidden="true">&#x25C8;</span><span>Interactive Metabolic Coach</span></button>
+                        <button type="button" class="ai-nav-item" data-ai-view="meal-planner"><span class="mb-ico" aria-hidden="true">&#x25C7;</span><span>Metabolic Meal Planner</span></button>
+                        <button type="button" class="ai-nav-item" data-ai-view="fridge-chef"><span class="mb-ico" aria-hidden="true">&#x25C9;</span><span>Fridge to Meal Chef</span></button>
+                        <button type="button" class="ai-nav-item" data-ai-view="lab-tool"><span class="mb-ico" aria-hidden="true">&#x2726;</span><span>Metabolic Lab Tool</span></button>
+                    </nav>
+                    <p class="mb-rail-group">My Stuff</p>
+                    <nav class="mb-rail-nav" aria-label="My Stuff">
+                        <button type="button" class="ai-nav-item" data-ai-view="account-goals"><span class="mb-ico" aria-hidden="true">&#x25CE;</span><span>My Goals</span></button>
+                        <button type="button" class="ai-nav-item" data-ai-view="account-protocol"><span class="mb-ico" aria-hidden="true">&#x2713;</span><span>My Protocol &#x2014; Daily Tracker</span></button>
+                        <button type="button" class="ai-nav-item" data-ai-view="account-health-history"><span class="mb-ico" aria-hidden="true">&#x2295;</span><span>Health History</span></button>
+                        <button type="button" class="ai-nav-item" data-ai-view="account-recipes"><span class="mb-ico" aria-hidden="true">&#x25A3;</span><span>My Recipes</span></button>
+                    </nav>
+                    <!-- TEMP SCAFFOLDING: no manual edit UI on purpose — see the
+                         "Jaime Jenkins" filler fallback in renderAccountNameDisplay(). -->
+                    <div class="mb-rail-foot">
+                        <span class="mb-avatar" aria-hidden="true">MB</span>
+                        <p id="account-name-display" class="m-0"></p>
                     </div>
-                </div>
+                </aside>
 
-                <!-- Main content: one view visible at a time -->
-                <div id="ai-tools-main-col" class="flex-1 min-w-0 w-full">
+                <div class="mb-stage">
+                    <header class="mb-topbar">
+                        <span class="mb-topbar-title" data-mb-title>Interactive Metabolic Coach</span>
+                        <span class="mb-topbar-badge">MetaBurn AI</span>
+                    </header>
+
+                    <main class="mb-screens" id="mb-main">
 
                     <!-- Persistent Goal & Why banner — read-only, always-visible
                          reminder, shown regardless of which view below is active.
-                         Lives inside this column (not the two-column row) so its
-                         left/right edges always match the tool content, and its
-                         top edge lines up with the left nav panel's top. Editing and
-                         monthly/weekly checkpoints live in My Stuff > My Goals; the
-                         protocol lives in My Stuff > My Protocol. This banner shows
-                         nothing else. -->
-                    <div id="goal-why-banner" class="hidden mb-10 rounded-xl p-6 shadow-sm" style="background:linear-gradient(135deg, rgba(193,154,107,0.12), rgba(52,101,122,0.08));border:1px solid rgba(193,154,107,0.35);">
+                         Sits above the views rather than inside one, so it stays
+                         put as the person moves between screens. Editing and
+                         monthly/weekly checkpoints live in My Stuff > My Goals;
+                         the protocol lives in My Stuff > My Protocol. This banner
+                         shows nothing else. -->
+
+                    <div id="goal-why-banner" class="hidden p-6 shadow-sm" style="background:linear-gradient(135deg, rgba(193,154,107,0.12), rgba(52,101,122,0.08));border:1px solid rgba(193,154,107,0.35);">
                         <p class="text-sm text-brand-dark mb-2"><span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">Your Goal:</span> <span id="goal-banner-goal-text" class="font-serif text-lg text-brand-dark"></span></p>
                         <p class="text-sm text-gray-600"><span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">Your Why:</span> <span id="goal-banner-why-text" class="italic"></span></p>
                     </div>
+
+                    <div class="mb-views">
 
                     <!-- View: Interactive Metabolic Coach -->
                     <div id="ai-view-coach" class="ai-tool-view" data-view-id="coach" data-usage-category="protocol">
@@ -5124,8 +5133,35 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
+                    </div><!-- /.mb-views -->
+
+                    <!-- My Stuff, on phones. Eight views is too many for a tab
+                         bar, so the four tools get tabs and the four account
+                         screens live behind one. It reuses the SAME
+                         .ai-nav-item buttons, so there is no second list to
+                         keep in sync with the rail. -->
+                    <div class="mb-sheet-backdrop" aria-hidden="true">
+                        <div class="mb-sheet" role="dialog" aria-modal="true" aria-label="My Stuff">
+                            <p class="mb-sheet-title">My Stuff</p>
+                            <button type="button" class="ai-nav-item" data-ai-view="account-goals"><span class="mb-ico" aria-hidden="true">&#x25CE;</span><span>My Goals</span></button>
+                            <button type="button" class="ai-nav-item" data-ai-view="account-protocol"><span class="mb-ico" aria-hidden="true">&#x2713;</span><span>My Protocol &#x2014; Daily Tracker</span></button>
+                            <button type="button" class="ai-nav-item" data-ai-view="account-health-history"><span class="mb-ico" aria-hidden="true">&#x2295;</span><span>Health History</span></button>
+                            <button type="button" class="ai-nav-item" data-ai-view="account-recipes"><span class="mb-ico" aria-hidden="true">&#x25A3;</span><span>My Recipes</span></button>
+                        </div>
+                    </div>
+
+                    </main><!-- /.mb-screens -->
+
+                    <nav class="mb-tabbar" aria-label="AI Coaching Suite">
+                        <button type="button" class="mb-tab" data-mb-tab="coach"><span class="mb-ico" aria-hidden="true">&#x25C8;</span><span class="mb-lab">Coach</span></button>
+                        <button type="button" class="mb-tab" data-mb-tab="meal-planner"><span class="mb-ico" aria-hidden="true">&#x25C7;</span><span class="mb-lab">Meals</span></button>
+                        <button type="button" class="mb-tab" data-mb-tab="fridge-chef"><span class="mb-ico" aria-hidden="true">&#x25C9;</span><span class="mb-lab">Fridge</span></button>
+                        <button type="button" class="mb-tab" data-mb-tab="lab-tool"><span class="mb-ico" aria-hidden="true">&#x2726;</span><span class="mb-lab">Labs</span></button>
+                        <button type="button" class="mb-tab" data-mb-sheet aria-haspopup="dialog" aria-expanded="false"><span class="mb-ico" aria-hidden="true">&#x2261;</span><span class="mb-lab">My Stuff</span></button>
+                    </nav>
+
+                </div><!-- /.mb-stage -->
+            </div><!-- /.mb-app -->
 
         </div> <!-- END AI TOOLS TAB -->
 
