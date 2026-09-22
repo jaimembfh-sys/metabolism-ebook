@@ -307,7 +307,20 @@ Writing reader copy from those notes would be composing in your voice, so it's q
 
 # QUEUED 2026-09-22 (overnight run 4 — recipe/coach integration)
 
-## N-10 — Confirm the allergen tags, then flip one flag ⚠ BLOCKING
+## N-15 — Dairy and soy are now treated differently. Deliberate, worth a second look ⚠
+
+You asked for two things that pull in opposite directions, and both are implemented as asked:
+
+- **Soy:** "tamari or coconut aminos" is Jaime's recommendation, not an accommodation. A soy-allergic reader gets those seven recipes **excluded**, and is never told one is safe.
+- **Dairy:** "ghee or coconut oil" keeps the dairy tag but the pancakes stay **available**, with "make it with coconut oil" attached.
+
+Structurally these are the same situation — a recipe line offering an allergen and a substitute — resolved in opposite directions. The soy rule is the conservative one; the dairy rule keeps a dairy-tagged recipe in front of someone who declared a dairy allergy, relying on them reading and following an instruction.
+
+That may be exactly right, if "dairy-avoiding" meant people avoiding dairy by preference rather than people with a diagnosed dairy allergy — those are different groups and the intake form only records the second.
+
+**What I need:** confirm the pancakes should stay in the pool for a declared **dairy allergy**. If you meant preference rather than allergy, the fix is one line — drop `ALLERGEN_ALTERNATIVES` in `tools/allergens.js` and the pancakes behave like every other dairy recipe.
+
+## N-10 — Confirm the allergen tags, then flip one flag — ✅ DONE 2026-09-22
 
 `ALLERGEN_TAGS_CONFIRMED` in `index.html` is **false**, as you asked. While it is false the pool filter is a no-op: a recipe carrying a declared allergen is still sent to the model, and only the post-generation check catches it. That check reads ingredient text and works, but it is the second line, not the first.
 
@@ -335,7 +348,12 @@ The intake form offers gluten / dairy / soy / nuts / shellfish / other. There is
 
 `2.jpg` ("Mitochondria") and `7 - Copy.jpg` ("Appetite Regulation and GLP-1") now hold a placeholder box. `images/11.webp` is sitting unreferenced and *might* be one of them, but that is a guess and I did not make it.
 
-## N-14 — The pancakes bonus recipe has its own nutrition line
+## N-14 — The pancakes bonus recipe has its own nutrition line — ✅ DONE 2026-09-22
+
+Kept as a note on the pancakes, per Jaime. Rebuilt under the pipeline's own rules: every ingredient — water, salt, monk fruit/allulose, maple extract, xanthan gum — is on the negligible list, so the panel is 0 across the board, where it previously read 5 kcal and 1 g carb. "Estimated" dropped; "per tablespoon" is now "Per Tbsp"; the two missing fields (Total Fat, Protein) added.
+
+*Original note below.*
+
 
 `fluffy-coconut-keto-pancakes.md` line 69 carries `**Nutrition** (per tablespoon, makes about 32 Tbsp) — Estimated` inside the Notes section, for the optional sugar-free maple syrup. It is not a main panel, so the rebuild did not touch it and it still says "Estimated" and "per tablespoon" where every other panel now says "Per Tbsp".
 
