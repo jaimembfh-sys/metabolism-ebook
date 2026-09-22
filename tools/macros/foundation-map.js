@@ -192,8 +192,14 @@ const FOUNDATION_REJECTED = {
   "unsweetened coconut flakes": "Foundation's only coconut foods are flour and oil.",
   "rotisserie chicken": "Foundation has no cooked whole-bird chicken; its cooked entries are single cuts, braised.",
   "cooked chicken": "Foundation has no cooked whole-bird chicken; its cooked entries are single cuts, braised.",
-  "salmon fillet": "FLAGGED pending Jaime's choice - Foundation carries farmed Atlantic at 13.1 g fat and wild sockeye at 4.94 g, a 2.6x spread.",
-  "ground beef": "FLAGGED pending Jaime's choice - Foundation carries 80/20 at 19.4 g and 90/10 at 12.8 g.",
+  /* These two are not pending and not rejected for want of a decision. Jaime
+   * settled both on 2026-09-21, and each is resolved by a BLEND rather than by
+   * a switch to one entry - which is why they still appear here, in a table
+   * about ingredients that did not take a single Foundation entry. The
+   * construction and the arithmetic are in the header of assumptions.js.
+   */
+  "salmon fillet": "Resolved - uses BOTH Foundation entries rather than one. Wild sockeye 4.94 g fat and farmed Atlantic 13.1 g, blended 40/60 to 9.84 g, per Jaime's \"just above the midpoint\". Neither end on its own is the fish the recipes mean. See BLENDS in assumptions.js.",
+  "ground beef": "Resolved - Jaime buys 92/8 and no single entry brackets it, so it is the one place the two datasets are mixed: two-thirds SR Legacy 93/7 (7.0 g fat) to one-third Foundation 90/10 (12.8 g), giving 8.93 g. Foundation's 90/10 alone tests at 12.8 g, well above the 8 g its own label implies. See BLENDS in assumptions.js.",
 };
 
 function verifyFoundation(byId) {
