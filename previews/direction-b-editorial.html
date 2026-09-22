@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" class="dir-b">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6efe4">
+<title>MetaBurn — B · Warm & editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+
+:root{
+  --ink:#2c3e50; --teal:#34657a; --gold:#c19a6b; --cream:#f6efe4; --paper:#fffdf8;
+  --muted:#7b6b58; --line:#e3d6c2; --tint:#f1e7d6;
+  --radius:3px; --shadow:0 1px 0 rgba(44,62,80,.05);
+}
+body{background:var(--cream);color:var(--ink);}
+.topbar{background:var(--paper);border-bottom:2px solid var(--gold);}
+.topbar-title{font-family:var(--serif);font-size:1.7rem;font-weight:700;font-style:italic;color:var(--teal);}
+.rail{background:var(--paper);border-right:1px solid var(--line);}
+.rail-brand .rail-mark{background:var(--teal);}
+.rail-item.is-active{background:var(--tint);color:var(--teal);box-shadow:inset 3px 0 0 var(--gold);}
+.tabbar{background:var(--paper);border-top:2px solid var(--gold);}
+.tab.is-active{color:var(--teal);} .tab.is-active .ico{color:var(--gold);}
+.eyebrow{color:var(--gold);letter-spacing:.24em;}
+.greet h2{font-family:var(--serif);font-size:2.5rem;font-weight:700;color:var(--teal);line-height:1.05;margin:.3rem 0 .45rem;}
+.greet .sub{font-style:italic;color:var(--muted);font-size:1.02rem;}
+.sec{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--teal);margin:2.1rem 0 .7rem;padding-bottom:.35rem;border-bottom:1px solid var(--gold);letter-spacing:0;text-transform:none;}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.stat{padding:1.1rem .5rem;text-align:center;}
+.stat + .stat{border-left:1px solid var(--line);}
+.stat-n{display:block;font-family:var(--serif);font-size:2.1rem;font-weight:700;color:var(--teal);}
+.stat-l{display:block;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.habit{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--radius);}
+.habit input:checked + span{color:var(--muted);text-decoration:line-through;}
+.qbtn{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);}
+.qbtn .qi{color:var(--gold);font-size:1.15rem;}
+.pill{border:1px solid var(--line);background:var(--paper);color:var(--muted);border-radius:999px;}
+.pill--on{background:var(--tint);border-color:var(--gold);color:var(--teal);}
+.numbered li{border-bottom:1px dotted var(--line);}
+.numbered li::before{font-family:var(--serif);font-size:1.25rem;color:var(--gold);}
+.prose{font-size:1.04rem;line-height:1.75;}
+.prose p::first-letter{font-family:var(--serif);font-size:2.4rem;float:left;line-height:.85;padding:.1rem .45rem 0 0;color:var(--gold);}
+.sources li{border-bottom:1px dotted var(--line);color:var(--muted);font-style:italic;}
+.primary{background:var(--teal);color:#fff;border-radius:var(--radius);letter-spacing:.1em;text-transform:uppercase;font-size:.78rem;}
+.msg--ai .bubble{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);}
+.msg--me .bubble{background:var(--teal);color:#fff;border-radius:var(--radius);}
+.composer{background:var(--paper);border-top:1px solid var(--line);}
+.composer input{border:1px solid var(--line);border-radius:var(--radius);background:var(--cream);}
+.send{background:var(--gold);color:var(--ink);border-radius:var(--radius);}
+.day{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);}
+.day.is-active{background:var(--teal);color:#fff;border-color:var(--teal);}
+.meal{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--radius);}
+.meal-slot{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--teal);letter-spacing:0;text-transform:none;}
+.gen .busy-overlay{background:rgba(255,253,248,.93);}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="app">
+  <aside class="rail" aria-label="Main">
+    <div class="rail-brand"><span class="rail-mark">MB</span><span class="rail-word">MetaBurn</span></div>
+    <nav class="rail-nav">
+      <a class="rail-item" href="#home" data-tab="home"><span class="ico">◉</span><span class="lab">Today</span></a>
+      <a class="rail-item" href="#coach" data-tab="coach"><span class="ico">◈</span><span class="lab">Coach</span></a>
+      <a class="rail-item" href="#protocol" data-tab="protocol"><span class="ico">✦</span><span class="lab">Protocol</span></a>
+      <a class="rail-item" href="#planner" data-tab="planner"><span class="ico">◇</span><span class="lab">Meals</span></a>
+    </nav>
+    <div class="rail-foot"><span class="avatar">JJ</span><span class="rail-word">Jaime</span></div>
+  </aside>
+
+  <div class="stage">
+    <header class="topbar">
+      <span class="topbar-title" data-screen-title>Today</span>
+      <span class="topbar-badge">Preview · B · Warm & editorial</span>
+    </header>
+
+    <main class="screens" id="main">
+      
+<section class="view" data-view="home" data-title="Today">
+  <div class="view-body" data-scroll>
+    <header class="greet">
+      <p class="eyebrow">Tuesday, 21 September</p>
+      <h2>Good morning, Jaime</h2>
+      <p class="sub">Three things today. That's the whole plan.</p>
+    </header>
+
+    <div class="stat-row">
+      <div class="stat"><span class="stat-n">12</span><span class="stat-l">day streak</span></div>
+      <div class="stat"><span class="stat-n">3/3</span><span class="stat-l">habits today</span></div>
+      <div class="stat"><span class="stat-n">−4.2</span><span class="stat-l">lbs, 6 weeks</span></div>
+    </div>
+
+    <h3 class="sec">Today's habits</h3>
+    <ul class="habits">
+      <li class="habit"><label><input type="checkbox" checked><span>Eat protein and non-starchy vegetables first at each meal, before any starches</span></label></li><li class="habit"><label><input type="checkbox"><span>Walk 5–10 minutes after dinner, before the evening energy dip hits</span></label></li><li class="habit"><label><input type="checkbox"><span>Three meals on a fixed schedule, with protein at breakfast within an hour of waking</span></label></li>
+    </ul>
+
+    <h3 class="sec">Jump back in</h3>
+    <div class="quick">
+      <button class="qbtn" data-go="coach"><span class="qi">◈</span><span>Ask the coach</span></button>
+      <button class="qbtn" data-go="planner"><span class="qi">◇</span><span>This week's meals</span></button>
+      <button class="qbtn" data-go="protocol"><span class="qi">✦</span><span>My protocol</span></button>
+    </div>
+  </div>
+</section>
+<section class="view view--chat" data-view="coach" data-title="Coach">
+  <div class="chat-log" data-chat-log data-scroll>
+    <div class="msg msg--ai"><div class="bubble">
+      <p>Morning. You logged a 5-hour night — want to look at the evening window again, or leave it for now?</p>
+    </div></div>
+    <div class="msg msg--me"><div class="bubble">I keep eating after 8pm even when I'm not hungry.</div></div>
+    <div class="msg msg--ai"><div class="bubble">
+      <p>That's the pattern we flagged. It's usually a daytime problem arriving late — under-eating by lunch, then your body collecting what it missed.</p>
+      <p class="src">Lesson 13 · Lesson 7</p>
+    </div></div>
+  </div>
+  <form class="composer" onsubmit="return false">
+    <input type="text" data-chat-input placeholder="Ask about your plan…" aria-label="Message the coach">
+    <button class="send" data-chat-send aria-label="Send">→</button>
+  </form>
+</section>
+<section class="view" data-view="protocol" data-title="My Protocol">
+  <div class="view-body" data-scroll>
+    <div class="pill-row">
+      <span class="pill pill--on">Rule of 3s</span>
+      <span class="pill">Safe starches</span>
+    </div>
+
+    <h3 class="sec">Your starter habits</h3>
+    <ol class="numbered">
+      <li>Eat protein and non-starchy vegetables first at each meal, before any starches</li><li>Walk 5–10 minutes after dinner, before the evening energy dip hits</li><li>Three meals on a fixed schedule, with protein at breakfast within an hour of waking</li>
+    </ol>
+
+    <h3 class="sec">Why this plan</h3>
+    <div class="prose"><p>You're not quitting after two weeks because you lack willpower — you're quitting because your nervous system is running a famine signal. Shift work, 5–6 hours of sleep and stress at 8/10 all point the same way. The Rule of 3s with safe starches sends the opposite signal: consistency, adequacy, safety.</p></div>
+
+    <h3 class="sec">Built from</h3>
+    <ul class="sources">
+      <li>Lesson 13 — Chronic Sleep Deprivation</li><li>Lesson 5 — Thyroid and Carbohydrate Restriction</li><li>Lesson 9 — Fiber First: Food Sequencing</li><li>The Five Pillars of Chronic Illness</li>
+    </ul>
+
+    <button class="primary" data-go="coach">Ask about this plan</button>
+  </div>
+</section>
+<section class="view" data-view="planner" data-title="Meal Planner">
+  <div class="view-body" data-scroll>
+    <div class="day-strip" data-day-strip>
+      <button class="day" data-day>Mon</button><button class="day is-active" data-day>Tue</button><button class="day" data-day>Wed</button><button class="day" data-day>Thu</button><button class="day" data-day>Fri</button><button class="day" data-day>Sat</button><button class="day" data-day>Sun</button>
+    </div>
+
+    <div class="gen" id="planOut">
+      <div class="busy-overlay"><span class="spinner"></span><span data-busy-label>Building your week…</span></div>
+      <div class="gen-inner">
+        
+        <article class="meal">
+          <p class="meal-slot">Breakfast</p>
+          <p class="meal-name">Three-egg scramble, spinach, half an avocado</p>
+          <p class="meal-macro">32g protein</p>
+        </article>
+        <article class="meal">
+          <p class="meal-slot">Lunch</p>
+          <p class="meal-name">Roast chicken thigh, sweet potato, cucumber salad</p>
+          <p class="meal-macro">38g protein</p>
+        </article>
+        <article class="meal">
+          <p class="meal-slot">Dinner</p>
+          <p class="meal-name">Baked salmon, roasted carrots, olive oil</p>
+          <p class="meal-macro">34g protein</p>
+        </article>
+        <p class="note">Gluten-free and dairy-free throughout, per your allergies.</p>
+      </div>
+    </div>
+
+    <button class="primary" data-generates="#planOut">Regenerate this week</button>
+  </div>
+</section>
+    </main>
+
+    <nav class="tabbar" aria-label="Main">
+      <a class="tab" href="#home" data-tab="home"><span class="ico">◉</span><span class="lab">Today</span></a>
+      <a class="tab" href="#coach" data-tab="coach"><span class="ico">◈</span><span class="lab">Coach</span></a>
+      <a class="tab" href="#protocol" data-tab="protocol"><span class="ico">✦</span><span class="lab">Protocol</span></a>
+      <a class="tab" href="#planner" data-tab="planner"><span class="ico">◇</span><span class="lab">Meals</span></a>
+    </nav>
+  </div>
+</div>
+
+<script src="app-shell.js"></script>
+</body>
+</html>
