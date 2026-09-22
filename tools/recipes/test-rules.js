@@ -335,6 +335,112 @@ if (mirror && runtime) {
 }
 
 // ---------------------------------------------------------------------------
+section("9. End-to-end — a whole profile through the whole pipeline");
+
+/* Each scenario is a person, a hostile model response, and the rule that has
+ * to hold anyway. The responses are deliberately the worst thing the model
+ * could plausibly return: the allergen it was told to avoid, the snack the
+ * course forbids, the calorie count a flagged user must never see. */
+if (mirror && runtime) {
+  const SCENARIOS = [
+    {
+      who: "dairy + gluten allergy, rule_of_3s",
+      allergies: ["dairy", "gluten"], de: false, pattern: "rule_of_3s",
+      model: { days: [{ day_label: "Day 1", meals: [
+        { slot: "Breakfast", title: "Toast with butter", source: "ai_generated", description: "Sourdough bread, buttered." },
+        { slot: "Lunch", title: "Greek Salad", source: "shared_recipe", description: "Feta and olives." },
+        { slot: "Dinner", title: "Keto Chili", source: "shared_recipe", description: "Beef chili." },
+      ] }], rationale: "A steady week." },
+      expect: "both the invented gluten meal and the tagged dairy recipe are caught",
+    },
+    {
+      who: "soy allergy, rule_of_3s",
+      allergies: ["soy"], de: false, pattern: "rule_of_3s",
+      model: { days: [{ day_label: "Day 1", meals: [
+        { slot: "Breakfast", title: "Avocado Egg Bake", source: "shared_recipe", description: "Baked avocado." },
+        { slot: "Lunch", title: "Beef and Broccoli", source: "shared_recipe", description: "Stir fry." },
+        { slot: "Dinner", title: "Keto Chili", source: "shared_recipe", description: "Beef chili." },
+      ] }], rationale: "A steady week." },
+      expect: "beef and broccoli is allowed, carrying the coconut aminos swap",
+    },
+    {
+      who: "disordered-eating flag, rule_of_3s",
+      allergies: [], de: true, pattern: "rule_of_3s",
+      model: { days: [{ day_label: "Day 1", meals: [
+        { slot: "Breakfast", title: "Avocado Egg Bake", source: "shared_recipe",
+          description: "A 308-calorie start with 28g of fat. Creamy and filling.",
+          macros_note: "~308 cal, 8g protein", macros: { calories: 308, protein_g: 8, carbs_g: 10, fat_g: 28 },
+          coaching_note: "Keep this under 300 calories." },
+      ] }], rationale: "This week averages 1,800 calories a day. Every day is built on whole foods." },
+      expect: "no digit survives anywhere a reader can see",
+    },
+    {
+      who: "time-restricted eating, snack attempt",
+      allergies: [], de: false, pattern: "time_restricted_eating",
+      model: { days: [{ day_label: "Day 1", meals: [
+        { slot: "First Meal", title: "Keto Chili", source: "shared_recipe", description: "Beef chili." },
+        { slot: "Afternoon Snack", title: "Nuts", source: "ai_generated", description: "A handful." },
+        { slot: "Last Meal", title: "Taco Salad", source: "shared_recipe", description: "Beef and greens." },
+      ] }], rationale: "Two meals." },
+      expect: "the snack is rejected and the day is trimmed to the allowed slots",
+    },
+  ];
+
+  SCENARIOS.forEach((s) => {
+    const pool = mirror.filterPoolByAllergies(corpus.recipes, s.allergies);
+
+    // The pool the model would have been shown never contains a violation.
+    check("[" + s.who + "] pool is clean",
+      pool.filter((r) => s.allergies.some((a) => (r.allergens || []).includes(a))).length, 0);
+
+    // The post-check catches whatever came back anyway.
+    const viol = mirror.findMealPlanAllergenViolations(s.model, s.allergies, corpus.recipes);
+    if (s.allergies.includes("dairy")) {
+      check("[" + s.who + "] invented gluten meal caught",
+        viol.some((v) => v.allergen === "gluten" && /toast/i.test(v.title)), true);
+      check("[" + s.who + "] tagged dairy recipe caught",
+        viol.some((v) => v.allergen === "dairy" && /greek salad/i.test(v.title)), true);
+    }
+    if (s.allergies.length === 1 && s.allergies[0] === "soy") {
+      check("[" + s.who + "] no false violation raised", viol.length, 0);
+      const bb = pool.find((r) => r.slug === "beef-and-broccoli");
+      check("[" + s.who + "] swap instruction present",
+        mirror.swapInstructionsFor(bb, s.allergies).length, 1);
+    }
+
+    // Slots.
+    const slotViol = mirror.findSlotViolations(s.model, s.pattern);
+    if (/snack/i.test(JSON.stringify(s.model))) {
+      check("[" + s.who + "] snack rejected", slotViol.some((v) => /snack/i.test(v.problem || "")), true);
+      const allowed = mirror.slotsFor(s.pattern);
+      const trimmed = { days: s.model.days.map((d) => ({ ...d, meals: d.meals.filter((m) => allowed.includes(m.slot)) })) };
+      check("[" + s.who + "] trimmed day has no snack",
+        mirror.findSlotViolations(trimmed, s.pattern).length, 0);
+    }
+
+    // The disordered-eating rule, on everything a reader can see.
+    const out = mirror.scrubNumbersIfFlagged(s.model, s.de);
+    if (s.de) {
+      const visible = [];
+      (out.days || []).forEach((d) => (d.meals || []).forEach((m) => {
+        visible.push(m.description, m.coaching_note, m.macros_note, m.title, m.slot);
+        if (m.macros) visible.push(JSON.stringify(m.macros));
+      }));
+      visible.push(out.rationale, out.allergy_note);
+      const offenders = visible.filter((v) => typeof v === "string" && /\d/.test(v));
+      check("[" + s.who + "] no digit in any visible field", offenders, []);
+      check("[" + s.who + "] description survived as real prose",
+        /^[A-Z]/.test(out.days[0].meals[0].description || ""), true);
+      check("[" + s.who + "] rationale kept its non-numeric sentence",
+        /whole foods/.test(out.rationale || ""), true);
+    } else {
+      check("[" + s.who + "] unflagged plan keeps its numbers",
+        JSON.stringify(out) === JSON.stringify(s.model), true);
+    }
+  });
+}
+
+// ---------------------------------------------------------------------------
 console.log("\n" + "=".repeat(64));
 console.log(pass + " passed, " + failures.length + " failed");
 if (failures.length) {
