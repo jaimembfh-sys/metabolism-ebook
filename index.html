@@ -7888,12 +7888,25 @@ ${researcherSourcesText}
             //
             // Plant-milk exclusions matter: "almond milk" and "coconut cream"
             // are correct dairy-free recommendations and must not trip this.
-            const PLANT_PREFIX = '(?<!coconut |almond |oat |soy |soya |cashew |rice |hemp |flax |pea |plant-based |plant )';
+            // MIRROR OF tools/allergens.js. This file cannot require(), so the
+            // vocabulary exists twice; tools/recipes/test-rules.js asserts the two
+            // compile to identical sources and fails the build if they drift.
+            // Change tools/allergens.js first, then paste here.
+            //
+            // Jaime's decisions, 2026-09-22:
+            //   peanut joins PLANT_PREFIX, so "peanut butter" stops reading as dairy
+            //   coconut and almond flour stop reading as gluten; bare "flour" still does
+            //   tamari and worcestershire join soy
+            // The soy-swappable fork ("tamari OR coconut aminos") is a recipe-level
+            // idea and lives in tools/allergens.js — free-text protocol copy has no
+            // alternative on offer, so here tamari is simply soy.
+            const PLANT_PREFIX = "(?<!coconut |almond |oat |soy |soya |cashew |rice |hemp |flax |pea |peanut |sunflower |seed |cocoa |plant-based |plant )";
+            const NON_GLUTEN_FLOUR = "(?<!coconut |almond |cassava |tapioca |arrowroot |chickpea |flaxseed |sesame |sunflower |hazelnut |pecan )";
             const ALLERGEN_TERMS = {
-                gluten: new RegExp('\\b(?<!gluten-free )(bread|pasta|couscous|wheat|barley|rye|bagel|toast|cracker|cereal|tortilla|breadcrumb|flour|oats|oatmeal|pita|naan|seitan)\\b', 'i'),
+                gluten: new RegExp('\\b(?<!gluten-free )(bread|pasta|couscous|wheat|barley|rye|bagel|toast|cracker|cereal|tortilla|breadcrumb|oats|oatmeal|pita|naan|seitan|' + NON_GLUTEN_FLOUR + 'flour)\\b', 'i'),
                 dairy: new RegExp('\\b' + PLANT_PREFIX + '(milk|cheese|yoghurt|yogurt|butter|cream|whey|kefir|ghee)\\b', 'i'),
                 nuts: /\b(almond|walnut|pecan|cashew|pistachio|hazelnut|macadamia|nut butter|peanut)\b/i,
-                soy: /\b(soy|soya|tofu|tempeh|edamame|miso)\b/i,
+                soy: /\b(soy|soya|tofu|tempeh|edamame|miso|tamari|worcestershire)\b/i,
                 shellfish: /\b(shrimp|prawn|crab|lobster|crayfish|scallop|mussel|clam|oyster)\b/i
             };
 

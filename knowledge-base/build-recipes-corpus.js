@@ -130,6 +130,16 @@ function parseRecipeFile(filePath) {
     source_file: meta.source_file || null,
     page: recipePage(slug),
     allergens: tagged.allergens,
+    /* Soy the reader can dodge by taking the alternative the recipe already
+     * offers — "tamari or coconut aminos". Jaime's decision 1: the recipe
+     * stays available to a soy-allergic user and the coach names the swap,
+     * rather than the recipe disappearing from their week. */
+    soy_swappable: tagged.soy_swappable,
+    /* "Check the label" — most Worcestershire has soy, not all. */
+    brand_dependent: tagged.brand_dependent.length ? tagged.brand_dependent : null,
+    /* Usually contains anchovy. The intake form has no fish category, so this
+     * cannot be filtered on; it is carried so the coach can mention it. */
+    anchovy: tagged.anchovy.length ? tagged.anchovy : null,
     // True where the tagger itself is unsure - a doubtful hit or a term it
     // knows it does not cover. Surfaced so the coach can decline to promise
     // a recipe is safe on a tag nobody has checked.
