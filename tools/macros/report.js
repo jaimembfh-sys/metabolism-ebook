@@ -8,6 +8,24 @@
  * Usage:
  *   node tools/macros/report.js                 all recipes
  *   node tools/macros/report.js slug [slug...]  named recipes only
+ *
+ * CAREFUL: passing slugs REWRITES RECIPE_MACROS.md with only those recipes.
+ * It is not a filter on the output, it is the whole output. Use it to look at
+ * a number, then run with no arguments before committing, or the other 41
+ * recipes are gone from the file.
+ *
+ * Environment:
+ *   MACRO_INDEX=<usda-index.json>   the SR Legacy index. Defaults to a path in
+ *       a Claude session scratch directory, which is a temp directory and will
+ *       not survive a cleanup - rebuild it with build-usda-index.js from the
+ *       SR Legacy CSVs if the default is gone.
+ *   MACRO_BASELINE=<dump.json>      earlier run to diff against. Without it
+ *       the "Per-serving change, every recipe that moved" section is NOT
+ *       written, so a plain run drops it from the committed file. The baseline
+ *       behind the current section is a MACRO_NO_FOUNDATION=1 run.
+ *   MACRO_DUMP=<path>               also write the per-serving numbers, the
+ *       per-ingredient rows and the source list as JSON.
+ *   MACRO_NO_FOUNDATION=1           ignore Foundation, use SR Legacy only.
  */
 const fs = require("fs");
 const path = require("path");
