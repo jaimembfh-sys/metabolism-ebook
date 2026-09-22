@@ -217,6 +217,82 @@ if (runtime) {
 }
 
 // ---------------------------------------------------------------------------
+section("7. index.html's mirrored rules behave like the library");
+
+/* Pull the functions straight out of index.html and run the same inputs
+ * through both copies. A comment promising they match is not a test; this is.
+ * Brace-matching extractor, same approach the earlier allergen test used. */
+function extract(src, marker) {
+  const s = src.indexOf(marker);
+  if (s === -1) return null;
+  // A string constant — const PLANT_PREFIX = "..."; — has no braces to match,
+  // so brace-walking runs off into the next function and declares it twice.
+  const semi = src.indexOf(";", s);
+  const brace = src.indexOf("{", s);
+  if (semi !== -1 && (brace === -1 || semi < brace)) return src.slice(s, semi + 1);
+  let i = brace, d = 0, q = null, esc = false;
+  for (let j = i; j < src.length; j++) {
+    const c = src[j];
+    if (esc) { esc = false; continue; }
+    if (c === "\\") { esc = true; continue; }
+    if (q) { if (c === q) q = null; continue; }
+    if (c === '"' || c === "'" || c === "`") { q = c; continue; }
+    if (c === "/" && src[j + 1] === "*") { const e = src.indexOf("*/", j); if (e > 0) { j = e + 1; continue; } }
+    if (c === "{") d++;
+    else if (c === "}") { d--; if (d === 0) return src.slice(s, j + 1); }
+  }
+  return null;
+}
+
+const NEEDED = ["const KEEP_NUMBER =", "function sentenceIsSafe(", "function scrubText(",
+  "function stripNutritionPanels(", "function scrubNumbersIfFlagged(",
+  "const SLOTS_BY_PATTERN =", "function slotsFor(", "function findSlotViolations(",
+  "function recipeViolates(", "function filterPoolByAllergies(", "function swapInstructionsFor(",
+  "function findMealPlanAllergenViolations(", "const PLANT_PREFIX", "const NON_GLUTEN_FLOUR",
+  "const ALLERGEN_TERMS ="];
+const missing = NEEDED.filter((n) => !extract(html, n));
+check("all mirrored rules found in index.html", missing, []);
+
+let mirror = null;
+if (!missing.length) {
+  const src = NEEDED.map((n) => extract(html, n)).join("\n") +
+    "\nreturn { scrubText, stripNutritionPanels, scrubNumbersIfFlagged, slotsFor, findSlotViolations," +
+    " filterPoolByAllergies, swapInstructionsFor, findMealPlanAllergenViolations };";
+  try { mirror = new Function(src)(); }
+  catch (e) { check("index.html rules evaluate", "error: " + e.message, "no error"); }
+}
+
+if (mirror && runtime) {
+  const cases = [
+    "A 308-calorie start with 28g of fat. Creamy baked avocado with a soft egg.",
+    "Roast at 400°F for 25 minutes, then rest 5 minutes.",
+    "~450 cal, 35g protein",
+    "Use 1/2 cup coconut milk and 2 Tbsp peanut butter.",
+    "Day 1 starts with eggs.",
+  ];
+  cases.forEach((c, i) => check("mirror scrubText #" + (i + 1), mirror.scrubText(c), runtime.scrubText(c)));
+  check("mirror slotsFor(rule_of_3s)", mirror.slotsFor("rule_of_3s"), runtime.slotsFor("rule_of_3s"));
+  check("mirror slotsFor(TRE)", mirror.slotsFor("time_restricted_eating"), runtime.slotsFor("time_restricted_eating"));
+  const snackPlan = { days: [{ day_label: "Day 1", meals: [{ slot: "Afternoon Snack" }] }] };
+  check("mirror findSlotViolations", mirror.findSlotViolations(snackPlan, "rule_of_3s"), runtime.findSlotViolations(snackPlan, "rule_of_3s"));
+  ["dairy", "soy", "nuts", "gluten"].forEach((a) => {
+    const m = mirror.filterPoolByAllergies(corpus.recipes, [a]).map((r) => r.slug);
+    const l = runtime.filterPoolByAllergies(corpus.recipes, [a]).map((r) => r.slug);
+    check("mirror filterPoolByAllergies(" + a + ")", m, l);
+  });
+  const bad = { days: [{ day_label: "Day 1", meals: [{ slot: "Breakfast", title: "Toast and butter", source: "ai_generated", description: "Sourdough bread with butter." }] }], rationale: "" };
+  check("mirror findMealPlanAllergenViolations",
+    mirror.findMealPlanAllergenViolations(bad, ["gluten"], corpus.recipes),
+    runtime.findMealPlanAllergenViolations(bad, ["gluten"], corpus.recipes));
+  const plan2 = { days: [{ day_label: "Day 1", meals: [{ slot: "Breakfast", title: "X", description: "A 308-calorie start.", macros_note: "x", macros: {} }] }], rationale: "1,800 calories." };
+  check("mirror scrubNumbersIfFlagged",
+    mirror.scrubNumbersIfFlagged(plan2, true), runtime.scrubNumbersIfFlagged(plan2, true));
+  check("mirror swapInstructionsFor(soy)",
+    mirror.swapInstructionsFor(bySlug["beef-and-broccoli"], ["soy"]),
+    runtime.swapInstructionsFor(bySlug["beef-and-broccoli"], ["soy"]));
+}
+
+// ---------------------------------------------------------------------------
 console.log("\n" + "=".repeat(64));
 console.log(pass + " passed, " + failures.length + " failed");
 if (failures.length) {

@@ -7930,6 +7930,187 @@ ${researcherSourcesText}
                 return found;
             }
 
+            // ============================================================
+            // RECIPE + MEAL-PLAN RULES
+            // ============================================================
+            // MIRROR OF tools/recipes/coach-rules-lib.js, which is where these
+            // are unit-tested. This file cannot require(), so they exist twice;
+            // tools/recipes/test-rules.js extracts these functions out of this
+            // file and runs the same assertions against both copies, so a drift
+            // fails the suite rather than shipping.
+            //
+            // Jaime has not confirmed the recipe allergen tags yet, so nothing
+            // reads them. Flip this to true once he has, and the pool filter
+            // starts working; until then the filter is a no-op and the
+            // post-generation violation check — which reads ingredient text,
+            // not tags — carries the rule on its own.
+            const ALLERGEN_TAGS_CONFIRMED = false;
+
+            // Numbers that are not about a body. An oven, a timer and a
+            // measuring cup are all things a cook needs; calories and grams of
+            // fat are the ones that hurt.
+            const KEEP_NUMBER = [
+                /\bday\s+\d+/i,
+                /\d+\s*°/,
+                /\d+\s*(?:degrees|deg)\b/i,
+                /\d+\s*(?:minutes?|mins?|hours?|hrs?|seconds?|secs?)\b/i,
+                /\d+\s*(?:\/\d+)?\s*(?:cups?|tsp|Tbsp|teaspoons?|tablespoons?|oz|ounces?|lbs?|pounds?|cloves?|slices?|cans?)\b/i,
+                /\b\d+\s*(?:x|×)\s*\d+/
+            ];
+
+            function sentenceIsSafe(sentence) {
+                let rest = sentence;
+                KEEP_NUMBER.forEach(function (re) {
+                    rest = rest.replace(new RegExp(re.source, re.flags.indexOf('g') >= 0 ? re.flags : re.flags + 'g'), ' ');
+                });
+                return !/\d/.test(rest);
+            }
+
+            /* Rewriting a sentence around its numbers produces broken English —
+             * "Try cutting back to 200 calories" became "Try cutting back toa
+             * moderate amount". Mangled copy aimed at someone with an eating
+             * disorder is worse than no copy, so a sentence carrying a
+             * body-number is dropped whole and the rest survives intact. */
+            function scrubText(s) {
+                if (typeof s !== 'string' || !s) return s;
+                const sentences = s.match(/[^.!?]+[.!?]*\s*/g) || [s];
+                const kept = sentences.filter(sentenceIsSafe);
+                const out = kept.join('').replace(/\s{2,}/g, ' ').trim();
+                return out || null;
+            }
+
+            function stripNutritionPanels(fullText) {
+                if (!fullText) return fullText;
+                const lines = fullText.replace(/\r\n/g, '\n').split('\n');
+                const start = lines.findIndex(function (l) { return /^## Nutrition\s*$/.test(l); });
+                if (start === -1) return fullText;
+                let end = lines.length;
+                for (let i = start + 1; i < lines.length; i++) { if (/^## /.test(lines[i])) { end = i; break; } }
+                return lines.slice(0, start).concat(lines.slice(end)).join('\n').replace(/\n{3,}/g, '\n\n').trim();
+            }
+
+            /* One choke point for the disordered-eating rule. Replaces
+             * stripMealMacrosIfFlagged, which nulled macros and macros_note and
+             * left every free-text field alone — including description, which is
+             * required on every meal and renders on the card. */
+            function scrubNumbersIfFlagged(plan, disorderedEatingSignal) {
+                if (!disorderedEatingSignal || !plan) return plan;
+                return Object.assign({}, plan, {
+                    rationale: scrubText(plan.rationale),
+                    allergy_note: scrubText(plan.allergy_note),
+                    days: (plan.days || []).map(function (day) {
+                        return Object.assign({}, day, {
+                            meals: (day.meals || []).map(function (meal) {
+                                return Object.assign({}, meal, {
+                                    macros_note: null,
+                                    macros: null,
+                                    description: scrubText(meal.description) || (meal.title ? 'See the full recipe for ' + meal.title + '.' : null),
+                                    coaching_note: scrubText(meal.coaching_note)
+                                });
+                            })
+                        });
+                    })
+                });
+            }
+
+            // The course teaches no snacking, so the planner must not build one.
+            const SLOTS_BY_PATTERN = {
+                rule_of_3s: ['Breakfast', 'Lunch', 'Dinner'],
+                carb_backloading: ['Breakfast', 'Lunch', 'Dinner'],
+                time_restricted_eating: ['First Meal', 'Last Meal']
+            };
+            function slotsFor(eatingPattern) {
+                return SLOTS_BY_PATTERN[eatingPattern] || SLOTS_BY_PATTERN.rule_of_3s;
+            }
+            function findSlotViolations(plan, eatingPattern) {
+                const allowed = slotsFor(eatingPattern);
+                const out = [];
+                ((plan && plan.days) ? plan.days : []).forEach(function (day) {
+                    const meals = day.meals || [];
+                    if (meals.length > allowed.length) {
+                        out.push({ day: day.day_label, problem: meals.length + ' meals, pattern allows ' + allowed.length });
+                    }
+                    const seen = {};
+                    meals.forEach(function (m) {
+                        const slot = (m && m.slot) || '';
+                        if (/snack|nibble|bite|grazing/i.test(slot)) {
+                            out.push({ day: day.day_label, slot: slot, problem: 'snack slot — the course teaches no snacking' });
+                            return;
+                        }
+                        if (allowed.indexOf(slot) === -1) {
+                            out.push({ day: day.day_label, slot: slot, problem: 'not one of ' + allowed.join(' / ') });
+                            return;
+                        }
+                        if (seen[slot]) out.push({ day: day.day_label, slot: slot, problem: 'duplicate slot' });
+                        seen[slot] = true;
+                    });
+                });
+                return out;
+            }
+
+            /* The model cannot suggest a recipe it was never shown. Strictly
+             * stronger than instructing it, which measured 1-in-3 failure.
+             * Soy is Jaime's carve-out: a recipe whose only soy is "tamari or
+             * coconut aminos" stays in the pool carrying the swap. */
+            function recipeViolates(recipe, allergy) {
+                return ((recipe && recipe.allergens) || []).indexOf(allergy) !== -1;
+            }
+            function filterPoolByAllergies(pool, allergies) {
+                const list = (allergies || []).map(function (a) { return String(a).toLowerCase(); })
+                    .filter(function (a) { return a !== 'other'; });
+                if (!list.length) return (pool || []).slice();
+                return (pool || []).filter(function (r) {
+                    return !list.some(function (a) { return recipeViolates(r, a); });
+                });
+            }
+            function swapInstructionsFor(recipe, allergies) {
+                const list = (allergies || []).map(function (a) { return String(a).toLowerCase(); });
+                const out = [];
+                if (list.indexOf('soy') !== -1 && recipe && recipe.soy_swappable) {
+                    out.push('Use ' + recipe.soy_swappable.swap + ', not ' + recipe.soy_swappable.instead_of +
+                        ' — this recipe offers both and only one is soy-free.');
+                }
+                if (list.indexOf('soy') !== -1 && recipe && recipe.brand_dependent) {
+                    recipe.brand_dependent.forEach(function (b) {
+                        out.push('Check the label on the ' + b.term + ': ' + b.why + '.');
+                    });
+                }
+                return out;
+            }
+
+            /* findAllergenViolations reads starter_habits and staged_plan — a
+             * meal plan has neither, so it could not see one even if called.
+             * This reads plans, and covers ai_generated meals, whose
+             * ingredients the model invents freely. */
+            function findMealPlanAllergenViolations(plan, allergies, pool) {
+                const list = (allergies || []).map(function (a) { return String(a).toLowerCase(); })
+                    .filter(function (a) { return a !== 'other'; });
+                if (!list.length || !plan) return [];
+                const byTitle = {};
+                (pool || []).forEach(function (r) { byTitle[String(r.title).toLowerCase()] = r; });
+                const out = [];
+                (plan.days || []).forEach(function (day) {
+                    (day.meals || []).forEach(function (meal) {
+                        const known = byTitle[String(meal.title || '').toLowerCase()];
+                        list.forEach(function (a) {
+                            if (known) {
+                                if ((known.allergens || []).indexOf(a) !== -1) {
+                                    out.push({ day: day.day_label, slot: meal.slot, title: meal.title, allergen: a, why: 'recipe is tagged ' + a });
+                                }
+                                return;
+                            }
+                            const re = ALLERGEN_TERMS[a];
+                            if (!re) return;
+                            const haystack = [meal.title, meal.description, (meal.ingredients || []).join(' ')]
+                                .filter(Boolean).join(' \n ');
+                            const m = haystack.match(re);
+                            if (m) out.push({ day: day.day_label, slot: meal.slot, title: meal.title, allergen: a, term: m[0], why: 'invented meal mentions ' + m[0] });
+                        });
+                    });
+                });
+                return out;
+            }
+
             function buildProtocolIntakeTurn(profile) {
                 const hh = profile.health_history || {};
                 const p = hh.physical || {};
