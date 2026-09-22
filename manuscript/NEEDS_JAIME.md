@@ -307,7 +307,12 @@ Writing reader copy from those notes would be composing in your voice, so it's q
 
 # QUEUED 2026-09-22 (overnight run 4 — recipe/coach integration)
 
-## N-15 — Dairy and soy are now treated differently. Deliberate, worth a second look ⚠
+## N-15 — Dairy and soy are treated differently — ✅ RESOLVED 2026-09-22
+
+Jaime: keep the pancakes in the dairy pool with the coconut oil note, as built. No change made. A disclaimer now stands behind the whole planner (see below), but that is a backstop and was explicitly not a reason to loosen the filters — the pool filter and the post-generation check are untouched.
+
+*Original note below.*
+
 
 You asked for two things that pull in opposite directions, and both are implemented as asked:
 

@@ -337,6 +337,102 @@
         }
         .img-placeholder span { opacity: 0.75; }
         @media print { .img-placeholder { display: none; } }
+
+        /* ---- Meal planner disclaimer ------------------------------------
+           Brand tokens only: teal #34657a, gold #c19a6b, icy #eef3f5, slate
+           #2c3e50, Cormorant Garamond for the heading and Montserrat for the
+           body, the same pairing the rest of the page uses. */
+        .meal-disclaimer-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            background: rgba(44, 62, 80, 0.55);
+            backdrop-filter: blur(2px);
+            overflow-y: auto;
+        }
+        .meal-disclaimer-overlay.hidden { display: none; }
+        .meal-disclaimer {
+            background: #fff;
+            max-width: 34rem;
+            width: 100%;
+            border-radius: 1rem;
+            border-top: 5px solid #c19a6b;
+            box-shadow: 0 18px 50px rgba(44, 62, 80, 0.28);
+            padding: 2rem 1.9rem 1.6rem;
+            margin: auto;
+        }
+        .meal-disclaimer h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #34657a;
+            margin: 0 0 1rem;
+            line-height: 1.15;
+        }
+        .meal-disclaimer #meal-disclaimer-body p {
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-size: 0.875rem;
+            line-height: 1.65;
+            color: #2c3e50;
+            margin: 0 0 0.9rem;
+        }
+        .meal-disclaimer #meal-disclaimer-body p:last-child {
+            margin-bottom: 0;
+            padding: 0.75rem 0.9rem;
+            background: #eef3f5;
+            border-left: 3px solid #34657a;
+            border-radius: 0 6px 6px 0;
+            font-weight: 600;
+        }
+        .meal-disclaimer-actions {
+            display: flex;
+            gap: 0.6rem;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.1rem;
+            border-top: 1px solid rgba(52, 101, 122, 0.15);
+            flex-wrap: wrap;
+        }
+        .meal-disclaimer-btn-primary,
+        .meal-disclaimer-btn-secondary {
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            padding: 0.7rem 1.4rem;
+            cursor: pointer;
+            transition: background-color .15s ease, color .15s ease;
+        }
+        .meal-disclaimer-btn-primary {
+            background: #34657a;
+            color: #fff;
+            border: 1px solid #34657a;
+        }
+        .meal-disclaimer-btn-primary:hover { background: #234553; border-color: #234553; }
+        .meal-disclaimer-btn-secondary {
+            background: transparent;
+            color: #34657a;
+            border: 1px solid rgba(52, 101, 122, 0.35);
+        }
+        .meal-disclaimer-btn-secondary:hover { background: #eef3f5; }
+        /* The shared focus ring in styles/brand.css only fires on
+           :focus-visible. In a dialog the focus has been moved by script, so
+           make it visible however it arrived. */
+        .meal-disclaimer button:focus {
+            outline: 2px solid #34657a;
+            outline-offset: 2px;
+        }
+        @media (max-width: 480px) {
+            .meal-disclaimer { padding: 1.5rem 1.25rem 1.25rem; }
+            .meal-disclaimer h2 { font-size: 1.6rem; }
+            .meal-disclaimer-actions { flex-direction: column-reverse; align-items: stretch; }
+            .meal-disclaimer-actions button { width: 100%; }
+        }
         .lesson-text::after {
             content: '';
             display: table;
@@ -7307,6 +7403,132 @@ GUARDRAILS:${disorderedEatingSignal ? `
             const mealPlanLoading = document.getElementById('meal-plan-loading');
             const mealPlanOutput = document.getElementById('meal-plan-output');
 
+            // ============================================================
+            // MEAL PLANNER DISCLAIMER
+            // ============================================================
+            // Shown once, before the first plan. Accepting is recorded on the
+            // profile so it does not return every session.
+            //
+            // It is a BACKSTOP. The allergen pool filter and the
+            // post-generation violation check are unchanged and still run for
+            // every plan — someone agreeing to read labels is not a reason to
+            // stop filtering on their behalf.
+            const mealDisclaimerOverlay = document.getElementById('meal-disclaimer-overlay');
+            const mealDisclaimerAccept = document.getElementById('meal-disclaimer-accept');
+            const mealDisclaimerDecline = document.getElementById('meal-disclaimer-decline');
+            let mealDisclaimerResolve = null;
+            let mealDisclaimerLastFocus = null;
+
+            function mealDisclaimerAccepted(profile) {
+                return !!(profile && profile.meal_planner_disclaimer && profile.meal_planner_disclaimer.accepted_at);
+            }
+
+            function mealDisclaimerFocusables() {
+                if (!mealDisclaimerOverlay) return [];
+                return Array.prototype.slice.call(
+                    mealDisclaimerOverlay.querySelectorAll('button:not([disabled])')
+                );
+            }
+
+            /* Tab and Shift+Tab cycle inside the dialog. Without this the focus
+               walks out into the page behind, which for a screen-reader user
+               reads as the dialog having silently closed. */
+            function mealDisclaimerKeydown(e) {
+                if (e.key === 'Escape') {
+                    // Escape declines rather than accepting — closing a dialog
+                    // must never be a way to agree to something.
+                    e.preventDefault();
+                    closeMealDisclaimer(false);
+                    return;
+                }
+                if (e.key !== 'Tab') return;
+                const items = mealDisclaimerFocusables();
+                if (!items.length) return;
+                const first = items[0];
+                const last = items[items.length - 1];
+                if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
+
+            function openMealDisclaimer() {
+                return new Promise(function (resolve) {
+                    if (!mealDisclaimerOverlay) { resolve(true); return; }
+                    mealDisclaimerResolve = resolve;
+                    mealDisclaimerLastFocus = document.activeElement;
+                    mealDisclaimerOverlay.hidden = false;
+                    mealDisclaimerOverlay.classList.remove('hidden');
+                    // Stops the page behind scrolling under the dialog.
+                    document.body.style.overflow = 'hidden';
+                    document.addEventListener('keydown', mealDisclaimerKeydown, true);
+                    // Focus the heading, not a button: a screen reader then
+                    // announces the title and the body before the choice,
+                    // rather than announcing "I understand and agree" first.
+                    const title = document.getElementById('meal-disclaimer-title');
+                    if (title) {
+                        title.setAttribute('tabindex', '-1');
+                        title.focus();
+                    } else if (mealDisclaimerAccept) {
+                        mealDisclaimerAccept.focus();
+                    }
+                });
+            }
+
+            function closeMealDisclaimer(accepted) {
+                if (!mealDisclaimerOverlay) return;
+                mealDisclaimerOverlay.classList.add('hidden');
+                mealDisclaimerOverlay.hidden = true;
+                document.body.style.overflow = '';
+                document.removeEventListener('keydown', mealDisclaimerKeydown, true);
+                if (mealDisclaimerLastFocus && mealDisclaimerLastFocus.focus) mealDisclaimerLastFocus.focus();
+                mealDisclaimerLastFocus = null;
+                const r = mealDisclaimerResolve;
+                mealDisclaimerResolve = null;
+                if (r) r(!!accepted);
+            }
+
+            if (mealDisclaimerAccept) {
+                mealDisclaimerAccept.addEventListener('click', async function () {
+                    mealDisclaimerAccept.disabled = true;
+                    const record = { accepted_at: Date.now(), version: 1 };
+                    try {
+                        const res = await fetch('/api/profile', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ deviceId: aiDeviceId, profile: { meal_planner_disclaimer: record } })
+                        });
+                        const data = await res.json();
+                        if (data.profile) currentGoalProfile = data.profile;
+                        else if (currentGoalProfile) currentGoalProfile.meal_planner_disclaimer = record;
+                    } catch (e) {
+                        // A failed write must not block the person or, worse,
+                        // silently re-prompt forever. Hold it in memory for
+                        // this session; the next successful save picks it up.
+                        console.error('disclaimer save failed', e);
+                        if (currentGoalProfile) currentGoalProfile.meal_planner_disclaimer = record;
+                    } finally {
+                        mealDisclaimerAccept.disabled = false;
+                        closeMealDisclaimer(true);
+                    }
+                });
+            }
+            if (mealDisclaimerDecline) {
+                mealDisclaimerDecline.addEventListener('click', function () { closeMealDisclaimer(false); });
+            }
+            /* A click on the backdrop declines, for the same reason Escape
+               does. Clicks inside the panel must not fall through to it. */
+            if (mealDisclaimerOverlay) {
+                mealDisclaimerOverlay.addEventListener('click', function (e) {
+                    if (e.target === mealDisclaimerOverlay) closeMealDisclaimer(false);
+                });
+            }
+
+            /** true if the person may proceed. Shows the dialog if they have
+             *  not accepted it before. */
+            async function ensureMealDisclaimer() {
+                if (mealDisclaimerAccepted(currentGoalProfile)) return true;
+                return await openMealDisclaimer();
+            }
+
             // stripMealMacrosIfFlagged lived here. It nulled macros and
             // macros_note and stopped, which left description — required on
             // every meal, and rendered on the card — free to say "a 308-calorie
@@ -7322,6 +7544,11 @@ GUARDRAILS:${disorderedEatingSignal ? `
                         mealPlanOutput.classList.remove('hidden');
                         return;
                     }
+
+                    // First time only. Declining stops here and costs nothing —
+                    // no call is made and no plan is built.
+                    const agreed = await ensureMealDisclaimer();
+                    if (!agreed) return;
 
                     mealPlanLoading.classList.remove('hidden');
                     mealPlanOutput.classList.add('hidden');
@@ -11835,6 +12062,37 @@ Format your response with clean HTML, matching the same convention used elsewher
 <script>
     /* PASSWORD GATE REMOVED - Access gate disabled */
 </script>
+
+<!-- ============================================================
+     MEAL PLANNER DISCLAIMER
+     ============================================================
+     Shown once, the first time a user opens the Metabolic Meal Planner.
+     They cannot generate a plan until they accept; acceptance is written
+     to the profile (meal_planner_disclaimer) so it does not return every
+     session.
+
+     It is a BACKSTOP, not a licence. Nothing about the allergen pool
+     filter or the post-generation violation check changes because this
+     exists — a person agreeing to read labels is not a reason to stop
+     filtering on their behalf.
+
+     The copy is Jaime's, exactly as written.
+     ============================================================ -->
+<div id="meal-disclaimer-overlay" class="meal-disclaimer-overlay hidden" hidden>
+    <div class="meal-disclaimer" role="dialog" aria-modal="true"
+         aria-labelledby="meal-disclaimer-title" aria-describedby="meal-disclaimer-body">
+        <h2 id="meal-disclaimer-title">Before you begin</h2>
+        <div id="meal-disclaimer-body">
+            <p>Our recipes are marked for common food sensitivities, and many will work well for you. However, these markings are a guide, not a guarantee. They may not account for every true or anaphylactic allergy, and ingredients can vary by brand.</p>
+            <p>You are responsible for reviewing each recipe&#x2019;s ingredients to confirm it is compatible with your own needs. Mind-Body Functional Health is not liable for any allergic reaction or adverse effect resulting from foods or recipes you choose to prepare or eat.</p>
+            <p>If you have a severe or anaphylactic allergy, please consult your healthcare provider before following any meal plan.</p>
+        </div>
+        <div class="meal-disclaimer-actions">
+            <button type="button" id="meal-disclaimer-decline" class="meal-disclaimer-btn-secondary">Not right now</button>
+            <button type="button" id="meal-disclaimer-accept" class="meal-disclaimer-btn-primary">I understand and agree</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
 
