@@ -6218,6 +6218,9 @@
                 if (!recipeCorpusPromise) {
                     recipeCorpusPromise = fetch('/knowledge-base/recipes.json')
                         .then(function(r) { if (!r.ok) throw new Error('Failed to load recipe corpus (' + r.status + ')'); return r.json(); })
+                        // Built here so every renderer can link a recipe by title
+                        // without each one re-walking the corpus.
+                        .then(function(corpus) { buildRecipePageIndex(corpus); return corpus; })
                         .catch(function(e) { console.error('fetchRecipeCorpus failed', e); recipeCorpusPromise = null; return null; });
                 }
                 return recipeCorpusPromise;
@@ -6399,6 +6402,23 @@ Write day_label consistently and sequentially ("Day 1" through "Day 7"). Write t
                     '</div></div>';
             }
 
+            /* Title -> recipe page. The corpus is fetched lazily, so this holds
+             * a lookup built the first time it arrives; before that it returns
+             * null and the title renders as plain text rather than a dead link.
+             * Rebuilt whenever the corpus is (re)loaded. */
+            var recipePageIndex = null;
+            function buildRecipePageIndex(corpus) {
+                recipePageIndex = {};
+                ((corpus && corpus.recipes) || []).forEach(function (r) {
+                    if (r.title && r.page) recipePageIndex[String(r.title).toLowerCase()] = r.page;
+                });
+                return recipePageIndex;
+            }
+            function recipePageForTitle(title) {
+                if (!recipePageIndex || !title) return null;
+                return recipePageIndex[String(title).toLowerCase()] || null;
+            }
+
             function buildWeeklyPlanHtml(plan) {
                 if (!plan || !plan.days || !plan.days.length) return '';
                 var html = '';
@@ -6418,9 +6438,17 @@ Write day_label consistently and sequentially ("Day 1" through "Day 7"). Write t
                         '<p class="font-serif text-lg font-bold text-brand-dark mb-3">' + escapeHtml(day.day_label) + '</p>' +
                         '<div class="space-y-3">';
                     (day.meals || []).forEach(function(meal) {
+                        /* A recipe the coach names should be one click from the
+                         * recipe itself. Looked up by title against the corpus,
+                         * which is how the plan refers to them — the schema
+                         * requires the title to match a pool recipe exactly. */
+                        var page = recipePageForTitle(meal.title);
+                        var titleHtml = page
+                            ? '<a href="' + escapeHtml(page) + '" target="_blank" rel="noopener" class="underline hover:no-underline">' + escapeHtml(meal.title) + '</a>'
+                            : escapeHtml(meal.title);
                         html += '<div class="pl-3" style="border-left:3px solid rgba(193,154,107,0.5);">' +
                             '<p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">' + escapeHtml(meal.slot) + '</p>' +
-                            '<p class="text-sm font-semibold text-brand-dark">' + escapeHtml(meal.title) + '</p>' +
+                            '<p class="text-sm font-semibold text-brand-dark">' + titleHtml + '</p>' +
                             '<p class="text-sm text-gray-600">' + escapeHtml(meal.description) + '</p>' +
                             (meal.macros_note ? '<p class="text-xs text-gray-400 mt-0.5">' + modelText(meal.macros_note) + '</p>' : '') +
                             (meal.coaching_note ? buildCoachingNoteHtml(meal) : '') +
