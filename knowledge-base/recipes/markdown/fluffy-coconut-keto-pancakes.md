@@ -17,7 +17,7 @@ source_file: recipes/Fluffy_Coconut_Keto_Pancakes_Recipe.pdf
 - 1 tsp baking powder
 
 ### Add the Wet Ingredients
-- 9 Tbsp butter, melted
+- 9 Tbsp ghee or coconut oil, melted
 - 3 Tbsp coconut milk
 - 2 tsp vanilla extract
 
@@ -38,8 +38,8 @@ Gently fold spoonfuls of the whipped egg whites into the yolk batter, being care
 ## Nutrition
 
 ### Per pancake (makes 5)
-- Calories: 298
-- Total Fat: 28g
+- Calories: 341
+- Total Fat: 33g
 - Total Carbs: 4g
 - Fiber: 2g
 - Net Carbs: 2g
@@ -66,10 +66,12 @@ A quick, zero-sugar maple syrup to go with your pancakes — a second, self-cont
 2. Make the Syrup Base — In a saucepan over high heat, combine the water, sweetener, and salt. Bring to a simmer, stirring occasionally, until the sweetener is fully dissolved. Remove from heat and stir in the maple extract.
 3. Thicken and Store — Whisk the xanthan gum mixture into the hot syrup until fully dissolved and smooth. Pour into a glass jar or bottle and let cool to room temperature before covering and refrigerating.
 
-**Nutrition** (per tablespoon, makes about 32 Tbsp) — Estimated
-- Calories: 5
-- Total Carbs: 1g
+**Nutrition** (Per Tbsp, makes about 32 Tbsp)
+- Calories: 0
+- Total Fat: 0g
+- Total Carbs: 0g
 - Fiber: 0g
-- Net Carbs: 1g
+- Net Carbs: 0g
+- Protein: 0g
 
 **Storage:** Store in an airtight jar at room temperature for up to 4 weeks, or in the fridge for up to 6 months. Not recommended for freezing, since it can crystallize and turn grainy.

@@ -111,6 +111,24 @@ const MAP3 = {
   "juice of 1 lime":      { fdc: 168156, expect: "Lime juice, raw", grams: { each: 30, tbsp: 15, cup: 242 } },
   "juice of 1 lemon":     { fdc: 167747, expect: "Lemon juice, raw", grams: { each: 45, tbsp: 15, cup: 244 } },
   "buttermilk or milk":   { fdc: 172225, expect: "Milk, buttermilk, fluid, whole", grams: { cup: 245, tbsp: 15.3, oz: 29.6 } },
+
+  /* Jaime, 2026-09-22: the pancakes call for "ghee or coconut oil" instead of
+   * butter. Costed at ghee, the first option, the same way "beef tallow or
+   * avocado oil" is costed at the first.
+   *
+   * Ghee is butter with the water and milk solids taken out, so it is denser
+   * in every sense: 900 kcal and 100 g fat per 100 g against butter's 717 and
+   * 81. Per tablespoon the gap is smaller than that sounds, because a Tbsp of
+   * ghee weighs slightly less.
+   *
+   * SR Legacy has no portion entry for ghee, so the 14 g comes from FDC
+   * Branded: 10 ghee products state a tablespoon serving, median 14 g, range
+   * 13-15. Not a figure from memory.
+   *
+   * The key has to be longer than the existing "coconut oil" key for findKey
+   * to prefer it - it sorts by length - which it is.
+   */
+  "ghee or coconut oil":  { fdc: 171314, expect: "Butter, Clarified butter (ghee)", grams: { tbsp: 14, tsp: 4.7, cup: 224 } },
 };
 
 /* Unit additions for entries already mapped in earlier batches, where a recipe

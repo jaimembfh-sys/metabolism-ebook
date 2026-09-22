@@ -163,12 +163,18 @@ function findSlotViolations(plan, eatingPattern) {
  * removing it would shrink a soy-allergic reader's week for no reason.
  * ========================================================================= */
 
+/* Tagged for that allergen, and the recipe does not itself offer a way around
+ * it. "ghee or coconut oil" keeps the dairy tag but stays available, with the
+ * instruction attached.
+ *
+ * "tamari or coconut aminos" does NOT work this way and must not be added
+ * here: that swap is Jaime's recommendation to everyone, not a safety
+ * mechanism, and a soy-allergic reader gets those recipes excluded. */
 function recipeViolates(recipe, allergy) {
-  const tags = recipe.allergens || [];
-  if (tags.includes(allergy)) return true;
-  // Brand-dependent is a "check the label", not a violation — but only when
-  // the recipe is not already hard-tagged for that allergen.
-  return false;
+  const tags = (recipe && recipe.allergens) || [];
+  if (!tags.includes(allergy)) return false;
+  const alts = (recipe && recipe.allergen_alternatives) || [];
+  return !alts.some((a) => a.allergen === allergy);
 }
 
 function filterPoolByAllergies(pool, allergies) {
@@ -177,15 +183,31 @@ function filterPoolByAllergies(pool, allergies) {
   return pool.filter((r) => !list.some((a) => recipeViolates(r, a)));
 }
 
-/** What the coach must say alongside a recipe it kept for a soy-allergic
- *  reader, or for one where a brand might carry the allergen. */
+/**
+ * What the coach must say alongside a recipe. Two different things:
+ *
+ *   - Jaime's recommended swap, which goes to EVERY reader regardless of
+ *     allergies, because it is a health recommendation and not an
+ *     accommodation.
+ *   - An allergen alternative, which only matters to someone who has that
+ *     allergy, and is the reason the recipe was not filtered out.
+ *
+ * A soy-allergic reader never sees a tamari recipe at all, so nothing here
+ * tells anyone a soy recipe is safe for them.
+ */
 function swapInstructionsFor(recipe, allergies) {
   const list = (allergies || []).map((a) => String(a).toLowerCase());
   const out = [];
-  if (list.includes("soy") && recipe.soy_swappable) {
-    out.push("Use " + recipe.soy_swappable.swap + ", not " + recipe.soy_swappable.instead_of + " — this recipe offers both and only one is soy-free.");
+  if (recipe && recipe.recommended_swap) {
+    const s = recipe.recommended_swap;
+    out.push("Jaime recommends " + s.use + " rather than " + s.instead_of + " here, for everyone — " + s.why + ".");
   }
-  if (list.includes("soy") && recipe.brand_dependent) {
+  ((recipe && recipe.allergen_alternatives) || []).forEach((a) => {
+    if (list.includes(a.allergen)) {
+      out.push("Make it with " + a.use + " rather than " + a.instead_of + " — that is the " + a.allergen + "-free way to make it.");
+    }
+  });
+  if (list.includes("soy") && recipe && recipe.brand_dependent) {
     recipe.brand_dependent.forEach((b) => out.push("Check the label on the " + b.term + ": " + b.why + "."));
   }
   return out;

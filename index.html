@@ -8056,12 +8056,14 @@ ${researcherSourcesText}
             // file and runs the same assertions against both copies, so a drift
             // fails the suite rather than shipping.
             //
-            // Jaime has not confirmed the recipe allergen tags yet, so nothing
-            // reads them. Flip this to true once he has, and the pool filter
-            // starts working; until then the filter is a no-op and the
-            // post-generation violation check — which reads ingredient text,
-            // not tags — carries the rule on its own.
-            const ALLERGEN_TAGS_CONFIRMED = false;
+            // Jaime confirmed the 43 recipe allergen tags on 2026-09-22, after
+            // reading them one line each and correcting two things: tamari is
+            // binding soy rather than a swappable exception, and the pancakes
+            // keep their dairy tag while staying available via coconut oil.
+            // The pool filter is live: a recipe carrying a declared allergen,
+            // with no alternative the recipe itself offers, is removed before
+            // the model sees it.
+            const ALLERGEN_TAGS_CONFIRMED = true;
 
             // Numbers that are not about a body. An oven, a timer and a
             // measuring cup are all things a cook needs; calories and grams of
@@ -8181,10 +8183,22 @@ ${researcherSourcesText}
 
             /* The model cannot suggest a recipe it was never shown. Strictly
              * stronger than instructing it, which measured 1-in-3 failure.
-             * Soy is Jaime's carve-out: a recipe whose only soy is "tamari or
-             * coconut aminos" stays in the pool carrying the swap. */
+             *
+             * A recipe is excluded when it carries the allergen AND does not
+             * itself offer a way around it in the ingredient line. The pancakes
+             * read "ghee or coconut oil": dairy tag kept, recipe kept, the
+             * instruction attached.
+             *
+             * "tamari or coconut aminos" does NOT work this way. That swap is
+             * Jaime's recommendation to everyone — processed soy has downsides,
+             * often carries gluten, is hard on digestion — and not a safety
+             * mechanism. A soy-allergic reader gets those recipes excluded like
+             * any other soy recipe, and is never told one is safe for them. */
             function recipeViolates(recipe, allergy) {
-                return ((recipe && recipe.allergens) || []).indexOf(allergy) !== -1;
+                const tags = (recipe && recipe.allergens) || [];
+                if (tags.indexOf(allergy) === -1) return false;
+                const alts = (recipe && recipe.allergen_alternatives) || [];
+                return !alts.some(function (a) { return a.allergen === allergy; });
             }
             function filterPoolByAllergies(pool, allergies) {
                 const list = (allergies || []).map(function (a) { return String(a).toLowerCase(); })
@@ -8194,13 +8208,24 @@ ${researcherSourcesText}
                     return !list.some(function (a) { return recipeViolates(r, a); });
                 });
             }
+            /* Two different things. Jaime's recommended swap goes to EVERY
+             * reader regardless of allergies, because it is a health
+             * recommendation, not an accommodation. An allergen alternative
+             * only matters to someone with that allergy, and is the reason the
+             * recipe was not filtered out at all. */
             function swapInstructionsFor(recipe, allergies) {
                 const list = (allergies || []).map(function (a) { return String(a).toLowerCase(); });
                 const out = [];
-                if (list.indexOf('soy') !== -1 && recipe && recipe.soy_swappable) {
-                    out.push('Use ' + recipe.soy_swappable.swap + ', not ' + recipe.soy_swappable.instead_of +
-                        ' — this recipe offers both and only one is soy-free.');
+                if (recipe && recipe.recommended_swap) {
+                    const s = recipe.recommended_swap;
+                    out.push('Jaime recommends ' + s.use + ' rather than ' + s.instead_of + ' here, for everyone — ' + s.why + '.');
                 }
+                ((recipe && recipe.allergen_alternatives) || []).forEach(function (a) {
+                    if (list.indexOf(a.allergen) !== -1) {
+                        out.push('Make it with ' + a.use + ' rather than ' + a.instead_of +
+                            ' — that is the ' + a.allergen + '-free way to make it.');
+                    }
+                });
                 if (list.indexOf('soy') !== -1 && recipe && recipe.brand_dependent) {
                     recipe.brand_dependent.forEach(function (b) {
                         out.push('Check the label on the ' + b.term + ': ' + b.why + '.');

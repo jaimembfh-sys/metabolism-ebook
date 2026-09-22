@@ -82,9 +82,13 @@ check('shellfish: "shrimp" → yes', hits("shellfish", "1 lb large raw shrimp"),
 check('shellfish: "oyster sauce" → yes', hits("shellfish", "2 Tbsp oyster sauce"), true);
 check('shellfish: "fish sauce" → no (not shellfish)', hits("shellfish", "4 tsp fish sauce"), false);
 
-// decision 1 — the swappable fork
-check("soy_swappable: 'tamari or coconut aminos' → swappable", A.SOY_SWAPPABLE.test.test("6 Tbsp tamari or coconut aminos"), true);
-check("soy_swappable: 'tamari' alone → not swappable", A.SOY_SWAPPABLE.test.test("6 Tbsp tamari"), false);
+// Jaime's swap, 2026-09-22: a recommendation to everyone, NOT an allergy route
+check("recommended_swap: 'tamari or coconut aminos' → recognised", A.RECOMMENDED_SWAP.test.test("6 Tbsp tamari or coconut aminos"), true);
+check("recommended_swap: 'tamari' alone → not a swap line", A.RECOMMENDED_SWAP.test.test("6 Tbsp tamari"), false);
+check("allergen_alternative: 'ghee or coconut oil' → recognised",
+  A.ALLERGEN_ALTERNATIVES[0].test.test("9 Tbsp ghee or coconut oil, melted"), true);
+check("allergen_alternative: 'butter' alone → not an alternative",
+  A.ALLERGEN_ALTERNATIVES[0].test.test("9 Tbsp butter, melted"), false);
 
 // ---------------------------------------------------------------------------
 section("2. index.html inline copy matches tools/allergens.js");
@@ -123,13 +127,20 @@ corpus.recipes.forEach((r) => (bySlug[r.slug] = r));
 const tagsOf = (s) => (bySlug[s] ? bySlug[s].allergens : ["(missing recipe)"]);
 
 check("thai-panang: dairy dropped, nuts kept", tagsOf("thai-panang-chicken-curry"), ["nuts"]);
-check("thai-slaw: dairy dropped, nuts kept", tagsOf("thai-slaw-with-peanut-dressing"), ["nuts"]);
+// Dairy dropped (peanut butter), nuts kept, soy now binding (tamari).
+check("thai-slaw: dairy dropped, nuts and soy kept", tagsOf("thai-slaw-with-peanut-dressing"), ["nuts", "soy"]);
 check("keto-peanut-butter-balls: dairy+gluten dropped", tagsOf("keto-peanut-butter-balls"), ["nuts"]);
 check("keto-chicken-parmesan: gluten dropped, dairy+nuts kept", tagsOf("keto-chicken-parmesan"), ["dairy", "nuts"]);
 check("fluffy-coconut-keto-pancakes: gluten dropped", tagsOf("fluffy-coconut-keto-pancakes"), ["dairy"]);
-check("beef-and-broccoli: tamari is swappable, not binding soy", tagsOf("beef-and-broccoli"), []);
-check("beef-and-broccoli: carries the swap instruction",
-  !!(bySlug["beef-and-broccoli"] && bySlug["beef-and-broccoli"].soy_swappable), true);
+/* Reversed 2026-09-22. Tamari is binding soy — the coconut aminos swap is
+ * Jaime's recommendation to everyone, not a route for a soy-allergic reader. */
+check("beef-and-broccoli: tamari is BINDING soy", tagsOf("beef-and-broccoli"), ["soy"]);
+check("beef-and-broccoli: still carries the recommendation",
+  !!(bySlug["beef-and-broccoli"] && bySlug["beef-and-broccoli"].recommended_swap), true);
+check("teriyaki-chicken: tamari is binding soy", tagsOf("teriyaki-chicken"), ["soy"]);
+check("pancakes: dairy kept, with an alternative on record", tagsOf("fluffy-coconut-keto-pancakes"), ["dairy"]);
+check("pancakes: the alternative is coconut oil",
+  ((bySlug["fluffy-coconut-keto-pancakes"].allergen_alternatives || [])[0] || {}).use, "coconut oil");
 check("shrimp-scampi: shellfish kept", tagsOf("shrimp-scampi-with-zucchini-noodles").includes("shellfish"), true);
 check("greek-salad: dairy kept", tagsOf("greek-salad"), ["dairy"]);
 check("every recipe has a page", corpus.recipes.every((r) => /^\/recipes-html\/.+\.html$/.test(r.page || "")), true);
@@ -193,15 +204,30 @@ if (runtime) {
   // 6. pool filter + meal-plan violations
   const pool = corpus.recipes;
   const dairyFree = runtime.filterPoolByAllergies(pool, ["dairy"]);
-  check("pool: no dairy recipe survives a dairy allergy",
-    dairyFree.some((r) => (r.allergens || []).includes("dairy")), false);
+  /* Every surviving dairy-tagged recipe must be one the recipe itself offers a
+   * way around — currently only the pancakes, which read "ghee or coconut oil". */
+  check("pool: every surviving dairy recipe offers an alternative",
+    dairyFree.filter((r) => (r.allergens || []).includes("dairy"))
+      .every((r) => (r.allergen_alternatives || []).some((a) => a.allergen === "dairy")), true);
+  check("pool: and that is exactly one recipe",
+    dairyFree.filter((r) => (r.allergens || []).includes("dairy")).map((r) => r.slug),
+    ["fluffy-coconut-keto-pancakes"]);
   check("pool: thai-panang survives a dairy allergy (peanut butter is not dairy)",
     dairyFree.some((r) => r.slug === "thai-panang-chicken-curry"), true);
   const soyFree = runtime.filterPoolByAllergies(pool, ["soy"]);
-  check("pool: beef-and-broccoli survives a soy allergy (swappable)",
-    soyFree.some((r) => r.slug === "beef-and-broccoli"), true);
-  check("pool: swappable recipes carry the instruction",
-    (soyFree.find((r) => r.slug === "beef-and-broccoli") || {}).soy_swappable != null, true);
+  check("pool: beef-and-broccoli is EXCLUDED by a soy allergy",
+    soyFree.some((r) => r.slug === "beef-and-broccoli"), false);
+  check("pool: no tamari recipe survives a soy allergy",
+    soyFree.some((r) => (r.allergens || []).includes("soy")), false);
+  check("pool: the recommended swap reaches a reader with NO allergies",
+    runtime.swapInstructionsFor(bySlug["beef-and-broccoli"], []).some((s) => /coconut aminos/.test(s)), true);
+  check("pool: pancakes survive a dairy allergy (recipe offers coconut oil)",
+    runtime.filterPoolByAllergies(pool, ["dairy"]).some((r) => r.slug === "fluffy-coconut-keto-pancakes"), true);
+  check("pool: and carry the coconut oil instruction",
+    runtime.swapInstructionsFor(bySlug["fluffy-coconut-keto-pancakes"], ["dairy"])
+      .some((s) => /coconut oil/.test(s)), true);
+  check("pool: other dairy recipes are still excluded",
+    runtime.filterPoolByAllergies(pool, ["dairy"]).some((r) => r.slug === "greek-salad"), false);
   check("pool: nut recipes removed for a nut allergy",
     runtime.filterPoolByAllergies(pool, ["nuts"]).some((r) => (r.allergens || []).includes("nuts")), false);
 
@@ -314,14 +340,25 @@ if (mirror && runtime) {
   check("fit: no allergies means no hits",
     mirror.recipeAllergenHitsLive(bySlug["greek-salad"], []).length, 0);
 
-  // The soy carve-out: available, with the instruction attached.
+  /* Soy is binding. A soy-allergic reader never sees these at all, so there is
+   * no path by which the coach could call one safe for them. */
   const soyPool = mirror.filterPoolByAllergies(corpus.recipes, ["soy"]);
-  const bb = soyPool.find((r) => r.slug === "beef-and-broccoli");
-  check("fit: beef-and-broccoli survives a soy allergy", !!bb, true);
-  const swaps = mirror.swapInstructionsFor(bb, ["soy"]);
-  check("fit: and carries exactly one swap instruction", swaps.length, 1);
-  check("fit: the instruction names coconut aminos", /coconut aminos/.test(swaps[0] || ""), true);
-  check("fit: the instruction names what to avoid", /tamari/.test(swaps[0] || ""), true);
+  check("fit: beef-and-broccoli is excluded by a soy allergy",
+    soyPool.some((r) => r.slug === "beef-and-broccoli"), false);
+  check("fit: beef-and-broccoli IS a hard no on the fit check",
+    mirror.recipeAllergenHitsLive(bySlug["beef-and-broccoli"], ["soy"]).length > 0, true);
+  /* The swap is still said — to everyone, as a recommendation. */
+  const swaps = mirror.swapInstructionsFor(bySlug["beef-and-broccoli"], []);
+  check("fit: the recommendation reaches a reader with no allergies", swaps.length, 1);
+  check("fit: it names coconut aminos", /coconut aminos/.test(swaps[0] || ""), true);
+  check("fit: it is framed as a recommendation, not a safety note",
+    /for everyone/.test(swaps[0] || ""), true);
+  /* The pancakes are the opposite case: tagged, kept, instruction attached. */
+  const pancakeSwaps = mirror.swapInstructionsFor(bySlug["fluffy-coconut-keto-pancakes"], ["dairy"]);
+  check("fit: pancakes carry the coconut oil instruction for a dairy allergy",
+    pancakeSwaps.some((s) => /coconut oil/.test(s)), true);
+  check("fit: a reader with no dairy allergy is not told to change it",
+    mirror.swapInstructionsFor(bySlug["fluffy-coconut-keto-pancakes"], []).length, 0);
   check("fit: worcestershire recipe warns to check the label",
     mirror.swapInstructionsFor(bySlug["keto-carolina-mustard-bbq-sauce"], ["soy"])
       .some((s) => /label/i.test(s)), true);
@@ -390,8 +427,10 @@ if (mirror && runtime) {
     const pool = mirror.filterPoolByAllergies(corpus.recipes, s.allergies);
 
     // The pool the model would have been shown never contains a violation.
+    // A tagged recipe may survive, but only where the recipe itself offers the
+    // way around — which is what recipeViolates encodes.
     check("[" + s.who + "] pool is clean",
-      pool.filter((r) => s.allergies.some((a) => (r.allergens || []).includes(a))).length, 0);
+      pool.filter((r) => s.allergies.some((a) => runtime.recipeViolates(r, a))).length, 0);
 
     // The post-check catches whatever came back anyway.
     const viol = mirror.findMealPlanAllergenViolations(s.model, s.allergies, corpus.recipes);
@@ -402,10 +441,15 @@ if (mirror && runtime) {
         viol.some((v) => v.allergen === "dairy" && /greek salad/i.test(v.title)), true);
     }
     if (s.allergies.length === 1 && s.allergies[0] === "soy") {
-      check("[" + s.who + "] no false violation raised", viol.length, 0);
-      const bb = pool.find((r) => r.slug === "beef-and-broccoli");
-      check("[" + s.who + "] swap instruction present",
-        mirror.swapInstructionsFor(bb, s.allergies).length, 1);
+      // Reversed 2026-09-22: Beef and Broccoli is soy, and the model returning
+      // it for a soy-allergic reader is now a violation to be caught.
+      check("[" + s.who + "] beef-and-broccoli caught as a soy violation",
+        viol.some((v) => /beef and broccoli/i.test(v.title) && v.allergen === "soy"), true);
+      check("[" + s.who + "] it was never in the pool to begin with",
+        pool.some((r) => r.slug === "beef-and-broccoli"), false);
+      check("[" + s.who + "] the swap is never offered as a way round the allergy",
+        mirror.swapInstructionsFor(bySlug["beef-and-broccoli"], s.allergies)
+          .some((t) => /safe|soy-free/i.test(t)), false);
     }
 
     // Slots.

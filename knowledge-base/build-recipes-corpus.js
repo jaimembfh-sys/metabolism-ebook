@@ -130,11 +130,15 @@ function parseRecipeFile(filePath) {
     source_file: meta.source_file || null,
     page: recipePage(slug),
     allergens: tagged.allergens,
-    /* Soy the reader can dodge by taking the alternative the recipe already
-     * offers — "tamari or coconut aminos". Jaime's decision 1: the recipe
-     * stays available to a soy-allergic user and the coach names the swap,
-     * rather than the recipe disappearing from their week. */
-    soy_swappable: tagged.soy_swappable,
+    /* Jaime's recommendation to EVERYONE, not an allergy accommodation:
+     * coconut aminos over tamari, because processed soy has downsides, often
+     * carries gluten and is hard on digestion. Surfaced to every reader and
+     * plays no part in filtering — a soy-allergic reader still has these
+     * recipes excluded, like any other soy recipe. */
+    recommended_swap: tagged.recommended_swap,
+    /* An allergen the recipe itself offers a way around in the ingredient
+     * line — "ghee or coconut oil". Keeps the tag, keeps the recipe. */
+    allergen_alternatives: tagged.allergen_alternatives,
     /* "Check the label" — most Worcestershire has soy, not all. */
     brand_dependent: tagged.brand_dependent.length ? tagged.brand_dependent : null,
     /* Usually contains anchovy. The intake form has no fish category, so this

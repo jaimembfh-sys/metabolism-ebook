@@ -45,14 +45,48 @@ const ALLERGEN_TERMS = {
   shellfish: /\b(shrimp|prawn|crab|lobster|crayfish|scallop|mussel|clam|oyster)\b/i,
 };
 
-/* An ingredient line that offers a soy-free alternative in the same breath.
- * "6 Tbsp tamari or coconut aminos" is not a closed door to a soy-allergic
- * reader - it is a fork, and the coach's job is to point at the right branch. */
-const SOY_SWAPPABLE = {
+/* JAIME'S RECOMMENDATION, NOT AN ALLERGY ACCOMMODATION. 2026-09-22.
+ *
+ * An earlier version of this file treated "tamari or coconut aminos" as a way
+ * for a soy-allergic reader to keep the recipe. That was wrong twice over.
+ *
+ * It is not why the swap exists: Jaime recommends coconut aminos to EVERYONE,
+ * because processed soy has downsides, often carries gluten, and is hard on
+ * digestion. And it is not safe to use that way — a soy-allergic reader must
+ * never be told one of these recipes is fine for them. They are tagged soy and
+ * excluded like any other soy recipe.
+ *
+ * So this is surfaced to every reader regardless of allergies, and plays no
+ * part in filtering.
+ */
+const RECOMMENDED_SWAP = {
   test: /\b(tamari|soy sauce)\b[^.]{0,40}\bor\b[^.]{0,40}\bcoconut aminos\b|\bcoconut aminos\b[^.]{0,40}\bor\b[^.]{0,40}\b(tamari|soy sauce)\b/i,
-  swap: "coconut aminos",
+  use: "coconut aminos",
   instead_of: "tamari",
+  why: "processed soy has downsides, often contains gluten, and is hard on digestion",
 };
+
+/* A DIFFERENT THING: an allergen the recipe itself offers a first-class
+ * alternative to, in the ingredient line, put there for that purpose.
+ *
+ * The pancakes read "ghee or coconut oil". Jaime's call, 2026-09-22: keep the
+ * dairy tag, but tell a dairy-avoiding reader it works with coconut oil rather
+ * than hiding the recipe from them.
+ *
+ * Note this is the opposite treatment to the tamari case above, deliberately.
+ * See OVERNIGHT_REPORT_4 follow-up / NEEDS_JAIME N-15 — the asymmetry is
+ * flagged there, because a dairy allergy is as serious as a soy one and this
+ * keeps the recipe in front of a dairy-allergic reader with an instruction
+ * attached, which is exactly the arrangement the tamari case rejects.
+ */
+const ALLERGEN_ALTERNATIVES = [
+  {
+    allergen: "dairy",
+    test: /\bghee\b[^.]{0,30}\bor\b[^.]{0,30}\bcoconut oil\b|\bcoconut oil\b[^.]{0,30}\bor\b[^.]{0,30}\bghee\b/i,
+    use: "coconut oil",
+    instead_of: "ghee",
+  },
+];
 
 /* Brand-dependent, not certain. Kept as a separate signal so the coach can say
  * "check the label" rather than either hiding the recipe or promising it is
@@ -111,7 +145,6 @@ function tagRecipe(fullText) {
   const uncertain = [];
   const brand_dependent = [];
   const anchovy = [];
-  let soySwappableLines = [];
 
   for (const [allergen, re] of Object.entries(ALLERGEN_TERMS)) {
     const matched = [];
@@ -122,10 +155,10 @@ function tagRecipe(fullText) {
     if (!matched.length) continue;
 
     if (allergen === "soy") {
-      // A soy hit only counts as binding if at least one line has no
-      // alternative offered on it.
-      const binding = matched.filter((mm) => !SOY_SWAPPABLE.test.test(mm.line));
-      soySwappableLines = matched.filter((mm) => SOY_SWAPPABLE.test.test(mm.line)).map((mm) => mm.line);
+      /* Soy is now binding whenever it appears. The "tamari or coconut aminos"
+       * line no longer softens it — that swap is a recommendation for
+       * everyone, not a safety mechanism, and a soy-allergic reader gets the
+       * recipe excluded like any other soy recipe. */
       for (const bd of BRAND_DEPENDENT) {
         for (const mm of matched) {
           if (bd.allergen === "soy" && bd.test.test(mm.line)) {
@@ -133,8 +166,8 @@ function tagRecipe(fullText) {
           }
         }
       }
-      // A brand-dependent hit is not enough on its own to close the recipe.
-      const hard = binding.filter((mm) => !BRAND_DEPENDENT.some((bd) => bd.test.test(mm.line)));
+      // Worcestershire alone is a "check the label", not a closed door.
+      const hard = matched.filter((mm) => !BRAND_DEPENDENT.some((bd) => bd.test.test(mm.line)));
       if (hard.length) { allergens.push("soy"); hits.push({ allergen, matched: hard }); }
       continue;
     }
@@ -160,11 +193,24 @@ function tagRecipe(fullText) {
     }
   }
 
+  // Jaime's swap, for everyone, whatever they are or are not allergic to.
+  const swapLines = lines.filter((l) => RECOMMENDED_SWAP.test.test(l));
+
+  // An allergen the recipe itself offers a way around, in the ingredient line.
+  const alternatives = [];
+  for (const alt of ALLERGEN_ALTERNATIVES) {
+    const hit = lines.find((l) => alt.test.test(l));
+    if (hit && allergens.includes(alt.allergen)) {
+      alternatives.push({ allergen: alt.allergen, use: alt.use, instead_of: alt.instead_of, line: hit });
+    }
+  }
+
   return {
     allergens: allergens.sort(),
-    soy_swappable: soySwappableLines.length
-      ? { swap: SOY_SWAPPABLE.swap, instead_of: SOY_SWAPPABLE.instead_of, lines: soySwappableLines }
+    recommended_swap: swapLines.length
+      ? { use: RECOMMENDED_SWAP.use, instead_of: RECOMMENDED_SWAP.instead_of, why: RECOMMENDED_SWAP.why, lines: swapLines }
       : null,
+    allergen_alternatives: alternatives.length ? alternatives : null,
     brand_dependent,
     anchovy,
     hits,
@@ -174,6 +220,6 @@ function tagRecipe(fullText) {
 }
 
 module.exports = {
-  ALLERGEN_TERMS, PLANT_PREFIX, NON_GLUTEN_FLOUR, SOY_SWAPPABLE, BRAND_DEPENDENT,
-  ANCHOVY, UNCERTAIN, POSSIBLE_MISS, ingredientLines, tagRecipe,
+  ALLERGEN_TERMS, PLANT_PREFIX, NON_GLUTEN_FLOUR, RECOMMENDED_SWAP, ALLERGEN_ALTERNATIVES,
+  BRAND_DEPENDENT, ANCHOVY, UNCERTAIN, POSSIBLE_MISS, ingredientLines, tagRecipe,
 };

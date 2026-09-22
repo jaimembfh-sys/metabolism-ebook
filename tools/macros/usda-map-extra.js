@@ -89,6 +89,8 @@ const AMBIGUOUS = {
     "recipe offers a choice. Tamari (SR Legacy 174278) is 5.6 g carb/100g; coconut aminos run 26.7–100 g carb/100g across 5 brands. Calculated with tamari; coconut aminos would raise net carbs.",
   "beef tallow or avocado oil":
     "recipe offers a choice. Both are ~100% fat and within 1 kcal/g of each other, so the macro effect is negligible. Calculated with beef tallow.",
+  "ghee or coconut oil":
+    "recipe offers a choice. Ghee is 900 kcal and 100 g fat per 100 g, coconut oil 862 and 100 — within 4% on energy and identical on fat, so the macro effect is small. Calculated with ghee, the first option. Coconut oil is the dairy-free way to make it.",
   "pecans or walnuts":
     "recipe offers a choice. Pecans 72 g fat/100g, walnuts 65 g. Calculated with pecans.",
   "cauliflower rice":
