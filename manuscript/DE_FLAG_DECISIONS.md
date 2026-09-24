@@ -88,10 +88,18 @@ were applied on 2026-09-24. Two could not be, for the reasons below.
 
 | # | Behaviour | Status |
 |---|---|---|
-| 23 | Teaching mode: blood-sugar/whole-food framing, never weight-loss language, no body-focused pressure | **Split — see below** |
+| 23 | Teaching mode: blood-sugar/whole-food framing, never weight-loss language, no body-focused pressure | **Split, applied** — see below |
 | 24 | Never assert a psychological reason for someone's eating | **Applied universally** |
-| 25 | *(as originally listed)* Troubleshooter may not suggest anything more aggressive | **Listed in error — see below** |
+| 25 | *(as originally listed)* Troubleshooter may not suggest anything more aggressive | **Listed in error — left alone** |
+| 25b | Never use restriction-flavored language | **Applied universally** |
 | 26 | Stress check-in keeps food suggestions qualitative and non-restrictive | **Applied universally** |
+
+All four decisions closed on 2026-09-24. Verified by rendering each prompt in
+every state: teaching mode carries the body-pressure rule for both flagged and
+unflagged users and the weight-loss-language rule only when flagged; the
+troubleshooter carries the restriction-language rule in all three states, the
+macro/weight rule only when flagged, and the staged-plan rule only on a staged
+plan.
 
 ### 25 was an error in the original audit
 
@@ -108,18 +116,22 @@ The genuinely flag-gated tone rule at that site is *"never use
 restriction-flavored language."* That one is safe to universalise and has not
 been done yet, pending Jaime.
 
-### 23 cannot be universalised as written
+### 23 was split rather than universalised
 
-The flag branch reads: *keep teaching-mode content focused on blood sugar
+The flag branch read: *keep teaching-mode content focused on blood sugar
 regulation and whole-food eating, **never weight-loss language**, and avoid
-body-focused pressure* (`index.html:7815`).
+body-focused pressure* (`index.html:7818`).
 
 The "no body-focused pressure" half is safe for everyone. The "never weight-loss
 language" half is not — applied universally it would strip weight-loss framing
 from the educational content of a weight-loss product.
 
-Recommendation: universalise the body-pressure half, leave the weight-loss
-language restriction flag-specific.
+Jaime approved the split on 2026-09-24. Body-focused pressure is now barred for
+every user; the weight-loss-language restriction stays flag-specific.
+
+The old `else` branch was removed at the same time. It told the model what the
+rules *would* be if this user were later flagged — a hypothetical instruction
+that did nothing except cost tokens on every unflagged call.
 
 ---
 
@@ -129,10 +141,10 @@ language restriction flag-specific.
 2. Group A — safe to show a flagged user grams of fat, protein and carbohydrate
    once calories are gone for everyone? (brief question 17).
 3. Group C's silent disappearance — a defect either way, fix shape depends on 1.
-4. Item 23 — universalise the body-pressure half only? Needs Jaime.
-5. Item 25's real tone rule — universalise "no restriction-flavored language"?
-   Needs Jaime.
+
+Group E is closed. Nothing in it is waiting on anyone.
 
 ---
 
-*Audited and recorded 2026-09-24. Items 24 and 26 applied; nothing else changed.*
+*Audited and recorded 2026-09-24. Group E fully applied; Groups A–D unchanged
+and awaiting the clinician.*
