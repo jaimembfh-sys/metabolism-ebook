@@ -4819,6 +4819,7 @@
                                                 <option value="">Nothing logged</option>
                                                 <option value="resistance_training">Resistance Training</option>
                                                 <option value="cardio">Cardio</option>
+                                                <option value="hiit">HIIT / Intervals</option>
                                                 <option value="walking">Walking</option>
                                                 <option value="other">Other</option>
                                             </select>
@@ -6840,11 +6841,12 @@ YOUR JOB:
             // Randle Cycle/glycogen-depletion content added to Lesson 9,
             // never a numeric macro adjustment. Only resistance training and
             // cardio meaningfully deplete muscle glycogen, so those are the
-            // only two categories that get a note; walking/other stay quiet
+            // only three categories that get a note; walking/other stay quiet
             // rather than overclaiming a benefit they haven't earned.
             const EXERCISE_COACHING_NOTES = {
                 resistance_training: "Resistance training like today's depletes muscle glycogen, so your body is especially well-primed to make good use of the carbs in today's plan.",
-                cardio: "Higher-intensity cardio like today's depletes muscle glycogen, so your body is especially well-primed to make good use of the carbs in today's plan."
+                cardio: "Higher-intensity cardio like today's depletes muscle glycogen, so your body is especially well-primed to make good use of the carbs in today's plan.",
+                hiit: "Interval work like today's depletes muscle glycogen, so your body is especially well-primed to make good use of the carbs in today's plan."
             };
 
             function getTodaysLogEntry(profile) {
