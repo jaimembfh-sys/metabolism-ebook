@@ -116,7 +116,10 @@ Assumptions used to produce these — **each needs Jaime's confirmation**:
 - BMR via Katch-McArdle (`370 + 21.6 × lean kg`) for tiers 1–3, since it uses
   lean mass directly and is the right equation when body composition is known
 - Activity multiplier 1.375 light / 1.55 moderate
-- Protein at 0.9 g per lb of lean mass — **placeholder, no rule specified**
+- **Protein at 0.9 g per lb of lean mass** — settled by Jaime 2026-09-24. On a
+  low-carb protocol with a fat-mass-limited energy floor, protein is the lever
+  protecting lean tissue; 0.9 sits where the preservation literature lands
+  without crowding out the fat that "start generous" depends on
 - Carbs at 35 g net baseline, raised for the training example
 - Starting deficit = the lesser of half the conservative (22) ceiling, or 25% of
   daily need
@@ -236,15 +239,14 @@ live feature and needs Jaime's approval before it happens.
 
 ## 7. Open decisions — needed before building
 
-1. **Protein rule.** 0.9 g/lb lean mass is still a placeholder — Jaime's
-   2026-09-24 reply left the value unfilled. (Section 5)
-2. **Add `hiit` to the daily tracker's exercise categories?** Phase D's carb rule
-   needs it and the tracker does not have it. (Section 6)
-3. **Should a flagged user see a body fat estimate at all?** With the clinician —
-   added to the review brief on 2026-09-24. (Section 8)
+1. **Should a flagged user see a body fat estimate at all?** With the clinician —
+   added to the review brief as question 11 on 2026-09-24. (Section 8)
+2. **Whether Phase D may tell a flagged user to lower anything.** Also with the
+   clinician, as question 14. See `DE_FLAG_DECISIONS.md`.
 
 Settled on 2026-09-24: tier 3 uses the correct women's formula, tier 4 is
-dropped, and the activity questions above are in scope.
+dropped, the activity questions above are in scope, protein is 0.9 g/lb lean
+mass, and `hiit` was added to the daily tracker (commit `09d398d`).
 
 ---
 

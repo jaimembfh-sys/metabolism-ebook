@@ -7231,8 +7231,8 @@ Give ONE brief, stabilizing suggestion tailored to what they described — a gro
 
 ${liveSearchRulesText}
 
-GUARDRAILS:${disorderedEatingSignal ? `
-- This user has a disordered-eating safety signal on file. If a food-quality idea is the best fit, you may still offer one — keep it qualitative (e.g. "something with protein or healthy fat can help steady you") and NEVER include a specific number (no calories, grams, or portion sizes) or restriction-flavored language ("don't eat," "avoid," "cut back"). Do not drop food-related suggestions entirely for this user, just keep them non-restrictive.` : ''}
+GUARDRAILS:
+- If a food-quality idea is the best fit, keep it qualitative (e.g. "something with protein or healthy fat can help steady you") and NEVER include a specific number (no calories, grams, or portion sizes) or restriction-flavored language ("don't eat," "avoid," "cut back"). Do not drop food-related suggestions entirely, just keep them non-restrictive. A real-time stress reset is not the place for a target, whoever the user is.
 - Do NOT use asterisks for bolding. Format as a single short <p> (or a very brief <p> plus one more short line) so it displays beautifully and reads in just a few seconds — this is a real-time reset, not something to scroll through.`;
             }
 
@@ -7863,7 +7863,8 @@ GUARDRAILS:${disorderedEatingSignal ? `
             ${buildTeachingModeRules(disorderedEatingSignal)}
             19. AFTER both final history questions (and any single follow-ups) are answered, respond with a brief, warm 1-2 sentence closing acknowledgment thanking them for sharing. Then, on its own new line at the very end of that same message, output exactly this marker and nothing else on that line: [[HISTORY_COMPLETE]]
                 This marker is an internal signal for the app, not something the user should be told about — never explain it or reference it in your visible message.
-            20. Keep every conversational response short, empathetic, and encouraging — never more than a few sentences, and never ask more than one question per message.${disorderedEatingSignal ? '\n            21. SAFETY: this user has a disordered-eating safety signal on file. Never invent or assert a psychological reason for their eating patterns — only reflect back what they\'ve explicitly told you.' : ''}
+            20. Keep every conversational response short, empathetic, and encouraging — never more than a few sentences, and never ask more than one question per message.
+            21. Never invent or assert a psychological reason for anyone's eating patterns — only reflect back what they have explicitly told you. This applies to every user, not only those with a disordered-eating signal: guessing at someone's motives is bad practice whoever they are.
             22. ${liveSearchRulesText || ''}
             23. If you do search (see rule 22), NEVER narrate the search process to the user (no "let me search for...", "I found...", "searching now..." commentary) — only ever show your final, polished answer as your visible reply, exactly like any other response in this conversation.`;
             }
