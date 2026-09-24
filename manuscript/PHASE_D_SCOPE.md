@@ -23,35 +23,37 @@ to place in everything derived from it.
 |---|---|---|
 | 1 | DEXA scan result, if they have one | Highest |
 | 2 | Smart scale that measures body fat | Good |
-| 3 | Tape measure — US Navy method | Usable |
-| 4 | Height and weight only | Fallback |
+| 3 | Tape measure — US Navy method | Usable, and the minimum accepted |
 
 **Do not ask for BMI.** It cannot distinguish muscle from fat, and fat mass is
 what this calculation needs.
 
-### Open question — tier 3 is incomplete as specified
+**A tape measure is the floor.** There is no height-and-weight-only tier. Every
+such equation (Deurenberg is the standard) takes BMI, age and sex as its inputs,
+so a fourth tier would be BMI under another name. Jaime dropped it on
+2026-09-24. A user without a tape measure does not get a body fat estimate, and
+Phase D's fat target does not run for them.
 
-The US Navy formula differs by sex:
+### Tier 3 — the US Navy formula differs by sex
 
-- Men: waist − neck, plus height
-- **Women: waist + hip − neck, plus height**
+Both forms are in inches, base-10 logs:
 
-Jaime's instruction listed waist, neck and height. That works for men and not
-for women. Since the audience is predominantly women over 40, **tier 3 needs hip
-circumference added** or it fails for most users.
+```
+Men:    %BF = 86.010 × log10(waist − neck)
+              − 70.041 × log10(height) + 36.76
 
-### Open question — tier 4 is BMI under another name
+Women:  %BF = 163.205 × log10(waist + hip − neck)
+              − 97.684 × log10(height) − 78.387
+```
 
-Every height-and-weight-only body fat equation (Deurenberg is the standard) takes
-BMI, age and sex as its inputs. There is no way to estimate fat mass from height
-and weight that is not BMI underneath. Two honest options:
+**Women need hip circumference as well as waist and neck.** The first draft of
+this scope listed waist, neck and height only, which works for men and fails for
+women — most of this audience. Corrected by Jaime on 2026-09-24.
 
-1. Keep tier 4, label it plainly as the low-confidence tier, and let the tier
-   record carry the caveat.
-2. Drop tier 4 and require a tape measure. A tape costs a few dollars and moves
-   someone from "roughly wrong" to "usefully close."
-
-Recommendation: option 2.
+Measurement points matter more than the formula: waist at the navel, neck below
+the larynx, hip at the widest point. The intake should say where to measure,
+because a tape placed two inches off moves the result more than the choice
+between tiers 2 and 3 does.
 
 ---
 
@@ -158,19 +160,95 @@ direction.
 
 ---
 
-## 6. Open decisions — needed before building
+## 6. Activity level — new intake questions
 
-1. **Add hip to tier 3**, or tier 3 fails for most users. (Section 1)
-2. **Keep or drop tier 4**, knowing it is BMI-derived. (Section 1)
-3. **Protein rule.** 0.9 g/lb lean mass is a placeholder. (Section 5)
-4. **Activity level is not in the tiers.** Body fat gives BMR; daily need needs an
-   activity input, whose error is probably larger than the body fat error. Needs
-   its own intake question.
-5. **Should a flagged user see a body fat estimate at all?** See below.
+Body fat gives BMR. Daily need needs an activity input, and its error is probably
+larger than the body fat error, so the questions are designed to reduce
+over-reporting rather than to be quick.
+
+**Two principles.** First, ask about countable behaviour, never a self-label —
+"moderately active" is the most over-selected option in every survey that offers
+it. Second, separate daily life from planned exercise; people conflate the two,
+and a nurse who never exercises outranks a desk worker who lifts twice a week.
+
+### Q1 — daily life, outside exercise
+
+> Outside of any exercise, how much are you on your feet on a typical day?
+
+- Mostly seated — desk work, driving, not much walking
+- A mix — on and off your feet through the day
+- On your feet most of the day — teaching, nursing, retail, childcare
+- Physical work — regular lifting, carrying or manual labour
+
+### Q2 — planned exercise
+
+> In a typical week, how many days do you set aside for exercise?
+
+- None
+- 1–2 days
+- 3–4 days
+- 5 or more days
+
+### Q3 — kind of exercise (only if Q2 is not "None", multi-select)
+
+> What does that usually involve?
+
+- Walking
+- Cardio — steady effort, breathing harder (running, cycling, classes)
+- Intervals or HIIT — hard bursts with recovery between
+- Weights or resistance training
+- Something else
+
+### Deriving the multiplier
+
+The multiplier is composed from Q1 and Q2, never self-reported:
+
+| Q1 base | | Q2 increment | |
+|---|---|---|---|
+| Mostly seated | 1.15 | None | +0.00 |
+| A mix | 1.27 | 1–2 days | +0.06 |
+| On feet most | 1.40 | 3–4 days | +0.11 |
+| Physical work | 1.52 | 5+ days | +0.16 |
+
+Range 1.15 to 1.68.
+
+**Deliberately erring high rather than low.** An overestimate produces a more
+generous fat target, which matches "start generous", and the stall detection
+already scoped is the correction mechanism. An underestimate underfeeds someone
+from day one, which the adaptive rule would not catch because they would appear
+to be losing. Slow start is a better failure than under-eating.
+
+Re-ask when Q1 or Q2 changes, and re-derive the targets. Activity is not a
+one-time fact.
+
+### Q3 does not match what the tracker records
+
+The daily tracker's exercise categories are `resistance_training`, `cardio`,
+`walking` and `other` ([index.html:4818](../index.html)). **There is no HIIT
+category.** Phase D's carb rule distinguishes them — cardio burns more carbs
+during, HIIT and weights burn more after, for recovery and repair — so the
+tracker cannot currently supply the distinction the rule needs.
+
+Adding `hiit` to the tracker select is a small change, but it is a change to a
+live feature and needs Jaime's approval before it happens.
 
 ---
 
-## 7. Disordered-eating interaction — unresolved, with the clinician
+## 7. Open decisions — needed before building
+
+1. **Protein rule.** 0.9 g/lb lean mass is still a placeholder — Jaime's
+   2026-09-24 reply left the value unfilled. (Section 5)
+2. **Add `hiit` to the daily tracker's exercise categories?** Phase D's carb rule
+   needs it and the tracker does not have it. (Section 6)
+3. **Should a flagged user see a body fat estimate at all?** With the clinician —
+   added to the review brief on 2026-09-24. (Section 8)
+
+Settled on 2026-09-24: tier 3 uses the correct women's formula, tier 4 is
+dropped, and the activity questions above are in scope.
+
+---
+
+## 8. Disordered-eating interaction — unresolved, with the clinician
 
 This feature computes, stores and displays a **body fat percentage** and an
 intake target. For a user with the disordered-eating flag, a body composition
@@ -178,9 +256,9 @@ number is plausibly worse than a scale weight — the same measurement with a
 sharper edge.
 
 This lands on clinician question 6 in the review brief ("is *a flagged user is
-never told to eat less of anything* correct, or too blunt?"). A sub-question
-should be added to that brief before it is sent: **should a flagged user see a
-body fat estimate at all?**
+never told to eat less of anything* correct, or too blunt?"). **A dedicated
+question — should a flagged user see a body fat estimate at all? — was added to
+that brief on 2026-09-24**, before it was sent.
 
 Until that comes back, Phase D's behaviour for flagged users is undecided, and
 the safe default is that it does not run for them.
