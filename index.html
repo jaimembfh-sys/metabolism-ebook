@@ -4634,6 +4634,53 @@
                             </div>
                         </div>
 
+                        <!-- Your Last Two Weeks — the same 14-day aggregate that
+                             buildTroubleshootContextText() already sends to the coach,
+                             surfaced to the person it is actually about. Counts only:
+                             no interpretation, no streak, no completion percentage.
+                             The weight row follows weightSurfacesHidden(), the same
+                             condition the chart below uses, so one ruling governs both. -->
+                        <div id="fourteen-day-summary" class="hidden bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
+                            <div class="flex items-baseline justify-between gap-2 mb-4">
+                                <p class="text-xs font-semibold uppercase tracking-widest text-gray-500">Your Last Two Weeks</p>
+                                <p id="fourteen-day-range" class="text-xs text-gray-500 whitespace-nowrap"></p>
+                            </div>
+
+                            <div id="fourteen-day-empty" class="hidden text-sm text-gray-500 italic">Nothing logged yet. Tick off a habit or a meal in your Daily Tracker and this fills in.</div>
+
+                            <div id="fourteen-day-body" class="hidden">
+                                <div class="grid grid-cols-3 gap-3 text-center">
+                                    <div>
+                                        <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1">Habits</p>
+                                        <p id="fourteen-day-habits" class="text-2xl font-serif font-bold text-brand-dark"></p>
+                                        <p class="text-xs text-gray-500">days</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1">Meals</p>
+                                        <p id="fourteen-day-meals" class="text-2xl font-serif font-bold text-brand-dark"></p>
+                                        <p class="text-xs text-gray-500">days</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1">Exercise</p>
+                                        <p id="fourteen-day-exercise" class="text-2xl font-serif font-bold text-brand-dark"></p>
+                                        <p class="text-xs text-gray-500">days</p>
+                                    </div>
+                                </div>
+
+                                <p id="fourteen-day-breakdown" class="hidden text-xs text-gray-500 mt-4 text-center"></p>
+
+                                <div id="fourteen-day-fasting" class="hidden mt-4 pt-4 flex items-baseline justify-between gap-3" style="border-top:1px solid #f3f4f6;">
+                                    <span class="text-sm text-gray-600">Average fasting window</span>
+                                    <span class="text-right"><span id="fourteen-day-fasting-avg" class="text-sm font-semibold text-brand-dark"></span><span id="fourteen-day-fasting-count" class="block text-xs text-gray-500"></span></span>
+                                </div>
+
+                                <div id="fourteen-day-weight" class="hidden mt-4 pt-4 flex items-baseline justify-between gap-3" style="border-top:1px solid #e5e7eb;">
+                                    <span class="text-sm text-gray-600">Weight</span>
+                                    <span id="fourteen-day-weight-value" class="text-sm font-semibold text-brand-dark text-right"></span>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Weight Progress subsection — supporting tool, kept below the
                              identity/motivation content above. Hand-rolled SVG line chart,
                              no chart library dependency. De-emphasized (fully hidden, with
@@ -6854,6 +6901,97 @@ YOUR JOB:
                 return Object.assign(emptyDailyLogEntry(), log[todayKey()] || {});
             }
 
+            // Display labels for the tracker's exercise categories. The raw keys
+            // are storage values — "resistance_training x2" is not something to
+            // put in front of a person.
+            const EXERCISE_LABELS = {
+                resistance_training: 'Resistance training',
+                cardio: 'Cardio',
+                hiit: 'HIIT',
+                walking: 'Walking',
+                other: 'Other',
+                unspecified: 'Other'
+            };
+
+            /* The last 14 CALENDAR days — not the last 14 logged days.
+             *
+             * This used to take the final 14 keys of daily_log, so someone who
+             * logged 14 days spread across two months got "exercise on 3/14
+             * days" for a window spanning eight weeks. Tolerable as raw material
+             * for the coach, wrong under a heading reading "Your Last Two
+             * Weeks", and useless for stall detection, which needs a real time
+             * window. Jaime changed both on 2026-09-24.
+             *
+             * ONE function, TWO consumers: the summary card in My Goals and the
+             * text buildTroubleshootContextText() sends to the coach. They
+             * cannot drift apart, which was the point of changing both.
+             */
+            function summariseLastFourteenDays(profile) {
+                var log = (profile && profile.daily_log) || {};
+                var WINDOW = 14;
+                var today = new Date();
+                var keys = [];
+                for (var i = WINDOW - 1; i >= 0; i--) {
+                    keys.push(localDateKey(new Date(today.getFullYear(), today.getMonth(), today.getDate() - i)));
+                }
+
+                var habitDays = 0, mealDays = 0, exerciseDays = 0, loggedDays = 0;
+                var exerciseTypes = {}, fastingValues = [];
+
+                keys.forEach(function(k) {
+                    var e = log[k];
+                    if (!e) return;
+                    var touched = false;
+                    if (e.habits_checked && e.habits_checked.length) { habitDays++; touched = true; }
+                    if (e.meals_checked && e.meals_checked.length) { mealDays++; touched = true; }
+                    if (e.exercise) {
+                        exerciseDays++;
+                        touched = true;
+                        var cat = e.exercise.category || 'unspecified';
+                        exerciseTypes[cat] = (exerciseTypes[cat] || 0) + 1;
+                    }
+                    if (typeof e.fasting_hours === 'number') { fastingValues.push(e.fasting_hours); touched = true; }
+                    if (touched) loggedDays++;
+                });
+
+                return {
+                    window: WINDOW,
+                    from: keys[0],
+                    to: keys[keys.length - 1],
+                    loggedDays: loggedDays,
+                    habitDays: habitDays,
+                    mealDays: mealDays,
+                    exerciseDays: exerciseDays,
+                    exerciseTypes: exerciseTypes,
+                    fastingCount: fastingValues.length,
+                    fastingAvg: fastingValues.length
+                        ? (fastingValues.reduce(function(a, b) { return a + b; }, 0) / fastingValues.length)
+                        : null
+                };
+            }
+
+            // Most-done first, then alphabetical. Insertion order is whichever
+            // activity happened to be logged earliest in the window, which tells
+            // a reader nothing.
+            function exerciseBreakdownText(exerciseTypes, joiner) {
+                return Object.keys(exerciseTypes).sort(function(a, b) {
+                    if (exerciseTypes[b] !== exerciseTypes[a]) return exerciseTypes[b] - exerciseTypes[a];
+                    return (EXERCISE_LABELS[a] || a).localeCompare(EXERCISE_LABELS[b] || b);
+                }).map(function(k) {
+                    return (EXERCISE_LABELS[k] || k) + ' ×' + exerciseTypes[k];
+                }).join(joiner || ' · ');
+            }
+
+            /* One condition governing every weight-facing surface: the chart, the
+             * log form, the fat-intake comparison, and the weight row on the Last
+             * Two Weeks card. The clinician has been asked whether this should
+             * stay at all (manuscript/DE_FLAG_DECISIONS.md, group B). When the
+             * answer comes back it changes here and nowhere else.
+             */
+            function weightSurfacesHidden(profile) {
+                return !!(profile && profile.disordered_eating_signal);
+            }
+
             const MACRO_KEYS = ['calories', 'protein_g', 'carbs_g', 'fat_g'];
 
             function sumMacros(list) {
@@ -7341,29 +7479,21 @@ GUARDRAILS:
                 if (physical.glp1_meds) meds.push('a GLP-1 medication');
                 parts.push(meds.length ? ('Medications on file: ' + meds.join(' and ') + '.') : 'No heart/BP/blood-sugar or GLP-1 medications on file.');
 
-                var log = profile.daily_log || {};
-                var dates = Object.keys(log).sort().slice(-14);
-                if (dates.length) {
-                    var habitDays = 0, mealDays = 0, exerciseDays = 0, exerciseTypes = {}, fastingValues = [];
-                    dates.forEach(function(d) {
-                        var e = log[d];
-                        if (e.habits_checked && e.habits_checked.length) habitDays++;
-                        if (e.meals_checked && e.meals_checked.length) mealDays++;
-                        if (e.exercise) {
-                            exerciseDays++;
-                            var cat = e.exercise.category || 'unspecified';
-                            exerciseTypes[cat] = (exerciseTypes[cat] || 0) + 1;
-                        }
-                        if (typeof e.fasting_hours === 'number') fastingValues.push(e.fasting_hours);
-                    });
-                    var exerciseBreakdown = Object.keys(exerciseTypes).map(function(k) { return k + ' x' + exerciseTypes[k]; }).join(', ');
-                    parts.push('Daily Tracker activity over the last ' + dates.length + ' logged day(s) (' + dates[0] + ' to ' + dates[dates.length - 1] + '): habits checked off on ' + habitDays + '/' + dates.length + ' days, planned meals marked done on ' + mealDays + '/' + dates.length + ' days, exercise logged on ' + exerciseDays + '/' + dates.length + ' days' + (exerciseBreakdown ? (' (' + exerciseBreakdown + ')') : '') + '.');
-                    if (fastingValues.length) {
-                        var avgFast = fastingValues.reduce(function(a, b) { return a + b; }, 0) / fastingValues.length;
-                        parts.push('Fasting hours logged on ' + fastingValues.length + ' of those days, averaging ' + avgFast.toFixed(1) + ' hrs.');
+                /* Shared with the Last Two Weeks card in My Goals — see
+                 * summariseLastFourteenDays(). The window is 14 CALENDAR days,
+                 * so the denominator below is the window, not the number of
+                 * days that happen to have an entry. "exercise on 3/14 days"
+                 * now means three of the last fourteen days, which is what
+                 * stall detection needs and what a reader assumes. */
+                var s14 = summariseLastFourteenDays(profile);
+                if (s14.loggedDays) {
+                    var exerciseBreakdown = exerciseBreakdownText(s14.exerciseTypes, ', ');
+                    parts.push('Daily Tracker activity over the last ' + s14.window + ' calendar days (' + s14.from + ' to ' + s14.to + '), with something logged on ' + s14.loggedDays + ' of them: habits checked off on ' + s14.habitDays + '/' + s14.window + ' days, planned meals marked done on ' + s14.mealDays + '/' + s14.window + ' days, exercise logged on ' + s14.exerciseDays + '/' + s14.window + ' days' + (exerciseBreakdown ? (' (' + exerciseBreakdown + ')') : '') + '.');
+                    if (s14.fastingCount) {
+                        parts.push('Fasting hours logged on ' + s14.fastingCount + ' of those days, averaging ' + s14.fastingAvg.toFixed(1) + ' hrs.');
                     }
                 } else {
-                    parts.push('No Daily Tracker logging history yet.');
+                    parts.push('No Daily Tracker logging in the last ' + s14.window + ' days.');
                 }
 
                 var weightLog = getEffectiveWeightLog(profile);
@@ -9135,6 +9265,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                     }
                 }
 
+                renderFourteenDaySummary(profile);
                 renderWeightChart(profile);
                 renderProgressPhotos(profile);
             }
@@ -9191,6 +9322,83 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
             // (hidden, safety note shown instead) when disordered_eating_signal
             // is set; otherwise an empty state, a single-value state, or the
             // hand-rolled SVG trend line once there are 2+ points.
+            function shortDateLabel(key) {
+                var p = (key || '').split('-');
+                if (p.length !== 3) return key || '';
+                return new Date(+p[0], +p[1] - 1, +p[2])
+                    .toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+            }
+
+            /* "Your Last Two Weeks" — the shared aggregate, shown to the person
+             * it describes. Counts only. No interpretation, no streak, no
+             * completion percentage: Jaime approved the design on 2026-09-24
+             * explicitly including the absence of interpretation. Reading
+             * meaning into these numbers is Phase D's job once stall detection
+             * exists, and writing encouragement here would be putting words in
+             * his mouth.
+             *
+             * The weight row is filtered to the same 14-day window as everything
+             * else on the card — an all-time delta under a two-week heading
+             * would be a different claim than the one the heading makes.
+             */
+            function renderFourteenDaySummary(profile) {
+                var card = document.getElementById('fourteen-day-summary');
+                var bodyEl = document.getElementById('fourteen-day-body');
+                var emptyEl = document.getElementById('fourteen-day-empty');
+                var rangeEl = document.getElementById('fourteen-day-range');
+                if (!card || !bodyEl || !emptyEl || !rangeEl) return;
+
+                var s = summariseLastFourteenDays(profile);
+                card.classList.remove('hidden');
+                rangeEl.textContent = shortDateLabel(s.from) + ' – ' + shortDateLabel(s.to);
+
+                if (!s.loggedDays) {
+                    bodyEl.classList.add('hidden');
+                    emptyEl.classList.remove('hidden');
+                    return;
+                }
+                emptyEl.classList.add('hidden');
+                bodyEl.classList.remove('hidden');
+
+                document.getElementById('fourteen-day-habits').textContent = s.habitDays + '/' + s.window;
+                document.getElementById('fourteen-day-meals').textContent = s.mealDays + '/' + s.window;
+                document.getElementById('fourteen-day-exercise').textContent = s.exerciseDays + '/' + s.window;
+
+                var breakdownEl = document.getElementById('fourteen-day-breakdown');
+                var breakdown = exerciseBreakdownText(s.exerciseTypes);
+                breakdownEl.textContent = breakdown;
+                breakdownEl.classList.toggle('hidden', !breakdown);
+
+                var fastingEl = document.getElementById('fourteen-day-fasting');
+                if (s.fastingCount) {
+                    document.getElementById('fourteen-day-fasting-avg').textContent = s.fastingAvg.toFixed(1) + ' hrs';
+                    document.getElementById('fourteen-day-fasting-count').textContent =
+                        'logged on ' + s.fastingCount + ' of those days';
+                    fastingEl.classList.remove('hidden');
+                } else {
+                    fastingEl.classList.add('hidden');
+                }
+
+                var weightEl = document.getElementById('fourteen-day-weight');
+                var valueEl = document.getElementById('fourteen-day-weight-value');
+                var inWindow = weightSurfacesHidden(profile) ? [] : getEffectiveWeightLog(profile)
+                    .filter(function(e) { return e.date >= s.from && e.date <= s.to; });
+
+                if (inWindow.length >= 2) {
+                    var first = inWindow[0], last = inWindow[inWindow.length - 1];
+                    var delta = last.weight - first.weight;
+                    var arrow = delta < 0 ? '▼' : (delta > 0 ? '▲' : '–');
+                    valueEl.textContent = first.weight + ' → ' + last.weight + ' lb   ' +
+                        arrow + ' ' + Math.abs(delta).toFixed(1);
+                    weightEl.classList.remove('hidden');
+                } else if (inWindow.length === 1) {
+                    valueEl.textContent = inWindow[0].weight + ' lb — no trend yet';
+                    weightEl.classList.remove('hidden');
+                } else {
+                    weightEl.classList.add('hidden');
+                }
+            }
+
             function renderWeightChart(profile) {
                 var toggleBtn = document.getElementById('weight-log-toggle-btn');
                 var logForm = document.getElementById('weight-log-form');
@@ -9203,7 +9411,9 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                 var fatSvgWrap = document.getElementById('fat-weight-chart-svg-wrap');
                 if (!emptyEl || !singleEl || !svgWrap || !safetyNote) return;
 
-                if (profile && profile.disordered_eating_signal) {
+                // Same condition as the Last Two Weeks card's weight row, so a
+                // single ruling governs both. See weightSurfacesHidden().
+                if (weightSurfacesHidden(profile)) {
                     if (toggleBtn) toggleBtn.classList.add('hidden');
                     if (logForm) logForm.classList.add('hidden');
                     emptyEl.classList.add('hidden');
@@ -9575,6 +9785,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                         const data = await response.json();
                         if (data.profile) {
                             currentGoalProfile = data.profile;
+                            renderFourteenDaySummary(data.profile);
                             renderWeightChart(data.profile);
                         }
                         if (weightLogValueInput) weightLogValueInput.value = '';
