@@ -137,12 +137,19 @@ that did nothing except cost tokens on every unflagged call.
 
 ## Open, pending the clinician
 
-1. Groups B, C and D — which must stay flag-specific (brief question 14).
+**Superseded 2026-09-24 — see `CONSERVATIVE_DEFAULTS.md`.** No clinician was
+affordable, so Jaime chose to keep groups A, B and D exactly as built rather than
+unpick protections without review. Group C's silent disappearance was fixed as a
+defect: the section now keeps its heading and explains itself instead of
+vanishing. Group E stays fully applied.
+
+Everything below remains the open review list, not a work queue:
+
+1. Groups B and D — whether these safeguards are right (brief questions 16–17).
 2. Group A — safe to show a flagged user grams of fat, protein and carbohydrate
    once calories are gone for everyone? (brief question 17).
-3. Group C's silent disappearance — a defect either way, fix shape depends on 1.
-
-Group E is closed. Nothing in it is waiting on anyone.
+3. Group C — whether photos should be withheld at all, now that the silent
+   disappearance is fixed.
 
 ---
 

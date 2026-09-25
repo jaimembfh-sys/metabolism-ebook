@@ -4736,12 +4736,25 @@
                              Netlify Blobs (never the JSON profile store, which stays small
                              text-only data). UNLIKE Weight Progress above, this gets NO
                              de-emphasized fallback state for disordered_eating_signal users
-                             — the whole section (including this wrapper) starts hidden in
-                             markup and stays hidden, with nothing rendered in its place, for
-                             those users. See renderProgressPhotos(). -->
+                             — the whole section used to start hidden in markup and stay
+                             hidden with nothing in its place, which left those users with
+                             no idea the feature existed or why it had gone. It now keeps
+                             its header and swaps the body for an explanation. See
+                             renderProgressPhotos() and photoSurfacesHidden(). -->
                         <div id="progress-photos-section" class="hidden bg-white border border-gray-200 rounded-xl p-6 shadow-sm mt-6">
                             <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-1">Progress Photos</p>
                             <p class="text-sm text-gray-500 mb-4">A private visual timeline, alongside the numbers above.</p>
+
+                            <!-- Shown INSTEAD of the body below when
+                                 weightSurfacesHidden() is true. The section used to
+                                 disappear outright, which left the person wondering
+                                 what had happened to it. Whether it should be hidden
+                                 at all is still open for clinical review; that a
+                                 silent disappearance was wrong either way is not.
+                                 Wording mirrors #weight-chart-safety-note. -->
+                            <div id="progress-photos-safety-note" class="hidden text-sm text-gray-600 italic bg-gray-50 border border-gray-200 rounded-lg px-4 py-3">Progress photos are de-emphasized here based on your health history, the same as weight tracking above. Your progress is better measured by your energy, sleep, strength, and the non-scale wins in your protocol. If you&#x2019;d like to use photos anyway, please loop in your care team first.</div>
+
+                            <div id="progress-photos-body">
                             <p class="text-xs text-gray-500 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 mb-5">Your progress photos are saved privately to this device/browser only &#x2014; never shared, never public. Clearing your browser data (or switching devices) will remove them. We'll move these to your account automatically once real account sign-in is available.</p>
 
                             <div class="mb-5 pb-5 flex flex-wrap items-end gap-3" style="border-bottom:1px solid #e5e7eb;">
@@ -4791,6 +4804,7 @@
                                     </div>
                                 </div>
                             </div>
+                            </div><!-- /#progress-photos-body -->
                         </div>
                     </div>
 
@@ -6989,6 +7003,16 @@ YOUR JOB:
              * answer comes back it changes here and nowhere else.
              */
             function weightSurfacesHidden(profile) {
+                return !!(profile && profile.disordered_eating_signal);
+            }
+
+            /* Progress photos get their own condition rather than sharing the one
+             * above. They currently agree, but they are separate questions for
+             * review (DE_FLAG_DECISIONS.md groups B and C) and could be answered
+             * differently — hide the photos, show the chart, or the reverse. One
+             * function each keeps that possible without a hunt.
+             */
+            function photoSurfacesHidden(profile) {
                 return !!(profile && profile.disordered_eating_signal);
             }
 
@@ -9875,12 +9899,22 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
 
             function renderProgressPhotos(profile) {
                 if (!progressPhotosSection) return;
+                var photosBody = document.getElementById('progress-photos-body');
+                var photosNote = document.getElementById('progress-photos-safety-note');
 
-                if (profile && profile.disordered_eating_signal) {
-                    progressPhotosSection.classList.add('hidden');
+                /* The section stays on screen and says why it is empty. It used to
+                 * remove itself entirely, which left the person guessing. Whether
+                 * photos should be withheld at all is still open for clinical
+                 * review; that vanishing without explanation was wrong either way
+                 * is not. See photoSurfacesHidden(). */
+                progressPhotosSection.classList.remove('hidden');
+                if (photoSurfacesHidden(profile)) {
+                    if (photosBody) photosBody.classList.add('hidden');
+                    if (photosNote) photosNote.classList.remove('hidden');
                     return;
                 }
-                progressPhotosSection.classList.remove('hidden');
+                if (photosNote) photosNote.classList.add('hidden');
+                if (photosBody) photosBody.classList.remove('hidden');
 
                 (async function() {
                     try {

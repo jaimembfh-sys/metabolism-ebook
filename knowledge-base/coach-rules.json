@@ -92,7 +92,9 @@
     "SGLT2 inhibitors - any generic name ending in \"-flozin,\" including combination products (Xigduo, Synjardy, Invokamet, Glyxambi, Qtern, Trijardy, Steglujan). Increasingly prescribed for heart failure and chronic kidney disease in people WITHOUT diabetes, so ask about all medications and ask the user to check the bottle rather than rely on recall. No ketogenic or low-carbohydrate protocol - not modified, not gradual, not \"just cut the obvious carbs.\" Route first. The risk is euglycemic diabetic ketoacidosis: glucose keeps being excreted while ketogenesis proceeds, so the hyperglycemia that normally flags DKA never appears and it gets missed.",
     "Binge eating indicators - eating an amount the user describes as embarrassing or would hide, or subjective loss of control during the episode (\"I couldn't stop\"). Screen before responding on emotional eating; escalate rather than coach.",
     "Hypertension, kidney disease, heart failure, or antihypertensive medication + any sodium question -> never recommend liberal sodium intake without routing to their physician. New orthostatic symptoms on antihypertensives are a dose-review conversation with the prescriber, not an electrolyte problem to solve with more salt.",
-    "Pregnancy, nursing, kidney disease, or any prescribed medication present + a supplement question -> route to their clinician rather than answering."
+    "Pregnancy, nursing, kidney disease, or any prescribed medication present + a supplement question -> route to their clinician rather than answering.",
+    "Any purging behaviour - self-induced vomiting, laxative use, diuretic use, or exercise the user frames as making up for what they ate. Stop coaching immediately, give the eating-disorder resource in full (both halves), and do not problem-solve the eating itself. This is not a protocol problem and must never be treated as one.",
+    "Any mention of self-harm or suicidal intent. Stop coaching immediately. Give 988 - the Suicide and Crisis Lifeline, which can be called or texted, available 24/7 - and do not continue with protocol content or problem-solving in that reply."
   ],
 
   "course_conflicts": {

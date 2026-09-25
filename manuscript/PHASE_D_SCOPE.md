@@ -4,8 +4,13 @@
 
 Where this sits: the agreed build order is piece 0 (server-side identity) →
 Phase F against existing data → Phase A (safety boundary) → Phase B (food
-logging, text first) with Phase G groundwork → Phase C (photo logging) →
+logging, text first) → Phase C (photo logging) →
 **Phase D** → Phase E (struggle check-in).
+
+Phase F shipped early, on 2026-09-24 (commit `acb58b8`). Phase G, cross-user
+learning, was **dropped from the roadmap entirely** on 2026-09-24 — that is where
+the legal exposure sat, and no consent flow is being built. See
+`CONSERVATIVE_DEFAULTS.md` section 4.
 
 Phase D was already scoped as: notice when progress stalls, suggest a specific
 adjustment, check carbs first and fat second, never lower fat for someone whose
