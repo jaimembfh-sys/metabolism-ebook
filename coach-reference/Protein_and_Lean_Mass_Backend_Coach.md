@@ -31,7 +31,9 @@ In gated cases the coach may discuss protein qualitatively — "a substantial po
 
 **[ESTABLISHED]** Muscle protein synthesis responds to per-meal protein dose in a saturable, threshold-like manner rather than to daily total alone. The stimulus is driven substantially by **leucine** content, acting via mTORC1 signalling. Below the threshold dose, the anabolic response is blunted regardless of daily intake.
 
-Consequence: distributing a sub-threshold quantity across meals can fail to trigger synthesis at any meal. Even distribution of adequate protein outperforms skewed distribution.
+Consequence: distributing a sub-threshold quantity across meals can fail to trigger synthesis at any meal.
+
+**[CONTESTED]** Even distribution of adequate protein may support muscle protein synthesis better than skewing protein toward dinner, though trials measuring muscle and body composition haven't confirmed an advantage.
 
 **Commonly cited per-meal thresholds:** ~25–30 g high-quality protein for younger adults, ~35–40 g for older adults.
 
