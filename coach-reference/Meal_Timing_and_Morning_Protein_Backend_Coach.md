@@ -1,0 +1,103 @@
+# Meal Timing & Morning Protein — Research Reference (MetaBurn AI Coach)
+
+Purpose: background science for the coach when users ask about eating earlier vs. later, big breakfast vs. big dinner, or protein at breakfast. Course lessons carry the simple version; this file carries the studies, designs, and limitations.
+
+Verification status: designs and headline results below were checked against abstracts, publisher pages, or trial registrations on 2026-09-29. Items marked **[unverified]** were not confirmed and should not be quoted as fact until checked against the full paper.
+
+---
+
+## Bottom line for the coach
+
+1. **Appetite is the most consistent finding.** Loading food (and protein) earlier in the day reliably lowers hunger and later-day eating across timing and protein studies.
+2. **Weight loss from earlier eating is supported, but the mechanism is debated.** Jakubowicz 2013 found much greater weight loss with a big breakfast; Ruddick-Collins 2022, with all food provided and fixed, found no difference in weight loss or energy expenditure.
+3. **Metabolic "burn" differences by time of day are real but small and contested.** Richter 2020 and Vujović 2022 found higher energy expenditure with earlier eating; Ruddick-Collins 2022 did not.
+4. **Morning protein mainly acts through fullness and reduced snacking.** Evidence that it raises metabolic rate in humans is limited.
+
+---
+
+## Part 1 — Same calories/macros, earlier vs. later
+
+### Jakubowicz D, Barnea M, Wainstein J, Froy O. *Obesity* 2013;21(12):2504–12. doi:10.1002/oby.20460
+- **Design:** Randomized, parallel groups, 12 weeks, free-living.
+- **Population:** 93 women with overweight/obesity and metabolic syndrome.
+- **Intervention:** 1,400 kcal/day. Big-breakfast group: 700 breakfast / 500 lunch / 200 dinner. Big-dinner group: 200 / 500 / 700. The 700-kcal breakfast and dinner used the same foods.
+- **Results:** Weight loss about 8.7 kg (big breakfast) vs 3.6 kg (big dinner). The big-breakfast group also had greater reductions in waist circumference, ghrelin, hunger scores, insulin resistance indices, and triglycerides. Triglycerides rose in the big-dinner group.
+- **Authors' conclusion:** A high-calorie breakfast improved compliance and was more beneficial than a high-calorie dinner for weight loss, insulin sensitivity, and hunger suppression.
+- **Limitations:** Free-living design with self-reported intake (reported intakes were similar between groups). No measurement of energy expenditure, so the study cannot show *why* weight loss differed.
+
+### Ruddick-Collins LC, Morgan PJ, Fyfe CL, et al. *Cell Metabolism* 2022;34(10):1472–85. doi:10.1016/j.cmet.2022.08.001 ("Big Breakfast Study", Univ. of Aberdeen)
+- **Design:** Randomized crossover, two 4-week arms, all food provided, calorie-restricted.
+- **Population:** 30 adults with overweight/obesity (not selected for metabolic disease). Participants were, on average, neither morning nor evening chronotypes.
+- **Intervention:** Morning-loaded (big breakfast, small dinner) vs evening-loaded (reverse). Identical total calories and macros.
+- **Measures:** Total energy expenditure by doubly labeled water, resting metabolic rate, body weight, appetite ratings, glucose.
+- **Results:** No difference in total energy expenditure, resting metabolic rate, or weight loss. The morning-loaded diet produced **lower daily hunger and appetite**.
+- **Authors' conclusion:** Time of day does not change how calories are used; the morning-loaded diet may help people stick to a weight-loss plan by suppressing appetite. They called for more research on eating window and evening-meal timing.
+- **Limitations to raise if asked:**
+  - Fixed intake removed the route by which lower hunger would produce more weight loss in real life.
+  - 4 weeks per arm is short (Jakubowicz ran 12 weeks).
+  - Crossover during active weight loss allows order/carryover effects.
+  - The morning/evening contrast was smaller than Jakubowicz's. Exact meal clock times **[unverified]**.
+  - Healthy population; results may differ with insulin resistance.
+
+### Vujović N, Piron MJ, Qian J, …, Garaulet M, Scheer FAJL. *Cell Metabolism* 2022;34(10):1486–98. doi:10.1016/j.cmet.2022.09.007 (Brigham and Women's)
+- **Design:** Randomized crossover, tightly controlled inpatient protocols.
+- **Population:** 16 adults with overweight/obesity.
+- **Intervention:** Identical meals eaten about 4 hours later vs earlier. Calories, sleep, and activity were controlled.
+- **Results:** Late eating increased waking hunger, lowered 24-hour leptin, lowered waking energy expenditure and 24-hour core body temperature, and shifted fat-tissue gene expression toward more fat storage (fat biopsies in a subset).
+- **Authors' conclusion:** These combined changes suggest routes by which late eating may raise obesity risk.
+- **Limitations:** Small sample; short protocol; measures mechanisms, not weight change over time.
+
+### Richter J, Herzog N, Janka S, et al. *J Clin Endocrinol Metab* 2020;105(3):dgz311
+- **Design:** Randomized crossover, 3-day in-lab stays.
+- **Population:** 16 normal-weight men.
+- **Intervention:** Low-calorie breakfast (11% of daily needs) with high-calorie dinner (69%), vs the reverse.
+- **Results:** Diet-induced thermogenesis was about 2.5 times higher after the same meal in the morning than in the evening. Blood glucose and insulin rises were smaller after breakfast than after dinner.
+- **Criticism:** Melanson & Chen (JCEM letters, 2020) argued the pre-dinner baseline was taken only 4.5 h after lunch, which may inflate the difference. By their estimate the absolute gap was about 55 vs 30 kcal after the high-calorie meal. The authors replied defending the method.
+- **Limitations:** Normal-weight men only; acute measurements; small absolute calorie difference.
+
+---
+
+## Part 2 — Protein at breakfast
+
+### Vander Wal JS, Marth JM, Khosla P, Jen KL, Dhurandhar NV. *J Am Coll Nutr* 2005;24(6):510–15
+- Egg breakfast vs bagel breakfast with equal calories and weight. After eggs: greater fullness and lower intake at lunch and over the following period.
+
+### Vander Wal JS, Gupta A, Khosla P, Dhurandhar NV. *Int J Obes* 2008;32(10):1545–51. doi:10.1038/ijo.2008.130
+- **Design:** Randomized, 4 groups, n=160 adults with overweight/obesity: egg, egg + diet, bagel, bagel + diet. Duration 8 weeks **[unverified]**.
+- **Intervention:** Breakfasts matched for calories and weight. The two diet groups were prescribed a low-fat diet with about a 1,000 kcal/day deficit for the rest of the day. The other groups were told not to change intake.
+- **Results:** Egg + diet lost about 5.4 lb vs about 2.8 lb for bagel + diet (the "65% more weight loss" figure comes from the press release). The egg + diet group also reported feeling more energetic. No differences in blood lipids.
+- **Authors' conclusion:** The egg breakfast enhanced weight loss, which they attributed to better adherence through greater fullness.
+- **Notes:** Only breakfast was matched; rest-of-day intake was free-living. Funding: egg industry **[unverified — check paper's disclosures]**. A later Australian trial (IJERPH 2020, doi:10.3390/ijerph17238827) found no difference in weight loss between eggs and cereal for breakfast during energy restriction.
+
+### Leidy HJ, Ortinau LC, Douglas SM, Hoertel HA. *Am J Clin Nutr* 2013;97(4):677–88
+- **Design:** Randomized crossover, 6-day patterns, about 20 overweight/obese "breakfast-skipping" girls aged 18–20.
+- **Intervention:** High-protein breakfast (350 kcal, 35 g protein, eggs and lean beef) vs normal-protein breakfast (350 kcal, cereal, ~13 g protein) vs skipping breakfast.
+- **Results:** Eating breakfast improved appetite, hormonal, and brain-reward signals. Only the high-protein breakfast further improved these and reduced evening snacking on high-fat/high-sugar foods. **No difference in total daily energy intake.**
+
+### Leidy HJ, et al. *Obesity* 2015 ("A high-protein breakfast prevents body fat gain…")
+- **Design:** 12-week RCT, 57 adolescents (age ~19, BMI ~30) who normally skipped breakfast.
+- **Intervention:** Normal-protein breakfast (13 g), high-protein breakfast (35 g), or continued skipping.
+- **Results:** The high-protein breakfast prevented body-fat gain and produced voluntary reductions in daily intake and daily hunger.
+- **Note:** Leidy's breakfast studies have had beef/egg industry funding **[unverified per paper — check disclosures]**.
+
+### Wang S, Yang L, Lu J, Mu Y. *Horm Res Paediatr* 2015 (Karger)
+- 156 adolescents with obesity randomized to an egg breakfast or a steamed-bread breakfast of equal calories. The egg group ate less at lunch and lost more weight. Changes in weight correlated with changes in appetite and appetite hormones.
+
+### Mamerow MM, Mettler JA, English KL, …, Layman DK, Paddon-Jones D. *J Nutr* 2014;144(6):876–80
+- **Design:** Crossover, **n=8** healthy adults, 7-day diets.
+- **Intervention:** Same total protein spread evenly (~30 g per meal) vs skewed to dinner (~10 g breakfast, ~15 g lunch, ~65 g dinner).
+- **Results:** 24-hour muscle protein synthesis about 25% higher with the even distribution.
+- **Counter-evidence:** Kim IY et al. 2018 (older adults) found no difference in muscle protein synthesis or protein use between even and skewed distribution. An AJCN trial in overweight adults doing resistance training found within-day protein distribution did not affect body composition during weight loss. The distribution question remains unresolved.
+
+### Aoyama S, Kim HK, Hirooka R, et al. *Cell Reports* 2021;36(1):109336
+- **Mice:** Protein at the first meal of the active period produced more muscle growth than the same protein later, via the muscle's circadian clock.
+- **Humans:** Observational data in older women linked higher breakfast protein to better muscle function **[human cohort details unverified]**. Association, not cause.
+
+---
+
+## How the coach should use this
+
+- Lead with **hunger and appetite**. It is the most consistent benefit, and it's something users can notice themselves.
+- When asked whether food is "stored rather than burned" at night, present both sides: some studies found lower energy expenditure or more storage-oriented changes with late eating (Vujović 2022, Richter 2020), while the most tightly controlled weight-loss trial found no difference in calories burned (Ruddick-Collins 2022).
+- Don't overstate single studies. Name the population (e.g., adolescents, normal-weight men, women with metabolic syndrome) when it matters for the user.
+- Never convert any of this into calorie targets (app-wide rule).
