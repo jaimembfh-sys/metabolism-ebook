@@ -79,15 +79,17 @@ For these highly stressed bodies, the best strategy is a consistent feeding wind
 ## Timing Your Meals With Your Body's Natural Rhythm
 <!-- page: Lesson 15 -->
 
-Your metabolism does not operate at the same rate all day — it follows a daily biological rhythm. In the morning, your body is most insulin-sensitive and metabolically active. It handles carbohydrates, larger quantities of food, and nutrients more efficiently earlier in the day. Eating a substantial meal in the morning supports stable blood sugar, better energy, and smoother digestion throughout the day.
+Your metabolism does not operate at the same rate all day — it follows a daily biological rhythm. In the morning, your body handles blood sugar best and is most metabolically active. It handles carbohydrates, larger quantities of food, and nutrients more efficiently earlier in the day. Eating a substantial meal in the morning supports stable blood sugar, better energy, and smoother digestion throughout the day.
 
-Late at night, the opposite is true. Your metabolism naturally slows as your body prepares for rest. Digestion becomes less efficient, blood sugar spikes more easily from the same foods that would have been handled easily at breakfast, and the calories you consume are far more likely to be stored rather than burned. Eating late also disrupts sleep by keeping your digestive system active when it should be winding down — which then disrupts the very hormones that regulate hunger and fat burning the next day.
+Late at night, the opposite is true. Your metabolism naturally slows as your body prepares for rest. Digestion becomes less efficient, blood sugar spikes more easily from the same foods that would have been handled easily at breakfast, and the calories you consume are far more likely to be stored rather than burned.1 Eating late also disrupts sleep by keeping your digestive system active when it should be winding down — which then disrupts the very hormones that regulate hunger and fat burning the next day.
+
+How strong is that evidence? When people ate the identical meals four hours later, their fat tissue switched on more of the genes that store fat, and they burned fewer calories while awake.1 Over 12 to 20 weeks, people who ate earlier lost more weight on the same calories, and in the larger of those studies, how much they ate, how much they moved, and their appetite hormones were all about the same.2,3 A shorter, 4-week trial with all food provided found no difference in weight loss,4 so researchers still disagree about how large the effect is.
 
 🌅
 
 Morning (AM)
 
-Most insulin-sensitive. Eat your larger meals here. Your body is primed to use nutrients efficiently, burn fuel actively, and handle carbohydrates best.
+Handles blood sugar best. Eat your larger meals here. Your body is primed to use nutrients efficiently, burn fuel actively, and handle carbohydrates best.
 
 🌙
 
@@ -95,7 +97,7 @@ Evening (PM)
 
 Metabolism slows. Keep meals lighter. Finish eating at least 2–3 hours before bed to let insulin drop before rising melatonin signals the body into overnight repair mode.
 
-Shifting the majority of your food intake earlier in the day — even within the same eating window — helps your body work with its natural rhythm rather than against it, making fat loss easier and sleep deeper.
+Shifting the majority of your food intake earlier in the day — even within the same eating window — helps your body work with its natural rhythm rather than against it, making fat loss easier2,3 and sleep deeper.
 
 <!-- chunk -->
 ## Timing Matters: Not Just What You Eat, But When
@@ -111,17 +113,17 @@ The most consistent finding across all of this research is that eating more of y
 ## The Hidden Clocks Inside Your Cells
 <!-- page: Lesson 15 -->
 
-Why exactly are mornings different? The answer is more literal than most people realize. Your body doesn't have just one internal clock in your brain — it has a master clock, plus separate mini-clocks built directly into your liver, muscle, fat, and pancreas cells.1 These aren't a figure of speech. They're actual genetic switches that turn on and off in a daily rhythm, and part of what they control is how sensitive each of those tissues is to insulin at any given moment.2
+Why exactly are mornings different? The answer is more literal than most people realize. Your body doesn't have just one internal clock in your brain — it has a master clock, plus separate mini-clocks built directly into your liver, muscle, fat, and pancreas cells.5 These aren't a figure of speech. They're actual genetic switches that turn on and off in a daily rhythm, and part of what they control is how sensitive each of those tissues is to insulin at any given moment.6
 
-Your pancreas's insulin release, your liver's sugar output, and your muscle's ability to pull glucose out of your bloodstream are all under the direct influence of these local clocks, not just your sleep schedule in general.3 One recent study found that in people with type 2 diabetes, this muscle-level clock rhythm is measurably disrupted, and that disruption is tied to reduced mitochondrial function.4
+Your pancreas's insulin release, your liver's sugar output, and your muscle's ability to pull glucose out of your bloodstream are all under the direct influence of these local clocks, not just your sleep schedule in general.7 One recent study found that in people with type 2 diabetes, this muscle-level clock rhythm is measurably disrupted, and that disruption is tied to reduced mitochondrial function.8
 
-This is also why irregular eating patterns, shift work, and inconsistent sleep independently worsen insulin resistance, separate from what you're actually eating.6 It isn't just about calories or carbs. It's about whether your daily rhythm of eating lines up with the rhythm your cells are already running on.
+This is also why irregular eating patterns, shift work, and inconsistent sleep independently worsen insulin resistance, separate from what you're actually eating.10 It isn't just about calories or carbs. It's about whether your daily rhythm of eating lines up with the rhythm your cells are already running on.
 
-And it isn't just about appetite. The same meal raises your blood sugar more in the evening than in the morning. In one tightly controlled 8-day lab study, researchers held sleep, activity, and the previous meal constant, so the only thing left to differ was the body clock itself. Blood sugar after the meal was about 17% higher at 8 PM than at 8 AM.7
+And it isn't just about appetite. The same meal raises your blood sugar more in the evening than in the morning. In one tightly controlled 8-day lab study, researchers held sleep, activity, and the previous meal constant, so the only thing left to differ was the body clock itself. Blood sugar after the meal was about 17% higher at 8 PM than at 8 AM.11
 
-Three things shift across the day. In the morning, your pancreas releases insulin faster in the first minutes after a meal. In that study, this early burst of insulin was 27% lower in the evening.7 Your liver also shuts down its own sugar production more completely in the morning, so less extra glucose gets added on top of your meal. And your cells respond to insulin a little better.8 The insulin timing and the liver do most of the work; the sensitivity difference is the smaller piece. The net effect is that the same food clears from your bloodstream faster in the morning.
+Three things shift across the day. In the morning, your pancreas releases insulin faster in the first minutes after a meal. In that study, this early burst of insulin was 27% lower in the evening.11 Your liver also shuts down its own sugar production more completely in the morning, so less extra glucose gets added on top of your meal. And your cells respond to insulin a little better.12 The insulin timing and the liver do most of the work; the sensitivity difference is the smaller piece. The net effect is that the same food clears from your bloodstream faster in the morning.
 
-Eating earlier can help even when you don't eat less. In one trial, men with prediabetes spent five weeks on each of two schedules, eating the same food: packed into an early 6-hour window, with dinner finished before 3 PM, or spread across 12 hours. On the early schedule, their insulin sensitivity and their pancreas's insulin response both improved, with no weight loss.9 It was a small study, and only in men, but it shows that timing on its own can change how your body handles food.
+Eating earlier can help even when you don't eat less. In one trial, men with prediabetes spent five weeks on each of two schedules, eating the same food: packed into an early 6-hour window, with dinner finished before 3 PM, or spread across 12 hours. On the early schedule, their insulin sensitivity and their pancreas's insulin response both improved, with no weight loss.13 It was a small study, and only in men, but it shows that timing on its own can change how your body handles food.
 
 An honest caveat. This morning advantage is clearest in people who are metabolically healthy. In obesity, insulin resistance, and type 2 diabetes, the daily rhythm is often blunted, shifted later, or missing altogether. Many people with type 2 diabetes actually see their highest blood sugar after breakfast, partly because of the dawn phenomenon, an early-morning rise in blood sugar driven by overnight hormones.
 
@@ -137,7 +139,7 @@ In controlled comparisons, people eating six small meals a day reported noticeab
 
 That's the real case against grazing. Every meal you add is another scheduled hunger signal you're teaching your body to produce — which is exactly what Lesson 7 explained about ghrelin.
 
-And there's a timing effect that is well supported: the identical meal produces a larger thermic response in the morning than in the evening. So when you eat genuinely does change how much energy processing it costs you.
+And there's a timing effect that is well supported: the identical meal produces a larger thermic response in the morning than in the evening.14 So when you eat genuinely does change how much energy processing it costs you. One 4-week trial did find no difference in the total calories people burned across the whole day.4
 
 Fewer meals, earlier in the day. That's the version that holds up.
 
@@ -352,7 +354,7 @@ Natural Sugars: Keep even natural sugars to a minimum. Fruit is healthy but shou
 ## Key Insight 1
 <!-- page: Lesson 15 -->
 
-Your liver's internal clock is especially sensitive to feeding — meaning when you eat is actively training that clock, for better or worse, every single day.5
+Your liver's internal clock is especially sensitive to feeding — meaning when you eat is actively training that clock, for better or worse, every single day.9
 
 <!-- chunk -->
 ## Key Insight 2

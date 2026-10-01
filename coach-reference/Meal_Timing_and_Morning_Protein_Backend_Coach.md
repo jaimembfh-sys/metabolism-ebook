@@ -10,7 +10,7 @@ Verification status: designs and headline results below were checked against abs
 
 1. **Appetite is the most consistent finding.** Loading food (and protein) earlier in the day reliably lowers hunger and later-day eating across timing and protein studies.
 2. **Weight loss from earlier eating is supported, but the mechanism is debated.** Jakubowicz 2013 found much greater weight loss with a big breakfast; Ruddick-Collins 2022, with all food provided and fixed, found no difference in weight loss or energy expenditure.
-3. **Metabolic "burn" differences by time of day are real but small and contested.** Richter 2020 and Vujović 2022 found higher energy expenditure with earlier eating; Ruddick-Collins 2022 did not.
+3. **Metabolic "burn" differences by time of day are real but small and contested.** Richter 2020, Vujović 2022, and Vujović 2026 found higher energy expenditure with earlier eating; Ruddick-Collins 2022 did not.
 4. **Morning protein mainly acts through fullness and reduced snacking.** Evidence that it raises metabolic rate in humans is limited.
 
 ---
@@ -24,6 +24,12 @@ Verification status: designs and headline results below were checked against abs
 - **Results:** Weight loss about 8.7 kg (big breakfast) vs 3.6 kg (big dinner). The big-breakfast group also had greater reductions in waist circumference, ghrelin, hunger scores, insulin resistance indices, and triglycerides. Triglycerides rose in the big-dinner group.
 - **Authors' conclusion:** A high-calorie breakfast improved compliance and was more beneficial than a high-calorie dinner for weight loss, insulin sensitivity, and hunger suppression.
 - **Limitations:** Free-living design with self-reported intake (reported intakes were similar between groups). No measurement of energy expenditure, so the study cannot show *why* weight loss differed.
+
+### Garaulet M, Gómez-Abellán P, Alburquerque-Béjar JJ, Lee YC, Ordovás JM, Scheer FAJL. *Int J Obes* 2013;37(4):604–11
+- **Design:** Observational (not randomized). 420 adults with overweight/obesity in a 20-week weight-loss program in Spain, grouped as early or late eaters by the timing of their main meal (lunch). Checked against the abstract 2026-10-01.
+- **Results:** Late lunch eaters lost less weight and lost it more slowly. Energy intake, diet composition, estimated energy expenditure, appetite hormones, and sleep duration were similar between groups.
+- **Use:** Supports the idea that the timing effect isn't explained only by eating less or by appetite.
+- **Limitations:** Observational, so people weren't assigned to eat early or late, and other differences between early and late eaters could explain the result. Intake was self-reported. Don't describe it as an equal-calorie trial.
 
 ### Ruddick-Collins LC, Morgan PJ, Fyfe CL, et al. *Cell Metabolism* 2022;34(10):1472–85. doi:10.1016/j.cmet.2022.08.001 ("Big Breakfast Study", Univ. of Aberdeen)
 - **Design:** Randomized crossover, two 4-week arms, all food provided, calorie-restricted.
@@ -54,6 +60,12 @@ Verification status: designs and headline results below were checked against abs
 - **Results:** Diet-induced thermogenesis was about 2.5 times higher after the same meal in the morning than in the evening. Blood glucose and insulin rises were smaller after breakfast than after dinner.
 - **Criticism:** Melanson & Chen (JCEM letters, 2020) argued the pre-dinner baseline was taken only 4.5 h after lunch, which may inflate the difference. By their estimate the absolute gap was about 55 vs 30 kcal after the high-calorie meal. The authors replied defending the method.
 - **Limitations:** Normal-weight men only; acute measurements; small absolute calorie difference.
+
+### Vujović N, Koh HE, …, Scheer FAJL. *Metabolism* 2026 (September). "Constant-routine protocol reveals an endogenous circadian rhythm in diet-induced thermogenesis with a peak in the biological morning." PMID 42190872
+- **Design:** Constant routine: 36 h of continuous wakefulness, rest, semi-recumbent posture, and dim light, with identical test meals every 6 h. 16 adults with overweight/obesity (12 men). Checked against the abstract 2026-10-01.
+- **Results:** Diet-induced thermogenesis has its own circadian rhythm, peaking in the biological morning (around 8 AM) and lowest in the evening (around 8 PM). The peak-to-trough amplitude was 44%, which is about 10 kcal per 4 hours. Prior eating schedules didn't affect the rhythm.
+- **Use:** Answers the main criticism of Richter 2020 (meal spacing and baseline timing) by holding everything but the body clock constant.
+- **Limitations:** The absolute difference is small. It measures the rhythm, not weight change. Ruddick-Collins 2022 found no difference in total daily energy expenditure over 4 weeks.
 
 ---
 
@@ -116,6 +128,14 @@ Added 2026-10-01 to back the Lesson 15 text. The headline figures (17%, 27%, the
 
 ### The morning advantage in metabolic disease
 **[CONTESTED]** The morning advantage is clearest in metabolically healthy people. In obesity, insulin resistance, and type 2 diabetes, the daily glucose rhythm is often blunted, shifted later, or absent. Many people with type 2 diabetes have their highest post-meal glucose after breakfast, partly because of the dawn phenomenon. No single study is attached here yet **[unverified — add a source]**. When a user has insulin resistance or type 2 diabetes, don't tell them their mornings are their best time for carbohydrates. Their own glucose readings are the better guide, and medication questions go to their clinician.
+
+---
+
+## How Lesson 15 states these claims
+
+- **[CONTESTED]** "Shifting the majority of your food intake earlier in the day … making fat loss easier." Supported by Jakubowicz 2013 (12-week randomized trial) and Garaulet 2013 (20-week observational cohort). Ruddick-Collins 2022 (4 weeks, all food provided) found no difference in weight loss. Present both sides.
+- **[CONTESTED]** Late calories are "far more likely to be stored rather than burned." Supported by Vujović 2022 (storage-oriented fat-tissue gene expression and lower waking energy expenditure with late eating) and by the weight differences in Jakubowicz and Garaulet. Ruddick-Collins 2022 found no difference in total energy expenditure or weight loss. Don't explain the longer-study differences as only appetite or eating less: in Garaulet, intake and appetite hormones were similar.
+- **[SUPPORTED]** The same meal produces a larger thermic response in the morning (Vujović 2026, Richter 2020). The lesson calls this "well supported" and notes the 4-week trial with no difference in total daily expenditure. The absolute difference is small (about 10 kcal per 4 hours), so don't present it as a meaningful calorie-burning strategy.
 
 ---
 
