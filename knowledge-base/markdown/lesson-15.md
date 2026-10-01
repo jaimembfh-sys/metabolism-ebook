@@ -117,6 +117,14 @@ Your pancreas's insulin release, your liver's sugar output, and your muscle's ab
 
 This is also why irregular eating patterns, shift work, and inconsistent sleep independently worsen insulin resistance, separate from what you're actually eating.6 It isn't just about calories or carbs. It's about whether your daily rhythm of eating lines up with the rhythm your cells are already running on.
 
+And it isn't just about appetite. The same meal raises your blood sugar more in the evening than in the morning. In one tightly controlled 8-day lab study, researchers held sleep, activity, and the previous meal constant, so the only thing left to differ was the body clock itself. Blood sugar after the meal was about 17% higher at 8 PM than at 8 AM.7
+
+Three things shift across the day. In the morning, your pancreas releases insulin faster in the first minutes after a meal. In that study, this early burst of insulin was 27% lower in the evening.7 Your liver also shuts down its own sugar production more completely in the morning, so less extra glucose gets added on top of your meal. And your cells respond to insulin a little better.8 The insulin timing and the liver do most of the work; the sensitivity difference is the smaller piece. The net effect is that the same food clears from your bloodstream faster in the morning.
+
+Eating earlier can help even when you don't eat less. In one trial, men with prediabetes spent five weeks on each of two schedules, eating the same food: packed into an early 6-hour window, with dinner finished before 3 PM, or spread across 12 hours. On the early schedule, their insulin sensitivity and their pancreas's insulin response both improved, with no weight loss.9 It was a small study, and only in men, but it shows that timing on its own can change how your body handles food.
+
+An honest caveat. This morning advantage is clearest in people who are metabolically healthy. In obesity, insulin resistance, and type 2 diabetes, the daily rhythm is often blunted, shifted later, or missing altogether. Many people with type 2 diabetes actually see their highest blood sugar after breakfast, partly because of the dawn phenomenon, an early-morning rise in blood sugar driven by overnight hormones.
+
 <!-- chunk -->
 ## Fewer Meals Win — Just Not for the Reason You've Heard
 <!-- page: Lesson 15 -->

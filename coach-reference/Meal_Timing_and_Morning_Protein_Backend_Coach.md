@@ -95,6 +95,30 @@ Verification status: designs and headline results below were checked against abs
 
 ---
 
+## Part 3 — Blood sugar across the day
+
+Added 2026-10-01 to back the Lesson 15 text. The headline figures (17%, 27%, the Sutton design) came from Jaime's brief; sample sizes are from memory and marked **[unverified]**.
+
+### Morris CJ, Yang JN, Garcia JI, et al. *PNAS* 2015;112(17):E2225–34
+- **Design:** 8-day in-lab protocol separating the body clock from behavior. Sleep, activity, and the previous meal were held constant. About 14 healthy adults **[unverified]**.
+- **Results:** The same meal produced post-meal glucose about 17% higher at 8 PM than at 8 AM, driven by the circadian system itself. Early-phase insulin was 27% lower in the evening.
+- **Use:** The cleanest evidence that the evening blood sugar difference comes from the body clock, not from sleep or the previous meal.
+
+### Saad A, Dalla Man C, Nandy DK, et al. *Diabetes* 2012;61(11):2691–2700
+- **Design:** Identical mixed meals at breakfast, lunch, and dinner in healthy adults, with tracer methods to separate insulin secretion, insulin action, and liver glucose output. About 20 participants **[unverified]**.
+- **Results:** Better glucose tolerance in the morning. Faster early insulin release, more complete suppression of the liver's own glucose production, and modestly higher insulin sensitivity.
+- **Use:** Explains *why* mornings differ. The main drivers are insulin timing and the liver; sensitivity is the smaller piece. Don't phrase it as "cells are far more insulin sensitive in the morning."
+
+### Sutton EF, Beyl R, Early KS, et al. *Cell Metabolism* 2018;27(6):1212–21
+- **Design:** Randomized crossover, 5 weeks per arm. Men with prediabetes (n=8). Same food in an early 6-hour window (dinner before 3 PM) vs a 12-hour window. Food was matched to keep weight stable.
+- **Results:** Insulin sensitivity and beta-cell response improved on the early schedule with no weight loss. Blood pressure and oxidative stress also improved.
+- **Limitations:** Very small, men only, short.
+
+### The morning advantage in metabolic disease
+**[CONTESTED]** The morning advantage is clearest in metabolically healthy people. In obesity, insulin resistance, and type 2 diabetes, the daily glucose rhythm is often blunted, shifted later, or absent. Many people with type 2 diabetes have their highest post-meal glucose after breakfast, partly because of the dawn phenomenon. No single study is attached here yet **[unverified — add a source]**. When a user has insulin resistance or type 2 diabetes, don't tell them their mornings are their best time for carbohydrates. Their own glucose readings are the better guide, and medication questions go to their clinician.
+
+---
+
 ## How the coach should use this
 
 - Lead with **hunger and appetite**. It is the most consistent benefit, and it's something users can notice themselves.
