@@ -12,6 +12,8 @@ source_file: index.html#lesson-4
 
 Movement activates mitochondrial energy production
 
+Mitochondria
+
 If your energy is low, your body feels inflamed, and fat loss feels harder than it should, this isn’t just about eating less. It is fundamentally about your cellular energy. Inside nearly every cell of your body are tiny structures called mitochondria. They act as the engine room of your body, converting the food you eat and the oxygen you breathe into usable energy (ATP). This energy powers everything—your brain, your hormones, your muscles, your immune system, and your overall ability to efficiently burn fuel.
 
 In many ways, your metabolism is only as strong as your ability to produce energy at the cellular level. When mitochondrial function is strong, energy production is highly efficient. You experience steadier energy, clearer thinking, better exercise recovery, and much more stable blood sugar. Most importantly, your body becomes more metabolically flexible, meaning it can seamlessly switch between using carbohydrates and stored fat as fuel depending on availability. Fat loss feels incredibly responsive because your cells have the fundamental energy they need to operate.

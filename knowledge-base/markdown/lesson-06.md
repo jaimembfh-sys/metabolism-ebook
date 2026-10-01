@@ -12,6 +12,8 @@ source_file: index.html#lesson-6
 
 Hydration and morning rituals influence appetite hormones
 
+Appetite Regulation and GLP-1
+
 In recent years, the conversation around weight loss has been dominated by a specific hormone: GLP-1 (Glucagon-Like Peptide-1). You have likely heard of it in the context of wildly popular weight-loss medications. However, GLP-1 is actually a naturally occurring hormone that your body produces on its own. Understanding how it naturally works—and the severe consequences of artificially overriding it—is crucial to understanding your metabolism.
 
 GLP-1 is an incretin hormone, meaning it is secreted by the cells in your intestines in response to eating food. When food enters your digestive tract, natural GLP-1 is released and performs a few highly important tasks: it tells your pancreas to release an appropriate amount of insulin, it slows down gastric emptying (meaning food stays in your stomach longer), and it sends a powerful satiety signal to your brain, telling you that you are full.

@@ -98,6 +98,16 @@ Metabolism slows. Keep meals lighter. Finish eating at least 2–3 hours before 
 Shifting the majority of your food intake earlier in the day — even within the same eating window — helps your body work with its natural rhythm rather than against it, making fat loss easier and sleep deeper.
 
 <!-- chunk -->
+## Timing Matters: Not Just What You Eat, But When
+<!-- page: Lesson 15 -->
+
+In one study, two groups of women ate the same number of calories each day. The only difference was timing: one group ate their biggest meal at breakfast, the other at dinner. After 12 weeks, the big-breakfast group had lost more weight and reported feeling less hungry. A later, more tightly controlled study didn't find the extra weight loss, but it did confirm the hunger effect: a big breakfast kept people less hungry all day. Other research has found that the same meal eaten four hours later leaves people hungrier and lowers leptin, a hormone that helps signal you've had enough.
+
+What you eat in the morning matters too. In another study, adults on a reduced-calorie diet ate either two eggs or a bagel for breakfast, with the same calories and the same weight of food. The egg group lost about twice as much weight and reported feeling more energetic. The researchers believed the eggs kept people fuller, which made the diet easier to stick with. Other studies found that a high-protein breakfast led to less evening snacking and smaller lunches.
+
+The most consistent finding across all of this research is that eating more of your food earlier in the day, and starting it with protein, makes you less hungry later, which makes everything else easier.
+
+<!-- chunk -->
 ## The Hidden Clocks Inside Your Cells
 <!-- page: Lesson 15 -->
 
