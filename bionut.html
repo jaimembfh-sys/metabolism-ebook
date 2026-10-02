@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioNut AI | Mind-Body Functional Health</title>
+    <link rel="icon" type="image/png" href="logos/favicon-mind-body.png">
+    <!-- Accessibility baseline. brand.css defines no token this page uses, so
+         it changes nothing visually; it supplies focus-visible, the skip link
+         and the reduced-motion guard. -->
+    <link rel="stylesheet" href="styles/brand.css">
+    <script src="scripts/a11y.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1f2e35;
+            --teal: #34657a;
+            --gold: #c19a6b;
+            --cream: #f9f6f1;
+            --paper: #fffefb;
+            --muted: #59656b;
+            --bluegreen: #dff3f4;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Montserrat", "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--paper);
+        }
+
+        .hero-wrapper {
+            background: linear-gradient(140deg, #edf4f7 0%, #f9f4ea 100%);
+            padding: 2.25rem 2rem;
+        }
+
+        .eyebrow {
+            margin: 0;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin: 1rem 0 0.6rem;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            color: var(--teal);
+            font-size: clamp(2.2rem, 4.4vw, 3.5rem);
+            line-height: 1.02;
+            font-weight: 700;
+        }
+
+        .hero-subhead {
+            margin: 0;
+            font-size: clamp(1.1rem, 2.1vw, 1.5rem);
+            color: var(--muted);
+            line-height: 1.45;
+        }
+
+        .hero-byline {
+            margin: 0.7rem 0 0;
+            font-weight: 700;
+            color: #2d4c5b;
+        }
+
+        .hero-cta-wrap {
+            margin-top: 1.5rem;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.1rem 2rem;
+            border-radius: 999px;
+            background: var(--gold);
+            color: var(--ink);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.84rem;
+            font-weight: 700;
+            border: 2px solid var(--gold);
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 24px rgba(193,154,107,0.3);
+        }
+
+        .hero-cta:hover {
+            background: #b8885f;
+            border-color: #b8885f;
+            transform: translateY(-2px);
+        }
+
+        /* ---- hero layout: copy beside the art on desktop ---- */
+        .hero-inner {
+            width: min(1180px, 94vw);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.02fr 0.98fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        /* ---- hero art: book cover + CSS phone ---- */
+        /* max-width caps the composition so it stops driving the hero's height.
+           Uncapped it filled its grid column, rendering the cover at 362px wide
+           and pushing the hero past 700px, so the hook below never cleared the
+           fold. */
+        .hero-art {
+            container-type: inline-size;
+            position: relative;
+            width: 100%;
+            max-width: 430px;
+            margin-left: auto;
+        }
+
+        /* Stage holds a stable aspect so the absolute children never collapse. */
+        .hero-art-stage {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+        }
+
+        .hero-cover {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 60%;
+            border-radius: 3px 8px 8px 3px;
+            background: var(--ink);
+            box-shadow:
+                0 30px 60px -18px rgba(31, 46, 53, 0.45),
+                0 10px 22px -10px rgba(31, 46, 53, 0.28);
+        }
+
+        .hero-cover img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: inherit;
+        }
+
+        .hero-phone {
+            position: absolute;
+            right: 0;
+            bottom: 4%;
+            width: 36%;
+            background: linear-gradient(160deg, #2b3339 0%, #14191d 55%, #1f262b 100%);
+            border-radius: 9.5cqw;
+            padding: 1.05cqw;
+            box-shadow:
+                0 34px 60px -16px rgba(31, 46, 53, 0.5),
+                0 12px 24px -10px rgba(31, 46, 53, 0.3),
+                inset 0 0 0 0.18cqw rgba(255, 255, 255, 0.14);
+        }
+
+        /* Everything inside the screen is sized in em against this font-size,
+           so it is the single dial controlling how much content fits before
+           overflow:hidden clips it. Column flex lets the trailing element
+           absorb the leftover space instead of spilling past the bezel. */
+        .hero-phone-screen {
+            position: relative;
+            border-radius: 8.4cqw;
+            overflow: hidden;
+            background: var(--paper);
+            aspect-ratio: 1170 / 2094;
+            font-size: 1.38cqw;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Speaker slot, drawn over the screen like a modern cutout. */
+        .hero-phone-screen::before {
+            content: "";
+            position: absolute;
+            top: 0.75em;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 26%;
+            height: 0.42em;
+            border-radius: 999px;
+            background: #14191d;
+            z-index: 3;
+        }
+
+        /* ---- live miniature of the Lesson 1 screen ---- */
+        .ps-progress {
+            padding: 2.1em 1.35em 0.85em;
+            border-bottom: 1px solid #ece5db;
+            background: var(--paper);
+        }
+
+        .ps-bar {
+            position: relative;
+            height: 0.62em;
+            border-radius: 999px;
+            background: #e4e7e9;
+        }
+
+        .ps-bar span {
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 11%;
+            border-radius: 999px;
+            background: var(--gold);
+        }
+
+        /* The milestone markers along the real progress bar. */
+        .ps-bar::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, #c9ced1 0.11em, transparent 0.12em);
+            background-size: 25% 100%;
+            background-position: 12.5% center;
+            background-repeat: repeat-x;
+        }
+
+        .ps-progress-label {
+            margin: 0.85em 0 0;
+            text-align: center;
+            font-size: 0.72em;
+            font-weight: 700;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+            color: #8d999f;
+            white-space: nowrap;
+        }
+
+        .ps-body {
+            padding: 1.9em 1.35em 1.2em;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .ps-eyebrow {
+            margin: 0;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.78em;
+            font-weight: 700;
+        }
+
+        .ps-title {
+            margin: 0.55em 0 0.9em;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 2.05em;
+            line-height: 1.08;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        /* Takes whatever vertical space the text above leaves, so the photo is
+           cropped to fit rather than overflowing and being clipped mid-image. */
+        .ps-photo {
+            border: 0.09em solid var(--gold);
+            border-radius: 0.55em;
+            overflow: hidden;
+            line-height: 0;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .ps-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .shell {
+            width: min(980px, 94vw);
+            margin: 2rem auto 3rem;
+            display: grid;
+            gap: 1.4rem;
+        }
+
+        .section {
+            padding: 2rem;
+            border-radius: 18px;
+            border: 1px solid rgba(52,101,122,0.12);
+            background: #fff;
+        }
+
+        .section h2 {
+            margin: 0 0 0.9rem;
+            color: var(--teal);
+            font-size: 1.3rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .section p {
+            margin: 0.7rem 0;
+            line-height: 1.68;
+            color: #2f3d43;
+        }
+
+        .section-dark {
+            background: var(--teal);
+            border-color: var(--teal);
+        }
+
+        .section-dark h2 { color: var(--gold); }
+        .section-dark p { color: rgba(255,255,255,0.95); }
+
+        .section-cream { background: var(--cream); }
+        .section-bluegreen { background: var(--bluegreen); }
+
+        .inside-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .inside-item {
+            background: #fff;
+            border: 1px solid rgba(193,154,107,0.28);
+            border-radius: 12px;
+            padding: 1rem 1rem 1rem 1.2rem;
+            position: relative;
+        }
+
+        .inside-item::before {
+            content: "\2726";
+            color: var(--gold);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-right: 0.55rem;
+        }
+
+        .inside-item-title {
+            color: var(--teal);
+            font-weight: 700;
+            display: inline;
+        }
+
+        .bonus-label {
+            color: var(--gold);
+        }
+
+        /* ---- pricing product shot ----
+           Reuses the hero's .hero-cover / .hero-phone / .hero-art-stage
+           components rather than duplicating them; only the sizing and the
+           phone's screen content differ. */
+        .pricing-inner {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 2.25rem;
+            align-items: center;
+        }
+
+        .pricing-art {
+            max-width: 330px;
+            margin: 0 auto;
+        }
+
+        .pricing-art .hero-cover { width: 58%; }
+        .pricing-art .hero-phone { width: 38%; bottom: 3%; }
+
+        /* The phone screen here renders the Metabolic Kitchen section of the
+           course, live, the same way the hero's renders Lesson 1. */
+        .ks-photo { line-height: 0; }
+
+        /* Was 5.4em, which rendered a ~29px strip of a tall photo and read as
+           a clipped image rather than a photo. */
+        .ks-photo img {
+            width: 100%;
+            height: 13em;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ks-body {
+            padding: 1.1em 1.15em 1.1em;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .ks-title {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.75em;
+            line-height: 1.05;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .ks-sub {
+            margin: 0.55em 0 0;
+            font-size: 0.82em;
+            line-height: 1.35;
+            color: var(--muted);
+        }
+
+        .ks-heading {
+            margin: 1.15em 0 0;
+            padding-bottom: 0.3em;
+            border-bottom: 0.12em solid var(--gold);
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.12em;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .ks-card {
+            margin-top: 0.95em;
+            padding: 0.75em 0.8em;
+            border-left: 0.22em solid var(--gold);
+            border-radius: 0 0.4em 0.4em 0;
+            background: var(--bluegreen);
+        }
+
+        .ks-card-title {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.02em;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .ks-card-body {
+            margin: 0.4em 0 0;
+            font-size: 0.76em;
+            line-height: 1.35;
+            color: #3d4a50;
+        }
+
+        .inside-item p {
+            margin: 0.55rem 0 0;
+        }
+
+        .bullet-list {
+            margin: 0.2rem 0 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 0.65rem;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 1.3rem;
+            line-height: 1.55;
+            color: #2f3d43;
+        }
+
+        .bullet-list li::before {
+            content: "\25CF";
+            color: var(--teal);
+            font-size: 0.55rem;
+            position: absolute;
+            left: 0;
+            top: 0.65rem;
+        }
+
+        .author-wrap {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .author-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+            background: var(--cream);
+        }
+
+        .author-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+        }
+
+        .author-name {
+            margin: 0;
+            font-size: 1.35rem;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .author-creds {
+            margin: 0.35rem 0 1rem;
+            color: var(--muted);
+            line-height: 1.45;
+            font-size: 0.95rem;
+        }
+
+        /* Photo sitting beside the credentials paragraph. Stacks below 768px
+           via the media query at the end of this sheet. */
+        .author-bio-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 1.6rem;
+            align-items: center;
+            margin-top: 0.4rem;
+        }
+
+        .author-bio-row .author-photo {
+            width: 150px;
+            height: 150px;
+        }
+
+        .author-bio-row p {
+            margin: 0;
+        }
+
+        .value-table {
+            margin: 0.8rem 0 0;
+            padding: 0;
+            list-style: none;
+            border-top: 2px solid rgba(31,46,53,0.2);
+            border-bottom: 2px solid rgba(31,46,53,0.2);
+        }
+
+        .value-table li {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(31,46,53,0.16);
+            color: #2f3d43;
+        }
+
+        .value-table li:last-child { border-bottom: none; }
+
+        .value-table .total {
+            font-weight: 800;
+            color: var(--teal);
+        }
+
+        .investment {
+            margin: 1rem 0 0.35rem;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            color: var(--teal);
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .cta-band {
+            padding: 2rem;
+            border-radius: 18px;
+            background: var(--teal);
+            text-align: center;
+        }
+
+        .cta-band .hero-cta {
+            margin: 0 auto;
+        }
+
+        .reassurance {
+            margin: 0.9rem 0 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.92);
+            font-weight: 500;
+        }
+
+        footer {
+            width: min(980px, 94vw);
+            margin: 0 auto 2.5rem;
+            text-align: center;
+            padding: 1.4rem 0;
+            border-top: 1px solid rgba(52,101,122,0.15);
+        }
+
+        .footer-brand {
+            margin: 0;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .footer-site {
+            margin: 0.45rem 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .disclaimer {
+            margin: 0.7rem 0 0;
+            font-size: 0.82rem;
+            color: #6c767b;
+        }
+
+        /* Two hero columns get cramped before 768px, so the art stacks earlier. */
+        @media (max-width: 860px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hero-art {
+                order: -1;
+                width: min(420px, 100%);
+                margin: 0 auto;
+            }
+            .hero-copy { text-align: center; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-wrapper { padding: 2.5rem 1.25rem; }
+            .shell { width: min(980px, 96vw); }
+            .section { padding: 1.5rem 1.15rem; }
+            .cta-band { padding: 1.6rem 1.15rem; }
+            .author-wrap {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .author-photo { margin: 0 auto; }
+            .author-bio-row {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+                justify-items: center;
+                text-align: center;
+            }
+            /* Art drops below the price on a phone so the number still leads. */
+            .pricing-inner {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .pricing-art {
+                order: 2;
+                max-width: 260px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-cta {
+                width: 100%;
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        /* ---- bionut.html only: landscape product image ---- */
+        /* Everything above is understanding-metabolism.html's stylesheet,
+           copied unchanged. Its hero art is a portrait book cover at 60% of a
+           square stage with a CSS phone beside it. BioNut has one 16:10 image
+           and no phone, so the stage takes the image's shape and the image
+           fills it. The .hero-phone, .ps-* and .ks-* rules above are unused
+           here. */
+        .hero-art { max-width: 520px; }
+        .hero-art-stage { aspect-ratio: 16 / 10; }
+        .hero-cover {
+            width: 100%;
+            border-radius: 12px;
+            background: transparent;
+        }
+        .pricing-art { max-width: 420px; }
+        .pricing-art .hero-cover { width: 100%; }
+
+        @media (max-width: 860px) {
+            .hero-art { width: min(520px, 100%); }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-wrapper">
+        <div class="hero-inner">
+            <div class="hero-copy">
+                <p class="eyebrow">Mind-Body Functional Health</p>
+                <h1>BIONUT AI</h1>
+                <p class="hero-subhead">Nutrition based on your biology.</p>
+                <p class="hero-byline">By Jaime Jenkins</p>
+            </div>
+            <div class="hero-art">
+                <div class="hero-art-stage">
+                    <div class="hero-cover">
+                        <img src="images/bionut.webp" alt="BioNut AI &mdash; Nutrition based on your biology">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="shell">
+        <section class="section section-dark">
+            <h2>YOU EAT WELL, YOU TAKE THE SUPPLEMENTS, AND YOU STILL DON'T FEEL RIGHT.</h2>
+            <p>Your symptoms are real. Your body is telling you something is missing.</p>
+            <p>You're tired no matter how much you sleep. Your hair is thinning, your hands are cold, your mood is off, or your body just won't respond the way it used to. You bring it up and you're told your labs are "normal," or that it's stress, or age.</p>
+            <p>So you start guessing. A bottle of magnesium here, a B-complex there, whatever the latest post said to take. Some of it might help. Some of it might be the wrong form, the wrong dose, or something your medication is quietly cancelling out.</p>
+            <p>Your symptoms aren't random. Fatigue, brain fog, muscle cramps, poor sleep and slow healing all have biology behind them, and very often that biology is a nutrient your body isn't getting, isn't absorbing, or is using up faster than you're replacing it.</p>
+            <p>BioNut AI connects your symptoms, your diet, your supplements and your medications to the physiology underneath, and shows you which nutrients are most likely low and exactly which foods fill the gap.</p>
+        </section>
+
+        <div class="cta-band">
+            <a class="hero-cta" href="https://bionut.mindbodyfunctionalhealth.com">Start Your Analysis</a>
+        </div>
+
+        <section class="section section-cream">
+            <h2>WHAT BIONUT DOES</h2>
+            <ul class="inside-list">
+                <li class="inside-item"><span class="inside-item-title">Starts with your symptoms</span><p>Describe how you feel in your own words. BioNut maps your symptoms to the nutrients and body systems behind them.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Looks at what you actually eat</span><p>Your diet, lifestyle, sun exposure and where you live all change what your body is likely getting.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Audits every supplement you take</span><p>Enter each one with its dose, including combination products, so you can see what you're already covering, doubling up on, or missing.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Checks your medications</span><p>Many common medications deplete specific nutrients or interfere with how they're absorbed. BioNut flags the ones that apply to you.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Ranks your most likely deficiencies</span><p>Not a generic list. Your top nutrient gaps, ranked, with the reasoning behind each one so you understand why.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Shows you the foods that fill the gap</span><p>Specific foods and real amounts, because the goal is getting nutrients from food first.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Grades the evidence</span><p>Every finding is labeled by how strong the research behind it is, so you know what's well established and what's still emerging.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Goes deeper than deficiency</span><p>Support for cellular energy, mitochondria, and methylation, the systems your nutrients actually run.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Knows when to send you to a doctor</span><p>If your answers point to something that needs medical attention, BioNut tells you instead of guessing.</p></li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>WHY I BUILT THIS</h2>
+            <!-- PLACEHOLDER: Jaime's story goes here, 2-4 short paragraphs. -->
+            <p>[YOUR STORY: 2&ndash;4 short paragraphs on why you built BioNut, in your own words.]</p>
+            <p class="author-name">Jaime Jenkins</p>
+            <p class="author-creds">Certified Functional Nutritionist | Brain MD Coach | Mind-Body Health Practitioner</p>
+            <div class="author-bio-row">
+                <div class="author-photo"><img src="images/ChatGPT Image May 8, 2026, 02_31_22 PM.webp" alt="Jaime Jenkins"></div>
+                <p>I trained under Dr. Mark Hyman, Dr. Frank Lipman, Dr. Daniel Amen, and many others. I studied cellular health, personally worked with Dr. Daniel Pompa, and worked alongside Dr. Josh Axe's team.</p>
+            </div>
+        </section>
+
+        <section class="section section-bluegreen">
+            <h2>WHAT YOU GET</h2>
+            <ul class="inside-list">
+                <li class="inside-item"><span class="inside-item-title">Your Personalized Nutrient Analysis</span><p>A full report built from your symptoms, diet, lifestyle, supplements and medications.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Your Most Likely Deficiencies</span><p>Ranked, explained, and graded by the strength of the evidence.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Your Food Plan</span><p>The best foods for your specific gaps, with amounts you can actually use.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Your Supplement and Medication Check</span><p>What your current supplements cover, where they overlap, and which medications may be depleting your nutrients. Where food alone falls short, food-based supplement options.</p></li>
+                <li class="inside-item"><span class="inside-item-title">Cellular Health Support</span><p>Guidance for the energy, repair and detox systems your nutrients power.</p></li>
+            </ul>
+        </section>
+
+        <section class="section section-cream">
+            <h2>EARLY ACCESS PRICING</h2>
+            <div class="pricing-inner">
+                <div class="hero-art pricing-art">
+                    <div class="hero-art-stage">
+                        <div class="hero-cover">
+                            <img src="images/bionut.webp" alt="BioNut AI &mdash; Nutrition based on your biology">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <!-- PLACEHOLDER: price and billing. -->
+                    <p class="investment">$X<span style="font-size:0.45em;font-weight:600;"> / month</span></p>
+                    <p>Early access price while BioNut is new.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-band">
+            <!-- PLACEHOLDER: replace $X with the price. -->
+            <a class="hero-cta" href="https://bionut.mindbodyfunctionalhealth.com">Start Your Analysis &mdash; $X</a>
+            <p class="reassurance">Cancel anytime.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p class="footer-brand">Jaime Jenkins, MBFH | Mind-Body Functional Health</p>
+        <p class="footer-site">www.mindbodyfunctionalhealth.com</p>
+        <p class="disclaimer">Individual results vary. BioNut AI is an educational tool. It does not diagnose, treat, or cure any condition and does not replace medical care. Talk to your healthcare provider before changing medications or starting supplements.</p>
+    </footer>
+</body>
+</html>

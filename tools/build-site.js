@@ -19,7 +19,7 @@
  * the open web.
  *
  * The list below is an ALLOWLIST, derived by reading every src, href and
- * fetch() in the eight public HTML pages, not by guessing. Adding a page or an
+ * fetch() in the nine public HTML pages, not by guessing. Adding a page or an
  * asset means adding it here; a missing file fails the build rather than
  * shipping a broken link.
  *
@@ -36,6 +36,7 @@ const PAGES = [
   "index.html",
   "account-info.html",
   "beauty-basics.html",
+  "bionut.html",
   "contact-us.html",
   "create-new-password.html",
   "metaburn-ai-coach.html",
