@@ -718,16 +718,19 @@
         @media (max-width: 768px) {
             .plan-grid { grid-template-columns: 1fr; }
         }
+
+        /* The template's .bullet-list is dark text; on the teal section it
+           needs the section's light text and a gold bullet. */
+        .section-dark .bullet-list li { color: rgba(255,255,255,0.95); }
+        .section-dark .bullet-list li::before { color: var(--gold); }
     </style>
 </head>
 <body>
     <section class="hero-wrapper">
         <div class="hero-inner">
             <div class="hero-copy">
-                <p class="eyebrow">Mind-Body Functional Health</p>
                 <h1>BIONUT AI</h1>
-                <p class="hero-subhead">Nutrition based on your biology.</p>
-                <p class="hero-byline">By Jaime Jenkins</p>
+                <p class="hero-subhead">Stop guessing. Know what your body needs.</p>
             </div>
             <div class="hero-art">
                 <div class="hero-art-stage">
@@ -741,54 +744,48 @@
 
     <main class="shell">
         <section class="section section-dark">
-            <h2>YOU EAT WELL, YOU TAKE THE SUPPLEMENTS, AND YOU STILL DON'T FEEL RIGHT.</h2>
-            <p>Your symptoms are real. Your body is telling you something is missing.</p>
-            <p>You're tired no matter how much you sleep. Your hair is thinning, your hands are cold, your mood is off, or your body just won't respond the way it used to. You bring it up and you're told your labs are "normal," or that it's stress, or age.</p>
-            <p>So you start guessing. A bottle of magnesium here, a B-complex there, whatever the latest post said to take. Some of it might help. Some of it might be the wrong form, the wrong dose, or something your medication is quietly cancelling out.</p>
-            <p>Your symptoms aren't random. Fatigue, brain fog, muscle cramps, poor sleep and slow healing all have biology behind them, and very often that biology is a nutrient your body isn't getting, isn't absorbing, or is using up faster than you're replacing it.</p>
-            <p>BioNut AI connects your symptoms, your diet, your supplements and your medications to the physiology underneath, and shows you which nutrients are most likely low and exactly which foods fill the gap.</p>
-        </section>
-
-        <div class="cta-band">
-            <a class="hero-cta" href="https://bionut.mindbodyfunctionalhealth.com">Start Your Analysis</a>
-        </div>
-
-        <section class="section section-cream">
-            <h2>WHAT BIONUT DOES</h2>
-            <ul class="inside-list">
-                <li class="inside-item"><span class="inside-item-title">Starts with your symptoms</span><p>Describe how you feel in your own words. BioNut maps your symptoms to the nutrients and body systems behind them.</p></li>
-                <li class="inside-item"><span class="inside-item-title">Looks at what you actually eat</span><p>Your diet, lifestyle, sun exposure and where you live all change what your body is likely getting.</p></li>
-                <li class="inside-item"><span class="inside-item-title">Audits every supplement you take</span><p>Enter each one with its dose, including combination products, so you can see what you're already covering, doubling up on, or missing.</p></li>
-                <li class="inside-item"><span class="inside-item-title">Checks your medications</span><p>Many common medications deplete specific nutrients or interfere with how they're absorbed. BioNut flags the ones that apply to you.</p></li>
-                <li class="inside-item"><span class="inside-item-title">Ranks your most likely deficiencies</span><p>Not a generic list. Your top nutrient gaps, ranked, with the reasoning behind each one so you understand why.</p></li>
-                <li class="inside-item"><span class="inside-item-title">Shows you the foods that fill the gap</span><p>Specific foods and real amounts, because the goal is getting nutrients from food first.</p></li>
-                <li class="inside-item"><span class="inside-item-title">Grades the evidence</span><p>Every finding is labeled by how strong the research behind it is, so you know what's well established and what's still emerging.</p></li>
-                <li class="inside-item"><span class="inside-item-title">Goes deeper than deficiency</span><p>Support for cellular energy, mitochondria, and methylation, the systems your nutrients actually run.</p></li>
-                <li class="inside-item"><span class="inside-item-title">Knows when to send you to a doctor</span><p>If your answers point to something that needs medical attention, BioNut tells you instead of guessing.</p></li>
+            <h2>SUPPLEMENTS ARE A GUESSING GAME. YOUR BODY PAYS FOR IT.</h2>
+            <p>You're tired, foggy, cold, achy, or just not right. So you guess. Another bottle, another protocol, another post that swears this is the one.</p>
+            <p>Guessing has a cost:</p>
+            <ul class="bullet-list">
+                <li>Too much of one nutrient can push another one out. High-dose zinc drains copper. Calcium blocks iron.</li>
+                <li>Many synthetic forms aren't what your body actually uses. Your system has to convert them, and not everyone converts well.</li>
+                <li>And the nutrient you actually need may not be in anything you're taking.</li>
             </ul>
         </section>
 
-        <section class="section">
-            <h2>WHY I BUILT THIS</h2>
-            <!-- PLACEHOLDER: Jaime's story goes here, 2-4 short paragraphs. -->
-            <p>[YOUR STORY: 2&ndash;4 short paragraphs on why you built BioNut, in your own words.]</p>
-            <p class="author-name">Jaime Jenkins</p>
-            <p class="author-creds">Certified Functional Nutritionist | Brain MD Coach | Mind-Body Health Practitioner</p>
-            <div class="author-bio-row">
-                <div class="author-photo"><img src="images/ChatGPT Image May 8, 2026, 02_31_22 PM.webp" alt="Jaime Jenkins"></div>
-                <p>I trained under Dr. Mark Hyman, Dr. Frank Lipman, Dr. Daniel Amen, and many others. I studied cellular health, personally worked with Dr. Daniel Pompa, and worked alongside Dr. Josh Axe's team.</p>
-            </div>
+        <section class="section section-cream">
+            <h2>"NORMAL" LABS DON'T MEAN NORMAL CELLS.</h2>
+            <p>Blood work is a snapshot of what's in your bloodstream at one moment, not what's happening inside your cells.</p>
+            <p>Your body protects blood levels at all costs, pulling from your tissues to keep the number steady. Only about 1% of your magnesium is in your blood. Your levels can look fine while your cells run short.</p>
         </section>
 
         <section class="section section-bluegreen">
-            <h2>WHAT YOU GET</h2>
-            <ul class="inside-list">
-                <li class="inside-item"><span class="inside-item-title">Your Personalized Nutrient Analysis</span><p>A full report built from your symptoms, diet, lifestyle, supplements and medications.</p></li>
-                <li class="inside-item"><span class="inside-item-title">Your Most Likely Deficiencies</span><p>Ranked, explained, and graded by the strength of the evidence.</p></li>
-                <li class="inside-item"><span class="inside-item-title">Your Food Plan</span><p>The best foods for your specific gaps, with amounts you can actually use.</p></li>
-                <li class="inside-item"><span class="inside-item-title">Your Supplement and Medication Check</span><p>What your current supplements cover, where they overlap, and which medications may be depleting your nutrients. Where food alone falls short, food-based supplement options.</p></li>
-                <li class="inside-item"><span class="inside-item-title">Cellular Health Support</span><p>Guidance for the energy, repair and detox systems your nutrients power.</p></li>
+            <h2>BIONUT GOES DEEPER.</h2>
+            <p>BioNut AI is built on the actual biology of every system in your body and the nutrients each one runs on.</p>
+            <p>It analyzes your symptoms, diet, supplements and medications to find which systems are struggling and what nutrition they need. No guesswork.</p>
+            <ul class="bullet-list">
+                <li>Your most likely deficiencies, ranked, with the biology behind each one</li>
+                <li>The foods that fill the gap, with real amounts</li>
+                <li>What your supplements cover, double up on, or miss</li>
+                <li>Which medications are draining your nutrients</li>
+                <li>Every finding graded by the strength of the research</li>
+                <li>A clear flag when something needs a doctor</li>
             </ul>
+        </section>
+
+        <div class="cta-band">
+            <a class="hero-cta" href="https://bionut.mindbodyfunctionalhealth.com">Start Free</a>
+        </div>
+
+        <section class="section">
+            <div class="author-bio-row">
+                <div class="author-photo"><img src="images/ChatGPT Image May 8, 2026, 02_31_22 PM.webp" alt="Jaime Jenkins"></div>
+                <div>
+                    <p class="author-name">Built by Jaime Jenkins</p>
+                    <p class="author-creds">Certified Functional Nutritionist | Brain MD Coach | Mind-Body Health Practitioner</p>
+                </div>
+            </div>
         </section>
 
         <section class="section section-cream">
