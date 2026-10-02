@@ -662,11 +662,61 @@
             border-radius: 12px;
             background: transparent;
         }
-        .pricing-art { max-width: 420px; }
-        .pricing-art .hero-cover { width: 100%; }
 
         @media (max-width: 860px) {
             .hero-art { width: min(520px, 100%); }
+        }
+
+        /* ---- bionut.html only: plan table ----
+           Two plan cards built from the template's own pieces: the
+           .inside-item card border and radius, .value-table rows, and the
+           .hero-cta button. */
+        .plan-start { margin: 1.2rem 0 1.6rem; }
+        .plan-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+        .plan-card {
+            background: #fff;
+            border: 1px solid rgba(193,154,107,0.28);
+            border-radius: 12px;
+            padding: 1.4rem 1.3rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .plan-name {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.7rem;
+            color: var(--teal);
+            letter-spacing: 0.04em;
+        }
+        .plan-card .value-table { margin-bottom: 0.9rem; }
+        .plan-card .value-table li > span:last-child {
+            white-space: nowrap;
+            font-weight: 700;
+        }
+        .plan-note {
+            display: block;
+            font-size: 0.85em;
+            font-weight: 500;
+            color: var(--muted);
+        }
+        .plan-card .hero-cta {
+            margin-top: auto;
+            align-self: stretch;
+        }
+        .plan-practitioner {
+            margin-top: 1.4rem;
+            font-size: 0.9rem;
+            color: var(--muted);
+            text-align: center;
+        }
+        .plan-practitioner a { color: var(--teal); font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .plan-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -742,28 +792,36 @@
         </section>
 
         <section class="section section-cream">
-            <h2>EARLY ACCESS PRICING</h2>
-            <div class="pricing-inner">
-                <div class="hero-art pricing-art">
-                    <div class="hero-art-stage">
-                        <div class="hero-cover">
-                            <img src="images/bionut.webp" alt="BioNut AI &mdash; Nutrition based on your biology">
-                        </div>
-                    </div>
+            <h2>CHOOSE YOUR PLAN</h2>
+            <p>Start free. The chat intake, Food Gap Analysis and food diary are free with no plan. Upgrade when you're ready for your full symptom analysis.</p>
+            <div class="plan-start">
+                <a class="hero-cta" href="https://bionut.mindbodyfunctionalhealth.com">Start Free</a>
+            </div>
+            <div class="plan-grid">
+                <div class="plan-card">
+                    <h3 class="plan-name">INDIVIDUAL</h3>
+                    <ul class="value-table">
+                        <li><span>Monthly</span><span>$14.99/mo</span></li>
+                        <li><span>Annual <span class="plan-note">(two months free)</span></span><span>$149/yr</span></li>
+                        <li class="total"><span>Founders <span class="plan-note">lifetime access, limited to 50 members</span></span><span>$127 one-time</span></li>
+                    </ul>
+                    <p><strong>Includes:</strong> 1 full symptom analysis per month, nutrient report with food recommendations, progress dashboard, unlimited Food Gap Analysis.</p>
+                    <a class="hero-cta" href="https://bionut.mindbodyfunctionalhealth.com">Choose Individual</a>
                 </div>
-                <div>
-                    <!-- PLACEHOLDER: price and billing. -->
-                    <p class="investment">$X<span style="font-size:0.45em;font-weight:600;"> / month</span></p>
-                    <p>Early access price while BioNut is new.</p>
+                <div class="plan-card">
+                    <h3 class="plan-name">FAMILY</h3>
+                    <ul class="value-table">
+                        <li><span>Monthly</span><span>$29/mo</span></li>
+                        <li><span>Annual <span class="plan-note">(two months free)</span></span><span>$279/yr</span></li>
+                        <li class="total"><span>Founders <span class="plan-note">lifetime access, limited to 50 families</span></span><span>$197 one-time</span></li>
+                    </ul>
+                    <p><strong>Includes:</strong> 4 adults with their own logins, 4 shared analyses per month, private intake, reports and progress for each member, unlimited Food Gap Analysis.</p>
+                    <a class="hero-cta" href="https://bionut.mindbodyfunctionalhealth.com">Choose Family</a>
                 </div>
             </div>
+            <!-- PLACEHOLDER: practitioner plans link. -->
+            <p class="plan-practitioner">Are you a practitioner? <a href="#">Practitioner plans</a></p>
         </section>
-
-        <div class="cta-band">
-            <!-- PLACEHOLDER: replace $X with the price. -->
-            <a class="hero-cta" href="https://bionut.mindbodyfunctionalhealth.com">Start Your Analysis &mdash; $X</a>
-            <p class="reassurance">Cancel anytime.</p>
-        </div>
     </main>
 
     <footer>
