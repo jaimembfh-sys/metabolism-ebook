@@ -126,6 +126,46 @@ Added 2026-10-01 to back the Lesson 15 text. The headline figures (17%, 27%, the
 - **Results:** Insulin sensitivity and beta-cell response improved on the early schedule with no weight loss. Blood pressure and oxidative stress also improved.
 - **Limitations:** Very small, men only, short.
 
+### Blood markers in the equal-calorie weight-loss trials
+
+Added 2026-10-01. Checked against PubMed abstracts (Madjd, Jakubowicz, Zaman), the Young 2023 full text (PMC10078448), and publisher/abstract pages (Bandín, Jamshed, Sci Transl Med 2025).
+
+**Jakubowicz 2013** (see Part 1; women with metabolic syndrome, ~1,400 kcal both groups, 12 weeks). Abstract: fasting glucose, insulin, and HOMA-IR fell significantly more in the big-breakfast group. Triglycerides fell 33.6% (big breakfast) vs rose 14.6% (big dinner). The OGTT showed greater drops in glucose and insulin with big breakfast. Fasting insulin −51% vs −29% and HOMA-IR −57% vs −32.5% are from Jaime's brief and not in the abstract **[unverified — full text paywalled]**.
+
+### Madjd A, Taylor MA, Delavari A, Malekzadeh R, Macdonald IA, Farshchi HR. *Am J Clin Nutr* 2016;104(4):982–89. doi:10.3945/ajcn.116.134163
+- **Design:** Randomized, 12 weeks. 80 women with overweight/obesity (BMI 27–35, age 18–45) in the same weight-loss program, main meal at lunch vs at dinner. 69 completed (35 lunch, 34 dinner).
+- **Results:** Weight −5.85 vs −4.35 kg (P = 0.003). HOMA-IR −0.66 vs −0.46 (P = 0.001). Fasting insulin −2.01 vs −1.16 mIU/mL (P < 0.001). No difference in fasting glucose or lipids.
+- **Limitations:** Iranian women only; free-living; modest absolute differences.
+
+### Young IE, et al. *Obesity Reviews* 2023;24(3):e13537. doi:10.1111/obr.13537 (PMC10078448)
+- **Design:** Systematic review and meta-analysis of 9 RCTs comparing earlier vs later energy distribution, within energy-reduced diets.
+- **Results:** Greater weight loss with earlier intake (−1.23 kg; 95% CI −2.40 to −0.06). HOMA-IR, fasting glucose, and LDL cholesterol also improved; HOMA-IR mean difference −0.38.
+- **Authors' interpretation (full text):** "The metabolic improvements seen in this review contribute to explaining some of the relationship between eating patterns and weight change." They also raised limiting late-night eating, rather than shifting intake earlier, as a possible key contributor.
+- **Limitations:** High heterogeneity; short-term weight loss; small absolute effect.
+
+### Bandín C, Scheer FAJL, Luque AJ, et al. *Int J Obes* 2015;39(5):828–33
+- **Design:** Randomized crossover. 32 young, healthy-weight women (age ~24, BMI ~23) on standardized identical meals for two intervention weeks: lunch at 1:00 PM vs 4:30 PM. Glucose tolerance and resting energy expenditure were measured in a subgroup of **10**; circadian measures in the other 22.
+- **Results:** Late lunch lowered resting energy expenditure and fasting carbohydrate oxidation, lowered glucose tolerance (glucose area under the curve +46%), blunted the daily cortisol profile, and reduced the thermic effect of food on wrist temperature.
+- **Limitations:** The metabolic outcomes come from 10 people; healthy-weight young women only; short.
+
+### Jamshed H, Beyl RA, Della Manna DL, et al. *Nutrients* 2019;11(6):1234
+- **Design:** Randomized crossover, 4 days per arm, early time-restricted feeding (8 AM–2 PM) vs 8 AM–8 PM, in adults with overweight. About 11 participants **[unverified]**.
+- **Results:** Mean 24-hour glucose 4.0 ± 1.0 mg/dL lower on CGM. In the morning, fasting glucose, insulin (−2.9 mU/L), and HOMA-IR (−0.73) were lower. **In the evening, fasting insulin (+4.5 mU/L) and HOMA-IR (+1.09) were higher.** If citing the morning improvement, mention the evening rise too.
+- **Limitations:** Very short; small.
+
+### Zaman A, Grau L, Jeffers R, et al. *Obes Sci Pract* 2024;10(1):e702. doi:10.1002/osp4.702
+- **Design:** Randomized, 12 weeks. 81 adults with overweight/obesity: early time-restricted eating + daily calorie restriction vs calorie restriction alone. 44 had valid CGM data at both time points; 38 had valid insulin/HOMA-IR data.
+- **Results:** **After adjusting for weight, no between-group differences** in average glucose, glucose variability, daytime or nighttime glucose, fasting glucose, insulin, HOMA-IR, or A1c. Glycemic excursions fell more with calorie restriction alone.
+- **Authors' conclusion:** No major differences between groups. Baseline glucose and insulin sensitivity were normal, which may have limited the ability to detect change.
+- **Note:** Jaime's brief cited this as 90.5 vs 95.8 mg/dL in favor of early eating. Those figures are not in the abstract, which reports a null result. Treat it as a null study unless the full text shows otherwise.
+
+### Peters B, Schwarz J, et al. *Sci Transl Med* 2025;17(822). doi:10.1126/scitranslmed.adv6787 ("ChronoFast")
+- **Design:** Randomized crossover, 31 women with overweight/obesity. Two 2-week periods of intended-isocaloric time-restricted eating, early (8 AM–4 PM) vs late (1 PM–9 PM).
+- **Results:** Neither schedule improved insulin sensitivity or other cardiometabolic markers. 24-hour glucose, lipid, inflammatory, and oxidative-stress markers showed no clinically meaningful differences. The late schedule shifted circadian phase and sleep midpoint later.
+
+### Weighing the blood-marker evidence
+**[CONTESTED]** In longer equal-calorie weight-loss trials (Jakubowicz, Madjd, pooled in Young 2023), earlier eating came with greater improvements in insulin markers. Tightly controlled short trials disagree. In ChronoFast (2 weeks, intended isocaloric, no weight loss goal), early eating didn't improve cardiometabolic health. In Zaman 2024, adding early time-restricted eating to calorie restriction didn't change CGM glucose or HOMA-IR after adjusting for weight. Present both sides. Part of the longer-trial insulin benefit may come from the greater weight loss itself.
+
 ### The morning advantage in metabolic disease
 **[CONTESTED]** The morning advantage is clearest in metabolically healthy people. In obesity, insulin resistance, and type 2 diabetes, the daily glucose rhythm is often blunted, shifted later, or absent. Many people with type 2 diabetes have their highest post-meal glucose after breakfast, partly because of the dawn phenomenon. No single study is attached here yet **[unverified — add a source]**. When a user has insulin resistance or type 2 diabetes, don't tell them their mornings are their best time for carbohydrates. Their own glucose readings are the better guide, and medication questions go to their clinician.
 
