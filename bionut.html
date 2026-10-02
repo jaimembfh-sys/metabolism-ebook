@@ -719,6 +719,18 @@
             .plan-grid { grid-template-columns: 1fr; }
         }
 
+        /* The logo replaces the h1's text. It is dark teal on transparent,
+           so it only works on light backgrounds like the hero. */
+        .hero-logo { line-height: 0; }
+        .hero-logo img {
+            display: block;
+            width: min(420px, 100%);
+            height: auto;
+        }
+        @media (max-width: 860px) {
+            .hero-logo img { margin: 0 auto; }
+        }
+
         /* The template's .bullet-list is dark text; on the teal section it
            needs the section's light text and a gold bullet. */
         .section-dark .bullet-list li { color: rgba(255,255,255,0.95); }
@@ -729,7 +741,7 @@
     <section class="hero-wrapper">
         <div class="hero-inner">
             <div class="hero-copy">
-                <h1>BIONUT AI</h1>
+                <h1 class="hero-logo"><img src="images/bionut-logo.webp" alt="BioNut AI"></h1>
                 <p class="hero-subhead">Stop guessing. Know what your body needs.</p>
             </div>
             <div class="hero-art">
