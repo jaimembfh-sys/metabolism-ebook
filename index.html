@@ -5724,7 +5724,6 @@
                     category: 'course',
                     price: '$37.00',
                     billingLabel: 'one-time',
-                    showPrice: true,
                     status: 'Available',
                     statusClass: 'bg-brand-accent/15 text-brand-dark',
                     buttonLabel: 'Learn More',
@@ -5847,13 +5846,13 @@
                         ${mode === 'catalog' && item.showPrice ? `<p class="mt-2 text-sm md:text-base font-bold text-brand-dark">${item.price.replace('.00', '')} <span class="text-xs font-semibold uppercase tracking-[0.12em] text-gray-500">${item.billingLabel}</span></p>` : ''}
                     </div>
                     <div class="catalog-card-footer">
-                        <span class="text-[0.65rem] md:text-xs font-bold uppercase tracking-[0.14em] ${statusClass} px-2.5 py-1 rounded-full">${statusText}</span>
-                        <span class="inline-flex items-center gap-2">
-                            ${mode === 'catalog' && item.productUrl ? `<button type="button" data-action="open-product" title="Testing shortcut: opens the full product" class="rounded-full border border-brand-dark/25 px-2.5 py-1 text-[0.6rem] md:text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-brand-dark transition hover:border-brand-dark hover:bg-brand-light/40">Open product</button>` : ''}
-                            <button type="button" data-action="primary" class="inline-flex items-center justify-center rounded-full bg-brand-dark px-4 py-2.5 text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-[#234553]">
-                                ${buttonLabel}
-                            </button>
+                        <span class="inline-flex flex-col items-start gap-1">
+                            <span class="text-[0.65rem] md:text-xs font-bold uppercase tracking-[0.14em] ${statusClass} px-2.5 py-1 rounded-full">${statusText}</span>
+                            ${mode === 'catalog' && item.productUrl ? `<a href="#" data-action="open-product" class="pl-2.5 text-[0.65rem] text-gray-500 underline hover:text-brand-dark">open product</a>` : ''}
                         </span>
+                        <button type="button" data-action="primary" class="inline-flex items-center justify-center rounded-full bg-brand-dark px-4 py-2.5 text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-[#234553]">
+                            ${buttonLabel}
+                        </button>
                     </div>
                 `;
 
@@ -5863,6 +5862,7 @@
                 const openProductButton = card.querySelector('[data-action="open-product"]');
                 if (openProductButton) {
                     openProductButton.addEventListener('click', (event) => {
+                        event.preventDefault();
                         event.stopPropagation();
                         window.open(item.productUrl, '_blank', 'noopener');
                     });
