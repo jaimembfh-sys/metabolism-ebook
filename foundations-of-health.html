@@ -1,0 +1,1069 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="logos/favicon-mind-body.png">
+<title>Foundations of Health | Mindbody Functional Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: presenter shell. Spruce sidebar of modules on the left, one 16:9 slide on a deep stage, speaker notes drawer beneath. Single brand look by choice (not theme-switched). */
+:root{
+  color-scheme:dark;
+  --stage:#132F37; --side:#173C46; --side-line:#24505C; --side-ink:#C9DAD9; --side-muted:#8FAAAB;
+  --paper:#F4F6F2; --paper-2:#E4ECE8; --ink:#1B2A2D; --muted:#55686B; --line:#CCD9D5;
+  --spruce:#1F4F5C; --brass:#B9873A; --brass-soft:#E9D7B4; --on-spruce:#F2F6F4; --on-spruce-muted:#B7CDCE;
+  --display:"Gloock",Georgia,"Times New Roman",serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--stage);color:var(--side-ink);font-family:var(--body);overflow:hidden}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+
+.app{display:grid;grid-template-columns:300px 1fr;height:100%}
+/* sidebar */
+.side{background:var(--side);border-right:1px solid var(--side-line);display:flex;flex-direction:column;min-height:0}
+.brand{display:flex;align-items:center;gap:12px;padding:20px 20px 16px;border-bottom:1px solid var(--side-line)}
+.brand img{width:40px;height:40px;border-radius:50%;flex:0 0 auto}
+.brand b{display:block;font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.78rem;color:var(--on-spruce)}
+.brand small{display:block;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--side-muted)}
+.course{padding:16px 20px 10px}
+.course .k{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+.course h1{font-family:var(--display);font-weight:400;font-size:1.5rem;color:var(--on-spruce);margin:4px 0 10px;line-height:1.1}
+.prog{height:3px;background:var(--side-line);border-radius:2px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--brass);width:0;transition:width .3s ease}
+.prog-t{font-size:.72rem;color:var(--side-muted);margin-top:6px;font-variant-numeric:tabular-nums}
+nav.toc{flex:1;overflow-y:auto;padding:6px 10px 20px}
+.mod{margin-top:6px}
+.mod-btn{width:100%;display:flex;align-items:center;gap:10px;background:none;border:0;padding:9px 10px;border-radius:6px;cursor:pointer;text-align:left}
+.mod-btn:hover{background:rgba(255,255,255,.05)}
+.mod-btn .n{flex:0 0 26px;height:26px;border-radius:50%;border:1.5px solid var(--side-line);display:grid;place-items:center;font-size:.72rem;font-weight:700;color:var(--side-muted);font-variant-numeric:tabular-nums}
+.mod-btn .t{flex:1;font-size:.88rem;font-weight:600;color:var(--side-ink);line-height:1.25}
+.mod-btn .c{transition:transform .2s;color:var(--side-muted);font-size:.7rem}
+.mod.open .mod-btn .c{transform:rotate(90deg)}
+.mod.active .mod-btn .n{border-color:var(--brass);background:var(--brass);color:#1A150C}
+.mod.active .mod-btn .t{color:var(--on-spruce)}
+.mod ol{list-style:none;margin:2px 0 6px;padding:0 0 0 46px;display:none}
+.mod.open ol{display:block}
+.mod li button{width:100%;text-align:left;background:none;border:0;padding:5px 8px;border-radius:4px;font-size:.82rem;color:var(--side-muted);cursor:pointer;line-height:1.3;border-left:2px solid transparent}
+.mod li button:hover{color:var(--on-spruce)}
+.mod li button[aria-current="true"]{color:var(--on-spruce);border-left-color:var(--brass);background:rgba(255,255,255,.04)}
+.side-foot{padding:12px 20px;border-top:1px solid var(--side-line);font-size:.72rem;color:var(--side-muted)}
+
+/* main */
+.main{display:flex;flex-direction:column;min-width:0;min-height:0}
+.bar{display:flex;align-items:center;gap:10px;padding:12px 20px;border-bottom:1px solid var(--side-line)}
+.bar .where{flex:1;min-width:0;font-size:.82rem;color:var(--side-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .where b{color:var(--on-spruce);font-weight:600}
+.ib{background:transparent;border:1px solid var(--side-line);border-radius:6px;padding:7px 12px;font-size:.8rem;font-weight:600;cursor:pointer;color:var(--side-ink);white-space:nowrap}
+.ib:hover{border-color:var(--brass);color:var(--on-spruce)}
+.ib[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:#1A150C}
+.menu{display:none}
+.stagewrap{flex:1;min-height:0;display:grid;place-items:center;padding:22px;container-type:size}
+.deck{position:relative;width:min(100cqw,calc(100cqh * 16 / 9));aspect-ratio:16/9;container-type:inline-size;max-width:100%}
+.ctrl{display:flex;align-items:center;justify-content:center;gap:14px;padding:0 20px 14px}
+.ctrl .count{font-size:.85rem;color:var(--side-muted);font-variant-numeric:tabular-nums;min-width:70px;text-align:center}
+.ctrl .ib{padding:9px 18px}
+.notes{border-top:1px solid var(--side-line);background:var(--side);padding:14px 24px 18px;max-height:30vh;overflow-y:auto;font-size:.95rem;line-height:1.6;color:var(--side-ink)}
+.notes .k{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:6px}
+.notes p{margin:0 0 8px;max-width:90ch}
+
+/* slides */
+.slide{position:absolute;inset:0;background:var(--paper);color:var(--ink);border-radius:6px;overflow:hidden;display:none;flex-direction:column;padding:5.2cqw 6cqw 4.6cqw;box-shadow:0 20px 50px rgba(0,0,0,.35);font-size:max(12px,1.75cqw);line-height:1.45}
+.slide.on{display:flex;animation:in .35s ease}
+@keyframes in{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide.on{animation:none}}
+.slide aside{display:none}
+.slide .tag{font-size:.62em;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:1em}
+.slide h2{font-family:var(--display);font-weight:400;font-size:3.1em;line-height:1.05;margin:0 0 .5em;color:var(--spruce);text-wrap:balance}
+.slide h3{font-family:var(--display);font-weight:400;font-size:1.45em;margin:0 0 .35em;color:var(--spruce);line-height:1.15}
+.slide p{margin:0 0 .6em;max-width:60ch}
+.slide .lead{font-size:1.25em;color:var(--muted);max-width:44ch}
+.slide ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.45em}
+.slide ul li{padding-left:1.1em;position:relative}
+.slide ul li::before{content:"";position:absolute;left:0;top:.55em;width:.42em;height:.42em;border-radius:50%;background:var(--brass)}
+.slide .body{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center}
+.slide .foot{display:flex;justify-content:space-between;align-items:center;font-size:.55em;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:1.4em;padding-top:1em;border-top:1px solid var(--line)}
+.cols{display:grid;gap:1.6em;align-items:start}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}
+.cols>*{min-width:0}
+.card{background:var(--paper-2);border-radius:.5em;padding:1.1em 1.2em}
+.card .big{font-family:var(--display);font-size:2.2em;color:var(--spruce);line-height:1}
+.card small{display:block;font-size:.72em;color:var(--muted);margin-top:.3em;letter-spacing:.04em}
+.small{font-size:.82em}
+.xs{font-size:.7em}
+.xs ul{gap:.25em}
+.callout{font-family:var(--display);font-size:1.7em;line-height:1.2;color:var(--spruce);border-left:.12em solid var(--brass);padding-left:.7em;max-width:30ch}
+.chips{display:flex;flex-wrap:wrap;gap:.5em}
+.chips span{background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:.35em .9em;font-size:.9em}
+.num{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2em 1.6em}
+.num div{display:flex;gap:.7em;align-items:flex-start}
+.num b{font-family:var(--display);font-weight:400;font-size:2em;color:var(--brass);line-height:.9}
+.num span{font-weight:600;font-size:1.05em;line-height:1.25}
+.nut{display:grid;grid-template-columns:repeat(2,1fr);gap:.9em 1.4em;font-size:.72em}
+.nut>div{background:var(--paper-2);border-radius:.45em;padding:.8em 1em;min-width:0}
+.nut h4{margin:0 0 .25em;font-family:var(--display);font-weight:400;font-size:1.5em;color:var(--spruce)}
+.nut p{margin:0 0 .2em}
+.nut em{font-style:normal;font-weight:700;color:var(--brass);font-size:.82em;letter-spacing:.06em;text-transform:uppercase;margin-right:.3em}
+blockquote{margin:0 0 1.2em;font-family:var(--display);font-size:1.45em;line-height:1.3;color:var(--spruce)}
+blockquote cite{display:block;font-family:var(--body);font-style:normal;font-size:.5em;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-top:.6em}
+
+.methods{gap:.9em 2.2em}
+.methods>div{border-top:1px solid var(--line);padding-top:.6em}
+.methods h3{font-size:1.6em;margin-bottom:.15em}
+.methods p{margin:0}
+.stats{gap:.8em}
+.stats .card{padding:.8em 1em}
+.stats .big{font-size:1.75em}
+.stats small{font-size:.66em;line-height:1.35}
+.methods.tight{gap:.55em 1.8em}
+.methods.tight h3{font-size:1.4em}
+.slide.dark .methods>div{border-color:rgba(255,255,255,.16)}
+.slide.dark .methods h3{color:var(--brass-soft)}
+.scrip{gap:1em 1.2em}
+.scrip .card{display:flex;flex-direction:column;justify-content:space-between;gap:.6em}
+.scrip p{font-family:var(--display);font-size:1em;line-height:1.3;margin:0}
+.scrip cite{font-style:normal;font-size:.6em;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+.slide.dark .scrip .hl{background:var(--brass);color:#1A150C}
+.slide.dark .scrip .hl cite{color:#1A150C}
+
+/* dark slide variants */
+.slide.dark{background:var(--spruce);color:var(--on-spruce)}
+.slide.dark h2,.slide.dark h3{color:var(--on-spruce)}
+.slide.dark .lead,.slide.dark .foot{color:var(--on-spruce-muted)}
+.slide.dark .foot{border-color:rgba(255,255,255,.15)}
+.slide.dark .card{background:rgba(255,255,255,.07)}
+.slide.dark .card .big{color:var(--brass-soft)}
+.slide.dark .card small{color:var(--on-spruce-muted)}
+.slide.cover{padding:0;flex-direction:row}
+.cover .txt{flex:1.15;padding:6cqw;display:flex;flex-direction:column;justify-content:center;gap:1em}
+.cover .txt h2{font-size:4.6em;margin:0}
+.cover .pic{flex:.85;position:relative}
+.cover .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.cover .pic::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--spruce) 0%,transparent 35%)}
+.cover-brand{display:flex;align-items:center;gap:.8em;margin-bottom:.6em}
+.cover-brand img{width:3.4em;height:3.4em;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.18)}
+.cover-brand b{display:block;font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:.95em;color:var(--on-spruce)}
+.cover-brand small{display:block;font-size:.62em;letter-spacing:.24em;text-transform:uppercase;color:var(--on-spruce-muted)}
+.cover .by{display:flex;align-items:center;gap:.8em;font-size:.8em;color:var(--on-spruce-muted)}
+.cover .by img{width:2.6em;height:2.6em;border-radius:50%}
+.opener .body{justify-content:flex-end}
+.opener .stepno{font-family:var(--display);font-size:9em;line-height:.8;color:var(--brass)}
+.opener h2{font-size:4em;max-width:16ch}
+
+/* narrow screens: drawer sidebar, slides flow */
+@media (max-width:860px){
+  .app{grid-template-columns:1fr}
+  .side{position:fixed;inset:0 auto 0 0;width:min(320px,86vw);z-index:20;transform:translateX(-100%);transition:transform .25s ease;padding-top:env(safe-area-inset-top,0px)}
+  .app.drawer .side{transform:none;box-shadow:0 0 40px rgba(0,0,0,.5)}
+  .menu{display:inline-block}
+  body{overflow:auto}
+  .stagewrap{display:block;padding:14px 16px;container-type:normal}
+  .deck{width:100%;aspect-ratio:auto}
+  .slide{position:relative;inset:auto;font-size:15px;padding:24px 20px 20px;min-height:60vh}
+  .slide h2{font-size:2em}
+  .cover{flex-direction:column}
+  .cover .pic{min-height:240px;order:-1}
+  .cover .pic::after{background:linear-gradient(0deg,var(--spruce) 0%,transparent 45%)}
+  .cover .txt{padding:24px 20px}
+  .cover .txt h2{font-size:2.4em}
+  .opener .stepno{font-size:4.5em}
+  .opener h2{font-size:2.2em}
+  .c2,.c3,.c4,.num,.nut{grid-template-columns:1fr}
+  .xs,.nut{font-size:.9em}
+  .notes{max-height:none}
+}
+</style>
+
+</head><body>
+<div class="app" id="app">
+  <aside class="side" aria-label="Course navigation">
+    <div class="brand"><img src="images/foundations/mbfh-mark.webp" alt="" width="40" height="40"><div><b>Mind Body</b><small>Functional Health</small></div></div>
+    <div class="course">
+      <div class="k">Course</div>
+      <h1>Foundations of Health</h1>
+      <div class="prog"><i id="progbar"></i></div>
+      <div class="prog-t" id="progtxt"></div>
+    </div>
+    <nav class="toc" id="toc"></nav>
+    <div class="side-foot">Arrow keys to move · N for notes · F for fullscreen</div>
+  </aside>
+
+  <div class="main">
+    <div class="bar">
+      <button class="ib menu" id="menu" aria-label="Open course navigation">Menu</button>
+      <div class="where" id="where"></div>
+      <button class="ib" id="notesBtn" aria-pressed="false">Notes</button>
+      <button class="ib" id="fsBtn">Fullscreen</button>
+    </div>
+    <div class="stagewrap"><div class="deck" id="deck">
+
+<!-- ========== WELCOME ========== -->
+<section class="slide dark cover" data-mod="Welcome" data-title="Foundations of Health">
+  <div class="txt">
+    <div class="cover-brand"><img src="images/foundations/mbfh-mark.webp" alt=""><div><b>Mind Body</b><small>Functional Health</small></div></div>
+    <h2>Foundations of <span style="color:var(--brass)">Health</span></h2>
+    <p class="lead">Heal the mind, the body and the spirit together, and build health that lasts.</p>
+    <div class="by"><img src="images/foundations/mbfh-mark.webp" alt="">Jaime Jenkins · Founder, Mind Body Functional Health</div>
+  </div>
+  <div class="pic"><img src="images/foundations/jaime-seated.webp" alt="Jaime Jenkins, founder of Mind Body Functional Health"></div>
+  <aside><p>Welcome everyone. Introduce yourself and what this course covers: the three systems of health, and six steps to restoring health.</p></aside>
+</section>
+
+<section class="slide" data-mod="Welcome" data-title="Three Systems">
+  <div class="tag">The foundation</div>
+  <h2>Three Systems</h2>
+  <div class="body">
+    <div class="cols c3">
+      <div class="card"><div class="big">Mind</div><small>Thoughts, beliefs, identity, agency</small></div>
+      <div class="card"><div class="big">Body</div><small>The physical vessel</small></div>
+      <div class="card"><div class="big">Emotional &amp; Spiritual</div><small>Subconscious beliefs and feelings</small></div>
+    </div>
+    <p class="callout" style="margin-top:1.4em">We must address and treat all three systems in order to have abundant health.</p>
+  </div>
+  <aside><p>We must address and treat all three systems in order to have abundant health.</p></aside>
+</section>
+
+<section class="slide dark" data-mod="Welcome" data-title="The Godhead">
+  <div class="tag">Three systems</div>
+  <h2>The Godhead represents these three systems</h2>
+  <div class="body">
+    <div class="cols c3">
+      <div class="card"><small>God</small><div class="big">Mind</div></div>
+      <div class="card"><small>Christ</small><div class="big">Body</div></div>
+      <div class="card"><small>Spirit / Holy Ghost</small><div class="big">Emotional &amp; Spiritual</div></div>
+    </div>
+  </div>
+  <aside><p>God is the Mind, Christ is the Body, and the Spirit or Holy Ghost is the Emotional/Spiritual.</p></aside>
+</section>
+
+<section class="slide" data-mod="Welcome" data-title="Hinduism and Buddhism">
+  <div class="tag">Three systems in other religions</div>
+  <h2>Hinduism &amp; Buddhism</h2>
+  <div class="body">
+    <div class="cols c2 small">
+      <div>
+        <h3>Hinduism · Trimurti</h3>
+        <ul>
+          <li><b>Brahma (Mind):</b> the creator; knowledge and thought</li>
+          <li><b>Vishnu (Body):</b> the preserver; incarnates physically to restore balance</li>
+          <li><b>Shiva (Spirit):</b> the transformer; meditation and transcendence</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Buddhism</h3>
+        <ul>
+          <li><b>Citta (Mind/Heart):</b> seat of thoughts and emotions</li>
+          <li><b>Rūpa (Body/Form):</b> the physical aspect</li>
+          <li><b>Vijñāna (Consciousness/Spirit):</b> the awareness that ties experience together</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside><p>Hinduism's Trimurti is a divine trinity somewhat analogous to the Christian Godhead. Some Buddhist schools also describe the Dharmakaya (truth body), Sambhogakaya (bliss body) and Nirmanakaya (emanation body).</p></aside>
+</section>
+
+<section class="slide" data-mod="Welcome" data-title="Ancient Egypt and Taoism">
+  <div class="tag">Three systems in other religions</div>
+  <h2>Ancient Egypt &amp; Taoism</h2>
+  <div class="body">
+    <div class="cols c2 small">
+      <div>
+        <h3>Ancient Egypt</h3>
+        <ul>
+          <li><b>Ka (spirit/soul):</b> vital essence</li>
+          <li><b>Ba (mind/emotion):</b> personality and individual expression</li>
+          <li><b>Khat (physical body):</b> inner alchemy and health practices</li>
+        </ul>
+        <p class="xs" style="margin-top:.8em">These three worked together for eternal life.</p>
+      </div>
+      <div>
+        <h3>Taoism</h3>
+        <ul>
+          <li><b>Shen (Spirit):</b> consciousness and higher self</li>
+          <li><b>Qi (Energy/Body):</b> the life force that animates the body</li>
+          <li><b>Jing (Essence/Mind):</b> stored in the body, influences mind and spirit</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside><p>Across traditions, the same three-part pattern of mind, body and spirit shows up again and again.</p></aside>
+</section>
+
+<!-- ========== THE THREE SYSTEMS ========== -->
+<section class="slide" data-mod="The Three Systems" data-title="Body">
+  <div class="tag">System 1</div>
+  <h2>Body</h2>
+  <div class="body">
+    <div class="cols c2">
+      <ul>
+        <li>A product of survival, evolution, genetics and current environment</li>
+        <li>A vessel for the mind and emotional/spiritual self</li>
+        <li>Highly adaptable through epigenetics and neuroplasticity</li>
+        <li>Healed through nature, nutrition, exercise and other physical modalities</li>
+      </ul>
+      <div>
+        <p class="callout">Our genetics load the gun. Our environment pulls the trigger.</p>
+        <p class="xs" style="margin-top:1.4em"><b>Books:</b> 10 Day Detox · The UltraMind Solution</p>
+      </div>
+    </div>
+  </div>
+  <aside><p>Our bodies are largely a product of survival, evolutionary mechanisms, genetics and current environmental input. They are vessels for our minds and emotional/spiritual selves and are greatly affected by the other systems.</p><p>We should treat our bodies with love and respect rather than as something we need to fix in order to love ourselves ("I'll love myself when I'm thin").</p></aside>
+</section>
+
+<section class="slide" data-mod="The Three Systems" data-title="Emotional and Spiritual">
+  <div class="tag">System 2</div>
+  <h2>Emotional &amp; Spiritual</h2>
+  <div class="body">
+    <p class="lead" style="margin-bottom:1.2em">Our subconscious, deeply ingrained beliefs and feelings. When our needs aren't met, the subconscious goes into survival mode.</p>
+    <div class="cols c3">
+      <div class="card"><div class="big">Safety</div><small>Physical and emotional</small></div>
+      <div class="card"><div class="big">Acceptance</div><small>Love and connection</small></div>
+      <div class="card"><div class="big">Autonomy</div><small>Feeling valued; control over our lives</small></div>
+    </div>
+    <p class="xs" style="margin-top:1.2em"><b>Treatments:</b> meditation, hypnotherapy, childhood work, trauma therapies · <b>Book:</b> The Body Keeps the Score</p>
+  </div>
+  <aside><p>At the core of our automatic behavioral responses is self-preservation. Many of these patterns develop while we are young (delta wave), from strong emotional experiences, or from repeated experiences.</p></aside>
+</section>
+
+<section class="slide" data-mod="The Three Systems" data-title="Mind">
+  <div class="tag">System 3</div>
+  <h2>Mind</h2>
+  <div class="body">
+    <div class="cols c2">
+      <ul>
+        <li>The highest part of the self and our most powerful asset</li>
+        <li>Our identity: free agents, free to choose</li>
+        <li>The outside observer of our body and emotional spirit</li>
+        <li>Neglected, it lets our subconscious states decide for us</li>
+      </ul>
+      <div>
+        <p class="callout">When we engage our agency, we can observe the physical and emotional self and gain power over them.</p>
+        <p class="xs" style="margin-top:1.4em"><b>Tools:</b> mindfulness, goal setting, principles of happiness, love and purpose<br><b>Books:</b> The Untethered Soul · The Biology of Belief</p>
+      </div>
+    </div>
+  </div>
+  <aside><p>The mind includes our conscious thoughts, beliefs, knowledge, and how we cognitively process our experiences.</p></aside>
+</section>
+
+<section class="slide dark" data-mod="The Three Systems" data-title="Designed to Heal and Change">
+  <div class="tag">Good news</div>
+  <h2>We are designed to heal and change</h2>
+  <div class="body">
+    <div class="cols c4 small">
+      <div class="card"><h3>Neuroplasticity</h3><small>The brain's ability to heal, grow and make new neural connections</small></div>
+      <div class="card"><h3>Epigenetics</h3><small>Our genes can change their expression and function</small></div>
+      <div class="card"><h3>The Atonement</h3><small>We can repent, change and become like Christ</small></div>
+      <div class="card"><h3>Energy</h3><small>We are made of atomic particles that break down to energy</small></div>
+    </div>
+    <blockquote style="margin:1.6em 0 0;color:var(--brass-soft);font-size:1.35em">"If thou canst believe, all things are possible to him that believeth."<cite>Mark 9:23</cite></blockquote>
+  </div>
+  <aside><p>Neuroplasticity: gray matter, white matter, corpus callosum, amygdala. It takes about 16 seconds for the brain to make a new neural connection.</p><p>Epigenetics: due to environmental factors, molecules attach or detach to our genes, and these changes can be passed on to our children.</p><p>The entire plan of God revolves around the idea that we can repent, change and become like Christ, and that we have the agency to do so.</p><p>Everything is energy. We can change our energy through thought.</p><p>Mark 9:23: "If thou canst believe, all things are possible to him that believeth." Change starts with believing it's possible.</p></aside>
+</section>
+
+<section class="slide" data-mod="The Three Systems" data-title="6 Steps to Restoring Health">
+  <div class="tag">The roadmap</div>
+  <h2>6 Steps to Restoring Health</h2>
+  <div class="body">
+    <div class="num">
+      <div><b>1</b><span>Reset &amp; de-stress the nervous system</span></div>
+      <div><b>2</b><span>Restore nutrition</span></div>
+      <div><b>3</b><span>Rewire trauma &amp; subconscious beliefs</span></div>
+      <div><b>4</b><span>Find meaning &amp; purpose</span></div>
+      <div><b>5</b><span>Heal the gastrointestinal system</span></div>
+      <div><b>6</b><span>Remove toxic buildup</span></div>
+    </div>
+  </div>
+  <aside><p>These six steps are the structure for the rest of this course.</p></aside>
+</section>
+
+<section class="slide dark" data-mod="The Three Systems" data-title="Scripture">
+  <div class="tag">Scripture</div>
+  <h2 style="font-size:2.4em">What scripture teaches about healing</h2>
+  <div class="body">
+    <div class="cols c2 scrip">
+      <div class="card hl"><p>"And the prayer of faith shall save the sick, and the Lord shall raise him up…"</p><cite>James 5:15</cite></div>
+      <div class="card"><p>"…the fruit thereof shall be for meat, and the leaf thereof for medicine."</p><cite>Ezekiel 47:12</cite></div>
+      <div class="card"><p>"Behold, I have given you every herb bearing seed… to you it shall be for meat."</p><cite>Genesis 1:29</cite></div>
+      <div class="card"><p>"A merry heart doeth good like a medicine: but a broken spirit drieth the bones."</p><cite>Proverbs 17:22</cite></div>
+    </div>
+  </div>
+  <aside><p>James 5:15: faith and prayer are part of healing, and it is the Lord who raises us up.</p><p>Ezekiel and Genesis: God gave us plants and herbs as food and medicine.</p><p>Proverbs 17:22: our emotional state affects the body.</p></aside>
+</section>
+
+<!-- ========== STEP 1 ========== -->
+<section class="slide dark opener" data-mod="Step 1 · Reset the Nervous System" data-title="Step 1 overview">
+  <div class="body"><div class="stepno">1</div><div class="tag" style="margin-top:1em">Step one</div><h2>Reset &amp; De-stress the Nervous System</h2></div>
+  <aside><p>Start with the nervous system, because nothing else heals well while the body is stuck in survival mode.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 1 · Reset the Nervous System" data-title="Fight, flight or freeze">
+  <div class="tag">Step 1</div>
+  <h2>Stuck in fight, flight or freeze</h2>
+  <div class="body">
+    <div class="cols c3">
+      <div class="card"><h3>Short-term stress</h3><ul class="xs"><li>Floods the blood with cortisol, insulin and glucose</li><li>Muscles on high alert with fuel to fight or flee</li><li>Powers down digestion and immunity</li><li>Exactly what we need to survive the moment</li></ul></div>
+      <div class="card"><h3>Chronic stress</h3><ul class="xs"><li>Weak immunity, high blood sugar, poor digestion</li><li>Malnourishment and bad sleep</li><li>Insulin and cortisol resistance: hungry and tired at once</li><li>The body forgets how to turn it off</li></ul></div>
+      <div class="card"><h3>Freeze</h3><ul class="xs"><li>When fighting or fleeing feels impossible, the body shuts down</li><li>Numbness, heaviness, feeling stuck or checked out</li><li>Low energy, low motivation, brain fog</li><li>Often mistaken for laziness or depression</li></ul></div>
+    </div>
+  </div>
+  <aside><p>Our bodies automatically respond to our environment. Historically, stress meant physical danger, and the body prepared to fight or flee. Continuous worry keeps us chronically in a sympathetic state, with the other important body systems downregulated or turned off.</p><p>Freeze is the third survival response. When the threat feels too big to fight or escape, the nervous system hits the brakes instead: heart rate and energy drop, and we go numb, shut down or disconnect. In the moment it protects us. When it becomes a pattern, people describe feeling stuck, exhausted, foggy, unmotivated or "not really here," and it is often labeled laziness or depression when it is actually a nervous system in protection mode.</p><p>Through various methods, we can switch back into a relaxed state and move between these responses and rest naturally and appropriately.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 1 · Reset the Nervous System" data-title="Methods to reset">
+  <div class="tag">Step 1 · Methods</div>
+  <h2>How we reset</h2>
+  <div class="body">
+    <div class="cols c2 xs methods">
+      <div><h3>Vagal toning</h3><p>Stimulating the vagus nerve with humming, singing, gargling, cold water on the face or long exhales to switch on rest-and-digest.</p></div>
+      <div><h3>Meditation</h3><p>Training attention to calm the stress response and observe thoughts instead of reacting to them.</p></div>
+      <div><h3>Breath work</h3><p>Slow, deep breathing with longer exhales tells the nervous system it is safe.</p></div>
+      <div><h3>Reducing body inflammation</h3><p>Inflammation is a physical stressor. Anti-inflammatory food and habits lower the load.</p></div>
+      <div><h3>Adrenal reset</h3><p>Supporting a healthy cortisol rhythm after chronic stress with balanced blood sugar, rest and nutrients.</p></div>
+      <div><h3>Circadian balancing &amp; sleep</h3><p>Morning light, consistent sleep and wake times, and darkness at night reset the body clock.</p></div>
+      <div><h3>Trauma work</h3><p>Releasing stored emotional experiences that keep the body on high alert.</p></div>
+      <div><h3>Light exercise</h3><p>Walking and yoga burn off stress hormones without adding more stress.</p></div>
+    </div>
+  </div>
+  <aside><p>Walk through each method briefly; we'll practice some of these together in the full program.</p></aside>
+</section>
+
+<!-- ========== STEP 2 ========== -->
+<section class="slide dark opener" data-mod="Step 2 · Restore Nutrition" data-title="Step 2 overview">
+  <div class="body"><div class="stepno">2</div><div class="tag" style="margin-top:1em">Step two</div><h2>Restore Nutrition</h2></div>
+  <aside><p>What we eat determines how our bodies operate.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="What we've done to food">
+  <div class="tag">Step 2</div>
+  <h2>What we've done to food</h2>
+  <div class="body">
+    <div class="cols c2">
+      <p class="callout">The vast majority of what is wrong with food today is what humans have done to it.</p>
+      <ul class="small">
+        <li>The body runs an estimated 37 billion trillion chemical reactions every second, and each one needs vitamins, minerals or enzymes</li>
+        <li>Depleted soil means less nutritious food</li>
+        <li>Organic is more nutrient-dense; regenerative is best</li>
+        <li>Age, picking, preserving and distance all cut nutrition</li>
+      </ul>
+    </div>
+  </div>
+  <aside><p>If you react to natural, healthy foods, it's not because the food is inherently bad. It's because of what we've done to it, because we eat far more than ever in history, because we've damaged our digestive systems, or because our immune system is dysregulated.</p><p>Our bodies run an estimated 37 billion trillion chemical reactions every second, and each one needs micronutrients. If we don't have enough nutrients, we don't run optimally.</p><p>Our food today is less nutritious than it was 50 years ago. The more processed it is, and the further it travels, the less nutrition it has.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Foods to avoid">
+  <div class="tag">Step 2 · Food sensitivities &amp; allergies</div>
+  <h2 style="margin-bottom:.35em">Foods to avoid</h2>
+  <div class="body">
+    <div class="cols c3 xs methods tight">
+      <div><h3>Gluten</h3><p>Raises zonulin, which loosens the gut lining</p></div>
+      <div><h3>Sugar, even fructose</h3><p>Spikes insulin, drives inflammation and feeds harmful gut bacteria</p></div>
+      <div><h3>Conventional dairy</h3><p>Antibiotics, hormones, A1 casein, and pasteurized</p></div>
+      <div><h3>Processed foods</h3><p>Low in nutrients, high in additives, and spike blood sugar</p></div>
+      <div><h3>GMO corn &amp; soy</h3><p>Heavily sprayed with herbicides; turned into corn syrup, oils, protein isolates and fillers</p></div>
+      <div><h3>Processed &amp; seed oils</h3><p>Chemical solvents, oxidized by high heat, and overloaded with omega-6</p></div>
+      <div><h3>Caffeine</h3><p>Raises stress hormones and disrupts sleep</p></div>
+      <div><h3>Alcohol</h3><p>Burdens the liver, damages the gut lining and disrupts sleep</p></div>
+      <div><h3>Food additives</h3><p>Emulsifiers and preservatives can disrupt gut bacteria; few are safety tested</p></div>
+      <div><h3>Food dyes</h3><p>Petroleum-based; linked to hyperactivity in children</p></div>
+    </div>
+  </div>
+  <aside><p>These are the foods everyone in the program removes. Each one either inflames the body, damages the gut, or adds to the toxic load.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Other common allergies">
+  <div class="tag">Step 2 · Food sensitivities &amp; allergies</div>
+  <h2 style="margin-bottom:.35em">Other common allergies</h2>
+  <div class="body">
+    <div class="cols c2 xs methods tight">
+      <div><h3>Eggs</h3><p>Egg white proteins are among the most common food allergens</p></div>
+      <div><h3>Dairy</h3><p>Casein, whey and lactose are hard for many people to digest</p></div>
+      <div><h3>Nightshades</h3><p>Potatoes, peppers, tomatoes and eggplant contain alkaloids that can irritate the gut and joints</p></div>
+      <div><h3>Legumes</h3><p>Lectins and phytates can irritate the gut lining and block mineral absorption</p></div>
+      <div><h3>Grains</h3><p>Lectins, phytic acid, and proteins that can cross-react with gluten</p></div>
+      <div><h3>Onion &amp; garlic</h3><p>High in fermentable fibers that cause gas and bloating, especially with SIBO</p></div>
+      <div><h3>Yeast &amp; vinegars</h3><p>Can aggravate yeast overgrowth and histamine sensitivity</p></div>
+      <div><h3>Nuts</h3><p>Common allergens, high in oxalates and phytates, and hard to digest in large amounts</p></div>
+    </div>
+    <p class="xs" style="margin-top:1em"><b>Elimination diet!</b> Allergy tests can be helpful but are not always correct.</p>
+  </div>
+  <aside><p>These foods are healthy for many people but are common triggers, especially for anyone with autoimmune issues or a damaged gut. An elimination diet removes them for a period, then adds them back one at a time to see which ones cause a reaction.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Compounds that cause reactions">
+  <div class="tag">Step 2 · Food sensitivities</div>
+  <h2>Compounds that can cause reactions</h2>
+  <div class="body">
+    <div class="cols c2 small">
+      <ul>
+        <li><b>Oxalates:</b> spinach, Swiss chard, almonds, beets, sweet potatoes, rhubarb, cacao</li>
+        <li><b>Phytates:</b> whole grains, nuts, legumes</li>
+        <li><b>Histamine:</b> fermented foods, aged cheese, wine, avocado, spinach, chocolate</li>
+        <li><b>Lectins:</b> beans, legumes, grains, lentils, peanuts, nightshades, squash</li>
+      </ul>
+      <ul>
+        <li><b>Alkaloids:</b> potatoes, eggplant, tomatoes, peppers</li>
+        <li><b>Glutamates:</b> tomatoes, mushrooms, aged cheese, soy sauce, seaweed, fermented foods</li>
+        <li><b>Tannins:</b> tea, red wine, grapes, berries, nuts</li>
+      </ul>
+    </div>
+  </div>
+  <aside><p>These are natural compounds that some people react to, especially with a damaged gut or dysregulated immune system.</p></aside>
+</section>
+
+<section class="slide dark" data-mod="Step 2 · Restore Nutrition" data-title="Sugar">
+  <div class="tag">Step 2</div>
+  <h2>Sugar: it's worse than you think</h2>
+  <div class="body">
+    <p class="lead" style="margin-bottom:.8em">High sugar is linked to</p>
+    <div class="cols c2 xs methods tight">
+      <div><h3>Depression</h3><p>Blood sugar swings and inflammation disrupt mood and serotonin</p></div>
+      <div><h3>Weight gain</h3><p>High insulin tells the body to store fat</p></div>
+      <div><h3>Anxiety</h3><p>Sugar crashes trigger adrenaline and cortisol</p></div>
+      <div><h3>Aggression</h3><p>Blood sugar drops raise irritability and impulsive reactions</p></div>
+      <div><h3>ADHD</h3><p>Spikes and crashes make focus and calm harder</p></div>
+      <div><h3>Brain fog</h3><p>Unstable blood sugar and inflammation slow thinking</p></div>
+      <div><h3>Lower IQ</h3><p>High-sugar diets are linked to poorer memory and learning</p></div>
+      <div><h3>Fatigue</h3><p>Every spike is followed by a crash that leaves you drained</p></div>
+      <div><h3>Diabetes</h3><p>Constantly high insulin leads to insulin resistance</p></div>
+      <div><h3>Alzheimer's</h3><p>Insulin resistance in the brain; sometimes called "type 3 diabetes"</p></div>
+    </div>
+    <p class="small" style="margin-top:1em;color:var(--brass-soft);max-width:none"><b>Remember:</b> essentially all carbohydrates, except fiber, break down into sugar in the bloodstream.</p>
+  </div>
+  <aside><p>Sugar is more addictive than cocaine.</p><p>It isn't only table sugar. Bread, pasta, rice, potatoes and other starches all break down into sugar in the bloodstream. Fiber is the exception.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Sugar and insulin">
+  <div class="tag">Step 2 · Sugar</div>
+  <h2>Sugar, insulin &amp; the brain</h2>
+  <div class="body">
+    <div class="cols c2 xs">
+      <ul style="gap:.7em">
+        <li><b>Sugar raises insulin, the fat-storing hormone.</b> Insulin moves sugar out of the blood and into storage, mostly as fat, and while it's high the body can't burn stored fat.</li>
+        <li><b>Insulin drives appetite and inflammation.</b> It raises hunger hormones, cholesterol and blood pressure, so we crave more and the body stays inflamed.</li>
+        <li><b>Chronically high insulin affects the whole body.</b> It makes blood more likely to clot, increases oxidative stress, lowers B vitamins and throws off sex hormones, which can affect fertility.</li>
+      </ul>
+      <ul style="gap:.7em">
+        <li><b>Sugar uses up vitamins and minerals.</b> Processing it takes B vitamins, magnesium and chromium, but sugar brings none of its own.</li>
+        <li><b>Sugar forms AGEs.</b> Sugar binds to proteins and creates advanced glycation end products, a sticky crust that stiffens tissues and gums up the brain.</li>
+        <li><b>Sugar steals from serotonin.</b> It pushes tryptophan, the building block of serotonin, down a different pathway, leaving less for mood and sleep.</li>
+      </ul>
+    </div>
+  </div>
+  <aside><p>Inflammation from high insulin is linked to depression, panic attacks, anxiety, insomnia and ADHD. Those with insulin resistance have a threefold risk of severe depression.</p><p>AGEs, advanced glycation end products, are like the crust on a crème brûlée.</p><p>High sugar increases the enzyme that breaks down tryptophan, the amino acid that makes serotonin, pushing it down a path that makes glutamate instead.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Gluten">
+  <div class="tag">Step 2</div>
+  <h2>Gluten</h2>
+  <div class="body">
+    <div class="cols c2 xs" style="gap:1.4em 2em">
+      <ul style="gap:.6em">
+        <li><b>Gluten raises zonulin.</b> Zonulin opens the tight junctions between gut cells, loosening the barrier that keeps food and bacteria out of the blood.</li>
+        <li><b>Leaky gut lets particles through.</b> Undigested proteins, including opium-like gluteomorphins, reach the bloodstream and can alter brain function and behavior.</li>
+        <li><b>The brain barrier can loosen too.</b> Zonulin also affects the blood-brain barrier, letting inflammation reach the brain.</li>
+        <li><b>It can trigger autoimmunity.</b> Some gluten proteins resemble our own tissues, like the thyroid, so the immune system may attack both.</li>
+      </ul>
+      <div style="display:flex;flex-direction:column;gap:.8em">
+        <div class="card"><h3>Celiac disease</h3><p style="margin:0">An autoimmune disease. Gluten makes the immune system attack the small intestine and flatten the villi that absorb nutrients. Genetic, diagnosed with blood antibodies and biopsy, and requires strict, lifelong avoidance, even of crumbs.</p></div>
+        <div class="card"><h3>Gluten sensitivity</h3><p style="margin:0">Real reactions without the autoimmune damage to the intestine. There is no single test; it's found by ruling out celiac and then removing gluten. Symptoms can still be significant, and tolerance varies by person.</p></div>
+      </div>
+    </div>
+    <p class="xs" style="margin-top:1em;max-width:none"><b>Common signs:</b> digestive issues · fatigue · iron-deficiency anemia · weight loss · joint pain · itchy blistering rash · mouth ulcers · headaches · numbness or tingling · brain fog · depression or anxiety · infertility · delayed growth in kids</p>
+  </div>
+  <aside><p>Many people with celiac disease are undiagnosed, and many more have gluten intolerance.</p><p>Celiac vs. sensitivity: with celiac, the immune system damages the intestine itself, and even a crumb matters. With sensitivity, the reaction is real but the intestine isn't damaged the same way. A third, separate condition is a wheat allergy, a classic allergic reaction like hives or swelling.</p><p>The undigested particles include gluteomorphins, opium-like proteins.</p><p>Gluten is associated with anxiety, depression, schizophrenia, dementia, headaches, epilepsy, autoimmune and thyroid disease, autism and more.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Seed oils">
+  <div class="tag">Step 2</div>
+  <h2>Seed oils</h2>
+  <div class="body">
+    <div class="cols c3 small">
+      <div class="card"><h3>Chemical processing</h3><ul class="xs" style="gap:.6em"><li><b>Hexane:</b> a petroleum solvent used to pull oil out of seeds; it is neurotoxic in high exposure</li><li><b>Sodium hydroxide (lye):</b> a caustic chemical used to strip out free fatty acids</li><li><b>Phosphoric acid:</b> a corrosive used to "degum" the oil before it's bleached and deodorized</li></ul></div>
+      <div class="card"><h3>High heat</h3><ul class="xs" style="gap:.6em"><li><b>Alters the structure:</b> these fragile fats aren't built for high heat in processing or frying</li><li><b>Oxidized and rancid:</b> the oil goes bad before it reaches you, then deodorizing hides the smell</li><li><b>Forms aldehydes:</b> toxic compounds that inflame and damage cells, including brain cells, and are linked to dementia</li></ul></div>
+      <div class="card"><h3>Omega-6 overload</h3><ul class="xs" style="gap:.6em"><li><b>Oxidative stress:</b> excess omega-6 fats oxidize easily inside the body</li><li><b>Chronic inflammation:</b> they crowd out anti-inflammatory omega-3s in our cells</li><li><b>Slow to clear:</b> they're stored in body fat and cell membranes and can take months to years to replace</li></ul></div>
+    </div>
+  </div>
+  <aside><p>Aldehydes cause inflammation and contribute to Alzheimer's disease and other forms of dementia. Seed oils can take 6 months to 5 years to fully process and remove from the body.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Dairy: signs of intolerance">
+  <div class="tag">Step 2 · Dairy</div>
+  <h2>Signs of dairy intolerance</h2>
+  <div class="body">
+    <p class="lead" style="margin-bottom:1em">When the body can't handle dairy, the reaction often shows up far from the gut.</p>
+    <div class="cols c4 xs methods">
+      <div><h3>Sinus &amp; immune</h3><p>Chronic sinus congestion, ear infections and worse seasonal allergies, from excess mucus and an immune system on alert</p></div>
+      <div><h3>Digestive</h3><p>IBS symptoms when casein, whey or lactose aren't digested well</p></div>
+      <div><h3>Skin</h3><p>Acne and eczema, driven by inflammation and the hormones in milk</p></div>
+      <div><h3>Body &amp; brain</h3><p>Headaches, body aches, depression and ADHD symptoms linked to inflammation and opioid-like peptides from casein</p></div>
+    </div>
+  </div>
+  <aside><p>Many people never connect their sinus problems, skin or mood to dairy because the symptoms aren't in the stomach. Removing it for a few weeks is often the clearest test.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Dairy: why it's a problem">
+  <div class="tag">Step 2 · Dairy</div>
+  <h2 style="margin-bottom:.35em">Why is dairy so hard on us?</h2>
+  <div class="body">
+    <div class="cols c3 xs methods tight">
+      <div><h3>Antibiotics</h3><p>Cows are given antibiotics preventatively. This affects their health and microbiome and contributes to antibiotic resistance in us.</p></div>
+      <div><h3>Hormones</h3><p>Estrogen, progesterone, growth hormone and oxytocin are used to raise milk output and can affect our own hormones.</p></div>
+      <div><h3>Diet &amp; living conditions</h3><p>Crowded barns and a diet of corn and feed instead of grass change the nutritional value of the milk.</p></div>
+      <div><h3>Cooked to death</h3><p>Pasteurizing and homogenizing kill the good bacteria and enzymes that help us break down milk proteins.</p></div>
+      <div><h3>A1 casein</h3><p>Modern breeds make A1 casein, which breaks down into BCM-7, a peptide linked to gut inflammation. Original A2 milk is easier to digest.</p></div>
+      <div><h3>Lactose</h3><p>Milk sugar needs the enzyme lactase, and most of us make less and less of it as we age, leading to gas, bloating and diarrhea.</p></div>
+    </div>
+  </div>
+  <aside><p>Cows live in tight conditions with excess ammonia and are fed corn and other feed that isn't their natural diet. Breeding for higher production changed the casein protein from A2 to A1.</p></aside>
+</section>
+
+<section class="slide dark" data-mod="Step 2 · Restore Nutrition" data-title="Toxins and processed foods">
+  <div class="tag">Step 2</div>
+  <h2 style="margin-bottom:.4em">Toxins &amp; processed foods</h2>
+  <div class="body">
+    <div class="cols c4 stats">
+      <div class="card"><div class="big">86,000+</div><small>chemicals registered for use in the U.S.</small></div>
+      <div class="card"><div class="big">10,000</div><small>substances allowed in U.S. food; about 1,000 never reviewed by the FDA</small></div>
+      <div class="card"><div class="big">1 billion lbs</div><small>of pesticides used in the U.S. every year</small></div>
+      <div class="card"><div class="big">~55%</div><small>of the calories Americans eat come from ultra-processed foods</small></div>
+      <div class="card"><div class="big">97%</div><small>of Americans have PFAS "forever chemicals" in their blood</small></div>
+      <div class="card"><div class="big">8 in 10</div><small>Americans have glyphosate (Roundup) in their urine</small></div>
+      <div class="card"><div class="big">9 in 10</div><small>Americans have BPA from plastics in their urine</small></div>
+      <div class="card"><div class="big">4.5×</div><small>higher risk of heart attack, stroke or death when microplastics were found in artery plaque</small></div>
+    </div>
+    <p class="xs" style="margin-top:1em;color:var(--on-spruce-muted);max-width:none">Most of these have entered our food and environment in the last 100 years. Very few have been tested for safety, and many additives don't have to be on labels. They are linked to brain and neurological problems, and to a higher risk of depression and weight gain.</p>
+  </div>
+  <aside><p>We consume pounds of hormones, antibiotics, food additives, artificial sweeteners and MSG each year, along with pesticides, herbicides and microplastics.</p><p>Ultra-processed foods are linked to higher risk of depression, anxiety and weight gain.</p><p>Sources, if anyone asks: EPA TSCA Chemical Substance Inventory (86,000+ chemicals); Pew Charitable Trusts / Neltner et al. 2011 (about 10,000 food substances, roughly 1,000 added through self-declared "GRAS" without FDA review); EPA pesticide industry sales and usage reports (about 1 billion pounds a year); Juul et al. 2022, American Journal of Clinical Nutrition (57% of adult calories); CDC NHANES biomonitoring (PFAS in about 97% of Americans; BPA in about 93%; glyphosate in about 80%, 2022 report); Marfella et al. 2024, New England Journal of Medicine (microplastics in carotid plaque in 58% of patients, 4.5× higher risk of heart attack, stroke or death over about 3 years).</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Foods that love us back">
+  <div class="tag">Step 2 · What to eat</div>
+  <h2>Foods that love us back</h2>
+  <div class="body">
+    <div class="cols c2">
+      <p class="callout">Eat a wide variety of bright, colorful vegetables and fruits.</p>
+      <ul class="xs" style="gap:.7em">
+        <li><b>Nourish the whole body.</b> Vegetables and fruits supply the vitamins, minerals and enzymes every cell needs for optimal function and a healthy metabolism.</li>
+        <li><b>Feed your good gut bacteria.</b> Their fiber feeds the microbes that help make serotonin and dopamine and train the immune system.</li>
+        <li><b>The richer the color, the better.</b> Deep reds, purples, oranges and greens signal more phytonutrients and antioxidants, and each color brings different ones.</li>
+        <li><b>Calm inflammation and lift mood.</b> Antioxidants clear oxidative stress and reduce inflammation, which helps with depression, ADHD and more.</li>
+      </ul>
+    </div>
+  </div>
+  <aside><p>Encourage everyone to "eat the rainbow" every day.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Meat">
+  <div class="tag">Step 2 · What to eat</div>
+  <h2>Meat</h2>
+  <div class="body">
+    <div class="cols c2 xs" style="gap:1.4em 2.2em">
+      <ul style="gap:.7em">
+        <li><b>Choose grass-fed beef and organic poultry.</b> How an animal is raised changes its meat: grass-fed beef has more omega-3s and antioxidants and fewer added hormones and antibiotics.</li>
+        <li><b>Packed with nutrients.</b> Properly raised meat is rich in healthy fats, vitamins A and E, B6, B12, folate and zinc, in forms the body uses easily.</li>
+        <li><b>Protein builds your brain chemistry.</b> Every neurotransmitter and hormone, including serotonin and dopamine, is made from amino acids, the building blocks of protein.</li>
+        <li><b>Easier to absorb.</b> Animal protein is more complete and more easily broken down and absorbed than most plant proteins.</li>
+      </ul>
+      <div style="display:flex;flex-direction:column;gap:1em">
+        <div class="card"><h3>Key nutrients from meat</h3>
+          <ul style="gap:.35em"><li><b>B12:</b> nerves, energy and red blood cells; not found in plants</li><li><b>Creatine:</b> energy for muscles and the brain</li><li><b>Carnosine:</b> an antioxidant that protects muscle and brain tissue</li><li><b>DHA omega-3:</b> the main structural fat of the brain</li></ul></div>
+        <p class="callout" style="font-size:1.35em">Organ meats are the most nutrient-dense foods in the world.</p>
+        <p style="margin:0">Liver is especially rich in vitamin A, B12, folate, iron, copper and choline.</p>
+      </div>
+    </div>
+  </div>
+  <aside><p>All of our neurotransmitters and other hormones are derived from amino acids, in other words, protein.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Seafood">
+  <div class="tag">Step 2 · What to eat</div>
+  <h2 style="margin-bottom:.4em">Seafood</h2>
+  <div class="body">
+    <div class="cols c3">
+      <div class="card"><div class="big">60%</div><small>of the brain is fat, especially DHA, which surrounds every nerve and cell and acts as a gate for what goes in and out</small></div>
+      <div class="card"><div class="big">1 : 1</div><small>the ratio of omega-6 to omega-3 fats our bodies evolved eating</small></div>
+      <div class="card"><div class="big">15 : 1</div><small>the average ratio today, driven by seed oils and processed food</small></div>
+    </div>
+    <ul class="xs" style="margin-top:1.2em;gap:.5em">
+      <li><b>Omega-3s calm inflammation.</b> EPA and DHA from fish turn into compounds that actively resolve inflammation.</li>
+      <li><b>Good for mood.</b> 1 to 2 grams of EPA and DHA a day have been shown to reduce depression.</li>
+      <li><b>Best sources:</b> wild salmon, sardines, mackerel, anchovies and herring, which are high in omega-3s and low in mercury.</li>
+    </ul>
+  </div>
+  <aside><p>Omega-3 fats surround each nerve axon and each cell, acting as a gate. A rise in omega-6 with a fall in omega-3 is linked to depression. Smaller fish carry far less mercury than large predatory fish like tuna and swordfish.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Important nutrients 1">
+  <div class="tag">Step 2 · Important nutrients</div>
+  <h2 style="margin-bottom:.35em">Vitamins, part 1</h2>
+  <div class="nut">
+    <div><h4>Vitamin D</h4><p>Acts like a hormone: lowers body and brain inflammation, regulates immunity and helps the body use calcium</p><p><em>Low</em>fatigue, forgetfulness, depression, anxiety, low appetite, weight gain, sleep issues, PMS</p><p><em>Sources</em>sunshine, eggs, fish, red meat</p></div>
+    <div><h4>B12 &amp; B6</h4><p>Help detox the body and are essential for red blood cells, cell metabolism, nerve function and making DNA</p><p><em>Low</em>fatigue, breathlessness, numbness, poor balance, memory trouble, depression, anxiety</p><p><em>Sources</em>red meat, fish, eggs</p></div>
+    <div><h4>Methylfolate</h4><p>The active form of folate, required to make serotonin, dopamine and norepinephrine</p><p><em>Low</em>fatigue, breathlessness, numbness, memory trouble, depression, anxiety</p><p><em>Sources</em>spinach, asparagus, romaine, turnip, mustard and collard greens, cauliflower, broccoli, parsley, lentils, beets</p></div>
+    <div><h4>Omega-3s</h4><p>Reduce inflammation and support the brain, heart and the membrane around every cell</p><p><em>Low</em>brain fog, dry skin, joint pain, depression, anxiety, poor memory, chronic inflammation</p><p><em>Sources</em>salmon, sardines, mackerel, flax, chia, walnuts, algae oil</p></div>
+  </div>
+  <aside><p>Ask the group which of these symptoms they recognize in themselves. Many people with the MTHFR gene variant have trouble converting folic acid, which is why the methylated form matters.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Important nutrients 2">
+  <div class="tag">Step 2 · Important nutrients</div>
+  <h2 style="margin-bottom:.35em">Vitamins, part 2</h2>
+  <div class="nut">
+    <div><h4>Thiamine (B1)</h4><p>Turns carbohydrates into energy and fuels the brain, nerves and heart; used up by sugar, alcohol, coffee and stress</p><p><em>Low</em>fatigue, irritability, poor memory, anxiety, numbness or tingling, muscle weakness, rapid heartbeat, low appetite</p><p><em>Sources</em>pork, organ meats, salmon, trout, sunflower seeds, legumes</p></div>
+    <div><h4>Vitamin A</h4><p>Essential for vision, immune defense, and healthy skin and gut lining</p><p><em>Low</em>dry eyes, poor night vision, frequent infections, dry skin, slow healing</p><p><em>Sources</em>liver, egg yolks, butter, carrots, sweet potatoes, leafy greens</p></div>
+    <div><h4>Vitamin K2</h4><p>Directs calcium into bones and teeth and keeps it out of the arteries</p><p><em>Low</em>bone weakness, arterial calcification</p><p><em>Sources</em>natto, egg yolks, liver, hard cheeses, grass-fed butter</p></div>
+    <div><h4>Choline</h4><p>Needed for brain development, nerve signaling, liver detox and fat metabolism</p><p><em>Low</em>brain fog, memory issues, fatigue, fatty liver, poor concentration</p><p><em>Sources</em>eggs (especially yolks), liver, salmon, chicken, broccoli</p></div>
+  </div>
+  <aside><p>Thiamine is one of the first nutrients to run low on a high-sugar, high-carb diet, because every gram of carbohydrate needs it to become energy. Alcohol blocks its absorption.</p><p>Choline is technically a vitamin-like essential nutrient rather than a true vitamin, but it belongs here. Notice how many of these come from eggs, liver and quality meat. Plant forms of vitamin A (beta-carotene) have to be converted, and many people convert it poorly.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Minerals 1">
+  <div class="tag">Step 2 · Important nutrients</div>
+  <h2 style="margin-bottom:.35em">Minerals, part 1</h2>
+  <div class="nut">
+    <div><h4>Magnesium</h4><p>Powers over 300 enzyme reactions, including muscle and nerve function, blood sugar control and energy production; used up quickly by stress</p><p><em>Low</em>muscle cramps, fatigue, irritability, poor sleep, anxiety, irregular heartbeat, headaches</p><p><em>Sources</em>leafy greens, pumpkin seeds, almonds, avocado, black beans, dark chocolate</p></div>
+    <div><h4>Potassium</h4><p>Vital for fluid balance, muscle contractions and healthy blood pressure; works as a partner to sodium</p><p><em>Low</em>muscle weakness, fatigue, constipation, heart palpitations, high blood pressure</p><p><em>Sources</em>bananas, sweet potatoes, avocados, spinach, coconut water, beans</p></div>
+    <div><h4>Zinc</h4><p>Crucial for immune function, wound healing, DNA, skin and the gut lining</p><p><em>Low</em>frequent infections, hair loss, slow wound healing, low libido, loss of taste or smell, acne</p><p><em>Sources</em>oysters, beef, pumpkin seeds, lentils, chickpeas, cashews</p></div>
+    <div><h4>Iodine</h4><p>Essential for thyroid hormone, which sets the pace of metabolism, and for brain development</p><p><em>Low</em>fatigue, cold intolerance, brain fog, weight gain, dry skin, depression, goiter</p><p><em>Sources</em>seaweed, fish, dairy, eggs</p></div>
+  </div>
+  <aside><p>Minerals are the spark plugs of the body. Depleted soil means our food carries fewer of them than it used to.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 2 · Restore Nutrition" data-title="Minerals 2">
+  <div class="tag">Step 2 · Important nutrients</div>
+  <h2 style="margin-bottom:.35em">Minerals, part 2</h2>
+  <div class="nut" style="grid-template-columns:repeat(3,1fr)">
+    <div><h4>Iron</h4><p>Makes hemoglobin, which carries oxygen to every cell and powers energy production</p><p><em>Low</em>fatigue, pale skin, brittle nails, dizziness, breathlessness, cold hands and feet, brain fog</p><p><em>Sources</em>red meat, liver, lentils, spinach, pumpkin seeds</p></div>
+    <div><h4>Selenium</h4><p>A powerful antioxidant that supports thyroid function and protects against oxidative damage</p><p><em>Low</em>fatigue, muscle weakness, brain fog, low immunity, thyroid issues, infertility</p><p><em>Sources</em>Brazil nuts, sardines, eggs, sunflower seeds, turkey</p></div>
+    <div><h4>Copper</h4><p>Helps the body use iron, make energy, build connective tissue and protect cells as part of antioxidant enzymes; works in balance with zinc</p><p><em>Low</em>fatigue, anemia, weakness, frequent infections, numbness, early graying</p><p><em>Sources</em>liver, oysters, shellfish, cashews, sunflower seeds, mushrooms, dark chocolate</p></div>
+  </div>
+  <aside><p>Iron and copper work as a team: copper is needed to move and use iron, so low copper can look like low iron. Too much zinc can push copper down, which is why balance matters.</p></aside>
+</section>
+
+<!-- ========== STEP 3 ========== -->
+<section class="slide dark opener" data-mod="Step 3 · Rewire Beliefs" data-title="Step 3 overview">
+  <div class="body"><div class="stepno">3</div><div class="tag" style="margin-top:1em">Step three</div><h2>Rewire Trauma &amp; Subconscious Beliefs</h2></div>
+  <aside><p>How our earliest experiences wire who we believe we are.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 3 · Rewire Beliefs" data-title="How beliefs get wired">
+  <div class="tag">Step 3</div>
+  <h2 style="margin-bottom:.4em">How beliefs get wired</h2>
+  <div class="body">
+    <div class="cols c2" style="gap:1.4em 2.2em">
+      <ul class="xs" style="gap:.65em">
+        <li><b>Trauma builds strong pathways.</b> In a heightened physical and emotional state, the brain wires deep connections so it can prevent or prepare for the same thing happening again.</li>
+        <li><b>Children learn in delta waves.</b> Until about age 7 or 8, the brain stays in a slow wave state that absorbs everything, including ideas about who we are and how we fit in.</li>
+        <li><b>Early beliefs become our wiring.</b> Negative childhood experiences turn into rooted subconscious beliefs we carry into adulthood without realizing it.</li>
+        <li><b>Affirmations alone aren't enough.</b> These beliefs live in the nervous system, so they have to be released and rewired, not just talked over.</li>
+      </ul>
+      <div class="card"><h3>Beliefs like</h3><p style="font-family:var(--display);font-size:1.25em;line-height:1.35;margin:0">"I'm a bad kid."<br>"I need to stay out of the way."<br>"I will never be enough."</p></div>
+    </div>
+  </div>
+  <aside><p>These memories become part of our emotional response and neurological wiring. Rewiring takes going back into those brain wave states and releasing and rewiring the rooted emotions and experiences.</p><p>To learn more: The Body Keeps the Score and The Biology of Belief.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 3 · Rewire Beliefs" data-title="Methods to rewire">
+  <div class="tag">Step 3 · Methods</div>
+  <h2 style="margin-bottom:.4em">How the brain rewires</h2>
+  <div class="body">
+    <div class="cols c3" style="margin-bottom:1.2em">
+      <div class="card"><h3>Delta brain waves</h3><small>Deep, slow states like meditation and hypnosis reach the subconscious</small></div>
+      <div class="card"><h3>Repetition</h3><small>What we practice daily becomes the new default pathway</small></div>
+      <div class="card"><h3>Heightened emotion</h3><small>Strong feeling locks in change, the same way it locked in the old belief</small></div>
+    </div>
+    <div class="cols c3 xs methods tight">
+      <div><h3>Safe place</h3><p>The nervous system has to feel safe before it lets go</p></div>
+      <div><h3>Talk therapy</h3><p>Naming and processing experiences with support</p></div>
+      <div><h3>EMDR</h3><p>Eye movements help the brain reprocess stuck memories</p></div>
+      <div><h3>Childhood work</h3><p>Revisiting early memories and reframing what they meant</p></div>
+      <div><h3>Hypnotherapy &amp; deep meditation</h3><p>Reach the subconscious in slow brain wave states</p></div>
+      <div><h3>Gratitude &amp; affirmations</h3><p>Repeat new beliefs once the old ones are released</p></div>
+    </div>
+  </div>
+  <aside><p>These are the three states of brain rewiring, and the methods that use them. Medicinal mushrooms are also being studied for helping the brain form new connections; that's a deeper conversation for the personalized program.</p></aside>
+</section>
+
+<!-- ========== STEP 4 ========== -->
+<section class="slide dark opener" data-mod="Step 4 · Meaning &amp; Purpose" data-title="Step 4 overview">
+  <div class="body"><div class="stepno">4</div><div class="tag" style="margin-top:1em">Step four</div><h2>Find Meaning &amp; Purpose</h2></div>
+  <aside><p>Every person has been created for a purpose.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 4 · Meaning &amp; Purpose" data-title="Passion plus skill">
+  <div class="tag">Step 4</div>
+  <h2 style="margin-bottom:.4em">Every person has a purpose</h2>
+  <div class="body">
+    <div class="cols c3" style="align-items:stretch;text-align:center">
+      <div class="card"><div class="big">Passion</div><small>What lights you up and makes time disappear</small></div>
+      <div class="card"><div class="big">What you're good at</div><small>Your natural gifts, skills and talents</small></div>
+      <div class="card" style="background:var(--spruce);color:var(--on-spruce)"><div class="big" style="color:var(--brass-soft)">Purpose</div><small style="color:var(--on-spruce-muted)">Where the two meet</small></div>
+    </div>
+    <ul class="xs" style="margin-top:1.3em;gap:.5em">
+      <li><b>Without meaning, we drift.</b> We feel lost, unmotivated and like we're wandering aimlessly.</li>
+      <li><b>It's harder after hard things.</b> Chronic illness, neglect and trauma can make purpose feel out of reach.</li>
+      <li><b>But it's always there.</b> Every person has been created for a purpose, with deep intrinsic value and endless potential.</li>
+    </ul>
+  </div>
+  <aside><p>Finding meaning can be difficult for many, especially those who have been chronically ill, neglected, or have experienced trauma. Passion plus what you are good at equals purpose.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 4 · Meaning &amp; Purpose" data-title="Methods for purpose">
+  <div class="tag">Step 4 · Methods</div>
+  <h2 style="margin-bottom:.4em">Live with meaning &amp; purpose</h2>
+  <div class="body">
+    <div class="cols c3 xs methods tight">
+      <div><h3>Future writing</h3><p>Write out your ideal life five years from now</p></div>
+      <div><h3>Finding your why</h3><p>Get clear on why you really want change</p></div>
+      <div><h3>Goal writing</h3><p>Break the vision into year, month and week goals</p></div>
+      <div><h3>Joy activities</h3><p>Notice where you lose track of time</p></div>
+      <div><h3>Killing ANTs</h3><p>Catch and challenge automatic negative thoughts</p></div>
+      <div><h3>Motivation &amp; blocks</h3><p>Find the deeper want that keeps you stuck</p></div>
+      <div><h3>Visualizations</h3><p>See and feel yourself living your goals</p></div>
+      <div><h3>Skills &amp; talents</h3><p>What you think you're good at vs. what others see</p></div>
+      <div><h3>Love &amp; happiness</h3><p>Learn the principles that lead to lasting joy</p></div>
+    </div>
+  </div>
+  <aside><p>We work through each of these in the 90 Day Shift.</p></aside>
+</section>
+
+<!-- ========== STEP 5 ========== -->
+<section class="slide dark opener" data-mod="Step 5 · Heal the Gut" data-title="Step 5 overview">
+  <div class="body"><div class="stepno">5</div><div class="tag" style="margin-top:1em">Step five</div><h2>Heal the Gastrointestinal System</h2></div>
+  <aside><p>The gut is where much of the body's health is made or lost.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 5 · Heal the Gut" data-title="What the gut does">
+  <div class="tag">Step 5</div>
+  <h2>What the gut does</h2>
+  <div class="body">
+    <div class="cols c4">
+      <div class="card"><h3>Nutrients</h3><small>Breaks food down into the energy and building blocks every cell needs for repair</small></div>
+      <div class="card"><h3>Immunity</h3><small>70–80% of immune cells live in the gut, learning what's friend and what's threat</small></div>
+      <div class="card"><h3>Mood</h3><small>Talks to the brain through the gut-brain axis and helps make mood chemicals</small></div>
+      <div class="card"><h3>Filter</h3><small>The gut lining keeps toxins and pathogens out of the bloodstream</small></div>
+    </div>
+    <p class="small" style="margin-top:1.4em">When the gut struggles, every one of these suffers, which is why gut issues show up far beyond digestion.</p>
+  </div>
+  <aside><p>Key functions of the digestive system.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 5 · Heal the Gut" data-title="Common gut problems">
+  <div class="tag">Step 5</div>
+  <h2 style="margin-bottom:.4em">Common gut problems</h2>
+  <div class="body">
+    <div class="cols c3 xs">
+      <div class="card"><h3>Leaky gut</h3><p style="margin:0">Under a thin mucus layer, a single layer of cells separates us from everything we eat. When it's damaged, bacteria, food particles and chemicals reach the blood, driving inflammation and autoimmunity.</p></div>
+      <div class="card"><h3>SIBO / SIFO</h3><p style="margin:0">The small intestine should be nearly sterile. Poor digestion or low stomach acid lets bacteria or fungus overgrow there, causing gas and bloating.</p></div>
+      <div class="card"><h3>Low acid, bile &amp; enzymes</h3><p style="margin:0">Modern diets, overeating and toxic overload leave us short on what we need to break food down.</p></div>
+      <div class="card"><h3>Dysbiosis</h3><p style="margin:0">An imbalance of bacteria, fungus or parasites, fueled by over-sterilization, medications and poor food quality.</p></div>
+      <div class="card"><h3>Gastroparesis</h3><p style="margin:0">The stomach stops its normal contractions and food sits too long, often from stress or parasites.</p></div>
+    </div>
+  </div>
+  <aside><p>These often overlap. Low stomach acid can lead to SIBO, which can damage the lining and lead to leaky gut.</p></aside>
+</section>
+
+<section class="slide dark" data-mod="Step 5 · Heal the Gut" data-title="The second brain">
+  <div class="tag">Step 5</div>
+  <h2 style="margin-bottom:.4em">The enteric nervous system: your second brain</h2>
+  <div class="body">
+    <div class="cols c4">
+      <div class="card"><div class="big">95%</div><small>of serotonin is made in the gut</small></div>
+      <div class="card"><div class="big">70–80%</div><small>of the immune system lives there</small></div>
+      <div class="card"><div class="big">50%</div><small>of dopamine is made in the gut</small></div>
+      <div class="card"><div class="big">+</div><small>Ghrelin, GLP-1 and leptin, the hunger and fullness hormones; affects norepinephrine and oxytocin</small></div>
+    </div>
+    <p class="small" style="margin-top:1.4em;color:var(--on-spruce-muted)">A vast network of neurons in the gut wall that runs digestion on its own and talks with the brain in both directions. When the gut is inflamed, the brain hears about it.</p>
+  </div>
+  <aside><p>The ENS is a vast network of neurons in the walls of the GI tract. It can operate independently of the central nervous system, controls digestion, motility and secretions, and talks both ways with the brain through the gut-brain axis, much of it through the vagus nerve.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 5 · Heal the Gut" data-title="What damages the gut">
+  <div class="tag">Step 5</div>
+  <h2 style="margin-bottom:.35em">What damages the gut</h2>
+  <div class="body">
+    <div class="cols c4 xs methods tight">
+      <div><h3>Antibiotics</h3><p>Wipe out good bacteria along with bad</p></div>
+      <div><h3>Food additives</h3><p>Emulsifiers can thin the protective mucus</p></div>
+      <div><h3>Pesticides &amp; herbicides</h3><p>Designed to kill living things, including microbes</p></div>
+      <div><h3>Steroids</h3><p>Suppress immunity and alter gut bacteria</p></div>
+      <div><h3>NSAIDs</h3><p>Ibuprofen and similar drugs irritate the lining</p></div>
+      <div><h3>GMOs</h3><p>Often heavily sprayed crops</p></div>
+      <div><h3>Antacids</h3><p>Lower the stomach acid we need to digest</p></div>
+      <div><h3>Artificial sweeteners</h3><p>Disrupt the balance of gut bacteria</p></div>
+      <div><h3>Alcohol</h3><p>Damages the lining and feeds overgrowth</p></div>
+      <div><h3>Low fiber</h3><p>Starves the good bacteria</p></div>
+      <div><h3>Gluten</h3><p>Raises zonulin and loosens the lining</p></div>
+      <div><h3>Stress &amp; heavy metals</h3><p>Shut down digestion and harm gut cells</p></div>
+    </div>
+  </div>
+  <aside><p>Most of these entered our food and environment in the last 100 years, faster than our bodies can adapt. With a constant barrage of chemicals and foreign particles hitting our digestive system, it's a wonder it works at all.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 5 · Heal the Gut" data-title="Symptoms of gut issues">
+  <div class="tag">Step 5</div>
+  <h2 style="margin-bottom:.35em">Symptoms of gut issues</h2>
+  <div class="body">
+    <p class="xs" style="margin-bottom:1em;max-width:none">Gut problems rarely stay in the gut. Inflammation, missing nutrients and the gut-brain connection spread symptoms through the whole body.</p>
+    <div class="cols c4 xs">
+      <div><h3>Digestive</h3><ul><li>Bloating, gas</li><li>Food sensitivities (gluten, dairy, soy)</li><li>Diarrhea or loose stools</li><li>Constipation</li><li>Heartburn, reflux</li><li>IBS-like symptoms</li></ul></div>
+      <div><h3>Inflammatory &amp; immune</h3><ul><li>Chronic fatigue</li><li>Brain fog</li><li>Headaches, migraines</li><li>Joint pain or stiffness</li><li>Eczema, acne, psoriasis, rosacea</li><li>Allergies, asthma</li><li>Histamine intolerance</li></ul></div>
+      <div><h3>Mental &amp; emotional</h3><ul><li>Anxiety, depression</li><li>Irritability, mood swings</li><li>Poor memory or attention</li><li>Sleep disturbances</li><li>ADHD-like symptoms</li></ul></div>
+      <div><h3>Whole body</h3><ul><li>Low B12, iron, zinc, magnesium</li><li>Frequent infections</li><li>Unexplained weight gain or loss</li><li>Sugar and carb cravings from microbial imbalance</li></ul></div>
+    </div>
+  </div>
+  <aside><p>Ask: how many of these do you have? Most people are surprised how many trace back to the gut.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 5 · Heal the Gut" data-title="Healing the gut">
+  <div class="tag">Step 5 · Methods</div>
+  <h2 style="margin-bottom:.35em">Healing the gut</h2>
+  <div class="body">
+    <div class="cols c2 xs">
+      <div class="card"><h3>Restore motility</h3><p style="margin:0 0 .3em"><i>Get things moving again.</i></p><p style="margin:0">Magnesium citrate, gentian, artichoke leaf, dandelion root, slippery elm, marshmallow root, licorice, exercise</p></div>
+      <div class="card"><h3>Restore enzymes, acid &amp; bile</h3><p style="margin:0 0 .3em"><i>Give the body what it needs to break food down.</i></p><p style="margin:0">TUDCA, ox bile, apple cider vinegar, hydrochloric acid</p></div>
+      <div class="card"><h3>Cleanse overgrowth</h3><p style="margin:0 0 .3em"><i>Clear out fungus, bacteria and parasites.</i></p><p style="margin:0">Black walnut, iodine, wormwood, food-grade diatomaceous earth, cloves, papaya seed, garlic, berberine, caprylic acid, oregano oil, probiotics, fermented foods</p></div>
+      <div class="card"><h3>Heal the lining</h3><p style="margin:0 0 .3em"><i>Repair the barrier and tighten the junctions.</i></p><p style="margin:0">Slippery elm, glutamine, intermittent fasting, marshmallow root, licorice, aloe vera, berberine, zinc carnosine, NAG, black seed oil</p></div>
+    </div>
+  </div>
+  <aside><p>Order matters: get things moving and digesting first, clear overgrowth, then rebuild the lining. Work with a practitioner on cleanse protocols.</p></aside>
+</section>
+
+<!-- ========== STEP 6 ========== -->
+<section class="slide dark opener" data-mod="Step 6 · Remove Toxins" data-title="Step 6 overview">
+  <div class="body"><div class="stepno">6</div><div class="tag" style="margin-top:1em">Step six</div><h2>Remove Toxic Buildup</h2></div>
+  <aside><p>Avoid what we can, and help the body clear what's already stored.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 6 · Remove Toxins" data-title="What builds up">
+  <div class="tag">Step 6</div>
+  <h2 style="margin-bottom:.4em">What builds up in us</h2>
+  <div class="body">
+    <div class="cols c2" style="gap:1.4em 2.2em">
+      <div>
+        <div class="chips xs"><span>Food additives</span><span>Pesticides</span><span>Microplastics</span><span>Arsenic</span><span>Mercury</span><span>Cadmium</span><span>Lead</span><span>Aluminum</span><span>Fluoride</span><span>PFAS / forever chemicals</span></div>
+        <p class="xs" style="margin-top:1em">Heavy metals and forever chemicals settle into fat, bone and organs, disrupting cell function and hormone signals.</p>
+      </div>
+      <ul class="xs" style="gap:.65em">
+        <li><b>Many never leave on their own.</b> The body stores what it can't clear, and the load builds year after year.</li>
+        <li><b>Genes matter.</b> Variants in MTHFR, NFE2L2 and cytochrome P450 can slow the body's ability to detox, and research links them to issues like cancer, depression and Parkinson's.</li>
+        <li><b>Stress makes it worse.</b> Chronic stress downregulates detoxification.</li>
+        <li><b>Two jobs:</b> avoid new toxins, and help the body release what's already stored.</li>
+      </ul>
+    </div>
+  </div>
+  <aside><p>Not only do we need to learn how to avoid these toxins but also how to support our bodies to remove what is trapped inside of our tissues.</p></aside>
+</section>
+
+<section class="slide" data-mod="Step 6 · Remove Toxins" data-title="What can I do?">
+  <div class="tag">Step 6 · Methods</div>
+  <h2 style="margin-bottom:.35em">What can I do about toxins?</h2>
+  <div class="body">
+    <div class="cols c2 xs">
+      <div class="card"><h3>Remove major sources</h3><ul style="gap:.3em"><li><b>Eat organic,</b> starting with the Dirty Dozen and grains</li><li><b>Remove processed foods</b></li><li><b>Filter your water;</b> even city and spring water can carry metals</li><li><b>Safe cookware;</b> never heat food in plastic</li><li><b>Glass food storage</b></li><li><b>Check for mold</b></li><li><b>Skip artificial scents and candles</b></li><li><b>Clean beauty and cleaning products</b> (EWG.org)</li><li><b>Air filters and plants</b></li></ul></div>
+      <div class="card"><h3>Lower the body's load</h3><ul style="gap:.3em"><li><b>Exercise and reduce stress</b> to switch detox back on</li><li><b>Support the liver,</b> the main detox organ</li><li><b>Saunas</b> to sweat toxins out</li><li><b>Cruciferous veggies, cilantro, spirulina</b></li><li><b>Minerals, electrolytes and hydration</b></li><li><b>Mitochondrial and glutathione support</b></li><li><b>Gut health, bile and binders</b> to carry toxins out</li><li><b>Sun exposure and grounding</b></li><li><b>Lymphatic drainage:</b> yoga, dry brushing, massage</li></ul></div>
+    </div>
+  </div>
+  <aside><p>Start with the easy swaps at home, then support the body's own detox systems. Chelation therapy is an option for heavy metals under a practitioner's care.</p></aside>
+</section>
+
+<!-- ========== NEXT STEPS ========== -->
+<section class="slide dark cover" data-mod="Next Steps" data-title="Go deeper">
+  <div class="txt">
+    <div class="tag">Next steps</div>
+    <h2>Ready to go deeper?</h2>
+    <p class="lead">The 90 Day Shift puts all six steps into practice, week by week, for mind, body and spirit.</p>
+    <div class="by"><img src="images/foundations/mbfh-mark.webp" alt="">MindBodyFunctionalHealth.com</div>
+  </div>
+  <div class="pic"><img src="images/foundations/jaime-portrait.webp" alt=""></div>
+  <aside><p>Invite people into the 90 Day Shift and share how to sign up.</p></aside>
+</section>
+
+    </div></div>
+    <div class="ctrl">
+      <button class="ib" id="prev">← Previous</button>
+      <span class="count" id="count"></span>
+      <button class="ib" id="next">Next →</button>
+    </div>
+    <div class="notes" id="notes" hidden><div class="k">Speaker notes</div><div id="notesBody"></div></div>
+  </div>
+</div>
+
+<script>
+const slides=[...document.querySelectorAll(".slide")];
+const toc=document.getElementById("toc");
+const mods=[];
+slides.forEach((s,i)=>{
+  const m=s.dataset.mod;
+  let mod=mods.find(x=>x.name===m);
+  if(!mod){mod={name:m,items:[]};mods.push(mod)}
+  mod.items.push(i);
+});
+toc.innerHTML=mods.map((m,mi)=>{
+  const label=m.name.replace(/^Step \d · /,"");
+  const n=(m.name.match(/^Step (\d)/)||[])[1]||(mi===0?"·":"→");
+  return `<div class="mod" data-m="${mi}"><button class="mod-btn" aria-expanded="false"><span class="n">${n}</span><span class="t">${label}</span><span class="c">▶</span></button><ol>${m.items.map(i=>`<li><button data-i="${i}">${slides[i].dataset.title}</button></li>`).join("")}</ol></div>`;
+}).join("");
+const modEls=[...toc.querySelectorAll(".mod")];
+modEls.forEach(el=>{
+  el.querySelector(".mod-btn").addEventListener("click",()=>{
+    const m=mods[+el.dataset.m];
+    if(!el.classList.contains("active")){go(m.items[0]);return}
+    el.classList.toggle("open");
+    el.querySelector(".mod-btn").setAttribute("aria-expanded",el.classList.contains("open"));
+  });
+});
+toc.querySelectorAll("li button").forEach(b=>b.addEventListener("click",()=>{go(+b.dataset.i);document.getElementById("app").classList.remove("drawer")}));
+
+let cur=0;
+function go(i){
+  cur=Math.max(0,Math.min(slides.length-1,i));
+  slides.forEach((s,j)=>s.classList.toggle("on",j===cur));
+  const s=slides[cur], mi=mods.findIndex(m=>m.items.includes(cur));
+  modEls.forEach((el,k)=>{const a=k===mi;el.classList.toggle("active",a);if(a)el.classList.add("open");el.querySelector(".mod-btn").setAttribute("aria-expanded",el.classList.contains("open"))});
+  toc.querySelectorAll("li button").forEach(b=>b.setAttribute("aria-current",+b.dataset.i===cur));
+  document.getElementById("count").textContent=`${cur+1} / ${slides.length}`;
+  document.getElementById("progbar").style.width=((cur+1)/slides.length*100)+"%";
+  document.getElementById("progtxt").textContent=`Slide ${cur+1} of ${slides.length}`;
+  document.getElementById("where").innerHTML=`${mods[mi].name.replace("&amp;","&")} · <b>${s.dataset.title}</b>`;
+  const n=s.querySelector("aside");
+  document.getElementById("notesBody").innerHTML=n?n.innerHTML:"<p>No notes for this slide.</p>";
+  document.getElementById("prev").disabled=cur===0;
+  document.getElementById("next").disabled=cur===slides.length-1;
+  try{localStorage.setItem("fh-slide",cur)}catch(e){}
+  const active=toc.querySelector('li button[aria-current="true"]');
+  if(active) active.scrollIntoView({block:"nearest"});
+}
+document.getElementById("prev").onclick=()=>go(cur-1);
+document.getElementById("next").onclick=()=>go(cur+1);
+const notesBtn=document.getElementById("notesBtn"), notes=document.getElementById("notes");
+function toggleNotes(){notes.hidden=!notes.hidden;notesBtn.setAttribute("aria-pressed",!notes.hidden);try{localStorage.setItem("fh-notes",notes.hidden?"0":"1")}catch(e){}}
+notesBtn.onclick=toggleNotes;
+const fsBtn=document.getElementById("fsBtn");
+function toggleFs(){
+  const el=document.documentElement;
+  if(document.fullscreenElement){document.exitFullscreen&&document.exitFullscreen().catch(()=>{})}
+  else if(el.requestFullscreen){el.requestFullscreen().catch(()=>{})}
+}
+fsBtn.onclick=toggleFs;
+document.getElementById("menu").onclick=()=>document.getElementById("app").classList.toggle("drawer");
+document.addEventListener("keydown",e=>{
+  if(e.target.closest("input,textarea"))return;
+  if(["ArrowRight","PageDown"," "].includes(e.key)){e.preventDefault();go(cur+1)}
+  else if(["ArrowLeft","PageUp"].includes(e.key)){e.preventDefault();go(cur-1)}
+  else if(e.key==="Home")go(0);
+  else if(e.key==="End")go(slides.length-1);
+  else if(e.key.toLowerCase()==="n")toggleNotes();
+  else if(e.key.toLowerCase()==="f")toggleFs();
+});
+let tx=null;
+document.getElementById("deck").addEventListener("touchstart",e=>{tx=e.touches[0].clientX},{passive:true});
+document.getElementById("deck").addEventListener("touchend",e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>60)go(cur+(dx<0?1:-1));tx=null});
+let start=0;
+try{const v=parseInt(localStorage.getItem("fh-slide"),10);if(!isNaN(v))start=v;if(localStorage.getItem("fh-notes")==="1"){notes.hidden=false;notesBtn.setAttribute("aria-pressed","true")}}catch(e){}
+go(start);
+</script>
+
+</body></html>

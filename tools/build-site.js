@@ -42,6 +42,7 @@ const PAGES = [
   "metaburn-ai-coach.html",
   "order-history.html",
   "understanding-metabolism.html",
+  "foundations-of-health.html",
 ];
 
 const FILES = [
