@@ -43,6 +43,7 @@ const PAGES = [
   "order-history.html",
   "understanding-metabolism.html",
   "foundations-of-health.html",
+  "foundations.html",
 ];
 
 const FILES = [

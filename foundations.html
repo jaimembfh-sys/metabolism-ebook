@@ -1,0 +1,698 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundations of Health | Mind-Body Functional Health</title>
+    <link rel="icon" type="image/png" href="logos/favicon-mind-body.png">
+    <link rel="stylesheet" href="styles/brand.css">
+    <script src="scripts/a11y.js" defer></script>
+    <style>
+        :root {
+            --ink: #1f2e35;
+            --teal: #34657a;
+            --gold: #c19a6b;
+            --cream: #f9f6f1;
+            --paper: #fffefb;
+            --muted: #59656b;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Montserrat", "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--paper);
+            min-height: 100vh;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-wrapper {
+            background: linear-gradient(140deg, #edf4f7 0%, #f9f4ea 100%);
+            padding: 3rem 2rem;
+        }
+
+        .eyebrow {
+            margin: 0;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin: 1rem 0 1.2rem;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            color: var(--teal);
+            font-size: clamp(3.2rem, 8vw, 4.5rem);
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .hero-subhead {
+            margin: 0 0 2.2rem;
+            font-size: 1.25rem;
+            color: var(--muted);
+            line-height: 1.5;
+            max-width: 600px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem 2.2rem;
+            border-radius: 999px;
+            background: var(--gold);
+            color: var(--ink);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.88rem;
+            font-weight: 700;
+            border: 2px solid var(--gold);
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 24px rgba(193,154,107,0.3);
+        }
+
+        .hero-cta:hover {
+            background: #b8885f;
+            border-color: #b8885f;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 36px rgba(193,154,107,0.4);
+        }
+
+        /* ===== INTRO CARD ===== */
+        .intro-section {
+            max-width: 980px;
+            margin: 3rem auto 0;
+            padding: 3rem 2rem;
+            background: var(--cream);
+            border-top: 3px solid var(--gold);
+        }
+
+        .intro-title {
+            margin: 0 0 0.8rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .intro-headline {
+            margin: 0 0 1.2rem;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            line-height: 1.25;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .byline {
+            margin: 0;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--muted);
+        }
+
+        .hero-wrapper .byline {
+            margin: 0 0 1.5rem;
+        }
+
+        /* ===== PROBLEM/AGITATION SECTION ===== */
+        .problem-section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: var(--teal);
+            color: white;
+        }
+
+        .problem-section h2 {
+            margin: 0 0 1.4rem;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .problem-section p {
+            margin: 0.8rem 0;
+            line-height: 1.65;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.95);
+        }
+
+        /* ===== AGITATION SECTION ===== */
+        .agitation-section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: #f0f4f7;
+        }
+
+        .agitation-section h2 {
+            margin: 0 0 1.4rem;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .agitation-section p {
+            margin: 0.8rem 0;
+            line-height: 1.68;
+            font-size: 1rem;
+            color: #2f3d43;
+        }
+
+        /* ===== WHAT'S INSIDE SECTION ===== */
+        .benefits-section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: var(--cream);
+        }
+
+        .benefits-headline {
+            margin: 0 0 2rem;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            padding: 1.8rem;
+            background: white;
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+        }
+
+        .benefit-icon {
+            display: none;
+        }
+
+        .benefit-card::before {
+            content: "\2713";
+            display: inline-block;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+
+        .benefit-title {
+            margin: 0 0 0.8rem 0;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--teal);
+            display: inline;
+        }
+
+        .benefit-text {
+            margin: 0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            color: #2f3d43;
+        }
+
+        /* ===== WHO THIS IS FOR ===== */
+        .audience-section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: white;
+        }
+
+        .audience-headline {
+            margin: 0 0 2rem;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .audience-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .audience-list li {
+            margin: 0 0 1.2rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+            font-size: 1rem;
+            color: #2f3d43;
+        }
+
+        .audience-list li:before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* ===== VALUE SECTION ===== */
+        .value-section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: #dff3f4;
+        }
+
+        .value-headline {
+            margin: 0 0 1.6rem;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .value-intro {
+            margin: 0 0 2rem;
+            font-size: 1.05rem;
+            color: var(--ink);
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .investment-line {
+            margin: 1.5rem 0 0.5rem;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 2.8rem;
+            color: var(--teal);
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .value-list {
+            margin: 2rem 0 0;
+            padding: 1.2rem 0;
+            list-style: none;
+            border-top: 2px solid rgba(31,46,53,0.2);
+            border-bottom: 2px solid rgba(31,46,53,0.2);
+        }
+
+        .value-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            padding: 0.9rem 0;
+            font-size: 1rem;
+            color: var(--ink);
+            border-bottom: 1px solid rgba(31,46,53,0.15);
+        }
+
+        .value-list li:last-child {
+            border-bottom: none;
+        }
+
+        .value-list li span:first-child {
+            flex: 1;
+        }
+
+        .value-list li span:last-child {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .value-list li.total {
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--teal);
+            padding: 1rem 0;
+            margin-top: 0.5rem;
+        }
+
+        .value-list li.total span:last-child {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.4rem;
+        }
+
+        /* ===== AUTHOR SECTION ===== */
+        .author-section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: #f5f8fa;
+        }
+
+        .author-container {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .author-photo {
+            width: 180px;
+            height: 180px;
+            background: var(--cream);
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .author-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+            border-radius: 50%;
+        }
+
+        .author-content h3 {
+            margin: 0 0 0.4rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .author-credentials {
+            margin: 0 0 1rem;
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        .author-bio {
+            margin: 0;
+            line-height: 1.7;
+            font-size: 0.98rem;
+            color: #2f3d43;
+        }
+
+        .author-tagline {
+            margin-top: 1rem;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        /* ===== CTA SECTIONS ===== */
+        .mid-cta-section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+            background: white;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.1rem 2rem;
+            border-radius: 999px;
+            background: var(--teal);
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border: 2px solid var(--teal);
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 24px rgba(52,101,122,0.3);
+            margin-bottom: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #1f4d62;
+            border-color: #1f4d62;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 36px rgba(52,101,122,0.4);
+        }
+
+        .cta-reassurance {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        /* ===== FINAL CTA SECTION ===== */
+        .final-cta-section {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            background: var(--teal);
+            text-align: center;
+        }
+
+        .final-cta-headline {
+            margin: 0 0 2rem;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            color: var(--gold);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .final-cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.3rem 2.5rem;
+            border-radius: 999px;
+            background: var(--gold);
+            color: var(--ink);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 2px solid var(--gold);
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 24px rgba(193,154,107,0.4);
+        }
+
+        .final-cta-button:hover {
+            background: #b8885f;
+            border-color: #b8885f;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 36px rgba(193,154,107,0.5);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(52,101,122,0.15);
+        }
+
+        .footer-brand {
+            margin: 0;
+            font-weight: 700;
+            color: var(--teal);
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            margin: 0.5rem 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .disclaimer {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            h1 { font-size: clamp(2.4rem, 7vw, 3.2rem); }
+            .hero-wrapper { padding: 2.5rem 1.25rem; }
+            
+            .intro-section { padding: 2.5rem 1.25rem; }
+            .problem-section { padding: 2.5rem 1.25rem; }
+            .agitation-section { padding: 2.5rem 1.25rem; }
+            .benefits-section { padding: 2.5rem 1.25rem; }
+            .audience-section { padding: 2.5rem 1.25rem; }
+            .value-section { padding: 2.5rem 1.25rem; }
+            .author-section { padding: 2.5rem 1.25rem; }
+            .mid-cta-section { padding: 2rem 1.25rem; }
+            .final-cta-section { padding: 3rem 1.25rem; }
+            footer { padding: 1.5rem 1.25rem; }
+
+            .author-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .author-photo {
+                margin: 0 auto;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: clamp(2rem, 6vw, 2.8rem); }
+            .hero-cta {
+                width: 100%;
+                padding: 1rem 1.5rem;
+            }
+            .final-cta-button {
+                width: 100%;
+                padding: 1rem 1.5rem;
+            }
+            .cta-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero-wrapper">
+        <p class="eyebrow">Mind-Body Functional Health</p>
+        <h1>Foundations of Health</h1>
+        <p class="hero-subhead">Heal the mind, the body and the spirit together, and build health that lasts</p>
+        <p class="byline">By Jaime Jenkins</p>
+        <a class="hero-cta" href="mailto:hello@mindbodyfunctionalhealth.com?subject=Foundations%20of%20Health%20Order%20-%20$37">Get Foundations of Health - $37</a>
+    </section>
+
+    <!-- INTRO SECTION -->
+    <section class="intro-section">
+        <p class="intro-title">The Foundation</p>
+        <h2 class="intro-headline">Lasting Health Comes From Treating All Three Systems: Mind, Body and Spirit</h2>
+    </section>
+
+    <!-- PROBLEM SECTION -->
+    <section class="problem-section">
+        <h2>You've Tried Fixing One Piece at a Time</h2>
+        <p>A new diet. A stack of supplements. A workout plan. Maybe even therapy or a meditation app.</p>
+        <p>Some of it helped for a while. But the fatigue, the stress, the stubborn symptoms and the old patterns keep coming back.</p>
+        <p>That's not because you lack willpower. It's because your body, your mind and your spirit are one system, and healing only one part leaves the others pulling you back.</p>
+    </section>
+
+    <!-- AGITATION SECTION -->
+    <section class="agitation-section">
+        <h2>What's Really Going On</h2>
+        <p>A nervous system stuck in fight, flight or freeze shuts down digestion and immunity. Inflammatory foods and toxins wear down your gut. Beliefs wired in childhood keep you repeating the same patterns.</p>
+        <p>Each of these feeds the others. Until you address them together, you keep starting over.</p>
+        <p>The good news: we are designed to heal and change. You just need the right foundation.</p>
+    </section>
+
+    <!-- WHAT'S INSIDE SECTION -->
+    <section class="benefits-section">
+        <h2 class="benefits-headline">What's Inside Foundations of Health</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h3 class="benefit-title">1. Reset &amp; De-stress the Nervous System</h3>
+                <p class="benefit-text">How fight, flight and freeze affect digestion, immunity, blood sugar and sleep, and simple tools like breath work and vagal toning to switch back into rest and repair.</p>
+            </div>
+            <div class="benefit-card">
+                <h3 class="benefit-title">2. Restore Nutrition</h3>
+                <p class="benefit-text">The foods that inflame and the foods that love you back. Sugar, gluten, seed oils and dairy explained, plus the key vitamins and minerals your body runs on.</p>
+            </div>
+            <div class="benefit-card">
+                <h3 class="benefit-title">3. Rewire Trauma &amp; Subconscious Beliefs</h3>
+                <p class="benefit-text">How early experiences wire who you believe you are, and the methods that actually help the brain rewire.</p>
+            </div>
+            <div class="benefit-card">
+                <h3 class="benefit-title">4. Find Meaning &amp; Purpose</h3>
+                <p class="benefit-text">Why purpose matters for healing, and practical ways to find yours: future writing, finding your why, and discovering your gifts.</p>
+            </div>
+            <div class="benefit-card">
+                <h3 class="benefit-title">5. Heal the Gut</h3>
+                <p class="benefit-text">Leaky gut, SIBO, dysbiosis and your "second brain," the signs your gut needs help, and the steps to restore it.</p>
+            </div>
+            <div class="benefit-card">
+                <h3 class="benefit-title">6. Remove Toxic Buildup</h3>
+                <p class="benefit-text">What's building up in your body, where it comes from, and simple ways to lower your toxic load at home and help your body clear it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUDIENCE SECTION -->
+    <section class="audience-section">
+        <h2 class="audience-headline">Who This Is For</h2>
+        <ul class="audience-list">
+            <li>You're tired of treating symptoms one at a time and want to understand the root</li>
+            <li>You feel stuck in old patterns of stress, exhaustion or emotional eating</li>
+            <li>You want a faith-centered approach that treats you as mind, body and spirit</li>
+            <li>You're ready for a clear, science-based starting point</li>
+        </ul>
+    </section>
+
+    <!-- MID CTA SECTION -->
+    <section class="mid-cta-section">
+        <a class="cta-button" href="mailto:hello@mindbodyfunctionalhealth.com?subject=Foundations%20of%20Health%20Order%20-%20$37">Get Foundations of Health - $37</a>
+        <span class="cta-reassurance">Instant online access. Go at your own pace.</span>
+    </section>
+
+    <!-- VALUE SECTION -->
+    <section class="value-section">
+        <h2 class="value-headline">What You Get</h2>
+        <p class="value-intro">A complete roadmap to the six steps of restoring health, taught by a certified functional nutritionist.</p>
+        <div class="investment-line">$37</div>
+        <p class="value-intro">Your Investment</p>
+        <ul class="audience-list">
+            <li>The full Foundations of Health course: 50 slides across six steps</li>
+            <li>The science behind each step, explained simply</li>
+            <li>Practical tools you can start using today</li>
+        </ul>
+    </section>
+
+    <!-- AUTHOR SECTION -->
+    <section class="author-section">
+        <div class="author-container">
+            <div class="author-photo"><img src="images/foundations/jaime-seated.webp" alt="Jaime Jenkins"></div>
+            <div class="author-content">
+                <h3>Jaime Jenkins</h3>
+                <p class="author-credentials">MBFH<br>Certified Functional Nutritionist | Brain MD Coach | Mind-Body Health Practitioner</p>
+                <p class="author-bio">I spent years searching for real answers in a sea of conflicting advice. As a certified Functional Nutritionist I have trained under many well known Functional Medicine Practitioners, such as Dr Mark Hyman, Dr Frank Lipman, Dr. Daniel Amen, and many more. I studied cellular health, personally worked with Dr. Daniel Pompa, and worked alongside Dr. Josh Axe's team. Foundations of Health brings together everything I've learned about healing the whole person.</p>
+                <p class="author-tagline">I don't just teach this. I live it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="final-cta-section">
+        <h2 class="final-cta-headline">Ready to Build Your Foundation?</h2>
+        <a class="final-cta-button" href="mailto:hello@mindbodyfunctionalhealth.com?subject=Foundations%20of%20Health%20Order%20-%20$37">Get Foundations of Health - $37</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p class="footer-brand">Jaime Jenkins, MBFH | Mind-Body Functional Health</p>
+        <p class="footer-links">www.mindbodyfunctionalhealth.com</p>
+        <p class="disclaimer">Individual results vary. This course is for educational purposes and does not constitute medical advice.</p>
+    </footer>
+</body>
+</html>
