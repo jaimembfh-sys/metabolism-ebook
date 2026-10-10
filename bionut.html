@@ -12,48 +12,54 @@
     <script src="scripts/a11y.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ink: #1f2e35;
-            --teal: #34657a;
-            --gold: #c19a6b;
-            --cream: #f9f6f1;
-            --paper: #fffefb;
-            --muted: #59656b;
-            --bluegreen: #dff3f4;
+            --ink: #1B2A2D;
+            --teal: #1F4F5C;
+            --gold: #B9873A;
+            --gold-ink: #1A150C;
+            --cream: #E2EBE8;
+            --paper: #EEF2F0;
+            --card: #FFFFFF;
+            --line: #D3DDDA;
+            --muted: #56676A;
+            --on-teal: #F2F6F4;
+            --on-teal-muted: #BFD2D3;
+            --bluegreen: #E2EBE8;
         }
 
         * { box-sizing: border-box; }
 
         body {
             margin: 0;
-            font-family: "Montserrat", "Segoe UI", sans-serif;
+            font-family: "Figtree", "Segoe UI", sans-serif;
             color: var(--ink);
             background: var(--paper);
         }
 
         .hero-wrapper {
-            background: linear-gradient(140deg, #edf4f7 0%, #f9f4ea 100%);
+            background: var(--card);
+            border-bottom: 1px solid var(--line);
             padding: 2.25rem 2rem;
         }
 
         .eyebrow {
             margin: 0;
-            color: var(--gold);
+            color: var(--teal);
             text-transform: uppercase;
-            letter-spacing: 0.22em;
+            letter-spacing: 0.14em;
             font-size: 0.75rem;
             font-weight: 700;
         }
 
         h1 {
             margin: 1rem 0 0.6rem;
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: "Gloock", Georgia, serif;
             color: var(--teal);
             font-size: clamp(2.2rem, 4.4vw, 3.5rem);
-            line-height: 1.02;
-            font-weight: 700;
+            line-height: 1.05;
+            font-weight: 400;
         }
 
         .hero-subhead {
@@ -66,7 +72,7 @@
         .hero-byline {
             margin: 0.7rem 0 0;
             font-weight: 700;
-            color: #2d4c5b;
+            color: var(--teal);
         }
 
         .hero-cta-wrap {
@@ -77,24 +83,22 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 1.1rem 2rem;
-            border-radius: 999px;
+            padding: 16px 26px;
+            border-radius: 6px;
             background: var(--gold);
-            color: var(--ink);
+            color: var(--gold-ink);
             text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-size: 0.84rem;
+            letter-spacing: 0.02em;
+            font-size: 1rem;
             font-weight: 700;
-            border: 2px solid var(--gold);
-            transition: all 0.25s ease;
-            box-shadow: 0 8px 24px rgba(193,154,107,0.3);
+            border: 0;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
         }
 
         .hero-cta:hover {
-            background: #b8885f;
-            border-color: #b8885f;
+            background: #A37630;
             transform: translateY(-2px);
+            box-shadow: 0 8px 18px -8px rgba(27,42,45,0.45);
         }
 
         /* ---- hero layout: copy beside the art on desktop ---- */
@@ -136,8 +140,8 @@
             border-radius: 3px 8px 8px 3px;
             background: var(--ink);
             box-shadow:
-                0 30px 60px -18px rgba(31, 46, 53, 0.45),
-                0 10px 22px -10px rgba(31, 46, 53, 0.28);
+                0 30px 60px -18px rgba(27, 42, 45, 0.45),
+                0 10px 22px -10px rgba(27, 42, 45, 0.28);
         }
 
         .hero-cover img {
@@ -152,12 +156,12 @@
             right: 0;
             bottom: 4%;
             width: 36%;
-            background: linear-gradient(160deg, #2b3339 0%, #14191d 55%, #1f262b 100%);
+            background: linear-gradient(160deg, #2A3A3E 0%, #142024 55%, #1B2A2D 100%);
             border-radius: 9.5cqw;
             padding: 1.05cqw;
             box-shadow:
-                0 34px 60px -16px rgba(31, 46, 53, 0.5),
-                0 12px 24px -10px rgba(31, 46, 53, 0.3),
+                0 34px 60px -16px rgba(27, 42, 45, 0.5),
+                0 12px 24px -10px rgba(27, 42, 45, 0.3),
                 inset 0 0 0 0.18cqw rgba(255, 255, 255, 0.14);
         }
 
@@ -169,7 +173,7 @@
             position: relative;
             border-radius: 8.4cqw;
             overflow: hidden;
-            background: var(--paper);
+            background: var(--card);
             aspect-ratio: 1170 / 2094;
             font-size: 1.38cqw;
             display: flex;
@@ -185,30 +189,30 @@
             transform: translateX(-50%);
             width: 26%;
             height: 0.42em;
-            border-radius: 999px;
-            background: #14191d;
+            border-radius: 1em;
+            background: #142024;
             z-index: 3;
         }
 
         /* ---- live miniature of the Lesson 1 screen ---- */
         .ps-progress {
             padding: 2.1em 1.35em 0.85em;
-            border-bottom: 1px solid #ece5db;
-            background: var(--paper);
+            border-bottom: 1px solid var(--line);
+            background: var(--card);
         }
 
         .ps-bar {
             position: relative;
             height: 0.62em;
-            border-radius: 999px;
-            background: #e4e7e9;
+            border-radius: 1em;
+            background: var(--cream);
         }
 
         .ps-bar span {
             position: absolute;
             inset: 0 auto 0 0;
             width: 11%;
-            border-radius: 999px;
+            border-radius: 1em;
             background: var(--gold);
         }
 
@@ -217,7 +221,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            background-image: radial-gradient(circle, #c9ced1 0.11em, transparent 0.12em);
+            background-image: radial-gradient(circle, #A9BAB7 0.11em, transparent 0.12em);
             background-size: 25% 100%;
             background-position: 12.5% center;
             background-repeat: repeat-x;
@@ -230,7 +234,7 @@
             font-weight: 700;
             letter-spacing: 0.11em;
             text-transform: uppercase;
-            color: #8d999f;
+            color: var(--muted);
             white-space: nowrap;
         }
 
@@ -244,19 +248,19 @@
 
         .ps-eyebrow {
             margin: 0;
-            color: var(--gold);
+            color: var(--teal);
             text-transform: uppercase;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.14em;
             font-size: 0.78em;
             font-weight: 700;
         }
 
         .ps-title {
             margin: 0.55em 0 0.9em;
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: "Gloock", Georgia, serif;
             font-size: 2.05em;
             line-height: 1.08;
-            font-weight: 700;
+            font-weight: 400;
             color: var(--teal);
         }
 
@@ -287,24 +291,24 @@
 
         .section {
             padding: 2rem;
-            border-radius: 18px;
-            border: 1px solid rgba(52,101,122,0.12);
-            background: #fff;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            background: var(--card);
         }
 
         .section h2 {
             margin: 0 0 0.9rem;
+            font-family: "Gloock", Georgia, serif;
             color: var(--teal);
-            font-size: 1.3rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-weight: 700;
+            font-size: 2rem;
+            line-height: 1.2;
+            font-weight: 400;
         }
 
         .section p {
             margin: 0.7rem 0;
             line-height: 1.68;
-            color: #2f3d43;
+            color: var(--ink);
         }
 
         .section-dark {
@@ -312,11 +316,11 @@
             border-color: var(--teal);
         }
 
-        .section-dark h2 { color: var(--gold); }
-        .section-dark p { color: rgba(255,255,255,0.95); }
+        .section-dark h2 { color: var(--on-teal); }
+        .section-dark p { color: var(--on-teal); }
 
         .section-cream { background: var(--cream); }
-        .section-bluegreen { background: var(--bluegreen); }
+        .section-bluegreen { background: var(--card); }
 
         .inside-list {
             margin: 0;
@@ -327,9 +331,9 @@
         }
 
         .inside-item {
-            background: #fff;
-            border: 1px solid rgba(193,154,107,0.28);
-            border-radius: 12px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 8px;
             padding: 1rem 1rem 1rem 1.2rem;
             position: relative;
         }
@@ -392,10 +396,10 @@
 
         .ks-title {
             margin: 0;
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: "Gloock", Georgia, serif;
             font-size: 1.75em;
             line-height: 1.05;
-            font-weight: 700;
+            font-weight: 400;
             color: var(--teal);
         }
 
@@ -410,9 +414,9 @@
             margin: 1.15em 0 0;
             padding-bottom: 0.3em;
             border-bottom: 0.12em solid var(--gold);
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: "Gloock", Georgia, serif;
             font-size: 1.12em;
-            font-weight: 700;
+            font-weight: 400;
             color: var(--teal);
         }
 
@@ -426,9 +430,9 @@
 
         .ks-card-title {
             margin: 0;
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: "Gloock", Georgia, serif;
             font-size: 1.02em;
-            font-weight: 700;
+            font-weight: 400;
             color: var(--teal);
         }
 
@@ -436,7 +440,7 @@
             margin: 0.4em 0 0;
             font-size: 0.76em;
             line-height: 1.35;
-            color: #3d4a50;
+            color: var(--ink);
         }
 
         .inside-item p {
@@ -455,12 +459,12 @@
             position: relative;
             padding-left: 1.3rem;
             line-height: 1.55;
-            color: #2f3d43;
+            color: var(--ink);
         }
 
         .bullet-list li::before {
             content: "\25CF";
-            color: var(--teal);
+            color: var(--gold);
             font-size: 0.55rem;
             position: absolute;
             left: 0;
@@ -492,9 +496,10 @@
 
         .author-name {
             margin: 0;
-            font-size: 1.35rem;
+            font-family: "Gloock", Georgia, serif;
+            font-size: 1.6rem;
             color: var(--teal);
-            font-weight: 700;
+            font-weight: 400;
         }
 
         .author-creds {
@@ -527,8 +532,8 @@
             margin: 0.8rem 0 0;
             padding: 0;
             list-style: none;
-            border-top: 2px solid rgba(31,46,53,0.2);
-            border-bottom: 2px solid rgba(31,46,53,0.2);
+            border-top: 2px solid var(--line);
+            border-bottom: 2px solid var(--line);
         }
 
         .value-table li {
@@ -536,29 +541,29 @@
             justify-content: space-between;
             gap: 1rem;
             padding: 0.7rem 0;
-            border-bottom: 1px solid rgba(31,46,53,0.16);
-            color: #2f3d43;
+            border-bottom: 1px solid var(--line);
+            color: var(--ink);
         }
 
         .value-table li:last-child { border-bottom: none; }
 
         .value-table .total {
-            font-weight: 800;
+            font-weight: 700;
             color: var(--teal);
         }
 
         .investment {
             margin: 1rem 0 0.35rem;
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: "Gloock", Georgia, serif;
             font-size: clamp(2rem, 6vw, 2.8rem);
             color: var(--teal);
             line-height: 1;
-            font-weight: 700;
+            font-weight: 400;
         }
 
         .cta-band {
             padding: 2rem;
-            border-radius: 18px;
+            border-radius: 8px;
             background: var(--teal);
             text-align: center;
         }
@@ -570,34 +575,38 @@
         .reassurance {
             margin: 0.9rem 0 0;
             font-size: 0.9rem;
-            color: rgba(255,255,255,0.92);
-            font-weight: 500;
+            color: var(--on-teal-muted);
+            font-weight: 600;
         }
 
         footer {
-            width: min(980px, 94vw);
-            margin: 0 auto 2.5rem;
+            margin: 0;
+            padding: 2rem;
             text-align: center;
-            padding: 1.4rem 0;
-            border-top: 1px solid rgba(52,101,122,0.15);
+            background: var(--teal);
+            border-top: 1px solid rgba(255,255,255,0.12);
         }
 
         .footer-brand {
             margin: 0;
             font-weight: 700;
-            color: var(--teal);
-        }
-
-        .footer-site {
-            margin: 0.45rem 0;
-            color: var(--muted);
+            color: #fff;
             font-size: 0.95rem;
         }
 
+        .footer-site {
+            margin: 0.5rem 0;
+            color: var(--on-teal-muted);
+            font-size: 0.88rem;
+        }
+
+        footer a { color: #fff; }
+
         .disclaimer {
-            margin: 0.7rem 0 0;
-            font-size: 0.82rem;
-            color: #6c767b;
+            margin: 1rem auto 0;
+            max-width: 760px;
+            font-size: 0.78rem;
+            color: var(--on-teal-muted);
         }
 
         /* Two hero columns get cramped before 768px, so the art stacks earlier. */
@@ -618,6 +627,7 @@
             .hero-wrapper { padding: 2.5rem 1.25rem; }
             .shell { width: min(980px, 96vw); }
             .section { padding: 1.5rem 1.15rem; }
+            .section h2 { font-size: 1.65rem; }
             .cta-band { padding: 1.6rem 1.15rem; }
             .author-wrap {
                 grid-template-columns: 1fr;
@@ -659,7 +669,7 @@
         .hero-art-stage { aspect-ratio: 16 / 10; }
         .hero-cover {
             width: 100%;
-            border-radius: 12px;
+            border-radius: 8px;
             background: transparent;
         }
 
@@ -684,11 +694,17 @@
 
         /* The template's .bullet-list is dark text; on the teal section it
            needs the section's light text and a gold bullet. */
-        .section-dark .bullet-list li { color: rgba(255,255,255,0.95); }
+        .section-dark .bullet-list li { color: var(--on-teal); }
         .section-dark .bullet-list li::before { color: var(--gold); }
     </style>
 </head>
 <body>
+    <header class="mb-site-header">
+        <div class="mb-site-header-inner">
+            <span class="mb-site-brand"><img src="images/foundations/mbfh-mark.webp" alt="" width="42" height="42"><span><b>Mind Body</b><small>Functional Health</small></span></span>
+        </div>
+    </header>
+
     <section class="hero-wrapper">
         <div class="hero-inner">
             <div class="hero-copy">
