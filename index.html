@@ -6147,20 +6147,6 @@
                 }
             });
 
-            // Diagonal watermark overlay
-            (function() {
-                var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="500" height="350">' +
-                    '<text x="250" y="175" fill="rgba(31,79,92,0.04)" font-family="Figtree,sans-serif"' +
-                    ' font-size="22" font-weight="900" text-anchor="middle" dominant-baseline="middle"' +
-                    ' transform="rotate(-45,250,175)">MINDBODY FUNCTIONAL HEALTH</text></svg>';
-                var wm = document.createElement('div');
-                wm.setAttribute('aria-hidden', 'true');
-                wm.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;' +
-                    'z-index:9998;background-image:url("data:image/svg+xml,' + encodeURIComponent(svg) + '");' +
-                    'background-repeat:repeat;background-size:500px 350px;';
-                document.body.appendChild(wm);
-            })();
-
 
             // ============================================================
             // RATE LIMITING &mdash; server-enforced, rolling 24h per anonymous device
