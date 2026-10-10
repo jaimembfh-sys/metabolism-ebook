@@ -28,7 +28,7 @@
     <!-- Google Fonts for Classy Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS for Styling -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,17 +36,24 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    // Main-site look (mindbodyfunctionalhealth.com), 2026-10-09.
                     fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Montserrat"', 'sans-serif'],
+                        serif: ['"Gloock"', 'Georgia', 'serif'],
+                        sans: ['"Figtree"', '"Segoe UI"', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            dark: '#34657a', // Exact match for your teal
-                            light: '#eef3f5', // A soft, coordinating icy-teal/gray background
-                            accent: '#c19a6b', // Your lovely gold
-                            text: '#2c3e50'    // A richer slate for text readability
+                            dark: '#1F4F5C',   // teal - header, footer, headings, links
+                            light: '#E2EBE8',  // soft teal tint
+                            accent: '#B9873A', // gold - buttons, small highlights
+                            text: '#1B2A2D'    // body text
                         }
+                    },
+                    // Cards and panels: 8px corners, as on the main site.
+                    borderRadius: {
+                        xl: '8px',
+                        '2xl': '8px',
+                        '3xl': '8px',
                     }
                 }
             }
@@ -65,17 +72,17 @@
         
         /* Typography Polish */
         p { line-height: 1.8; margin-bottom: 1.5rem; color: #4a5568; }
-        h1, h2, h3, h4 { color: #34657a; }
+        h1, h2, h3, h4 { color: #1F4F5C; }
         
         .pro-tip-box {
-            background: linear-gradient(to right, #eef3f5, #ffffff);
-            border-left: 4px solid #c19a6b;
+            background: linear-gradient(to right, #E2EBE8, #ffffff);
+            border-left: 4px solid #B9873A;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
         /* Lesson progress bar animations */
         @keyframes progressGlow {
-            0%, 100% { box-shadow: 0 0 8px 2px rgba(193,154,107,0.45); }
-            50%       { box-shadow: 0 0 24px 7px rgba(193,154,107,0.9); }
+            0%, 100% { box-shadow: 0 0 8px 2px rgba(185,135,58,0.45); }
+            50%       { box-shadow: 0 0 24px 7px rgba(185,135,58,0.9); }
         }
         @keyframes confettiBurst {
             0%   { opacity: 1; transform: translate(0,0) rotate(0deg) scale(1); }
@@ -107,10 +114,10 @@
             margin-bottom: 0.6rem;
             text-align: center;
             text-transform: uppercase;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Gloock', serif;
             font-size: 1.3rem;
             font-weight: 700;
-            color: #34657a;
+            color: #1F4F5C;
         }
         .catalog-card-media {
             width: 100%;
@@ -155,16 +162,16 @@
         /* Styled first paragraph &mdash; larger, teal */
         .section-block > p:first-of-type {
             font-size: 1.15rem;
-            color: #34657a;
+            color: #1F4F5C;
             line-height: 1.9;
         }
 
         /* Drop cap on first letter */
         .section-block > p:first-of-type::first-letter {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Gloock', serif;
             font-size: 3.5rem;
             font-weight: 700;
-            color: #c19a6b;
+            color: #B9873A;
             float: left;
             line-height: 0.78;
             margin-right: 0.1em;
@@ -185,15 +192,15 @@
             content: '\2736';
             position: absolute;
             left: 0;
-            color: #c19a6b;
+            color: #B9873A;
             font-size: 0.75rem;
             top: 0.2rem;
         }
 
         /* Pull quote */
         .pull-quote {
-            border-left: 4px solid #c19a6b;
-            background: #fafaf9;
+            border-left: 4px solid #B9873A;
+            background: #EEF2F0;
             padding: 1.75rem 2rem 1.75rem 3rem;
             margin: 2.5rem 0;
             position: relative;
@@ -201,9 +208,9 @@
         }
         .pull-quote::before {
             content: '\201C';
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Gloock', serif;
             font-size: 5rem;
-            color: #c19a6b;
+            color: #B9873A;
             opacity: 0.55;
             line-height: 1;
             position: absolute;
@@ -211,52 +218,52 @@
             left: 0.6rem;
         }
         .pull-quote p {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Gloock', serif;
             font-size: 1.4rem;
             font-style: italic;
-            color: #34657a;
+            color: #1F4F5C;
             line-height: 1.75;
             margin: 0;
         }
 
         /* KEY INSIGHT box */
         .key-insight {
-            background: #fafaf9;
-            border: 1.5px solid #c19a6b;
+            background: #EEF2F0;
+            border: 1.5px solid #B9873A;
             border-radius: 0.75rem;
             padding: 2rem 2.25rem;
             margin: 2.5rem 0;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(193,154,107,0.12);
+            box-shadow: 0 4px 20px rgba(185,135,58,0.12);
         }
         .key-insight-label {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Figtree', sans-serif;
             font-size: 0.6rem;
             font-weight: 700;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: #c19a6b;
+            color: #B9873A;
             margin-bottom: 0.75rem;
         }
         .key-insight-fact {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Gloock', serif;
             font-size: 1.55rem;
             font-weight: 700;
-            color: #34657a;
+            color: #1F4F5C;
             line-height: 1.45;
         }
 
         /* Lesson summary box */
         .lesson-summary {
-            border: 1.5px solid rgba(193,154,107,0.45);
+            border: 1.5px solid rgba(185,135,58,0.45);
             border-radius: 0.75rem;
             overflow: hidden;
             margin: 2.5rem 0;
         }
         .lesson-summary-header {
-            background: #34657a;
+            background: #1F4F5C;
             color: white;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Figtree', sans-serif;
             font-size: 0.65rem;
             font-weight: 700;
             letter-spacing: 0.28em;
@@ -265,7 +272,7 @@
             text-align: center;
         }
         .lesson-summary-body {
-            background: #faf8f5;
+            background: #EEF2F0;
             padding: 1.25rem 1.5rem;
         }
         .lesson-summary-item {
@@ -273,7 +280,7 @@
             align-items: flex-start;
             gap: 0.75rem;
             padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(193,154,107,0.15);
+            border-bottom: 1px solid rgba(185,135,58,0.15);
             font-size: 0.9rem;
             color: #374151;
             line-height: 1.6;
@@ -282,7 +289,7 @@
             border-bottom: none;
         }
         .lesson-summary-diamond {
-            color: #c19a6b;
+            color: #B9873A;
             font-size: 0.75rem;
             margin-top: 0.25rem;
         }
@@ -301,10 +308,10 @@
             clear: left;
         }
         .inline-img-border {
-            border: 2px solid rgba(193,154,107,0.55);
+            border: 2px solid rgba(185,135,58,0.55);
             border-radius: 0.5rem;
             overflow: hidden;
-            background: #faf8f5;
+            background: #EEF2F0;
         }
         .inline-img-border img {
             width: 100%;
@@ -312,10 +319,10 @@
             display: block;
         }
         .inline-img-caption {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Figtree', sans-serif;
             font-size: 0.7rem;
             font-style: italic;
-            color: #c19a6b;
+            color: #B9873A;
             padding: 0.5rem 0.75rem;
             background: rgba(250,248,245,0.95);
             text-align: center;
@@ -332,10 +339,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #faf8f5;
-            border: 1px dashed rgba(52,101,122,0.35);
-            color: #34657a;
-            font-family: 'Montserrat', sans-serif;
+            background: #EEF2F0;
+            border: 1px dashed rgba(31,79,92,0.35);
+            color: #1F4F5C;
+            font-family: 'Figtree', sans-serif;
             font-size: 0.7rem;
             font-style: italic;
             letter-spacing: 0.04em;
@@ -346,8 +353,8 @@
         @media print { .img-placeholder { display: none; } }
 
         /* ---- Meal planner disclaimer ------------------------------------
-           Brand tokens only: teal #34657a, gold #c19a6b, icy #eef3f5, slate
-           #2c3e50, Cormorant Garamond for the heading and Montserrat for the
+           Brand tokens only: teal #1F4F5C, gold #B9873A, icy #E2EBE8, slate
+           #1B2A2D, Cormorant Garamond for the heading and Montserrat for the
            body, the same pairing the rest of the page uses. */
         .meal-disclaimer-overlay {
             position: fixed;
@@ -357,7 +364,7 @@
             align-items: center;
             justify-content: center;
             padding: 1.25rem;
-            background: rgba(44, 62, 80, 0.55);
+            background: rgba(27, 42, 45, 0.55);
             backdrop-filter: blur(2px);
             overflow-y: auto;
         }
@@ -367,31 +374,31 @@
             max-width: 34rem;
             width: 100%;
             border-radius: 1rem;
-            border-top: 5px solid #c19a6b;
-            box-shadow: 0 18px 50px rgba(44, 62, 80, 0.28);
+            border-top: 5px solid #B9873A;
+            box-shadow: 0 18px 50px rgba(27, 42, 45, 0.28);
             padding: 2rem 1.9rem 1.6rem;
             margin: auto;
         }
         .meal-disclaimer h2 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: 'Gloock', Georgia, serif;
             font-size: 1.9rem;
             font-weight: 700;
-            color: #34657a;
+            color: #1F4F5C;
             margin: 0 0 1rem;
             line-height: 1.15;
         }
         .meal-disclaimer #meal-disclaimer-body p {
-            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-family: 'Figtree', 'Segoe UI', sans-serif;
             font-size: 0.875rem;
             line-height: 1.65;
-            color: #2c3e50;
+            color: #1B2A2D;
             margin: 0 0 0.9rem;
         }
         .meal-disclaimer #meal-disclaimer-body p:last-child {
             margin-bottom: 0;
             padding: 0.75rem 0.9rem;
-            background: #eef3f5;
-            border-left: 3px solid #34657a;
+            background: #E2EBE8;
+            border-left: 3px solid #1F4F5C;
             border-radius: 0 6px 6px 0;
             font-weight: 600;
         }
@@ -402,12 +409,12 @@
             align-items: center;
             margin-top: 1.5rem;
             padding-top: 1.1rem;
-            border-top: 1px solid rgba(52, 101, 122, 0.15);
+            border-top: 1px solid rgba(31, 79, 92, 0.15);
             flex-wrap: wrap;
         }
         .meal-disclaimer-btn-primary,
         .meal-disclaimer-btn-secondary {
-            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-family: 'Figtree', 'Segoe UI', sans-serif;
             font-size: 0.85rem;
             font-weight: 700;
             border-radius: 0.5rem;
@@ -416,22 +423,22 @@
             transition: background-color .15s ease, color .15s ease;
         }
         .meal-disclaimer-btn-primary {
-            background: #34657a;
+            background: #1F4F5C;
             color: #fff;
-            border: 1px solid #34657a;
+            border: 1px solid #1F4F5C;
         }
-        .meal-disclaimer-btn-primary:hover { background: #234553; border-color: #234553; }
+        .meal-disclaimer-btn-primary:hover { background: #173C46; border-color: #173C46; }
         .meal-disclaimer-btn-secondary {
             background: transparent;
-            color: #34657a;
-            border: 1px solid rgba(52, 101, 122, 0.35);
+            color: #1F4F5C;
+            border: 1px solid rgba(31, 79, 92, 0.35);
         }
-        .meal-disclaimer-btn-secondary:hover { background: #eef3f5; }
+        .meal-disclaimer-btn-secondary:hover { background: #E2EBE8; }
         /* The shared focus ring in styles/brand.css only fires on
            :focus-visible. In a dialog the focus has been moved by script, so
            make it visible however it arrived. */
         .meal-disclaimer button:focus {
-            outline: 2px solid #34657a;
+            outline: 2px solid #1F4F5C;
             outline-offset: 2px;
         }
         @media (max-width: 480px) {
@@ -466,7 +473,7 @@
             position: fixed;
             inset: 0;
             z-index: 9999;
-            background: #faf8f5;
+            background: #EEF2F0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -512,7 +519,7 @@
             width: 100%;
             margin-top: 2rem;
             padding: 1.25rem 2rem;
-            background: #c19a6b;
+            background: #B9873A;
             color: #fff;
             font-weight: 700;
             font-size: 1.125rem;
@@ -528,14 +535,14 @@
             transition: all 0.15s ease;
         }
         .c-btn-primary:hover {
-            background: #a68256;
+            background: #A37630;
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
             transform: translateY(-0.125rem);
         }
 
         /* Compact teal action. Was 7 copies. */
         .c-btn-secondary {
-            background: #34657a;
+            background: #1F4F5C;
             color: #fff;
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
@@ -546,12 +553,12 @@
             font-weight: 600;
             transition: background-color 0.15s ease;
         }
-        .c-btn-secondary:hover { background: #234553; }
+        .c-btn-secondary:hover { background: #173C46; }
         .c-btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
 
         /* Inline text action. Was 7 copies. */
         .c-link-accent {
-            color: #c19a6b;
+            color: #B9873A;
             text-decoration: underline;
             font-weight: 600;
             background: none;
@@ -574,7 +581,7 @@
             cursor: pointer;
             transition: border-color 0.15s ease;
         }
-        .c-btn-pill:hover { border-color: #34657a; }
+        .c-btn-pill:hover { border-color: #1F4F5C; }
         .c-btn-pill--xs { padding: 0.375rem 0.75rem; font-size: 0.75rem; line-height: 1rem; }
 
         /* Text inputs. 76 instances across 25 signatures, most of them the same
@@ -594,13 +601,13 @@
             font-size: 0.875rem;
             line-height: 1.25rem;
             background: #fff;
-            color: #2c3e50;
+            color: #1B2A2D;
         }
         .c-input--sm { padding: 0.375rem 0.75rem; }
         .c-input:focus-visible {
-            outline: 2px solid #34657a;
+            outline: 2px solid #1F4F5C;
             outline-offset: 1px;
-            border-color: #34657a;
+            border-color: #1F4F5C;
         }
 
         /* Keyboard focus. The audit found no visible focus treatment anywhere;
@@ -609,7 +616,7 @@
         .c-btn-secondary:focus-visible,
         .c-link-accent:focus-visible,
         .c-btn-pill:focus-visible {
-            outline: 2px solid #34657a;
+            outline: 2px solid #1F4F5C;
             outline-offset: 2px;
         }
 </style>
@@ -618,7 +625,7 @@
     <!-- Memberstack webflow package -->
     <script data-memberstack-app="app_cmpaq9ev900520sz36ulugs78" src="https://static.memberstack.com/scripts/v2/memberstack.js" type="text/javascript"></script>
 </head>
-<body class="bg-[#fafaf9] font-sans text-brand-text min-h-screen">
+<body class="bg-[#EEF2F0] font-sans text-brand-text min-h-screen">
 
 <div id="ebook-content" class="min-h-screen">
 
@@ -629,12 +636,12 @@
         <!-- TAB 0: HOME / DASHBOARD CONTENT            -->
         <!-- ========================================== -->
         <div id="tab-content-home" class="block transition-opacity duration-300 pt-0">
-            <div class="mb-6 -mx-6 md:-mx-12 lg:-mx-20 mt-0 overflow-visible rounded-b-[1.5rem] border-b border-[#dfe9ee] bg-[#f7fafb] shadow-sm">
+            <div class="mb-6 -mx-6 md:-mx-12 lg:-mx-20 mt-0 overflow-visible rounded-b-[1.5rem] border-b border-[#D3DDDA] bg-[#f7fafb] shadow-sm">
                 <div class="flex flex-wrap items-center justify-end gap-3 px-6 py-3 md:px-12 lg:px-20">
                     <a href="contact-us.html" class="inline-flex items-center justify-center rounded-full border border-brand-dark/20 bg-white px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-brand-dark transition hover:border-brand-dark hover:bg-brand-light/40">
                         Contact Us
                     </a>
-                    <button id="login-button" type="button" class="inline-flex items-center justify-center rounded-full bg-brand-dark px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#234553]">
+                    <button id="login-button" type="button" class="inline-flex items-center justify-center rounded-full bg-brand-dark px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#173C46]">
                         Log In
                     </button>
                     <div class="relative">
@@ -650,7 +657,7 @@
             </div>
             
             <div class="space-y-10 mb-16">
-                <div class="rounded-[2rem] border border-[#dfe9ee] bg-[linear-gradient(135deg,#f8f1e6_0%,#f6fafb_60%,#eef3f5_100%)] p-8 md:p-10 shadow-[0_20px_60px_rgba(52,101,122,0.08)] py-6 md:py-7">
+                <div class="rounded-[2rem] border border-[#D3DDDA] bg-[linear-gradient(135deg,#f8f1e6_0%,#f6fafb_60%,#E2EBE8_100%)] p-8 md:p-10 shadow-[0_20px_60px_rgba(31,79,92,0.08)] py-6 md:py-7">
                     <div class="flex justify-center md:justify-start mb-[1.8rem]">
                         <img src="logos/mind-body-cropped.png" alt="Mindbody Functional Health" class="h-[3.2rem] md:h-[4.8rem] w-auto" onerror="this.onerror=null;">
                     </div>
@@ -662,7 +669,7 @@
 
                 <section id="catalog-section" class="mt-2">
                     <div class="flex items-center gap-2 mb-6">
-                        <button type="button" id="catalog-tab-courses" data-catalog-tab="courses" class="inline-flex items-center justify-center rounded-full bg-brand-dark px-5 py-3 text-sm font-semibold uppercase tracking-widest text-white transition hover:bg-[#234553] shadow-sm">
+                        <button type="button" id="catalog-tab-courses" data-catalog-tab="courses" class="inline-flex items-center justify-center rounded-full bg-brand-dark px-5 py-3 text-sm font-semibold uppercase tracking-widest text-white transition hover:bg-[#173C46] shadow-sm">
                             All Courses and Tools
                         </button>
                         <button type="button" id="catalog-tab-dashboard" data-catalog-tab="dashboard" class="inline-flex items-center justify-center rounded-full border border-brand-dark/20 bg-white px-5 py-3 text-sm font-semibold uppercase tracking-widest text-brand-dark transition hover:border-brand-dark hover:bg-brand-light/40 shadow-sm">
@@ -713,7 +720,7 @@
 
             <div class="flex flex-col lg:flex-row gap-6 lg:items-start">
                 <aside class="w-full lg:w-64 lg:flex-shrink-0">
-                    <div class="sticky top-24 rounded-[1.25rem] border border-[#dfe9ee] bg-white pt-[1.875rem] pr-4 pb-4 pl-4 shadow-sm">
+                    <div class="sticky top-24 rounded-[1.25rem] border border-[#D3DDDA] bg-white pt-[1.875rem] pr-4 pb-4 pl-4 shadow-sm">
                         <div class="mb-[1.4375rem] text-center">
                             <img src="logos/mind-body-cropped.png" alt="Mindbody Functional Health" class="mx-auto h-auto" style="max-height:57.5px;width:auto;">
                         </div>
@@ -825,14 +832,14 @@
 
                 <div class="flex-1">
                     <div id="cover-page" class="pt-0 pb-6 px-4">
-                <div style="max-width:480px;margin:0 auto;border-radius:1rem;overflow:hidden;box-shadow:0 10px 48px rgba(52,101,122,0.07),0 2px 18px rgba(193,154,107,0.10);">
+                <div style="max-width:480px;margin:0 auto;border-radius:1rem;overflow:hidden;box-shadow:0 10px 48px rgba(31,79,92,0.07),0 2px 18px rgba(185,135,58,0.10);">
                     <img src="images/1778224470356.png" alt="How Your Body Burns: The Real Science of Metabolism, by Jaime Jenkins" style="width:100%;height:auto;display:block;">
                     <!-- Extended footer, same near-black tone as the cover art itself, so the button area reads as a continuation of the image rather than a hard cut. -->
                     <div style="background:#060c0f;padding:0.7rem 2rem 2.75rem;">
                         <!-- Nudged right of true-center: left/right auto-centering margins
                              (~89.5px each at the reference 480px card width) shifted 10%
                              more to the left, 10% less to the right. -->
-                        <button onclick="showLesson(1)" style="display:block;margin-left:98.5px;margin-right:80.6px;background:#c19a6b;color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.95rem;padding:1rem 2.75rem;border-radius:0.75rem;border:none;cursor:pointer;letter-spacing:0.06em;box-shadow:0 4px 18px rgba(193,154,107,0.35);transition:background 0.2s;" onmouseover="this.style.background='#a68256'" onmouseout="this.style.background='#c19a6b'">Begin Lesson 1 &#x2192;</button>
+                        <button onclick="showLesson(1)" style="display:block;margin-left:98.5px;margin-right:80.6px;background:#B9873A;color:white;font-family:'Figtree',sans-serif;font-weight:700;font-size:0.95rem;padding:1rem 2.75rem;border-radius:0.75rem;border:none;cursor:pointer;letter-spacing:0.06em;box-shadow:0 4px 18px rgba(185,135,58,0.35);transition:background 0.2s;" onmouseover="this.style.background='#A37630'" onmouseout="this.style.background='#B9873A'">Begin Lesson 1 &#x2192;</button>
                     </div>
                 </div>
             </div>
@@ -891,11 +898,11 @@
             <p>Carbohydrates, fats, and proteins are not interchangeable simply because they all contain energy. Claiming that they are is like claiming diesel and gasoline are interchangeable because both are energy sources for engines. Put the wrong fuel in the wrong engine, and the system breaks down. Each macronutrient moves through different metabolic pathways and triggers different hormonal responses. To truly understand metabolism, you have to completely abandon the idea of calories as a math equation and begin to understand food as signals that create a biological response. One of the most important of those responses is a hormone called Insulin.</p>
         </section>
 
-                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #c19a6b;background:rgba(251,248,242,0.88);">
+                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(251,248,242,0.88);">
                 <p class="text-xl mb-2">&#x2728;</p>
-                <h4 class="font-serif text-xl font-bold mb-2" style="color:#34657a;">Your Metabolism Is Unique To You</h4>
+                <h4 class="font-serif text-xl font-bold mb-2" style="color:#1F4F5C;">Your Metabolism Is Unique To You</h4>
                 <p class="font-sans text-sm text-gray-600 leading-relaxed mb-4">Once you finish the Master Class your personal AI Metabolic Coach will ask you 3 questions and build a custom protocol designed specifically for your biology &#x2014; not a generic plan.</p>
-                <button onclick="window.switchTab('ai-tools')" style="color:#c19a6b;background:none;border:none;cursor:pointer;padding:0;font-family:'Montserrat',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.03em;">Go to Your AI Coaching Suite &#x2192;</button>
+                <button onclick="window.switchTab('ai-tools')" style="color:#B9873A;background:none;border:none;cursor:pointer;padding:0;font-family:'Figtree',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.03em;">Go to Your AI Coaching Suite &#x2192;</button>
             </div>
             <div class="key-insight">
                 <p class="key-insight-label">Key Insight</p>
@@ -914,7 +921,7 @@
             </button>
         </div>
 
-        <div id="lesson-2" class="hidden" style="background:linear-gradient(135deg,#f7f4ef 0%,#fafaf9 60%,#eef3f5 100%);">
+        <div id="lesson-2" class="hidden" style="background:#E2EBE8;">
             <div class="flex flex-col items-center gap-1 mb-8 pt-5 text-center">
                 <p class="font-serif text-3xl md:text-4xl font-bold uppercase tracking-wide text-brand-dark leading-tight">How Your Body Burns</p>
                 <p class="text-xs font-bold uppercase tracking-widest text-brand-accent leading-snug">Lesson 2 of 18</p>
@@ -1012,7 +1019,7 @@
             <p>High levels of glucose in the bloodstream can also be directly damaging. Excess sugar behaves almost like a form of internal abrasion, damaging blood vessels, nerves, and tissues over time. This contributes to a higher risk of heart disease, stroke, and nerve damage. Controlling insulin is not only about shrinking fat cells and losing weight—it is about protecting your entire biological system from the ground up.</p>
         </section>
 
-                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#c19a6b;">Your AI Coach understands insulin resistance deeply &#x2014; it will factor this into your personal protocol.</p>
+                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#B9873A;">Your AI Coach understands insulin resistance deeply &#x2014; it will factor this into your personal protocol.</p>
             <div class="lesson-summary">
                 <div class="lesson-summary-header">&#x2736; What You Just Learned</div>
                 <div class="lesson-summary-body">
@@ -1026,7 +1033,7 @@
             </button>
         </div>
 
-        <div id="lesson-3" class="hidden" style="background:linear-gradient(135deg,#f7f4ef 0%,#fafaf9 60%,#eef3f5 100%);">
+        <div id="lesson-3" class="hidden" style="background:#E2EBE8;">
             <div class="flex flex-col items-center gap-1 mb-8 pt-5 text-center">
                 <p class="font-serif text-3xl md:text-4xl font-bold uppercase tracking-wide text-brand-dark leading-tight">How Your Body Burns</p>
                 <p class="text-xs font-bold uppercase tracking-widest text-brand-accent leading-snug">Lesson 3 of 18</p>
@@ -1115,11 +1122,11 @@
             <p>And it's why, when we reach the chapter on what stalls progress, some of the advice will be to eat <em>more.</em> If that sounds backwards, come back and read about the men in Minnesota.</p>
         </section>
 
-                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #c19a6b;background:rgba(251,248,242,0.88);">
+                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(251,248,242,0.88);">
                 <p class="text-xl mb-2">&#x1F9E0;</p>
-                <h4 class="font-serif text-xl font-bold mb-2" style="color:#34657a;">Ready to Decode Your Signals?</h4>
+                <h4 class="font-serif text-xl font-bold mb-2" style="color:#1F4F5C;">Ready to Decode Your Signals?</h4>
                 <p class="font-sans text-sm text-gray-600 leading-relaxed mb-4">Your AI Metabolic Coach is trained in the exact signaling science you are learning right now. After your final lesson it will analyze your personal patterns and tell you exactly what your metabolism needs.</p>
-                <button onclick="window.switchTab('ai-tools')" style="color:#c19a6b;background:none;border:none;cursor:pointer;padding:0;font-family:'Montserrat',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.03em;">Go to Your AI Coaching Suite &#x2192;</button>
+                <button onclick="window.switchTab('ai-tools')" style="color:#B9873A;background:none;border:none;cursor:pointer;padding:0;font-family:'Figtree',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.03em;">Go to Your AI Coaching Suite &#x2192;</button>
             </div>
             <div class="key-insight">
                 <p class="key-insight-label">Key Insight</p>
@@ -1237,7 +1244,7 @@
             <p>That's why no single intervention in this chapter works alone. <strong>You need construction, maintenance, and materials.</strong></p>
         </section>
 
-                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#c19a6b;">The more you understand your mitochondria, the more powerful your AI protocol becomes.</p>
+                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#B9873A;">The more you understand your mitochondria, the more powerful your AI protocol becomes.</p>
             <div class="key-insight">
                 <p class="key-insight-label">Key Insight</p>
                 <p class="key-insight-fact">When mitochondrial function is strong, your body becomes metabolically flexible &mdash; able to seamlessly switch between burning carbohydrates and stored fat without fatigue or cravings.</p>
@@ -1566,7 +1573,7 @@
             </div>
         </section>
 
-                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#c19a6b;">Your appetite patterns are part of what your AI Coach will assess in your personal intake.</p>
+                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#B9873A;">Your appetite patterns are part of what your AI Coach will assess in your personal intake.</p>
             <div class="lesson-summary">
                 <div class="lesson-summary-header">&#x2736; What You Just Learned</div>
                 <div class="lesson-summary-body">
@@ -1580,7 +1587,7 @@
             </button>
         </div>
 
-        <div id="lesson-7" class="hidden" style="background:linear-gradient(135deg,#f7f4ef 0%,#fafaf9 60%,#eef3f5 100%);">
+        <div id="lesson-7" class="hidden" style="background:#E2EBE8;">
             <div class="flex flex-col items-center gap-1 mb-8 pt-5 text-center">
                 <p class="font-serif text-3xl md:text-4xl font-bold uppercase tracking-wide text-brand-dark leading-tight">How Your Body Burns</p>
                 <p class="text-xs font-bold uppercase tracking-widest text-brand-accent leading-snug">Lesson 7 of 18</p>
@@ -1904,7 +1911,7 @@
             </div>
         </section>
 
-                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#c19a6b;">Metabolic flexibility is at the core of how your AI Coach builds your custom plan.</p>
+                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#B9873A;">Metabolic flexibility is at the core of how your AI Coach builds your custom plan.</p>
             <div class="lesson-summary">
                 <div class="lesson-summary-header">&#x2736; What You Just Learned</div>
                 <div class="lesson-summary-body">
@@ -2229,11 +2236,11 @@
 
         </section>
 
-                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #c19a6b;background:rgba(251,248,242,0.88);">
+                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(251,248,242,0.88);">
                 <p class="text-xl mb-2">&#x2728;</p>
-                <h4 class="font-serif text-xl font-bold mb-2" style="color:#34657a;">Build Your Perfect Metabolic Plate</h4>
+                <h4 class="font-serif text-xl font-bold mb-2" style="color:#1F4F5C;">Build Your Perfect Metabolic Plate</h4>
                 <p class="font-sans text-sm text-gray-600 leading-relaxed mb-4">Your AI Meal Coach can take any meal you are craving and instantly show you how to make it metabolically stable &#x2014; without giving up the foods you love.</p>
-                <button onclick="window.switchTab('ai-tools')" style="color:#c19a6b;background:none;border:none;cursor:pointer;padding:0;font-family:'Montserrat',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.03em;">Go to Your AI Coaching Suite &#x2192;</button>
+                <button onclick="window.switchTab('ai-tools')" style="color:#B9873A;background:none;border:none;cursor:pointer;padding:0;font-family:'Figtree',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.03em;">Go to Your AI Coaching Suite &#x2192;</button>
             </div>
             <div class="lesson-summary">
                 <div class="lesson-summary-header">&#x2736; What You Just Learned</div>
@@ -2257,7 +2264,7 @@
             </div>
         </div>
 
-        <div id="lesson-10" class="hidden" style="background:linear-gradient(135deg,#f7f4ef 0%,#fafaf9 60%,#eef3f5 100%);">
+        <div id="lesson-10" class="hidden" style="background:#E2EBE8;">
             <div class="flex flex-col items-center gap-1 mb-8 pt-5 text-center">
                 <p class="font-serif text-3xl md:text-4xl font-bold uppercase tracking-wide text-brand-dark leading-tight">How Your Body Burns</p>
                 <p class="text-xs font-bold uppercase tracking-widest text-brand-accent leading-snug">Lesson 10 of 18</p>
@@ -2434,11 +2441,11 @@
             </div>
         </section>
 
-                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #c19a6b;background:rgba(251,248,242,0.88);">
+                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(251,248,242,0.88);">
                 <p class="text-xl mb-2">&#x2728;</p>
-                <h4 class="font-serif text-xl font-bold mb-2" style="color:#34657a;">Heal Your Gut With the Right Foods</h4>
+                <h4 class="font-serif text-xl font-bold mb-2" style="color:#1F4F5C;">Heal Your Gut With the Right Foods</h4>
                 <p class="font-sans text-sm text-gray-600 leading-relaxed mb-4">After completing the Master Class your AI Chef can turn whatever ingredients you have in your fridge into a gut-healing, metabolically balanced meal in seconds.</p>
-                <button onclick="window.switchTab('ai-tools')" style="color:#c19a6b;background:none;border:none;cursor:pointer;padding:0;font-family:'Montserrat',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.03em;">Go to Your AI Coaching Suite &#x2192;</button>
+                <button onclick="window.switchTab('ai-tools')" style="color:#B9873A;background:none;border:none;cursor:pointer;padding:0;font-family:'Figtree',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.03em;">Go to Your AI Coaching Suite &#x2192;</button>
             </div>
             <div class="lesson-summary">
                 <div class="lesson-summary-header">&#x2736; What You Just Learned</div>
@@ -2554,7 +2561,7 @@
                 <p class="text-sm mb-0 text-gray-700"><strong>One caution, and I mean it.</strong> If you're already tracking your weight, your food, your glucose, your sleep score, and your steps — <strong>do not add another number.</strong> At some point more data becomes another source of stress, which is precisely the thing this chapter is trying to fix. <strong>If that's you, skip the tracker and just notice whether you can sit down and eat a meal without rushing.</strong></p>
             </div>
 
-                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#c19a6b;">Your gut-brain connection will be part of your personalized AI coaching protocol.</p>
+                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#B9873A;">Your gut-brain connection will be part of your personalized AI coaching protocol.</p>
             <div class="lesson-summary">
                 <div class="lesson-summary-header">&#x2736; What You Just Learned</div>
                 <div class="lesson-summary-body">
@@ -2568,7 +2575,7 @@
             </button>
         </div>
 
-        <div id="lesson-13" class="hidden" style="background:linear-gradient(135deg,#f7f4ef 0%,#fafaf9 60%,#eef3f5 100%);">
+        <div id="lesson-13" class="hidden" style="background:#E2EBE8;">
             <div class="flex flex-col items-center gap-1 mb-8 pt-5 text-center">
                 <p class="font-serif text-3xl md:text-4xl font-bold uppercase tracking-wide text-brand-dark leading-tight">How Your Body Burns</p>
                 <p class="text-xs font-bold uppercase tracking-widest text-brand-accent leading-snug">Lesson 13 of 18</p>
@@ -3190,11 +3197,11 @@
             </div>
         </section>
 
-                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #c19a6b;background:rgba(251,248,242,0.88);">
+                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(251,248,242,0.88);">
                 <p class="text-xl mb-2">&#x2728;</p>
-                <h4 class="font-serif text-xl font-bold mb-2" style="color:#34657a;">Your Personalized Nutrition Protocol Awaits</h4>
+                <h4 class="font-serif text-xl font-bold mb-2" style="color:#1F4F5C;">Your Personalized Nutrition Protocol Awaits</h4>
                 <p class="font-sans text-sm text-gray-600 leading-relaxed mb-4">Your AI Metabolic Coach will take everything you have learned in these lessons and combine it with your personal health history to build a supplement and nutrition strategy made just for you.</p>
-                <button onclick="window.switchTab('ai-tools')" style="color:#c19a6b;background:none;border:none;cursor:pointer;padding:0;font-family:'Montserrat',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.03em;">Go to Your AI Coaching Suite &#x2192;</button>
+                <button onclick="window.switchTab('ai-tools')" style="color:#B9873A;background:none;border:none;cursor:pointer;padding:0;font-family:'Figtree',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.03em;">Go to Your AI Coaching Suite &#x2192;</button>
             </div>
             <div class="lesson-summary">
                 <div class="lesson-summary-header">&#x2736; What You Just Learned</div>
@@ -3374,7 +3381,7 @@
             <p>When you actively engage these parasympathetic pathways, you lower your baseline chronic stress. This naturally drops your cortisol, which in turn lowers your insulin, allowing your body to finally release protective weight.</p>
         </section>
 
-                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#c19a6b;">Every lifestyle strategy your AI Coach recommends will be tailored to your unique stress and sleep patterns.</p>
+                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#B9873A;">Every lifestyle strategy your AI Coach recommends will be tailored to your unique stress and sleep patterns.</p>
             <div class="lesson-summary">
                 <div class="lesson-summary-header">&#x2736; What You Just Learned</div>
                 <div class="lesson-summary-body">
@@ -3542,11 +3549,11 @@
             </div>
         </section>
 
-                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #c19a6b;background:rgba(251,248,242,0.88);">
+                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(251,248,242,0.88);">
                 <p class="text-xl mb-2">&#x1F9E0;</p>
-                <h4 class="font-serif text-xl font-bold mb-2" style="color:#34657a;">Movement That Works For Your Metabolism</h4>
+                <h4 class="font-serif text-xl font-bold mb-2" style="color:#1F4F5C;">Movement That Works For Your Metabolism</h4>
                 <p class="font-sans text-sm text-gray-600 leading-relaxed mb-4">Once you complete the Master Class your AI Coach will factor in your stress levels, sleep, and metabolic type to recommend the exact style of movement your body needs right now.</p>
-                <button onclick="window.switchTab('ai-tools')" style="color:#c19a6b;background:none;border:none;cursor:pointer;padding:0;font-family:'Montserrat',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.03em;">Go to Your AI Coaching Suite &#x2192;</button>
+                <button onclick="window.switchTab('ai-tools')" style="color:#B9873A;background:none;border:none;cursor:pointer;padding:0;font-family:'Figtree',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.03em;">Go to Your AI Coaching Suite &#x2192;</button>
             </div>
             <div class="lesson-summary">
                 <div class="lesson-summary-header">&#x2736; What You Just Learned</div>
@@ -3667,7 +3674,7 @@
 
             <p>Here are some tips to get started with emotional eating: 1. Notice when it is happening. 2. Give yourself grace, and realize food is just a coping mechanism. 3. Find a substitute to cope like taking a short walk or calling a friend. <strong>4. Put time between the urge and the food.</strong> Not forever. <strong>Ten minutes.</strong> Urges are not flat; they rise and fall. Most of them peak and start receding within about twenty minutes <strong>if you don't act on them.</strong> You're not resisting indefinitely — you're waiting for a wave to pass, and it does. Set a timer if it helps. <strong>5. Change the cue, not just the response.</strong> If it happens in the same chair, at the same time, watching the same programme, <strong>the chair and the time and the programme are part of it.</strong> Lesson 7 explained that your hunger hormone learns your patterns. So don't only substitute the behaviour — <strong>interrupt the setup.</strong> Sit somewhere else. Brush your teeth after dinner. Go outside for five minutes at the hour it usually happens. <strong>It feels absurdly small and it works better than willpower does</strong>, because you're removing the trigger rather than fighting the response. If these triggers are consistently derailing your metabolic health, working with a professional to navigate and heal these emotional blockages is key. When you address the emotional root, the physical habits become significantly easier to manage.</p>
 
-            <div class="bg-gradient-to-br from-brand-dark to-[#234553] text-white p-10 rounded-2xl mt-10 shadow-xl text-center relative overflow-hidden">
+            <div class="bg-gradient-to-br from-brand-dark to-[#173C46] text-white p-10 rounded-2xl mt-10 shadow-xl text-center relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
                 <div class="absolute bottom-0 left-0 w-40 h-40 bg-brand-accent opacity-10 rounded-full transform -translate-x-1/2 translate-y-1/2"></div>
                 <div class="relative z-10">
@@ -3735,7 +3742,7 @@
             <div class="mt-12 text-center">
                 <img src="logos/mind-body-cropped.png" alt="Mindbody Functional Health" class="w-48 mx-auto rounded" onerror="this.style.display='none'">
             </div>
-                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#c19a6b;">Your emotional relationship with food matters. Your AI Coach is trained to address it with compassion.</p>
+                        <p class="font-serif italic text-center text-sm mt-8 mb-0" style="color:#B9873A;">Your emotional relationship with food matters. Your AI Coach is trained to address it with compassion.</p>
             <div class="lesson-summary">
                 <div class="lesson-summary-header">&#x2736; What You Just Learned</div>
                 <div class="lesson-summary-body">
@@ -3988,7 +3995,7 @@
                     </ul>
                     <p class="text-center italic text-brand-dark font-medium mb-8">You do not need a doctor's appointment to start healing. You need a roadmap.</p>
                     <div class="text-center">
-                        <a href="#" class="inline-block bg-brand-accent hover:bg-[#a68256] text-white px-8 py-4 rounded-lg font-bold transition-colors text-lg shadow-md">
+                        <a href="#" class="inline-block bg-brand-accent hover:bg-[#A37630] text-white px-8 py-4 rounded-lg font-bold transition-colors text-lg shadow-md">
                             → GRAB YOUR COPY HERE
                         </a>
                     </div>
@@ -3999,7 +4006,7 @@
             <div class="mt-16 bg-brand-light/50 border-2 border-brand-dark p-10 rounded-xl text-center shadow-md">
                 <h3 class="font-serif text-4xl font-bold text-brand-dark mb-4">Still Feeling Stuck?</h3>
                 <p class="text-gray-700 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">If you have tried adjusting your diet, managing your macros, and following the frameworks above, but your body is still stubbornly refusing to respond, there is likely a deeper root cause at play. Trauma, severe nervous system dysregulation, and hidden interferences require more than just a diet change.</p>
-                <button onclick="document.getElementById('btn-nav-healing').click()" class="inline-block bg-brand-dark hover:bg-[#234553] text-white px-8 py-4 rounded-lg font-bold transition-all text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <button onclick="document.getElementById('btn-nav-healing').click()" class="inline-block bg-brand-dark hover:bg-[#173C46] text-white px-8 py-4 rounded-lg font-bold transition-all text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     Explore The Deep Healing Intensive →
                 </button>
             </div>
@@ -4069,7 +4076,7 @@
                         <li>Extra dark chocolate (85%+ cacao keeps it low in sugar — a square or two goes a long way)</li>
                     </ul>
 
-                    <a href="Low_Carb_Whole_Food_Snacks.pdf" target="_blank" rel="noopener" class="inline-flex items-center justify-center mt-6 rounded-lg bg-brand-dark px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#234553]">Print PDF</a>
+                    <a href="Low_Carb_Whole_Food_Snacks.pdf" target="_blank" rel="noopener" class="inline-flex items-center justify-center mt-6 rounded-lg bg-brand-dark px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#173C46]">Print PDF</a>
                 </div>
 
                 <div class="bg-white border border-gray-200 p-8 rounded-xl my-8 shadow-sm">
@@ -4120,7 +4127,7 @@
                         <li><a href="/recipes-html/marinara-sauce.html" target="_blank" rel="noopener" class="text-brand-dark underline">Marinara Sauce</a></li>
                     </ul>
 
-                    <a href="Super_Quick_Meal_Ideas.pdf" target="_blank" rel="noopener" class="inline-flex items-center justify-center mt-6 rounded-lg bg-brand-dark px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#234553]">Print PDF</a>
+                    <a href="Super_Quick_Meal_Ideas.pdf" target="_blank" rel="noopener" class="inline-flex items-center justify-center mt-6 rounded-lg bg-brand-dark px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#173C46]">Print PDF</a>
                 </div>
 
                 <div class="bg-brand-light/50 border border-brand-accent/20 p-8 rounded-xl my-8">
@@ -4265,7 +4272,7 @@
                          the protocol lives in My Stuff > My Protocol. This banner
                          shows nothing else. -->
 
-                    <div id="goal-why-banner" class="hidden p-6 shadow-sm" style="background:linear-gradient(135deg, rgba(193,154,107,0.12), rgba(52,101,122,0.08));border:1px solid rgba(193,154,107,0.35);">
+                    <div id="goal-why-banner" class="hidden p-6 shadow-sm" style="background:linear-gradient(135deg, rgba(185,135,58,0.12), rgba(31,79,92,0.08));border:1px solid rgba(185,135,58,0.35);">
                         <p class="text-sm text-brand-dark mb-2"><span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">Your Goal:</span> <span id="goal-banner-goal-text" class="font-serif text-lg text-brand-dark"></span></p>
                         <p class="text-sm text-gray-600"><span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">Your Why:</span> <span id="goal-banner-why-text" class="italic"></span></p>
                     </div>
@@ -4276,7 +4283,7 @@
                     <div id="ai-view-coach" class="ai-tool-view" data-view-id="coach" data-usage-category="protocol">
                         <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; Interactive Metabolic Coach</h3>
                         <p class="ai-view-desc font-sans text-sm text-gray-500 mb-6">Answer a few quick questions and receive a fully personalized, science-backed metabolic action plan built around your unique biology and goals.</p>
-                        <div class="bg-gradient-to-br from-brand-dark to-[#234553] text-white rounded-xl p-8 shadow-lg flex flex-col h-[650px]">
+                        <div class="bg-gradient-to-br from-brand-dark to-[#173C46] text-white rounded-xl p-8 shadow-lg flex flex-col h-[650px]">
                             <div id="chat-window" class="flex-1 overflow-y-auto bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-4 space-y-4 border border-white/20 shadow-inner flex flex-col">
                                 <!-- Messages will be injected here -->
                             </div>
@@ -4477,7 +4484,7 @@
                                 </div>
 
                                 <p id="health-history-form-error" class="hidden text-xs font-semibold text-red-600">Please fill in your full name, age, and biological sex before continuing.</p>
-                                <button id="health-history-form-submit" type="button" class="w-full bg-brand-dark hover:bg-[#234553] text-white px-6 py-3 rounded-lg font-bold transition-colors">Continue</button>
+                                <button id="health-history-form-submit" type="button" class="w-full bg-brand-dark hover:bg-[#173C46] text-white px-6 py-3 rounded-lg font-bold transition-colors">Continue</button>
                             </div>
 
                             <!-- Plan confirmation panel: shown once the Protocol Builder has a
@@ -4486,12 +4493,12 @@
                                  this button is the one explicit, unambiguous save trigger. -->
                             <div id="plan-confirmation-panel" class="hidden flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-white/10 rounded-lg p-4 border border-white/20">
                                 <p class="text-sm text-white flex-1">Have a look at your plan above. Have any concerns, questions, or want to add anything? Type it in the chat and I&#x2019;ll adjust it. Once it feels achievable, confirm it below.</p>
-                                <button id="confirm-plan-btn" type="button" class="bg-brand-accent hover:bg-[#a68256] text-white px-6 py-3 rounded-lg font-bold transition-colors whitespace-nowrap">&#x2713; Confirm My Plan</button>
+                                <button id="confirm-plan-btn" type="button" class="bg-brand-accent hover:bg-[#A37630] text-white px-6 py-3 rounded-lg font-bold transition-colors whitespace-nowrap">&#x2713; Confirm My Plan</button>
                             </div>
 
                             <div id="chat-input-row" class="flex flex-col sm:flex-row gap-3">
                                 <input type="text" id="chat-input" placeholder="Type your answer here..." class="flex-1 px-4 py-3 rounded-lg border-none text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-accent shadow-inner">
-                                <button id="chat-send-btn" class="bg-brand-accent hover:bg-[#a68256] text-white px-8 py-3 rounded-lg font-bold transition-colors text-lg shadow-md flex items-center justify-center whitespace-nowrap">
+                                <button id="chat-send-btn" class="bg-brand-accent hover:bg-[#A37630] text-white px-8 py-3 rounded-lg font-bold transition-colors text-lg shadow-md flex items-center justify-center whitespace-nowrap">
                                     Send Reply
                                 </button>
                             </div>
@@ -4510,7 +4517,7 @@
                         <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; Metabolic Meal Planner</h3>
                         <p class="ai-view-desc font-sans text-sm text-gray-500 mb-6">Generate a full 7-day meal plan built around your protocol, your allergies and sensitivities, and your own recipe collection.</p>
                         <div class="bg-brand-light/50 border border-brand-accent/30 rounded-xl p-6 shadow-sm">
-                            <button id="generate-meal-plan-btn" type="button" class="w-full bg-brand-dark hover:bg-[#234553] text-white px-6 py-3 rounded-lg font-bold transition-colors text-lg flex justify-center items-center shadow-md">
+                            <button id="generate-meal-plan-btn" type="button" class="w-full bg-brand-dark hover:bg-[#173C46] text-white px-6 py-3 rounded-lg font-bold transition-colors text-lg flex justify-center items-center shadow-md">
                                 &#x2728; Generate My 7-Day Plan
                             </button>
                             <p class="text-xs text-gray-500 mt-2 text-center">Generating a new plan replaces your current week.</p>
@@ -4526,7 +4533,7 @@
                         <div id="shopping-list-card" class="hidden bg-white border border-gray-200 rounded-xl p-6 shadow-sm mt-6">
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
                                 <h4 class="font-serif text-xl font-bold text-brand-dark">Shopping List</h4>
-                                <button id="generate-shopping-list-btn" type="button" class="bg-brand-dark hover:bg-[#234553] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors whitespace-nowrap">Generate Shopping List</button>
+                                <button id="generate-shopping-list-btn" type="button" class="bg-brand-dark hover:bg-[#173C46] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors whitespace-nowrap">Generate Shopping List</button>
                             </div>
                             <p class="text-sm text-gray-500 mb-2">Combines and organizes every ingredient from this week's plan by grocery category.</p>
                             <div id="shopping-list-loading" class="hidden mt-3 text-brand-accent text-center text-sm font-medium animate-pulse">Combining ingredients from your week...</div>
@@ -4538,7 +4545,7 @@
                     <div id="ai-view-fridge-chef" class="ai-tool-view hidden" data-view-id="fridge-chef" data-usage-category="chat">
                         <h3 class="font-serif text-3xl font-bold text-brand-dark mb-2">&#x2728; Fridge to Meal Chef</h3>
                         <p class="ai-view-desc font-sans text-sm text-gray-500 mb-6">List what&#x2019;s in your fridge or pantry and our AI Chef instantly generates a simple, metabolically balanced recipe designed around your ingredients.</p>
-                        <div class="bg-gradient-to-br from-[#234553] to-brand-dark text-white rounded-xl p-8 shadow-xl border-l-4 border-brand-accent">
+                        <div class="bg-gradient-to-br from-[#173C46] to-brand-dark text-white rounded-xl p-8 shadow-xl border-l-4 border-brand-accent">
                             <div id="profile-connected-badge" class="hidden mb-4 px-4 py-3 rounded-lg text-sm font-semibold" style="background-color: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.4); color: #86efac;">
                                 &#x2705; Your Metabolic Coach profile is connected &#x2014; recipes are now personalized to your protocol!
                             </div>
@@ -4546,7 +4553,7 @@
                                 <label class="block text-brand-light text-sm font-semibold mb-2">What ingredients do you have?</label>
                                 <textarea id="fridge-input" rows="3" placeholder="e.g., I have ground beef, half an onion, some spinach, and eggs..." class="w-full px-4 py-3 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-accent"></textarea>
                             </div>
-                            <button id="generate-fridge-btn" class="w-full bg-brand-accent hover:bg-[#a68256] text-white px-6 py-3 rounded-lg font-bold transition-colors text-lg flex justify-center items-center shadow-md">
+                            <button id="generate-fridge-btn" class="w-full bg-brand-accent hover:bg-[#A37630] text-white px-6 py-3 rounded-lg font-bold transition-colors text-lg flex justify-center items-center shadow-md">
                                 &#x2728; Create My Recipe
                             </button>
                             <div id="fridge-loading" class="hidden mt-6 text-brand-light text-center font-medium animate-pulse">Chopping vegetables and writing your recipe...</div>
@@ -4561,7 +4568,7 @@
                         <p class="text-xs text-gray-400 mb-6">Covers: fasting insulin, HbA1c/fasting glucose, triglyceride/HDL ratio, TSH (+ free T3/T4), cortisol, estrogen/testosterone/progesterone, hs-CRP, ALT/AST/GGT, ferritin &amp; iron panel (UIBC, transferrin saturation, TIBC, serum iron), uric acid, and histamine. Anything outside this list is outside what this tool covers.</p>
                         <div class="bg-brand-light/50 border border-brand-accent/30 rounded-xl p-6 shadow-sm">
                             <textarea id="lab-markers-input" rows="4" placeholder="e.g., Fasting insulin 14, HbA1c 5.6%, TSH 3.8, hs-CRP 2.1, ferritin 18 (I'm a woman)..." class="w-full px-4 py-3 rounded-lg text-gray-800 placeholder-gray-400 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-accent"></textarea>
-                            <button id="lab-markers-btn" class="mt-4 w-full bg-brand-dark hover:bg-[#234553] text-white px-6 py-3 rounded-lg font-bold transition-colors text-lg flex justify-center items-center shadow-md">&#x2728; Explain My Markers</button>
+                            <button id="lab-markers-btn" class="mt-4 w-full bg-brand-dark hover:bg-[#173C46] text-white px-6 py-3 rounded-lg font-bold transition-colors text-lg flex justify-center items-center shadow-md">&#x2728; Explain My Markers</button>
                             <div id="lab-markers-loading" class="hidden mt-4 text-brand-accent text-center text-sm font-medium animate-pulse">Reading your labs against the functional-optimal ranges...</div>
                             <div id="lab-markers-output" class="hidden mt-6 p-6 bg-white text-gray-800 rounded-lg shadow-inner prose prose-brand max-w-none"></div>
                         </div>
@@ -4809,7 +4816,7 @@
                             <div id="progress-photos-compare-bar" class="hidden mb-4 p-3 rounded-lg bg-brand-light/40 border border-brand-accent/30 flex items-center justify-between gap-3 flex-wrap">
                                 <p class="text-sm text-brand-dark">Select 2 photos to compare them side by side (<span id="progress-photos-compare-count">0</span>/2 selected).</p>
                                 <div class="flex gap-2">
-                                    <button id="progress-photos-compare-btn" type="button" disabled class="bg-brand-dark hover:bg-[#234553] disabled:opacity-40 disabled:cursor-not-allowed text-white px-4 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Compare</button>
+                                    <button id="progress-photos-compare-btn" type="button" disabled class="bg-brand-dark hover:bg-[#173C46] disabled:opacity-40 disabled:cursor-not-allowed text-white px-4 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Compare</button>
                                     <button id="progress-photos-compare-clear-btn" type="button" class="bg-white border border-gray-300 text-gray-600 px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-gray-50 whitespace-nowrap">Clear</button>
                                 </div>
                             </div>
@@ -4845,7 +4852,7 @@
                         <p class="font-sans text-sm text-gray-500 mb-6">Your personalized starting protocol from the Interactive Metabolic Coach.</p>
                         <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
                             <p id="account-protocol-empty" class="text-sm text-gray-500 italic">You don&#x2019;t have a starting protocol yet. <button type="button" onclick="window.switchAiToolsView('coach')" class="c-link-accent">Chat with the Interactive Metabolic Coach</button> to get one built for you.</p>
-                            <div id="protocol-banner" class="hidden rounded-xl p-6 shadow-sm" style="background:linear-gradient(135deg, rgba(52,101,122,0.10), rgba(193,154,107,0.08));border:1px solid rgba(52,101,122,0.3);">
+                            <div id="protocol-banner" class="hidden rounded-xl p-6 shadow-sm" style="background:linear-gradient(135deg, rgba(31,79,92,0.10), rgba(185,135,58,0.08));border:1px solid rgba(31,79,92,0.3);">
                                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                                     <div>
                                         <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-dark mb-1">Your Starting Protocol</p>
@@ -4855,7 +4862,7 @@
                                     <button id="protocol-banner-toggle-btn" type="button" class="text-xs font-semibold underline text-brand-dark whitespace-nowrap">View details</button>
                                 </div>
 
-                                <div id="protocol-banner-detail" class="hidden mt-5 pt-5 space-y-4" style="border-top:1px solid rgba(52,101,122,0.25);">
+                                <div id="protocol-banner-detail" class="hidden mt-5 pt-5 space-y-4" style="border-top:1px solid rgba(31,79,92,0.25);">
                                     <div>
                                         <p class="text-xs font-bold text-brand-dark mb-1">Starter Habits</p>
                                         <ul id="protocol-banner-habits-list" class="text-sm text-gray-700 list-disc pl-5 space-y-1"></ul>
@@ -5067,7 +5074,7 @@
                                     <h4 class="font-serif text-xl font-bold text-brand-dark mb-1">Scale a Recipe</h4>
                                     <p class="text-xs text-gray-500">Pick any recipe &#x2014; yours or from the shared recipe library &#x2014; and scale it up or down. Saves as a brand-new recipe; the original is never changed.</p>
                                 </div>
-                                <button id="scale-recipe-open-btn" type="button" class="bg-brand-accent hover:bg-[#a68256] text-white px-5 py-2 rounded-lg font-medium text-sm whitespace-nowrap">Scale a Recipe</button>
+                                <button id="scale-recipe-open-btn" type="button" class="bg-brand-accent hover:bg-[#A37630] text-white px-5 py-2 rounded-lg font-medium text-sm whitespace-nowrap">Scale a Recipe</button>
                             </div>
 
                             <!-- Step 1: pick a source recipe -->
@@ -5086,7 +5093,7 @@
                                     </div>
                                 </div>
                                 <div class="flex gap-3 mt-3">
-                                    <button id="scale-recipe-continue-btn" type="button" disabled class="bg-brand-dark hover:bg-[#234553] disabled:opacity-40 disabled:cursor-not-allowed text-white px-5 py-2 rounded-lg font-medium text-sm">Continue</button>
+                                    <button id="scale-recipe-continue-btn" type="button" disabled class="bg-brand-dark hover:bg-[#173C46] disabled:opacity-40 disabled:cursor-not-allowed text-white px-5 py-2 rounded-lg font-medium text-sm">Continue</button>
                                     <button id="scale-recipe-cancel-btn" type="button" class="bg-white border border-gray-300 text-gray-600 px-5 py-2 rounded-lg font-medium text-sm hover:bg-gray-50">Cancel</button>
                                 </div>
                             </div>
@@ -5102,7 +5109,7 @@
                                     <button type="button" class="scale-multiplier-btn c-btn-pill" data-multiplier="3">3x (Triple)</button>
                                 </div>
                                 <div class="flex gap-3">
-                                    <button id="scale-recipe-go-btn" type="button" disabled class="bg-brand-dark hover:bg-[#234553] disabled:opacity-40 disabled:cursor-not-allowed text-white px-5 py-2 rounded-lg font-medium text-sm">Scale Recipe</button>
+                                    <button id="scale-recipe-go-btn" type="button" disabled class="bg-brand-dark hover:bg-[#173C46] disabled:opacity-40 disabled:cursor-not-allowed text-white px-5 py-2 rounded-lg font-medium text-sm">Scale Recipe</button>
                                     <button id="scale-recipe-back-btn" type="button" class="bg-white border border-gray-300 text-gray-600 px-5 py-2 rounded-lg font-medium text-sm hover:bg-gray-50">Back</button>
                                 </div>
                                 <div id="scale-recipe-loading" class="hidden mt-4 text-brand-accent text-sm font-medium animate-pulse">Scaling your recipe...</div>
@@ -5150,7 +5157,7 @@
                                 <p class="text-xs text-gray-400 mt-1">If you made a swap, macros will be calculated for the substituted ingredient, not the original.</p>
                             </div>
 
-                            <button id="my-recipe-estimate-btn" class="bg-brand-dark hover:bg-[#234553] text-white px-6 py-2 rounded-lg font-medium transition-colors">&#x2728; Estimate Macros</button>
+                            <button id="my-recipe-estimate-btn" class="bg-brand-dark hover:bg-[#173C46] text-white px-6 py-2 rounded-lg font-medium transition-colors">&#x2728; Estimate Macros</button>
                             <div id="my-recipe-loading" class="hidden mt-4 text-brand-accent text-sm font-medium animate-pulse">Reading your recipe and estimating macros...</div>
                             <div id="my-recipe-error" class="hidden mt-4 text-sm font-semibold" style="color:#b45309;"></div>
                             </div>
@@ -5163,7 +5170,7 @@
                                 </div>
                                 <div id="my-recipe-clarify-questions" class="space-y-4"></div>
                                 <p id="my-recipe-clarify-validation" class="hidden text-xs font-semibold text-red-600 mt-2">Please answer all questions above before recalculating.</p>
-                                <button id="my-recipe-clarify-btn" class="mt-3 bg-brand-accent hover:bg-[#a68256] text-white px-4 py-2 rounded-lg font-medium text-sm whitespace-nowrap">Recalculate</button>
+                                <button id="my-recipe-clarify-btn" class="mt-3 bg-brand-accent hover:bg-[#A37630] text-white px-4 py-2 rounded-lg font-medium text-sm whitespace-nowrap">Recalculate</button>
                             </div>
 
                             <!-- Macro review card, shown after a successful estimate -->
@@ -5208,8 +5215,8 @@
                                 </div>
 
                                 <div class="flex gap-3 mt-2">
-                                    <button id="my-recipe-save-btn" class="bg-brand-dark hover:bg-[#234553] text-white px-5 py-2 rounded-lg font-medium text-sm">Save Recipe</button>
-                                    <button id="my-recipe-overwrite-btn" class="hidden bg-brand-accent hover:bg-[#a68256] text-white px-5 py-2 rounded-lg font-medium text-sm">Overwrite Original</button>
+                                    <button id="my-recipe-save-btn" class="bg-brand-dark hover:bg-[#173C46] text-white px-5 py-2 rounded-lg font-medium text-sm">Save Recipe</button>
+                                    <button id="my-recipe-overwrite-btn" class="hidden bg-brand-accent hover:bg-[#A37630] text-white px-5 py-2 rounded-lg font-medium text-sm">Overwrite Original</button>
                                     <button id="my-recipe-discard-btn" class="bg-white border border-gray-300 text-gray-600 px-5 py-2 rounded-lg font-medium text-sm hover:bg-gray-50">Discard</button>
                                 </div>
                                 <p id="my-recipe-save-status" class="hidden mt-3 text-sm font-semibold"></p>
@@ -5265,11 +5272,11 @@
             <div class="w-24 h-1 bg-brand-accent mb-16 mt-2"></div>
 
             <div class="text-center mb-4">
-                <a href="https://calendly.com/jaime-mbfh/30min" target="_blank" rel="noopener" class="inline-block bg-brand-accent hover:bg-[#a68256] text-white px-8 py-4 rounded-lg font-bold transition-colors text-lg shadow-md">Book a Free Call with Jaime</a>
+                <a href="https://calendly.com/jaime-mbfh/30min" target="_blank" rel="noopener" class="inline-block bg-brand-accent hover:bg-[#A37630] text-white px-8 py-4 rounded-lg font-bold transition-colors text-lg shadow-md">Book a Free Call with Jaime</a>
                 <p class="text-xs italic text-brand-dark/70 mt-3">Spots are extremely limited for this program. However if full, a waitlist is available for future openings.</p>
             </div>
 
-            <div class="bg-[#faf8f5] border border-brand-accent/30 rounded-xl overflow-hidden shadow-xl">
+            <div class="bg-[#EEF2F0] border border-brand-accent/30 rounded-xl overflow-hidden shadow-xl">
                 <div class="p-8 md:p-12">
                     <p class="text-brand-accent font-extrabold uppercase tracking-widest text-xl text-center mb-10">For Those Who Are Done Settling for "Manage It" — and Ready to Actually Heal</p>
                     
@@ -5363,12 +5370,12 @@
                     </div>
 
                     <!-- Calendly Booking Block -->
-                    <div style="background:#faf8f5;border:1.5px solid #c19a6b;border-radius:0.75rem;padding:2rem 2.25rem;text-align:center;box-shadow:0 4px 24px rgba(193,154,107,0.15);margin:0 auto 1.5rem;max-width:560px;">
-                        <p style="font-family:'Montserrat',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:#c19a6b;margin-bottom:0.75rem;">Schedule Your Free Discovery Call</p>
-                        <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:#34657a;line-height:1.65;margin-bottom:1rem;">Choose a time that works for you — no pressure, no pitch, just an honest conversation about your healing journey.</p>
-                        <div style="width:80px;height:1px;background:#c19a6b;margin:0 auto 1.25rem;"></div>
-                        <a href="https://calendly.com/jaime-mbfh/30min" target="_blank" rel="noopener" style="display:inline-block;background:#c19a6b;color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.95rem;padding:1rem 2.5rem;border-radius:0.75rem;text-decoration:none;letter-spacing:0.05em;box-shadow:0 4px 18px rgba(193,154,107,0.35);transition:background 0.2s,transform 0.15s;width:100%;max-width:420px;box-sizing:border-box;" onmouseover="this.style.background='#a68256';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='#c19a6b';this.style.transform='translateY(0)'">Book Your Free 30 Minute Call With Jaime</a>
-                        <p style="font-family:'Montserrat',sans-serif;font-size:0.72rem;font-style:italic;color:rgba(52,101,122,0.7);margin-top:0.85rem;">Spots are extremely limited for this program. However if full, a waitlist is available for future openings.</p>
+                    <div style="background:#EEF2F0;border:1.5px solid #B9873A;border-radius:0.75rem;padding:2rem 2.25rem;text-align:center;box-shadow:0 4px 24px rgba(185,135,58,0.15);margin:0 auto 1.5rem;max-width:560px;">
+                        <p style="font-family:'Figtree',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:#B9873A;margin-bottom:0.75rem;">Schedule Your Free Discovery Call</p>
+                        <p style="font-family:'Gloock',serif;font-size:1.15rem;font-style:italic;color:#1F4F5C;line-height:1.65;margin-bottom:1rem;">Choose a time that works for you — no pressure, no pitch, just an honest conversation about your healing journey.</p>
+                        <div style="width:80px;height:1px;background:#B9873A;margin:0 auto 1.25rem;"></div>
+                        <a href="https://calendly.com/jaime-mbfh/30min" target="_blank" rel="noopener" style="display:inline-block;background:#B9873A;color:white;font-family:'Figtree',sans-serif;font-weight:700;font-size:0.95rem;padding:1rem 2.5rem;border-radius:0.75rem;text-decoration:none;letter-spacing:0.05em;box-shadow:0 4px 18px rgba(185,135,58,0.35);transition:background 0.2s,transform 0.15s;width:100%;max-width:420px;box-sizing:border-box;" onmouseover="this.style.background='#A37630';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='#B9873A';this.style.transform='translateY(0)'">Book Your Free 30 Minute Call With Jaime</a>
+                        <p style="font-family:'Figtree',sans-serif;font-size:0.72rem;font-style:italic;color:rgba(31,79,92,0.7);margin-top:0.85rem;">Spots are extremely limited for this program. However if full, a waitlist is available for future openings.</p>
                     </div>
                 </div>
             </div>
@@ -5651,7 +5658,7 @@
                     const isActive = button.dataset.catalogTab === view;
                     button.classList.toggle('bg-brand-dark', isActive);
                     button.classList.toggle('text-white', isActive);
-                    button.classList.toggle('hover:bg-[#234553]', isActive);
+                    button.classList.toggle('hover:bg-[#173C46]', isActive);
                     button.classList.toggle('border', !isActive);
                     button.classList.toggle('border-brand-dark/20', !isActive);
                     button.classList.toggle('bg-white', !isActive);
@@ -5850,7 +5857,7 @@
                             <span class="text-[0.65rem] md:text-xs font-bold uppercase tracking-[0.14em] ${statusClass} px-2.5 py-1 rounded-full">${statusText}</span>
                             ${mode === 'catalog' && item.productUrl ? `<a href="#" data-action="open-product" class="pl-2.5 text-[0.65rem] text-gray-500 underline hover:text-brand-dark">open product</a>` : ''}
                         </span>
-                        <button type="button" data-action="primary" class="inline-flex items-center justify-center rounded-full bg-brand-dark px-4 py-2.5 text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-[#234553]">
+                        <button type="button" data-action="primary" class="inline-flex items-center justify-center rounded-full bg-brand-dark px-4 py-2.5 text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-[#173C46]">
                             ${buttonLabel}
                         </button>
                     </div>
@@ -6012,15 +6019,15 @@
                     } else if (n === currentLesson) {
                         btn.style.opacity = '1';
                         btn.style.cursor = 'pointer';
-                        btn.style.backgroundColor = 'rgba(193,154,107,0.10)';
+                        btn.style.backgroundColor = 'rgba(185,135,58,0.10)';
                         btn.style.fontWeight = '600';
                         icon.textContent = '🔓';
-                        label.style.color = '#c19a6b';
+                        label.style.color = '#B9873A';
                     } else if (n < currentLesson) {
                         btn.style.opacity = '1';
                         btn.style.cursor = 'pointer';
                         icon.textContent = '🔓';
-                        label.style.color = '#34657a';
+                        label.style.color = '#1F4F5C';
                     } else {
                         btn.style.opacity = '1';
                         btn.style.cursor = 'pointer';
@@ -6039,7 +6046,7 @@
                 if (label) label.textContent = 'Your Progress — Lesson ' + highestLesson + ' of 18 Complete';
                 [[25,'ms-25'],[50,'ms-50'],[75,'ms-75'],[100,'ms-100']].forEach(([t, id]) => {
                     const el = document.getElementById(id);
-                    if (el) el.style.backgroundColor = pct >= t ? '#c19a6b' : '#e5e7eb';
+                    if (el) el.style.backgroundColor = pct >= t ? '#B9873A' : '#e5e7eb';
                 });
             }
 
@@ -6052,7 +6059,7 @@
                 const tracker = document.getElementById('lesson-progress-tracker');
                 if (!tracker) return;
                 tracker.style.overflow = 'visible';
-                const colors = ['#c19a6b','#d4b48a','#34657a','#e8c99a','#a68256','#f0d9b8'];
+                const colors = ['#B9873A','#d4b48a','#1F4F5C','#e8c99a','#A37630','#f0d9b8'];
                 for (let i = 0; i < 24; i++) {
                     setTimeout(() => {
                         const p = document.createElement('div');
@@ -6120,7 +6127,7 @@
             // Diagonal watermark overlay
             (function() {
                 var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="500" height="350">' +
-                    '<text x="250" y="175" fill="rgba(52,101,122,0.04)" font-family="Montserrat,sans-serif"' +
+                    '<text x="250" y="175" fill="rgba(31,79,92,0.04)" font-family="Figtree,sans-serif"' +
                     ' font-size="22" font-weight="900" text-anchor="middle" dominant-baseline="middle"' +
                     ' transform="rotate(-45,250,175)">MINDBODY FUNCTIONAL HEALTH</text></svg>';
                 var wm = document.createElement('div');
@@ -6447,7 +6454,7 @@
             // own message always takes priority when present) — this exact
             // HTML pattern was independently duplicated at 7 call sites.
             function buildAiErrorHtml(error, fallbackMessage) {
-                return '<span style="color:#c19a6b;font-weight:600;">' + (error.limitReached ? error.message : fallbackMessage) + '</span>';
+                return '<span style="color:#B9873A;font-weight:600;">' + (error.limitReached ? error.message : fallbackMessage) + '</span>';
             }
 
             // Appends a chat bubble with a Retry button whose click re-runs onRetry.
@@ -6703,12 +6710,12 @@ Write day_label consistently and sequentially ("Day 1" through "Day 7"). Write t
                 if (!plan || !plan.days || !plan.days.length) return '';
                 var html = '';
                 if (plan.rationale) {
-                    html += '<div class="mb-5 p-4 rounded-lg" style="background:rgba(52,101,122,0.06);border:1px solid rgba(52,101,122,0.2);">' +
+                    html += '<div class="mb-5 p-4 rounded-lg" style="background:rgba(31,79,92,0.06);border:1px solid rgba(31,79,92,0.2);">' +
                         '<p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-dark mb-1">Why This Plan Fits You</p>' +
                         '<p class="text-sm text-gray-700">' + modelText(plan.rationale) + '</p></div>';
                 }
                 if (plan.allergy_note) {
-                    html += '<div class="mb-5 p-4 rounded-lg" style="background:rgba(193,154,107,0.10);border:1px solid rgba(193,154,107,0.35);">' +
+                    html += '<div class="mb-5 p-4 rounded-lg" style="background:rgba(185,135,58,0.10);border:1px solid rgba(185,135,58,0.35);">' +
                         '<p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-1">Please Double-Check</p>' +
                         '<p class="text-sm text-gray-700">' + modelText(plan.allergy_note) + '</p></div>';
                 }
@@ -6726,7 +6733,7 @@ Write day_label consistently and sequentially ("Day 1" through "Day 7"). Write t
                         var titleHtml = page
                             ? '<a href="' + escapeHtml(page) + '" target="_blank" rel="noopener" class="underline hover:no-underline">' + escapeHtml(meal.title) + '</a>'
                             : escapeHtml(meal.title);
-                        html += '<div class="pl-3" style="border-left:3px solid rgba(193,154,107,0.5);">' +
+                        html += '<div class="pl-3" style="border-left:3px solid rgba(185,135,58,0.5);">' +
                             '<p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">' + escapeHtml(meal.slot) + '</p>' +
                             '<p class="text-sm font-semibold text-brand-dark">' + titleHtml + '</p>' +
                             '<p class="text-sm text-gray-600">' + escapeHtml(meal.description) + '</p>' +
@@ -9617,7 +9624,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                 }).join(' ');
 
                 var dots = points.map(function(p, i) {
-                    return '<circle cx="' + xFor(i).toFixed(1) + '" cy="' + yFor(p.weight).toFixed(1) + '" r="4" fill="#34657a" stroke="white" stroke-width="1.5"><title>' +
+                    return '<circle cx="' + xFor(i).toFixed(1) + '" cy="' + yFor(p.weight).toFixed(1) + '" r="4" fill="#1F4F5C" stroke="white" stroke-width="1.5"><title>' +
                         escapeHtml(p.weight + ' lbs on ' + formatShortDate(p.date)) + '</title></circle>';
                 }).join('');
 
@@ -9628,7 +9635,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                     '<line x1="' + padding.left + '" y1="' + (padding.top + innerH) + '" x2="' + (padding.left + innerW) + '" y2="' + (padding.top + innerH) + '" stroke="#e5e7eb" stroke-width="1"></line>' +
                     '<text x="' + padding.left + '" y="14" font-size="11" fill="#9ca3af">' + maxW.toFixed(1) + ' lbs</text>' +
                     '<text x="' + padding.left + '" y="' + (padding.top + innerH - 6) + '" font-size="11" fill="#9ca3af">' + minW.toFixed(1) + ' lbs</text>' +
-                    '<path d="' + pathD + '" fill="none" stroke="#34657a" stroke-width="2.5"></path>' +
+                    '<path d="' + pathD + '" fill="none" stroke="#1F4F5C" stroke-width="2.5"></path>' +
                     dots +
                     '<text x="' + padding.left + '" y="' + (height - 4) + '" font-size="11" fill="#9ca3af" text-anchor="start">' + firstLabel + '</text>' +
                     '<text x="' + (padding.left + innerW) + '" y="' + (height - 4) + '" font-size="11" fill="#9ca3af" text-anchor="end">' + lastLabel + '</text>' +
@@ -9674,7 +9681,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                 }).join(' ');
 
                 var dots = points.map(function(p, i) {
-                    return '<circle cx="' + xFor(i).toFixed(1) + '" cy="' + yFor(p.fat_g).toFixed(1) + '" r="4" fill="#c19a6b" stroke="white" stroke-width="1.5"><title>' +
+                    return '<circle cx="' + xFor(i).toFixed(1) + '" cy="' + yFor(p.fat_g).toFixed(1) + '" r="4" fill="#B9873A" stroke="white" stroke-width="1.5"><title>' +
                         escapeHtml(Math.round(p.fat_g) + 'g fat on ' + formatShortDate(p.date)) + '</title></circle>';
                 }).join('');
 
@@ -9685,7 +9692,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                     '<line x1="' + padding.left + '" y1="' + (padding.top + innerH) + '" x2="' + (padding.left + innerW) + '" y2="' + (padding.top + innerH) + '" stroke="#e5e7eb" stroke-width="1"></line>' +
                     '<text x="' + padding.left + '" y="14" font-size="11" fill="#9ca3af">' + Math.round(maxF) + 'g fat</text>' +
                     '<text x="' + padding.left + '" y="' + (padding.top + innerH - 6) + '" font-size="11" fill="#9ca3af">' + Math.round(minF) + 'g fat</text>' +
-                    '<path d="' + pathD + '" fill="none" stroke="#c19a6b" stroke-width="2.5"></path>' +
+                    '<path d="' + pathD + '" fill="none" stroke="#B9873A" stroke-width="2.5"></path>' +
                     dots +
                     '<text x="' + padding.left + '" y="' + (height - 4) + '" font-size="11" fill="#9ca3af" text-anchor="start">' + firstLabel + '</text>' +
                     '<text x="' + (padding.left + innerW) + '" y="' + (height - 4) + '" font-size="11" fill="#9ca3af" text-anchor="end">' + lastLabel + '</text>' +
@@ -10628,7 +10635,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                     var loadingEl2 = document.getElementById(loadingId);
                     if (loadingEl2) loadingEl2.remove();
                     console.error('handlePlanFeedback failed', e);
-                    appendChatMessage('ai', '<span style="color:#c19a6b;font-weight:600;">Something went wrong updating your plan. Please try again.</span>');
+                    appendChatMessage('ai', '<span style="color:#B9873A;font-weight:600;">Something went wrong updating your plan. Please try again.</span>');
                 }
             }
 
@@ -10662,7 +10669,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                         chatSendBtn.disabled = true;
                     } catch (e) {
                         console.error('confirm plan failed', e);
-                        appendChatMessage('ai', '<span style="color:#c19a6b;font-weight:600;">Something went wrong saving your plan. Please try again.</span>');
+                        appendChatMessage('ai', '<span style="color:#B9873A;font-weight:600;">Something went wrong saving your plan. Please try again.</span>');
                     } finally {
                         confirmPlanBtn.disabled = false;
                         confirmPlanBtn.textContent = '✓ Confirm My Plan';
@@ -12413,11 +12420,11 @@ Format your response with clean HTML, matching the same convention used elsewher
                 var category = toolDiv.getAttribute('data-usage-category') || 'chat';
                 var counter = document.createElement('p');
                 counter.className = 'ai-usage-counter';
-                counter.style.cssText = 'font-size:0.7rem;color:#c19a6b;margin-top:-0.5rem;margin-bottom:0.75rem;';
+                counter.style.cssText = 'font-size:0.7rem;color:#B9873A;margin-top:-0.5rem;margin-bottom:0.75rem;';
                 var limitMsg = document.createElement('div');
                 limitMsg.className = 'ai-limit-message';
-                limitMsg.style.cssText = 'display:none;color:#c19a6b;background:rgba(193,154,107,0.08);' +
-                    'border:1px solid rgba(193,154,107,0.3);border-radius:0.5rem;' +
+                limitMsg.style.cssText = 'display:none;color:#B9873A;background:rgba(185,135,58,0.08);' +
+                    'border:1px solid rgba(185,135,58,0.3);border-radius:0.5rem;' +
                     'padding:0.75rem 1rem;font-size:0.85rem;font-weight:600;text-align:center;margin-bottom:1rem;';
                 limitMsg.textContent = 'You have reached your daily limit for this feature. Come back tomorrow to continue your metabolic journey!';
                 desc.after(counter, limitMsg);
