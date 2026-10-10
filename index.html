@@ -71,7 +71,7 @@
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         
         /* Typography Polish */
-        p { line-height: 1.8; margin-bottom: 1.5rem; color: #4a5568; }
+        p { line-height: 1.8; margin-bottom: 1.5rem; color: #1B2A2D; }
         h1, h2, h3, h4 { color: #1F4F5C; }
         
         .pro-tip-box {
@@ -103,8 +103,9 @@
             height: 100%;
             min-height: 370px;
             padding: 1.5rem 1.5rem 4.75rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+            border-color: #D3DDDA !important;
+            box-shadow: none;
         }
         .catalog-card-title {
             min-height: 2.5rem;
@@ -113,17 +114,17 @@
             justify-content: center;
             margin-bottom: 0.6rem;
             text-align: center;
-            text-transform: uppercase;
-            font-family: 'Gloock', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-family: 'Gloock', Georgia, serif;
+            font-size: 1.45rem;
+            font-weight: 400;
+            line-height: 1.2;
             color: #1F4F5C;
         }
         .catalog-card-media {
             width: 100%;
             aspect-ratio: 16 / 10;
             overflow: hidden;
-            border-radius: 1rem;
+            border-radius: 8px;
             flex-shrink: 0;
             margin-bottom: 0.8rem;
         }
@@ -143,7 +144,7 @@
         .catalog-card-body p {
             margin: 0;
             text-align: center;
-            color: #4a5568;
+            color: #56676A;
             line-height: 1.7;
         }
         .catalog-card-footer {
@@ -520,11 +521,11 @@
             margin-top: 2rem;
             padding: 1.25rem 2rem;
             background: #B9873A;
-            color: #fff;
+            color: #1A150C;
             font-weight: 700;
             font-size: 1.125rem;
             line-height: 1.75rem;
-            border-radius: 0.75rem;
+            border-radius: 6px;
             border: none;
             cursor: pointer;
             display: flex;
@@ -545,7 +546,7 @@
             background: #1F4F5C;
             color: #fff;
             padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
+            border-radius: 6px;
             border: none;
             cursor: pointer;
             font-size: 0.875rem;
@@ -619,6 +620,25 @@
             outline: 2px solid #1F4F5C;
             outline-offset: 2px;
         }
+
+        /* ===== MAIN-SITE LOOK (2026-10-09) =====
+           Gloock ships one weight. Many headings carry font-bold, which
+           would make the browser smear a fake bold; this keeps it crisp. */
+        html { font-synthesis: none; }
+
+        /* Gold buttons: dark text and 6px corners, as on the main site.
+           Written against the utility, so the 20-odd Tailwind gold buttons
+           follow without touching their markup. Circles (the JJ avatar,
+           check badges) are left alone. */
+        button.bg-brand-accent:not(.rounded-full),
+        a.bg-brand-accent:not(.rounded-full) {
+            color: #1A150C !important;
+            border-radius: 6px;
+        }
+        button.bg-brand-accent:not(.rounded-full):not(:disabled):hover,
+        a.bg-brand-accent:not(.rounded-full):hover {
+            transform: translateY(-2px);
+        }
 </style>
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -636,12 +656,14 @@
         <!-- TAB 0: HOME / DASHBOARD CONTENT            -->
         <!-- ========================================== -->
         <div id="tab-content-home" class="block transition-opacity duration-300 pt-0">
-            <div class="mb-6 -mx-6 md:-mx-12 lg:-mx-20 mt-0 overflow-visible rounded-b-[1.5rem] border-b border-[#D3DDDA] bg-[#f7fafb] shadow-sm">
-                <div class="flex flex-wrap items-center justify-end gap-3 px-6 py-3 md:px-12 lg:px-20">
-                    <a href="contact-us.html" class="inline-flex items-center justify-center rounded-full border border-brand-dark/20 bg-white px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-brand-dark transition hover:border-brand-dark hover:bg-brand-light/40">
+            <div class="mb-site-header mb-6 -mx-6 md:-mx-12 lg:-mx-20 mt-0 overflow-visible">
+                <div class="flex flex-wrap items-center justify-between gap-3 px-6 py-3 md:px-12 lg:px-20">
+                    <span class="mb-site-brand"><img src="images/foundations/mbfh-mark.webp" alt="" width="42" height="42"><span><b>Mind Body</b><small>Functional Health</small></span></span>
+                    <div class="mb-site-nav flex flex-wrap items-center justify-end gap-4">
+                    <a href="contact-us.html" class="inline-flex items-center justify-center px-1 py-1.5 text-sm">
                         Contact Us
                     </a>
-                    <button id="login-button" type="button" class="inline-flex items-center justify-center rounded-full bg-brand-dark px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#173C46]">
+                    <button id="login-button" type="button" class="inline-flex items-center justify-center rounded-[6px] bg-brand-accent px-4 py-2 text-sm font-bold text-[#1A150C] transition hover:bg-[#A37630] hover:-translate-y-0.5">
                         Log In
                     </button>
                     <div class="relative">
@@ -653,11 +675,12 @@
                             <button id="order-history-action" type="button" class="w-full text-left px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-brand-dark transition hover:bg-brand-light/50">Order History</button>
                         </div>
                     </div>
+                    </div>
                 </div>
             </div>
             
             <div class="space-y-10 mb-16">
-                <div class="rounded-[2rem] border border-[#D3DDDA] bg-[linear-gradient(135deg,#f8f1e6_0%,#f6fafb_60%,#E2EBE8_100%)] p-8 md:p-10 shadow-[0_20px_60px_rgba(31,79,92,0.08)] py-6 md:py-7">
+                <div class="rounded-lg border border-[#D3DDDA] bg-[#E2EBE8] p-8 md:p-10 py-6 md:py-7">
                     <div class="flex justify-center md:justify-start mb-[1.8rem]">
                         <img src="logos/mind-body-cropped.png" alt="Mindbody Functional Health" class="h-[3.2rem] md:h-[4.8rem] w-auto" onerror="this.onerror=null;">
                     </div>
@@ -669,10 +692,10 @@
 
                 <section id="catalog-section" class="mt-2">
                     <div class="flex items-center gap-2 mb-6">
-                        <button type="button" id="catalog-tab-courses" data-catalog-tab="courses" class="inline-flex items-center justify-center rounded-full bg-brand-dark px-5 py-3 text-sm font-semibold uppercase tracking-widest text-white transition hover:bg-[#173C46] shadow-sm">
+                        <button type="button" id="catalog-tab-courses" data-catalog-tab="courses" class="inline-flex items-center justify-center rounded-[6px] bg-brand-dark px-5 py-3 text-sm font-semibold uppercase tracking-widest text-white transition hover:bg-[#173C46] shadow-sm">
                             All Courses and Tools
                         </button>
-                        <button type="button" id="catalog-tab-dashboard" data-catalog-tab="dashboard" class="inline-flex items-center justify-center rounded-full border border-brand-dark/20 bg-white px-5 py-3 text-sm font-semibold uppercase tracking-widest text-brand-dark transition hover:border-brand-dark hover:bg-brand-light/40 shadow-sm">
+                        <button type="button" id="catalog-tab-dashboard" data-catalog-tab="dashboard" class="inline-flex items-center justify-center rounded-[6px] border border-brand-dark/20 bg-white px-5 py-3 text-sm font-semibold uppercase tracking-widest text-brand-dark transition hover:border-brand-dark hover:bg-brand-light/40 shadow-sm">
                             My Dashboard
                         </button>
                     </div>
@@ -720,7 +743,7 @@
 
             <div class="flex flex-col lg:flex-row gap-6 lg:items-start">
                 <aside class="w-full lg:w-64 lg:flex-shrink-0">
-                    <div class="sticky top-24 rounded-[1.25rem] border border-[#D3DDDA] bg-white pt-[1.875rem] pr-4 pb-4 pl-4 shadow-sm">
+                    <div class="sticky top-24 rounded-lg border border-[#D3DDDA] bg-white pt-[1.875rem] pr-4 pb-4 pl-4 shadow-sm">
                         <div class="mb-[1.4375rem] text-center">
                             <img src="logos/mind-body-cropped.png" alt="Mindbody Functional Health" class="mx-auto h-auto" style="max-height:57.5px;width:auto;">
                         </div>
@@ -839,7 +862,7 @@
                         <!-- Nudged right of true-center: left/right auto-centering margins
                              (~89.5px each at the reference 480px card width) shifted 10%
                              more to the left, 10% less to the right. -->
-                        <button onclick="showLesson(1)" style="display:block;margin-left:98.5px;margin-right:80.6px;background:#B9873A;color:white;font-family:'Figtree',sans-serif;font-weight:700;font-size:0.95rem;padding:1rem 2.75rem;border-radius:0.75rem;border:none;cursor:pointer;letter-spacing:0.06em;box-shadow:0 4px 18px rgba(185,135,58,0.35);transition:background 0.2s;" onmouseover="this.style.background='#A37630'" onmouseout="this.style.background='#B9873A'">Begin Lesson 1 &#x2192;</button>
+                        <button onclick="showLesson(1)" style="display:block;margin-left:98.5px;margin-right:80.6px;background:#B9873A;color:#1A150C;font-family:'Figtree',sans-serif;font-weight:700;font-size:0.95rem;padding:1rem 2.75rem;border-radius:6px;border:none;cursor:pointer;letter-spacing:0.06em;box-shadow:0 4px 18px rgba(185,135,58,0.35);transition:background 0.2s;" onmouseover="this.style.background='#A37630'" onmouseout="this.style.background='#B9873A'">Begin Lesson 1 &#x2192;</button>
                     </div>
                 </div>
             </div>
@@ -898,7 +921,7 @@
             <p>Carbohydrates, fats, and proteins are not interchangeable simply because they all contain energy. Claiming that they are is like claiming diesel and gasoline are interchangeable because both are energy sources for engines. Put the wrong fuel in the wrong engine, and the system breaks down. Each macronutrient moves through different metabolic pathways and triggers different hormonal responses. To truly understand metabolism, you have to completely abandon the idea of calories as a math equation and begin to understand food as signals that create a biological response. One of the most important of those responses is a hormone called Insulin.</p>
         </section>
 
-                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(251,248,242,0.88);">
+                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(238,242,240,0.9);">
                 <p class="text-xl mb-2">&#x2728;</p>
                 <h4 class="font-serif text-xl font-bold mb-2" style="color:#1F4F5C;">Your Metabolism Is Unique To You</h4>
                 <p class="font-sans text-sm text-gray-600 leading-relaxed mb-4">Once you finish the Master Class your personal AI Metabolic Coach will ask you 3 questions and build a custom protocol designed specifically for your biology &#x2014; not a generic plan.</p>
@@ -1122,7 +1145,7 @@
             <p>And it's why, when we reach the chapter on what stalls progress, some of the advice will be to eat <em>more.</em> If that sounds backwards, come back and read about the men in Minnesota.</p>
         </section>
 
-                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(251,248,242,0.88);">
+                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(238,242,240,0.9);">
                 <p class="text-xl mb-2">&#x1F9E0;</p>
                 <h4 class="font-serif text-xl font-bold mb-2" style="color:#1F4F5C;">Ready to Decode Your Signals?</h4>
                 <p class="font-sans text-sm text-gray-600 leading-relaxed mb-4">Your AI Metabolic Coach is trained in the exact signaling science you are learning right now. After your final lesson it will analyze your personal patterns and tell you exactly what your metabolism needs.</p>
@@ -2236,7 +2259,7 @@
 
         </section>
 
-                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(251,248,242,0.88);">
+                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(238,242,240,0.9);">
                 <p class="text-xl mb-2">&#x2728;</p>
                 <h4 class="font-serif text-xl font-bold mb-2" style="color:#1F4F5C;">Build Your Perfect Metabolic Plate</h4>
                 <p class="font-sans text-sm text-gray-600 leading-relaxed mb-4">Your AI Meal Coach can take any meal you are craving and instantly show you how to make it metabolically stable &#x2014; without giving up the foods you love.</p>
@@ -2441,7 +2464,7 @@
             </div>
         </section>
 
-                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(251,248,242,0.88);">
+                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(238,242,240,0.9);">
                 <p class="text-xl mb-2">&#x2728;</p>
                 <h4 class="font-serif text-xl font-bold mb-2" style="color:#1F4F5C;">Heal Your Gut With the Right Foods</h4>
                 <p class="font-sans text-sm text-gray-600 leading-relaxed mb-4">After completing the Master Class your AI Chef can turn whatever ingredients you have in your fridge into a gut-healing, metabolically balanced meal in seconds.</p>
@@ -3197,7 +3220,7 @@
             </div>
         </section>
 
-                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(251,248,242,0.88);">
+                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(238,242,240,0.9);">
                 <p class="text-xl mb-2">&#x2728;</p>
                 <h4 class="font-serif text-xl font-bold mb-2" style="color:#1F4F5C;">Your Personalized Nutrition Protocol Awaits</h4>
                 <p class="font-sans text-sm text-gray-600 leading-relaxed mb-4">Your AI Metabolic Coach will take everything you have learned in these lessons and combine it with your personal health history to build a supplement and nutrition strategy made just for you.</p>
@@ -3549,7 +3572,7 @@
             </div>
         </section>
 
-                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(251,248,242,0.88);">
+                        <div class="mt-10 p-6 rounded-xl shadow-sm" style="border-left:4px solid #B9873A;background:rgba(238,242,240,0.9);">
                 <p class="text-xl mb-2">&#x1F9E0;</p>
                 <h4 class="font-serif text-xl font-bold mb-2" style="color:#1F4F5C;">Movement That Works For Your Metabolism</h4>
                 <p class="font-sans text-sm text-gray-600 leading-relaxed mb-4">Once you complete the Master Class your AI Coach will factor in your stress levels, sleep, and metabolic type to recommend the exact style of movement your body needs right now.</p>
@@ -5293,7 +5316,7 @@
                     <p class="mb-10 text-lg text-brand-text">The Deep Healing Intensive is my most personal, most comprehensive offering — and I only take a handful of clients at a time. This is not a program. It is not a course. It is not a generic protocol handed to you in a PDF. <strong class="text-brand-accent">It is me — fully present, fully invested — in your healing.</strong></p>
 
                     <h4 class="font-serif text-4xl font-bold text-brand-dark mb-8">Here is what we work on together:</h4>
-                    <div class="bg-white p-8 rounded-xl mb-12 border border-[#e7dac9] shadow-sm">
+                    <div class="bg-white p-8 rounded-xl mb-12 border border-[#D3DDDA] shadow-sm">
                         <ul class="space-y-5 text-brand-text">
                             <li class="flex gap-3 items-start">
                                 <span class="text-brand-accent font-bold">✓</span>
@@ -5347,7 +5370,7 @@
                         </ul>
                     </div>
 
-                    <div class="flex flex-col md:flex-row gap-10 mb-12 bg-[#f3ece3] p-8 rounded-xl border border-[#e7dac9]">
+                    <div class="flex flex-col md:flex-row gap-10 mb-12 bg-[#E2EBE8] p-8 rounded-xl border border-[#D3DDDA]">
                         <div class="flex-1">
                             <h4 class="font-serif text-3xl font-bold text-brand-dark mb-4">What this looks like:</h4>
                             <ul class="space-y-3 text-sm text-brand-text">
@@ -5374,14 +5397,14 @@
                         <p style="font-family:'Figtree',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:#B9873A;margin-bottom:0.75rem;">Schedule Your Free Discovery Call</p>
                         <p style="font-family:'Gloock',serif;font-size:1.15rem;font-style:italic;color:#1F4F5C;line-height:1.65;margin-bottom:1rem;">Choose a time that works for you — no pressure, no pitch, just an honest conversation about your healing journey.</p>
                         <div style="width:80px;height:1px;background:#B9873A;margin:0 auto 1.25rem;"></div>
-                        <a href="https://calendly.com/jaime-mbfh/30min" target="_blank" rel="noopener" style="display:inline-block;background:#B9873A;color:white;font-family:'Figtree',sans-serif;font-weight:700;font-size:0.95rem;padding:1rem 2.5rem;border-radius:0.75rem;text-decoration:none;letter-spacing:0.05em;box-shadow:0 4px 18px rgba(185,135,58,0.35);transition:background 0.2s,transform 0.15s;width:100%;max-width:420px;box-sizing:border-box;" onmouseover="this.style.background='#A37630';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='#B9873A';this.style.transform='translateY(0)'">Book Your Free 30 Minute Call With Jaime</a>
+                        <a href="https://calendly.com/jaime-mbfh/30min" target="_blank" rel="noopener" style="display:inline-block;background:#B9873A;color:#1A150C;font-family:'Figtree',sans-serif;font-weight:700;font-size:0.95rem;padding:1rem 2.5rem;border-radius:6px;text-decoration:none;letter-spacing:0.05em;box-shadow:0 4px 18px rgba(185,135,58,0.35);transition:background 0.2s,transform 0.15s;width:100%;max-width:420px;box-sizing:border-box;" onmouseover="this.style.background='#A37630';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='#B9873A';this.style.transform='translateY(0)'">Book Your Free 30 Minute Call With Jaime</a>
                         <p style="font-family:'Figtree',sans-serif;font-size:0.72rem;font-style:italic;color:rgba(31,79,92,0.7);margin-top:0.85rem;">Spots are extremely limited for this program. However if full, a waitlist is available for future openings.</p>
                     </div>
                 </div>
             </div>
         </div> <!-- END TAB 4 -->
 
-        <footer class="text-center text-sm text-gray-400 py-8 mt-12 border-t border-gray-100">
+        <footer class="text-center text-sm text-[#BFD2D3] bg-[#1F4F5C] py-8 mt-12 -mb-12 -mx-6 md:-mx-12 lg:-mx-20">
             &copy; 2026 Jaime Jenkins. All rights reserved.
         </footer>
     </main>
@@ -5857,7 +5880,7 @@
                             <span class="text-[0.65rem] md:text-xs font-bold uppercase tracking-[0.14em] ${statusClass} px-2.5 py-1 rounded-full">${statusText}</span>
                             ${mode === 'catalog' && item.productUrl ? `<a href="#" data-action="open-product" class="pl-2.5 text-[0.65rem] text-gray-500 underline hover:text-brand-dark">open product</a>` : ''}
                         </span>
-                        <button type="button" data-action="primary" class="inline-flex items-center justify-center rounded-full bg-brand-dark px-4 py-2.5 text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-[#173C46]">
+                        <button type="button" data-action="primary" class="inline-flex items-center justify-center rounded-[6px] bg-brand-accent px-4 py-2.5 md:px-5 md:py-3 text-xs md:text-sm font-bold tracking-[0.02em] text-[#1A150C] transition hover:bg-[#A37630] hover:-translate-y-0.5">
                             ${buttonLabel}
                         </button>
                     </div>
