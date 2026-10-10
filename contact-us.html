@@ -9,36 +9,33 @@
     <script src="scripts/a11y.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f7fafb;
-            --card: #ffffff;
-            --text: #2c3e50;
-            --muted: #4a5568;
-            --brand: #34657a;
-            --accent: #c19a6b;
-            --border: #dbe8ef;
-            --soft: #eef3f5;
+            --bg: #EEF2F0;
+            --card: #FFFFFF;
+            --text: #1B2A2D;
+            --muted: #56676A;
+            --brand: #1F4F5C;
+            --accent: #B9873A;
+            --border: #D3DDDA;
+            --soft: #E2EBE8;
         }
 
         * { box-sizing: border-box; }
 
         body {
             margin: 0;
-            font-family: "Montserrat", sans-serif;
+            font-family: "Figtree", "Segoe UI", sans-serif;
             color: var(--text);
-            background:
-                radial-gradient(circle at 90% -10%, rgba(193, 154, 107, 0.2), transparent 40%),
-                radial-gradient(circle at -10% 110%, rgba(52, 101, 122, 0.16), transparent 42%),
-                linear-gradient(180deg, #fbfdfe 0%, var(--bg) 100%);
+            background: var(--bg);
             min-height: 100vh;
-            padding: 2.25rem 1rem;
         }
 
         .page-wrap {
             width: min(940px, 100%);
             margin: 0 auto;
+            padding: 2.25rem 1rem;
         }
 
         .card {
@@ -46,19 +43,15 @@
             margin: 0 auto;
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 24px;
+            border-radius: 8px;
             padding: clamp(1rem, 2.8vw, 1.9rem) clamp(1.5rem, 3.8vw, 2.8rem);
-            box-shadow: 0 22px 48px rgba(52, 101, 122, 0.16);
+            box-shadow: 0 2px 10px rgba(27, 42, 45, 0.05);
             position: relative;
             overflow: hidden;
         }
 
         .card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: linear-gradient(135deg, rgba(238, 243, 245, 0.85) 0%, rgba(255, 255, 255, 0) 45%);
+            content: none;
         }
 
         .card > * {
@@ -81,21 +74,21 @@
         .kicker {
             margin: 0 0 0.4rem;
             text-transform: uppercase;
-            letter-spacing: 0.22em;
-            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            font-size: 0.72rem;
             font-weight: 700;
-            color: var(--accent);
+            color: var(--brand);
             text-align: center;
         }
 
         h1 {
             margin: 0;
             color: var(--brand);
-            font-family: "Cormorant Garamond", serif;
+            font-family: "Gloock", Georgia, serif;
+            font-weight: 400;
             font-size: clamp(2.2rem, 6vw, 3.2rem);
-            line-height: 1.03;
+            line-height: 1.08;
             text-align: center;
-            letter-spacing: 0.02em;
         }
 
         .lead {
@@ -115,16 +108,16 @@
 
         .info-item {
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 8px;
             padding: 1rem 1.15rem;
-            background: linear-gradient(180deg, #ffffff 0%, #fbfeff 100%);
+            background: #fff;
             transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
 
         .info-item:hover {
             transform: translateY(-1px);
-            box-shadow: 0 12px 28px rgba(52, 101, 122, 0.1);
-            border-color: #c6dae4;
+            box-shadow: 0 6px 16px rgba(27, 42, 45, 0.06);
+            border-color: var(--brand);
         }
 
         .label {
@@ -154,10 +147,10 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            border-radius: 999px;
-            border: 1px solid #d4e2ea;
-            background: #f5fafc;
-            color: #2c3e50;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--brand);
             width: 2rem;
             height: 2rem;
             padding: 0;
@@ -167,8 +160,8 @@
         }
 
         .copy-email-btn:hover {
-            border-color: #bdd2dd;
-            background: #edf5f9;
+            border-color: var(--brand);
+            background: var(--soft);
             transform: translateY(-1px);
         }
 
@@ -181,7 +174,7 @@
         .copy-feedback {
             margin: 0.45rem 0 0;
             font-size: 0.78rem;
-            color: #6b7b88;
+            color: var(--muted);
             min-height: 1rem;
         }
 
@@ -203,12 +196,10 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            border-radius: 999px;
-            padding: 0.85rem 1.35rem;
+            border-radius: 6px;
+            padding: 16px 26px;
             text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.78rem;
-            letter-spacing: 0.12em;
+            font-size: 0.95rem;
             font-weight: 700;
             border: 1px solid transparent;
             transition: 0.2s ease;
@@ -217,42 +208,40 @@
         .btn-primary {
             background: var(--accent);
             border-color: var(--accent);
-            color: #1f2933;
-            box-shadow: 0 10px 24px rgba(193, 154, 107, 0.28);
+            color: #1A150C;
         }
 
         .btn-primary:hover {
-            background: #b58659;
-            border-color: #b58659;
-            transform: translateY(-1px);
+            background: #A37630;
+            border-color: #A37630;
+            transform: translateY(-2px);
         }
 
         .btn-secondary {
-            background: #f5fafc;
-            border-color: #d4e2ea;
-            color: #2c3e50;
+            background: #fff;
+            border-color: var(--border);
+            color: var(--brand);
         }
 
         .btn-secondary:hover {
-            border-color: #bdd2dd;
-            background: #edf5f9;
-            transform: translateY(-1px);
+            border-color: var(--brand);
+            transform: translateY(-2px);
         }
 
         .site-note {
             margin: 1.1rem 0 0;
             text-align: center;
             font-size: 0.82rem;
-            color: #6b7b88;
+            color: var(--muted);
         }
 
         @media (max-width: 640px) {
-            body {
+            .page-wrap {
                 padding: 1rem 0.75rem;
             }
 
             .card {
-                border-radius: 18px;
+                border-radius: 8px;
                 padding: 1.3rem 1rem 1.5rem;
             }
 
@@ -268,6 +257,11 @@
     </style>
 </head>
 <body>
+    <header class="mb-site-header">
+        <div class="mb-site-header-inner">
+            <span class="mb-site-brand"><img src="images/foundations/mbfh-mark.webp" alt="" width="42" height="42"><span><b>Mind Body</b><small>Functional Health</small></span></span>
+        </div>
+    </header>
     <div class="page-wrap">
         <main class="card">
             <div class="brand-mark">
