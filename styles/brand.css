@@ -24,18 +24,126 @@
      decision Phase 1 deliberately does not preempt.
    ============================================================ */
 
+/* PHASE 3 — MATCH THE MAIN SITE (2026-10-09). The palette and type now
+   follow mindbodyfunctionalhealth.com, the same values the Foundations of
+   Health presenter was built on: spruce teal, brass gold, Gloock over
+   Figtree. The old names stay so every page that reads them keeps working;
+   only the values moved. Pages load Gloock and Figtree from Google Fonts. */
 :root {
-    /* The five canonical brand values, from index.html's tailwind.config. */
-    --brand-dark: #34657a;      /* teal — headings, primary UI */
-    --brand-light: #eef3f5;     /* soft icy-teal background */
-    --brand-accent: #c19a6b;    /* gold — CTAs, rules, accents */
-    --brand-accent-hover: #a68256;
-    --brand-text: #2c3e50;      /* slate — body copy */
+    --brand-dark: #1F4F5C;      /* teal — header, footer, headings, links */
+    --brand-light: #EEF2F0;     /* page background */
+    --brand-accent: #B9873A;    /* gold — buttons, small highlights */
+    --brand-accent-hover: #A37630;
+    --brand-text: #1B2A2D;      /* body copy */
 
-    /* Typeface stacks. Both faces are loaded by the pages that use them;
-       this only names the fallback chain so it is consistent everywhere. */
-    --font-serif: "Cormorant Garamond", Georgia, serif;
-    --font-sans: "Montserrat", "Segoe UI", sans-serif;
+    --mb-bg: #EEF2F0;
+    --mb-card: #FFFFFF;
+    --mb-ink: #1B2A2D;
+    --mb-muted: #56676A;
+    --mb-line: #D3DDDA;
+    --mb-teal: #1F4F5C;
+    --mb-teal-deep: #173C46;
+    --mb-gold: #B9873A;
+    --mb-gold-hover: #A37630;
+    --mb-gold-ink: #1A150C;     /* text on gold */
+    --mb-tint: #E2EBE8;         /* alternating sections */
+    --mb-on-teal: #F2F6F4;
+    --mb-on-teal-muted: #BFD2D3;
+
+    --font-serif: "Gloock", Georgia, serif;
+    --font-sans: "Figtree", "Segoe UI", system-ui, sans-serif;
+}
+
+/* ---------- shared components ----------
+   Header bar: logo and wordmark only. The standalone pages never had a nav,
+   so this adds none; .mb-site-nav styles the links on pages that have them. */
+.mb-site-header {
+    background: var(--mb-teal);
+    color: var(--mb-on-teal);
+    font-family: var(--font-sans);
+}
+.mb-site-header-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.mb-site-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #fff;
+    text-decoration: none;
+}
+.mb-site-brand img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+}
+.mb-site-brand b {
+    display: block;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1.2;
+}
+.mb-site-brand small {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: #fff;
+    line-height: 1.3;
+}
+.mb-site-nav a,
+.mb-site-nav button.mb-site-navlink {
+    color: var(--mb-on-teal-muted);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.15s ease;
+}
+.mb-site-nav a:hover,
+.mb-site-nav button.mb-site-navlink:hover {
+    color: #fff;
+}
+.mb-site-header a:focus-visible,
+.mb-site-header button:focus-visible {
+    outline-color: var(--mb-gold);
+}
+
+.mb-eyebrow {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--mb-teal);
+}
+
+.mb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--mb-gold);
+    color: var(--mb-gold-ink);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    border: 0;
+    border-radius: 6px;
+    padding: 16px 26px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.mb-btn:hover {
+    background: var(--mb-gold-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px -8px rgba(27, 42, 45, 0.45);
 }
 
 /* ============================================================
