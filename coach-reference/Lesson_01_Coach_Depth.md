@@ -17,6 +17,11 @@ The claims the user has just read. The coach affirms and deepens these.
 5. Macronutrients are not interchangeable — different pathways, different hormonal responses
 6. Food should be understood as signals that create a biological response
 7. **(New)** The calorie numbers on labels are estimates from an 1890s formula, and measurably wrong for some foods
+8. **(New 2026-10-12)** In a ten-year study of 775 men, calories burned at rest did not predict weight gain; the fuel the body was running on did (carbohydrate burners about two and a half times more likely to gain) — see 1.7
+9. **(New 2026-10-12)** Two diets with equivalent calories produced different results: low-carb/high-fat improved fatty liver, weight and blood markers; high-carb/low-fat did not — see 1.8 (**citation not yet supplied**)
+10. **(New 2026-10-12)** Only 12% of American adults pass five basic measures of metabolic health — see 1.9
+
+Lesson order as of 2026-10-12: bomb calorimeter → "We Are Not a Chemistry Set" box (claim 2; formerly titled "The Combustible Myth") → The Almond Test → They Gained More Weight → Two Diets, Two Very Different Results → closing paragraphs leading into Insulin.
 
 ---
 ---
@@ -56,6 +61,8 @@ Food labels don't use calorimetry. They use the **Atwater general factors** — 
 - **32% overestimation.** 129 vs 168–170 kcal per 28 g serving
 
 **Baer DJ, Gebauer SK, Novotny JA** — walnuts: 146 vs 185 kcal per 1-oz serving, **21% less.** Pistachios similar direction.
+
+**>>> As of 2026-10-12 the lesson no longer mentions walnuts, or that chopping, roasting and grinding change the number** — the almond section was trimmed. Both remain usable as coach depth; introduce them as going beyond the lesson, not as something the user read.
 
 **Mechanism:** Ellis PR, et al. *Am J Clin Nutr*. 2004;80(3):604–613 — intact plant cell walls limit lipid bioaccessibility. Magnitude varies with particle size, so chewing, chopping, grinding, and roasting all change the result.
 
@@ -99,6 +106,36 @@ Kevin Hall's dynamic modelling work is the standard reference. **Obtain and pin 
 **>>> COACH RULE:** Concede this readily if a user raises it. It costs nothing — no user lives under ward conditions, nobody absorbs exactly what the label says, and nobody's expenditure holds constant while restricting. **The model's failure is one of applicability, not physics.**
 
 Conceding it makes the rest more credible. Refusing to concede it is what a reader expects from someone selling something.
+
+## 1.7 Fuel use, not resting expenditure, predicted weight gain (Baltimore)
+
+**Seidell JC, Muller DC, Sorkin JD, Andres R.** Fasting respiratory exchange ratio and resting metabolic rate as predictors of weight gain: the Baltimore Longitudinal Study on Aging. *Int J Obes Relat Metab Disord*. 1992;16(9):667–674.
+- 775 men, Baltimore Longitudinal Study of Aging; fasting respiratory exchange ratio (RER/RQ) and resting metabolic rate measured at baseline; followed about ten years
+- Resting metabolic rate did not predict weight gain
+- Men with a high fasting RQ (mostly carbohydrate oxidation) had about 2.4 times the risk of gaining 5 kg (11 lb) or more compared with men with a low RQ (mostly fat oxidation)
+- The lesson's subgroup figures (122 men gained more than 11 lb; 40 gained more than 22 lb) come from the author's reading of the paper — **confirm against the full text before the coach quotes them**
+
+Lesson 8 ("The Breath Test That Predicted Weight Gain") covers the same study, plus Zurlo et al. in the Pima population, and explains the breath measurement.
+
+**>>> COACH USE:** an observational association, not proof that changing fuel use prevents gain. Say "predicted", not "caused". Don't present RQ as something users can measure at home.
+
+## 1.8 Two equal-calorie diets (Copenhagen) — CITATION NEEDED
+
+**[UNVERIFIED — citation not yet supplied by the author]** The lesson describes "a recent study done by University of Copenhagen" comparing equal-calorie high-carb/low-fat and low-carb/high-fat diets, with improvements in fatty liver, weight loss and blood markers in the low-carb group only and "no improvements in any of these blood markers" with low-fat. It comes from the author's original guide; the study itself has not been identified.
+
+**>>> COACH RULE until a citation is pinned:** affirm the general point (macronutrient composition can change liver fat and metabolic markers at matched calories) without adding details: no author, year, sample size, effect size, or population. If a user asks for the source, say the reference is being confirmed. Do not invent or guess a citation.
+
+## 1.9 How common metabolic health is (NHANES)
+
+**Araújo J, Cai J, Stevens J.** Prevalence of optimal metabolic health in American adults: National Health and Nutrition Examination Survey 2009–2016. *Metab Syndr Relat Disord*. 2019;17(1):46–52.
+- n = 8,721 adults, NHANES 2009–2016
+- 12.2% met optimal levels on all five measures without medication: waist circumference, blood glucose (fasting glucose and HbA1c), blood pressure, triglycerides and HDL cholesterol
+
+**>>> Wording note:** the lesson's list ("blood pressure, blood sugar, cholesterol, waist size, and whether they were already on medication") is a simplification: the paper's lipid measures are triglycerides and HDL, and being unmedicated is a condition on the measures, not a fifth measure. If a user quotes the lesson, the coach can give the precise version without calling the lesson wrong.
+
+## 1.10 "Up to 80% to 90% of chronic diseases"
+
+**[NO SOURCE SUPPLIED]** The lesson says "Many prominent doctors estimate that metabolic dysfunction underlies up to 80% to 90% of all chronic diseases." No citation has been supplied. **The coach must not repeat or amplify this figure** or attribute it to a named doctor. The supported point is 1.9: most adults already fail basic metabolic-health measures.
 
 ---
 ---
@@ -170,6 +207,9 @@ No, and this is the error to head off. You absorb roughly a third fewer calories
 - **Thermic effect ranges** (20–30% protein, 5–10% carbohydrate, 0–3% fat) — widely cited; pin a primary source
 - **Atwater & Bryant 1900** — obtain, since the lesson cites it directly
 - **Metabolic ward concession** — pin one well-controlled feeding study
+- **Copenhagen equal-calorie diet study** (lesson section "Two Diets, Two Very Different Results") — author's own reference from the original guide; **citation not yet supplied**. Needed before the coach gives any detail (1.8)
+- **Seidell 1992 subgroup counts** (122 gained more than 11 lb, 40 more than 22 lb) — confirm against the full text (1.7)
+- **"Up to 80% to 90% of chronic diseases"** — no source; conflicts with the book's no-"up to" rule (1.10)
 
 ---
 
