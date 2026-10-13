@@ -98,8 +98,6 @@ And two details matter for you specifically. The effects were strongest in peopl
 ## There Is No Cheat Code
 <!-- page: Lesson 2 -->
 
-This is worth stopping on, because it's a pattern you'll see again and again in this book.
-
 Every artificial substitute for a healthy diet comes with a cost. Sometimes the cost is obvious. More often it's hidden, delayed, or somewhere nobody thought to look. The sweetener that spares you the sugar drives your hunger instead. The pill that suppresses your appetite takes your muscle. The processed food engineered to taste like the real thing arrives without anything your body actually needed.
 
 There is no shortcut that lets you have the signal without the consequence. Your body has been reading these signals for a very long time, and it is not easily fooled — it just responds to the deception in a way you don't immediately notice.
