@@ -10,6 +10,6 @@
 *.woff binary
 *.woff2 binary
 
-# Finished course delivered as a zip: store every byte exactly as supplied
-# (its index.html has CRLF endings), so a checkout anywhere matches the zip.
+# Finished course delivered as a zip: store every byte exactly as supplied,
+# with no line-ending conversion, so a checkout anywhere matches the zip.
 courses/autoimmune-elimination/** -text
