@@ -169,6 +169,13 @@
         .section-block :where(p) { margin-bottom: 1em; }
         .section-block :where(p:last-child) { margin-bottom: 0; }
 
+        /* Same fix for AI output (coach chat bubbles, Fridge Chef, Lab Markers,
+           stress check-in, plateau troubleshooting, meal plan, shopping list).
+           The model is told to answer in <p> tags, and preflight zeroed them.
+           In em so it scales with these boxes' smaller text (14px -> 14px gap). */
+        .ai-output :where(p) { margin-bottom: 1em; }
+        .ai-output :where(p:last-child) { margin-bottom: 0; }
+
         /* Styled first paragraph &mdash; larger, teal */
         .section-block > p:first-of-type {
             font-size: 1.15rem;
@@ -4729,7 +4736,7 @@
                             </button>
                             <p class="text-xs text-gray-500 mt-2 text-center">Generating a new plan replaces your current week.</p>
                             <div id="meal-plan-loading" class="hidden mt-4 text-brand-accent text-center text-sm font-medium animate-pulse">Building your 7-day plan from your protocol and recipes...</div>
-                            <div id="meal-plan-output" class="hidden mt-6"></div>
+                            <div id="meal-plan-output" class="ai-output hidden mt-6"></div>
                         </div>
 
                         <!-- Shopping List — generated fresh from the CURRENT weekly_meal_plan
@@ -4744,7 +4751,7 @@
                             </div>
                             <p class="text-sm text-gray-500 mb-2">Combines and organizes every ingredient from this week's plan by grocery category.</p>
                             <div id="shopping-list-loading" class="hidden mt-3 text-brand-accent text-center text-sm font-medium animate-pulse">Combining ingredients from your week...</div>
-                            <div id="shopping-list-output" class="hidden mt-4"></div>
+                            <div id="shopping-list-output" class="ai-output hidden mt-4"></div>
                         </div>
                     </div>
 
@@ -4764,7 +4771,7 @@
                                 &#x2728; Create My Recipe
                             </button>
                             <div id="fridge-loading" class="hidden mt-6 text-brand-light text-center font-medium animate-pulse">Chopping vegetables and writing your recipe...</div>
-                            <div id="fridge-output" class="hidden mt-6 p-6 bg-white text-gray-800 rounded-lg shadow-inner prose prose-brand max-w-none"></div>
+                            <div id="fridge-output" class="ai-output hidden mt-6 p-6 bg-white text-gray-800 rounded-lg shadow-inner max-w-none"></div>
                         </div>
                     </div>
 
@@ -4777,7 +4784,7 @@
                             <textarea id="lab-markers-input" rows="4" placeholder="e.g., Fasting insulin 14, HbA1c 5.6%, TSH 3.8, hs-CRP 2.1, ferritin 18 (I'm a woman)..." class="w-full px-4 py-3 rounded-lg text-gray-800 placeholder-gray-400 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-accent"></textarea>
                             <button id="lab-markers-btn" class="mt-4 w-full bg-brand-dark hover:bg-[#173C46] text-white px-6 py-3 rounded-lg font-bold transition-colors text-lg flex justify-center items-center shadow-md">&#x2728; Explain My Markers</button>
                             <div id="lab-markers-loading" class="hidden mt-4 text-brand-accent text-center text-sm font-medium animate-pulse">Reading your labs against the functional-optimal ranges...</div>
-                            <div id="lab-markers-output" class="hidden mt-6 p-6 bg-white text-gray-800 rounded-lg shadow-inner prose prose-brand max-w-none"></div>
+                            <div id="lab-markers-output" class="ai-output hidden mt-6 p-6 bg-white text-gray-800 rounded-lg shadow-inner max-w-none"></div>
                         </div>
                     </div>
 
@@ -5201,13 +5208,13 @@
                                         <p id="stress-checkin-validation" class="hidden text-xs font-semibold text-red-600 mb-2">Tap what&#x2019;s going on, or describe it above, first.</p>
                                         <button type="button" id="stress-checkin-submit-btn" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-brand-accent/40 bg-brand-light/30 px-4 py-2.5 text-sm font-semibold text-brand-dark hover:bg-brand-light/60 transition-colors">Get a quick reset</button>
                                         <div id="stress-checkin-loading" class="hidden mt-3 text-brand-accent text-sm font-medium animate-pulse">Finding something that could help&hellip;</div>
-                                        <div id="stress-checkin-output" class="hidden mt-3 p-4 bg-white border border-brand-accent/20 rounded-lg text-sm text-gray-700 leading-relaxed"></div>
+                                        <div id="stress-checkin-output" class="ai-output hidden mt-3 p-4 bg-white border border-brand-accent/20 rounded-lg text-sm text-gray-700 leading-relaxed"></div>
                                     </div>
 
                                     <div>
                                         <button type="button" id="daily-tracker-troubleshoot-btn" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-brand-accent/40 bg-brand-light/30 px-4 py-2.5 text-sm font-semibold text-brand-dark hover:bg-brand-light/60 transition-colors">Feeling stuck? Get help troubleshooting</button>
                                         <div id="daily-tracker-troubleshoot-loading" class="hidden mt-3 text-brand-accent text-sm font-medium animate-pulse">Reviewing your recent data&hellip;</div>
-                                        <div id="daily-tracker-troubleshoot-output" class="hidden mt-3 p-4 bg-white border border-brand-accent/20 rounded-lg text-sm text-gray-700 leading-relaxed"></div>
+                                        <div id="daily-tracker-troubleshoot-output" class="ai-output hidden mt-3 p-4 bg-white border border-brand-accent/20 rounded-lg text-sm text-gray-700 leading-relaxed"></div>
                                     </div>
                                 </div>
                             </div>
@@ -9368,7 +9375,7 @@ Do NOT generate a protocol or make recommendations yourself — that is a separa
                 msgDiv.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
                 
                 const innerDiv = document.createElement('div');
-                innerDiv.className = `max-w-[85%] rounded-xl p-4 text-sm leading-relaxed shadow-sm ${sender === 'user' ? 'bg-brand-accent text-white rounded-br-none' : 'bg-white text-gray-800 rounded-bl-none'}`;
+                innerDiv.className = `ai-output max-w-[85%] rounded-xl p-4 text-sm leading-relaxed shadow-sm ${sender === 'user' ? 'bg-brand-accent text-white rounded-br-none' : 'bg-white text-gray-800 rounded-bl-none'}`;
                 innerDiv.innerHTML = text;
                 
                 msgDiv.appendChild(innerDiv);
