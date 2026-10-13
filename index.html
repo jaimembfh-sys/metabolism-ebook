@@ -5979,6 +5979,30 @@
                     clickable: true
                 },
                 {
+                    id: 'autoimmune',
+                    title: 'Healing Autoimmune & Elimination Diet Guide',
+                    // From the course's own welcome lesson.
+                    description: 'Over the next several weeks you’ll calm your system, give your body the space it needs to heal, and discover exactly which foods work for you and which ones don’t.',
+                    image: 'images/autoimmune-elimination-card.jpg',
+                    imageAlt: 'Healing Autoimmune and Elimination Diet Guide with printable meal and symptom logs',
+                    // Never wider than 400px at any breakpoint, including the
+                    // single-column phone and small-tablet layouts.
+                    imageMaxWidth: 400,
+                    category: 'course',
+                    // Not set yet, and not rendered (no showPrice).
+                    price: 'TBD',
+                    billingLabel: 'TBD',
+                    status: 'Available',
+                    statusClass: 'bg-brand-accent/15 text-brand-dark',
+                    buttonLabel: 'Learn More',
+                    target: null,
+                    // Self-contained course at /courses/autoimmune-elimination/
+                    // (copied as-is by tools/build-site.js). No access check.
+                    externalUrl: 'courses/autoimmune-elimination/',
+                    purchased: false,
+                    clickable: true
+                },
+                {
                     id: 'metaburn',
                     title: 'MetaBurn AI Coach',
                     description: 'Use this tool to get personalized guidance, practical support, and a more intuitive path toward your goals.',
@@ -6083,8 +6107,8 @@
 
                 card.innerHTML = `
                     <h4 class="catalog-card-title">${item.title}</h4>
-                    <div class="catalog-card-media">
-                        <img src="${item.image}" alt="${item.title}" />
+                    <div class="catalog-card-media"${item.imageMaxWidth ? ` style="max-width:${item.imageMaxWidth}px;margin-left:auto;margin-right:auto;"` : ''}>
+                        <img src="${item.image}" alt="${item.imageAlt || item.title}"${item.imageMaxWidth ? ` style="max-width:${item.imageMaxWidth}px;"` : ''} />
                     </div>
                     <div class="catalog-card-body">
                         <p class="text-xs md:text-sm leading-relaxed">${item.description}</p>

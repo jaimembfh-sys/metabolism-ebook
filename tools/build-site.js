@@ -50,6 +50,9 @@ const FILES = [
   ...PAGES,
   "Low_Carb_Whole_Food_Snacks.pdf",
   "Super_Quick_Meal_Ideas.pdf",
+  // Course card for the Autoimmune & Elimination guide. images/ is copied
+  // whole below; it's named here as well so a missing card fails the build.
+  "images/autoimmune-elimination-card.jpg",
   // The five the app fetches at runtime. The rest of knowledge-base/ - the
   // recipe markdown, the chunk files, the build scripts, coach-fixtures.json -
   // is source and stays behind.
@@ -71,6 +74,11 @@ const DIRS = [
   // be reachable for those links to resolve. The PDFs stay published beside
   // them until he retires them.
   "recipes-html",
+  // Healing Autoimmune & Elimination Diet Guide, added 2026-10-12. A finished,
+  // self-contained course supplied as a zip: index.html + images/ + printables/
+  // with relative paths. Copied byte-for-byte; never edit or process it here.
+  // Served at /courses/autoimmune-elimination/.
+  "courses/autoimmune-elimination",
 ];
 
 /* Deliberately NOT published, and why:
