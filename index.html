@@ -707,25 +707,27 @@
                 </div>
 
                 <section id="catalog-section" class="mt-2">
+                    <!-- Same button styling as before; only the horizontal padding
+                         and letter-spacing tighten below 640px so three tabs fit
+                         on one line on a 390px phone. -->
                     <div class="flex items-center gap-2 mb-6">
-                        <button type="button" id="catalog-tab-courses" data-catalog-tab="courses" class="inline-flex items-center justify-center rounded-[6px] bg-brand-dark px-5 py-3 text-sm font-semibold uppercase tracking-widest text-white transition hover:bg-[#173C46] shadow-sm">
-                            All Courses and Tools
+                        <button type="button" id="catalog-tab-courses" data-catalog-tab="courses" class="inline-flex items-center justify-center rounded-[6px] bg-brand-dark px-3 sm:px-5 py-3 text-sm font-semibold uppercase tracking-wider sm:tracking-widest text-white transition hover:bg-[#173C46] shadow-sm">
+                            Courses
                         </button>
-                        <button type="button" id="catalog-tab-dashboard" data-catalog-tab="dashboard" class="inline-flex items-center justify-center rounded-[6px] border border-brand-dark/20 bg-white px-5 py-3 text-sm font-semibold uppercase tracking-widest text-brand-dark transition hover:border-brand-dark hover:bg-brand-light/40 shadow-sm">
+                        <button type="button" id="catalog-tab-tools" data-catalog-tab="tools" class="inline-flex items-center justify-center rounded-[6px] border border-brand-dark/20 bg-white px-3 sm:px-5 py-3 text-sm font-semibold uppercase tracking-wider sm:tracking-widest text-brand-dark transition hover:border-brand-dark hover:bg-brand-light/40 shadow-sm">
+                            Tools
+                        </button>
+                        <button type="button" id="catalog-tab-dashboard" data-catalog-tab="dashboard" class="inline-flex items-center justify-center rounded-[6px] border border-brand-dark/20 bg-white px-3 sm:px-5 py-3 text-sm font-semibold uppercase tracking-wider sm:tracking-widest text-brand-dark transition hover:border-brand-dark hover:bg-brand-light/40 shadow-sm">
                             My Dashboard
                         </button>
                     </div>
 
                     <div id="catalog-panel-courses">
-                        <div class="mb-8">
-                            <h3 class="font-serif text-2xl font-bold text-brand-dark mb-4">Courses</h3>
-                            <div id="catalog-courses-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-                        </div>
+                        <div id="catalog-courses-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+                    </div>
 
-                        <div>
-                            <h3 class="font-serif text-2xl font-bold text-brand-dark mb-4">Tools</h3>
-                            <div id="catalog-tools-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-                        </div>
+                    <div id="catalog-panel-tools" class="hidden">
+                        <div id="catalog-tools-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
                     </div>
 
                     <div id="catalog-panel-dashboard" class="hidden">
@@ -5888,6 +5890,7 @@
             const catalogTabButtons = document.querySelectorAll('[data-catalog-tab]');
             const catalogPanels = {
                 courses: document.getElementById('catalog-panel-courses'),
+                tools: document.getElementById('catalog-panel-tools'),
                 dashboard: document.getElementById('catalog-panel-dashboard')
             };
 
@@ -6053,19 +6056,22 @@
                 const toolsList = document.getElementById('catalog-tools-list');
                 const dashboardList = document.getElementById('dashboard-list');
 
-                if (coursesList) {
-                    coursesList.innerHTML = '';
-                    catalogItems.filter((item) => item.category === 'course').forEach((item) => {
-                        coursesList.appendChild(createCatalogCard(item, 'catalog'));
-                    });
-                }
+                // A tab with nothing in it says so instead of showing a blank area.
+                const fillCatalogList = (list, category, emptyText) => {
+                    list.innerHTML = '';
+                    const items = catalogItems.filter((item) => item.category === category);
+                    if (!items.length) {
+                        const empty = document.createElement('p');
+                        empty.className = 'text-gray-600';
+                        empty.textContent = emptyText;
+                        list.appendChild(empty);
+                        return;
+                    }
+                    items.forEach((item) => list.appendChild(createCatalogCard(item, 'catalog')));
+                };
 
-                if (toolsList) {
-                    toolsList.innerHTML = '';
-                    catalogItems.filter((item) => item.category === 'tool').forEach((item) => {
-                        toolsList.appendChild(createCatalogCard(item, 'catalog'));
-                    });
-                }
+                if (coursesList) fillCatalogList(coursesList, 'course', 'No courses here yet.');
+                if (toolsList) fillCatalogList(toolsList, 'tool', 'No tools here yet.');
 
                 if (dashboardList) {
                     dashboardList.innerHTML = '';
