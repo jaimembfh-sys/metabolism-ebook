@@ -364,7 +364,7 @@ Cinnamon – can improve insulin sensitivity and slow the absorption of glucose,
 
 Alpha-lipoic acid (ALA) – a potent antioxidant that improves insulin sensitivity and supports mitochondrial health.
 
-Chromium picolinate – helps enhance insulin action and regulate blood sugar levels by repairning insulin receptors.
+Chromium picolinate – helps enhance insulin action and regulate blood sugar levels by repairing insulin receptors.
 
 Magnesium – essential for hundreds of enzymatic reactions, including those that regulate glucose metabolism; deficiency can worsen insulin resistance.
 
