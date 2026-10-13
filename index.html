@@ -160,6 +160,15 @@
 
         /* ===== PREMIUM DESIGN SYSTEM ===== */
 
+        /* Paragraph spacing in lessons. Tailwind's preflight (p { margin: 0 })
+           loads after this stylesheet and cancels the p rule above, so lesson
+           paragraphs ran together. :where() keeps specificity at one class, so
+           Tailwind margin utilities (mb-0, mt-4 mb-2, ...) on a paragraph still win.
+           1em = 16px at body size: clearly more than the ~13px of leading
+           between lines at line-height 1.8, less than a full blank line. */
+        .section-block :where(p) { margin-bottom: 1em; }
+        .section-block :where(p:last-child) { margin-bottom: 0; }
+
         /* Styled first paragraph &mdash; larger, teal */
         .section-block > p:first-of-type {
             font-size: 1.15rem;
