@@ -10,7 +10,7 @@ source_file: index.html#lesson-4
 ## Overview
 <!-- page: Lesson 4 -->
 
-Movement activates mitochondrial energy production
+Movement tells your cells to build more mitochondria
 
 Mitochondria
 
@@ -79,6 +79,8 @@ Practically: if you're working on hormones, you're working on mitochondria wheth
 <!-- chunk -->
 ## Giving Your Cells What They Need
 <!-- page: Lesson 4 -->
+
+The raw materials for cellular energy
 
 You Are Not Stuck With the Mitochondria You Have
 

@@ -10,7 +10,7 @@ source_file: index.html#lesson-12
 ## Overview
 <!-- page: Lesson 12 -->
 
-Mindfulness and stillness directly heal the gut-brain axis
+A slow breath before the first bite shifts you into rest-and-digest
 
 The connection between your digestive system and your brain is so profound that scientists often refer to the gut as the "second brain." This connection is primarily managed by the Vagus Nerve, a massive informational highway that runs directly from your brainstem down into your digestive organs.
 

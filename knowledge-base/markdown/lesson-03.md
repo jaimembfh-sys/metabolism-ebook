@@ -10,8 +10,6 @@ source_file: index.html#lesson-3
 ## Overview
 <!-- page: Lesson 3 -->
 
-Your gut communicates directly with your metabolism
-
 Your metabolism is not simply a function of how much food you eat; it is a reflection of how your body interprets its environment and internal state. Every system in your body is constantly communicating, sending signals that determine whether energy should be conserved or used. Insulin is one of those signals, but it operates within a much larger network. The thyroid influences how quickly energy is burned. The nervous system determines whether the body feels safe enough to use energy freely. The gut communicates with the brain about nutrient availability and stress. Even your daily movement patterns and exposure to light play a role in regulating metabolic output.
 
 If the body perceives stress, lack of resources, or instability, it will prioritize survival. This often means slowing down energy expenditure, increasing hunger signals, and storing more energy as fat. This response is protective, not broken. Your body is simply doing what it was designed to do to keep you alive during perceived famine or danger.
@@ -44,6 +42,8 @@ Your body cannot tell the difference between a famine and a diet. It only knows 
 ## The Triage: What Gets Cut First
 <!-- page: Lesson 3 -->
 
+Cold hands are often an early sign of underfeeding
+
 When your body decides resources are short, it doesn't cut spending evenly across the board. It triages. And the order tells you almost everything.
 
 Funded no matter what:Your brain. Your heart. Keeping your blood sugar from crashing. These get paid first, always.
@@ -64,6 +64,8 @@ Those aren't contradictory. A body that has concluded resources are scarce becom
 ## You Can Read Most of This Without a Blood Test
 <!-- page: Lesson 3 -->
 
+Your morning temperature is a free metabolic signal
+
 Before we talk about lab work, understand this: your body is already telling you what state it's in. You just haven't been taught what to listen for.
 
 These cost nothing and you can start tomorrow.
@@ -83,6 +85,8 @@ Your sleep. Not how long, but whether you wake rested, and whether you wake at 3
 Your energy pattern. Does it dip hard mid-afternoon? Do you need caffeine to function rather than to enjoy? Do workouts leave you energized or wrecked for the rest of the day?
 
 Your appetite. How long can you go comfortably between meals? A body that's fueling well can go four or five hours without drama. A body in trouble gets shaky, irritable, or panicky by hour two.
+
+Write down your eight signals today, then check again in eight weeks
 
 Here's how to use this. Write down where you are on all eight today. Don't do anything with it yet. Come back in eight weeks and look again.
 

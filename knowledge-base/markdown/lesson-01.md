@@ -18,41 +18,67 @@ This guide is not about forcing your body into weight loss. It is about understa
 ## Overview
 <!-- page: Lesson 1 -->
 
-Whole foods signal health to your cells
-
 The concept of a calorie was born during the age of steam engines. In the 1800s, scientists measured a calorie using a "bomb calorimeter," where food is placed in a sealed chamber, burned in pure oxygen, and the heat released is captured by surrounding water. The rise in the water’s temperature tells scientists how much energy the food contained. By definition, a calorie is simply the amount of heat needed to raise one kilogram of water by one degree Celsius.
 
 <!-- chunk -->
-## The Almonds Nobody Could Count
-<!-- page: Lesson 1 -->
-
-Here's a problem that has nothing to do with hormones or biology. The calorie numbers on your food labels aren't measured. They're estimated — using a formula built in the 1890s. Four calories per gram of protein, four for carbohydrate, nine for fat.
-
-That formula is called the Atwater system, and it is still what's printed on every package in your pantry.
-
-In 2012, USDA researchers decided to actually check one. They fed 18 adults carefully controlled diets with measured amounts of almonds, and then measured what came out the other end — the energy that passed through without being absorbed.
-
-A 28-gram serving of almonds is labeled at about 168 calories.
-
-The measured value was 129.
-
-The old formula overestimated by 32%. Almond cell walls are tough, and a meaningful portion of the fat stays locked inside that structure and passes right through you. The label counts it. Your body never sees it.
-
-They found the same thing in walnuts — about 21% less than labeled. And it changes depending on how you eat them. Whole, chopped, roasted, and ground almonds don't give you the same number, because how much you break open those cell walls determines how much you actually absorb.
-
-Sit with that for a moment. If you have been carefully logging almonds in an app, you have been logging a number that was wrong by a third. In a single food. For reasons that have nothing to do with your effort, your discipline, or anything you did.
-
-Now multiply that across everything you eat. Raw and cooked. Whole and processed. Chewed well or swallowed fast.
-
-The number was never a measurement of what your body gets. It was always an estimate of what a furnace would get.
-
-To truly understand metabolism, you have to completely abandon the idea of calories as a math equation and begin to understand food as signals that create a biological response.
-
-<!-- chunk -->
-## The Combustible Myth
+## We Are Not a Chemistry Set
 <!-- page: Lesson 1 -->
 
 Last I checked, we don’t have a small flame in our stomach burning food to ash. The human body is not a closed combustion system. It does not simply burn food and release heat in a predictable, mathematical way. Instead, it relies on complex biochemical reactions that are heavily influenced by hormones, enzymes, nutrients, and internal signaling systems.
+
+<!-- chunk -->
+## The Almond Test
+<!-- page: Lesson 1 -->
+
+The calorie numbers on your food labels aren't measured. They're estimated, using a formula built in the 1890s. Four calories per gram of protein, four for carbohydrate, nine for fat. That formula is called the Atwater system, and it is still what's printed on every package in your pantry.
+
+In 2012, USDA researchers decided to actually check one. They fed 18 adults carefully controlled diets with measured amounts of almonds, then measured the energy that passed through without being absorbed.
+
+A 28-gram (1 ounce) serving of almonds is labeled at about 168 calories. The measured value was 129.
+
+The old formula overestimated by 32%. Almond cell walls are tough, and a meaningful portion of the fat stays locked inside that structure and passes right through you. The label counts it. Your body never sees it.
+
+The number was never a measurement of what your body gets. It was always an estimate of what a furnace would get.
+
+<!-- chunk -->
+## They Gained More Weight
+<!-- page: Lesson 1 -->
+
+If calories were the whole story, the people who burn the fewest should be the ones who gain weight.
+
+Researchers followed 775 men for about ten years. At the start they measured two things: how many calories each man burned at rest, and whether his body was running mostly on carbohydrate or mostly on fat.
+
+Over those ten years, most of the men's weight stayed about the same. But 122 of them gained more than eleven pounds, and forty of those gained more than twenty-two pounds.
+
+What separated the men who gained from the men who didn't wasn't how many calories they burned at rest. That measurement predicted nothing.
+
+It was which fuel their bodies were running on. The men burning mostly carbohydrate were about two and a half times more likely to gain weight than the men burning mostly fat.
+
+Energy still matters. But it isn't the thing that decides.
+
+<!-- chunk -->
+## Two Diets, Two Very Different Results
+<!-- page: Lesson 1 -->
+
+A recent study done by University of Copenhagen compared two diets with the equivalent "calories" — one with high carb and low fat, the other low carb and high fat. The low carb group had improvements in fatty liver, weight loss, and other blood markers, while the low fat diet showed no improvements in any of these blood markers.
+
+Same calories. One group got better. The other didn't.
+
+And look at what actually improved, because this is the part most people skip past. Fatty liver. Blood markers. Those aren't cosmetic. A fatty liver is the first step toward insulin resistance and type 2 diabetes. Those blood markers — triglycerides, blood sugar, blood pressure — are the same numbers your doctor watches for heart disease and stroke.
+
+So the two groups weren't just losing different amounts of weight. One group was getting healthier and the other wasn't, on identical calories.
+
+This is why metabolism isn't a weight-loss topic. It's the system underneath almost everything that goes wrong in a modern body. Your metabolism is how every cell in you turns food into energy. When that process runs well, you have energy, stable blood sugar, a clear head, and a body that repairs itself. When it doesn't, the damage shows up as fatigue, inflammation, high blood pressure, fatty liver, diabetes and heart disease.
+
+Many prominent doctors estimate that metabolic dysfunction underlies up to 80% to 90% of all chronic diseases.
+
+And most people are already in trouble. When researchers looked at 8,721 American adults and checked five basic measures — blood pressure, blood sugar, cholesterol, waist size, and whether they were already on medication for any of them — only 12% passed all five. Nearly nine out of ten adults are already metabolically unhealthy.
+
+Weight is just the symptom you can see in the mirror. It isn't the problem. The problem is the system that produced it.
+
+The standard arguments defending the calorie system—“energy in, energy out” and “it's simple thermodynamics”—are fundamentally flawed. The calorie model fails because it leaves out the most critical factor: what actually dictates whether your body stores energy or uses it. Two foods with the exact same number of calories can have completely different effects on the body depending on how they influence hormones, blood sugar, and cellular energy production.
+
+Carbohydrates, fats, and proteins are not interchangeable simply because they all contain energy. Claiming that they are is like claiming diesel and gasoline are interchangeable because both are energy sources for engines. Put the wrong fuel in the wrong engine, and the system breaks down. Each macronutrient moves through different metabolic pathways and triggers different hormonal responses. To truly understand metabolism, you have to completely abandon the idea of calories as a math equation and begin to understand food as signals that create a biological response. One of the most important of those responses is a hormone called Insulin.
 
 # Key Insight
 

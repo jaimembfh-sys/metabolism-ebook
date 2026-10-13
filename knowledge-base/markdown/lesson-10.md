@@ -10,7 +10,7 @@ source_file: index.html#lesson-10
 ## Overview
 <!-- page: Lesson 10 -->
 
-Cruciferous vegetables help clear harmful ceramides
+Inflammatory fried food vs. anti-inflammatory whole foods
 
 If you dive deep into the science of insulin resistance—particularly the pioneering work of researchers like Dr. Ben Bikman—you will eventually encounter a word that most people have never heard of: ceramides.
 

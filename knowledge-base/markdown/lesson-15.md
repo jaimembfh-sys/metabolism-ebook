@@ -10,8 +10,6 @@ source_file: index.html#lesson-15
 ## Overview
 <!-- page: Lesson 15 -->
 
-Targeted nutrients rebuild metabolic function at the cellular level
-
 When we stop looking at food merely as a source of energy and start viewing it as a set of biological instructions, the way we structure our daily nutrition shifts dramatically. Supporting your metabolism is not about restriction; it is about providing the right instructions at the right times.
 
 <!-- chunk -->
@@ -43,6 +41,8 @@ Which is good news. You don't need to get it exactly right. You need to stop eat
 <!-- chunk -->
 ## The Power of Time-Restricted Eating
 <!-- page: Lesson 15 -->
+
+An eating window gives your body a long stretch of low insulin
 
 One of the most effective ways to lower insulin and restore metabolic flexibility is to simply change when you eat. This is often referred to as time-restricted eating or intermittent fasting.
 
@@ -152,6 +152,8 @@ While this level of compression is not right for everyone — particularly those
 <!-- chunk -->
 ## The Surprising Truth About Salt (And Fat Cell Growth)
 <!-- page: Lesson 15 -->
+
+Don't fear salt, especially when eating low-carb
 
 When you begin to lower your insulin levels through a whole-food diet and fasting, your body undergoes a major physiological shift regarding hydration and electrolytes.
 
@@ -325,6 +327,8 @@ Which is why the rest of this section matters more than it looks like it should.
 <!-- chunk -->
 ## Prioritizing Nutrient Density
 <!-- page: Lesson 15 -->
+
+Liver, sardines, oysters, eggs and seaweed: nutrient-dense staples
 
 A healthy metabolism requires a massive amount of micronutrients to function. If you are eating a diet composed of highly processed foods, you may be consuming excess energy, but you are effectively starving at a cellular level.
 

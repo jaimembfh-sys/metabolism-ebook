@@ -10,8 +10,6 @@ source_file: index.html#lesson-16
 ## Overview
 <!-- page: Lesson 16 -->
 
-Daily lifestyle rhythms are the foundation of metabolic health
-
 Metabolism does not operate in a vacuum. It is deeply connected to your environment, your daily habits, and your natural biological rhythms. You cannot optimize your physical health if you are neglecting the environmental signals your body relies on.
 
 Melatonin binds to the beta cells in your pancreas and signals them to stop producing insulin — meaning your body is naturally designed to have its lowest insulin levels while you are sleeping.
@@ -134,6 +132,8 @@ Warm the outside to cool the inside. Then a cool room to keep it there.
 ## The Impact of Light Exposure
 <!-- page: Lesson 16 -->
 
+Morning sunlight within 30 minutes of waking sets your body clock
+
 Your circadian rhythm—the internal clock that dictates your sleep, hormone production, and energy metabolism—is primarily regulated by light. In the modern world, we spend our days indoors under artificial lights and our evenings staring at bright screens. This constant, unnatural light exposure confuses the brain, suppressing melatonin production and keeping the nervous system in a state of low-grade alertness.
 
 To support your metabolism, you must anchor your circadian rhythm. View natural sunlight outside within the first thirty minutes of waking up. This signals to your brain that the day has begun, triggering a healthy, natural rise in cortisol that gives you daytime energy and sets a timer for melatonin release later that night. In the evening, dim your artificial lights and limit screen time to signal to your body that it is time to transition into repair and recovery mode.
@@ -161,6 +161,8 @@ Now run it in reverse. Your evening light is far brighter than your body expects
 For most of human history, the light after sunset was firelight — a handful of lux. Now it's 100 to 300 in an ordinary lit room, plus a screen at arm's length.
 
 So it isn't only that screens are bad. It's that your entire evening looks, to your brain, like late afternoon. Which is why melatonin arrives late and you don't feel tired until midnight.
+
+Dim evenings let melatonin rise on time
 
 Dim the overheads. Use lamps rather than ceiling lights. Let the last hour be genuinely dim. You're not trying to sit in the dark — you're trying to make your evening look like evening.
 

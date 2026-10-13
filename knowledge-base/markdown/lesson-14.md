@@ -10,7 +10,7 @@ source_file: index.html#lesson-14
 ## Overview
 <!-- page: Lesson 14 -->
 
-Preparing whole foods eliminates processed food exposure
+Read the label: seed oils hide in most packaged foods
 
 To fully heal your metabolism, you must recognize that not everything sold in a grocery store is actual food. Over the past several decades, the human diet has been flooded with synthetic compounds, heavily processed ingredients, and environmental toxins that our biology has never encountered before. These substances do more than just provide empty energy; they actively damage the machinery of your metabolism at a cellular level.
 
@@ -151,6 +151,8 @@ That is the whole problem in one experiment. Safety limits are set for single ch
 <!-- chunk -->
 ## Where Your Body Puts What It Can't Get Rid Of
 <!-- page: Lesson 14 -->
+
+Filtering your water lowers your chemical burden
 
 Your fat tissue isn't only storage for energy. It's also where your body puts things it can't eliminate.
 

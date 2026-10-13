@@ -10,7 +10,7 @@ source_file: index.html#lesson-9
 ## Overview
 <!-- page: Lesson 9 -->
 
-Ancestral whole foods form the foundation of a balanced plate
+Protein first, plus vegetables and a natural fat
 
 When you understand that your body operates on hormonal signals rather than just mathematical equations of energy, the way you look at a plate of food fundamentally changes. You are no longer asking, "How much energy does this contain?" You are asking, "What signal is this sending to my body?"
 
@@ -27,6 +27,8 @@ Furthermore, protein is highly satiating. It triggers the release of fullness ho
 <!-- chunk -->
 ## How Much Protein? Let's Be Specific
 <!-- page: Lesson 9 -->
+
+Chicken, eggs and salmon: building a real protein serving
 
 I've told you protein is the foundation of every meal. That's useless without a number.
 
@@ -211,6 +213,8 @@ And eat more of the animal than the muscle. Bones, skin, connective tissue, the 
 <!-- chunk -->
 ## The Fuel: Healthy Fats and the Fat Cell Dilemma
 <!-- page: Lesson 9 -->
+
+Industrial seed oils vs. stable fats: butter, tallow and olive oil
 
 For decades, we were falsely taught that eating fat makes you fat. Biologically, this makes no sense. Fat is the only macronutrient that has essentially zero impact on insulin. When you eat fat, your body receives a signal of abundant fuel without the storage-triggering spike of insulin.
 

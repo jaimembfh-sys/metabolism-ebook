@@ -10,7 +10,7 @@ source_file: index.html#lesson-18
 ## Overview
 <!-- page: Lesson 18 -->
 
-Healing your relationship with food is where transformation begins
+Healing your relationship with food is where change begins
 
 Even armed with all the metabolic science in the world, many people find themselves stuck in a frustrating cycle of self-sabotage. You know exactly what you should be doing, yet you find yourself standing in the pantry late at night desperate for a snack, or stuffing your face despite being uncomfortably full.
 

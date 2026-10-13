@@ -10,8 +10,6 @@ source_file: index.html#lesson-7
 ## Overview
 <!-- page: Lesson 7 -->
 
-Movement in nature supports leptin and ghrelin balance
-
 While GLP-1 manages the immediate feeling of fullness after a meal, your long-term energy balance and daily hunger cues are controlled by a constant dialogue between two other major hormones: Leptin and Ghrelin. If you constantly feel like you are battling your appetite, it is rarely a failure of willpower. It is almost always a miscommunication between these hormones.
 
 Because the brain cannot sense the leptin, it assumes the body is starving — and responds by dramatically increasing appetite and slowing the metabolic rate to conserve every calorie.
@@ -84,6 +82,8 @@ The good news: adiponectin responds to the same things everything else in this b
 ## Ghrelin: The Hunger Hormone
 <!-- page: Lesson 7 -->
 
+One bad night raises ghrelin and lowers leptin
+
 Ghrelin is the hormone that makes your stomach growl. It is produced primarily in the stomach and acts as a direct signal to the brain that it is time to seek out food. Ghrelin levels naturally rise before your typical meal times and plummet immediately after you eat.
 
 Interestingly, ghrelin is highly trainable and heavily influenced by your habits. If you consistently eat a snack at 2:00 PM every day, your body will begin surging ghrelin at 1:45 PM in anticipation. If you stop eating that snack, the ghrelin surge will be uncomfortable for a few days, but it will eventually adapt and disappear. Ghrelin is also deeply connected to your sleep cycle. Just one night of poor sleep significantly elevates ghrelin levels the following day while simultaneously lowering leptin. This means your brain is aggressively telling you to eat more while simultaneously ignoring the signals that tell you to stop. This is why cravings for high-sugar, high-energy foods are so intense when you are exhausted. Managing ghrelin is not about fighting hunger; it is about providing your body with nutrient-dense meals, adequate sleep, and stable eating windows so the hormone stops working against you.
@@ -91,6 +91,8 @@ Interestingly, ghrelin is highly trainable and heavily influenced by your habits
 <!-- chunk -->
 ## Dessert Stomach Is Real
 <!-- page: Lesson 7 -->
+
+Full of savory, still interested in sweet
 
 One more quirk worth knowing, because it explains something everybody has experienced and nobody can explain.
 

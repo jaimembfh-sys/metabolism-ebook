@@ -10,13 +10,13 @@ source_file: index.html#lesson-11
 ## Overview
 <!-- page: Lesson 11 -->
 
-Digestive health begins with what you put on your plate
-
 You can eat the most nutrient-dense, perfectly balanced diet in the world, but if your digestive system is compromised, your metabolism will struggle. Metabolism isn't just about what you put into your mouth; it is about what your body can actually break down, absorb, and utilize.
 
 <!-- chunk -->
 ## The Liver: Your Metabolic Powerhouse
 <!-- page: Lesson 11 -->
+
+Liquid fructose goes straight to the liver
 
 The liver is the unsung hero of your metabolism. It is responsible for over 500 vital functions, including filtering toxins, regulating blood sugar, processing hormones, and creating ketones when you are burning fat.
 
@@ -27,6 +27,8 @@ A fatty liver is an insulin-resistant liver. When your liver becomes insulin res
 <!-- chunk -->
 ## Bile: The Fat Digesting Detergent
 <!-- page: Lesson 11 -->
+
+Bitter greens support healthy bile flow
 
 Right beneath the liver sits the gallbladder, which stores a substance called bile. Bile is essentially the body's natural dish soap. When you eat healthy fats, your gallbladder releases bile into your digestive tract to emulsify and break down those fats so your body can absorb them.
 
@@ -41,6 +43,8 @@ Some people adapt well, while others experience ongoing fat intolerance, loose s
 <!-- chunk -->
 ## The Gut Microbiome
 <!-- page: Lesson 11 -->
+
+Bone broth helps support the gut lining
 
 Your digestive tract is home to trillions of bacteria, collectively known as your microbiome. These bacteria play a profound role in your weight and metabolic health. In fact, research shows that the microbiome of an obese individual is vastly different from the microbiome of a lean individual. Certain strains of bacteria are incredibly efficient at extracting extra energy from the food you eat and passing it into your bloodstream, while other strains help regulate inflammation and produce short-chain fatty acids that heal the gut lining.
 

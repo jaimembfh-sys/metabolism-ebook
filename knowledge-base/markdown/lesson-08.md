@@ -10,8 +10,6 @@ source_file: index.html#lesson-8
 ## Overview
 <!-- page: Lesson 8 -->
 
-Strength training accelerates metabolic flexibility
-
 When we talk about shifting the body from a state of storing energy to a state of burning energy, we have to talk about ketones. Ketones are often misunderstood as just a fad diet trend, but they are actually a fundamental part of human biology and a sign of true metabolic flexibility.
 
 When insulin levels are low—either through fasting, exercise, or restricting dietary carbohydrates—the body realizes it cannot rely on glucose for fuel. The liver then steps in and begins breaking down your stored body fat into fatty acids. However, the brain cannot use typical fatty acids for fuel. To solve this, the liver converts those fats into small, highly efficient energy molecules called ketones (specifically beta-hydroxybutyrate).
@@ -51,8 +49,24 @@ So ketones aren't only a fuel. They're an instruction to clean up. Which is the 
 It's also why ketones do things that have nothing to do with weight. The research on brain protection and inflammation is about signalling, not calories.
 
 <!-- chunk -->
+## The Breath Test That Predicted Weight Gain
+<!-- page: Lesson 8 -->
+
+You can tell what fuel your body is burning from your breath. Burning fat and burning sugar use different amounts of oxygen and release different amounts of carbon dioxide, and the ratio between the two shows which fuel is doing the work.
+
+In the Baltimore Longitudinal Study of Aging, researchers took that measurement in 775 men after an overnight fast, then followed them for about ten years.
+
+The men whose bodies were running mostly on sugar at rest were about two and a half times more likely to gain 11 pounds or more than the men running mostly on fat.
+
+Another study, in the Pima people of Arizona, found the same: those who burned the most sugar and the least fat over 24 hours were about two and a half times as likely to gain significant weight.
+
+A body that can't easily reach for fat at rest is more likely to keep storing it. A body that runs comfortably on fat is more protected.
+
+<!-- chunk -->
 ## A Distinction That Will Save You Months
 <!-- page: Lesson 8 -->
+
+Added fats help during the transition, then can quietly stall progress
 
 Ketosis means your body is running on fat. It does not automatically mean it's running on your fat.
 
@@ -166,6 +180,8 @@ B vitamins, particularly Vitamin B1 (Thiamine) and Vitamin B5 (Pantothenic Acid)
 ## Testing, and Why Your Strips Stop Working
 <!-- page: Lesson 8 -->
 
+Strips fade as you adapt. A blood meter is more accurate
+
 Urine strips are cheap and useful for about the first two weeks. After that they become misleading.
 
 Here's why, and it catches people out constantly: as you adapt, your body stops wasting ketones in your urine. It's getting better at using them. So the strips fade exactly when you're doing well — and a lot of people quit at that point thinking they fell out of ketosis.
@@ -225,6 +241,8 @@ That is almost always the correction, and it is almost always the last thing any
 ## Who Should Do This With Medical Supervision
 <!-- page: Lesson 8 -->
 
+Tell your prescriber before you make a big change to your diet
+
 One Important Warning About Diabetes Medication
 
 If you take medication for diabetes, talk to your doctor before you start this. Not because low-carb eating is wrong for you — it may be exactly right. But some medications need adjusting, and one needs real care.
@@ -266,6 +284,8 @@ None of this is a warning against low-carb eating. It's a warning against doing 
 <!-- chunk -->
 ## The Menopause Connection: Why This Matters More After 45
 <!-- page: Lesson 8 -->
+
+Ketones support the systems estrogen used to carry
 
 If you're in perimenopause or past it, this may be the most important chapter in the book.
 
@@ -318,6 +338,8 @@ And this is active research rather than settled fact. The brain's shift toward k
 <!-- chunk -->
 ## Do You Have to Do This Forever?
 <!-- page: Lesson 8 -->
+
+Metabolic flexibility: enjoying a sweet potato without a crash
 
 No. And for most people, no is the better answer.
 

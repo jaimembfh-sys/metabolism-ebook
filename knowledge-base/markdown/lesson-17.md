@@ -10,8 +10,6 @@ source_file: index.html#lesson-17
 ## Overview
 <!-- page: Lesson 17 -->
 
-The right movement for your body type changes everything
-
 For decades, the fitness and diet industries have promoted exercise primarily as a way to "burn off" the food you ate.
 
 "We have been taught to view our bodies like a math equation: if you eat a 300-calorie donut, you need to spend 45 minutes on a treadmill to erase it."
@@ -43,6 +41,8 @@ Build capacity first. Then build strength. Trying to do it in the other order is
 <!-- chunk -->
 ## Weight Lifting: Building the Metabolic Engine
 <!-- page: Lesson 17 -->
+
+Muscle is your metabolic engine
 
 If there is one non-negotiable form of exercise for long-term fat loss and metabolic health, it is resistance training.
 
@@ -150,6 +150,8 @@ You're not burning off a meal. You're building the thing that handles every meal
 ## High-Intensity Interval Training (HIIT)
 <!-- page: Lesson 17 -->
 
+Short, all-out bursts with full recovery
+
 If you want to maximize your fat-burning potential and mitochondrial health in a very short amount of time, High-Intensity Interval Training (HIIT) is an incredible tool.
 
 HIIT involves alternating between short bursts of all-out, intense effort and periods of low-intensity recovery. When you push your body to its absolute limit for a brief moment, you create a massive demand for cellular energy. This triggers a biological phenomenon known as Excess Post-Exercise Oxygen Consumption (EPOC)—often referred to as the "afterburn effect."
@@ -191,6 +193,8 @@ Activities like brisk walking, light cycling, or easy jogging typically fall int
 <!-- chunk -->
 ## The Power of Post-Meal Movement
 <!-- page: Lesson 17 -->
+
+A short walk after dinner pulls glucose straight into your muscles
 
 You do not need to be in a gym sweating profusely to positively influence your metabolism. One of the most effective, accessible strategies you can implement is simply moving your body immediately after a meal. When you activate your muscles after eating, they act like a sponge, pulling the glucose from your meal directly out of your bloodstream without requiring the pancreas to release high amounts of insulin. This simple habit completely blunts the post-meal blood sugar spike and helps your body transition back into a fat-burning state much faster.
 

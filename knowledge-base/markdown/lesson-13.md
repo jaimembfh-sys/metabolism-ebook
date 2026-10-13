@@ -10,8 +10,6 @@ source_file: index.html#lesson-13
 ## Overview
 <!-- page: Lesson 13 -->
 
-Strategic supplementation supports metabolic healing
-
 Even when you are eating perfectly balanced meals and moving your body, you may occasionally find that your progress stalls. When this happens, it is easy to become frustrated and assume that your metabolism is broken. However, a stalled metabolism is usually just a symptom of an underlying interference. Your body wants to reach a state of healthy balance, but certain hidden factors can act as emergency brakes on your energy-burning systems.
 
 If you have lowered your insulin, managed your carbohydrates, and prioritized protein, but are still struggling to release stored energy, you must look beyond your plate.
@@ -20,6 +18,8 @@ If you have lowered your insulin, managed your carbohydrates, and prioritized pr
 ## Chronic Sleep Deprivation
 <!-- page: Lesson 13 -->
 <!-- tags: safety_critical -->
+
+Waking at 3am is often a blood sugar and cortisol signal
 
 Sleep is not simply a time of rest; it is a highly active metabolic state. During deep sleep, your body clears cellular waste, balances hormones, repairs mitochondria, and consolidates memory. When you deprive your body of sleep, the metabolic consequences are immediate and severe.
 
@@ -184,6 +184,8 @@ If that's you: eat your protein on a schedule rather than waiting to want it.
 <!-- chunk -->
 ## Hidden Nutrient Deficiencies
 <!-- page: Lesson 13 -->
+
+Nutrient gaps can stall progress even when you eat well
 
 Your mitochondria and thyroid cannot produce and utilize energy out of thin air. They require specific raw materials. Even if you are consuming plenty of total energy, you may be starving at a cellular level due to nutrient deficiencies.
 

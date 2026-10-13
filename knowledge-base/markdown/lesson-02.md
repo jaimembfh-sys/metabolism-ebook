@@ -10,7 +10,7 @@ source_file: index.html#lesson-2
 ## Overview
 <!-- page: Lesson 2 -->
 
-Apple cider vinegar supports insulin sensitivity
+Refined carbohydrates send the strongest insulin signal
 
 When carbohydrates are consumed and broken down into glucose, that glucose enters the bloodstream and signals the pancreas to release insulin. Insulin’s role is not just to lower blood sugar. It acts as the ultimate gatekeeper that determines where your energy goes. It allows glucose to enter the cell to be used for immediate energy, or, when energy needs have already been met, it directs that excess to be stored, primarily as fat.
 
@@ -73,6 +73,8 @@ When insulin is elevated, your body is physically incapable of burning fat. Fat 
 <!-- chunk -->
 ## The Cephalic Phase: Why Tasting Sweetness Matters
 <!-- page: Lesson 2 -->
+
+Sweet taste with no calories behind it
 
 Because your body runs on signals, the response to food begins before food ever reaches your stomach. Your brain sees it, smells it, tastes it — and starts preparing. Scientists call this the cephalic phase, and it's well established. Studies where people chew food and spit it out without swallowing show measurable responses in the body.
 

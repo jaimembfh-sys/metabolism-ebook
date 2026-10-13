@@ -10,8 +10,6 @@ source_file: index.html#lesson-5
 ## Overview
 <!-- page: Lesson 5 -->
 
-Stress and nervous system health directly impact thyroid function
-
 While your mitochondria determine how energy is produced, your thyroid and nervous system determine how much of that energy is actually used.
 
 <!-- chunk -->
@@ -25,6 +23,8 @@ Thyroid function is heavily influenced by nutrient availability, liver function,
 <!-- chunk -->
 ## So What Should You Ask For?
 <!-- page: Lesson 5 -->
+
+A full thyroid panel: TSH, free T4, free T3 and antibodies
 
 If the problem can be in the conversion rather than the gland, then a test that only checks the gland won't find it.
 
@@ -152,6 +152,8 @@ When the body shifts into a parasympathetic state (often referred to as rest-and
 ## Energy Demand and Heat Production
 <!-- page: Lesson 5 -->
 
+Everyday movement in the cold: a gentle metabolic signal
+
 Another critical factor that ties the thyroid and nervous system together is energy demand. Muscle tissue increases your baseline energy demand because it requires constant maintenance. Furthermore, daily movement—even outside of structured gym workouts—significantly contributes to your total energy expenditure. Small, consistent movements like walking, standing, and general daily activity can collectively have a greater impact on your metabolism than a single, short period of intense exercise.
 
 This has a name — non-exercise activity thermogenesis, or NEAT. It covers everything you do that isn't deliberate exercise: walking, standing, carrying things, fidgeting, gesturing when you talk.
@@ -169,6 +171,8 @@ The reverse is also available to you. Building more movement into ordinary life 
 <!-- chunk -->
 ## Brown Fat, Cold Exposure, and Thermogenesis
 <!-- page: Lesson 5 -->
+
+A cold plunge is a strong stimulus. For women, less is often more
 
 The body also has a unique ability to increase energy expenditure through heat production, a process known as thermogenesis. You possess certain types of fat tissue, referred to as "brown fat," which are specialized entirely for this purpose. Unlike regular white fat, which simply stores excess energy, brown fat actively burns energy to generate heat.
 

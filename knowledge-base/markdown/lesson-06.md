@@ -10,7 +10,7 @@ source_file: index.html#lesson-6
 ## Overview
 <!-- page: Lesson 6 -->
 
-Hydration and morning rituals influence appetite hormones
+GLP-1 medications mimic a hormone your gut already makes
 
 Appetite Regulation and GLP-1
 
@@ -146,6 +146,8 @@ Protein and healthy fats are the most potent natural stimulators of GLP-1. By pr
 ## Why Whole Food Does This Better
 <!-- page: Lesson 6 -->
 
+Hours of fullness signalling vs. a brief pulse
+
 Here's a subtlety worth getting right, because you'll see it stated backwards.
 
 Carbohydrate does trigger GLP-1. The issue isn't that refined carbohydrate bypasses the system. It's where, and for how long.
@@ -173,6 +175,8 @@ Mindful, Slow Eating: Paying attention to your food and eating slowly enhances t
 <!-- chunk -->
 ## Foods That Naturally Boost GLP-1
 <!-- page: Lesson 6 -->
+
+Fermented foods, protein and healthy fats boost your own GLP-1
 
 Certain foods are particularly powerful at stimulating your body's own GLP-1 production. Incorporating these regularly creates a compounding effect on your natural appetite regulation:
 
