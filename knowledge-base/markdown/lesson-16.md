@@ -150,7 +150,7 @@ Your brain's master clock was built to read the difference between outdoors and 
 
 Which is why "I get plenty of light, I sit by the window" doesn't work. And it's why the dullest possible overcast morning still does.
 
-Five to ten minutes outside, within the first half hour of waking. No sunglasses. You don't need to look at the sun — the light reaching your eyes from the sky is the point. On a grey day, give it fifteen or twenty. You still get far more than you would indoors.
+Ten to twenty minutes outside, within the first half hour of waking. No sunglasses. You don't need to look at the sun — the light reaching your eyes from the sky is the point. On a grey day, give it fifteen or twenty. You still get far more than you would indoors.
 
 Drink your coffee on the step. Walk to the end of the street and back. Stand in the doorway while the dog sniffs around. It doesn't have to be a practice. It has to be outside.
 
