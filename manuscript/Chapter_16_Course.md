@@ -119,7 +119,7 @@ Your advice is right. **This is the number that makes people actually do it.**
 >
 > #### What This Actually Requires
 >
-> **Five to ten minutes outside, within the first half hour of waking.** No sunglasses. You don't need to look at the sun — the light reaching your eyes from the sky is the point.
+> **Ten to twenty minutes outside, within the first half hour of waking.** No sunglasses. You don't need to look at the sun — the light reaching your eyes from the sky is the point.
 >
 > On a grey day, give it fifteen or twenty. **You still get far more than you would indoors.**
 >
@@ -273,7 +273,7 @@ And running the same numbers in reverse explains the evening problem better than
 
 *"A well-lit room is about 300 lux. Outside on a rainy, grey, miserable morning is about 10,000. Sitting by the window isn't getting you what you think it's getting you."*
 
-Then: five to ten minutes, outside, no sunglasses, within half an hour of waking. **That's a video people act on the next morning.**
+Then: ten to twenty minutes, outside, no sunglasses, within half an hour of waking. **That's a video people act on the next morning.**
 
 ---
 

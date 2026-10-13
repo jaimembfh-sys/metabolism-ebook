@@ -83,7 +83,7 @@ Companion: `Chapter_16_Course.md`.
 
 **The framing that works:** indoor lighting is, to the circadian system, functionally darkness — sufficient for vision, insufficient to entrain a clock. **A heavily overcast morning outdoors still delivers 10–100× more than the brightest indoor room.**
 
-**Practical:** 5–10 minutes outdoors within 30 minutes of waking, no sunglasses. 15–20 minutes on heavily overcast days. **No need to look toward the sun — sky luminance is the relevant exposure.**
+**Practical:** 10–20 minutes outdoors within 30 minutes of waking, no sunglasses. 15–20 minutes on heavily overcast days. **No need to look toward the sun — sky luminance is the relevant exposure.**
 
 **>>> The reverse calculation explains the evening problem better than "blue light is bad."** Pre-industrial post-sunset illumination was a few lux; ordinary modern room lighting is 100–300. **The issue is that the entire evening resembles late afternoon to the circadian system**, not screens specifically. Recommendation: dim overheads, use lamps, genuinely dim final hour.
 
@@ -186,7 +186,7 @@ Researchers tracked over **60,000 people** — average age 63, mostly women — 
 
 **So the worst possible outdoor morning gives you ten to a hundred times more than your brightest indoor room.** To your body clock, indoor lighting is basically darkness — enough to see by, nowhere near enough to set a clock.
 
-**Five to ten minutes actually outside, within half an hour of waking, no sunglasses.** Coffee on the step counts.
+**Ten to twenty minutes actually outside, within half an hour of waking, no sunglasses.** Coffee on the step counts.
 
 **"Is blue light from screens the problem?"**
 
