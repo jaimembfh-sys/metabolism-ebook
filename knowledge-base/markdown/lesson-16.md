@@ -187,6 +187,24 @@ Make your room actually dark. Not dim. Dark. Blackout curtains if streetlight co
 And if you can't control the light, use a sleep mask. It costs almost nothing and it solves the problem completely. This is one of the cheapest interventions in this entire book. A single night in a lit room measurably changed how these people handled glucose. Multiply that by every night for twenty years.
 
 <!-- chunk -->
+## Light Exposure
+<!-- page: Lesson 16 -->
+
+Sunlight and its different wavelengths—ranging from visible light to near infrared (NIR) and red light—play a surprisingly powerful role in metabolism, mitochondrial function, and overall health.
+
+Mitochondria, the energy-producing organelles in our cells, are sensitive to light, especially red (around 630–680 nm) and near-infrared (800–850 nm) wavelengths. These wavelengths stimulate cytochrome c oxidase in the mitochondrial electron transport chain, increasing ATP production, reducing oxidative stress, and improving cellular energy efficiency. Improved mitochondrial function supports metabolism, fat oxidation, and insulin sensitivity, helping regulate blood sugar and body weight.
+
+In addition, sunlight exposure influences circadian rhythms via blue light in the morning, which helps regulate cortisol, insulin signaling, and digestive enzyme release, indirectly supporting metabolic health.
+
+Research has shown that red and near-infrared light therapy can improve glucose metabolism, enhance fat burning, and reduce inflammation. Animal studies and small human trials indicate that these wavelengths can improve insulin sensitivity, increase energy expenditure, and even modulate gut microbiome activity, which is closely tied to digestion and nutrient absorption.
+
+Infrared saunas, full-spectrum light therapy, and even natural sun exposure can provide these benefits, with red and NIR light penetrating deeper tissues than visible light, stimulating mitochondria in muscle, liver, and fat tissue.
+
+For practical benefits, moderate daily sun exposure—about 10–20 minutes of morning sunlight on face and arms—is sufficient to support circadian and metabolic signaling, with longer sessions (20–40 minutes) in safe, non-burning conditions offering additional red/NIR benefits. Red and near-infrared light therapy devices, often used for 10–20 minutes per area several times per week, can provide targeted mitochondrial stimulation even indoors.
+
+Overall, integrating natural sunlight with safe red/NIR light exposure can enhance mitochondrial energy production, improve fat metabolism, stabilize blood sugar, and support insulin sensitivity, all of which are critical for weight management and metabolic health.
+
+<!-- chunk -->
 ## Active Stress Management
 <!-- page: Lesson 16 -->
 

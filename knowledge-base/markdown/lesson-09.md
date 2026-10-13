@@ -353,6 +353,36 @@ And the liver clearing it is the same liver doing everything in Lesson 11 — in
 You don't have to quit. But if your progress has stalled and there's a nightly drink in the picture, that's the first thing I'd test — and the test is two weeks without, not one. One week is mostly water weight.
 
 <!-- chunk -->
+## Key Supplements
+<!-- page: Lesson 9 -->
+
+Berberine is a natural compound found in plants like goldenseal, barberry, and Oregon grape, and it has become well-known for its powerful effects on blood sugar and metabolism. Berberine works by activating an enzyme called AMPK, often called the “metabolic master switch,” which helps improve insulin sensitivity, increases glucose uptake by cells, and promotes fat burning. Studies show that berberine can lower fasting and post-meal blood sugar levels, sometimes as effectively as some prescription medications for type 2 diabetes. Beyond blood sugar, it may support weight loss, improve lipid profiles (lowering LDL cholesterol and triglycerides), reduce inflammation, and support cardiovascular health.
+
+Other natural supplements can complement blood sugar and weight management:
+
+Cinnamon – can improve insulin sensitivity and slow the absorption of glucose, helping to stabilize blood sugar and reduce cravings.
+
+Alpha-lipoic acid (ALA) – a potent antioxidant that improves insulin sensitivity and supports mitochondrial health.
+
+Chromium picolinate – helps enhance insulin action and regulate blood sugar levels by repairning insulin receptors.
+
+Magnesium – essential for hundreds of enzymatic reactions, including those that regulate glucose metabolism; deficiency can worsen insulin resistance.
+
+Green tea – can modestly improve insulin sensitivity by activating AMPK, reducing inflammation, and enhancing glucose uptake in cells. Drinking 2–4 unsweetened cups daily (or using matcha) supports better blood sugar balance and fat metabolism over time.
+
+Together, these supplements can help the body better process carbohydrates, support stable insulin levels, and promote fat metabolism, making weight loss and blood sugar control easier when combined with a healthy diet and lifestyle.
+
+<!-- chunk -->
+## Apple Cider Vinegar
+<!-- page: Lesson 9 -->
+
+Drinking apple cider vinegar (ACV) before meals can help reduce insulin spikes and support better blood sugar control. ACV contains acetic acid, which slows the digestion of starches and sugars, meaning glucose enters the bloodstream more gradually. This helps blunt the post-meal insulin response, keeping insulin lower and reducing fat storage. For people trying to lose weight or manage blood sugar, this can be a simple tool to improve metabolic health.
+
+To use it safely, mix 1–2 tablespoons of raw, unfiltered apple cider vinegar in a large glass of water and drink it 10–20 minutes before meals. Drinking it undiluted can irritate the esophagus or damage tooth enamel, so always dilute it. Some people also add a little lemon juice or a teaspoon of honey for taste.
+
+Beyond blood sugar control, ACV may offer other benefits: it can support digestion by increasing stomach acid, improve satiety to help reduce overeating, support gut health with its mild antimicrobial properties, and even promote healthy lipid levels. While it’s not a magic weight-loss solution on its own, when combined with a healthy diet and lifestyle, ACV can be a helpful addition to your metabolic toolkit.
+
+<!-- chunk -->
 ## The "Fiber First" Rule: Food Sequencing
 <!-- page: Lesson 9 -->
 
