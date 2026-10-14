@@ -13,3 +13,4 @@
 # Finished course delivered as a zip: store every byte exactly as supplied,
 # with no line-ending conversion, so a checkout anywhere matches the zip.
 courses/autoimmune-elimination/** -text
+courses/breast-cancer/** -text

@@ -53,6 +53,7 @@ const FILES = [
   // Course card for the Autoimmune & Elimination guide. images/ is copied
   // whole below; it's named here as well so a missing card fails the build.
   "images/autoimmune-elimination-card.jpg",
+  "images/breast-cancer-card.jpg",
   // The five the app fetches at runtime. The rest of knowledge-base/ - the
   // recipe markdown, the chunk files, the build scripts, coach-fixtures.json -
   // is source and stays behind.
@@ -79,6 +80,10 @@ const DIRS = [
   // with relative paths. Copied byte-for-byte; never edit or process it here.
   // Served at /courses/autoimmune-elimination/.
   "courses/autoimmune-elimination",
+  // The Truth About Breast Cancer (course title inside: "Breast Cancer Beyond
+  // Genetics"), added 2026-10-14 from Downloads\breast-cancer-course, minus its
+  // README.md and "index - Copy.html". Served at /courses/breast-cancer/.
+  "courses/breast-cancer",
 ];
 
 /* Deliberately NOT published, and why:

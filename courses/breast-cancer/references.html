@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>References · Breast Cancer Beyond Genetics</title>
+  <link rel="icon" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="layout">
+<main class="main">
+<article class="content">
+
+  <p class="eyebrow">Breast Cancer Beyond Genetics</p>
+  <h1>References</h1>
+  <hr class="rule">
+  <p class="lede">Every number in this book comes from published research. Findings are summarized in plain language throughout; the original studies are listed here so you can read them yourself — or print one and bring it to your appointment, as Part Nine describes.</p>
+
+  <div id="ref-list"></div>
+
+  <p class="disclaimer" style="text-align:left">This book is educational and is not a substitute for individualized medical advice, diagnosis, or treatment. It is not intended to discourage anyone from screening, from seeking care, or from following a treatment plan. Always discuss changes to your health routine with a qualified clinician who knows your history.</p>
+
+</article>
+</main>
+</div>
+<script src="js/references.js"></script>
+<script>
+  /* The list is built from js/references.js so it always matches the study pop-ups. */
+  document.getElementById("ref-list").innerHTML = REFERENCE_SECTIONS.map(s =>
+    `<section class="ref-section"><h2>${s.title}</h2><ol class="ref-list">${
+      s.refs.map(([n, t]) => `<li id="ref-${n}"><span class="rn">${n}</span><span>${t}</span></li>`).join("")
+    }</ol></section>`).join("");
+</script>
+<script src="js/course.js"></script>
+</body>
+</html>
