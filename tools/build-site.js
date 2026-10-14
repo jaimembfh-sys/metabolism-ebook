@@ -54,7 +54,6 @@ const FILES = [
   // whole below; it's named here as well so a missing card fails the build.
   "images/autoimmune-elimination-card.jpg",
   "images/breast-cancer-card.jpg",
-  "images/s2s-core-card.jpg",
   "images/s2s-mood-card.jpg",
   "images/s2s-anxiety-ocd-card.jpg",
   "images/s2s-trauma-addiction-card.jpg",
