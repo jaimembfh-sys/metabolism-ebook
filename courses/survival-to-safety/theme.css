@@ -1,0 +1,241 @@
+/* ==========================================================
+   Survival to Safety — "Breast Cancer Beyond Genetics" look
+   Shared by core.html, mood.html, anxiety-ocd.html,
+   trauma-addiction.html and brain-development-aging.html.
+   Loaded after each file's own <style>, so everything here wins.
+   Text and lesson HTML are untouched; this file is styling only.
+   ========================================================== */
+
+/* ---------- Palette and fonts (same values as the breast cancer course) ----------
+   The extra selectors match the files' dark-mode rules so this light,
+   teal-and-gold palette applies everywhere, like the breast cancer course. */
+html:root,
+html:root:not([data-theme="light"]),
+html:root[data-theme="dark"] {
+  --teal: #34657a;
+  --teal-dark: #24404d;
+  --teal-soft: #eef3f5;
+  --teal-line: #d5e1e6;
+  --gold: #c19a6b;
+  --gold-text: #9c7442;
+  --gold-light: #e6cfa8;
+  --cream: #f8f6f2;
+  --cream-line: #eadfcd;
+  --red: #9a4a3a;
+  --red-soft: #fbf3f1;
+  --red-line: #e8c9c2;
+
+  /* the course's own variables, re-pointed at that palette */
+  --paper: #ffffff;
+  --panel: #ffffff;
+  --sunk: #eef3f5;
+  --line: #e3e9ec;
+  --ink: #2b3f4a;
+  --muted: #6b7c84;
+  --safe: #34657a;
+  --safe-soft: #eef3f5;
+  --alarm: #9c7442;
+  --alarm-soft: #f8f6f2;
+  --sage: #c19a6b;
+  --warn: #9a4a3a;
+  --warn-soft: #fbf3f1;
+
+  --head: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --brand: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --display: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --body: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+
+body { background: #fff; color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+strong { color: var(--teal-dark); font-weight: 600; }
+a { color: var(--teal); }
+
+/* ---------- Course rail (the breast cancer sidebar) ---------- */
+.rail { background: #fbfcfd; border-right: 1px solid var(--line); }
+.brand b { font-family: var(--head); font-weight: 400; font-size: 21px; color: var(--teal); letter-spacing: 0; }
+.brand span { color: var(--gold-text) !important; font-weight: 600; letter-spacing: .2em !important; }
+.window-ends, .window-count { font-size: 11px; letter-spacing: .08em; color: var(--muted); }
+.window-fill { background: var(--gold); }
+.search { background: #fff; border-color: var(--line); border-radius: 10px; font: 14px var(--body); }
+.nav-part { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--gold-text); }
+.nav-part em { font-family: var(--body); font-weight: 600; color: var(--teal-dark); font-size: 13px; letter-spacing: 0; }
+.nav-ch { font-size: 14px; color: var(--teal-dark); border-radius: 8px; }
+.nav-ch .no { color: var(--gold-text); font-weight: 700; font-size: 13px; }
+.nav-ch:hover { background: var(--teal-soft); }
+.nav-ch.on { background: var(--teal); color: #fff; }
+.nav-ch.on .no, .nav-ch.on .chev { color: var(--gold-light); }
+.nav-ch.done .no { color: var(--gold-text); }
+.nav-lessons { padding-left: 30px; border-left: 2px solid var(--line); margin-left: 24px; }
+.nav-group { color: var(--gold-text); font-weight: 700; font-size: 10px; letter-spacing: 2px; }
+.nav-l { font-size: 13px; color: var(--muted); }
+.nav-l:hover { color: var(--teal); background: transparent; }
+.nav-l.on { color: var(--teal); font-weight: 600; background: transparent; box-shadow: inset 2px 0 0 var(--gold); border-radius: 0; }
+.done > .dot { background: var(--gold); border-color: var(--gold); }
+
+/* ---------- Typography ---------- */
+.col { max-width: 740px; }
+.eyebrow { font-family: var(--body); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-text); }
+.eyebrow b { color: var(--gold-text); font-weight: 700; }
+h1, h2, h3, h4 { font-family: var(--head); font-weight: 400; letter-spacing: 0; color: var(--teal); }
+.lesson-title { font-family: var(--head); font-weight: 400; font-size: clamp(38px, 6vw, 52px); line-height: 1.08; color: var(--teal); margin: 12px 0 0; }
+.lesson-title::after { content: ""; display: block; width: 64px; height: 3px; background: var(--gold); margin: 22px 0 18px; }
+.meta { font-family: var(--body); font-size: 13px; color: var(--muted); }
+.prose h3 { font-family: var(--head); font-weight: 400; font-size: clamp(27px, 4vw, 32px); line-height: 1.2; color: var(--teal); margin: 1.8em 0 .5em; }
+.prose h4 { font-family: var(--head); font-weight: 400; font-size: 23px; color: var(--teal-dark); }
+.prose strong { font-weight: 600; }
+.prose ul li::marker { color: var(--gold); }
+.prose strong.num { font-family: var(--body); font-weight: 600; background: var(--cream); color: var(--gold-text); border: 1px solid var(--cream-line); }
+.prose strong.steplead { font-family: var(--head); font-weight: 400; color: var(--teal); }
+sup.fn { font-family: var(--body); color: var(--gold-text); }
+.prose.opening > p:first-child::first-letter { font-family: var(--head); font-weight: 400; color: var(--teal); }
+.prose.opening > p:first-child { font-size: 20px; line-height: 1.6; color: var(--teal-dark); }
+
+/* ---------- Buttons ---------- */
+.btn { font-family: var(--body); font-weight: 600; font-size: 14px; background: var(--teal); color: #fff; border-radius: 999px; padding: 11px 22px; }
+.btn.ghost { background: #fff; color: var(--teal); border: 1px solid var(--teal-line); }
+.btn.small { padding: 7px 15px; font-size: 13px; }
+.check { font-family: var(--body); color: var(--teal-dark); }
+.check[aria-pressed="true"] .box { background: var(--teal); border-color: var(--teal); }
+
+/* ---------- Home: the teal hero card ---------- */
+.home-hero { background: var(--teal); color: #fff; border-radius: 22px; padding: 52px 48px 44px; margin-top: 8px; gap: 16px; }
+.home-mark { box-shadow: 0 0 0 2px var(--gold-light); }
+.home-brand span { color: #fff; font-family: var(--body); font-weight: 600; }
+.home-brand span i { color: var(--gold-light); }
+.home-hero .eyebrow, .home-hero .eyebrow span { color: var(--gold-light); }
+.home-title { font-family: var(--head); font-weight: 400; color: #fff; font-size: clamp(44px, 7vw, 76px); line-height: 1.02; letter-spacing: 0; }
+.home-title::after { content: ""; display: block; width: 64px; height: 3px; background: var(--gold); margin-top: 24px; }
+.home-title span { color: var(--gold-light); }
+.home-title span::before { content: ""; }
+.home-hero .stats { font-family: var(--body); color: #dfe9ed; }
+.home-hero .stats b { font-family: var(--head); font-weight: 400; color: #fff; font-size: 26px; }
+.home-hero .btn { background: var(--gold); color: #fff; padding: 12px 26px; }
+.home-hero .meta { color: #cfdde3; }
+.ph.home { border-radius: 16px; }
+
+/* ---------- Chapter page ---------- */
+.ch-num { font-family: var(--head); font-weight: 400; color: var(--gold-text); letter-spacing: 0; }
+.ch-title { font-family: var(--head); font-weight: 400; color: var(--teal); }
+.ch-sub { font-style: normal; font-size: 20px; line-height: 1.55; color: var(--teal-dark); }
+.lesson-list { border-top: 1px solid var(--line); }
+.lesson-list .grp { font-family: var(--body); font-weight: 700; font-size: 11px; letter-spacing: 2px; color: var(--gold-text); }
+.lesson-list button { font-family: var(--body); font-size: 16px; color: var(--teal-dark); }
+.lesson-list button:hover .lt { color: var(--teal); }
+.lesson-list .ln { font-family: var(--body); font-weight: 700; color: var(--gold-text); }
+.lesson-list .done .ln { color: var(--teal); }
+.lesson-list .lm { font-family: var(--body); color: var(--muted); }
+.tag { font-family: var(--body); font-weight: 700; letter-spacing: 1.5px; }
+.tag.start { background: var(--teal); color: #fff; }
+.tag.tests { border: 1px solid var(--teal); color: var(--teal); }
+.tag.worse { background: var(--cream); color: var(--gold-text); border: 1px solid var(--cream-line); }
+
+/* ---------- Lesson banners ---------- */
+.banner { font-family: var(--body); border-radius: 16px; }
+.banner b { font-family: var(--body); font-weight: 700; letter-spacing: 2px; }
+.banner.start { background: var(--teal); color: #fff; }
+.banner.tests { background: #fff; border: 2px solid var(--teal); }
+.banner.tests b { color: var(--teal); }
+.banner.worse { background: var(--cream); border: 1px solid var(--cream-line); }
+.banner.worse b { color: var(--gold-text); }
+.lesson-tests .prose { border-color: var(--line); border-radius: 16px; }
+
+/* ---------- Pop-out boxes (breast cancer course styles) ---------- */
+.bx { margin: 28px 0; padding: 22px 26px; border-radius: 16px; box-shadow: none; background: #fff; border: 1px solid var(--line); color: var(--ink); }
+.bx-head { font-family: var(--body); font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--gold-text); margin-bottom: 10px; }
+.bx-ic { background: var(--cream); color: var(--gold-text); }
+.bx-title { font-family: var(--head); font-weight: 400; color: var(--teal); }
+
+/* Key point -> the gold-barred "insight" */
+.bx-insight { border: 0; border-left: 5px solid var(--gold); border-radius: 0 14px 14px 0; background: var(--teal-soft); padding: 22px 28px; }
+.bx-insight .bx-body { font-family: var(--head); font-weight: 400; font-size: 24px; line-height: 1.38; color: var(--teal-dark); }
+.bx-insight .bx-body strong { font-weight: 400; color: var(--teal); }
+
+/* Try this -> "What to do" */
+.bx-try { background: var(--teal-soft); color: var(--teal-dark); border: 0; }
+.bx-try .bx-head { color: var(--teal); }
+.bx-try .bx-head::before { content: "✓"; font-size: 14px; }
+.bx-try .bx-ic { display: none; }
+.bx-try .bx-body, .bx-try .bx-title { color: var(--teal-dark); }
+.bx-try strong.num { background: #fff; color: var(--gold-text); }
+.bx-try sup.fn { color: var(--gold-text); }
+
+/* The research -> cream stat card */
+.bx-research { background: var(--cream); border: 1px solid var(--cream-line); }
+.bx-stat { border-right-color: var(--gold); }
+.bx-stat b { font-family: var(--head); font-weight: 400; color: var(--gold-text); letter-spacing: 0; }
+.bx-stat span { font-family: var(--body); color: var(--muted); }
+
+/* From Jaime -> warm cream note */
+.bx-personal { background: #fdfbf8; border: 1px solid var(--cream-line); }
+.bx-personal .bx-body { font-style: italic; color: var(--teal-dark); }
+
+/* Does this sound familiar? -> the solid teal checklist */
+.bx-checklist { background: var(--teal); color: #fff; border: 0; border-radius: 18px; }
+.bx-checklist .bx-head { color: var(--gold-light); }
+.bx-checklist .bx-ic { background: rgba(255,255,255,.14); color: var(--gold-light); }
+.bx-checklist li { background: rgba(255,255,255,.08); color: #fff; }
+.bx-checklist li::before { border-color: var(--gold-light); }
+.bx-checklist strong { color: #fff; }
+
+/* Steps -> the numbered "sequence" */
+.bx-steps { background: #fbfcfd; border: 1px solid var(--line); }
+.bx-steps li { border-bottom-color: var(--line); }
+.bx-steps li::before { background: var(--teal); color: #fff; font-family: var(--body); font-weight: 700; }
+
+/* Important -> red caution card */
+.bx-warning { background: var(--red-soft); border: 1px solid var(--red-line); }
+.bx-warning .bx-head { color: var(--red); }
+.bx-warning .bx-ic { background: var(--red); color: #fff; }
+
+/* What it means -> "Go deeper" cream panel */
+.bx-define { background: #fdfbf8; border: 1px solid var(--cream-line); }
+.bx-term { font-family: var(--head); font-weight: 400; font-size: 30px; color: var(--teal); }
+
+/* What people think vs. what's true -> teal-outlined "Ask your team" card */
+.bx-myth { background: #fff; border: 2px solid var(--teal); }
+.bx-myth .bx-head { color: var(--teal); }
+.bx-myth .bx-ic { background: var(--teal-soft); color: var(--teal); }
+
+/* Margin pull-quotes -> serif pull quote with a gold rule */
+.margin-quote { border-left: 3px solid var(--gold); }
+.margin-quote span { font-family: var(--body); font-weight: 700; letter-spacing: 2px; color: var(--gold-text); }
+.margin-quote p { font-family: var(--head) !important; font-weight: 400 !important; color: var(--teal) !important; font-size: 23px; line-height: 1.35; }
+
+.pull { font-family: var(--head); font-weight: 400; color: var(--teal); }
+.callout { box-shadow: none; border-radius: 16px; }
+.callout-label { font-family: var(--body); font-weight: 700; }
+.callout.key { background: var(--teal-soft); }
+.points, .table-wrap { margin-inline: 0; border-color: var(--line); border-radius: 14px; }
+.point h4 { font-family: var(--head); font-weight: 400; color: var(--teal-dark); }
+.table-wrap table { font-family: var(--body); }
+.table-wrap th { font-family: var(--body); font-weight: 700; letter-spacing: 2px; font-size: 11px; color: var(--muted); }
+
+/* ---------- Photos ---------- */
+.ph { margin: 28px 0; max-width: 100%; border-radius: 16px; background: var(--teal-soft); }
+.ph.thumb { margin: -18px -20px 4px; }
+
+/* ---------- References ---------- */
+.refs li { background: #fff; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 12px 0; }
+
+/* ---------- Lesson footer (the breast cancer chapter pager) ---------- */
+.foot { border-top-color: var(--line); }
+.next { border: 1px solid var(--line); border-radius: 14px; }
+.next:hover { border-color: var(--teal); background: var(--teal-soft); }
+.next small { font-family: var(--body); font-weight: 700; letter-spacing: 2px; color: var(--gold-text); }
+.next span { font-family: var(--head); font-weight: 400; font-size: 21px; color: var(--teal-dark); }
+
+/* ---------- Phones ---------- */
+@media (max-width: 960px) {
+  .topbar { background: rgba(255,255,255,.96); }
+  .topbar button { font-family: var(--body); color: var(--teal); border-color: var(--line); border-radius: 10px; }
+  .topbar span { font-family: var(--head); font-weight: 400; color: var(--teal); }
+  .nav-lessons { margin-left: 18px; }
+}
+@media (max-width: 600px) {
+  .home-hero { padding: 36px 24px 30px; }
+  .bx { padding: 18px 20px; }
+  .bx-insight .bx-body { font-size: 21px; }
+  .lesson-title { font-size: 34px; }
+}

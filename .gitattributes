@@ -14,3 +14,4 @@
 # with no line-ending conversion, so a checkout anywhere matches the zip.
 courses/autoimmune-elimination/** -text
 courses/breast-cancer/** -text
+courses/survival-to-safety/** -text

@@ -54,6 +54,11 @@ const FILES = [
   // whole below; it's named here as well so a missing card fails the build.
   "images/autoimmune-elimination-card.jpg",
   "images/breast-cancer-card.jpg",
+  "images/s2s-core-card.jpg",
+  "images/s2s-mood-card.jpg",
+  "images/s2s-anxiety-ocd-card.jpg",
+  "images/s2s-trauma-addiction-card.jpg",
+  "images/s2s-brain-development-aging-card.jpg",
   // The five the app fetches at runtime. The rest of knowledge-base/ - the
   // recipe markdown, the chunk files, the build scripts, coach-fixtures.json -
   // is source and stays behind.
@@ -84,6 +89,11 @@ const DIRS = [
   // Genetics"), added 2026-10-14 from Downloads\breast-cancer-course, minus its
   // README.md and "index - Copy.html". Served at /courses/breast-cancer/.
   "courses/breast-cancer",
+  // Survival to Safety, added 2026-10-14: five editions (core, mood,
+  // anxiety-ocd, trauma-addiction, brain-development-aging) sharing one
+  // images/ folder and theme.css (the breast cancer course's look).
+  // Source files: OneDrive\...\survival to safety brain health ebook.
+  "courses/survival-to-safety",
 ];
 
 /* Deliberately NOT published, and why:
